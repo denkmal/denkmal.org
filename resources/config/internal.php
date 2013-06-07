@@ -3,7 +3,8 @@
 // You should adjust TYPE constants and regenerate file using `config generate` command
 
 $config->CM_Site_Abstract->types = array();
-// Highest type used: #0
+$config->CM_Site_Abstract->types[Denkmal_Site::TYPE] = 'Denkmal_Site'; // #100
+// Highest type used: #100
 
 $config->CM_Action_Abstract->types = array();
 // Highest type used: #0

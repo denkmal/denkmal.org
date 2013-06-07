@@ -9,9 +9,9 @@ DROP TABLE IF EXISTS `denkmal_song`;
 
 
 CREATE TABLE `denkmal_song` (
-		`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		`label` varchar(100) NOT NULL,
-		PRIMARY KEY (`id`)
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -31,28 +31,28 @@ CREATE TABLE `denkmal_venue` (
 
 
 CREATE TABLE `denkmal_venueAlias` (
-		`name` varchar(100) NOT NULL,
-		`venueId` int(11) unsigned NOT NULL,
-		PRIMARY KEY (`name`),
-		KEY `venueId` (`venueId`),
-		CONSTRAINT `denkmal_venueAlias__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `name` varchar(100) NOT NULL,
+  `venueId` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`name`),
+  KEY `venueId` (`venueId`),
+  CONSTRAINT `denkmal_venueAlias__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `denkmal_event` (
-		`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		`venueId` int(11) unsigned NOT NULL,
-		`from` int(11) unsigned NOT NULL,
-		`until` int(11) unsigned DEFAULT NULL,
-		`description` text,
-		`songId` int(11) unsigned DEFAULT NULL,
-		`status` tinyint(4) unsigned NOT NULL,
-		`star` tinyint(4) unsigned NOT NULL DEFAULT '0',
-		PRIMARY KEY (`id`),
-		KEY `venueId` (`venueId`),
-		KEY `from` (`from`),
-		KEY `status` (`status`),
-		KEY `songId` (`songId`),
-		CONSTRAINT `denkmal_event__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-		CONSTRAINT `denkmal_event__song` FOREIGN KEY (`songId`) REFERENCES `denkmal_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `venueId` int(11) unsigned NOT NULL,
+  `from` int(11) unsigned NOT NULL,
+  `until` int(11) unsigned DEFAULT NULL,
+  `description` text,
+  `songId` int(11) unsigned DEFAULT NULL,
+  `status` tinyint(4) unsigned NOT NULL,
+  `star` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `venueId` (`venueId`),
+  KEY `from` (`from`),
+  KEY `status` (`status`),
+  KEY `songId` (`songId`),
+  CONSTRAINT `denkmal_event__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `denkmal_event__song` FOREIGN KEY (`songId`) REFERENCES `denkmal_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

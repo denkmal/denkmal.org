@@ -1,0 +1,6 @@
+/vendor
+
+/data
+/resources/config/local.php
+/tmp
+/tests/tmp

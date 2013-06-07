@@ -1,0 +1,352 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "7939f30db808e6678763e74e0f244230",
+    "packages": [
+        {
+            "name": "amazonwebservices/aws-sdk-for-php",
+            "version": "1.5.17.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
+                "reference": "1.5.17.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/amazonwebservices-aws-sdk-for-php-1.5.17.1-1.5.17.1-2b3d6a.zip",
+                "reference": "1.5.17.1",
+                "shasum": "dd36e267918b50a3ef8155fe660970962ae6a86a"
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "authentication/",
+                    "extensions/",
+                    "lib/",
+                    "services/",
+                    "utilities/",
+                    "sdk.class.php"
+                ]
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Amazon Web Services",
+                    "homepage": "http://aws.amazon.com"
+                }
+            ],
+            "description": "AWS SDK for PHP",
+            "homepage": "http://aws.amazon.com/sdkforphp/",
+            "keywords": [
+                "amazon",
+                "aws",
+                "dynamodb",
+                "ec2",
+                "s3",
+                "sdk"
+            ],
+            "time": "2012-11-26 23:59:55"
+        },
+        {
+            "name": "cargomedia/CM",
+            "version": "1.1.114",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cargomedia/CM.git",
+                "reference": "1.1.114"
+            },
+            "require": {
+                "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "easybook/geshi": "1.0.8.11",
+                "leafo/lessphp": "0.3.*",
+                "michelf/php-markdown": "1.3-beta5",
+                "phpmailer/phpmailer": "5.2.1",
+                "ruflin/elastica": "v0.19.8.0",
+                "smarty/smarty": "3.1.*",
+                "wurfl/tera-wurfl": "2.1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CM_": "library/",
+                    "CMService_": "library/",
+                    "CMTest_": "tests/helpers/CMTest/library/"
+                }
+            },
+            "time": "2013-06-06 12:59:02"
+        },
+        {
+            "name": "easybook/geshi",
+            "version": "1.0.8.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/javiereguiluz/geshi",
+                "reference": "1.0.8.11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/easybook-geshi-1.0.8.11-1.0.8.11-21a143.zip",
+                "reference": "1.0.8.11",
+                "shasum": "64dee8d66d084e889c2a84aaf7d5f127c2fd62c7"
+            },
+            "require": {
+                "php": ">4.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./"
+                ]
+            },
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Benny Baumann",
+                    "email": "BenBE@geshi.org"
+                },
+                {
+                    "name": "Nigel McNie",
+                    "email": "nigel@geshi.org"
+                }
+            ],
+            "description": "GeSHi - Generic Syntax Highlighter. This is an unmodified port of GeSHi project code found on SourceForge.",
+            "homepage": "http://qbnz.com/highlighter",
+            "keywords": [
+                "highlight",
+                "highlighter",
+                "syntax"
+            ],
+            "time": "2012-09-28 03:14:18"
+        },
+        {
+            "name": "leafo/lessphp",
+            "version": "v0.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leafo/lessphp.git",
+                "reference": "v0.3.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/leafo-lessphp-v0.3.9-v0.3.9-cdc0ce.zip",
+                "reference": "v0.3.9",
+                "shasum": "f426d502eb735867a9f84bf58dd13a68ec015909"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "lessc.inc.php"
+                ]
+            },
+            "license": [
+                "MIT",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Leaf Corcoran",
+                    "email": "leafot@gmail.com",
+                    "homepage": "http://leafo.net"
+                }
+            ],
+            "description": "lessphp is a compiler for LESS written in PHP.",
+            "homepage": "http://leafo.net/lessphp/",
+            "time": "2013-03-02 16:13:31"
+        },
+        {
+            "name": "michelf/php-markdown",
+            "version": "1.3-beta5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michelf/php-markdown.git",
+                "reference": "1.3-beta5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/michelf-php-markdown-1.3-beta5-1.3-beta5-a3d5ff.zip",
+                "reference": "1.3-beta5",
+                "shasum": "8f90970144c2f9b9f6d96a5c5dd015703a6801ee"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-lib": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Michelf": ""
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michel Fortin",
+                    "email": "michel.fortin@michelf.ca",
+                    "homepage": "http://michelf.ca/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "http://daringfireball.net/"
+                }
+            ],
+            "description": "PHP Markdown",
+            "homepage": "http://michelf.ca/projects/php-markdown/",
+            "keywords": [
+                "markdown"
+            ],
+            "time": "2013-02-03 21:14:12"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "5.2.1",
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-5.2.1.zip",
+                "reference": "5.2.1",
+                "shasum": "e073095c9e5a4ec1b5a9a1fe05f507adda4cc5cd"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class.phpmailer.php"
+                ]
+            }
+        },
+        {
+            "name": "ruflin/elastica",
+            "version": "v0.19.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruflin/Elastica",
+                "reference": "v0.19.8.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-v0.19.8.0-v0.19.8.0-93e4c9.zip",
+                "reference": "v0.19.8.0",
+                "shasum": "37182b397fc33ade8522569ea8ee7ce928a5c78e"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Elastica": "lib/"
+                }
+            },
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Ruflin",
+                    "homepage": "http://ruflin.com/"
+                }
+            ],
+            "description": "Elasticsearch Client",
+            "homepage": "http://ruflin.github.com/Elastica/",
+            "keywords": [
+                "client",
+                "search"
+            ],
+            "time": "2012-08-12 09:51:36"
+        },
+        {
+            "name": "smarty/smarty",
+            "version": "v3.1.13",
+            "source": {
+                "type": "svn",
+                "url": "http://smarty-php.googlecode.com/svn",
+                "reference": "/tags/v3.1.13/@4699"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/smarty-smarty-v3.1.13-830af7.zip",
+                "reference": "v3.1.13",
+                "shasum": "54ec0787428f2bd2f70791909df0222d75a0481b"
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "distribution/libs/Smarty.class.php",
+                    "distribution/libs/SmartyBC.class.php"
+                ]
+            },
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Monte Ohrt",
+                    "email": "monte@ohrt.com"
+                },
+                {
+                    "name": "Uwe Tews",
+                    "email": "uwe.tews@googlemail.com"
+                },
+                {
+                    "name": "Rodney Rehm",
+                    "email": "rodney.rehm@medialize.de"
+                }
+            ],
+            "description": "Smarty - the compiling PHP template engine",
+            "homepage": "http://www.smarty.net",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2013-01-26 12:03:52"
+        },
+        {
+            "name": "wurfl/tera-wurfl",
+            "version": "2.1.5",
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/wurfl-tera-wurfl-2.1.5.zip",
+                "reference": "2.1.5",
+                "shasum": "d577f0b291ba6666f145e279799e0655c7610178"
+            },
+            "type": "library"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "beta",
+    "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

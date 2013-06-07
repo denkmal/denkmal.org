@@ -16,5 +16,10 @@
 			"type": "composer",
 			"url": "http://satis.cargomedia.ch/dist"
 		}
-	]
+	],
+	"autoload": {
+		"psr-0": {
+			"Denkmal_": "library/Denkmal/library/"
+		}
+	}
 }

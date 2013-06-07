@@ -63,7 +63,7 @@ CREATE TABLE `denkmal_message` (
   `id` int(11) unsigned NOT NULL,
   `venueId` int(11) unsigned NOT NULL,
   `created` int(11) unsigned NOT NULL,
-  `message` varchar(1000) NOT NULL,
+  `text` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `venueId` (`venueId`),
   KEY `created` (`created`),

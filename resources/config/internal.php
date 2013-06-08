@@ -27,10 +27,11 @@ $config->CM_Model_Abstract->types[CM_Model_StreamChannel_Video::TYPE] = 'CM_Mode
 $config->CM_Model_Abstract->types[CM_Model_StreamChannel_Message_User::TYPE] = 'CM_Model_StreamChannel_Message_User'; // #29
 $config->CM_Model_Abstract->types[CM_Model_StreamChannelArchive_Video::TYPE] = 'CM_Model_StreamChannelArchive_Video'; // #25
 $config->CM_Model_Abstract->types[Denkmal_Model_Event::TYPE] = 'Denkmal_Model_Event'; // #101
+$config->CM_Model_Abstract->types[Denkmal_Model_Message::TYPE] = 'Denkmal_Model_Message'; // #104
 $config->CM_Model_Abstract->types[Denkmal_Model_Song::TYPE] = 'Denkmal_Model_Song'; // #102
 $config->CM_Model_Abstract->types[Denkmal_Model_Venue::TYPE] = 'Denkmal_Model_Venue'; // #100
 $config->CM_Model_Abstract->types[Denkmal_Model_VenueAlias::TYPE] = 'Denkmal_Model_VenueAlias'; // #103
-// Highest type used: #103
+// Highest type used: #104
 
 $config->CM_Model_ActionLimit_Abstract->types = array();
 // Highest type used: #0

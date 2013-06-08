@@ -46,4 +46,9 @@ class Denkmal_Model_Song extends CM_Model_Abstract {
 
 		return $song;
 	}
+
+	protected function _onDelete() {
+		$this->getFile()->delete();
+		CM_Db_Db::delete('denkmal_song', array('id' => $this->getId()));
+	}
 }

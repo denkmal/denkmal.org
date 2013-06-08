@@ -24,4 +24,17 @@ class Denkmal_Model_SongTest extends CMTest_TestCase {
 		$song->setLabel('bar');
 		$this->assertSame('bar', $song->getLabel());
 	}
+
+	/**
+	 * @expectedException CM_Exception_Nonexistent
+	 */
+	public function testDelete() {
+		$song = Denkmal_Model_Song::create(array(
+			'label' => 'foo',
+			'file' => CM_File::createTmp(),
+		));
+		$song->delete();
+		$this->assertFalse($song->getFile()->getExists());
+		new Denkmal_Model_Song($song->getId());
+	}
 }

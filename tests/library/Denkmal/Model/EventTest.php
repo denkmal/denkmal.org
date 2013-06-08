@@ -1,0 +1,123 @@
+<?php
+
+class Denkmal_Model_EventTest extends CMTest_TestCase {
+
+	protected function tearDown() {
+		CMTest_TH::clearEnv();
+	}
+
+	public function testCreate() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+
+		$this->assertEquals($venue, $event->getVenue());
+		$this->assertSame(123, $event->getFrom());
+		$this->assertSame(null, $event->getUntil());
+		$this->assertSame('Foo', $event->getDescription());
+		$this->assertSame(null, $event->getSong());
+		$this->assertSame(false, $event->getQueued());
+		$this->assertSame(true, $event->getEnabled());
+		$this->assertSame(false, $event->getHidden());
+		$this->assertSame(false, $event->getStarred());
+	}
+
+	public function testGetSetVenue() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$this->assertEquals($venue, $event->getVenue());
+
+		$venue2 = Denkmal_Model_Venue::create(array('name' => 'Example2', 'queued' => true, 'enabled' => false));
+		$event->setVenue($venue2);
+		$this->assertEquals($venue2, $event->getVenue());
+	}
+
+	public function testGetSetFrom() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$this->assertSame(123, $event->getFrom());
+
+		$event->setFrom(321);
+		$this->assertSame(123, $event->getFrom());
+	}
+
+	public function testGetSetUntil() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true, 'until' => 13));
+		$this->assertSame(13, $event->getUntil());
+
+		$event->setUntil(null);
+		$this->assertSame(null, $event->getUntil());
+
+		$event->setUntil(14);
+		$this->assertSame(14, $event->getUntil());
+	}
+
+	public function testGetSetDescription() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$this->assertSame('Foo', $event->getDescription());
+
+		$event->setDescription('Bar');
+		$this->assertSame('Bar', $event->getDescription());
+	}
+
+	public function testGetSetSong() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$this->assertSame(null, $event->getSong());
+
+		$song = Denkmal_Model_Song::create(array('file' => CM_File::createTmp(), 'label' => 'Foo'));
+		$event->setSong($song);
+		$this->assertEquals($song, $event->getSong());
+
+		$event->setSong(null);
+		$this->assertSame(null, $event->getSong());
+	}
+
+	public function testGetSetQueued() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => true, 'enabled' => true));
+		$this->assertSame(true, $event->getQueued());
+
+		$event->setQueued(false);
+		$this->assertSame(false, $event->getQueued());
+	}
+
+	public function testGetSetEnabled() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$this->assertSame(true, $event->getEnabled());
+
+		$event->setEnabled(false);
+		$this->assertSame(false, $event->getEnabled());
+	}
+
+	public function testGetSetHidden() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$this->assertSame(false, $event->getHidden());
+
+		$event->setHidden(true);
+		$this->assertSame(true, $event->getHidden());
+	}
+
+	public function testGetSetStarred() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$this->assertSame(false, $event->getStarred());
+
+		$event->setStarred(true);
+		$this->assertSame(true, $event->getStarred());
+	}
+
+	/**
+	 * @expectedException CM_Exception_Nonexistent
+	 */
+	public function testDelete() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$event = Denkmal_Model_Event::create(array('venue' => $venue, 'from' => 123, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
+		$event->delete();
+
+		new Denkmal_Model_Event($event->getId());
+	}
+}

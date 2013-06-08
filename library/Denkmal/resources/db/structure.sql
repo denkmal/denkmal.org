@@ -56,7 +56,7 @@ CREATE TABLE `denkmal_event` (
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `enabled` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `hidden` tinyint(4) unsigned NOT NULL DEFAULT '0',
-  `star` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `starred` tinyint(4) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `venueId` (`venueId`),
   KEY `from` (`from`),

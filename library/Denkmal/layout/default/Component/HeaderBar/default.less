@@ -1,0 +1,194 @@
+.navButton {
+	color: @colorFgTheme;
+
+	opacity: .5;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&.logo {
+		display: inline-block;
+		padding: 0 12px;
+		color: @colorFg;
+		text-transform: uppercase;
+		font-weight: bold;
+		opacity: 1;
+
+		.label {
+			font-size: 18px;
+		}
+
+		@media (min-width: 490px) and (max-width: 660px) {
+			padding: 0;
+
+			.label {
+				display: none;
+			}
+		}
+	}
+
+	.label {
+		text-decoration: none;
+	}
+
+	&.addButton {
+		float: right;
+		padding: 0 12px;
+
+		.label {
+			font-size: @fontSize;
+			vertical-align: top;
+			margin-left: 6px;
+		}
+
+		@media (max-width: 1050px) {
+			padding: 0;
+
+			.label {
+				display: none;
+			}
+		}
+	}
+
+	&.searchButton {
+		float: right;
+
+		@media (min-width: 800px) {
+			display: none;
+		}
+	}
+
+	&.menuButton {
+		float: right;
+	}
+}
+
+.logoWrapper {
+	float: left;
+
+	.slogan {
+		display: inline-block;
+		opacity: .4;
+		text-transform: uppercase;
+
+		@media (max-width: 950px) {
+			display: none;
+		}
+	}
+}
+
+.navigation {
+	float: left;
+	margin-left: 25px;
+
+	@media (max-width: 660px) {
+		margin: 0;
+	}
+
+	&:before {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	@media (max-width: 489px) {
+		float: none;
+		margin: 0;
+
+		> li {
+			width: 14.28%
+		}
+	}
+
+	> li {
+		display: block;
+		float: left;
+		position: relative;
+
+		> a {
+			text-decoration: none;
+		}
+
+		&.active {
+			> a {
+				opacity: 1;
+			}
+
+			&:after {
+				.triangle(transparent, transparent, @colorBgBody, transparent);
+				bottom: 0;
+				top: auto;
+				left: 50%;
+				margin: 0 0 0 -6px;
+			}
+		}
+	}
+
+}
+
+.searchForm {
+	.box-sizing(border-box);
+	position: relative;
+	float: right;
+	width: 180px;
+
+	@media (min-width: 1150px) {
+		width: 300px;
+	}
+
+	height: @barSize;
+	line-height: @barSize - 2px;
+
+	html.touch & {
+		height: @barSizeMobile;
+		line-height: @barSizeMobile - 2px;
+	}
+
+	.Denkmal_Form_SearchContent {
+		display: inline-block;
+		width: 100%;
+		vertical-align: middle;
+		line-height: 1;
+
+		.CM_FormField_Text {
+			.textinput {
+				background-color: fadeout(@colorBg, 85);
+				border-color: transparent;
+				color: @colorFgTheme;
+
+				&:focus {
+					border-color: fadeout(@colorBg, 50);
+					background-color: fadeout(@colorFg, 85);
+				}
+			}
+			.placeholder(@colorFgTheme);
+		}
+	}
+
+	.icon-search {
+		pointer-events: none;
+		position: absolute;
+		color: @colorFgTheme;
+		top: 2px;
+		right: 12px;
+		opacity: .6;
+	}
+}
+
+@media (max-width: 800px) {
+	.searchForm {
+		display: none;
+	}
+
+	&.search-expand {
+		.navButton, .logo {
+			display: none;
+		}
+
+		.searchForm {
+			display: block;
+			width: 100%;
+		}
+	}
+}

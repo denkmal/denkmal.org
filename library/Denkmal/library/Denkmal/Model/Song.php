@@ -5,6 +5,15 @@ class Denkmal_Model_Song extends CM_Model_Abstract {
 	const TYPE = 102;
 
 	/**
+	 * @param string $label
+	 */
+	public function setLabel($label) {
+		$label = (string) $label;
+		CM_Db_Db::update('denkmal_song', array('label' => $label), array('id' => $this->getId()));
+		$this->_change();
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getLabel() {

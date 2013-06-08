@@ -1,5 +1,5 @@
 <?php
 
-class Admin_Page_Abstract extends Denkmal_Page_Abstract {
+class Admin_Page_Abstract extends CM_Page_Abstract {
 
 }

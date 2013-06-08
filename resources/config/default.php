@@ -6,6 +6,8 @@ $config->deployVersion = '1';
 $config->CM_Render->cdnResource = false;
 $config->CM_Render->cdnUserContent = false;
 
+$config->CM_Params->class = 'Denkmal_Params';
+
 $config->CM_Site_Abstract->class = 'Denkmal_Site';
 
 $config->CM_Db_Db->db = 'denkmal';

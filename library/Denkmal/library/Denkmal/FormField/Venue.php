@@ -6,6 +6,13 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 	private $_onlyPublic = true;
 
 	/**
+	 * @param string $name
+	 */
+	public function __construct($name) {
+		parent::__construct($name, true);
+	}
+
+	/**
 	 * @param $onlyPublic
 	 */
 	public function setOnlyPublic($onlyPublic) {
@@ -14,7 +21,11 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 
 	public function validate($userInput, CM_Response_Abstract $response) {
 		$userInput = parent::validate($userInput, $response);
-		return new Denkmal_Model_Venue($userInput);
+		if (is_numeric($userInput)) {
+			$userInput = new Denkmal_Model_Venue($userInput);
+		}
+		return $userInput;
+
 	}
 
 	public function getSuggestion($item, CM_Render $render) {

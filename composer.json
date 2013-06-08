@@ -19,7 +19,8 @@
 	],
 	"autoload": {
 		"psr-0": {
-			"Denkmal_": "library/Denkmal/library/"
+			"Denkmal_": "library/Denkmal/library/",
+			"Admin_": "library/Admin/library/"
 		}
 	}
 }

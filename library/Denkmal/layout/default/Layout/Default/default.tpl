@@ -6,10 +6,6 @@
 {*<meta name="google-site-verification" content="Me65LlbI0NCpU5BFHN_2T0dUI3npK_g_PFuciudyFkU">*}
 {/block}
 
-{block name='body-start'}
-{*{component name='FB_Component_Alerts'}*}
-{/block}
-
 {block name='body'}
 	<div class="headerWrapper">
 		<header id="header">

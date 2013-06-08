@@ -11,8 +11,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
 		$this->assertSame('Example', $venue->getName());
 		$this->assertSame(null, $venue->getAddress());
-		$this->assertSame(null, $venue->getLatitude());
-		$this->assertSame(null, $venue->getLongitude());
+		$this->assertSame(null, $venue->getCoordinates());
 		$this->assertSame(true, $venue->getQueued());
 		$this->assertSame(false, $venue->getEnabled());
 		$this->assertSame(false, $venue->getHidden());
@@ -34,26 +33,17 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 		$this->assertSame('Bar', $venue->getAddress());
 	}
 
-	public function testGetSetLatitude() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false, 'latitude' => '23.5'));
-		$this->assertSame(23.5, $venue->getLatitude());
+	public function testGetSetCoordinates() {
+		$coordinates = new CM_Geo_Point(1, 2);
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false, 'coordinates' => $coordinates));
+		$this->assertEquals($coordinates, $venue->getCoordinates());
 
-		$venue->setLatitude(null);
-		$this->assertSame(null, $venue->getLatitude());
+		$venue->setCoordinates(null);
+		$this->assertSame(null, $venue->getCoordinates());
 
-		$venue->setLatitude(14.2);
-		$this->assertSame(14.2, $venue->getLatitude());
-	}
-
-	public function testGetSetLongitude() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false, 'longitude' => '23.5'));
-		$this->assertSame(23.5, $venue->getLongitude());
-
-		$venue->setLongitude(null);
-		$this->assertSame(null, $venue->getLongitude());
-
-		$venue->setLongitude(14.2);
-		$this->assertSame(14.2, $venue->getLongitude());
+		$coordinates2 = new CM_Geo_Point(3, 4);
+		$venue->setCoordinates($coordinates2);
+		$this->assertEquals($coordinates2, $venue->getCoordinates());
 	}
 
 	public function testGetSetQueued() {

@@ -61,42 +61,25 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 	}
 
 	/**
-	 * @return string|null
+	 * @return CM_Geo_Point|null
 	 */
-	public function getLatitude() {
+	public function getCoordinates() {
 		$latitude = $this->_get('latitude');
-		if (null === $latitude) {
-			return null;
-		}
-		return (float) $latitude;
-	}
-
-	/**
-	 * @param float|null $latitude
-	 */
-	public function setLatitude($latitude) {
-		$latitude = isset($latitude) ? (float) $latitude : null;
-		CM_Db_Db::update('denkmal_venue', array('latitude' => $latitude), array('id' => $this->getId()));
-		$this->_change();
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getLongitude() {
 		$longitude = $this->_get('longitude');
-		if (null === $longitude) {
+		if (null === $latitude || null === $longitude) {
 			return null;
 		}
-		return (float) $longitude;
+		return new CM_Geo_Point($latitude, $longitude);
 	}
 
 	/**
-	 * @param float|null $longitude
+	 * @param CM_Geo_Point|null $coordinates
 	 */
-	public function setLongitude($longitude) {
-		$longitude = isset($longitude) ? (float) $longitude : null;
-		CM_Db_Db::update('denkmal_venue', array('longitude' => $longitude), array('id' => $this->getId()));
+	public function setCoordinates(CM_Geo_Point $coordinates = null) {
+		$latitude = $coordinates ? $coordinates->getLatitude() : null;
+		$longitude = $coordinates ? $coordinates->getLongitude() : null;
+
+		CM_Db_Db::update('denkmal_venue', array('latitude' => $latitude, 'longitude' => $longitude), array('id' => $this->getId()));
 		$this->_change();
 	}
 
@@ -173,8 +156,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		$name = $data->getString('name');
 		$url = $data->has('url') ? $data->getString('url') : null;
 		$address = $data->has('address') ? $data->getString('address') : null;
-		$latitude = $data->has('latitude') ? $data->getFloat('latitude') : null;
-		$longitude = $data->has('longitude') ? $data->getFloat('longitude') : null;
+		$coordinates = $data->has('coordinates') ? $data->getGeoPoint('coordinates') : null;
 		$queued = $data->getBoolean('queued');
 		$enabled = $data->getBoolean('enabled');
 		$hidden = $data->getBoolean('hidden', false);
@@ -183,8 +165,8 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 			'name'      => $name,
 			'url'       => $url,
 			'address'   => $address,
-			'latitude'  => $latitude,
-			'longitude' => $longitude,
+			'latitude'  => ($coordinates ? $coordinates->getLatitude() : null),
+			'longitude' => ($coordinates ? $coordinates->getLongitude() : null),
 			'queued'    => $queued,
 			'enabled'   => $enabled,
 			'hidden'    => $hidden,

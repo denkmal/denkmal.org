@@ -26,7 +26,6 @@ CREATE TABLE `denkmal_venue` (
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `enabled` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `hidden` tinyint(4) unsigned NOT NULL DEFAULT '0',
-  `source` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `queued` (`queued`),

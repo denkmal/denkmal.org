@@ -148,26 +148,6 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		$this->_change();
 	}
 
-	/**
-	 * @return int|null
-	 */
-	public function getSource() {
-		$source = $this->_get('source');
-		if (null === $source) {
-			return null;
-		}
-		return (int) $source;
-	}
-
-	/**
-	 * @param int|null $source
-	 */
-	public function setSource($source) {
-		$source = isset($source) ? (int) $source : null;
-		CM_Db_Db::update('denkmal_venue', array('source' => $source), array('id' => $this->getId()));
-		$this->_change();
-	}
-
 	protected function _loadData() {
 		return CM_Db_Db::select('denkmal_venue', array('*'), array('id' => $this->getId()))->fetch();
 	}
@@ -187,7 +167,6 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		$queued = $data->getBoolean('queued');
 		$enabled = $data->getBoolean('enabled');
 		$hidden = $data->getBoolean('hidden', false);
-		$source = $data->has('source') ? $data->getInt('source') : null;
 
 		$id = CM_Db_Db::insert('denkmal_venue', array(
 			'name'      => $name,
@@ -198,7 +177,6 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 			'queued'    => $queued,
 			'enabled'   => $enabled,
 			'hidden'    => $hidden,
-			'source'    => $source,
 		));
 
 		return new static($id);

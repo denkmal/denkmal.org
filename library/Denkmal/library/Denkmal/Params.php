@@ -10,4 +10,13 @@ class Denkmal_Params extends CM_Params {
 	public function getVenue($key) {
 		return $this->_getObject($key, 'Denkmal_Model_Venue');
 	}
+
+	/**
+	 * @param string $key
+	 * @return Denkmal_Model_Song
+	 * @throws CM_Exception_InvalidParam
+	 */
+	public function getSong($key) {
+		return $this->_getObject($key, 'Denkmal_Model_Song');
+	}
 }

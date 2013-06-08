@@ -29,7 +29,8 @@ $config->CM_Model_Abstract->types[CM_Model_StreamChannelArchive_Video::TYPE] = '
 $config->CM_Model_Abstract->types[Denkmal_Model_Event::TYPE] = 'Denkmal_Model_Event'; // #101
 $config->CM_Model_Abstract->types[Denkmal_Model_Song::TYPE] = 'Denkmal_Model_Song'; // #102
 $config->CM_Model_Abstract->types[Denkmal_Model_Venue::TYPE] = 'Denkmal_Model_Venue'; // #100
-// Highest type used: #102
+$config->CM_Model_Abstract->types[Denkmal_Model_VenueAlias::TYPE] = 'Denkmal_Model_VenueAlias'; // #103
+// Highest type used: #103
 
 $config->CM_Model_ActionLimit_Abstract->types = array();
 // Highest type used: #0

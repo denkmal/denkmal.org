@@ -172,6 +172,10 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		return CM_Db_Db::select('denkmal_venue', array('*'), array('id' => $this->getId()))->fetch();
 	}
 
+	protected function _onDelete() {
+		CM_Db_Db::delete('denkmal_venue', array('id' => $this->getId()));
+	}
+
 	protected static function _create(array $data) {
 		$data = CM_Params::factory($data);
 

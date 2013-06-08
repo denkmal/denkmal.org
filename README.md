@@ -11,6 +11,7 @@
 
 <VirtualHost *:80>
   ServerName www.denkmal.local
+  ServerAlias admin.denkmal.local
   DocumentRoot /Users/reto/Projects/denkmal.org
 
   <Directory /Users/reto/Projects/denkmal.org/>

@@ -1,7 +1,7 @@
 <ul>
 	{foreach $venueList as $venue}
 		<li>
-			{$venue->getName()|escape}
+			<a href="{linkUrl page='Admin_Page_Venue' venue={$venue->getId()}}">{$venue->getName()|escape}</a>
 		</li>
 	{/foreach}
 </ul>

@@ -17,3 +17,8 @@ $config->Denkmal_Site->url = 'http://www.denkmal.local';
 $config->Denkmal_Site->urlCdn = 'http://www.denkmal.local';
 $config->Denkmal_Site->name = 'Denkmal.org';
 $config->Denkmal_Site->emailAddress = 'kontakt@denkmal.org';
+
+$config->Admin_Site->url = 'http://admin.denkmal.local';
+$config->Admin_Site->urlCdn = 'http://www.denkmal.local';
+$config->Admin_Site->name = 'Denkmal.org';
+$config->Admin_Site->emailAddress = 'kontakt@denkmal.org';

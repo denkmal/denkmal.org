@@ -91,4 +91,14 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 		$venue->setSource(5);
 		$this->assertSame(5, $venue->getSource());
 	}
+
+	/**
+	 * @expectedException CM_Exception_Nonexistent
+	 */
+	public function testDelete() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => true));
+		$venue->delete();
+
+		new Denkmal_Model_Venue($venue->getId());
+	}
 }

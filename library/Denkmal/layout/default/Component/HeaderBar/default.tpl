@@ -4,7 +4,7 @@
 		<p class="slogan">{translate 'Was loift in Basel?!'}</p>
 	</div>
 	{link icon="mailbox" class="menuButton navButton toggleMenu" label="{translate 'Kontakt'}"}
-	{link icon="plus" label="{translate 'Event hinzufügen'}" page="Denkmal_Page_AddEvent" class="addButton navButton addEvent"}
+	{link icon="plus" label="{translate 'Event hinzufügen'}" page="Denkmal_Page_Add" class="addButton navButton addEvent"}
 	{link icon="search" class="searchButton navButton showSearch"}
 	<div class="searchForm">
 		<span class="icon-search"></span>

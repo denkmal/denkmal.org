@@ -18,9 +18,6 @@
 			{/block}
 		</header>
 	</div>
-	<div id="navigation">
-		{component name="Denkmal_Component_Navigation"}
-	</div>
 	<section id="middle">
 		{component name=$viewObj->getPage()}
 	</section>

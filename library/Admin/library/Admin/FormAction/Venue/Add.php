@@ -3,7 +3,7 @@
 class Admin_FormAction_Venue_Add extends CM_FormAction_Abstract {
 
 	public function __construct() {
-		parent::__construct('process');
+		parent::__construct('add');
 	}
 
 	public function setup(CM_Form_Abstract $form) {

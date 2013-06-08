@@ -8,7 +8,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
 
 	public function setup() {
 		$this->registerField(new CM_FormField_Text('name'));
-		$this->registerField(new CM_FormField_Text('url'));
+		$this->registerField(new CM_FormField_Url('url'));
 		$this->registerField(new CM_FormField_Text('address'));
 		$this->registerField(new CM_FormField_Float('latitude'));
 		$this->registerField(new CM_FormField_Float('longitude'));

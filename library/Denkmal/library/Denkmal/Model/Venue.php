@@ -155,6 +155,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 	protected function _getContainingCacheables() {
 		$cacheables = parent::_getContainingCacheables();
 		$cacheables[] = new Denkmal_Paging_Venue_Public();
+		$cacheables[] = new Denkmal_Paging_Venue_All();
 		return $cacheables;
 	}
 

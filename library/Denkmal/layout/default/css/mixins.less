@@ -1,0 +1,18 @@
+.navButton {
+	display: block;
+	height: @barSize;
+	min-width: @barSize;
+	line-height: @barSize;
+
+	html.touch & {
+		height: @barSizeMobile;
+		min-width: @barSizeMobile;
+		line-height: @barSizeMobile;
+	}
+
+	font-size: 18px;
+	text-decoration: none;
+	text-align: center;
+	color: @colorFgTheme;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}

@@ -172,6 +172,17 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		return CM_Db_Db::select('denkmal_venue', array('*'), array('id' => $this->getId()))->fetch();
 	}
 
+	protected function _getContainingCacheables() {
+		$cacheables = parent::_getContainingCacheables();
+		$cacheables[] = new Denkmal_Paging_Venue_Public();
+		return $cacheables;
+	}
+
+	protected function _onChange() {
+		$paging = new Denkmal_Paging_Venue_Public();
+		$paging->_change();
+	}
+
 	protected function _onDelete() {
 		CM_Db_Db::delete('denkmal_venue', array('id' => $this->getId()));
 	}

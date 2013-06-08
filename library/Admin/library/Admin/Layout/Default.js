@@ -1,8 +1,8 @@
 /**
  * @class Admin_Layout_Default
- * @extends Backbone.View
+ * @extends CM_Layout_Abstract
  */
-var Admin_Layout_Default = Backbone.View.extend({
+var Admin_Layout_Default = CM_Layout_Abstract.extend({
 
 	/** @type String */
 	_class: 'Admin_Layout_Default'

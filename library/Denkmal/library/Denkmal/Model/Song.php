@@ -4,7 +4,37 @@ class Denkmal_Model_Song extends CM_Model_Abstract {
 
 	const TYPE = 102;
 
-	protected function _loadData() {
-		CM_Db_Db::select('denkmal_song', array('*'), array('id' => $this->getId()))->fetch();
+	/**
+	 * @return string
+	 */
+	public function getLabel() {
+		return (string) $this->_get('label');
+	}
+
+	/**
+	 * @return CM_File_UserContent
+	 */
+	public function getFile() {
+		$filename = $this->getId() . '.mp3';
+		return new CM_File_UserContent('songs', $filename);
+	}
+
+	protected function _loadData () {
+		return CM_Db_Db::select('denkmal_song', array('*'), array('id' => $this->getId()))->fetch();
+	}
+
+	protected static function _create(array $data) {
+		$data = CM_Params::factory($data);
+
+		$label = $data->getString('label');
+		$id = CM_Db_Db::insert('denkmal_song', array('label' => $label));
+		$song = new self($id);
+
+		$userFile = $song->getFile();
+		$userFile->mkDir();
+		$file = $data->getFile('file');
+		$file->copy($userFile->getPath());
+
+		return $song;
 	}
 }

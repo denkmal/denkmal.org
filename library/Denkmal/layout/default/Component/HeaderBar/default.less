@@ -1,7 +1,10 @@
 .navButton {
 	color: @colorFgTheme;
-
 	opacity: .5;
+
+	.label {
+		text-decoration: none;
+	}
 
 	&:hover {
 		opacity: 1;
@@ -28,11 +31,15 @@
 		}
 	}
 
-	.label {
-		text-decoration: none;
+	&.searchButton {
+		float: right;
+
+		@media (min-width: 800px) {
+			display: none;
+		}
 	}
 
-	&.addButton {
+	&.addButton, &.contactButton {
 		float: right;
 		padding: 0 12px;
 
@@ -41,7 +48,9 @@
 			vertical-align: top;
 			margin-left: 6px;
 		}
+	}
 
+	&.addButton {
 		@media (max-width: 1050px) {
 			padding: 0;
 
@@ -51,16 +60,14 @@
 		}
 	}
 
-	&.searchButton {
-		float: right;
+	&.contactButton {
+		@media (max-width: 1300px) {
+			padding: 0;
 
-		@media (min-width: 800px) {
-			display: none;
+			.label {
+				display: none;
+			}
 		}
-	}
-
-	&.menuButton {
-		float: right;
 	}
 }
 
@@ -133,7 +140,7 @@
 	float: right;
 	width: 180px;
 
-	@media (min-width: 1150px) {
+	@media (min-width: 1180px) {
 		width: 300px;
 	}
 

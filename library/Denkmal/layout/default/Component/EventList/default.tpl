@@ -5,7 +5,6 @@ array(["location" => "Agora Bar"], ["time" => "22:00"], ["name" => ""], ["bands"
 array(["location" => "NT Areal"], ["time" => "15:00"], ["name" => "Ballermann"], ["bands" => "The Roots, Simon and Garfunkel, The Killers"], ["genre" => "Electro, House, BoomBoom"])
 )}
 
-<time class="currentDate">{$date}</time>
 <ul class="eventList">
 	{foreach $events as $event}
 		<li>

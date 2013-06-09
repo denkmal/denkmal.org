@@ -1,6 +1,7 @@
 .currentDate {
+	display: block;
+	padding: 2px 5px;
 	color: @colorFgShy;
-	padding: 5px;
 }
 
 .event {
@@ -39,7 +40,7 @@
 		border-left: 1px solid @colorFgBorderEmphasize3;
 		color: @colorFg;
 
-		.location, .time, .name, .artists, .genre {
+		.location, .name, .artists, .genre {
 			display: inline-block;
 			max-width: 100%;
 		}
@@ -53,6 +54,8 @@
 		}
 
 		.time {
+			display: block;
+
 			.icon {
 				color: fadeout(@colorFgIcon, 70);
 			}
@@ -64,6 +67,11 @@
 				padding: 6px 12px;
 				border-right: 1px solid @colorFgBorderEmphasize3;
 			}
+		}
+
+		.genre {
+			color: @colorFgShy;
+			font-style: italic;
 		}
 
 		.mapButton {

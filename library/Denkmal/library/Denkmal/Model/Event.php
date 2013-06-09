@@ -21,36 +21,40 @@ class Denkmal_Model_Event extends CM_Model_Abstract {
 	}
 
 	/**
-	 * @return int
+	 * @return DateTime
 	 */
 	public function getFrom() {
-		return (int) $this->_get('from');
+		$date = new DateTime();
+		$date->setTimestamp($this->_get('from'));
+		return $date;
 	}
 
 	/**
-	 * @param int $from
+	 * @param DateTime $from
 	 */
-	public function setFrom($from) {
-		$from = (int) $from;
-		CM_Db_Db::update('denkmal_event', array('from' => $from), array('id' => $this->getId()));
+	public function setFrom(DateTime $from) {
+		CM_Db_Db::update('denkmal_event', array('from' => $from->getTimestamp()), array('id' => $this->getId()));
+		$this->_change();
 	}
 
 	/**
-	 * @return int|null
+	 * @return DateTime|null
 	 */
 	public function getUntil() {
 		$until = $this->_get('until');
 		if (null === $until) {
 			return null;
 		}
-		return (int) $until;
+		$date = new DateTime();
+		$date->setTimestamp($until);
+		return $date;
 	}
 
 	/**
-	 * @param int|null $until
+	 * @param DateTime|null $until
 	 */
-	public function setUntil($until) {
-		$until = isset($until) ? (int) $until : null;
+	public function setUntil(DateTime $until = null) {
+		$until = isset($until) ? $until->getTimestamp() : null;
 		CM_Db_Db::update('denkmal_event', array('until' => $until), array('id' => $this->getId()));
 		$this->_change();
 	}
@@ -167,8 +171,8 @@ class Denkmal_Model_Event extends CM_Model_Abstract {
 		$data = Denkmal_Params::factory($data);
 
 		$venue = $data->getVenue('venue');
-		$from = $data->getInt('from');
-		$until = $data->has('until') ? $data->getInt('until') : null;
+		$from = $data->getDateTime('from')->getTimestamp();
+		$until = $data->has('until') ? $data->getDateTime('until')->getTimestamp() : null;
 		$description = $data->getString('description');
 		$song = $data->has('song') ? $data->getSong('song') : null;
 		$queued = $data->getBoolean('queued');

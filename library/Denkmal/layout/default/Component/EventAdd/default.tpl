@@ -10,9 +10,9 @@
 	{formField name='fromTime' label={translate 'Time'}}
 	{formField name='untilTime' label={translate 'Until'}}
 	{formField name='title' label={translate 'Title'}}
-	{formField name='artist' label={translate 'Artist'}}
+	{formField name='artists' label={translate 'Artists'}}
 	{formField name='genres' label={translate 'Genres'}}
-	{formField name='url' label={translate 'Website'}}
+	{formField name='urls' label={translate 'Websites'}}
 
 	{formAction action='create' label={translate 'Add'}}
 {/form}

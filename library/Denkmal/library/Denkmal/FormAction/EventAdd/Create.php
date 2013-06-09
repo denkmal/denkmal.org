@@ -18,13 +18,47 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			$address = $data->has('venueAddress') ? $data->getString('venueAddress') : null;
 			$url = $data->has('venueUrl') ? $data->getString('venueUrl') : null;
 			$venueData = array(
-				'name' => (string) $venue,
-				'queued' => true,
+				'name'    => (string) $venue,
+				'queued'  => true,
 				'enabled' => false,
 				'address' => $address,
-				'url' => $url,
+				'url'     => $url,
 			);
 			$venue = Denkmal_Model_Venue::create($venueData);
 		}
+
+
+
+		$date = $data->getDateTime('date');
+		$from = clone $date;
+		$from->add($data->getDateInterval('fromTime'));
+		$until = null;
+		if ($data->has('untilTime')) {
+			$until = clone $date;
+			$until->add($data->getDateInterval('untilTime'));
+			if ($until < $from) {
+				$until->add(new DateInterval('P1D'));
+			}
+			$until = $until->getTimestamp();
+		}
+		$from = $from->getTimestamp();
+
+		$descriptionParts = array();
+		$descriptionParts[] = $data->getString('title');
+		$descriptionParts[] = $data->getString('artists', '');
+		$descriptionParts[] = $data->getString('genres', '');
+		$descriptionParts[] = $data->getString('urls', '');
+		$descriptionParts = array_filter($descriptionParts, 'trim');
+		$description = implode(' ', $descriptionParts);
+
+		$eventData = array(
+			'venue'       => $venue,
+			'from'        => $from,
+			'until'       => $until,
+			'description' => $description,
+			'queued' => true,
+			'enabled' => false,
+		);
+		Denkmal_Model_Event::create($eventData);
 	}
 }

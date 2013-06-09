@@ -12,13 +12,5 @@
 		{input name='term' placeholder="{translate 'Suche'}…"}
 		{/form}
 	</div>
-	<ul class="navigation clearfix">
-		<li><a class="navButton" href="javascript:;">Mo</a></li>
-		<li><a class="navButton" href="javascript:;">Di</a></li>
-		<li class="active"><a class="navButton" href="javascript:;">Mi</a></li>
-		<li><a class="navButton" href="javascript:;">Do</a></li>
-		<li><a class="navButton" href="javascript:;">Fr</a></li>
-		<li><a class="navButton" href="javascript:;">Sa</a></li>
-		<li><a class="navButton" href="javascript:;">So</a></li>
-	</ul>
+	{menu name='dates' template='navButtons'}
 </div>

@@ -12,6 +12,17 @@ class Admin_FormAction_Venue_Edit extends CM_FormAction_Abstract {
 		parent::setup($form);
 	}
 
+	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+		/** @var Denkmal_Params $params */
+		$venue = $params->getVenue('venueId');
+		$name = $params->getString('name');
+		if ($name !== $venue->getName()) {
+			if ($venue = Denkmal_Model_Venue::findByNameOrAlias($name)) {
+				$response->addError('Name already used by venue `' . $venue->getName() . '`', 'name');
+			}
+		}
+	}
+
 	protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
 		/** @var Denkmal_Params $params */
 		$venue = $params->getVenue('venueId');

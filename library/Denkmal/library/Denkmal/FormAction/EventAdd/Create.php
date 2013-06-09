@@ -11,6 +11,15 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 		parent::setup($form);
 	}
 
+	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+		$name = $params->get('venue');
+		if (!$name instanceof Denkmal_Model_Venue) {
+			if ($venue = Denkmal_Model_Venue::findByNameOrAlias($name)) {
+				$response->addError('Name already used by venue `' . $venue->getName() . '`', 'venue');
+			}
+		}
+	}
+
 	public function process(array $data, CM_Response_View_Form $response, CM_Form_Abstract $form) {
 		$data = Denkmal_Params::factory($data);
 		$venue = $data->get('venue');
@@ -26,8 +35,6 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			);
 			$venue = Denkmal_Model_Venue::create($venueData);
 		}
-
-
 
 		$date = $data->getDateTime('date');
 		$from = clone $date;
@@ -54,8 +61,8 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			'from'        => $from,
 			'until'       => $until,
 			'description' => $description,
-			'queued' => true,
-			'enabled' => false,
+			'queued'      => true,
+			'enabled'     => false,
 		);
 		Denkmal_Model_Event::create($eventData);
 	}

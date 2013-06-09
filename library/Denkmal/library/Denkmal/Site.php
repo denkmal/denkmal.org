@@ -18,7 +18,7 @@ class Denkmal_Site extends CM_Site_Abstract {
 		$menuDateData = array();
 		for ($i = 0; $i < 7; $i++) {
 			$menuDateData[] = array(
-				'label'  => $date->getWeekday(),
+				'label'  => clone $date,
 				'page'   => 'Denkmal_Page_Events',
 				'params' => array('date' => $date->__toString()),
 			);

@@ -5,4 +5,6 @@
 	<div class="toggleNext-content">
 		{component name='Admin_Component_Venue' venue=$venue}
 	</div>
+
+	{component name='Admin_Component_EventList_Venue' venue=$venue}
 {/block}

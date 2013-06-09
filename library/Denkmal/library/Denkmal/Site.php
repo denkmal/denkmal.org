@@ -13,17 +13,16 @@ class Denkmal_Site extends CM_Site_Abstract {
 	 * @return CM_Menu[]
 	 */
 	public function getMenus() {
-		$menuDateData = array();
 		$date = new Denkmal_Date();
 		$dateInterval = new DateInterval('P1D');
-		for ($i = 1; $i < 7; $i++) {
-			$date = clone $date;
-			$date->add($dateInterval);
+		$menuDateData = array();
+		for ($i = 0; $i < 7; $i++) {
 			$menuDateData[] = array(
 				'label'  => $date->getWeekday(),
 				'page'   => 'Denkmal_Page_Events',
 				'params' => array('date' => $date->__toString()),
 			);
+			$date->add($dateInterval);
 		}
 
 		return array('dates' => new CM_Menu($menuDateData));

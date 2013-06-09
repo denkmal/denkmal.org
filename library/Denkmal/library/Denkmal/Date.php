@@ -58,7 +58,7 @@ class Denkmal_Date {
 				throw new CM_Exception_Invalid('Unknown month `' . $month . '`');
 			}
 
-			$yearNow = date('Y');
+			$yearNow = (int) date('Y');
 			$yearGuess = false;
 			if (isset($year)) {
 				if (strlen($year) == 2) {
@@ -152,5 +152,13 @@ class Denkmal_Date {
 
 	public function __clone() {
 		$this->_dateTime = clone $this->_dateTime;
+	}
+
+	/**
+	 * @param DateTime $date
+	 * @return Denkmal_Date
+	 */
+	public static function fromDateTime(DateTime $date) {
+		return new self($date->format('Y'), $date->format('n'), $date->format('j'));
 	}
 }

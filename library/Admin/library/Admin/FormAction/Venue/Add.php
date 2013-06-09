@@ -7,7 +7,7 @@ class Admin_FormAction_Venue_Add extends CM_FormAction_Abstract {
 	}
 
 	public function setup(CM_Form_Abstract $form) {
-		$this->required_fields = array('name', 'coordinates');
+		$this->required_fields = array('name');
 
 		parent::setup($form);
 	}

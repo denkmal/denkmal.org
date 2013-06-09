@@ -12,5 +12,5 @@
 		{input name='term' placeholder="{translate 'Suche'}…"}
 		{/form}
 	</div>
-	{menu data=$dateMenu}
+	{menu name='dates'}
 </div>

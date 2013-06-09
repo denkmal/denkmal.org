@@ -12,6 +12,6 @@ class Denkmal_FormField_Time extends CM_FormField_Text {
 		if ($hour > 24 || $minute > 60 || ($hour === 24 && $minute > 0)) {
 			throw new CM_Exception_FormFieldValidation('Invalid time');
 		}
-		return array('hour' => $hour, 'minute' => $minute);
+		return new DateInterval('PT' . $hour . 'H' . $minute . 'M');
 	}
 }

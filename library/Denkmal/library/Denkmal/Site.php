@@ -23,7 +23,6 @@ class Denkmal_Site extends CM_Site_Abstract {
 				'label'  => $date->getWeekday(),
 				'page'   => 'Denkmal_Page_Events',
 				'params' => array('date' => $date->__toString()),
-				'class'  => 'navButton',
 			);
 		}
 

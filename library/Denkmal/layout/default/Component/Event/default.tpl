@@ -2,15 +2,15 @@
 	{link icon="arrow-right" class="playButton navButton playAudio"}
 	{link icon="map" class="mapButton navButton showMap"}
 	<div class="event-content">
-		{if $venue->getUrl()}
-			<a href="{$venue->getUrl()}" class="location nowrap">{$venue->getName()}</a>
+		{if $data.url}
+			<a href="{$data.url}" class="location nowrap">{$data.url}</a>
 		{else}
-			<span class="location nowrap">{$venue->getName()}</span>
+			<span class="location nowrap">{$data.venue}</span>
 		{/if}
-		<span class="name nowrap">{$event->getDescription()}</span>
+		<span class="name nowrap">{eventtext text=$data.description}</span>
 		<time class="time">
 			<span class="icon icon-time"></span>
-			{date_time date=$event->getFrom()}
+			{date_time date=$data.from}
 		</time>
 		<p>
 			<span class="artists nowrap">Artists</span>

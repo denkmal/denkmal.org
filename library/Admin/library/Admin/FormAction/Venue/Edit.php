@@ -24,5 +24,7 @@ class Admin_FormAction_Venue_Edit extends CM_FormAction_Abstract {
 		$venue->setUrl($url);
 		$venue->setAddress($address);
 		$venue->setCoordinates($coordinates);
+
+		$response->redirect('Admin_Page_Venue', array('venue' => $venue->getId()));
 	}
 }

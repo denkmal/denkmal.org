@@ -1,0 +1,48 @@
+#header {
+	min-height: @barSize;
+	background-color: @colorBgTheme;
+	border-bottom: 3px solid @colorBgBody;
+
+	.menu {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.navButton {
+		color: @colorFgTheme;
+		padding: 0 12px;
+		opacity: .5;
+
+		.label {
+			text-decoration: none;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&.logo {
+			display: inline-block;
+			color: @colorFg;
+			text-transform: uppercase;
+			font-weight: bold;
+			opacity: 1;
+
+			.icon {
+				font-size: 20px;
+				margin-right: 6px;
+			}
+
+			.label {
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+#middle {
+	position: relative;
+	max-width: 1200px;
+	min-height: 300px;
+	padding: 12px;
+}

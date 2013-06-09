@@ -1,5 +1,5 @@
 {form name='Denkmal_Form_EventAdd'}
-	{formField name='venue' label={translate 'Veranstaltungsort'}}
+	{formField name='venue' label={translate 'Ort'}}
 	<div class="venueDetails">
 		{formField name='venueAddress' label={translate 'Adresse'}}
 		{formField name='venueUrl' label={translate 'Webseite'}}

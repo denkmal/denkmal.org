@@ -1,1 +1,1 @@
-{translate 'Veranstaltungsorte'}
+{translate 'Orte'}

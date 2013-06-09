@@ -7,7 +7,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 		$this->registerField(new CM_FormField_Text('venueAddress'));
 		$this->registerField(new CM_FormField_Text('venueUrl'));
 
-		$this->registerField(new CM_FormField_Date('date'));
+		$this->registerField(new CM_FormField_Date('date', date('Y'), (int) date('Y') + 1));
 		$this->registerField(new Denkmal_FormField_Time('fromTime'));
 		$this->registerField(new Denkmal_FormField_Time('untilTime'));
 

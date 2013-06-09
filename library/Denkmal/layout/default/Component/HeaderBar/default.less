@@ -121,31 +121,6 @@
 			width: 14.28%
 		}
 	}
-
-	> li {
-		display: block;
-		float: left;
-		position: relative;
-
-		> a {
-			text-decoration: none;
-		}
-
-		&.active {
-			> a {
-				opacity: 1;
-			}
-
-			&:after {
-				.triangle(transparent, transparent, @colorBgBody, transparent);
-				bottom: 0;
-				top: auto;
-				left: 50%;
-				margin: 0 0 0 -6px;
-			}
-		}
-	}
-
 }
 
 .searchForm {

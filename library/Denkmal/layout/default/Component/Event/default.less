@@ -33,6 +33,7 @@
 	}
 
 	.event-content {
+		position: relative;
 		min-height: @barSize;
 		margin-left: @barSize;
 
@@ -44,6 +45,15 @@
 		padding: 0 5px;
 		border-left: 1px solid @colorFgBorderEmphasize2;
 		color: @colorFg;
+
+		@media (min-width: 700px) {
+			padding-right: 140px;
+			margin-right: @barSize;
+
+			html.touch & {
+				margin-right: @barSizeMobile;
+			}
+		}
 
 		.location, .name, .artists, .genre {
 			display: inline-block;
@@ -61,14 +71,17 @@
 
 		.time {
 			display: block;
+			.box-sizing(border-box);
 
 			.icon {
 				color: fadeout(@colorFgIcon, 70);
 			}
 
 			@media (min-width: 700px) {
-				float: right;
-				width: 120px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 135px;
 				margin-top: 4px;
 
 				html.touch & {

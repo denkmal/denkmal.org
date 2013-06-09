@@ -1,6 +1,6 @@
 <div class="bar clearfix">
 	<div class="logoWrapper">
-		{link icon="baslerstab" label="denkmal.org" page="Denkmal_Page_Index" class="logo navButton toggleMenu"}
+		{link icon="baslerstab" label="denkmal.org" page="Denkmal_Page_Index" class="logo navButton"}
 		<p class="slogan">{translate 'Was loift in Basel?!'}</p>
 	</div>
 	<a href="mailto:kontakt@denkmal.org" class="link contactButton navButton"><span class="icon icon-mailbox"></span><span class="label">{translate 'Kontakt'}</span></a>

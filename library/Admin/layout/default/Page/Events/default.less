@@ -1,6 +1,13 @@
 .weekdays {
 
-	> li a {
-		color: @colorFg;
+	> li {
+
+		> a {
+			color: @colorFg;
+		}
+
+		&.active a {
+			color: @colorFgHeading;
+		}
 	}
 }

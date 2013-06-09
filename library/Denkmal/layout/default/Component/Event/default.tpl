@@ -3,16 +3,16 @@
 	{link icon="map" class="mapButton navButton showMap"}
 	<div class="event-content">
 		<a href="javascript:;" class="location nowrap">
-			{$event.0.location}
+			{$event->getVenue()->getName()}
 		</a>
-		<span class="name nowrap">{$event.2.name}</span>
+		<span class="name nowrap">{$event->getDescription()}</span>
 		<time class="time">
 			<span class="icon icon-time"></span>
-			{$event.1.time}
+			{date_time date=$event->getFrom()}
 		</time>
 		<p>
-			<span class="artists nowrap">{$event.3.bands}</span>
-			<span class="genre nowrap">{$event.4.genre}</span>
+			<span class="artists nowrap">Artists</span>
+			<span class="genre nowrap">Genres</span>
 		</p>
 	</div>
 </div>

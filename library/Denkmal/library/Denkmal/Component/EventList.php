@@ -3,8 +3,9 @@
 class Denkmal_Component_EventList extends Denkmal_Component_Abstract {
 
 	public function prepare() {
-		$date = $this->_params->getDate('date');
+		$date = $this->getParams()->getDateTime('date');
+		$events = new Denkmal_Paging_Event_Date($date, true);
 
-		$this->setTplParam('date', $date);
+		$this->setTplParam('events', $events);
 	}
 }

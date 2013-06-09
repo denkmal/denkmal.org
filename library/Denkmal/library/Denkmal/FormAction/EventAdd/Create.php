@@ -39,9 +39,7 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			if ($until < $from) {
 				$until->add(new DateInterval('P1D'));
 			}
-			$until = $until->getTimestamp();
 		}
-		$from = $from->getTimestamp();
 
 		$descriptionParts = array();
 		$descriptionParts[] = $data->getString('title');

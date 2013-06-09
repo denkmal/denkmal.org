@@ -12,7 +12,6 @@ class Denkmal_Paging_Event_Date extends Denkmal_Paging_Event_Abstract {
 			$where .= ' AND `enabled` = 1 AND `hidden` = 0';
 		}
 		$source = new CM_PagingSource_Sql('id', 'denkmal_event', $where, '`starred`, `id`');
-		$source->enableCache();
 		parent::__construct($source);
 	}
 }

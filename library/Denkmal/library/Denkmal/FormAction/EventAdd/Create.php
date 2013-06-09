@@ -39,7 +39,9 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			if ($until < $from) {
 				$until->add(new DateInterval('P1D'));
 			}
+			$until = $until->getTimestamp();
 		}
+		$from = $from->getTimestamp();
 
 		$descriptionParts = array();
 		$descriptionParts[] = $data->getString('title');
@@ -47,12 +49,13 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 		$descriptionParts[] = $data->getString('genres', '');
 		$descriptionParts[] = $data->getString('urls', '');
 		$descriptionParts = array_filter($descriptionParts, 'trim');
+		$description = implode(' ', $descriptionParts);
 
 		$eventData = array(
 			'venue'       => $venue,
 			'from'        => $from,
 			'until'       => $until,
-			'description' => implode(' ', $descriptionParts),
+			'description' => $description,
 			'queued' => true,
 			'enabled' => false,
 		);

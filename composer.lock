@@ -1,5 +1,9 @@
 {
-    "hash": "d537ba7ee1f60fd9bbec4ea2f25e6fef",
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "399c4b9169ebc52086e2a7cb6c71791e",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -18,9 +22,7 @@
             "require": {
                 "php": ">=5.2.0"
             },
-            "time": "2012-11-26 23:59:55",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "authentication/",
@@ -49,15 +51,16 @@
                 "ec2",
                 "s3",
                 "sdk"
-            ]
+            ],
+            "time": "2012-11-26 23:59:55"
         },
         {
             "name": "cargomedia/CM",
-            "version": "1.1.121",
+            "version": "1.1.122",
             "source": {
                 "type": "git",
                 "url": "git@github.com:cargomedia/CM.git",
-                "reference": "1.1.121"
+                "reference": "1.1.122"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -69,16 +72,15 @@
                 "smarty/smarty": "3.1.*",
                 "wurfl/tera-wurfl": "2.1.5"
             },
-            "time": "2013-06-08 17:43:50",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "CM_": "library/",
                     "CMService_": "library/",
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
-            }
+            },
+            "time": "2013-06-09 11:58:34"
         },
         {
             "name": "easybook/geshi",
@@ -97,9 +99,7 @@
             "require": {
                 "php": ">4.3.0"
             },
-            "time": "2012-09-28 03:14:18",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "./"
@@ -124,7 +124,8 @@
                 "highlight",
                 "highlighter",
                 "syntax"
-            ]
+            ],
+            "time": "2012-09-28 03:14:18"
         },
         {
             "name": "leafo/lessphp",
@@ -140,14 +141,12 @@
                 "reference": "v0.3.9",
                 "shasum": "f426d502eb735867a9f84bf58dd13a68ec015909"
             },
-            "time": "2013-03-02 16:13:31",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "0.3-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "lessc.inc.php"
@@ -165,7 +164,8 @@
                 }
             ],
             "description": "lessphp is a compiler for LESS written in PHP.",
-            "homepage": "http://leafo.net/lessphp/"
+            "homepage": "http://leafo.net/lessphp/",
+            "time": "2013-03-02 16:13:31"
         },
         {
             "name": "michelf/php-markdown",
@@ -184,14 +184,12 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2013-02-03 21:14:12",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-lib": "1.3.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Michelf": ""
@@ -216,7 +214,8 @@
             "homepage": "http://michelf.ca/projects/php-markdown/",
             "keywords": [
                 "markdown"
-            ]
+            ],
+            "time": "2013-02-03 21:14:12"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -228,7 +227,6 @@
                 "shasum": "e073095c9e5a4ec1b5a9a1fe05f507adda4cc5cd"
             },
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "class.phpmailer.php"
@@ -252,9 +250,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-08-12 09:51:36",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Elastica": "lib/"
@@ -274,7 +270,8 @@
             "keywords": [
                 "client",
                 "search"
-            ]
+            ],
+            "time": "2012-08-12 09:51:36"
         },
         {
             "name": "smarty/smarty",
@@ -293,9 +290,7 @@
             "require": {
                 "php": ">=5.2"
             },
-            "time": "2013-01-26 12:03:52",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "distribution/libs/Smarty.class.php",
@@ -323,7 +318,8 @@
             "homepage": "http://www.smarty.net",
             "keywords": [
                 "templating"
-            ]
+            ],
+            "time": "2013-01-26 12:03:52"
         },
         {
             "name": "wurfl/tera-wurfl",
@@ -334,16 +330,23 @@
                 "reference": "2.1.5",
                 "shasum": "d577f0b291ba6666f145e279799e0655c7610178"
             },
-            "type": "library",
-            "installation-source": "dist"
+            "type": "library"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
     "minimum-stability": "beta",
     "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
 
     ]
 }

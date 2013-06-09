@@ -2,9 +2,11 @@
 	{link icon="arrow-right" class="playButton navButton playAudio"}
 	{link icon="map" class="mapButton navButton showMap"}
 	<div class="event-content">
-		<a href="javascript:;" class="location nowrap">
-			{$event->getVenue()->getName()}
-		</a>
+		{if $venue->getUrl()}
+			<a href="{$venue->getUrl()}" class="location nowrap">{$venue->getName()}</a>
+		{else}
+			<span class="location nowrap">{$venue->getName()}</span>
+		{/if}
 		<span class="name nowrap">{$event->getDescription()}</span>
 		<time class="time">
 			<span class="icon icon-time"></span>

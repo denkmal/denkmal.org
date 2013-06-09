@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS `denkmal_event`;
 DROP TABLE IF EXISTS `denkmal_venueAlias`;
 DROP TABLE IF EXISTS `denkmal_venue`;
 DROP TABLE IF EXISTS `denkmal_song`;
+DROP TABLE IF EXISTS `denkmal_link`;
 
 
 
@@ -77,4 +78,14 @@ CREATE TABLE `denkmal_message` (
   KEY `venueId` (`venueId`),
   KEY `created` (`created`),
   CONSTRAINT `denkmal_message__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_link` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(30) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `automatic` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `label` (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

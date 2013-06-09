@@ -50,4 +50,14 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 
 		return new static($id);
 	}
+
+	protected function _onDelete() {
+		CM_Db_Db::delete('denkmal_link', array('id' => $this->getId()));
+	}
+
+	protected function _getContainingCacheables() {
+		$containingCacheables = parent::_getContainingCacheables();
+		$containingCacheables[] = new Denkmal_Paging_Link_All();
+		return $containingCacheables;
+	}
 }

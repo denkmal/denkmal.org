@@ -1,7 +1,8 @@
 {foreach $links as $link}
-	<div data-id="{$link->getId()}">
+	<div class="link" data-id="{$link->getId()}">
 		{$link->getLabel()}
-		<a href="{$link->getUrl()}">{$link->getUrl()}</a>
+		<a target="_blank" href="{$link->getUrl()}">{$link->getUrl()}</a>
 		{if $link->getAutomatic()}[automatic]{/if}
+		<a href="javascript:;" class="delete">Delete</a>
 	</div>
 {/foreach}

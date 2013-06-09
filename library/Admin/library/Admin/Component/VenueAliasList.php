@@ -7,6 +7,7 @@ class Admin_Component_VenueAliasList extends Admin_Component_Abstract {
 
 		$venueAliasList = new Denkmal_Paging_VenueAlias_Venue($venue);
 
+		$this->setTplParam('venue', $venue);
 		$this->setTplParam('venueAliasList', $venueAliasList);
 	}
 }

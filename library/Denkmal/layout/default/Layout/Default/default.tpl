@@ -2,10 +2,6 @@
 
 {block name='tileColor'}#99cc6b{/block}
 
-{block name='head' append}
-{*<meta name="google-site-verification" content="Me65LlbI0NCpU5BFHN_2T0dUI3npK_g_PFuciudyFkU">*}
-{/block}
-
 {block name='body'}
 	<div class="headerWrapper">
 		<header id="header">

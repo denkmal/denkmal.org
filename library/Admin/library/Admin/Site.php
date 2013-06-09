@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Site extends CM_Site_Abstract {
+class Admin_Site extends Denkmal_Site {
 
 	const TYPE = 101;
 
@@ -11,7 +11,8 @@ class Admin_Site extends CM_Site_Abstract {
 
 	public function getMenus() {
 		return array(
-			'main' => new Admin_Menu_Main(),
+			'main'     => new Admin_Menu_Main(),
+			'weekdays' => new Admin_Menu_Weekdays(),
 		);
 	}
 

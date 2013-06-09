@@ -3,5 +3,5 @@
 {block name='content-main'}
 	{menu name='weekdays' template='weekdays'}
 
-	events...
+	{component name='Admin_Component_EventList_DateTime' date=$date}
 {/block}

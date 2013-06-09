@@ -32,4 +32,12 @@ class Denkmal_Params extends CM_Params {
 			return new Denkmal_Date($matches[3], $matches[2], $matches[1]);
 		});
 	}
+
+	/**
+	 * @param string $key
+	 * @return DateInterval
+	 */
+	public function getDateInterval($key) {
+		return $this->_getObject($key, 'DateInterval');
+	}
 }

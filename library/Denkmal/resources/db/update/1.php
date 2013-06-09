@@ -1,31 +1,30 @@
 <?php
 
-$english = CM_Model_Language::findByAbbreviation('en');
-if (!$english) {
-	$english = CM_Model_Language::create(array('name' => 'English', 'abbreviation' => 'en', 'enabled' => true));
-	CM_Model_Language::create(array('name' => 'Deutsch', 'abbreviation' => 'de', 'enabled' => true, 'backup' => $english));
+$german = CM_Model_Language::findByAbbreviation('de');
+if (!$german) {
+	$german = CM_Model_Language::create(array('name' => 'Deutsch', 'abbreviation' => 'de', 'enabled' => true));
 }
 
-$english->setTranslation('You', 'You');
-$english->setTranslation('Ok', 'Ok');
-$english->setTranslation('Cancel', 'Cancel');
-$english->setTranslation('Confirmation', 'Confirmation');
-$english->setTranslation('{$label} is required.', '{$label} is required.', array('label'));
-$english->setTranslation('Required', 'Required');
-$english->setTranslation('.date.timeago.prefixAgo', '');
-$english->setTranslation('.date.timeago.prefixFromNow', '');
-$english->setTranslation('.date.timeago.suffixAgo', 'ago');
-$english->setTranslation('.date.timeago.suffixFromNow', 'from now');
-$english->setTranslation('.date.timeago.seconds', 'less than a minute');
-$english->setTranslation('.date.timeago.minute', 'about a minute');
-$english->setTranslation('.date.timeago.minutes', '{$count} minutes');
-$english->setTranslation('.date.timeago.hour', 'about an hour');
-$english->setTranslation('.date.timeago.hours', '{$count} hours');
-$english->setTranslation('.date.timeago.day', 'a day');
-$english->setTranslation('.date.timeago.days', '{$count} days');
-$english->setTranslation('.date.timeago.month', 'about a month');
-$english->setTranslation('.date.timeago.months', '{$count} months');
-$english->setTranslation('.date.timeago.year', 'about a year');
-$english->setTranslation('.date.timeago.years', '{$count} years');
-$english->setTranslation('The content you tried to interact with has been deleted.', 'The content you tried to interact with has been deleted.');
-$english->setTranslation('Your browser is no longer supported. Click here to upgrade…', 'Your browser is no longer supported. Click here to upgrade…');
+$german->setTranslation('You', 'Du');
+$german->setTranslation('Ok', 'Ok');
+$german->setTranslation('Cancel', 'Abbrechen');
+$german->setTranslation('Confirmation', 'Rückfrage');
+$german->setTranslation('{$label} is required.', '{$label} wird benötigt.', array('label'));
+$german->setTranslation('Required', 'Benötigt');
+$german->setTranslation('.date.timeago.prefixAgo', 'vor');
+$german->setTranslation('.date.timeago.prefixFromNow', 'in');
+$german->setTranslation('.date.timeago.suffixAgo', '');
+$german->setTranslation('.date.timeago.suffixFromNow', '');
+$german->setTranslation('.date.timeago.seconds', 'wenigen Sekunden');
+$german->setTranslation('.date.timeago.minute', 'etwa einer Minute');
+$german->setTranslation('.date.timeago.minutes', '{$count} Minuten');
+$german->setTranslation('.date.timeago.hour', 'etwa einer Stunde');
+$german->setTranslation('.date.timeago.hours', '{$count} Stunden');
+$german->setTranslation('.date.timeago.day', 'etwa einem Tag');
+$german->setTranslation('.date.timeago.days', '{$count} Tagen');
+$german->setTranslation('.date.timeago.month', 'etwa einem Monat');
+$german->setTranslation('.date.timeago.months', '{$count} Monaten');
+$german->setTranslation('.date.timeago.year', 'etwa einem Jahr');
+$german->setTranslation('.date.timeago.years', '{$count} Jahren');
+$german->setTranslation('The content you tried to interact with has been deleted.', 'Dieser Inhalt wurde gelöscht.');
+$german->setTranslation('Your browser is no longer supported. Click here to upgrade…', 'Dein Browser wird nicht mehr unterstützt. Klicke hier um ihn zu aktualisieren…');

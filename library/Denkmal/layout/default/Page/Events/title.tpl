@@ -1,1 +1,1 @@
-{translate 'Events for {$date}' date=$date->__toString()}
+{date_weekday date=$date}

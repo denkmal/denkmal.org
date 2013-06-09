@@ -79,4 +79,11 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
 		new Denkmal_Model_Venue($venue->getId());
 	}
+
+	public function testFindByName() {
+		$venue = Denkmal_Model_Venue::create(array('name' => 'Foo', 'queued' => true, 'enabled' => false));
+
+		$this->assertEquals($venue, Denkmal_Model_Venue::findByName('Foo'));
+		$this->assertNull(Denkmal_Model_Venue::findByName('Bar'));
+	}
 }

@@ -153,7 +153,7 @@ class Denkmal_Date {
 	/**
 	 * @return int
 	 */
-	public function getStamp() {
+	public function getTimestamp() {
 		return $this->getDateTime()->getTimestamp();
 	}
 

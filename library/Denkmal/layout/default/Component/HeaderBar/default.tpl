@@ -12,5 +12,5 @@
 		{input name='term' placeholder="{translate 'Suche'}…"}
 		{/form}
 	</div>
-	{menu name='dates' template='navButtons'}
+	{menu name='dates' template='weekdays'}
 </div>

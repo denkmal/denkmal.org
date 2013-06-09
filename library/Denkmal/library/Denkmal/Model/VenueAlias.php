@@ -27,6 +27,19 @@ class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
 		CM_Db_Db::delete('denkmal_venueAlias', array('id' => $this->getId()));
 	}
 
+	/**
+	 * @param string $name
+	 * @return Denkmal_Model_VenueAlias|null
+	 */
+	public static function findByName($name) {
+		$name = (string) $name;
+		$venueAliasId = CM_Db_Db::select('denkmal_venueAlias', 'id', array('name' => $name))->fetchColumn();
+		if (!$venueAliasId) {
+			return null;
+		}
+		return new self($venueAliasId);
+	}
+
 	protected static function _create(array $data) {
 		$data = Denkmal_Params::factory($data);
 

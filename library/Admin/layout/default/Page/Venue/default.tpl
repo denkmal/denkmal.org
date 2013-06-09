@@ -6,5 +6,6 @@
 		{component name='Admin_Component_Venue' venue=$venue}
 	</div>
 
+	<h2>{translate 'Anstehende Events'}</h2>
 	{component name='Admin_Component_EventList_Venue' venue=$venue}
 {/block}

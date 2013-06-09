@@ -70,21 +70,22 @@ CREATE TABLE `denkmal_event` (
 
 
 CREATE TABLE `denkmal_message` (
-		`id` int(11) unsigned NOT NULL,
-		`venueId` int(11) unsigned NOT NULL,
-		`created` int(11) unsigned NOT NULL,
-		`text` varchar(1000) NOT NULL,
-		PRIMARY KEY (`id`),
-		KEY `venueId` (`venueId`),
-		KEY `created` (`created`),
-		CONSTRAINT `denkmal_message__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `id` int(11) unsigned NOT NULL,
+  `venueId` int(11) unsigned NOT NULL,
+  `created` int(11) unsigned NOT NULL,
+  `text` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `venueId` (`venueId`),
+  KEY `created` (`created`),
+  CONSTRAINT `denkmal_message__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE IF NOT EXISTS `denkmal_link` (
-		`id` int(11) NOT NULL AUTO_INCREMENT,
-		`label` varchar(30) NOT NULL,
-		`url` varchar(100) NOT NULL,
-		`automatic` int(11) NOT NULL DEFAULT '0',
-		PRIMARY KEY (`id`)
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(30) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `automatic` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `label` (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

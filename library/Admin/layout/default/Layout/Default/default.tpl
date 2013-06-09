@@ -1,7 +1,7 @@
 {extends file=$render->getLayoutPath('Layout/Abstract/default.tpl', 'CM')}
 
 {block name='body'}
-	This is the admin layout
+	{menu name='main'}
 
 	{component name=$viewObj->getPage()}
 {/block}

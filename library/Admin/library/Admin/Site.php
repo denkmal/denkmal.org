@@ -9,6 +9,12 @@ class Admin_Site extends CM_Site_Abstract {
 		$this->_setNamespace('Admin');
 	}
 
+	public function getMenus() {
+		return array(
+			'main' => new Admin_Menu_Main(),
+		);
+	}
+
 	public static function match(CM_Request_Abstract $request) {
 		if (0 === strpos($request->getHeader('host'), 'admin.')) {
 			return true;

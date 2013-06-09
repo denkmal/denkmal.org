@@ -13,7 +13,7 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
 			$venue = $event->getVenue();
 			$data = array(
 				'description' => $event->getDescription(),
-				'from'        => $event->getFrom()->format('H:mm'),
+				'from'        => $event->getFrom()->format('H:m'),
 				'starred'     => $event->getStarred(),
 
 				'venue'       => $venue->getName(),

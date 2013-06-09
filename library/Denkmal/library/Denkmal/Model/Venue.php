@@ -158,6 +158,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		return new self($venueId);
 	}
 
+	/**
+	 * @param string $name
+	 * @return Denkmal_Model_Venue|null
+	 */
+	public static function findByNameOrAlias($name) {
+		if ($venue = self::findByName($name)) {
+			return $venue;
+		}
+		if ($venueAlias = Denkmal_Model_VenueAlias::findByName($name)) {
+			return $venueAlias->getVenue();
+		}
+		return null;
+	}
+
 	protected static function _create(array $data) {
 		$data = CM_Params::factory($data);
 

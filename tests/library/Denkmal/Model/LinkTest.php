@@ -16,4 +16,23 @@ class Denkmal_Model_LinkTest extends CMTest_TestCase {
 		$this->assertSame('bar', $link->getUrl());
 		$this->assertSame(true, $link->getAutomatic());
 	}
+
+	public function testCreateDefaultValues() {
+		$link = Denkmal_Model_Link::create(array(
+			'label'     => 'foo',
+			'url'       => 'bar',
+		));
+		$this->assertSame(false, $link->getAutomatic());
+	}
+
+	public function testSetAutomatic() {
+		$link = Denkmal_Model_Link::create(array(
+			'label'     => 'foo',
+			'url'       => 'bar',
+			'automatic' => true,
+		));
+		$this->assertSame(true, $link->getAutomatic());
+		$link->setAutomatic(false);
+		$this->assertSame(false, $link->getAutomatic());
+	}
 }

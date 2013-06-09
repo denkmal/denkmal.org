@@ -20,6 +20,7 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 	 * @param boolean $automatic
 	 */
 	public function setAutomatic($automatic) {
+		$automatic = (bool) $automatic;
 		CM_Db_Db::update('denkmal_link', array('automatic' => $automatic), array('id' => $this->getId()));
 		$this->_change();
 	}
@@ -28,7 +29,7 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 	 * @return bool
 	 */
 	public function getAutomatic() {
-		return (bool) $this->_get('url');
+		return (bool) $this->_get('automatic');
 	}
 
 	protected function _loadData () {

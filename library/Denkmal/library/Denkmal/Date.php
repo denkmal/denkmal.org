@@ -95,8 +95,8 @@ class Denkmal_Date {
 	 */
 	public function setTime($hours, $minutes = null, $amPm = null) {
 		if (is_array($hours) && count($hours) >= 2) {
-			$hours = (int) $hours[0];
-			$minutes = (int) $hours[1];
+			$hours = (int) $hours['hour'];
+			$minutes = (int) $hours['minute'];
 		}
 		if (null == $hours) {
 			$hours = 0;
@@ -144,6 +144,20 @@ class Denkmal_Date {
 	}
 
 	/**
+	 * @return DateTime
+	 */
+	public function getDateTime() {
+		return $this->_dateTime;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getStamp() {
+		return $this->getDateTime()->getTimestamp();
+	}
+
+	/**
 	 * @return string
 	 */
 	public function __toString() {
@@ -159,6 +173,6 @@ class Denkmal_Date {
 	 * @return Denkmal_Date
 	 */
 	public static function fromDateTime(DateTime $date) {
-		return new self($date->format('Y'), $date->format('n'), $date->format('j'));
+		return new self($date->format('j'), $date->format('n'), $date->format('Y'));
 	}
 }

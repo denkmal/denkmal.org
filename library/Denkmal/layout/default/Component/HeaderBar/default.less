@@ -12,29 +12,35 @@
 
 	&.logo {
 		display: inline-block;
-		padding: 0 12px;
 		color: @colorFg;
 		text-transform: uppercase;
 		font-weight: bold;
 		opacity: 1;
 
-		.label {
-			font-size: 18px;
+		.icon {
+			font-size: 20px;
+			margin-right: 6px;
 		}
 
-		@media (min-width: 490px) and (max-width: 660px) {
-			padding: 0;
+		.label {
+			font-size: 18px;
+			display: none;
+		}
+
+		@media (min-width: 320px) and (max-width: 490px) {
+			padding: 0 12px;
 
 			.label {
-				display: none;
+				display: inline;
+				font-size: 16px;
 			}
 		}
 
-		@media (max-width: 319px) {
-			padding: 0;
+		@media (min-width: 660px) {
+			padding: 0 12px;
 
 			.label {
-				display: none;
+				display: inline;
 			}
 		}
 	}

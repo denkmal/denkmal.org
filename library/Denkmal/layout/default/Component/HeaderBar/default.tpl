@@ -5,7 +5,7 @@
 	</div>
 	<a href="mailto:kontakt@denkmal.org" class="link contactButton navButton" title="{translate 'Kontakt'}"><span class="icon icon-mailbox"></span><span class="label">{translate 'Kontakt'}</span></a>
 	{link icon="plus" title="{translate 'Event hinzufügen'}" label="{translate 'Event hinzufügen'}" page="Denkmal_Page_Add" class="addButton navButton"}
-	{link icon="search" class="searchButton navButton showSearch" {translate 'Search'}}
+	{link icon="search" class="searchButton navButton showSearch" title="{translate 'Search'}"}
 	<div class="searchForm">
 		<span class="icon-search"></span>
 		{form name='Denkmal_Form_SearchContent'}

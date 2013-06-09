@@ -40,10 +40,9 @@ class Denkmal_Date {
 	 * @param int|null        $year
 	 * @throws CM_Exception_Invalid
 	 */
-	function __construct($day = null, $month = null, $year = null) {
+	public function __construct($day = null, $month = null, $year = null) {
 		if (null === $day && null === $month && $year === null) {
 			$this->_dateTime = new DateTime();
-
 		} else {
 			if ($day >= 1 && $day <= 31) {
 				$day = (int) $day;
@@ -116,9 +115,42 @@ class Denkmal_Date {
 	}
 
 	/**
+	 * @param DateInterval $interval
+	 */
+	public function add(DateInterval $interval) {
+		$this->_dateTime->add($interval);
+	}
+
+	/**
+	 * @param DateInterval $interval
+	 */
+	public function sub(DateInterval $interval) {
+		$this->_dateTime->sub($interval);
+	}
+
+	/**
+	 * @return int 1..7
+	 */
+	public function getWeekday() {
+		return $this->getFormat('N');
+	}
+
+	/**
+	 * @param string $format
 	 * @return string
 	 */
-	function __toString() {
-		return $this->_dateTime->format('Y-m-d');
+	public function getFormat($format) {
+		return $this->_dateTime->format($format);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function __toString() {
+		return $this->getFormat('Y-n-j');
+	}
+
+	public function __clone() {
+		$this->_dateTime = clone $this->_dateTime;
 	}
 }

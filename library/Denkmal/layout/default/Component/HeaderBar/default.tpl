@@ -13,12 +13,10 @@
 		{/form}
 	</div>
 	<ul class="navigation clearfix">
-		<li><a class="navButton" href="javascript:;">Mo</a></li>
-		<li><a class="navButton" href="javascript:;">Di</a></li>
-		<li class="active"><a class="navButton" href="javascript:;">Mi</a></li>
-		<li><a class="navButton" href="javascript:;">Do</a></li>
-		<li><a class="navButton" href="javascript:;">Fr</a></li>
-		<li><a class="navButton" href="javascript:;">Sa</a></li>
-		<li><a class="navButton" href="javascript:;">So</a></li>
+		{foreach $dateList as $date}
+			<li>
+				<a class="navButton" href="{linkUrl page='Denkmal_Page_Events' date=$date->__toString()}">{$date->getWeekday()}</a>
+			</li>
+		{/foreach}
 	</ul>
 </div>

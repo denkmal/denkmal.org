@@ -2,21 +2,11 @@
 
 class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 
-	/** @var boolean */
-	private $_onlyPublic = true;
-
 	/**
 	 * @param string $name
 	 */
 	public function __construct($name) {
 		parent::__construct($name, true);
-	}
-
-	/**
-	 * @param $onlyPublic
-	 */
-	public function setOnlyPublic($onlyPublic) {
-		$this->_onlyPublic = (bool) $onlyPublic;
 	}
 
 	public function validate($userInput, CM_Response_Abstract $response) {
@@ -36,22 +26,12 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 		$term = (string) $term;
 		$suggestions = array();
 		/** @var $item Denkmal_Model_Venue */
-		foreach ($this->_getPaging() as $item) {
+		foreach (new Denkmal_Paging_Venue_All() as $item) {
 			if (0 === stripos($item->getName(), $term)) {
 				$suggestions[] = $this->getSuggestion($item, $render);
 			}
 		}
 		return $suggestions;
-	}
-
-	/**
-	 * @return Denkmal_Paging_Venue_Abstract
-	 */
-	private function _getPaging() {
-		if ($this->_onlyPublic) {
-			return new Denkmal_Paging_Venue_Public();
-		}
-		return new Denkmal_Paging_Venue_All();
 	}
 
 }

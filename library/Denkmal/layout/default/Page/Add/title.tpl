@@ -1,1 +1,1 @@
-Add new event
+{translate 'Event hinzufügen'}

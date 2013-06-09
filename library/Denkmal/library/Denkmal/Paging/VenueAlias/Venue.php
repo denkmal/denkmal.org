@@ -1,0 +1,13 @@
+<?php
+
+class Denkmal_Paging_VenueAlias_Venue extends Denkmal_Paging_VenueAlias_Abstract {
+
+	/**
+	 * @param Denkmal_Model_Venue $venue
+	 */
+	public function __construct(Denkmal_Model_Venue $venue) {
+		$where = '`venueId` = ' . $venue->getId();
+		$source = new CM_PagingSource_Sql('id', 'denkmal_venueAlias', $where, '`name`');
+		parent::__construct($source);
+	}
+}

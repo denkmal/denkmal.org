@@ -2,5 +2,5 @@
 
 {block name='content-title'}{/block}
 {block name='content-main'}
-	{component name="Denkmal_Component_EventList"}
+	{component name='Denkmal_Component_EventList' date=$date}
 {/block}

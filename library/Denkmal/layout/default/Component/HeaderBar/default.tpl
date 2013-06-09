@@ -12,11 +12,5 @@
 		{input name='term' placeholder="{translate 'Suche'}…"}
 		{/form}
 	</div>
-	<ul class="navigation clearfix">
-		{foreach $dateList as $date}
-			<li>
-				<a class="navButton" href="{linkUrl page='Denkmal_Page_Events' date=$date->__toString()}">{$date->getWeekday()}</a>
-			</li>
-		{/foreach}
-	</ul>
+	{menu name='dates' template='navButtons'}
 </div>

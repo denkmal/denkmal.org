@@ -1,0 +1,88 @@
+.event {
+	position: relative;
+	background-color: @colorBg;
+	border: 1px solid @colorBgEmphasize3;
+	margin-bottom: 2px;
+	padding: 5px 0;
+	padding-left: 3px;
+
+	&.featured:before {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: -3px;
+		height: 100%;
+		width: 3px;
+		background-color: @colorFeatured;
+	}
+
+	.navButton {
+		color: @colorFgIcon;
+
+		&:hover {
+			color: @colorFgHeading;
+		}
+	}
+
+	.playButton {
+		position: absolute;
+	}
+
+	.mapButton {
+		float: right;
+	}
+
+	.event-content {
+		min-height: @barSize;
+		margin-left: @barSize;
+
+		html.touch & {
+			min-height: @barSizeMobile;
+			margin-left: @barSizeMobile;
+		}
+
+		padding: 0 5px;
+		border-left: 1px solid @colorFgBorderEmphasize2;
+		color: @colorFg;
+
+		.location, .name, .artists, .genre {
+			display: inline-block;
+			max-width: 100%;
+		}
+
+		.location {
+			font-weight: bold;
+			margin-top: 2px;
+		}
+
+		.name {
+			color: @colorFgShy;
+		}
+
+		.time {
+			display: block;
+
+			.icon {
+				color: fadeout(@colorFgIcon, 70);
+			}
+
+			@media (min-width: 700px) {
+				float: right;
+				width: 120px;
+				margin-top: 4px;
+
+				html.touch & {
+					margin-top: 6px;
+				}
+
+				padding: 6px 12px;
+				border-right: 1px solid @colorFgBorderEmphasize1;
+			}
+		}
+
+		.genre {
+			color: @colorFgShy;
+			font-style: italic;
+		}
+	}
+}

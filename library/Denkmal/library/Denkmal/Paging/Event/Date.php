@@ -8,9 +8,11 @@ class Denkmal_Paging_Event_Date extends Denkmal_Paging_Event_Abstract {
 		$date->add(new DateInterval('P1D'));
 		$endStamp = $date->getTimestamp();
 		$where = '`from` >= ' . $startStamp . ' AND `from` < ' . $endStamp;
+
 		if ($publicOnly) {
 			$where .= ' AND `enabled` = 1 AND `hidden` = 0';
 		}
+
 		$source = new CM_PagingSource_Sql('id', 'denkmal_event', $where, '`starred`, `id`');
 		$source->enableCache();
 		parent::__construct($source);

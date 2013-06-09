@@ -29,6 +29,14 @@
 				display: none;
 			}
 		}
+
+		@media (max-width: 319px) {
+			padding: 0;
+
+			.label {
+				display: none;
+			}
+		}
 	}
 
 	&.searchButton {
@@ -187,15 +195,18 @@
 	.searchForm {
 		display: none;
 	}
+}
 
-	&.search-expand {
-		.navButton, .logo {
+@media (max-width: 489px) {
+	.search-expand {
+		.navButton, .navigation, .logoWrapper {
 			display: none;
 		}
 
 		.searchForm {
 			display: block;
 			width: 100%;
+			padding: 0 6px;
 		}
 	}
 }

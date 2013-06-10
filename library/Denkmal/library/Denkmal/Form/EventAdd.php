@@ -19,4 +19,8 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 		$this->registerAction(new Denkmal_FormAction_EventAdd_Create());
 	}
 
+	public function renderStart(array $params = null) {
+		$this->getField('date')->setValue(new DateTime());
+	}
+
 }

@@ -15,7 +15,7 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
 			} else {
 				$search = '#' . $wordBoundary . preg_quote($link->getLabel()) . $wordBoundary . '#ui';
 			}
-			$replace = '$1<a href="' . $link->getUrl() . '" class="url" target="_blank">' . $link->getLabel() . '</a>$3';
+			$replace = '$1<a href="' . $link->getUrl() . '" class="url" target="_blank">' . $link->getLabel() . '</a>$2';
 			$text = preg_replace($search, $replace, $text);
 		}
 		return $text;

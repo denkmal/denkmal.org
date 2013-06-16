@@ -10,7 +10,7 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
 		$venueListArray = array();
 		/** @var Denkmal_Model_Venue $venue */
 		foreach (new Denkmal_Paging_Venue_All() as $venue) {
-			$venueListArray[] = $venue->toArrayApi();
+			$venueListArray[] = $venue->toArrayApi($this->getRender());
 		}
 
 		$eventListArray = array();
@@ -25,7 +25,7 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
 		$messageListArray = array();
 		/** @var Denkmal_Model_Message $message */
 		foreach (new Denkmal_Paging_Message_All() as $message) {
-			$messageListArray[] = $message->toArrayApi();
+			$messageListArray[] = $message->toArrayApi($this->getRender());
 		}
 
 		$this->_setContent(array('venues' => $venueListArray, 'events' => $eventListArray, 'messages' => $messageListArray));

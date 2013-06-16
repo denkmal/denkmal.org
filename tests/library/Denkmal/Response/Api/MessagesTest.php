@@ -26,8 +26,8 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 		$response->process();
 
 		$expected = array(
-			$message1->toArrayApi(),
-			$message2->toArrayApi(),
+			$message1->toArrayApi($response->getRender()),
+			$message2->toArrayApi($response->getRender()),
 		);
 
 		$this->assertSame($expected, json_decode($response->getContent(), true));

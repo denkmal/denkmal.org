@@ -39,16 +39,16 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
 
 		$expected = array(
 			'venues'   => array(
-				$venue1->toArrayApi(),
-				$venue2->toArrayApi(),
+				$venue1->toArrayApi($response->getRender()),
+				$venue2->toArrayApi($response->getRender()),
 			),
 			'events'   => array(
 				$event1->toArrayApi($response->getRender()),
 				$event2->toArrayApi($response->getRender()),
 			),
 			'messages' => array(
-				$message1->toArrayApi(),
-				$message2->toArrayApi(),
+				$message1->toArrayApi($response->getRender()),
+				$message2->toArrayApi($response->getRender()),
 			),
 		);
 

@@ -48,18 +48,24 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			}
 		}
 
+		$title = $data->getString('title');
 		$descriptionParts = array();
-		$descriptionParts[] = $data->getString('title');
 		$descriptionParts[] = $data->getString('artists', '');
 		$descriptionParts[] = $data->getString('genres', '');
 		$descriptionParts[] = $data->getString('urls', '');
 		$descriptionParts = array_filter($descriptionParts, 'trim');
 		$description = implode(' ', $descriptionParts);
 
+		if (empty($description)) {
+			$description = $title;
+			$title = null;
+		}
+
 		$eventData = array(
 			'venue'       => $venue,
 			'from'        => $from,
 			'until'       => $until,
+			'title'       => $title,
 			'description' => $description,
 			'queued'      => true,
 			'enabled'     => false,

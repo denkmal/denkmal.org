@@ -10,9 +10,11 @@ var Denkmal_Component_EventAdd = Denkmal_Component_Abstract.extend({
 	childrenEvents: {
 		'Denkmal_Form_EventAdd change': function() {
 			var form = this.findChild('Denkmal_Form_EventAdd');
-			var description = form.getField('title').$('input').val() + ' ' + form.getField('artists').$('input').val() + ' ' + form.getField('genres').$('input').val() + ' ' + form.getField('urls').$('input').val()
+			var title = form.getField('title').$('input').val();
+			var description = form.getField('artists').$('input').val() + ' ' + form.getField('genres').$('input').val() + ' ' + form.getField('urls').$('input').val()
 			var data = {
 				'description': description,
+				'title': title,
 				'from': form.getField('fromTime').$('input').val(),
 				'starred': false,
 				'venue': form.getField('venue').getValue(),

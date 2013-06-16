@@ -70,7 +70,7 @@ CREATE TABLE `denkmal_event` (
 
 
 CREATE TABLE `denkmal_message` (
-  `id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `venueId` int(11) unsigned NOT NULL,
   `created` int(11) unsigned NOT NULL,
   `text` varchar(1000) NOT NULL,

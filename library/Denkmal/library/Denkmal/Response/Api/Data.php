@@ -8,23 +8,23 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
 
 	protected function _process() {
 		$venueListArray = array();
-		$venueList = new Denkmal_Paging_Venue_All();
 		/** @var Denkmal_Model_Venue $venue */
-		foreach ($venueList as $venue) {
+		foreach (new Denkmal_Paging_Venue_All() as $venue) {
 			$venueListArray[] = $venue->toArrayApi();
 		}
 
 		$eventListArray = array();
-		$eventList = new Denkmal_Paging_Event_Date(new DateTime(), true);
-		/** @var Denkmal_Model_Event $event */
-		foreach ($eventList as $event) {
-			$eventListArray[] = $event->toArrayApi($this->getRender());
+		/** @var DateTime $date */
+		foreach (new Denkmal_Paging_DateTime_Week() as $date) {
+			/** @var Denkmal_Model_Event $event */
+			foreach (new Denkmal_Paging_Event_Date($date, true) as $event) {
+				$eventListArray[] = $event->toArrayApi($this->getRender());
+			}
 		}
 
 		$messageListArray = array();
-		$messageList = new Denkmal_Paging_Message_All();
 		/** @var Denkmal_Model_Message $message */
-		foreach ($messageList as $message) {
+		foreach (new Denkmal_Paging_Message_All() as $message) {
 			$messageListArray[] = $message->toArrayApi();
 		}
 

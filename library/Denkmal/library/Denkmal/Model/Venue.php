@@ -131,6 +131,26 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		$this->_change();
 	}
 
+	/**
+	 * @return array
+	 */
+	public function toArrayApi() {
+		$array = array();
+		$array['id'] = $this->getId();
+		$array['name'] = $this->getName();
+		if ($url = $this->getUrl()) {
+			$array['url'] = $url;
+		}
+		if ($address = $this->getAddress()) {
+			$array['address'] = $address;
+		}
+		if ($coordinates = $this->getCoordinates()) {
+			$array['latitude'] = $coordinates->getLatitude();
+			$array['longitude'] = $coordinates->getLongitude();
+		}
+		return $array;
+	}
+
 	protected function _loadData() {
 		return CM_Db_Db::select('denkmal_venue', array('*'), array('id' => $this->getId()))->fetch();
 	}

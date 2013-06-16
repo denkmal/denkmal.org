@@ -159,6 +159,25 @@ class Denkmal_Model_Event extends CM_Model_Abstract {
 		$this->_change();
 	}
 
+	/**
+	 * @param CM_Render $render
+	 * @return array
+	 */
+	public function toArrayApi(CM_Render $render) {
+		$array = array();
+		$array['id'] = $this->getId();
+		$array['description'] = $this->getDescription();
+		$array['from'] = $this->getFrom()->getTimestamp();
+		if ($until = $this->getUntil()) {
+			$array['until'] = $until->getTimestamp();
+		}
+		$array['starred'] = $this->getStarred();
+		if ($song = $this->getSong()) {
+			$array['song'] = $song->toArrayApi($render);
+		}
+		return $array;
+	}
+
 	protected function _loadData() {
 		return CM_Db_Db::select('denkmal_event', array('*'), array('id' => $this->getId()))->fetch();
 	}

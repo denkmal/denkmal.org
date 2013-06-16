@@ -183,6 +183,9 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 		$array = array();
 		$array['id'] = $this->getId();
 		$array['description'] = $this->getDescription();
+		if ($title = $this->getTitle()) {
+			$array['title'] = $title;
+		}
 		$array['from'] = $this->getFrom()->getTimestamp();
 		if ($until = $this->getUntil()) {
 			$array['until'] = $until->getTimestamp();

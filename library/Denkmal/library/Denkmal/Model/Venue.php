@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Model_Venue extends CM_Model_Abstract {
+class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
 	const TYPE = 100;
 
@@ -131,10 +131,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract {
 		$this->_change();
 	}
 
-	/**
-	 * @return array
-	 */
-	public function toArrayApi() {
+	public function toArrayApi(CM_Render $render) {
 		$array = array();
 		$array['id'] = $this->getId();
 		$array['name'] = $this->getName();

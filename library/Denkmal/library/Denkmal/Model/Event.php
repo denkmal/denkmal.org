@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Model_Event extends CM_Model_Abstract {
+class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
 	const TYPE = 101;
 
@@ -159,10 +159,6 @@ class Denkmal_Model_Event extends CM_Model_Abstract {
 		$this->_change();
 	}
 
-	/**
-	 * @param CM_Render $render
-	 * @return array
-	 */
 	public function toArrayApi(CM_Render $render) {
 		$array = array();
 		$array['id'] = $this->getId();

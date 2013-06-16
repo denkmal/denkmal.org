@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Model_Song extends CM_Model_Abstract {
+class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
 	const TYPE = 102;
 
@@ -28,10 +28,6 @@ class Denkmal_Model_Song extends CM_Model_Abstract {
 		return new CM_File_UserContent('songs', $filename);
 	}
 
-	/**
-	 * @param CM_Render $render
-	 * @return array
-	 */
 	public function toArrayApi(CM_Render $render) {
 		$array = array();
 		$array['label'] = $this->getLabel();
@@ -39,7 +35,7 @@ class Denkmal_Model_Song extends CM_Model_Abstract {
 		return $array;
 	}
 
-	protected function _loadData () {
+	protected function _loadData() {
 		return CM_Db_Db::select('denkmal_song', array('*'), array('id' => $this->getId()))->fetch();
 	}
 

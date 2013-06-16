@@ -11,12 +11,7 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
 		$result = array();
 		/** @var Denkmal_Model_Message $message */
 		foreach ($messageList as $message) {
-			$result[] = array(
-				'id'      => $message->getId(),
-				'venue'   => $message->getVenue()->getId(),
-				'created' => $message->getCreated(),
-				'text'    => $message->getText(),
-			);
+			$result[] = $message->toArray();
 		}
 		$this->_setContent($result);
 	}

@@ -25,6 +25,14 @@ class Denkmal_Model_Message extends CM_Model_Abstract {
 		return (int) $this->_get('created');
 	}
 
+	public function toArray() {
+		$array = parent::toArray();
+		$array['venue'] = $this->getVenue()->getId();
+		$array['created'] = $this->getCreated();
+		$array['text'] = $this->getText();
+		return $array;
+	}
+
 	protected function _loadData() {
 		return CM_Db_Db::select('denkmal_message', array('*'), array('id' => $this->getId()))->fetch();
 	}

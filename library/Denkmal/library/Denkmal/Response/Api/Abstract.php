@@ -1,0 +1,19 @@
+<?php
+
+abstract class Denkmal_Response_Api_Abstract extends CM_Response_Abstract {
+
+	/**
+	 * @var Denkmal_Params
+	 */
+	protected $_params;
+
+	public function __construct(CM_Request_Abstract $request) {
+		$this->_request = $request;
+		$this->_site = CM_Site_Abstract::factory();
+		$this->_params = CM_Params::factory($request->getQuery());
+	}
+
+	public static function match(CM_Request_Abstract $request) {
+		return $request->getPathPart(0) === 'api';
+	}
+}

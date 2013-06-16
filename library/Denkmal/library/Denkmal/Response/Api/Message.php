@@ -2,11 +2,6 @@
 
 class Denkmal_Response_Api_Message extends Denkmal_Response_Api_Abstract {
 
-	/**
-	 * @var Denkmal_Params
-	 */
-	protected $_params;
-
 	public function __construct(CM_Request_Post $request) {
 		$request->setBodyEncoding(CM_Request_Post::ENCODING_FORM);
 		parent::__construct($request);

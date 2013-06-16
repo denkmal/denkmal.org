@@ -52,6 +52,7 @@ CREATE TABLE `denkmal_event` (
   `from` int(11) unsigned NOT NULL,
   `until` int(11) unsigned DEFAULT NULL,
   `description` text,
+	`title` varchar(100) DEFAULT NULL,
   `songId` int(11) unsigned DEFAULT NULL,
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `enabled` tinyint(4) unsigned NOT NULL DEFAULT '0',

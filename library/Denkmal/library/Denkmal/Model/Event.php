@@ -76,6 +76,26 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 	}
 
 	/**
+	 * @return string|null
+	 */
+	public function getTitle() {
+		$title = $this->_get('title');
+		if (null === $title) {
+			return null;
+		}
+		return (string) $title;
+	}
+
+	/**
+	 * @param string|null $title
+	 */
+	public function setTitle($title) {
+		$title = isset($title) ? (string) $title : null;
+		CM_Db_Db::update('denkmal_event', array('title' => $title), array('id' => $this->getId()));
+		$this->_change();
+	}
+
+	/**
 	 * @return Denkmal_Model_Song|null
 	 */
 	public function getSong() {
@@ -189,6 +209,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 		$from = $data->getDateTime('from')->getTimestamp();
 		$until = $data->has('until') ? $data->getDateTime('until')->getTimestamp() : null;
 		$description = $data->getString('description');
+		$title = $data->has('title') ? $data->getString('title') : null;
 		$song = $data->has('song') ? $data->getSong('song') : null;
 		$queued = $data->getBoolean('queued');
 		$enabled = $data->getBoolean('enabled');
@@ -201,6 +222,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 			'venueId'     => $venue->getId(),
 			'from'        => $from,
 			'until'       => $until,
+			'title'       => $title,
 			'description' => $description,
 			'songId'      => $songId,
 			'queued'      => $queued,

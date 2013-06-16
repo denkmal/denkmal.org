@@ -25,8 +25,14 @@ class Denkmal_Model_Message extends CM_Model_Abstract {
 		return (int) $this->_get('created');
 	}
 
-	protected function _loadData () {
+	protected function _loadData() {
 		return CM_Db_Db::select('denkmal_message', array('*'), array('id' => $this->getId()))->fetch();
+	}
+
+	protected function _getContainingCacheables() {
+		$containingCacheables = parent::_getContainingCacheables();
+		$containingCacheables[] = new Denkmal_Paging_Message_All();
+		return $containingCacheables;
 	}
 
 	protected static function _create(array $data) {

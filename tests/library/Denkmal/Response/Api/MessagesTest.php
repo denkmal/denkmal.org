@@ -26,22 +26,8 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 		$response->process();
 
 		$expected = array(
-			array(
-				'_type'   => $message1->getType(),
-				'_id'     => array('id' => $message1->getId()),
-				'id'      => $message1->getId(),
-				'venue'   => $message1->getVenue()->getId(),
-				'created' => $message1->getCreated(),
-				'text'    => $message1->getText(),
-			),
-			array(
-				'_type'   => $message2->getType(),
-				'_id'     => array('id' => $message2->getId()),
-				'id'      => $message2->getId(),
-				'venue'   => $message2->getVenue()->getId(),
-				'created' => $message2->getCreated(),
-				'text'    => $message2->getText(),
-			),
+			$message1->toArray(),
+			$message2->toArray(),
 		);
 
 		$this->assertSame($expected, json_decode($response->getContent(), true));

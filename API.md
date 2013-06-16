@@ -8,7 +8,7 @@ Host: www.denkmal.org
 ```
 
 Response:
-```
+```json
 {
    "venues":[
       {
@@ -69,7 +69,7 @@ Host: www.denkmal.org
 ```
 
 Response:
-```
+```json
 [
    {
       "id":4,

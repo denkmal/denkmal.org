@@ -2,6 +2,7 @@
 
 $config->debug = true;
 $config->deployVersion = '1';
+$config->timeZone = 'Europe/Zurich';
 
 $config->CM_Render->cdnResource = false;
 $config->CM_Render->cdnUserContent = false;

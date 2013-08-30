@@ -11,6 +11,7 @@ $german->setTranslation('Cancel', 'Abbrechen');
 $german->setTranslation('Confirmation', 'Rückfrage');
 $german->setTranslation('{$label} is required.', '{$label} wird benötigt.', array('label'));
 $german->setTranslation('Required', 'Benötigt');
+$german->setTranslation('Please Confirm', 'Bitte bestätigen');
 $german->setTranslation('.date.timeago.prefixAgo', 'vor');
 $german->setTranslation('.date.timeago.prefixFromNow', 'in');
 $german->setTranslation('.date.timeago.suffixAgo', '');

@@ -3,7 +3,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 DROP TABLE IF EXISTS `denkmal_message`;
 DROP TABLE IF EXISTS `denkmal_event`;
-DROP TABLE IF EXISTS `denkmal_venueAlias`;
+DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_venue`;
 DROP TABLE IF EXISTS `denkmal_song`;
 DROP TABLE IF EXISTS `denkmal_link`;
@@ -35,14 +35,14 @@ CREATE TABLE `denkmal_venue` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `denkmal_venueAlias` (
+CREATE TABLE `denkmal_model_venuealias` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `venueId` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `venueId` (`venueId`),
-  CONSTRAINT `denkmal_venueAlias__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

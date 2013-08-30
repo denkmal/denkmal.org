@@ -18,20 +18,20 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
 
 	public function testProcess() {
 		$coordinates1 = new CM_Geo_Point(12.1, 13.3);
-		$venue1 = Denkmal_Model_Venue::create(array('name'    => 'Foo 1', 'queued' => true, 'enabled' => false, 'url' => 'http://www.example.com',
+		$venue1 = Denkmal_Model_Venue::createStatic(array('name'    => 'Foo 1', 'queued' => true, 'enabled' => false, 'url' => 'http://www.example.com',
 													'address' => 'Address 1', 'coordinates' => $coordinates1));
-		$venue2 = Denkmal_Model_Venue::create(array('name' => 'Foo 2', 'queued' => true, 'enabled' => false));
+		$venue2 = Denkmal_Model_Venue::createStatic(array('name' => 'Foo 2', 'queued' => true, 'enabled' => false));
 
 		$now = new DateTime();
 		$file1 = CM_File::createTmp();
-		$song1 = Denkmal_Model_Song::create(array('file' => $file1, 'label' => 'Song 1'));
-		$event1 = Denkmal_Model_Event::create(array('venue'   => $venue2, 'from' => $now, 'until' => $now, 'description' => 'Foo', 'queued' => false,
+		$song1 = Denkmal_Model_Song::createStatic(array('file' => $file1, 'label' => 'Song 1'));
+		$event1 = Denkmal_Model_Event::createStatic(array('venue'   => $venue2, 'from' => $now, 'until' => $now, 'description' => 'Foo', 'queued' => false,
 													'enabled' => true, 'song' => $song1));
-		$event2 = Denkmal_Model_Event::create(array('venue'   => $venue1, 'from' => $now, 'description' => 'Foo', 'queued' => false,
+		$event2 = Denkmal_Model_Event::createStatic(array('venue'   => $venue1, 'from' => $now, 'description' => 'Foo', 'queued' => false,
 													'enabled' => true));
 
-		$message1 = Denkmal_Model_Message::create(array('venue' => $venue1, 'text' => 'Foo 1'));
-		$message2 = Denkmal_Model_Message::create(array('venue' => $venue1, 'text' => 'Foo 2'));
+		$message1 = Denkmal_Model_Message::createStatic(array('venue' => $venue1, 'text' => 'Foo 1'));
+		$message2 = Denkmal_Model_Message::createStatic(array('venue' => $venue1, 'text' => 'Foo 2'));
 
 		$request = new CM_Request_Get('/api/data', array('host' => 'denkmal.test'));
 		$response = new Denkmal_Response_Api_Data($request);

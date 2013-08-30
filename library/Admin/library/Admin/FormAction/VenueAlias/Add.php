@@ -24,7 +24,7 @@ class Admin_FormAction_VenueAlias_Add extends CM_FormAction_Abstract {
 		$venue = $params->getVenue('venueId');
 		$name = $params->getString('name');
 
-		Denkmal_Model_VenueAlias::create(array('venue' => $venue, 'name' => $name));
+		Denkmal_Model_VenueAlias::createStatic(array('venue' => $venue, 'name' => $name));
 
 		$response->reloadComponent();
 	}

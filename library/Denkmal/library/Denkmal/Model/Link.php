@@ -2,6 +2,8 @@
 
 class Denkmal_Model_Link extends CM_Model_Abstract {
 
+	const TYPE = 105;
+
 	/**
 	 * @return string
 	 */
@@ -36,7 +38,7 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 		return CM_Db_Db::select('denkmal_link', array('*'), array('id' => $this->getId()))->fetch();
 	}
 
-	protected static function _create(array $data) {
+	protected static function _createStatic(array $data) {
 		$data = Denkmal_Params::factory($data);
 		$label = $data->getString('label');
 		$url = $data->getString('url');

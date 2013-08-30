@@ -205,7 +205,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 		CM_Db_Db::delete('denkmal_event', array('id' => $this->getId()));
 	}
 
-	protected static function _create(array $data) {
+	protected static function _createStatic(array $data) {
 		$data = Denkmal_Params::factory($data);
 
 		$venue = $data->getVenue('venue');

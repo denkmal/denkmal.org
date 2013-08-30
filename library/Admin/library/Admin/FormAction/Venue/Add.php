@@ -25,7 +25,7 @@ class Admin_FormAction_Venue_Add extends CM_FormAction_Abstract {
 		$address = $params->has('address') ? $params->getString('address') : null;
 		$coordinates = $params->has('coordinates') ? $params->getGeoPoint('coordinates') : null;
 
-		$venue = Denkmal_Model_Venue::create(array(
+		$venue = Denkmal_Model_Venue::createStatic(array(
 			'name'        => $name,
 			'url'         => $url,
 			'address'     => $address,

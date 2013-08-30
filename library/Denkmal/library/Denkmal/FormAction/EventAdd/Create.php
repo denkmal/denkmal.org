@@ -33,7 +33,7 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 				'address' => $address,
 				'url'     => $url,
 			);
-			$venue = Denkmal_Model_Venue::create($venueData);
+			$venue = Denkmal_Model_Venue::createStatic($venueData);
 		}
 
 		$date = $data->getDateTime('date');
@@ -70,6 +70,6 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			'queued'      => true,
 			'enabled'     => false,
 		);
-		Denkmal_Model_Event::create($eventData);
+		Denkmal_Model_Event::createStatic($eventData);
 	}
 }

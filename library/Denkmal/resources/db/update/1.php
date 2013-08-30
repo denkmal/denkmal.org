@@ -2,7 +2,7 @@
 
 $german = CM_Model_Language::findByAbbreviation('de');
 if (!$german) {
-	$german = CM_Model_Language::create(array('name' => 'Deutsch', 'abbreviation' => 'de', 'enabled' => true));
+	$german = CM_Model_Language::createStatic(array('name' => 'Deutsch', 'abbreviation' => 'de', 'enabled' => true));
 }
 
 $german->setTranslation('You', 'Du');

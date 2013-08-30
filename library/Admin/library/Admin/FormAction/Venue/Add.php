@@ -2,14 +2,8 @@
 
 class Admin_FormAction_Venue_Add extends CM_FormAction_Abstract {
 
-	public function __construct() {
-		parent::__construct('add');
-	}
-
-	public function setup(CM_Form_Abstract $form) {
-		$this->required_fields = array('name');
-
-		parent::setup($form);
+	protected function _getRequiredFields() {
+		return array('name');
 	}
 
 	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {

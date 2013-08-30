@@ -2,15 +2,11 @@
 
 class Admin_Form_VenueAlias extends CM_Form_Abstract {
 
-	public function __construct() {
-		parent::__construct('venueAlias');
-	}
-
 	public function setup() {
-		$this->registerField(new CM_FormField_Hidden('venueId'));
-		$this->registerField(new CM_FormField_Text('name'));
+		$this->registerField('venueId', new CM_FormField_Hidden());
+		$this->registerField('name', new CM_FormField_Text());
 
-		$this->registerAction(new Admin_FormAction_VenueAlias_Add());
+		$this->registerAction(new Admin_FormAction_VenueAlias_Add($this));
 	}
 
 	protected function _renderStart(CM_Params $params) {

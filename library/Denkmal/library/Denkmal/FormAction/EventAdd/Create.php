@@ -2,13 +2,8 @@
 
 class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 
-	public function __construct() {
-		parent::__construct('create');
-	}
-
-	public function setup(CM_Form_Abstract $form) {
-		$this->required_fields = array('venue', 'date', 'fromTime', 'title');
-		parent::setup($form);
+	protected function _getRequiredFields() {
+		return array('venue', 'date', 'fromTime', 'title');
 	}
 
 	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
@@ -20,12 +15,12 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 		}
 	}
 
-	public function process(array $data, CM_Response_View_Form $response, CM_Form_Abstract $form) {
-		$data = Denkmal_Params::factory($data);
-		$venue = $data->get('venue');
+	protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+		/** @var Denkmal_Params $params */
+		$venue = $params->get('venue');
 		if (!$venue instanceof Denkmal_Model_Venue) {
-			$address = $data->has('venueAddress') ? $data->getString('venueAddress') : null;
-			$url = $data->has('venueUrl') ? $data->getString('venueUrl') : null;
+			$address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;
+			$url = $params->has('venueUrl') ? $params->getString('venueUrl') : null;
 			$venueData = array(
 				'name'    => (string) $venue,
 				'queued'  => true,
@@ -36,23 +31,23 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			$venue = Denkmal_Model_Venue::createStatic($venueData);
 		}
 
-		$date = $data->getDateTime('date');
+		$date = $params->getDateTime('date');
 		$from = clone $date;
-		$from->add($data->getDateInterval('fromTime'));
+		$from->add($params->getDateInterval('fromTime'));
 		$until = null;
-		if ($data->has('untilTime')) {
+		if ($params->has('untilTime')) {
 			$until = clone $date;
-			$until->add($data->getDateInterval('untilTime'));
+			$until->add($params->getDateInterval('untilTime'));
 			if ($until < $from) {
 				$until->add(new DateInterval('P1D'));
 			}
 		}
 
-		$title = $data->getString('title');
+		$title = $params->getString('title');
 		$descriptionParts = array();
-		$descriptionParts[] = $data->getString('artists', '');
-		$descriptionParts[] = $data->getString('genres', '');
-		$descriptionParts[] = $data->getString('urls', '');
+		$descriptionParts[] = $params->getString('artists', '');
+		$descriptionParts[] = $params->getString('genres', '');
+		$descriptionParts[] = $params->getString('urls', '');
 		$descriptionParts = array_filter($descriptionParts, 'trim');
 		$description = implode(' ', $descriptionParts);
 

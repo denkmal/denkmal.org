@@ -2,11 +2,8 @@
 
 class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 
-	/**
-	 * @param string $name
-	 */
-	public function __construct($name) {
-		parent::__construct($name, true);
+	public function __construct() {
+		parent::__construct(true);
 	}
 
 	public function validate($userInput, CM_Response_Abstract $response) {
@@ -15,7 +12,6 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 			$userInput = new Denkmal_Model_Venue($userInput);
 		}
 		return $userInput;
-
 	}
 
 	public function getSuggestion($item, CM_Render $render) {
@@ -33,5 +29,4 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 		}
 		return $suggestions;
 	}
-
 }

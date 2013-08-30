@@ -14,7 +14,7 @@
 	{formField name='genres' label={translate 'Genres'}}
 	{formField name='urls' label={translate 'Webseiten'}}
 
-	{formAction action='create' label={translate 'Hinzufügen'}}
+	{formAction action='Create' label={translate 'Hinzufügen'}}
 {/form}
 
 {component name='Denkmal_Component_Event'}

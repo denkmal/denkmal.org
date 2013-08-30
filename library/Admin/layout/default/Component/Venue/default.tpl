@@ -4,8 +4,8 @@
 	{formField name='address' label={translate 'Adresse'}}
 	{formField name='coordinates' label={translate 'Koordinaten'}}
 	{if $venue}
-		{formAction action='edit' label={translate 'Bearbeiten'}}
+		{formAction action='Edit' label={translate 'Bearbeiten'}}
 	{else}
-		{formAction action='add' label={translate 'Hinzufügen'}}
+		{formAction action='Add' label={translate 'Hinzufügen'}}
 	{/if}
 {/form}

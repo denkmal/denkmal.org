@@ -3,7 +3,7 @@
 class Denkmal_Form_SearchContent extends CM_Form_Abstract {
 
 	public function setup() {
-		$this->registerField(new CM_FormField_Text('term'));
-		//		$this->registerAction(new Denkmal_FormAction_SearchContent_Search());
+		$this->registerField('term', new CM_FormField_Text());
+		//		$this->registerAction(new Denkmal_FormAction_SearchContent_Search($this));
 	}
 }

@@ -44,7 +44,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 		return $containingCacheables;
 	}
 
-	protected static function _create(array $data) {
+	protected static function _createStatic(array $data) {
 		$data = Denkmal_Params::factory($data);
 
 		$venue = $data->getVenue('venue');

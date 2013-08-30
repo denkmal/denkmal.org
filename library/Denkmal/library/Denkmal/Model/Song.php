@@ -39,7 +39,7 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
 		return CM_Db_Db::select('denkmal_song', array('*'), array('id' => $this->getId()))->fetch();
 	}
 
-	protected static function _create(array $data) {
+	protected static function _createStatic(array $data) {
 		$data = CM_Params::factory($data);
 
 		$label = $data->getString('label');

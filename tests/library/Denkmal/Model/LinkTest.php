@@ -7,7 +7,7 @@ class Denkmal_Model_LinkTest extends CMTest_TestCase {
 	}
 
 	public function testCreate() {
-		$link = Denkmal_Model_Link::create(array(
+		$link = Denkmal_Model_Link::createStatic(array(
 			'label'     => 'foo',
 			'url'       => 'bar',
 			'automatic' => true,
@@ -18,7 +18,7 @@ class Denkmal_Model_LinkTest extends CMTest_TestCase {
 	}
 
 	public function testCreateDefaultValues() {
-		$link = Denkmal_Model_Link::create(array(
+		$link = Denkmal_Model_Link::createStatic(array(
 			'label'     => 'foo',
 			'url'       => 'bar',
 		));
@@ -26,7 +26,7 @@ class Denkmal_Model_LinkTest extends CMTest_TestCase {
 	}
 
 	public function testSetAutomatic() {
-		$link = Denkmal_Model_Link::create(array(
+		$link = Denkmal_Model_Link::createStatic(array(
 			'label'     => 'foo',
 			'url'       => 'bar',
 			'automatic' => true,

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "399c4b9169ebc52086e2a7cb6c71791e",
+    "hash": "60680c72677313e4b3eb5119bc3bc066",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,11 +56,11 @@
         },
         {
             "name": "cargomedia/CM",
-            "version": "1.1.122",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:cargomedia/CM.git",
-                "reference": "1.1.122"
+                "reference": "1.2.3"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -72,6 +72,9 @@
                 "smarty/smarty": "3.1.*",
                 "wurfl/tera-wurfl": "2.1.5"
             },
+            "bin": [
+                "scripts/cm.php"
+            ],
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -80,7 +83,7 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "time": "2013-06-09 11:58:34"
+            "time": "2013-08-29 16:37:43"
         },
         {
             "name": "easybook/geshi",
@@ -275,17 +278,17 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.13",
+            "version": "v3.1.14",
             "source": {
                 "type": "svn",
                 "url": "http://smarty-php.googlecode.com/svn",
-                "reference": "/tags/v3.1.13/@4699"
+                "reference": "/tags/v3.1.14/@4752"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/smarty-smarty-v3.1.13-830af7.zip",
-                "reference": "v3.1.13",
-                "shasum": "54ec0787428f2bd2f70791909df0222d75a0481b"
+                "url": "http://satis.cargomedia.ch/dist/dist/smarty-smarty-v3.1.14-a8f22b.zip",
+                "reference": "v3.1.14",
+                "shasum": "fff8de686fbb066469514e699046c54ebd11f2ce"
             },
             "require": {
                 "php": ">=5.2"
@@ -294,7 +297,8 @@
             "autoload": {
                 "classmap": [
                     "distribution/libs/Smarty.class.php",
-                    "distribution/libs/SmartyBC.class.php"
+                    "distribution/libs/SmartyBC.class.php",
+                    "distribution/libs/sysplugins/smarty_security.php"
                 ]
             },
             "license": [
@@ -319,7 +323,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-01-26 12:03:52"
+            "time": "2013-07-02 16:38:47"
         },
         {
             "name": "wurfl/tera-wurfl",

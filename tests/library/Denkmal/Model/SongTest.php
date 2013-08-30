@@ -5,7 +5,7 @@ class Denkmal_Model_SongTest extends CMTest_TestCase {
 	public function testCreate() {
 		$label = 'foo';
 		$file = CM_File::createTmp();
-		$song = Denkmal_Model_Song::create(array(
+		$song = Denkmal_Model_Song::createStatic(array(
 			'label' => $label,
 			'file' => $file,
 		));
@@ -16,7 +16,7 @@ class Denkmal_Model_SongTest extends CMTest_TestCase {
 	}
 
 	public function testSetLabel() {
-		$song = Denkmal_Model_Song::create(array(
+		$song = Denkmal_Model_Song::createStatic(array(
 			'label' => 'foo',
 			'file' => CM_File::createTmp(),
 		));
@@ -29,7 +29,7 @@ class Denkmal_Model_SongTest extends CMTest_TestCase {
 	 * @expectedException CM_Exception_Nonexistent
 	 */
 	public function testDelete() {
-		$song = Denkmal_Model_Song::create(array(
+		$song = Denkmal_Model_Song::createStatic(array(
 			'label' => 'foo',
 			'file' => CM_File::createTmp(),
 		));

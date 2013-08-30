@@ -3,7 +3,7 @@
 class Denkmal_ParamsTest extends CMTest_TestCase {
 
 	public function testGetVenue() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Foo', 'enabled' => true, 'queued' => false));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Foo', 'enabled' => true, 'queued' => false));
 
 		$params = new Denkmal_Params(array('venue1' => $venue, 'venue2' => $venue->getId()));
 
@@ -13,7 +13,7 @@ class Denkmal_ParamsTest extends CMTest_TestCase {
 
 	public function testGetSong() {
 		$file = CM_File::createTmp();
-		$song = Denkmal_Model_Song::create(array('label' => 'Foo', 'file' => $file));
+		$song = Denkmal_Model_Song::createStatic(array('label' => 'Foo', 'file' => $file));
 
 		$params = new Denkmal_Params(array('song1' => $song, 'song2' => $song->getId()));
 

@@ -2,19 +2,15 @@
 
 class Admin_Form_Venue extends CM_Form_Abstract {
 
-	public function __construct() {
-		parent::__construct('venue');
-	}
-
 	public function setup() {
-		$this->registerField(new CM_FormField_Hidden('venueId'));
-		$this->registerField(new CM_FormField_Text('name'));
-		$this->registerField(new CM_FormField_Url('url'));
-		$this->registerField(new CM_FormField_Text('address'));
-		$this->registerField(new CM_FormField_GeoPoint('coordinates'));
+		$this->registerField('venueId', new CM_FormField_Hidden());
+		$this->registerField('name', new CM_FormField_Text());
+		$this->registerField('url', new CM_FormField_Url());
+		$this->registerField('address', new CM_FormField_Text());
+		$this->registerField('coordinates', new CM_FormField_GeoPoint());
 
-		$this->registerAction(new Admin_FormAction_Venue_Add());
-		$this->registerAction(new Admin_FormAction_Venue_Edit());
+		$this->registerAction(new Admin_FormAction_Venue_Add($this));
+		$this->registerAction(new Admin_FormAction_Venue_Edit($this));
 	}
 
 	protected function _renderStart(CM_Params $params) {

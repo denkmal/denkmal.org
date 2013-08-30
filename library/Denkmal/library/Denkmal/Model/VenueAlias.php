@@ -40,7 +40,7 @@ class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
 		return new self($venueAliasId);
 	}
 
-	protected static function _create(array $data) {
+	protected static function _createStatic(array $data) {
 		$data = Denkmal_Params::factory($data);
 
 		$name = $data->getString('name');

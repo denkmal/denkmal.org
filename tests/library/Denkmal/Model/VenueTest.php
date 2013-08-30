@@ -7,7 +7,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testCreate() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
 
 		$this->assertSame('Example', $venue->getName());
 		$this->assertSame(null, $venue->getAddress());
@@ -18,7 +18,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetName() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Foo', 'queued' => true, 'enabled' => false));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Foo', 'queued' => true, 'enabled' => false));
 		$this->assertSame('Foo', $venue->getName());
 
 		$venue->setName('Bar');
@@ -26,7 +26,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetAddress() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false, 'address' => 'Foo'));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false, 'address' => 'Foo'));
 		$this->assertSame('Foo', $venue->getAddress());
 
 		$venue->setAddress('Bar');
@@ -35,7 +35,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
 	public function testGetSetCoordinates() {
 		$coordinates = new CM_Geo_Point(1, 2);
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false, 'coordinates' => $coordinates));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false, 'coordinates' => $coordinates));
 		$this->assertEquals($coordinates, $venue->getCoordinates());
 
 		$venue->setCoordinates(null);
@@ -47,7 +47,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetQueued() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
 		$this->assertSame(true, $venue->getQueued());
 
 		$venue->setQueued(false);
@@ -55,7 +55,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetEnabled() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => true));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => true));
 		$this->assertSame(true, $venue->getEnabled());
 
 		$venue->setEnabled(false);
@@ -63,7 +63,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetHidden() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => true));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => true));
 		$this->assertSame(false, $venue->getHidden());
 
 		$venue->setHidden(true);
@@ -74,14 +74,14 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	 * @expectedException CM_Exception_Nonexistent
 	 */
 	public function testDelete() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => true));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => true));
 		$venue->delete();
 
 		new Denkmal_Model_Venue($venue->getId());
 	}
 
 	public function testFindByName() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Foo', 'queued' => true, 'enabled' => false));
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Foo', 'queued' => true, 'enabled' => false));
 
 		$this->assertEquals($venue, Denkmal_Model_Venue::findByName('Foo'));
 		$this->assertNull(Denkmal_Model_Venue::findByName('Bar'));

@@ -14,12 +14,12 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 		$future = clone $today;
 		$future->add(new DateInterval('P2D'));
 
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Foo', 'queued' => false, 'enabled' => true));
-		$event1 = Denkmal_Model_Event::create(
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Foo', 'queued' => false, 'enabled' => true));
+		$event1 = Denkmal_Model_Event::createStatic(
 			array('venue' => $venue, 'description' => 'Foo 1', 'from' => $future, 'queued' => false, 'enabled' => true, 'hidden' => false));
-		$event2 = Denkmal_Model_Event::create(
+		$event2 = Denkmal_Model_Event::createStatic(
 			array('venue' => $venue, 'description' => 'Foo 2', 'from' => $past, 'queued' => false, 'enabled' => true, 'hidden' => false));
-		$event3 = Denkmal_Model_Event::create(
+		$event3 = Denkmal_Model_Event::createStatic(
 			array('venue' => $venue, 'description' => 'Foo 3', 'from' => $today, 'queued' => false, 'enabled' => true, 'hidden' => false));
 
 		$paging = new Denkmal_Paging_Event_Date($today);
@@ -30,12 +30,12 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 		$today = new DateTime();
 		$today->setTime(20, 0, 0);
 
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Foo', 'queued' => false, 'enabled' => true));
-		$event1 = Denkmal_Model_Event::create(
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Foo', 'queued' => false, 'enabled' => true));
+		$event1 = Denkmal_Model_Event::createStatic(
 			array('venue' => $venue, 'description' => 'Foo 1', 'from' => $today, 'queued' => false, 'enabled' => true, 'hidden' => true));
-		$event2 = Denkmal_Model_Event::create(
+		$event2 = Denkmal_Model_Event::createStatic(
 			array('venue' => $venue, 'description' => 'Foo 2', 'from' => $today, 'queued' => false, 'enabled' => true, 'hidden' => false));
-		$event3 = Denkmal_Model_Event::create(
+		$event3 = Denkmal_Model_Event::createStatic(
 			array('venue' => $venue, 'description' => 'Foo 3', 'from' => $today, 'queued' => false, 'enabled' => false, 'hidden' => false));
 
 		$paging = new Denkmal_Paging_Event_Date($today, true);

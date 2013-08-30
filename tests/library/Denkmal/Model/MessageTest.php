@@ -8,8 +8,8 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
 
 	public function testCreate() {
 		$text = 'foo bar';
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$message = Denkmal_Model_Message::create(array(
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$message = Denkmal_Model_Message::createStatic(array(
 			'text' => $text,
 			'venue' => $venue
 		));
@@ -22,8 +22,8 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
 	 * @expectedException CM_Exception_Nonexistent
 	 */
 	public function testOnDelete() {
-		$venue = Denkmal_Model_Venue::create(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$message = Denkmal_Model_Message::create(array(
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$message = Denkmal_Model_Message::createStatic(array(
 			'text' => 'foo',
 			'venue' => $venue
 		));

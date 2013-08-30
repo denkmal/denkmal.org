@@ -2,7 +2,7 @@
 
 $german = CM_Model_Language::findByAbbreviation('de');
 if (!$german) {
-	$german = CM_Model_Language::create(array('name' => 'Deutsch', 'abbreviation' => 'de', 'enabled' => true));
+	$german = CM_Model_Language::createStatic(array('name' => 'Deutsch', 'abbreviation' => 'de', 'enabled' => true));
 }
 
 $german->setTranslation('You', 'Du');
@@ -11,6 +11,7 @@ $german->setTranslation('Cancel', 'Abbrechen');
 $german->setTranslation('Confirmation', 'Rückfrage');
 $german->setTranslation('{$label} is required.', '{$label} wird benötigt.', array('label'));
 $german->setTranslation('Required', 'Benötigt');
+$german->setTranslation('Please Confirm', 'Bitte bestätigen');
 $german->setTranslation('.date.timeago.prefixAgo', 'vor');
 $german->setTranslation('.date.timeago.prefixFromNow', 'in');
 $german->setTranslation('.date.timeago.suffixAgo', '');

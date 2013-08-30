@@ -189,7 +189,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 		return null;
 	}
 
-	protected static function _create(array $data) {
+	protected static function _createStatic(array $data) {
 		$data = CM_Params::factory($data);
 
 		$name = $data->getString('name');

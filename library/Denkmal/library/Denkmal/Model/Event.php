@@ -8,14 +8,14 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 * @return Denkmal_Model_Venue
 	 */
 	public function getVenue() {
-		return $this->_get('venueId');
+		return $this->_get('venue');
 	}
 
 	/**
 	 * @param Denkmal_Model_Venue $venue
 	 */
 	public function setVenue(Denkmal_Model_Venue $venue) {
-		$this->_set('venueId', $venue);
+		$this->_set('venue', $venue);
 	}
 
 	/**
@@ -196,12 +196,12 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 
 	protected function _getSchema() {
 		return new CM_Model_Schema_Definition(array(
-			'venue'     => array('type' => 'Denkmal_Model_Venue'),
+			'venue'       => array('type' => 'Denkmal_Model_Venue'),
 			'from'        => array('type' => 'DateTime'),
 			'until'       => array('type' => 'DateTime', 'optional' => true),
 			'title'       => array('type' => 'string', 'optional' => true),
 			'description' => array('type' => 'string'),
-			'songId'      => array('type' => 'Denkmal_Model_Song', 'optional' => true),
+			'song'        => array('type' => 'Denkmal_Model_Song', 'optional' => true),
 			'queued'      => array('type' => 'boolean'),
 			'enabled'     => array('type' => 'boolean'),
 			'hidden'      => array('type' => 'boolean'),
@@ -226,7 +226,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 		$songId = isset($song) ? $song->getId() : null;
 
 		$id = CM_Db_Db::insert('denkmal_event', array(
-			'venueId'     => $venue->getId(),
+			'venue'       => $venue->getId(),
 			'from'        => $from,
 			'until'       => $until,
 			'title'       => $title,

@@ -226,7 +226,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 
 		$songId = isset($song) ? $song->getId() : null;
 
-		$id = CM_Db_Db::insert('denkmal_event', array(
+		$id = CM_Db_Db::insert('denkmal_model_event', array(
 			'venue'       => $venue->getId(),
 			'from'        => $from,
 			'until'       => $until,

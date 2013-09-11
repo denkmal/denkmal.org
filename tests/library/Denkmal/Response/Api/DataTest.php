@@ -18,17 +18,17 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
 
 	public function testProcess() {
 		$coordinates1 = new CM_Geo_Point(12.1, 13.3);
-		$venue1 = Denkmal_Model_Venue::createStatic(array('name'    => 'Foo 1', 'queued' => true, 'enabled' => false, 'url' => 'http://www.example.com',
-													'address' => 'Address 1', 'coordinates' => $coordinates1));
-		$venue2 = Denkmal_Model_Venue::createStatic(array('name' => 'Foo 2', 'queued' => true, 'enabled' => false));
+		$venue1 = Denkmal_Model_Venue::create('Foo 1', true, false, false, 'http://www.example.com', 'Address 1', $coordinates1);
+		$venue2 = Denkmal_Model_Venue::create('Foo 2', true, false, false);
 
 		$now = new DateTime();
 		$file1 = CM_File::createTmp();
 		$song1 = Denkmal_Model_Song::create('Song 1', $file1);
-		$event1 = Denkmal_Model_Event::createStatic(array('venue'   => $venue2, 'from' => $now, 'until' => $now, 'description' => 'Foo', 'queued' => false,
-													'enabled' => true, 'song' => $song1));
+		$event1 = Denkmal_Model_Event::createStatic(array('venue'   => $venue2, 'from' => $now, 'until' => $now, 'description' => 'Foo',
+														  'queued'  => false,
+														  'enabled' => true, 'song' => $song1));
 		$event2 = Denkmal_Model_Event::createStatic(array('venue'   => $venue1, 'from' => $now, 'description' => 'Foo', 'queued' => false,
-													'enabled' => true));
+														  'enabled' => true));
 
 		$message1 = Denkmal_Model_Message::create($venue1, 'Foo 1');
 		$message2 = Denkmal_Model_Message::create($venue1, 'Foo 2');

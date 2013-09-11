@@ -162,15 +162,15 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 
 	/**
 	 * @param string            $name
-	 * @param string|null       $url
-	 * @param string|null       $address
-	 * @param CM_Geo_Point|null $coordinates
 	 * @param boolean           $queued
 	 * @param boolean           $enabled
 	 * @param boolean           $hidden
+	 * @param string|null       $url
+	 * @param string|null       $address
+	 * @param CM_Geo_Point|null $coordinates
 	 * @return Denkmal_Model_Venue
 	 */
-	public static function create($name, $url, $address, CM_Geo_Point $coordinates = null, $queued, $enabled, $hidden) {
+	public static function create($name, $queued, $enabled, $hidden, $url, $address, CM_Geo_Point $coordinates = null) {
 		$venue = new self();
 		$venue->setName($name);
 		$venue->setUrl($url);

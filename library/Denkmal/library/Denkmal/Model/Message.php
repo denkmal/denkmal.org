@@ -32,10 +32,6 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 		return $this->_get('text');
 	}
 
-	public function getPaging() {
-		return new Denkmal_Paging_Message_All();
-	}
-
 	/**
 	 * @param Denkmal_Model_Venue $venue
 	 */

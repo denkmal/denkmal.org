@@ -15,12 +15,9 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 		$future->add(new DateInterval('P2D'));
 
 		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
-		$event1 = Denkmal_Model_Event::createStatic(
-			array('venue' => $venue, 'description' => 'Foo 1', 'from' => $future, 'queued' => false, 'enabled' => true, 'hidden' => false));
-		$event2 = Denkmal_Model_Event::createStatic(
-			array('venue' => $venue, 'description' => 'Foo 2', 'from' => $past, 'queued' => false, 'enabled' => true, 'hidden' => false));
-		$event3 = Denkmal_Model_Event::createStatic(
-			array('venue' => $venue, 'description' => 'Foo 3', 'from' => $today, 'queued' => false, 'enabled' => true, 'hidden' => false));
+		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $future);
+		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $past);
+		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
 
 		$paging = new Denkmal_Paging_Event_Date($today);
 		$this->assertEquals(array($event3), $paging);
@@ -31,12 +28,10 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 		$today->setTime(20, 0, 0);
 
 		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
-		$event1 = Denkmal_Model_Event::createStatic(
-			array('venue' => $venue, 'description' => 'Foo 1', 'from' => $today, 'queued' => false, 'enabled' => true, 'hidden' => true));
-		$event2 = Denkmal_Model_Event::createStatic(
-			array('venue' => $venue, 'description' => 'Foo 2', 'from' => $today, 'queued' => false, 'enabled' => true, 'hidden' => false));
-		$event3 = Denkmal_Model_Event::createStatic(
-			array('venue' => $venue, 'description' => 'Foo 3', 'from' => $today, 'queued' => false, 'enabled' => false, 'hidden' => false));
+		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+		$event1->setHidden(true);
+		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', false, false, $today);
 
 		$paging = new Denkmal_Paging_Event_Date($today, true);
 		$this->assertEquals(array($event2), $paging);

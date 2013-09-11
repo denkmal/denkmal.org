@@ -55,16 +55,6 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			$description = $title;
 			$title = null;
 		}
-
-		$eventData = array(
-			'venue'       => $venue,
-			'from'        => $from,
-			'until'       => $until,
-			'title'       => $title,
-			'description' => $description,
-			'queued'      => true,
-			'enabled'     => false,
-		);
-		Denkmal_Model_Event::createStatic($eventData);
+		Denkmal_Model_Event::create($venue, $description, false, true, $from, $until, $title, null);
 	}
 }

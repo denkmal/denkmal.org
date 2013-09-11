@@ -4,7 +4,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 DROP TABLE IF EXISTS `denkmal_model_message`;
 DROP TABLE IF EXISTS `denkmal_model_event`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
-DROP TABLE IF EXISTS `denkmal_venue`;
+DROP TABLE IF EXISTS `denkmal_model_venue`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_model_link`;
 
@@ -17,7 +17,7 @@ CREATE TABLE `denkmal_model_song` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `denkmal_venue` (
+CREATE TABLE `denkmal_model_venue` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `url` varchar(200) DEFAULT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `denkmal_model_venuealias` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `venue` (`venue`),
-  CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -65,7 +65,7 @@ CREATE TABLE `denkmal_model_event` (
   KEY `enabled` (`enabled`),
   KEY `hidden` (`hidden`),
   KEY `song` (`song`),
-  CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`song`) REFERENCES `denkmal_model_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -78,7 +78,7 @@ CREATE TABLE `denkmal_model_message` (
   PRIMARY KEY (`id`),
   KEY `venue` (`venue`),
   KEY `created` (`created`),
-  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

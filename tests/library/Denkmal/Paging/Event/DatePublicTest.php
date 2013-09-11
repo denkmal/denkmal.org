@@ -14,7 +14,7 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 		$future = clone $today;
 		$future->add(new DateInterval('P2D'));
 
-		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
+		$venue = Denkmal_Model_Venue::create('Foo', true, false, false);
 		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $future);
 		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $past);
 		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
@@ -27,7 +27,7 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 		$today = new DateTime();
 		$today->setTime(20, 0, 0);
 
-		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
+		$venue = Denkmal_Model_Venue::create('Foo', true, false, false);
 		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
 		$event1->setHidden(true);
 		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);

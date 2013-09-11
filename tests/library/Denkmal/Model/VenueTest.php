@@ -37,7 +37,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
 	public function testGetSetCoordinates() {
 		$coordinates = new CM_Geo_Point(1, 2);
-		$venue = Denkmal_Model_Venue::create('Example', 'Foo', null, $coordinates, true, false, false);
+		$venue = Denkmal_Model_Venue::create('Example', null, null, $coordinates, true, false, false);
 		$this->assertEquals($coordinates, $venue->getCoordinates());
 
 		$venue->setCoordinates(null);
@@ -49,7 +49,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetQueued() {
-		$venue = Denkmal_Model_Venue::create('Example', 'Foo', null, null, true, false, false);
+		$venue = Denkmal_Model_Venue::create('Example', null, null, null, true, false, false);
 		$this->assertSame(true, $venue->getQueued());
 
 		$venue->setQueued(false);
@@ -57,7 +57,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetEnabled() {
-		$venue = Denkmal_Model_Venue::create('Example', 'Foo', null, null, true, true, false);
+		$venue = Denkmal_Model_Venue::create('Example', null, null, null, true, true, false);
 		$this->assertSame(true, $venue->getEnabled());
 
 		$venue->setEnabled(false);
@@ -65,7 +65,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetHidden() {
-		$venue = Denkmal_Model_Venue::create('Example', 'Foo', null, null, true, true, false);
+		$venue = Denkmal_Model_Venue::create('Example', null, null, null, true, true, false);
 		$this->assertSame(false, $venue->getHidden());
 
 		$venue->setHidden(true);

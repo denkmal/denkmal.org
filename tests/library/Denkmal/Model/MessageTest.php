@@ -9,10 +9,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
 	public function testCreate() {
 		$text = 'foo bar';
 		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$message = Denkmal_Model_Message::createStatic(array(
-			'text' => $text,
-			'venue' => $venue
-		));
+		$message = Denkmal_Model_Message::create($venue, $text);
 		$this->assertEquals($venue, $message->getVenue());
 		$this->assertSame($text, $message->getText());
 		$this->assertSameTime(time(), $message->getCreated());
@@ -23,10 +20,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
 	 */
 	public function testOnDelete() {
 		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$message = Denkmal_Model_Message::createStatic(array(
-			'text' => 'foo',
-			'venue' => $venue
-		));
+		$message = Denkmal_Model_Message::create($venue, 'foo');
 		$message->delete();
 		new Denkmal_Model_Message($message->getId());
 	}

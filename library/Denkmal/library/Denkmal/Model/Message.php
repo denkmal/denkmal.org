@@ -57,7 +57,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 
 	protected function _getSchema() {
 		return new CM_Model_Schema_Definition(array(
-			'venue' => array('type' => 'Denkmal_Model_Venue'),
+			'venue'   => array('type' => 'Denkmal_Model_Venue'),
 			'text'    => array('type' => 'string'),
 			'created' => array('type' => 'int'),
 		));

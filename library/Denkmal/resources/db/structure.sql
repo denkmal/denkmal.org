@@ -5,12 +5,12 @@ DROP TABLE IF EXISTS `denkmal_message`;
 DROP TABLE IF EXISTS `denkmal_event`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_venue`;
-DROP TABLE IF EXISTS `denkmal_song`;
+DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_link`;
 
 
 
-CREATE TABLE `denkmal_song` (
+CREATE TABLE `denkmal_model_song` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `label` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
@@ -66,7 +66,7 @@ CREATE TABLE `denkmal_event` (
   KEY `hidden` (`hidden`),
   KEY `songId` (`songId`),
   CONSTRAINT `denkmal_event__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `denkmal_event__song` FOREIGN KEY (`songId`) REFERENCES `denkmal_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_event__song` FOREIGN KEY (`songId`) REFERENCES `denkmal_model_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

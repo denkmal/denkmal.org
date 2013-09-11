@@ -209,36 +209,4 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 			'starred'     => array('type' => 'boolean'),
 		));
 	}
-
-	protected static function _createStatic(array $data) {
-		$data = Denkmal_Params::factory($data);
-
-		$venue = $data->getVenue('venue');
-		$from = $data->getDateTime('from')->getTimestamp();
-		$until = $data->has('until') ? $data->getDateTime('until')->getTimestamp() : null;
-		$description = $data->getString('description');
-		$title = $data->has('title') ? $data->getString('title') : null;
-		$song = $data->has('song') ? $data->getSong('song') : null;
-		$queued = $data->getBoolean('queued');
-		$enabled = $data->getBoolean('enabled');
-		$hidden = $data->getBoolean('hidden', false);
-		$star = $data->getBoolean('starred', false);
-
-		$songId = isset($song) ? $song->getId() : null;
-
-		$id = CM_Db_Db::insert('denkmal_model_event', array(
-			'venue'       => $venue->getId(),
-			'from'        => $from,
-			'until'       => $until,
-			'title'       => $title,
-			'description' => $description,
-			'songId'      => $songId,
-			'queued'      => $queued,
-			'enabled'     => $enabled,
-			'hidden'      => $hidden,
-			'starred'     => $star,
-		));
-
-		return new static($id);
-	}
 }

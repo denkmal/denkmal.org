@@ -11,7 +11,7 @@ class Denkmal_Response_Api_Message extends Denkmal_Response_Api_Abstract {
 		$venue = $this->_params->getVenue('venue');
 		$text = $this->_params->getString('text');
 
-		Denkmal_Model_Message::createStatic(array('venue' => $venue, 'text' => $text));
+		Denkmal_Model_Message::create($venue, $text);
 	}
 
 	public static function match(CM_Request_Abstract $request) {

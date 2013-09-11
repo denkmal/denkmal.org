@@ -30,6 +30,6 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
 		$message = $messageList->getItem(0);
 		$this->assertEquals($venue, $message->getVenue());
 		$this->assertSame('hallo test', $message->getText());
-		$this->assertSameTime(time(), $message->getCreated());
+		$this->assertSameTime(time(), $message->getCreated()->getTimestamp());
 	}
 }

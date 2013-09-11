@@ -2,143 +2,103 @@
 
 class Denkmal_Model_EventTest extends CMTest_TestCase {
 
+	/** @var Denkmal_Model_Event */
+	private $_event;
+
+	protected function setUp() {
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$this->_event = Denkmal_Model_Event::create($venue, 'Foo', true, false, new DateTime());
+	}
+
 	protected function tearDown() {
 		CMTest_TH::clearEnv();
 	}
 
 	public function testCreate() {
-		$now = new DateTime();
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => $now, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-
-		$this->assertEquals($venue, $event->getVenue());
-		$this->assertEquals($now, $event->getFrom());
-		$this->assertSame(null, $event->getUntil());
-		$this->assertSame('Foo', $event->getDescription());
-		$this->assertSame(null, $event->getTitle());
-		$this->assertSame(null, $event->getSong());
-		$this->assertSame(false, $event->getQueued());
-		$this->assertSame(true, $event->getEnabled());
-		$this->assertSame(false, $event->getHidden());
-		$this->assertSame(false, $event->getStarred());
+		$this->assertInstanceOf('Denkmal_Model_Venue', $this->_event->getVenue());
+		$this->assertInstanceOf('DateTime', $this->_event->getFrom());
+		$this->assertSame(null, $this->_event->getUntil());
+		$this->assertSame('Foo', $this->_event->getDescription());
+		$this->assertSame(null, $this->_event->getTitle());
+		$this->assertSame(null, $this->_event->getSong());
+		$this->assertSame(false, $this->_event->getQueued());
+		$this->assertSame(true, $this->_event->getEnabled());
+		$this->assertSame(false, $this->_event->getHidden());
+		$this->assertSame(false, $this->_event->getStarred());
 	}
 
 	public function testGetSetVenue() {
-		$now = new DateTime();
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => $now, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$this->assertEquals($venue, $event->getVenue());
-
-		$venue2 = Denkmal_Model_Venue::createStatic(array('name' => 'Example2', 'queued' => true, 'enabled' => false));
-		$event->setVenue($venue2);
-		$this->assertEquals($venue2, $event->getVenue());
+		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example2', 'queued' => true, 'enabled' => false));
+		$this->assertNotEquals($venue, $this->_event->getVenue());
+		$this->_event->setVenue($venue);
+		$this->assertEquals($venue, $this->_event->getVenue());
 	}
 
 	public function testGetSetFrom() {
-		$now = new DateTime();
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => $now, 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$this->assertEquals($now, $event->getFrom());
-
-		$later = clone $now;
+		$later = new DateTime();
 		$later->add(new DateInterval('P1D'));
-		$event->setFrom($later);
-		$this->assertEquals($later, $event->getFrom());
+		$this->_event->setFrom($later);
+		$this->assertEquals($later, $this->_event->getFrom());
 	}
 
 	public function testGetSetUntil() {
 		$now = new DateTime();
-		$later = clone $now;
-		$later->add(new DateInterval('P1D'));
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => $now, 'description' => 'Foo', 'queued' => false, 'enabled' => true, 'until' => $later));
-		$this->assertEquals($later, $event->getUntil());
 
-		$event->setUntil(null);
-		$this->assertEquals(null, $event->getUntil());
+		$this->_event->setUntil(null);
+		$this->assertEquals(null, $this->_event->getUntil());
 
-		$event->setUntil($now);
-		$this->assertEquals($now, $event->getUntil());
+		$this->_event->setUntil($now);
+		$this->assertEquals($now, $this->_event->getUntil());
 	}
 
 	public function testGetSetDescription() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$this->assertSame('Foo', $event->getDescription());
-
-		$event->setDescription('Bar');
-		$this->assertSame('Bar', $event->getDescription());
+		$this->_event->setDescription('Bar');
+		$this->assertSame('Bar', $this->_event->getDescription());
 	}
 
 	public function testGetSetTitle() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true, 'title' => 'Foo'));
-		$this->assertSame('Foo', $event->getTitle());
+		$this->_event->setTitle(null);
+		$this->assertSame(null, $this->_event->getTitle());
 
-		$event->setTitle(null);
-		$this->assertSame(null, $event->getTitle());
-
-		$event->setTitle('Bar');
-		$this->assertSame('Bar', $event->getTitle());
+		$this->_event->setTitle('Bar');
+		$this->assertSame('Bar', $this->_event->getTitle());
 	}
 
 	public function testGetSetSong() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$this->assertSame(null, $event->getSong());
-
 		$song = Denkmal_Model_Song::create('Foo', CM_File::createTmp());
-		$event->setSong($song);
-		$this->assertEquals($song, $event->getSong());
+		$this->_event->setSong($song);
+		$this->assertEquals($song, $this->_event->getSong());
 
-		$event->setSong(null);
-		$this->assertSame(null, $event->getSong());
+		$this->_event->setSong(null);
+		$this->assertSame(null, $this->_event->getSong());
 	}
 
 	public function testGetSetQueued() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => true, 'enabled' => true));
-		$this->assertSame(true, $event->getQueued());
-
-		$event->setQueued(false);
-		$this->assertSame(false, $event->getQueued());
+		$this->_event->setQueued(true);
+		$this->assertSame(true, $this->_event->getQueued());
 	}
 
 	public function testGetSetEnabled() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$this->assertSame(true, $event->getEnabled());
-
-		$event->setEnabled(false);
-		$this->assertSame(false, $event->getEnabled());
+		$this->_event->setEnabled(false);
+		$this->assertSame(false, $this->_event->getEnabled());
 	}
 
 	public function testGetSetHidden() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$this->assertSame(false, $event->getHidden());
-
-		$event->setHidden(true);
-		$this->assertSame(true, $event->getHidden());
+		$this->_event->setHidden(true);
+		$this->assertSame(true, $this->_event->getHidden());
 	}
 
 	public function testGetSetStarred() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$this->assertSame(false, $event->getStarred());
-
-		$event->setStarred(true);
-		$this->assertSame(true, $event->getStarred());
+		$this->_event->setStarred(true);
+		$this->assertSame(true, $this->_event->getStarred());
 	}
 
 	/**
 	 * @expectedException CM_Exception_Nonexistent
 	 */
 	public function testDelete() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true));
-		$event->delete();
+		$this->_event->delete();
 
-		new Denkmal_Model_Event($event->getId());
+		new Denkmal_Model_Event($this->_event->getId());
 	}
 }

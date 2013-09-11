@@ -15,7 +15,7 @@ class Denkmal_Paging_Event_Venue extends Denkmal_Paging_Event_Abstract {
 		if ($publicOnly) {
 			$where .= ' AND `enabled` = 1 AND `hidden` = 0';
 		}
-		$source = new CM_PagingSource_Sql('id', 'denkmal_event', $where, '`starred`, `id`');
+		$source = new CM_PagingSource_Sql('id', 'denkmal_model_event', $where, '`starred`, `id`');
 		parent::__construct($source);
 	}
 }

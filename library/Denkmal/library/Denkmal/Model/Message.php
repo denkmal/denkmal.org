@@ -32,6 +32,10 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 		return $this->_get('text');
 	}
 
+	public function getPaging() {
+		return new Denkmal_Paging_Message_All();
+	}
+
 	/**
 	 * @param Denkmal_Model_Venue $venue
 	 */
@@ -61,6 +65,12 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 			'text'    => array('type' => 'string'),
 			'created' => array('type' => 'int'),
 		));
+	}
+
+	protected function _getContainingCacheables() {
+		$containingCacheables = parent::_getContainingCacheables();
+		$containingCacheables[] = new Denkmal_Paging_Message_All();
+		return $containingCacheables;
 	}
 
 	public static function create(Denkmal_Model_Venue $venue, $text) {

@@ -188,6 +188,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 		$event->setHidden((boolean) $hidden);
 		$event->setStarred((boolean) $starred);
 		$event->commit();
+		return $event;
 	}
 
 	public static function getPersistenceClass() {

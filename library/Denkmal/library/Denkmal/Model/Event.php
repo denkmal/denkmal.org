@@ -8,175 +8,140 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 * @return Denkmal_Model_Venue
 	 */
 	public function getVenue() {
-		$venueId = $this->_get('venueId');
-		return new Denkmal_Model_Venue($venueId);
+		return $this->_get('venue');
 	}
 
 	/**
 	 * @param Denkmal_Model_Venue $venue
 	 */
 	public function setVenue(Denkmal_Model_Venue $venue) {
-		CM_Db_Db::update('denkmal_event', array('venueId' => $venue->getId()), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('venueId', $venue);
 	}
 
 	/**
 	 * @return DateTime
 	 */
 	public function getFrom() {
-		$date = new DateTime();
-		$date->setTimestamp($this->_get('from'));
-		return $date;
+		return $this->_get('from');
 	}
 
 	/**
 	 * @param DateTime $from
 	 */
 	public function setFrom(DateTime $from) {
-		CM_Db_Db::update('denkmal_event', array('from' => $from->getTimestamp()), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('from', $from);
 	}
 
 	/**
 	 * @return DateTime|null
 	 */
 	public function getUntil() {
-		$until = $this->_get('until');
-		if (null === $until) {
-			return null;
-		}
-		$date = new DateTime();
-		$date->setTimestamp($until);
-		return $date;
+		return $this->_get('until');
 	}
 
 	/**
 	 * @param DateTime|null $until
 	 */
 	public function setUntil(DateTime $until = null) {
-		$until = isset($until) ? $until->getTimestamp() : null;
-		CM_Db_Db::update('denkmal_event', array('until' => $until), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('until', $until);
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getDescription() {
-		return (string) $this->_get('description');
+		return $this->_get('description');
 	}
 
 	/**
 	 * @param string $description
 	 */
 	public function setDescription($description) {
-		$description = (string) $description;
-		CM_Db_Db::update('denkmal_event', array('description' => $description), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('description', $description);
 	}
 
 	/**
 	 * @return string|null
 	 */
 	public function getTitle() {
-		$title = $this->_get('title');
-		if (null === $title) {
-			return null;
-		}
-		return (string) $title;
+		return $this->_get('title');
 	}
 
 	/**
 	 * @param string|null $title
 	 */
 	public function setTitle($title) {
-		$title = isset($title) ? (string) $title : null;
-		CM_Db_Db::update('denkmal_event', array('title' => $title), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('title', $title);
 	}
 
 	/**
 	 * @return Denkmal_Model_Song|null
 	 */
 	public function getSong() {
-		$songId = $this->_get('songId');
-		if (null === $songId) {
-			return null;
-		}
-		return new Denkmal_Model_Song($songId);
+		$this->_get('songId');
 	}
 
 	/**
 	 * @param Denkmal_Model_Song $song
 	 */
 	public function setSong(Denkmal_Model_Song $song = null) {
-		$songId = isset($song) ? (int) $song->getId() : null;
-		CM_Db_Db::update('denkmal_event', array('songId' => $songId), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('songId', $song);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function getQueued() {
-		return (boolean) $this->_get('queued');
+		return $this->_get('queued');
 	}
 
 	/**
 	 * @param boolean $queued
 	 */
 	public function setQueued($queued) {
-		$queued = (boolean) $queued;
-		CM_Db_Db::update('denkmal_event', array('queued' => $queued), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('queued', $queued);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function getEnabled() {
-		return (boolean) $this->_get('enabled');
+		return $this->_get('enabled');
 	}
 
-	/**
+	/*
 	 * @param boolean $enabled
 	 */
 	public function setEnabled($enabled) {
-		$enabled = (boolean) $enabled;
-		CM_Db_Db::update('denkmal_event', array('enabled' => $enabled), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('enabled', $enabled);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function getHidden() {
-		return (boolean) $this->_get('hidden');
+		return $this->_get('hidden');
 	}
 
 	/**
 	 * @param boolean $hidden
 	 */
 	public function setHidden($hidden) {
-		$hidden = (boolean) $hidden;
-		CM_Db_Db::update('denkmal_event', array('hidden' => $hidden), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('hidden', $hidden);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function getStarred() {
-		return (boolean) $this->_get('starred');
+		return $this->_get('starred');
 	}
 
 	/**
 	 * @param boolean $starred
 	 */
 	public function setStarred($starred) {
-		$starred = (boolean) $starred;
-		CM_Db_Db::update('denkmal_event', array('starred' => $starred), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('starred', $starred);
 	}
 
 	public function toArrayApi(CM_Render $render) {
@@ -197,12 +162,45 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 		return $array;
 	}
 
-	protected function _loadData() {
-		return CM_Db_Db::select('denkmal_event', array('*'), array('id' => $this->getId()))->fetch();
+	/**
+	 * @param Denkmal_Model_Venue     $venue
+	 * @param DateTime                $from
+	 * @param DateTime|null           $until
+	 * @param string                  $description
+	 * @param string|null             $title
+	 * @param Denkmal_Model_Song|null $song
+	 * @param boolean                 $queued
+	 * @param boolean                 $enabled
+	 * @param boolean                 $hidden
+	 * @param boolean                 $starred
+	 */
+	public static function create($venue, $from, $until, $description, $title, $song, $queued, $enabled, $hidden, $starred) {
+		$event = new self();
+		$event->setVenue($venue);
+		$event->setFrom($from);
+		$event->setUntil($until);
+		$event->setDescription($description);
+		$event->setTitle($title);
+		$event->setSong($song);
+		$event->setQueued($queued);
+		$event->setEnabled($enabled);
+		$event->setHidden($hidden);
+		$event->setStarred($starred);
 	}
 
-	protected function _onDelete() {
-		CM_Db_Db::delete('denkmal_event', array('id' => $this->getId()));
+	protected function _getSchema() {
+		return new CM_Model_Schema_Definition(array(
+			'venueId'     => array('type' => 'Denkmal_Model_Venue'),
+			'from'        => array('type' => 'DateTime'),
+			'until'       => array('type' => 'DateTime', 'optional' => true),
+			'title'       => array('type' => 'string'),
+			'description' => array('type' => 'string'),
+			'songId'      => array('type' => 'Denkmal_Model_Song'),
+			'queued'      => array('type' => 'boolean'),
+			'enabled'     => array('type' => 'boolean'),
+			'hidden'      => array('type' => 'boolean'),
+			'starred'     => array('type' => 'boolean'),
+		));
 	}
 
 	protected static function _createStatic(array $data) {

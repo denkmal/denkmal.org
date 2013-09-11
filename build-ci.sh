@@ -1,8 +1,6 @@
 #!/bin/bash -e
 cd $(dirname $0)
 
-#test
-
 USER="root"
 HOST="10.10.10.100"
 

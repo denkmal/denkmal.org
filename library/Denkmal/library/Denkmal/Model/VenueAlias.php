@@ -32,21 +32,24 @@ class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
 		$this->_set('venueId', $venue);
 	}
 
-	/**
-	 * @param Denkmal_Model_Venue $venue
-	 * @param string              $name
-	 */
-	public function create(Denkmal_Model_Venue $venue, $name) {
-		$this->setVenue($venue);
-		$this->setName($name);
-		$this->commit();
-	}
-
 	protected function _getSchema() {
 		return new CM_Model_Schema_Definition(array(
 			'name'    => array('type' => 'string'),
 			'venueId' => array('type' => 'Denkmal_Model_Venue'),
 		));
+	}
+
+	/**
+	 * @param Denkmal_Model_Venue $venue
+	 * @param string              $name
+	 * @return Denkmal_Model_VenueAlias
+	 */
+	public static function create(Denkmal_Model_Venue $venue, $name) {
+		$venueAlias = new self();
+		$venueAlias->setVenue($venue);
+		$venueAlias->setName($name);
+		$venueAlias->commit();
+		return $venueAlias;
 	}
 
 	/**

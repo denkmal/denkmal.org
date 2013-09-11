@@ -8,16 +8,14 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
 	 * @param string $label
 	 */
 	public function setLabel($label) {
-		$label = (string) $label;
-		CM_Db_Db::update('denkmal_song', array('label' => $label), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('label', $label);
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getLabel() {
-		return (string) $this->_get('label');
+		return $this->_get('label');
 	}
 
 	/**
@@ -35,27 +33,34 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
 		return $array;
 	}
 
-	protected function _loadData() {
-		return CM_Db_Db::select('denkmal_song', array('*'), array('id' => $this->getId()))->fetch();
+	protected function _getSchema() {
+		return new CM_Model_Schema_Definition(array(
+			'label' => array('type' => 'string'),
+		));
 	}
 
-	protected static function _createStatic(array $data) {
-		$data = CM_Params::factory($data);
+	protected function _onDelete() {
+		$this->getFile()->delete();
+	}
 
-		$label = $data->getString('label');
-		$id = CM_Db_Db::insert('denkmal_song', array('label' => $label));
-		$song = new self($id);
+	/**
+	 * @param string  $label
+	 * @param CM_File $file
+	 * @return Denkmal_Model_Song
+	 */
+	public static function create($label, CM_File $file) {
+		$song = new self();
+		$song->setLabel($label);
+		$song->commit();
 
 		$userFile = $song->getFile();
 		$userFile->mkDir();
-		$file = $data->getFile('file');
 		$file->copy($userFile->getPath());
 
 		return $song;
 	}
 
-	protected function _onDelete() {
-		$this->getFile()->delete();
-		CM_Db_Db::delete('denkmal_song', array('id' => $this->getId()));
+	public static function getPersistenceClass() {
+		return 'CM_Model_StorageAdapter_Database';
 	}
 }

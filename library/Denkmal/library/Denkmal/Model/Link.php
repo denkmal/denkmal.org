@@ -8,58 +8,74 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 	 * @return string
 	 */
 	public function getLabel() {
-		return (string) $this->_get('label');
+		return $this->_get('label');
+	}
+
+	/**
+	 * @param string $label
+	 */
+	public function setLabel($label) {
+		$this->_set('label', $label);
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getUrl() {
-		return (string) $this->_get('url');
+		return $this->_get('url');
+	}
+
+	/**
+	 * @param string $url
+	 */
+	public function setUrl($url) {
+		$this->_set('url', $url);
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getAutomatic() {
+		return $this->_get('automatic');
 	}
 
 	/**
 	 * @param boolean $automatic
 	 */
 	public function setAutomatic($automatic) {
-		$automatic = (bool) $automatic;
-		CM_Db_Db::update('denkmal_link', array('automatic' => $automatic), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('automatic', $automatic);
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function getAutomatic() {
-		return (bool) $this->_get('automatic');
-	}
-
-	protected function _loadData () {
-		return CM_Db_Db::select('denkmal_link', array('*'), array('id' => $this->getId()))->fetch();
-	}
-
-	protected static function _createStatic(array $data) {
-		$data = Denkmal_Params::factory($data);
-		$label = $data->getString('label');
-		$url = $data->getString('url');
-		$automatic = $data->getBoolean('automatic', false);
-
-		$id = CM_Db_Db::insert('denkmal_link', array(
-			'label'      => $label,
-			'url'       => $url,
-			'automatic'   => $automatic,
+	protected function _getSchema() {
+		return new CM_Model_Schema_Definition(array(
+			'label'     => array('type' => 'string'),
+			'url'       => array('type' => 'string'),
+			'automatic' => array('type' => 'bool'),
 		));
-
-		return new static($id);
-	}
-
-	protected function _onDelete() {
-		CM_Db_Db::delete('denkmal_link', array('id' => $this->getId()));
 	}
 
 	protected function _getContainingCacheables() {
 		$containingCacheables = parent::_getContainingCacheables();
 		$containingCacheables[] = new Denkmal_Paging_Link_All();
 		return $containingCacheables;
+	}
+
+	/**
+	 * @param string    $label
+	 * @param string    $url
+	 * @param bool|null $automatic
+	 * @return Denkmal_Model_Link
+	 */
+	public static function create($label, $url, $automatic = null) {
+		$link = new self();
+		$link->setLabel($label);
+		$link->setUrl($url);
+		$link->setAutomatic($automatic);
+		$link->commit();
+		return $link;
+	}
+
+	public static function getPersistenceClass() {
+		return 'CM_Model_StorageAdapter_Database';
 	}
 }

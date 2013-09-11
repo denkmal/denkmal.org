@@ -87,7 +87,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
 		$event = Denkmal_Model_Event::createStatic(array('venue' => $venue, 'from' => new DateTime(), 'description' => 'Foo', 'queued' => false, 'enabled' => true));
 		$this->assertSame(null, $event->getSong());
 
-		$song = Denkmal_Model_Song::createStatic(array('file' => CM_File::createTmp(), 'label' => 'Foo'));
+		$song = Denkmal_Model_Song::create('Foo', CM_File::createTmp());
 		$event->setSong($song);
 		$this->assertEquals($song, $event->getSong());
 

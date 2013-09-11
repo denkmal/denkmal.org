@@ -53,7 +53,7 @@ CREATE TABLE `denkmal_model_event` (
   `until` int(11) unsigned DEFAULT NULL,
   `description` text,
 	`title` varchar(100) DEFAULT NULL,
-  `songId` int(11) unsigned DEFAULT NULL,
+  `song` int(11) unsigned DEFAULT NULL,
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `enabled` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `hidden` tinyint(4) unsigned NOT NULL DEFAULT '0',
@@ -64,9 +64,9 @@ CREATE TABLE `denkmal_model_event` (
   KEY `queued` (`queued`),
   KEY `enabled` (`enabled`),
   KEY `hidden` (`hidden`),
-  KEY `songId` (`songId`),
+  KEY `song` (`song`),
   CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`songId`) REFERENCES `denkmal_model_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`song`) REFERENCES `denkmal_model_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

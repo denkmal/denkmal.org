@@ -36,7 +36,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 * @return string|null
 	 */
 	public function getAddress() {
-		$this->_get('address');
+		return $this->_get('address');
 	}
 
 	/**
@@ -139,7 +139,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 */
 	public static function findByName($name) {
 		$name = (string) $name;
-		$venueId = CM_Db_Db::select('denkmal_venue', 'id', array('name' => $name))->fetchColumn();
+		$venueId = CM_Db_Db::select('denkmal_model_venue', 'id', array('name' => $name))->fetchColumn();
 		if (!$venueId) {
 			return null;
 		}

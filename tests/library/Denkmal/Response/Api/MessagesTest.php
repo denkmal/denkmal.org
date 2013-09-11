@@ -18,8 +18,8 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 
 	public function testProcess() {
 		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$message1 = Denkmal_Model_Message::createStatic(array('venue' => $venue, 'text' => 'Foo 1'));
-		$message2 = Denkmal_Model_Message::createStatic(array('venue' => $venue, 'text' => 'Foo 2'));
+		$message1 = Denkmal_Model_Message::create($venue, 'Foo 1');
+		$message2 = Denkmal_Model_Message::create($venue, 'Foo 2');
 
 		$request = new CM_Request_Get('/api/messages', array('host' => 'denkmal.test'));
 		$response = new Denkmal_Response_Api_Messages($request);

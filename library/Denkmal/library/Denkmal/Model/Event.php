@@ -8,7 +8,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 * @return Denkmal_Model_Venue
 	 */
 	public function getVenue() {
-		return $this->_get('venue');
+		return $this->_get('venueId');
 	}
 
 	/**
@@ -164,28 +164,34 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 
 	/**
 	 * @param Denkmal_Model_Venue     $venue
+	 * @param string                  $description
+	 * @param boolean                 $enabled
+	 * @param boolean                 $queued
 	 * @param DateTime                $from
 	 * @param DateTime|null           $until
-	 * @param string                  $description
 	 * @param string|null             $title
 	 * @param Denkmal_Model_Song|null $song
-	 * @param boolean                 $queued
-	 * @param boolean                 $enabled
-	 * @param boolean                 $hidden
-	 * @param boolean                 $starred
+	 * @param boolean|null            $hidden
+	 * @param boolean|null            $starred
+	 * @return Denkmal_Model_Event
 	 */
-	public static function create($venue, $from, $until, $description, $title, $song, $queued, $enabled, $hidden, $starred) {
+	public static function create($venue, $description, $enabled, $queued, $from, $until = null, $title = null, $song = null, $hidden = null, $starred = null) {
 		$event = new self();
 		$event->setVenue($venue);
+		$event->setDescription($description);
+		$event->setEnabled($enabled);
+		$event->setQueued($queued);
 		$event->setFrom($from);
 		$event->setUntil($until);
-		$event->setDescription($description);
 		$event->setTitle($title);
 		$event->setSong($song);
-		$event->setQueued($queued);
-		$event->setEnabled($enabled);
-		$event->setHidden($hidden);
-		$event->setStarred($starred);
+		$event->setHidden((boolean) $hidden);
+		$event->setStarred((boolean) $starred);
+		$event->commit();
+	}
+
+	public static function getPersistenceClass() {
+		return 'CM_Model_StorageAdapter_Database';
 	}
 
 	protected function _getSchema() {
@@ -193,9 +199,9 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 			'venueId'     => array('type' => 'Denkmal_Model_Venue'),
 			'from'        => array('type' => 'DateTime'),
 			'until'       => array('type' => 'DateTime', 'optional' => true),
-			'title'       => array('type' => 'string'),
+			'title'       => array('type' => 'string', 'optional' => true),
 			'description' => array('type' => 'string'),
-			'songId'      => array('type' => 'Denkmal_Model_Song'),
+			'songId'      => array('type' => 'Denkmal_Model_Song', 'optional' => true),
 			'queued'      => array('type' => 'boolean'),
 			'enabled'     => array('type' => 'boolean'),
 			'hidden'      => array('type' => 'boolean'),

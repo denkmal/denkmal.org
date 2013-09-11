@@ -17,7 +17,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
 	}
 
 	public function testProcess() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
 
 		$body = 'venue=' . urlencode($venue->getId()) . '&text=' . urlencode('hallo test');
 		$request = new CM_Request_Post('/api/message', array('host' => 'denkmal.test'), $body);

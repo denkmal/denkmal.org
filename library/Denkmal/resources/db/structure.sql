@@ -76,9 +76,9 @@ CREATE TABLE `denkmal_model_message` (
   `created` int(11) unsigned NOT NULL,
   `text` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `venueId` (`venueId`),
+  KEY `venue` (`venue`),
   KEY `created` (`created`),
-  CONSTRAINT `denkmal_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

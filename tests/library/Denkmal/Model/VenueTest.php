@@ -11,7 +11,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
 		$this->assertSame('Example', $venue->getName());
 		$this->assertSame(null, $venue->getAddress());
-		$this->assertEquals(null, $venue->getCoordinates());
+		$this->assertSame(null, $venue->getCoordinates());
 		$this->assertSame(true, $venue->getQueued());
 		$this->assertSame(false, $venue->getEnabled());
 		$this->assertSame(false, $venue->getHidden());

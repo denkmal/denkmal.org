@@ -2,7 +2,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 DROP TABLE IF EXISTS `denkmal_message`;
-DROP TABLE IF EXISTS `denkmal_event`;
+DROP TABLE IF EXISTS `denkmal_model_event`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_venue`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
@@ -46,9 +46,9 @@ CREATE TABLE `denkmal_model_venuealias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `denkmal_event` (
+CREATE TABLE `denkmal_model_event` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `venueId` int(11) unsigned NOT NULL,
+  `venue` int(11) unsigned NOT NULL,
   `from` int(11) unsigned NOT NULL,
   `until` int(11) unsigned DEFAULT NULL,
   `description` text,
@@ -59,14 +59,14 @@ CREATE TABLE `denkmal_event` (
   `hidden` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `starred` tinyint(4) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `venueId` (`venueId`),
+  KEY `venue` (`venue`),
   KEY `from` (`from`),
   KEY `queued` (`queued`),
   KEY `enabled` (`enabled`),
   KEY `hidden` (`hidden`),
   KEY `songId` (`songId`),
-  CONSTRAINT `denkmal_event__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `denkmal_event__song` FOREIGN KEY (`songId`) REFERENCES `denkmal_model_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`songId`) REFERENCES `denkmal_model_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

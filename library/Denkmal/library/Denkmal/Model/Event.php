@@ -196,7 +196,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 
 	protected function _getSchema() {
 		return new CM_Model_Schema_Definition(array(
-			'venueId'     => array('type' => 'Denkmal_Model_Venue'),
+			'venue'     => array('type' => 'Denkmal_Model_Venue'),
 			'from'        => array('type' => 'DateTime'),
 			'until'       => array('type' => 'DateTime', 'optional' => true),
 			'title'       => array('type' => 'string', 'optional' => true),

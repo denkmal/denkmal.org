@@ -24,7 +24,7 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
 
 		$now = new DateTime();
 		$file1 = CM_File::createTmp();
-		$song1 = Denkmal_Model_Song::createStatic(array('file' => $file1, 'label' => 'Song 1'));
+		$song1 = Denkmal_Model_Song::create('Song 1', $file1);
 		$event1 = Denkmal_Model_Event::createStatic(array('venue'   => $venue2, 'from' => $now, 'until' => $now, 'description' => 'Foo', 'queued' => false,
 													'enabled' => true, 'song' => $song1));
 		$event2 = Denkmal_Model_Event::createStatic(array('venue'   => $venue1, 'from' => $now, 'description' => 'Foo', 'queued' => false,

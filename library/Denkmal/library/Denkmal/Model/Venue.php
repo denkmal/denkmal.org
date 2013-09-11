@@ -8,56 +8,42 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 * @return string
 	 */
 	public function getName() {
-		return (string) $this->_get('name');
+		return $this->_get('name');
 	}
 
 	/**
 	 * @param string $name
 	 */
 	public function setName($name) {
-		$name = (string) $name;
-		CM_Db_Db::update('denkmal_venue', array('name' => $name), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('name', $name);
 	}
 
 	/**
 	 * @return string|null
 	 */
 	public function getUrl() {
-		$url = $this->_get('url');
-		if (null === $url) {
-			return null;
-		}
-		return (string) $url;
+		return $this->_get('url');
 	}
 
 	/**
 	 * @param string|null $url
 	 */
 	public function setUrl($url) {
-		$url = isset($url) ? (string) $url : null;
-		CM_Db_Db::update('denkmal_venue', array('url' => $url), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('url', $url);
 	}
 
 	/**
 	 * @return string|null
 	 */
 	public function getAddress() {
-		$address = $this->_get('address');
-		if (null === $address) {
-			return null;
-		}
-		return (string) $address;
+		return $this->_get('address');
 	}
 
 	/**
 	 * @param string|null $address
 	 */
 	public function setAddress($address) {
-		$address = isset($address) ? (string) $address : null;
-		CM_Db_Db::update('denkmal_venue', array('address' => $address), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('address', $address);
 	}
 
 	/**
@@ -78,57 +64,50 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	public function setCoordinates(CM_Geo_Point $coordinates = null) {
 		$latitude = $coordinates ? $coordinates->getLatitude() : null;
 		$longitude = $coordinates ? $coordinates->getLongitude() : null;
-
-		CM_Db_Db::update('denkmal_venue', array('latitude' => $latitude, 'longitude' => $longitude), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('latitude', $latitude);
+		$this->_set('longitude', $longitude);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function getQueued() {
-		return (boolean) $this->_get('queued');
+		return $this->_get('queued');
 	}
 
 	/**
 	 * @param boolean $queued
 	 */
 	public function setQueued($queued) {
-		$queued = (boolean) $queued;
-		CM_Db_Db::update('denkmal_venue', array('queued' => $queued), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('queued', $queued);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function getEnabled() {
-		return (boolean) $this->_get('enabled');
+		return $this->_get('enabled');
 	}
 
 	/**
 	 * @param boolean $enabled
 	 */
 	public function setEnabled($enabled) {
-		$enabled = (boolean) $enabled;
-		CM_Db_Db::update('denkmal_venue', array('enabled' => $enabled), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('enabled', $enabled);
 	}
 
 	/**
 	 * @return boolean
 	 */
 	public function getHidden() {
-		return (boolean) $this->_get('hidden');
+		return $this->_get('hidden');
 	}
 
 	/**
 	 * @param boolean $hidden
 	 */
 	public function setHidden($hidden) {
-		$hidden = (boolean) $hidden;
-		CM_Db_Db::update('denkmal_venue', array('hidden' => $hidden), array('id' => $this->getId()));
-		$this->_change();
+		$this->_set('hidden', $hidden);
 	}
 
 	public function toArrayApi(CM_Render $render) {
@@ -148,18 +127,10 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 		return $array;
 	}
 
-	protected function _loadData() {
-		return CM_Db_Db::select('denkmal_venue', array('*'), array('id' => $this->getId()))->fetch();
-	}
-
 	protected function _getContainingCacheables() {
 		$cacheables = parent::_getContainingCacheables();
 		$cacheables[] = new Denkmal_Paging_Venue_All();
 		return $cacheables;
-	}
-
-	protected function _onDelete() {
-		CM_Db_Db::delete('denkmal_venue', array('id' => $this->getId()));
 	}
 
 	/**
@@ -168,7 +139,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 */
 	public static function findByName($name) {
 		$name = (string) $name;
-		$venueId = CM_Db_Db::select('denkmal_venue', 'id', array('name' => $name))->fetchColumn();
+		$venueId = CM_Db_Db::select('denkmal_model_venue', 'id', array('name' => $name))->fetchColumn();
 		if (!$venueId) {
 			return null;
 		}
@@ -189,28 +160,43 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 		return null;
 	}
 
-	protected static function _createStatic(array $data) {
-		$data = CM_Params::factory($data);
+	/**
+	 * @param string            $name
+	 * @param boolean           $queued
+	 * @param boolean           $enabled
+	 * @param boolean           $hidden
+	 * @param string|null       $url
+	 * @param string|null       $address
+	 * @param CM_Geo_Point|null $coordinates
+	 * @return Denkmal_Model_Venue
+	 */
+	public static function create($name, $queued, $enabled, $hidden, $url = null, $address = null, CM_Geo_Point $coordinates = null) {
+		$venue = new self();
+		$venue->setName($name);
+		$venue->setUrl($url);
+		$venue->setAddress($address);
+		$venue->setCoordinates($coordinates);
+		$venue->setQueued($queued);
+		$venue->setEnabled($enabled);
+		$venue->setHidden($hidden);
+		$venue->commit();
+		return $venue;
+	}
 
-		$name = $data->getString('name');
-		$url = $data->has('url') ? $data->getString('url') : null;
-		$address = $data->has('address') ? $data->getString('address') : null;
-		$coordinates = $data->has('coordinates') ? $data->getGeoPoint('coordinates') : null;
-		$queued = $data->getBoolean('queued');
-		$enabled = $data->getBoolean('enabled');
-		$hidden = $data->getBoolean('hidden', false);
-
-		$id = CM_Db_Db::insert('denkmal_venue', array(
-			'name'      => $name,
-			'url'       => $url,
-			'address'   => $address,
-			'latitude'  => ($coordinates ? $coordinates->getLatitude() : null),
-			'longitude' => ($coordinates ? $coordinates->getLongitude() : null),
-			'queued'    => $queued,
-			'enabled'   => $enabled,
-			'hidden'    => $hidden,
+	protected function _getSchema() {
+		return new CM_Model_Schema_Definition(array(
+			'name'      => array('type' => 'string'),
+			'url'       => array('type' => 'string', 'optional' => true),
+			'address'   => array('type' => 'string', 'optional' => true),
+			'latitude'  => array('type' => 'float', 'optional' => true),
+			'longitude' => array('type' => 'float', 'optional' => true),
+			'queued'    => array('type' => 'boolean'),
+			'enabled'   => array('type' => 'boolean'),
+			'hidden'    => array('type' => 'boolean'),
 		));
+	}
 
-		return new static($id);
+	public static function getPersistenceClass() {
+		return 'CM_Model_StorageAdapter_Database';
 	}
 }

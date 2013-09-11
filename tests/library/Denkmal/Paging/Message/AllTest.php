@@ -7,7 +7,7 @@ class Denkmal_Paging_Message_AllTest extends CMTest_TestCase {
 	}
 
 	public function testGetItems() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => false, 'enabled' => true));
+		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
 
 		$message1 = Denkmal_Model_Message::create($venue, 'Foo 1');
 		CMTest_TH::timeForward(1);

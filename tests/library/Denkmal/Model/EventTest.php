@@ -6,7 +6,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
 	private $_event;
 
 	protected function setUp() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
+		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
 		$this->_event = Denkmal_Model_Event::create($venue, 'Foo', true, false, new DateTime());
 	}
 
@@ -28,7 +28,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetVenue() {
-		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example2', 'queued' => true, 'enabled' => false));
+		$venue = Denkmal_Model_Venue::create('Example2', true, false, false);
 		$this->assertNotEquals($venue, $this->_event->getVenue());
 		$this->_event->setVenue($venue);
 		$this->assertEquals($venue, $this->_event->getVenue());

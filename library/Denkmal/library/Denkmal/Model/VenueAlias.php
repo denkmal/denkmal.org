@@ -44,7 +44,7 @@ class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
 
 	protected function _getSchema() {
 		return new CM_Model_Schema_Definition(array(
-			'name'  => array('type' => 'string'),
+			'name'    => array('type' => 'string'),
 			'venueId' => array('type' => 'Denkmal_Model_Venue'),
 		));
 	}

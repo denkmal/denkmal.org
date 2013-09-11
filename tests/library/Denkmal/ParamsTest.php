@@ -13,7 +13,7 @@ class Denkmal_ParamsTest extends CMTest_TestCase {
 
 	public function testGetSong() {
 		$file = CM_File::createTmp();
-		$song = Denkmal_Model_Song::createStatic(array('label' => 'Foo', 'file' => $file));
+		$song = Denkmal_Model_Song::create('Foo', $file);
 
 		$params = new Denkmal_Params(array('song1' => $song, 'song2' => $song->getId()));
 

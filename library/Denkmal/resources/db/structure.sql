@@ -41,7 +41,7 @@ CREATE TABLE `denkmal_model_venuealias` (
   `venue` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
-  KEY `venueId` (`venueId`),
+  KEY `venue` (`venue`),
   CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -28,8 +28,8 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
 		$event1 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now, $now, null, $song1);
 		$event2 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now, null, null);
 
-		$message1 = Denkmal_Model_Message::createStatic(array('venue' => $venue1, 'text' => 'Foo 1'));
-		$message2 = Denkmal_Model_Message::createStatic(array('venue' => $venue1, 'text' => 'Foo 2'));
+		$message1 = Denkmal_Model_Message::create($venue1, 'Foo 1');
+		$message2 = Denkmal_Model_Message::create($venue1, 'Foo 2');
 
 		$request = new CM_Request_Get('/api/data', array('host' => 'denkmal.test'));
 		$response = new Denkmal_Response_Api_Data($request);

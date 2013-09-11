@@ -1,7 +1,7 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
-DROP TABLE IF EXISTS `denkmal_message`;
+DROP TABLE IF EXISTS `denkmal_model_message`;
 DROP TABLE IF EXISTS `denkmal_model_event`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_venue`;
@@ -38,11 +38,11 @@ CREATE TABLE `denkmal_venue` (
 CREATE TABLE `denkmal_model_venuealias` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `venueId` int(11) unsigned NOT NULL,
+  `venue` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
-  KEY `venueId` (`venueId`),
-  CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `venue` (`venue`),
+  CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -70,15 +70,15 @@ CREATE TABLE `denkmal_model_event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `denkmal_message` (
+CREATE TABLE `denkmal_model_message` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `venueId` int(11) unsigned NOT NULL,
+  `venue` int(11) unsigned NOT NULL,
   `created` int(11) unsigned NOT NULL,
   `text` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `venueId` (`venueId`),
+  KEY `venue` (`venue`),
   KEY `created` (`created`),
-  CONSTRAINT `denkmal_message__venue` FOREIGN KEY (`venueId`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS `denkmal_event`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_venue`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
-DROP TABLE IF EXISTS `denkmal_link`;
+DROP TABLE IF EXISTS `denkmal_model_link`;
 
 
 
@@ -82,7 +82,7 @@ CREATE TABLE `denkmal_message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE IF NOT EXISTS `denkmal_link` (
+CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `label` varchar(30) NOT NULL,
   `url` varchar(100) NOT NULL,

@@ -14,10 +14,10 @@ class Denkmal_Paging_Message_AllTest extends CMTest_TestCase {
 		$message2 = Denkmal_Model_Message::create($venue, 'Foo 2');
 		CMTest_TH::timeForward(1);
 		$paging = new Denkmal_Paging_Message_All();
+
 		$this->assertEquals(array($message1, $message2), $paging->getItems());
 
 		$message3 = Denkmal_Model_Message::create($venue, 'Foo 3');
-		CMTest_TH::timeForward(1);
 		$paging = new Denkmal_Paging_Message_All();
 		$this->assertEquals(array($message1, $message2, $message3), $paging->getItems());
 

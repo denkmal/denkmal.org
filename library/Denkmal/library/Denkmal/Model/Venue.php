@@ -59,7 +59,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	}
 
 	/**
-	 * @param CM_Geo_Point|null $coordinates
+	 * @param CM_Geo_Point $coordinates
 	 */
 	public function setCoordinates(CM_Geo_Point $coordinates = null) {
 		$latitude = $coordinates ? $coordinates->getLatitude() : null;

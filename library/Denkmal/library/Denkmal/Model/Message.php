@@ -5,14 +5,14 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 	const TYPE = 104;
 
 	/**
-	 * @param int $timestamp
+	 * @param DateTime $timestamp
 	 */
 	public function setCreated($timestamp) {
 		$this->_set('created', $timestamp);
 	}
 
 	/**
-	 * @return int
+	 * @return DateTime
 	 */
 	public function getCreated() {
 		return $this->_get('created');
@@ -54,7 +54,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 		$array = array();
 		$array['id'] = $this->getId();
 		$array['venue'] = $this->getVenue()->getId();
-		$array['created'] = $this->getCreated();
+		$array['created'] = $this->getCreated()->getTimestamp();
 		$array['text'] = $this->getText();
 		return $array;
 	}
@@ -63,7 +63,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 		return new CM_Model_Schema_Definition(array(
 			'venue'   => array('type' => 'Denkmal_Model_Venue'),
 			'text'    => array('type' => 'string'),
-			'created' => array('type' => 'int'),
+			'created' => array('type' => 'DateTime'),
 		));
 	}
 
@@ -73,11 +73,16 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 		return $containingCacheables;
 	}
 
+	/**
+	 * @param Denkmal_Model_Venue $venue
+	 * @param string              $text
+	 * @return Denkmal_Model_Message
+	 */
 	public static function create(Denkmal_Model_Venue $venue, $text) {
 		$message = new self();
 		$message->setVenue($venue);
 		$message->setText($text);
-		$message->setCreated(time());
+		$message->setCreated(new DateTime());
 		$message->commit();
 
 		return $message;

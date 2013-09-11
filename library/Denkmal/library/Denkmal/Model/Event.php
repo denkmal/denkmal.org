@@ -78,7 +78,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 	 * @return Denkmal_Model_Song|null
 	 */
 	public function getSong() {
-		$this->_get('song');
+		return $this->_get('song');
 	}
 
 	/**

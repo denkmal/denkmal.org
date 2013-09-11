@@ -5,37 +5,62 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 	const TYPE = 104;
 
 	/**
+	 * @param DateTime $timestamp
+	 */
+	public function setCreated($timestamp) {
+		$this->_set('created', $timestamp);
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function getCreated() {
+		return $this->_get('created');
+	}
+
+	/**
+	 * @param string $text
+	 */
+	public function setText($text) {
+		$this->_set('text', $text);
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getText() {
-		return (string) $this->_get('text');
+		return $this->_get('text');
+	}
+
+	/**
+	 * @param Denkmal_Model_Venue $venue
+	 */
+	public function setVenue($venue) {
+		$this->_set('venue', $venue);
 	}
 
 	/**
 	 * @return Denkmal_Model_Venue
 	 */
 	public function getVenue() {
-		return new Denkmal_Model_Venue($this->_get('venueId'));
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getCreated() {
-		return (int) $this->_get('created');
+		return $this->_get('venue');
 	}
 
 	public function toArrayApi(CM_Render $render) {
 		$array = array();
 		$array['id'] = $this->getId();
 		$array['venue'] = $this->getVenue()->getId();
-		$array['created'] = $this->getCreated();
+		$array['created'] = $this->getCreated()->getTimestamp();
 		$array['text'] = $this->getText();
 		return $array;
 	}
 
-	protected function _loadData() {
-		return CM_Db_Db::select('denkmal_message', array('*'), array('id' => $this->getId()))->fetch();
+	protected function _getSchema() {
+		return new CM_Model_Schema_Definition(array(
+			'venue'   => array('type' => 'Denkmal_Model_Venue'),
+			'text'    => array('type' => 'string'),
+			'created' => array('type' => 'DateTime'),
+		));
 	}
 
 	protected function _getContainingCacheables() {
@@ -44,18 +69,22 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 		return $containingCacheables;
 	}
 
-	protected static function _createStatic(array $data) {
-		$data = Denkmal_Params::factory($data);
+	/**
+	 * @param Denkmal_Model_Venue $venue
+	 * @param string              $text
+	 * @return Denkmal_Model_Message
+	 */
+	public static function create(Denkmal_Model_Venue $venue, $text) {
+		$message = new self();
+		$message->setVenue($venue);
+		$message->setText($text);
+		$message->setCreated(new DateTime());
+		$message->commit();
 
-		$venue = $data->getVenue('venue');
-		$text = $data->getString('text');
-		$created = time();
-
-		$id = CM_Db_Db::insert('denkmal_message', array('venueId' => $venue->getId(), 'text' => $text, 'created' => $created));
-		return new self($id);
+		return $message;
 	}
 
-	protected function _onDelete() {
-		CM_Db_Db::delete('denkmal_message', array('id' => $this->getId()));
+	public static function getPersistenceClass() {
+		return 'CM_Model_StorageAdapter_Database';
 	}
 }

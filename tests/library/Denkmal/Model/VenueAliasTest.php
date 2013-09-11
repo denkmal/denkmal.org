@@ -8,7 +8,7 @@ class Denkmal_Model_VenueAliasTest extends CMTest_TestCase {
 
 	public function testCreate() {
 		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$venueAlias = Denkmal_Model_VenueAlias::createStatic(array('name' => 'Foo', 'venue' => $venue));
+		$venueAlias = Denkmal_Model_VenueAlias::create($venue, 'Foo');
 
 		$this->assertSame('Foo', $venueAlias->getName());
 		$this->assertEquals($venue, $venueAlias->getVenue());
@@ -19,7 +19,7 @@ class Denkmal_Model_VenueAliasTest extends CMTest_TestCase {
 	 */
 	public function testDelete() {
 		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$venueAlias = Denkmal_Model_VenueAlias::createStatic(array('name' => 'Foo', 'venue' => $venue));
+		$venueAlias = Denkmal_Model_VenueAlias::create($venue, 'Foo');
 		$venueAlias->delete();
 
 		new Denkmal_Model_VenueAlias($venueAlias->getId());
@@ -27,7 +27,7 @@ class Denkmal_Model_VenueAliasTest extends CMTest_TestCase {
 
 	public function testFindByName() {
 		$venue = Denkmal_Model_Venue::createStatic(array('name' => 'Example', 'queued' => true, 'enabled' => false));
-		$venueAlias = Denkmal_Model_VenueAlias::createStatic(array('name' => 'Foo', 'venue' => $venue));
+		$venueAlias = Denkmal_Model_VenueAlias::create($venue, 'Foo');
 
 		$this->assertEquals($venueAlias, Denkmal_Model_VenueAlias::findByName('Foo'));
 		$this->assertNull(Denkmal_Model_VenueAlias::findByName('Bar'));

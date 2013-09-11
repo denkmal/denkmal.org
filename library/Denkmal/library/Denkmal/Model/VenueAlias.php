@@ -8,23 +8,48 @@ class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
 	 * @return string
 	 */
 	public function getName() {
-		return (string) $this->_get('name');
+		return $this->_get('name');
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function setName($name) {
+		$this->_set('name', $name);
 	}
 
 	/**
 	 * @return Denkmal_Model_Venue
 	 */
 	public function getVenue() {
-		$venueId = $this->_get('venueId');
-		return new Denkmal_Model_Venue($venueId);
+		return $this->_get('venueId');
 	}
 
-	protected function _loadData() {
-		return CM_Db_Db::select('denkmal_venueAlias', array('*'), array('id' => $this->getId()))->fetch();
+	/**
+	 * @param Denkmal_Model_Venue $venue
+	 */
+	public function setVenue(Denkmal_Model_Venue $venue) {
+		$this->_set('venueId', $venue);
 	}
 
-	protected function _onDelete() {
-		CM_Db_Db::delete('denkmal_venueAlias', array('id' => $this->getId()));
+	protected function _getSchema() {
+		return new CM_Model_Schema_Definition(array(
+			'name'    => array('type' => 'string'),
+			'venueId' => array('type' => 'Denkmal_Model_Venue'),
+		));
+	}
+
+	/**
+	 * @param Denkmal_Model_Venue $venue
+	 * @param string              $name
+	 * @return Denkmal_Model_VenueAlias
+	 */
+	public static function create(Denkmal_Model_Venue $venue, $name) {
+		$venueAlias = new self();
+		$venueAlias->setVenue($venue);
+		$venueAlias->setName($name);
+		$venueAlias->commit();
+		return $venueAlias;
 	}
 
 	/**
@@ -33,24 +58,14 @@ class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
 	 */
 	public static function findByName($name) {
 		$name = (string) $name;
-		$venueAliasId = CM_Db_Db::select('denkmal_venueAlias', 'id', array('name' => $name))->fetchColumn();
+		$venueAliasId = CM_Db_Db::select('denkmal_model_venuealias', 'id', array('name' => $name))->fetchColumn();
 		if (!$venueAliasId) {
 			return null;
 		}
 		return new self($venueAliasId);
 	}
 
-	protected static function _createStatic(array $data) {
-		$data = Denkmal_Params::factory($data);
-
-		$name = $data->getString('name');
-		$venue = $data->getVenue('venue');
-
-		$id = CM_Db_Db::insert('denkmal_venueAlias', array(
-			'name'    => $name,
-			'venueId' => $venue->getId(),
-		));
-
-		return new static($id);
+	public static function getPersistenceClass() {
+		return 'CM_Model_StorageAdapter_Database';
 	}
 }

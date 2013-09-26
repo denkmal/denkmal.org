@@ -19,16 +19,12 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 		/** @var Denkmal_Params $params */
 		$venue = $params->get('venue');
 		if (!$venue instanceof Denkmal_Model_Venue) {
+			$name = (string) $venue;
 			$address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;
 			$url = $params->has('venueUrl') ? $params->getString('venueUrl') : null;
-			$venueData = array(
-				'name'    => (string) $venue,
-				'queued'  => true,
-				'enabled' => false,
-				'address' => $address,
-				'url'     => $url,
-			);
-			$venue = Denkmal_Model_Venue::createStatic($venueData);
+
+			$venue = new Denkmal_Model_Venue();
+			$venue->create($name, true, false, false, $url, $address);
 		}
 
 		$date = $params->getDateTime('date');

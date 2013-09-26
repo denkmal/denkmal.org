@@ -10,7 +10,7 @@ class Denkmal_Paging_Event_Venue extends Denkmal_Paging_Event_Abstract {
 		$now = new DateTime();
 		$fromStampMin = $now->getTimestamp();
 
-		$where = '`venueId` = ' . $venue->getId();
+		$where = '`venue` = ' . $venue->getId();
 		$where .= ' AND `from` >= ' . $fromStampMin;
 		if ($publicOnly) {
 			$where .= ' AND `enabled` = 1 AND `hidden` = 0';

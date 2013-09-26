@@ -16,7 +16,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/amazonwebservices-aws-sdk-for-php-42d86270e9458acffff721a661f62d818ca7282f-zip-5cd94d.zip",
-                "reference": "1.5.17.1",
+                "reference": "42d86270e9458acffff721a661f62d818ca7282f",
                 "shasum": "0c41e551cc1caee9b45bd220eb2eb46f6226bc9e"
             },
             "require": {
@@ -60,7 +60,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:cargomedia/CM.git",
-                "reference": "1.2.13"
+                "reference": "37974bbd8af0163bb6af1f0eddd93351c8ac7f2c"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -96,7 +96,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/easybook-geshi-2582e8134c8af41d7f367e421ee0b8b111e89f36-zip-f3a77f.zip",
-                "reference": "1.0.8.11",
+                "reference": "2582e8134c8af41d7f367e421ee0b8b111e89f36",
                 "shasum": "58898963f2e942961d71cb664212e57cec07fb3c"
             },
             "require": {
@@ -141,7 +141,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/leafo-lessphp-a11a6141b5715162b933c405379765d817891c5d-zip-5c3bef.zip",
-                "reference": "v0.3.9",
+                "reference": "a11a6141b5715162b933c405379765d817891c5d",
                 "shasum": "52384b7a566d6a832ede493ae7e10531bc93330f"
             },
             "type": "library",
@@ -181,7 +181,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/michelf-php-markdown-ca799f80fa11559c02273164dafda9b475cc693f-zip-d53a4b.zip",
-                "reference": "1.3-beta5",
+                "reference": "ca799f80fa11559c02273164dafda9b475cc693f",
                 "shasum": "a890eb6f62b17dc349f5379984aef3c8801ca731"
             },
             "require": {
@@ -226,7 +226,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-5.2.1.zip",
-                "reference": "5.2.1",
+                "reference": null,
                 "shasum": "70540a00a6916b5125b292e1c5a4c8e7b080dd99"
             },
             "type": "library",
@@ -247,7 +247,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-34a7e62a257febd5295efeacfa0209712e0ceb65-zip-f92c51.zip",
-                "reference": "v0.19.8.0",
+                "reference": "34a7e62a257febd5295efeacfa0209712e0ceb65",
                 "shasum": "17ec72c8f0969c0f260eee70445f36417215f814"
             },
             "require": {
@@ -287,7 +287,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/smarty-smarty-v3.1.14-a8f22b.zip",
-                "reference": "v3.1.14",
+                "reference": "/tags/v3.1.14/@4752",
                 "shasum": "a765626836e874ca12c9d56799b56e0c90d2862a"
             },
             "require": {
@@ -331,7 +331,7 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/wurfl-tera-wurfl-2.1.5.zip",
-                "reference": "2.1.5",
+                "reference": null,
                 "shasum": "de2b5873c8bcda173da5f9dff75b94cde479ff93"
             },
             "type": "library"

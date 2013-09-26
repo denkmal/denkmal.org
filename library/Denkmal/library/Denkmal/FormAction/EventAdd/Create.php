@@ -23,8 +23,7 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 			$address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;
 			$url = $params->has('venueUrl') ? $params->getString('venueUrl') : null;
 
-			$venue = new Denkmal_Model_Venue();
-			$venue->create($name, true, false, false, $url, $address);
+			$venue = Denkmal_Model_Venue::create($name, true, false, false, $url, $address);
 		}
 
 		$date = $params->getDateTime('date');

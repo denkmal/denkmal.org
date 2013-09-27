@@ -17,5 +17,12 @@ class Denkmal_FormField_Time extends CM_FormField_Abstract {
 	public function prepare(array $params) {
 		$this->setTplParam('class', isset($params['class']) ? $params['class'] : null);
 		$this->setTplParam('placeholder', isset($params['placeholder']) ? $params['placeholder'] : null);
+
+		$valueText = '';
+		/** @var DateTime $value */
+		if ($value = $this->getValue()) {
+			$valueText = $value->format('H:i');
+		}
+		$this->setTplParam('valueText', $valueText);
 	}
 }

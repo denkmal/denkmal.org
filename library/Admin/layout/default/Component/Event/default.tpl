@@ -5,12 +5,12 @@
 		{/if}
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
 		<time class="time">
-			{$event->getFrom()->format('H:i')}
+			{date_time date=$event->getFrom()}
 		</time>
 		{if $event->getUntil()}
 			-
 			<time class="time">
-				{$event->getUntil()->format('H:i')}
+				{date_time date=$event->getUntil()}
 			</time>
 		{/if}
 		{if $event->getTitle()}

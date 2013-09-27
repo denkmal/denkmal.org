@@ -36,12 +36,6 @@
 		position: relative;
 		min-height: @barSize;
 		margin-left: @barSize;
-
-		html.touch & {
-			min-height: @barSizeMobile;
-			margin-left: @barSizeMobile;
-		}
-
 		padding: 0 5px;
 		border-left: 1px solid @colorFgBorderEmphasize2;
 		color: @colorFg;
@@ -50,9 +44,6 @@
 			padding-right: 140px;
 			margin-right: @barSize;
 
-			html.touch & {
-				margin-right: @barSizeMobile;
-			}
 		}
 
 		.location, .name, .artists, .genre {
@@ -82,12 +73,7 @@
 				right: 0;
 				top: 0;
 				width: 135px;
-				margin-top: 4px;
-
-				html.touch & {
-					margin-top: 6px;
-				}
-
+				margin-top: 6px;
 				padding: 6px 12px;
 				border-right: 1px solid @colorFgBorderEmphasize1;
 			}

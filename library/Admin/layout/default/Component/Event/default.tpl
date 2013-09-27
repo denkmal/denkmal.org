@@ -22,17 +22,14 @@
 	<div class="event-edit">
 		{form name='Admin_Form_Event' event=$event}
 			{formField name='venue' label={translate 'Ort'}}
-			<div class="venueDetails">
-				{formField name='venueAddress' label={translate 'Adresse'}}
-				{formField name='venueUrl' label={translate 'Webseite'}}
-			</div>
 			{formField name='date' label={translate 'Datum'}}
 			{formField name='fromTime' label={translate 'Beginn'}}
 			{formField name='untilTime' label={translate 'Ende'}}
 			{formField name='title' label={translate 'Titel'}}
 			{formField name='description' label={translate 'Beschreibung'}}
+			{formField name='activate' label={translate 'Freischalten'}}
 
-			{formAction action='Save' label={translate 'Speichern'} prepend={input name='enable'}}
+			{formAction action='Save' label={translate 'Speichern'}}
 			{*{formAction action='Delete' label={translate 'Löschen'}}*}
 
 			{if $event->getHidden()}

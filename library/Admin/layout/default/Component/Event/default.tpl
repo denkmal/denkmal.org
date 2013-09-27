@@ -1,9 +1,8 @@
 <div class="event">
-	<div class="event-content">
+	<div class="event-content toggleNext">
 		{if $song = $event->getSong()}
 			{link icon="arrow-right" class="playButton navButton playAudio"}
 		{/if}
-		{link icon="arrow-down" class="editEvent"}
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
 		<time class="time">
 			{$event->getFrom()->format('H:i')}
@@ -19,7 +18,7 @@
 		{/if}
 		<span class="description nowrap">{eventtext text=$event->getDescription()}</span>
 	</div>
-	<div class="event-edit">
+	<div class="event-edit toggleNext-content">
 		{form name='Admin_Form_Event' event=$event}
 			{formField name='venue' label={translate 'Ort'}}
 			{formField name='date' label={translate 'Datum'}}

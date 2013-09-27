@@ -11,7 +11,7 @@ var Admin_Component_Event = Admin_Component_Abstract.extend({
 		'click .editEvent': 'toggleEdit'
 	},
 
-	toggleEdit: function(){
+	toggleEdit: function() {
 		this.$('.event-edit').slideToggle('fast');
 	}
 });

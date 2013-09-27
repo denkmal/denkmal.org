@@ -1,4 +1,4 @@
-<div class="event">
+<div class="event {if $event->getHidden()}hidden{/if}">
 	<div class="event-content toggleNext">
 		{if $song = $event->getSong()}
 			{link icon="arrow-right" class="playButton navButton playAudio"}

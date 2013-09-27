@@ -16,5 +16,3 @@
 
 	{formAction action='Create' label={translate 'Hinzufügen'}}
 {/form}
-
-{component name='Denkmal_Component_Event'}

@@ -3,6 +3,7 @@
 class Denkmal_Paging_Event_Date extends Denkmal_Paging_Event_Abstract {
 
 	public function __construct(DateTime $date, $publicOnly = null) {
+		$date = clone $date;
 		$date->setTime(6, 0, 0);
 		$startStamp = $date->getTimestamp();
 		$date->add(new DateInterval('P1D'));

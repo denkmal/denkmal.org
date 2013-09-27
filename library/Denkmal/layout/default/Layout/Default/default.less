@@ -1,25 +1,29 @@
-.headerWrapper, #header {
-	min-height: @barSize;
-
-	@media (max-width: 489px) {
-		min-height: 2*@barSize;
-	}
+#body-container {
+	height: 100%;
 }
 
 #header {
 	position: fixed;
 	top: 0;
 	left: 0;
-	right: 0;
-	z-index: 50;
+	width: 100%;
+	z-index: 1;
 	background-color: @colorBgTheme;
-	border-bottom: 3px solid @colorBgBody;
+	height: @barSize;
 }
 
 #middle {
-	position: relative;
-	max-width: 1200px;
-	min-height: 300px;
-	padding: 12px;
+	.box-sizing(border-box);
+	height: 100%;
+	padding-top: 2*@barSize;
 
+	@media (min-width: 650px) {
+		padding-top: @barSize;
+	}
+	overflow: hidden;
+}
+
+.sheet {
+	max-width: 1200px;
+	margin: 0 auto;
 }

@@ -3,14 +3,14 @@
 {block name='tileColor'}#99cc6b{/block}
 
 {block name='body'}
-	<div class="headerWrapper">
-		<header id="header">
+	<header id="header">
+		<div class="sheet">
 			{block name='header'}
 				{component name='Denkmal_Component_HeaderBar'}
 			{/block}
-		</header>
-	</div>
-	<section id="middle">
+		</div>
+	</header>
+	<section id="middle" class="sheet">
 		{component name=$viewObj->getPage()}
 	</section>
 {/block}

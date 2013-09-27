@@ -20,7 +20,7 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
 	 * @param {Object} song
 	 */
 	playSong: function(song) {
-		var url = cm.getUrlUserContent(this.song.path);
+		var url = cm.getUrlUserContent(song.path);
 		this._player.setSrc(url);
 		this._player.play();
 	}

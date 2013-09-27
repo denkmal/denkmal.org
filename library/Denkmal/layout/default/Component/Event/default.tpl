@@ -1,6 +1,6 @@
 {if $data}
 	<div class="event featured">
-		{link icon="arrow-right" class="playButton navButton playAudio"}
+		{link icon="play" class="playButton navButton playAudio"}
 		{link icon="map" class="mapButton navButton showMap"}
 		<div class="event-content">
 			{if $data.url}
@@ -13,7 +13,7 @@
 				<span class="icon icon-time"></span>
 				{$data.from|escape}
 			</time>
-			<p>
+			<p class="meta">
 				<span class="artists nowrap">{eventtext text=$data.description}</span>
 				<span class="genre nowrap">Genres</span>
 			</p>

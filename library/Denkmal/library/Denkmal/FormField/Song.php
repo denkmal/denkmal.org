@@ -21,7 +21,11 @@ class Denkmal_FormField_Song extends CM_FormField_SuggestOne {
 
 	protected function _getSuggestions($term, array $options, CM_Render $render) {
 		$out = array();
-		$out[] = $this->getSuggestion(new Denkmal_Model_Song(4), $render);
+		$songList = new Denkmal_Paging_Song_Search($term);
+		$songList->setPage(1, 15);
+		foreach ($songList as $song) {
+			$out[] = $this->getSuggestion($song, $render);
+		}
 		return $out;
 	}
 }

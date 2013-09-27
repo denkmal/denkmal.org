@@ -10,7 +10,7 @@
 		<span class="name nowrap">{eventtext text=$event->getTitle()}</span>
 		<time class="time">
 			<span class="icon icon-time"></span>
-			{$event->getFrom()->format('H:i')}
+			{date_time date=$event->getFrom()}
 		</time>
 		<p>
 			<span class="artists nowrap">{eventtext text=$event->getDescription()}</span>

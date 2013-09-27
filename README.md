@@ -5,13 +5,13 @@
 
 ```conf
 <VirtualHost *:80>
-  ServerName denkmal.local
-  RedirectPermanent / http://www.denkmal.local/
+  ServerName denkmal.dev
+  RedirectPermanent / http://www.denkmal.dev/
 </VirtualHost>
 
 <VirtualHost *:80>
-  ServerName www.denkmal.local
-  ServerAlias admin.denkmal.local
+  ServerName www.denkmal.dev
+  ServerAlias admin.denkmal.dev
   DocumentRoot /Users/reto/Projects/denkmal.org
 
   <Directory /Users/reto/Projects/denkmal.org/>

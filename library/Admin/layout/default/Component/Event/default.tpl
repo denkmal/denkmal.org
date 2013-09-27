@@ -2,7 +2,7 @@
 	{if $song = $event->getSong()}
 		{link icon="arrow-right" class="playButton navButton playAudio"}
 	{/if}
-	{link icon="arrow" class="editEvent"}
+	{link icon="arrow-down" class="editEvent"}
 	<div class="event-content">
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
 		<time class="time">

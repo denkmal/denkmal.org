@@ -27,10 +27,8 @@
 			{formField name='title' label={translate 'Titel'}}
 			{formField name='description' label={translate 'Beschreibung'}}
 			{formField name='activate' label={translate 'Freischalten'}}
-
 			{formAction action='Save' label={translate 'Speichern'} alternatives="
 				{formAction action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
-
 				{if $event->getHidden()}
 					{formAction action='Show' label={translate 'Anzeigen'}}
 				{else}

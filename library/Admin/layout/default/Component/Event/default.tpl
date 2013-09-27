@@ -28,14 +28,15 @@
 			{formField name='description' label={translate 'Beschreibung'}}
 			{formField name='activate' label={translate 'Freischalten'}}
 
-			{formAction action='Save' label={translate 'Speichern'}}
-			{*{formAction action='Delete' label={translate 'Löschen'}}*}
+			{formAction action='Save' label={translate 'Speichern'} alternatives="
+				{formAction action='Delete' label={translate 'Löschen'}}
 
-			{if $event->getHidden()}
-				{*{formAction action='Show' label={translate 'Anzeigen'}}*}
-			{else}
-				{*{formAction action='Hide' label={translate 'Ausblenden'}}*}
-			{/if}
+				{if $event->getHidden()}
+					{formAction action='Show' label={translate 'Anzeigen'}}
+				{else}
+					{formAction action='Hide' label={translate 'Ausblenden'}}
+				{/if}
+			"}
 		{/form}
 	</div>
 </div>

@@ -13,6 +13,9 @@ class Admin_Form_Event extends CM_Form_Abstract {
 		$this->registerField('activate', new CM_FormField_Boolean());
 
 		$this->registerAction(new Admin_FormAction_Event_Save($this));
+		$this->registerAction(new Admin_FormAction_Event_Delete($this));
+		$this->registerAction(new Admin_FormAction_Event_Show($this));
+		$this->registerAction(new Admin_FormAction_Event_Hide($this));
 	}
 
 	protected function _renderStart(CM_Params $params) {

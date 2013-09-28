@@ -6,9 +6,18 @@
 	outline: 2px dashed @colorBgBody;
 	outline-offset: -2px;
 
-	.date, .timeframe, .fromTime, .untilTime {
+	.formField.date, .formField.fromTime {
 		display: inline-block;
-		vertical-align: top;
+	}
+	.formField.fromTime .Denkmal_FormField_Time {
+		display: inline-block;
+		box-sizing: border-box;
+		max-width: 50%;
+
+		padding-left: 10px;
+		&:first-child {
+			padding-left: 0px;
+		}
 	}
 }
 

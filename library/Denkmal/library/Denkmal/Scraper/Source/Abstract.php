@@ -42,7 +42,7 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 			if (null === $venue) {
 				$venue = Denkmal_Model_Venue::create($venueName, true, false);
 			}
-			Denkmal_Model_Event::create($venue, $description->getDescriptionAndGenres(), false, true, $from, $until, $description->getTitle(), null);
+			Denkmal_Model_Event::create($venue, $description->getDescriptionAndGenres(), true, true, $from, $until, $description->getTitle(), null);
 		}
 	}
 

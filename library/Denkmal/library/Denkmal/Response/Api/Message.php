@@ -15,13 +15,13 @@ class Denkmal_Response_Api_Message extends Denkmal_Response_Api_Abstract {
 		$text = $this->_params->getString('text');
 		$clientHash = $this->_params->getString('hash');
 
-		$response = array('status' => 'ok');
 		$serverHash = hash($hashAlgorithm, $hashToken . $text);
 		if ($serverHash != $clientHash) {
-			$response['status'] = 'error';
-		} else {
-			$response['data'] = Denkmal_Model_Message::create($venue, $text);
+			throw new CM_Exception_NotAllowed('Not authorised access.');
 		}
+
+		$message = Denkmal_Model_Message::create($venue, $text);
+		$response = $message->toArrayApi($this->getRender());
 
 		$this->_setContent($response);
 	}

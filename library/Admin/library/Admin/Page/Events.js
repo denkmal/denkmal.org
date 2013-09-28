@@ -5,5 +5,14 @@
 var Admin_Page_Events = Admin_Page_Abstract.extend({
 
 	/** @type String */
-	_class: 'Admin_Page_Events'
+	_class: 'Admin_Page_Events',
+
+	childrenEvents: {
+		'Admin_Form_Event success.Save': function(form) {
+			this.reload();
+		},
+		'Admin_Form_Event success.Hide': function(form) {
+			this.reload();
+		}
+	}
 });

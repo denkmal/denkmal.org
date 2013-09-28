@@ -1,7 +1,7 @@
 <?php
 
 
-class Scraper_String {
+class Denkmal_Scraper_String {
 
 	/** @var string */
 	private $_string = null;
@@ -23,7 +23,7 @@ class Scraper_String {
 	 * @param string  $search  Search-string
 	 * @param string  $replace OPTIONAL Replace-string
 	 * @param boolean $regexp  OPTIONAL Use regexp-replacemant
-	 * @return Scraper_String This
+	 * @return Denkmal_Scraper_String This
 	 */
 	public function replace($search, $replace = '', $regexp = false) {
 		if ($regexp) {
@@ -37,7 +37,7 @@ class Scraper_String {
 	/**
 	 * Strip tags from string
 	 *
-	 * @return Scraper_String This
+	 * @return Denkmal_Scraper_String This
 	 */
 	public function stripTags() {
 		$this->_string = strip_tags($this->_string);
@@ -50,7 +50,7 @@ class Scraper_String {
 	 * @param string       $before String before
 	 * @param string       $after  String after
 	 * @param boolean|null $greedy Whether to be greedy
-	 * @return Scraper_String Piece between
+	 * @return Denkmal_Scraper_String Piece between
 	 */
 	public function between($before, $after, $greedy = null) {
 		$regexp = '#\Q' . $before . '\E(.+';

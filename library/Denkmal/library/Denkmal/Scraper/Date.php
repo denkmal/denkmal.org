@@ -4,32 +4,29 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
 
 	private static $_months = array(
 		'Jan'       => 1,
-		'Feb'       => 2,
-		'Mar'       => 3,
-		'Apr'       => 4,
-		'Mai'       => 5,
-		'Jun'       => 6,
-		'Jul'       => 7,
-		'Aug'       => 8,
-		'Sep'       => 9,
-		'Okt'       => 10,
-		'Nov'       => 11,
-		'Dez'       => 12,
-
 		'Januar'    => 1,
+		'Feb'       => 2,
 		'Februar'   => 2,
+		'Mar'       => 3,
 		'März'      => 3,
+		'Apr'       => 4,
 		'April'     => 4,
 		'Mai'       => 5,
+		'Jun'       => 6,
 		'Juni'      => 6,
+		'Jul'       => 7,
 		'Juli'      => 7,
+		'Aug'       => 8,
 		'August'    => 8,
-		'September' => 9,
-		'Oktober'   => 10,
-		'November'  => 11,
-		'Dezember'  => 12,
-
+		'Sep'       => 9,
 		'Sept'      => 9,
+		'September' => 9,
+		'Okt'       => 10,
+		'Oktober'   => 10,
+		'Nov'       => 11,
+		'November'  => 11,
+		'Dez'       => 12,
+		'Dezember'  => 12,
 	);
 
 	/**
@@ -82,9 +79,9 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
 
 			if ($yearGuess) {
 				$minDate = new DateTime();
-				$minDate->sub($this->_getThresholdNextyearMonths());
+				$minDate->sub(new DateInterval('P4M'));
 				if ($this->_date < $minDate) {
-					// Date is more than [thresholdNextyear] months in past -> set to next year
+					// Date is more than 4 months in past -> set to next year
 					$this->_date->add(new DateInterval('P1Y'));
 				}
 			}
@@ -121,9 +118,9 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
 	}
 
 	/**
-	 * @return DateTime Date
+	 * @return DateTime
 	 */
-	public function getDate() {
+	public function getDateTime() {
 		return $this->_date;
 	}
 
@@ -136,14 +133,6 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
 
 	public function __clone() {
 		$this->_date = clone $this->_date;
-	}
-
-	/**
-	 * @return DateInterval
-	 */
-	private function _getThresholdNextyearMonths() {
-		$thresholdMonths = (int) self::_getConfig()->thresholdNextyearMonths;
-		return new DateInterval('P' . $thresholdMonths . 'M');
 	}
 
 	public function __toString() {

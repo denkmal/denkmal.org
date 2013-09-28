@@ -1,2 +1,2 @@
-{link icon="play" class="playSong"}
-{link icon="pause" class="pauseSong"}
+{link icon="play" class="navButton playSong"}
+{link icon="pause" class="navButton pauseSong"}

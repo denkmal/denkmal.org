@@ -21,6 +21,19 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 		$carousel.removeClass('beforeload');
 		this._carousel = new Carousel(".swipeCarousel");
 		this._carousel.init();
+
+		var self = this;
+		$(window).bind('keydown.swipeCarousel', function(event) {
+			if (event.which === cm.keyCode.LEFT) {
+				self._carousel.prev();
+			}
+			if (event.which === cm.keyCode.RIGHT) {
+				self._carousel.next();
+			}
+		});
+		this.on('destruct', function() {
+			$(window).unbind('keydown.swipeCarousel');
+		});
 	},
 
 	/**

@@ -20,15 +20,15 @@
 	</div>
 	<div class="event-edit toggleNext-content">
 		{form name='Admin_Form_Event' event=$event}
-			{formField name='venue' label={translate 'Ort'}}
-			{formField name='date' label={translate 'Datum'}}
-			{formField name='fromTime' label={translate 'Beginn'}}
-			{formField name='untilTime' label={translate 'Ende'}}
-			{formField name='title' label={translate 'Titel'}}
-			{formField name='description' label={translate 'Beschreibung'}}
-			{formField name='song' label={translate 'Lied'}}
-			{formField name='activate' label={translate 'Freischalten'}}
-			{formAction action='Save' label={translate 'Speichern'} alternatives="
+		{formField name='venue' label={translate 'Ort'}}
+		{formField name='date' label={translate 'Datum'}}
+		{formField name='fromTime' label={translate 'Beginn'}}
+		{formField name='untilTime' label={translate 'Ende'}}
+		{formField name='title' label={translate 'Titel'}}
+		{formField name='description' label={translate 'Beschreibung'}}
+		{formField name='song' label={translate 'Lied'}}
+		{formField name='activate' label={translate 'Freischalten'}}
+		{formAction action='Save' label={translate 'Speichern'} alternatives="
 				{formAction action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
 				{if $event->getHidden()}
 					{formAction action='Show' label={translate 'Anzeigen'}}

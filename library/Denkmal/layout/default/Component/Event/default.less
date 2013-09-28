@@ -2,17 +2,18 @@
 	position: relative;
 	background-color: @colorBg;
 	border: 1px solid @colorBgEmphasize3;
-	margin-bottom: 2px;
-	padding: 5px 0;
+	margin-bottom: 5px;
+	padding: 10px 0;
 	padding-left: 3px;
+	border-radius: 4px;
 
 	&.featured:before {
 		position: absolute;
 		content: "";
-		top: 0;
-		left: -3px;
-		height: 100%;
-		width: 3px;
+		top: 10%;
+		left: -4px;
+		height: 80%;
+		width: 2px;
 		background-color: @colorFeatured;
 	}
 
@@ -21,6 +22,7 @@
 
 		&:hover {
 			color: @colorFgHeading;
+			opacity: 1;
 		}
 	}
 
@@ -30,9 +32,9 @@
 
 	.event-content {
 		position: relative;
-		min-height: @barSize;
-		margin-left: @barSize;
-		padding: 0 5px;
+		min-height: @sizeButton;
+		margin-left: @sizeButton;
+		padding: 0 8px;
 		border-left: 1px solid @colorFgBorderEmphasize2;
 		color: @colorFg;
 
@@ -48,8 +50,8 @@
 		}
 
 		.location {
-			font-weight: bold;
-			margin-top: 2px;
+			margin-bottom: 2px;
+			font-size: @fontSize + 1;
 		}
 
 		.name {
@@ -74,10 +76,12 @@
 				border-right: 1px solid @colorFgBorderEmphasize1;
 			}
 		}
-
-		.genre {
-			color: @colorFgShy;
-			font-style: italic;
+		.meta {
+			margin-top: 2px;
+			.genre {
+				color: @colorFgShy;
+				font-style: italic;
+			}
 		}
 	}
 }

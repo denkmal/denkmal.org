@@ -17,8 +17,14 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
 	_player: null,
 
 	events: {
-		'click .playSong': 'playSong',
-		'click .pauseSong': 'pauseSong'
+		'click .playSong': function() {
+			this.playSong();
+			return false;
+		},
+		'click .pauseSong': function() {
+			this.pauseSong();
+			return false;
+		}
 	},
 
 	ready: function() {

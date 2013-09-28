@@ -1,7 +1,7 @@
 <div class="event {if $event->getHidden()}hidden{/if}">
 	<div class="event-content toggleNext">
-		{if $song = $event->getSong()}
-			{link icon="arrow-right" class="playButton navButton playAudio"}
+		{if $event->getSong()}
+			{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
 		{/if}
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
 		<time class="time">

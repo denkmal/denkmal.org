@@ -8,7 +8,7 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
 	_class: 'Denkmal_Component_HeaderBar',
 
 	events: {
-		'click .menu.dates a': function(event) {
+		'clickNoMeta .menu.dates a': function(event) {
 			var url = $(event.currentTarget).attr('href');
 			return this.activateMenu(url);
 		}

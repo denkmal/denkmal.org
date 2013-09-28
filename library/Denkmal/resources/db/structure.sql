@@ -25,13 +25,11 @@ CREATE TABLE `denkmal_model_venue` (
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
-  `enabled` tinyint(4) unsigned NOT NULL DEFAULT '0',
-  `hidden` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `ignore` tinyint(4) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `queued` (`queued`),
-  KEY `enabled` (`enabled`),
-  KEY `hidden` (`hidden`)
+  KEY `ignore` (`ignore`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

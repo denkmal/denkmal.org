@@ -1,4 +1,4 @@
-<div class="venue {if $venue->getHidden()}hidden{/if}">
+<div class="venue {if $venue->getIgnore()}hidden{/if}">
 	<div class="venue-content toggleNext">
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
 	</div>
@@ -8,13 +8,9 @@
 			{formField name='url' label={translate 'URL'}}
 			{formField name='address' label={translate 'Adresse'}}
 			{formField name='coordinates' label={translate 'Koordinaten'}}
+			{formField name='ignore' label={translate 'Scrapper ignorieren'}}
 			{formAction action='Save' label={translate 'Speichern'} alternatives="
 				{button action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
-				{if $venue->getHidden()}
-					{button action='Show' label={translate 'Anzeigen'}}
-				{else}
-					{button action='Hide' label={translate 'Ausblenden'}}
-				{/if}
 			"}
 		{/form}
 

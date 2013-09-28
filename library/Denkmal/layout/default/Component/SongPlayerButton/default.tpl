@@ -1,1 +1,2 @@
-{link icon="arrow-right" class="toggleSong"}
+{link icon="play" class="playSong"}
+{link icon="pause" class="pauseSong"}

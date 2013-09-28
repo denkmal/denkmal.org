@@ -26,14 +26,11 @@ class Admin_FormAction_Event_Save extends CM_FormAction_Abstract {
 		$title = $params->has('title') ? $params->getString('title') : null;
 		$description = $params->getString('description');
 		$song = $params->has('song') ? $params->getSong('song') : null;
-		$activate = $params->getBoolean('activate');
 
 		$event->setVenue($venue);
 		$event->setDescription($description);
-		if ($activate) {
-			$event->setEnabled(true);
-			$event->setQueued(false);
-		}
+		$event->setEnabled(true);
+		$event->setQueued(false);
 		$event->setFrom($from);
 		$event->setUntil($until);
 		$event->setTitle($title);

@@ -5,11 +5,11 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	const TYPE = 100;
 
 	/**
-	 * @param bool|null $publicOnly
+	 * @param bool|null $showAll
 	 * @return Denkmal_Paging_Event_Venue
 	 */
-	public function getEventList($publicOnly = null) {
-		return new Denkmal_Paging_Event_Venue($this, $publicOnly);
+	public function getEventList($showAll = null) {
+		return new Denkmal_Paging_Event_Venue($this, $showAll);
 	}
 
 	/**
@@ -207,7 +207,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 
 	protected function _onDelete() {
 		/** @var Denkmal_Model_Event $event */
-		foreach ($this->getEventList() as $event) {
+		foreach ($this->getEventList(true) as $event) {
 			$event->delete();
 		}
 		/** @var Denkmal_Model_VenueAlias $alias */

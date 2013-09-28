@@ -94,5 +94,5 @@ Request:
 POST /api/message HTTP/1.1
 Host: www.denkmal.org
 
-venue=23&text=Foobar
+venue=23&text=Foobar&hash=asdfhoihweasdfj
 ```

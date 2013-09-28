@@ -30,7 +30,7 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
 		_.invoke(cm.getViewList('Denkmal_Component_SongPlayerButton'), 'onPlay', this._song);
 	},
 
-	pause: function() {
+	pauseSong: function() {
 		this._player.pause();
 		_.invoke(cm.getViewList('Denkmal_Component_SongPlayerButton'), 'onPause');
 	},

@@ -45,6 +45,9 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
 		}
 	},
 
+	/**
+	 * @param {Object} song
+	 */
 	onPlay: function(song) {
 		if (song.id == this.song.id) {
 			this.$('.playSong').hide();

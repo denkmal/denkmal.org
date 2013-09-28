@@ -4,6 +4,7 @@
 			{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
 		{/if}
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
+		<time class="date">{date time=$event->getFrom()->getTimestamp()}</time>
 		<time class="time">
 			{date_time date=$event->getFrom()}
 		</time>

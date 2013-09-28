@@ -24,7 +24,7 @@ class Admin_FormAction_Venue_Save extends CM_FormAction_Abstract {
 		$url = $params->has('url') ? $params->getString('url') : null;
 		$address = $params->has('address') ? $params->getString('address') : null;
 		$coordinates = $params->has('coordinates') ? $params->getGeoPoint('coordinates') : null;
-		$ignore = $params->has('ignore') ? $params->getBoolean('ignore') : null;
+		$ignore = $params->getBoolean('ignore');
 
 		$venue->setName($name);
 		$venue->setUrl($url);

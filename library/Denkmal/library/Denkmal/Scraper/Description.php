@@ -60,14 +60,14 @@ class Denkmal_Scraper_Description {
 	 */
 	private function _parseString($str) {
 		$str = strip_tags($str);
-		$str = preg_replace('/\r?\n\r?/', ' ', $str);
+		$str = preg_replace('#\r?\n\r?#', ' ', $str);
 		$str = strip_tags($str);
 		$str = preg_replace('#\[(.+?)\]#', '($1)', $str);
 		$str = preg_replace('#\bdj[\'`]s\b#', 'DJs', $str);
-		$str = preg_replace('/[\:\.]$/', '', $str);
-		$str = preg_replace('/\b([A-ZÖÄÜ])([A-ZÖÄÜ]{2,})\b/e', "'\\1'.strtolower('\\2')", $str);
-		$str = preg_replace('/\s+/u', ' ', $str);
-		$str = preg_replace('/\bDJ[\'`‛’‘]?(s?)\b/i', 'DJ$1', $str);
+		$str = preg_replace('#[\:\.]$#', '', $str);
+		$str = preg_replace('#\b([A-ZÖÄÜ])([A-ZÖÄÜ]{2,})\b#e', "'\\1'.strtolower('\\2')", $str);
+		$str = preg_replace('#\s+#u', ' ', $str);
+		$str = preg_replace('#\bDJ[\'`‛’‘]?(s?)\b#i', 'DJ$1', $str);
 		$str = trim($str);
 		return $str;
 	}

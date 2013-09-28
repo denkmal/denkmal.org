@@ -10,6 +10,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
 		$this->registerField('untilTime', new Denkmal_FormField_Time());
 		$this->registerField('title', new CM_FormField_Text());
 		$this->registerField('description', new CM_FormField_Text());
+		$this->registerField('song', new Denkmal_FormField_Song());
 		$this->registerField('activate', new CM_FormField_Boolean());
 
 		$this->registerAction(new Admin_FormAction_Event_Save($this));
@@ -29,6 +30,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
 		$this->getField('untilTime')->setValue($event->getUntil());
 		$this->getField('title')->setValue($event->getTitle());
 		$this->getField('description')->setValue($event->getDescription());
+		$this->getField('song')->setValue($event->getSong());
 		$this->getField('activate')->setValue(true);
 	}
 }

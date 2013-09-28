@@ -9,4 +9,8 @@ class Admin_Form_Link extends CM_Form_Abstract {
 
 		$this->registerAction(new Admin_FormAction_Link_Add($this));
 	}
+
+	protected function _renderStart(CM_Params $params) {
+		$this->getField('automatic')->setValue(true);
+	}
 }

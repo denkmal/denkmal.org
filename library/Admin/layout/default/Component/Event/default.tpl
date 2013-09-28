@@ -1,7 +1,7 @@
 <div class="event {if $event->getHidden()}hidden{/if}">
 	<div class="event-content toggleNext">
-		{if $song = $event->getSong()}
-			{link icon="arrow-right" class="playButton navButton playAudio"}
+		{if $event->getSong()}
+			{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
 		{/if}
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
 		<time class="time">
@@ -26,6 +26,7 @@
 			{formField name='untilTime' label={translate 'Ende'}}
 			{formField name='title' label={translate 'Titel'}}
 			{formField name='description' label={translate 'Beschreibung'}}
+			{formField name='song' label={translate 'Lied'}}
 			{formField name='activate' label={translate 'Freischalten'}}
 			{formAction action='Save' label={translate 'Speichern'} alternatives="
 				{formAction action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}

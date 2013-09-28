@@ -1,5 +1,7 @@
 <div class="event featured">
-	{link icon="arrow-right" class="playButton navButton playAudio"}
+	{if $event->getSong()}
+		{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
+	{/if}
 	{link icon="map" class="mapButton navButton showMap"}
 	<div class="event-content">
 		{if $venue->getUrl()}

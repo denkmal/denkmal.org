@@ -42,7 +42,7 @@ CREATE TABLE `denkmal_model_venuealias` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `venue` (`venue`),
-  CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -65,8 +65,8 @@ CREATE TABLE `denkmal_model_event` (
   KEY `enabled` (`enabled`),
   KEY `hidden` (`hidden`),
   KEY `song` (`song`),
-  CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`song`) REFERENCES `denkmal_model_song` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`song`) REFERENCES `denkmal_model_song` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -78,7 +78,7 @@ CREATE TABLE `denkmal_model_message` (
   PRIMARY KEY (`id`),
   KEY `venue` (`venue`),
   KEY `created` (`created`),
-  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

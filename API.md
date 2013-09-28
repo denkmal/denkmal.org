@@ -93,6 +93,17 @@ Request:
 ```
 POST /api/message HTTP/1.1
 Host: www.denkmal.org
+content-type: text/plain
+content-length: 65
 
-venue=23&text=Foobar&hash=asdfhoihweasdfj
+venue=1&text=foobar&hash=72ec3a3a9a0723aee528d20fb84a81e554ec4c71
+```
+Response:
+```json
+{
+	"id":13,
+	"venue":1,
+	"created":1380379451,
+	"text":"foobar"
+}
 ```

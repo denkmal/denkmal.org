@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Venue_Edit extends CM_FormAction_Abstract {
+class Admin_FormAction_Venue_Save extends CM_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('venueId', 'name');
@@ -30,6 +30,6 @@ class Admin_FormAction_Venue_Edit extends CM_FormAction_Abstract {
 		$venue->setAddress($address);
 		$venue->setCoordinates($coordinates);
 
-		$response->redirect('Admin_Page_Venue', array('venue' => $venue->getId()));
+		$response->reloadComponent();
 	}
 }

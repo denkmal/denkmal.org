@@ -47,6 +47,12 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
 
 	protected function _onDelete() {
 		$this->getFile()->delete();
+
+		$eventList = new Denkmal_Paging_Event_Song($this);
+		/** @var Denkmal_Model_Event $event */
+		foreach ($eventList as $event) {
+			$event->setSong(null);
+		}
 	}
 
 	/**

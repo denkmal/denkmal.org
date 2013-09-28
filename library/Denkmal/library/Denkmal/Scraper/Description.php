@@ -6,7 +6,7 @@ class Denkmal_Scraper_Description {
 	private $_title = null;
 
 	/** @var string|null */
-	private $description = null;
+	private $_description = null;
 
 	/** @var Denkmal_Scraper_Genres|null */
 	private $_genres = null;
@@ -18,7 +18,7 @@ class Denkmal_Scraper_Description {
 	 */
 	public function __construct($description = null, $title = null, Denkmal_Scraper_Genres $genres = null) {
 		if ($description) {
-			$this->description = $this->_parseString($description);
+			$this->_description = $this->_parseString($description);
 		}
 		if ($title) {
 			$this->_title = $this->_parseString($title);
@@ -31,10 +31,10 @@ class Denkmal_Scraper_Description {
 	 */
 	public function getDescriptionAndGenres() {
 		$description = '';
-		if ($this->description) {
+		if ($this->_description) {
 			$description = $this->_endOnPunctuation($description, ':');
 			$description .= ' ';
-			$description .= ucfirst(substr($this->description, 0, 500));
+			$description .= ucfirst(substr($this->_description, 0, 500));
 		}
 		if ($this->_genres && $this->_genres->count() > 0) {
 			$description = $this->_endOnPunctuation($description);

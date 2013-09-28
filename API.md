@@ -96,19 +96,14 @@ Host: www.denkmal.org
 content-type: text/plain
 content-length: 65
 
-
 venue=1&text=foobar&hash=72ec3a3a9a0723aee528d20fb84a81e554ec4c71
 ```
 Response:
 ```json
 {
-	"status":"ok",
-	"data":{"_type":104,"_id":{"id":10},"id":10,"_class":"Denkmal_Model_Message"}
-}
-```
-or
-```json
-{
-	"status":"error"
+	"id":13,
+	"venue":1,
+	"created":1380379451,
+	"text":"foobar"
 }
 ```

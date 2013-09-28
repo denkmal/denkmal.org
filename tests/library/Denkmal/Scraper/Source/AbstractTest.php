@@ -6,13 +6,6 @@ class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
 		CMTest_TH::clearEnv();
 	}
 
-	/**
-	 * @return DateTime
-	 */
-	private function _getNow() {
-		return new DateTime();
-	}
-
 	public function testIsValidEvent() {
 		$venue = Denkmal_Model_Venue::create('foo', false, false);
 		$description = new Denkmal_Scraper_Description('foo');
@@ -57,5 +50,12 @@ class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
 
 		$method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Source_Abstract', '_isValidEvent');
 		$this->assertSame(false, $method->invoke($scraper, $venue, $description, $from, $until));
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	private function _getNow() {
+		return new DateTime();
 	}
 }

@@ -59,6 +59,39 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 	 * @throws Denkmal_Scraper_Exception_InvalidEvent
 	 */
 	protected function _addEvent(Denkmal_Model_Venue $venue, Denkmal_Scraper_Description $description, DateTime $from, DateTime $until = null) {
+		$event = new Denkmal_Model_Event();
+
+		$event->setVenue($venue);
+		$event->setDescription((string) $description);
+		$event->setTitle(null);
+
+		if ($from < new DateTime()) {
+			throw new Denkmal_Scraper_Exception_InvalidEvent('From-date is in the past');
+		}
+		$fromMax = new DateTime();
+		$fromMax->add(new DateInterval('P' . $this->_getDayCount() . 'D'));
+		if ($from > $fromMax) {
+			throw new Denkmal_Scraper_Exception_InvalidEvent('From-date is too far in the future');
+		}
+		$event->setFrom($from);
+
+		if ($until) {
+			if ($until < $from) {
+				$until->add(new DateInterval('P1D'));
+			}
+			if ($until < $from) {
+				throw new Denkmal_Scraper_Exception_InvalidEvent('Until-date is before from-date');
+			}
+			$event->setUntil($until);
+		}
+
+		$event->setEnabled(false);
+		$event->setQueued(true);
+		$event->setHidden(false);
+
+		$event->setStarred(false);
+
+		$event->commit();
 	}
 
 	/**

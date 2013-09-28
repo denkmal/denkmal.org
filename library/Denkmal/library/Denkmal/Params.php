@@ -31,14 +31,14 @@ class Denkmal_Params extends CM_Params {
 
 	/**
 	 * @param string $key
-	 * @return Denkmal_Date
+	 * @return DateTime
 	 */
 	public function getDate($key) {
-		return $this->_getObject($key, 'Denkmal_Date', null, function ($className, $param) {
+		return $this->_getObject($key, 'DateTime', null, function ($className, $param) {
 			if (!preg_match('#^(\d{4})-(\d{1,2})-(\d{1,2})$#', $param, $matches)) {
 				throw new CM_Exception_InvalidParam('Cannot parse date `' . $param . '`');
 			}
-			return new Denkmal_Date($matches[3], $matches[2], $matches[1]);
+			return new DateTime(((int) $matches[3]) . '-' . ((int) $matches[2]) . '-' . ((int) $matches[1]));
 		});
 	}
 

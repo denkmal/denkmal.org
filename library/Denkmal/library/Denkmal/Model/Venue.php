@@ -107,29 +107,15 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	/**
 	 * @return boolean
 	 */
-	public function getEnabled() {
-		return $this->_get('enabled');
+	public function getIgnore() {
+		return $this->_get('ignore');
 	}
 
 	/**
-	 * @param boolean $enabled
+	 * @param boolean $ignore
 	 */
-	public function setEnabled($enabled) {
-		$this->_set('enabled', $enabled);
-	}
-
-	/**
-	 * @return boolean
-	 */
-	public function getHidden() {
-		return $this->_get('hidden');
-	}
-
-	/**
-	 * @param boolean $hidden
-	 */
-	public function setHidden($hidden) {
-		$this->_set('hidden', $hidden);
+	public function setIgnore($ignore) {
+		$this->_set('ignore', $ignore);
 	}
 
 	public function toArrayApi(CM_Render $render) {
@@ -185,22 +171,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	/**
 	 * @param string            $name
 	 * @param boolean           $queued
-	 * @param boolean           $enabled
-	 * @param boolean           $hidden
+	 * @param boolean           $ignore
 	 * @param string|null       $url
 	 * @param string|null       $address
 	 * @param CM_Geo_Point|null $coordinates
 	 * @return Denkmal_Model_Venue
 	 */
-	public static function create($name, $queued, $enabled, $hidden, $url = null, $address = null, CM_Geo_Point $coordinates = null) {
+	public static function create($name, $queued, $ignore, $url = null, $address = null, CM_Geo_Point $coordinates = null) {
 		$venue = new self();
 		$venue->setName($name);
 		$venue->setUrl($url);
 		$venue->setAddress($address);
 		$venue->setCoordinates($coordinates);
 		$venue->setQueued($queued);
-		$venue->setEnabled($enabled);
-		$venue->setHidden($hidden);
+		$venue->setIgnore($ignore);
 		$venue->commit();
 		return $venue;
 	}
@@ -228,8 +212,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 			'latitude'  => array('type' => 'float', 'optional' => true),
 			'longitude' => array('type' => 'float', 'optional' => true),
 			'queued'    => array('type' => 'boolean'),
-			'enabled'   => array('type' => 'boolean'),
-			'hidden'    => array('type' => 'boolean'),
+			'ignore'    => array('type' => 'boolean'),
 		));
 	}
 

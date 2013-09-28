@@ -7,18 +7,17 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testCreate() {
-		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
+		$venue = Denkmal_Model_Venue::create('Example', true, false);
 
 		$this->assertSame('Example', $venue->getName());
 		$this->assertSame(null, $venue->getAddress());
 		$this->assertSame(null, $venue->getCoordinates());
 		$this->assertSame(true, $venue->getQueued());
-		$this->assertSame(false, $venue->getEnabled());
-		$this->assertSame(false, $venue->getHidden());
+		$this->assertSame(false, $venue->getIgnore());
 	}
 
 	public function testGetSetName() {
-		$venue = Denkmal_Model_Venue::create('Foo', true, false, false);
+		$venue = Denkmal_Model_Venue::create('Foo', true, false);
 
 		$this->assertSame('Foo', $venue->getName());
 
@@ -27,7 +26,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetAddress() {
-		$venue = Denkmal_Model_Venue::create('Example', true, false, false, null, 'Foo');
+		$venue = Denkmal_Model_Venue::create('Example', true, false, null, 'Foo');
 
 		$this->assertSame('Foo', $venue->getAddress());
 
@@ -37,7 +36,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
 	public function testGetSetCoordinates() {
 		$coordinates = new CM_Geo_Point(1, 2);
-		$venue = Denkmal_Model_Venue::create('Example', true, false, false, null, null, $coordinates);
+		$venue = Denkmal_Model_Venue::create('Example', true, false, null, null, $coordinates);
 		$this->assertEquals($coordinates, $venue->getCoordinates());
 
 		$venue->setCoordinates(null);
@@ -49,41 +48,33 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 	}
 
 	public function testGetSetQueued() {
-		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
+		$venue = Denkmal_Model_Venue::create('Example', true, false);
 		$this->assertSame(true, $venue->getQueued());
 
 		$venue->setQueued(false);
 		$this->assertSame(false, $venue->getQueued());
 	}
 
-	public function testGetSetEnabled() {
-		$venue = Denkmal_Model_Venue::create('Example', true, true, false);
-		$this->assertSame(true, $venue->getEnabled());
+	public function testGetSetIgnore() {
+		$venue = Denkmal_Model_Venue::create('Example', true, true);
+		$this->assertSame(true, $venue->getIgnore());
 
-		$venue->setEnabled(false);
-		$this->assertSame(false, $venue->getEnabled());
-	}
-
-	public function testGetSetHidden() {
-		$venue = Denkmal_Model_Venue::create('Example', true, true, false);
-		$this->assertSame(false, $venue->getHidden());
-
-		$venue->setHidden(true);
-		$this->assertSame(true, $venue->getHidden());
+		$venue->setIgnore(false);
+		$this->assertSame(false, $venue->getIgnore());
 	}
 
 	/**
 	 * @expectedException CM_Exception_Nonexistent
 	 */
 	public function testDelete() {
-		$venue = Denkmal_Model_Venue::create('Example', true, true, false);
+		$venue = Denkmal_Model_Venue::create('Example', true, true);
 		$venue->delete();
 
 		new Denkmal_Model_Venue($venue->getId());
 	}
 
 	public function testFindByName() {
-		$venue = Denkmal_Model_Venue::create('Foo', true, false, false);
+		$venue = Denkmal_Model_Venue::create('Foo', true, false);
 
 		$this->assertEquals($venue, Denkmal_Model_Venue::findByName('Foo'));
 		$this->assertNull(Denkmal_Model_Venue::findByName('Bar'));

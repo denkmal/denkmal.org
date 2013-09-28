@@ -13,4 +13,5 @@
 	<section id="middle" class="sheet">
 		{component name=$viewObj->getPage()}
 	</section>
+	{component name='Denkmal_Component_SongPlayer'}
 {/block}

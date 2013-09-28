@@ -26,15 +26,14 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 	 * @param DateTime                   $from         From-date
 	 * @param DateTime|null              $until        Until-date
 	 */
-	protected function _addEvent($venue, $description, DateTime $from, DateTime $until = null) {
+	protected function _addEventAndVenue($venue, $description, DateTime $from, DateTime $until = null) {
 		if (is_string($venue)) {
 			$venue = Denkmal_Model_Venue::findByNameOrAlias($venue);
 			if (null === $venue) {
 				$venue = Denkmal_Model_Venue::create($venue, true, false, false);
 			}
 		}
-		// @todo
-		//		$this->__addEvent($venue, $description, $from, $until);
+//		$this->_addEvent($venue, $description, $from, $until);
 	}
 
 	/**

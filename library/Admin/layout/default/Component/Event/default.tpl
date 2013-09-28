@@ -27,7 +27,6 @@
 		{formField name='title' label={translate 'Titel'}}
 		{formField name='description' label={translate 'Beschreibung'}}
 		{formField name='song' label={translate 'Lied'}}
-		{formField name='activate' label={translate 'Freischalten'}}
 		{formAction action='Save' label={translate 'Speichern'} alternatives="
 				{formAction action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
 				{if $event->getHidden()}

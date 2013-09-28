@@ -1,17 +1,18 @@
 {form name='Denkmal_Form_EventAdd'}
-{formField name='venue' label={translate 'Ort'}}
+{formField name='venue' label={translate 'Ort'} class="required" placeholder={translate 'Agora Bar'}}
 	<div class="venueDetails">
 		{formField name='venueAddress' label={translate 'Adresse'}}
 		{formField name='venueUrl' label={translate 'Webseite'}}
 	</div>
-	Event details
 {formField name='date' label={translate 'Datum'}}
-{formField name='fromTime' label={translate 'Beginn'}}
-{formField name='untilTime' label={translate 'Ende'}}
-{formField name='title' label={translate 'Titel'}}
-{formField name='artists' label={translate 'KünstlerInnen'}}
-{formField name='genres' label={translate 'Genres'}}
-{formField name='urls' label={translate 'Webseiten'}}
+	<div class="timeframe nowrap">
+		{formField name='fromTime' label={translate 'Zeit'} placeholder={translate 'Beginn'} class="required"}
+		{formField name='untilTime' class="noLabel" placeholder={translate 'Ende (optional)'}}
+	</div>
+{formField name='title' label={translate 'Titel'} placeholder={translate 'Meet the Rich vol.8'} class="required"}
+{formField name='artists' label={translate 'KünstlerInnen'} placeholder={translate 'Gregor Rellemer, The Savvy Ones, DJ John (optional)'}}
+{formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam (optional)'}}
+{formField name='urls' label={translate 'Webseiten'} placeholder={translate 'www.myspace.com/ich (optional)'}}
 
 {formAction action='Create' label={translate 'Hinzufügen'} alternatives="
 	{button_link onclick="window.location='mailto:kontakt@denkmal.org?subject=Denkmal.org'" icon='mailbox' label={translate 'Kontakt'}}

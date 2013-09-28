@@ -9,7 +9,6 @@
 	width: 100%;
 	z-index: 1;
 	background-color: @colorBgTheme;
-	height: @barSize;
 }
 
 #middle {
@@ -20,10 +19,16 @@
 	@media (min-width: 650px) {
 		padding-top: @barSize;
 	}
-	overflow: hidden;
 }
 
 .sheet {
 	max-width: 1200px;
 	margin: 0 auto;
+}
+
+.noContent {
+	margin: 10px;
+	padding: 15px;
+	text-align: center;
+	color: @colorFgTheme;
 }

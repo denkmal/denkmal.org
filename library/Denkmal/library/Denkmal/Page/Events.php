@@ -3,12 +3,19 @@
 class Denkmal_Page_Events extends Denkmal_Page_Abstract {
 
 	public function prepare() {
+		$date = $this->_params->getDate('date')->getDateTime();
+		$dateList = new Denkmal_Paging_DateTime_Week();
 
-		for ($i = 0; $i <= 6; $i++) {
-			$date = $this->_params->getDate('date')->getDateTime();
-			$week[] = $date->add(new DateInterval('P' . $i . 'D'));
+		if (in_array($date, $dateList->getItems())) {
+			$menu = new Denkmal_Menu_Weekdays();
+		} else {
+			$menu = new CM_Menu(array(array(
+				'label'  => $date,
+				'page'   => 'Denkmal_Page_Events',
+				'params' => array('date' => $date->format('Y-n-j')),
+			)));
 		}
-
-		$this->setTplParam('week', $week);
+		$this->setTplParam('menu', $menu);
+		$this->setTplParam('date', $date);
 	}
 }

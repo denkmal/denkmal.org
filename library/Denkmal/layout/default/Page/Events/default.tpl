@@ -2,6 +2,28 @@
 
 {block name='content-title'}{/block}
 {block name='content-main'}
-	<time class="currentDate">{date time=$date->getTimestamp()}</time>
-	{component name='Denkmal_Component_EventList' date=$date}
+	<div class="swipeCarousel beforeload">
+		<div class="underTheHood">
+			<div class="credits">
+				<p>Hidden Feature</p>
+			</div>
+			<div class="logo"><span class="icon-baslerstab"></span>denkmal.org</div>
+		</div>
+
+		{if $menu->getEntries()}
+			<ul class="dateList">
+				{foreach $menu->getEntries() as $entry}
+					{$menuDate = $entry->getLabel()}
+					<li class="date {if $menuDate == $date}active{/if}" data-title="{date_weekday date=$menuDate} - {$render->getSiteName()}" data-url="{linkUrl page=$entry->getPage() params=$entry->getParams()}" data-menu-entry-hash="{$entry->getHash()}">
+						<time class="currentDate">{date time=$menuDate->getTimestamp()}</time>
+						{component name='Denkmal_Component_EventList' date=$menuDate}
+					</li>
+				{/foreach}
+			</ul>
+		{else}
+			<div class="noContent">
+				<h3>{translate 'Something is wrong!'}</h3>
+			</div>
+		{/if}
+	</div>
 {/block}

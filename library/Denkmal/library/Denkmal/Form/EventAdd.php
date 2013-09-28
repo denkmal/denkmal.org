@@ -73,8 +73,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 			$venue->setAddress($address);
 			$venue->setCoordinates(null);
 			$venue->setQueued(true);
-			$venue->setEnabled(false);
-			$venue->setHidden(false);
+			$venue->setIgnore(false);
 		}
 		return $venue;
 	}

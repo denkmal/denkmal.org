@@ -1,4 +1,6 @@
-<time class="currentDate">{date time=$date->getTimestamp()}</time>{if $events->getCount()}
+<time class="currentDate">{date time=$date->getTimestamp()}</time>
+
+{if $events->getCount()}
 	<ul class="eventList">
 		{foreach $events as $event}
 			<li>

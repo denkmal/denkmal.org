@@ -28,7 +28,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
 	}
 
 	public function testProcess() {
-		$venue = Denkmal_Model_Venue::create('Example', true, false, false);
+		$venue = Denkmal_Model_Venue::create('Example', true, false);
 		$venueId = $venue->getId();
 		$text = 'hallo test';
 

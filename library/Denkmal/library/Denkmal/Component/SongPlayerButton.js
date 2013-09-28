@@ -40,7 +40,7 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
 	},
 
 	pauseSong: function() {
-		this._player.pause();
+		this._player.pauseSong();
 	},
 
 	onPause: function() {
@@ -67,7 +67,7 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
 	 * @param {Boolean} state
 	 */
 	showPauseIcon: function(state) {
-		$('.playSong').toggleClass('disabled', state);
-		$('.pauseSong').toggleClass('disabled', !state);
+		this.$('.playSong').toggleClass('disabled', state);
+		this.$('.pauseSong').toggleClass('disabled', !state);
 	}
 });

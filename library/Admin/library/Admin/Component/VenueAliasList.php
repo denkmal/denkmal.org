@@ -10,4 +10,11 @@ class Admin_Component_VenueAliasList extends Admin_Component_Abstract {
 		$this->setTplParam('venue', $venue);
 		$this->setTplParam('venueAliasList', $venueAliasList);
 	}
+
+	public static function ajax_deleteAlias(CM_Params $params, CM_ComponentFrontendHandler $handler, CM_Response_View_Ajax $response) {
+		/** @var Denkmal_Params $params */
+		$venueAlias = $params->getVenueAlias('id');
+		$venueAlias->delete();
+		$response->reloadComponent();
+	}
 }

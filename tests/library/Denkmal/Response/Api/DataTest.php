@@ -22,6 +22,7 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
 		$venue2 = Denkmal_Model_Venue::create('Foo 2', true, false);
 
 		$now = new DateTime();
+		$now->setTime(12, 0, 0);
 		$file1 = CM_File::createTmp();
 		$song1 = Denkmal_Model_Song::create('Song 1', $file1);
 		$event1 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now, $now, null, $song1);

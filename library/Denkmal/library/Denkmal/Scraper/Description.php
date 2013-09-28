@@ -78,11 +78,11 @@ class Denkmal_Scraper_Description {
 	 * @return string
 	 */
 	private function _endOnPunctuation($str, $character = null) {
-		if (null === $character) {
-			$character = '.';
-		}
 		if (empty($str)) {
 			return '';
+		}
+		if (null === $character) {
+			$character = '.';
 		}
 		$end = substr($str, -1);
 		if (strrpos('.!?:', $end) === false) {

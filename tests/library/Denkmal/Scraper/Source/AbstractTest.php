@@ -2,6 +2,10 @@
 
 class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
 
+	protected function tearDown() {
+		CMTest_TH::clearEnv();
+	}
+
 	public function testAddEventAndVenue() {
 		$venue = Denkmal_Model_Venue::create('foo', false, false);
 		$description = 'foo';
@@ -25,7 +29,7 @@ class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
 		$venue->expects($this->any())->method('getIgnore')->will($this->returnValue(true));
 		/** @var Denkmal_Model_Venue $venue */
 
-		$description = new Denkmal_Scraper_Description('foo');
+		$description = 'foo';
 		$from = new DateTime();
 
 		$method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Source_Abstract', '_addEventAndVenue');
@@ -39,7 +43,7 @@ class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
 
 		$venue = Denkmal_Model_Venue::create('foo', false, false);
 		$eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, new DateTime('2013-01-01 1:00:00'));
-		$description = new Denkmal_Scraper_Description('foo');
+		$description = 'foo';
 		$from = new DateTime('2013-01-01 1:00:00');
 
 		$method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Source_Abstract', '_addEventAndVenue');

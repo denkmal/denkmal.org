@@ -35,7 +35,7 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
 	private $_date = null;
 
 	/**
-	 * @param DateTime|int    $day   Day of month (1..31) OR a Zend_Date
+	 * @param DateTime|int    $day   Day of month (1..31)
 	 * @param string|int|null $month Month (1..12 / "Jan", "Feb", ...)
 	 * @param int|null        $year  Year
 	 * @throws CM_Exception_Invalid on invalid/strange values

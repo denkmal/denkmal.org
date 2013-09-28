@@ -5,6 +5,28 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 	const TYPE = 100;
 
 	/**
+	 * @param bool|null $publicOnly
+	 * @return Denkmal_Paging_Event_Venue
+	 */
+	public function getEventList($publicOnly = null) {
+		return new Denkmal_Paging_Event_Venue($this, $publicOnly);
+	}
+
+	/**
+	 * @return Denkmal_Paging_VenueAlias_Venue
+	 */
+	public function getAliasList() {
+		return new Denkmal_Paging_VenueAlias_Venue($this);
+	}
+
+	/**
+	 * @return Denkmal_Paging_Message_Venue
+	 */
+	public function getMessageList() {
+		return new Denkmal_Paging_Message_Venue($this);
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getName() {
@@ -181,6 +203,21 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 		$venue->setHidden($hidden);
 		$venue->commit();
 		return $venue;
+	}
+
+	protected function _onDelete() {
+		/** @var Denkmal_Model_Event $event */
+		foreach ($this->getEventList() as $event) {
+			$event->delete();
+		}
+		/** @var Denkmal_Model_VenueAlias $alias */
+		foreach ($this->getAliasList() as $alias) {
+			$alias->delete();
+		}
+		/** @var Denkmal_Model_Message $message */
+		foreach ($this->getMessageList() as $message) {
+			$message->delete();
+		}
 	}
 
 	protected function _getSchema() {

@@ -67,7 +67,7 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
 	 * @param {Boolean} state
 	 */
 	showPauseIcon: function(state) {
-		$('.playSong').toggleClass('disabled', state);
-		$('.pauseSong').toggleClass('disabled', !state);
+		this.$('.playSong').toggleClass('disabled', state);
+		this.$('.pauseSong').toggleClass('disabled', !state);
 	}
 });

@@ -10,12 +10,12 @@ var Admin_Component_VenueAliasList = Admin_Component_Abstract.extend({
 	events: {
 		'click .deleteAlias': function(event) {
 			var id = $(event.currentTarget).closest('li').data('id');
-			this.delete(id);
+			this.deleteAlias(id);
 			return false;
 		}
 	},
 
-	delete: function(id){
-		this.ajax('delete', {id: id});
+	deleteAlias: function(id){
+		this.ajax('deleteAlias', {id: id});
 	}
 });

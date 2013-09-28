@@ -1,3 +1,3 @@
 cm.model.types = {"CM_Model_DeviceCapabilities":20,"CM_Model_Language":23,"CM_Model_Location":24,"CM_Model_Splitfeature":28,"CM_Model_Splittest":16,"CM_Model_SplittestVariation":17,"CM_Model_User":13,"CM_Model_Splittest_RequestClient":26,"CM_Model_Splittest_User":27,"CM_Model_Stream_Publish":21,"CM_Model_Stream_Subscribe":22,"CM_Model_StreamChannel_Message":18,"CM_Model_StreamChannel_Video":19,"CM_Model_StreamChannel_Message_User":29,"CM_Model_StreamChannelArchive_Video":25,"Denkmal_Model_Event":101,"Denkmal_Model_Link":105,"Denkmal_Model_Message":104,"Denkmal_Model_Song":102,"Denkmal_Model_Venue":100,"Denkmal_Model_VenueAlias":103};
-cm.action.types = [];
-cm.action.verbs = [];
+cm.action.types = {"Denkmal_Action_Message":100};
+cm.action.verbs = {"CREATE":1};

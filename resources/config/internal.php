@@ -8,7 +8,8 @@ $config->CM_Site_Abstract->types[Admin_Site::TYPE] = 'Admin_Site'; // #101
 // Highest type used: #101
 
 $config->CM_Action_Abstract->types = array();
-// Highest type used: #0
+$config->CM_Action_Abstract->types[Denkmal_Action_Message::TYPE] = 'Denkmal_Action_Message'; // #100
+// Highest type used: #100
 
 $config->CM_Model_Abstract->types = array();
 $config->CM_Model_Abstract->types[CM_Model_DeviceCapabilities::TYPE] = 'CM_Model_DeviceCapabilities'; // #20
@@ -64,3 +65,4 @@ $config->CM_Paging_ContentList_Abstract->types[CM_Paging_ContentList_Badwords::T
 
 
 $config->CM_Action_Abstract->verbs = array();
+$config->CM_Action_Abstract->verbs[Denkmal_Action_Message::CREATE] = 'Create';

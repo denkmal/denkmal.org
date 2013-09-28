@@ -20,9 +20,12 @@ class Denkmal_Response_Api_Message extends Denkmal_Response_Api_Abstract {
 			throw new CM_Exception_NotAllowed('Not authorised access.');
 		}
 
+		$action = new Denkmal_Action_Message(Denkmal_Action_Message::CREATE, $this->getRequest()->getIp());
+		$action->prepare();
 		$message = Denkmal_Model_Message::create($venue, $text);
-		$response = $message->toArrayApi($this->getRender());
+		$action->notify($message);
 
+		$response = $message->toArrayApi($this->getRender());
 		$this->_setContent($response);
 	}
 

@@ -1,6 +1,6 @@
-<ul>
+<ul class="eventList">
 	{foreach $eventList as $event}
-		<li>
+		<li class="eventList-item">
 			{component name='Admin_Component_Event' event=$event}
 		</li>
 	{/foreach}

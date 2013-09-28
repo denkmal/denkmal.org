@@ -27,58 +27,61 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 	 * @param DateTime|null              $until        Until-date
 	 */
 	protected function _addEventAndVenue($venue, $description, DateTime $from, DateTime $until = null) {
-		if (!$venue instanceof Denkmal_Model_Venue) {
+		if ($venue instanceof Denkmal_Model_Venue) {
+			$venueName = $venue->getName();
+		} else {
 			$venueName = (string) $venue;
 			$venue = Denkmal_Model_Venue::findByNameOrAlias($venueName);
+		}
+		$description = new Denkmal_Scraper_Description($description);
+		if ($until && $until < $from) {
+			$until->add(new DateInterval('P1D'));
+		}
+
+		if ($this->_isValidEvent($venue, $description, $from, $until)) {
 			if (null === $venue) {
 				$venue = Denkmal_Model_Venue::create($venueName, true, false);
 			}
-		}
-		$description = new Denkmal_Scraper_Description($description);
-
-		if ($venue->getIgnore()) {
-			return;
-		}
-
-		$eventListVenueDate = new Admin_Paging_Event_VenueDate($from, $venue);
-		if ($eventListVenueDate->getCount()) {
-			return;
-		}
-
-		try {
-			$this->_addEvent($venue, $description, $from, $until);
-		} catch (Denkmal_Scraper_Exception_InvalidEvent $e) {
-			// Ignore
+			Denkmal_Model_Event::create($venue, $description->getDescriptionAndGenres(), false, true, $from, $until, $description->getTitle(), null);
 		}
 	}
 
 	/**
-	 * @param Denkmal_Model_Venue         $venue        Location
-	 * @param Denkmal_Scraper_Description $description  Description
-	 * @param DateTime                    $from         From-date
-	 * @param DateTime|null               $until        Until-date
-	 * @throws Denkmal_Scraper_Exception_InvalidEvent
+	 * @param Denkmal_Model_Venue|null           $venue
+	 * @param Denkmal_Scraper_Description|string $description
+	 * @param DateTime                           $from
+	 * @param DateTime                           $until
+	 * @return bool
 	 */
-	protected function _addEvent(Denkmal_Model_Venue $venue, Denkmal_Scraper_Description $description, DateTime $from, DateTime $until = null) {
+	protected function _isValidEvent($venue, Denkmal_Scraper_Description $description, DateTime $from, DateTime $until = null) {
 		if ($from < new DateTime()) {
-			throw new Denkmal_Scraper_Exception_InvalidEvent('From-date is in the past');
+			return false; // From-date is in the past
 		}
+
 		$fromMax = new DateTime();
 		$fromMax->add(new DateInterval('P' . $this->_getDayCount() . 'D'));
 		if ($from > $fromMax) {
-			throw new Denkmal_Scraper_Exception_InvalidEvent('From-date is too far in the future');
+			return false; // From-date is too far in the future
 		}
 
 		if ($until) {
 			if ($until < $from) {
-				$until->add(new DateInterval('P1D'));
-			}
-			if ($until < $from) {
-				throw new Denkmal_Scraper_Exception_InvalidEvent('Until-date is before from-date');
+				return false; // Until-date is before from-date
 			}
 		}
 
-		Denkmal_Model_Event::create($venue, $description->getDescriptionAndGenres(), false, true, $from, $until, $description->getTitle(), null);
+		if ($venue instanceof Denkmal_Model_Venue) {
+			if ($venue->getIgnore()) {
+				return false; // Venue ignored
+			}
+
+			$eventListVenueDate = new Admin_Paging_Event_VenueDate($from, $venue);
+			if ($eventListVenueDate->getCount()) {
+				return false; // Venue has event on same day
+			}
+		}
+
+		return true;
 	}
 
 	/**

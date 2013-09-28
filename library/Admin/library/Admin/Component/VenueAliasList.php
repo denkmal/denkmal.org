@@ -12,8 +12,8 @@ class Admin_Component_VenueAliasList extends Admin_Component_Abstract {
 	}
 
 	public static function ajax_deleteAlias(CM_Params $params, CM_ComponentFrontendHandler $handler, CM_Response_View_Ajax $response) {
-		$id = $params->getInt('id');
-		$venueAlias = new Denkmal_Model_VenueAlias($id);
+		/** @var Denkmal_Params $params */
+		$venueAlias = $params->getVenueAlias('id');
 		$venueAlias->delete();
 		$response->reloadComponent();
 	}

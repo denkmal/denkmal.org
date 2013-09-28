@@ -13,6 +13,15 @@ class Denkmal_Params extends CM_Params {
 
 	/**
 	 * @param string $key
+	 * @return Denkmal_Model_Venue
+	 * @throws CM_Exception_InvalidParam
+	 */
+	public function getVenueAlias($key) {
+		return $this->_getObject($key, 'Denkmal_Model_VenueAlias');
+	}
+
+	/**
+	 * @param string $key
 	 * @return Denkmal_Model_Event
 	 * @throws CM_Exception_InvalidParam
 	 */

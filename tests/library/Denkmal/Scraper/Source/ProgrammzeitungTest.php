@@ -14,6 +14,12 @@ EOT;
 			new DateTime('2013-03-13 19:30:00'),
 			new DateTime('2013-03-13 23:30:00')
 		);
+		$scraper->expects($this->at(1))->method('_addEvent')->with(
+			'Tango Schule Basel',
+			'Tango: Übungsabend mit Schnupperstunde ',
+			new DateTime('2013-03-13 20:00:00'),
+			new DateTime('2013-03-13 22:30:00')
+		);
 		/** @var Denkmal_Scraper_Source_Programmzeitung $scraper */
 
 		$scraper->processPageDate(new Denkmal_Scraper_String($html), new DateTime('2013-03-13'));

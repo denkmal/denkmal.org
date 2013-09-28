@@ -31,7 +31,6 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 				$until = clone $from;
 				$until->setTime($matches[8], $matches[9]);
 			}
-			var_dump(array($locationName->__toString(), $description->__toString(), $from->getDateTime(), $until->getDateTime()));
 			$this->_addEvent($locationName, $description, $from->getDateTime(), $until->getDateTime());
 		}
 	}

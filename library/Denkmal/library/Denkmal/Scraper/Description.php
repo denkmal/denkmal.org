@@ -16,7 +16,7 @@ class Denkmal_Scraper_Description {
 	 * @param string|null                 $title         Event title
 	 * @param Denkmal_Scraper_Genres|null $genres        Event genres
 	 */
-	function __construct($description = null, $title = null, Denkmal_Scraper_Genres $genres = null) {
+	public function __construct($description = null, $title = null, Denkmal_Scraper_Genres $genres = null) {
 		if ($description) {
 			$this->description = $this->_parseString($description);
 		}
@@ -24,6 +24,34 @@ class Denkmal_Scraper_Description {
 			$this->_title = $this->_parseString($title);
 		}
 		$this->_genres = $genres;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDescriptionAndGenres() {
+		$description = '';
+		if ($this->description) {
+			$description = $this->_endOnPunctuation($description, ':');
+			$description .= ' ';
+			$description .= ucfirst(substr($this->description, 0, 500));
+		}
+		if ($this->_genres && $this->_genres->count() > 0) {
+			$description = $this->_endOnPunctuation($description);
+			$description .= ' ';
+			$description .= substr($this->_genres, 0, 100);
+		}
+		return $description;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getTitle() {
+		if (!$this->_title) {
+			return null;
+		}
+		return ucfirst(substr($this->_title, 0, 80));
 	}
 
 	/**
@@ -61,26 +89,5 @@ class Denkmal_Scraper_Description {
 			$str .= $character;
 		}
 		return $str;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function __toString() {
-		$description = '';
-		if ($this->_title) {
-			$description .= ucfirst(substr($this->_title, 0, 80));
-		}
-		if ($this->description) {
-			$description = $this->_endOnPunctuation($description, ':');
-			$description .= ' ';
-			$description .= ucfirst(substr($this->description, 0, 500));
-		}
-		if ($this->_genres && $this->_genres->count() > 0) {
-			$description = $this->_endOnPunctuation($description);
-			$description .= ' ';
-			$description .= substr($this->_genres, 0, 100);
-		}
-		return $description;
 	}
 }

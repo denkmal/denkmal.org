@@ -62,8 +62,8 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 		$event = new Denkmal_Model_Event();
 
 		$event->setVenue($venue);
-		$event->setDescription((string) $description);
-		$event->setTitle(null);
+		$event->setDescription($description->getDescriptionAndGenres());
+		$event->setTitle($description->getTitle());
 
 		if ($from < new DateTime()) {
 			throw new Denkmal_Scraper_Exception_InvalidEvent('From-date is in the past');

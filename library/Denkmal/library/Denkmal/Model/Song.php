@@ -27,7 +27,7 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
 	}
 
 	public function toArray() {
-		$array = array();
+		$array = parent::toArray();
 		$array['path'] = $this->getFile()->getPathRelative();
 		return $array;
 	}

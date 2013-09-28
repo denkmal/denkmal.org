@@ -8,7 +8,6 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 			$url = 'http://www.programmzeitung.ch/index.cfm?Datum_von=' . $dateStr . '&Datum_bis=' .
 					$dateStr . '&Rubrik=6&uuid=2BCD9733D9D9424C4EF093B3E35CB44B';
 			$html = new Denkmal_Scraper_String($url);
-			echo PHP_EOL . $html . PHP_EOL;
 			$this->processPageDate($html, $date);
 		}
 	}

@@ -96,7 +96,7 @@ Host: www.denkmal.org
 content-type: text/plain
 content-length: 65
 
-venue=1&text=foobar&hash=72ec3a3a9a0723aee528d20fb84a81e554ec4c71
+venue=1&text=foobar&hash=<HASH>
 ```
 Response:
 ```json
@@ -105,5 +105,36 @@ Response:
 	"venue":1,
 	"created":1380379451,
 	"text":"foobar"
+}
+```
+Where `<HASH>` is `sha1($secret . $text)`.
+
+
+## Receive message (WebSocket)
+Connect via WebSocket to `ws://stream.denkmal.org:8090/websocket`.
+Send the following JSON-string to subscribe to messages:
+```
+{
+   "event":"subscribe",
+   "data":{
+      "channel":"global-external:18",
+      "data":"null",
+      "start":<TIMESTAMP>
+   }
+}
+```
+where `<TIMESTAMP>` is a unix timestamp in seconds from when on you want to receive messages.
+
+You will receive messages in the following format:
+```
+{
+   "channel":"global-external:18",
+   "event":"message-create",
+   "data":{
+      "id":12,
+      "venue":1,
+      "created":1380409713,
+      "text":"hello world"
+   }
 }
 ```

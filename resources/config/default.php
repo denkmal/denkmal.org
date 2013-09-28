@@ -11,6 +11,13 @@ $config->CM_Params->class = 'Denkmal_Params';
 
 $config->CM_Site_Abstract->class = 'Denkmal_Site';
 
+$config->CM_Stream_Adapter_Message_SocketRedis->hostPrefix = false;
+$config->CM_Stream_Adapter_Message_SocketRedis->servers = array(
+	array('httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => array(
+		'http://www.denkmal.dev:8090',
+	)),
+);
+
 $config->CM_Db_Db->db = 'denkmal';
 $config->CM_Db_Db->username = 'root';
 $config->CM_Db_Db->password = 'root';

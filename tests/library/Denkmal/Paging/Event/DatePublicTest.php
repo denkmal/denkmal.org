@@ -9,23 +9,6 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 	public function testGetItems() {
 		$today = new DateTime();
 		$today->setTime(20, 0, 0);
-		$past = clone $today;
-		$past->sub(new DateInterval('P2D'));
-		$future = clone $today;
-		$future->add(new DateInterval('P2D'));
-
-		$venue = Denkmal_Model_Venue::create('Foo', true, false, false);
-		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $future);
-		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $past);
-		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-
-		$paging = new Denkmal_Paging_Event_Date($today);
-		$this->assertEquals(array($event3), $paging);
-	}
-
-	public function testGetItemsPublic() {
-		$today = new DateTime();
-		$today->setTime(20, 0, 0);
 
 		$venue = Denkmal_Model_Venue::create('Foo', true, false, false);
 		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
@@ -33,7 +16,7 @@ class Denkmal_Paging_Event_DateTest extends CMTest_TestCase {
 		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
 		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', false, false, $today);
 
-		$paging = new Denkmal_Paging_Event_Date($today, true);
+		$paging = new Denkmal_Paging_Event_Date($today);
 		$this->assertEquals(array($event2), $paging);
 
 	}

@@ -17,7 +17,7 @@
 				{/if}
 			"}
 		{/form}
-
 		{component name='Admin_Component_VenueAliasList' venue=$venue}
+		{component name='Admin_Component_VenueMerge' venue=$venue}
 	</div>
 </div>

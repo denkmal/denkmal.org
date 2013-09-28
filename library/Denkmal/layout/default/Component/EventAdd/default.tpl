@@ -15,7 +15,6 @@
 {formField name='urls' label={translate 'Webseiten'} placeholder={translate 'www.myspace.com/ich (optional)'}}
 
 {formAction action='Create' label={translate 'Hinzufügen'} alternatives="
-	{button_link onclick="window.location='mailto:kontakt@denkmal.org?subject=Denkmal.org'" icon='mailbox' label={translate 'Kontakt'}}
+	{button_link onclick="window.open('mailto:kontakt@denkmal.org')" icon='mailbox' label={translate 'Kontakt'}}
 "}
 {/form}
-

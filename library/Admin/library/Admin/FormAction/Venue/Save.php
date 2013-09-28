@@ -31,6 +31,7 @@ class Admin_FormAction_Venue_Save extends CM_FormAction_Abstract {
 		$venue->setAddress($address);
 		$venue->setCoordinates($coordinates);
 		$venue->setIgnore($ignore);
+		$venue->setQueued(false);
 
 		$response->reloadComponent();
 	}

@@ -3,7 +3,7 @@
 class Denkmal_Page_Events extends Denkmal_Page_Abstract {
 
 	public function prepare() {
-		$date = $this->_params->getDate('date')->getDateTime();
+		$date = $this->_params->getDate('date');
 		$dateList = new Denkmal_Paging_DateTime_Week();
 
 		if (in_array($date, $dateList->getItems())) {

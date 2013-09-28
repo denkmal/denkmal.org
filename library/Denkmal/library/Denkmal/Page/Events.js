@@ -22,17 +22,13 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 		this._carousel = new Carousel(".swipeCarousel");
 		this._carousel.init();
 
-		var self = this;
-		$(window).bind('keydown.swipeCarousel', function(event) {
+		this.bindJquery($(window), 'keydown', function(event) {
 			if (event.which === cm.keyCode.LEFT) {
-				self._carousel.prev();
+				this._carousel.prev();
 			}
 			if (event.which === cm.keyCode.RIGHT) {
-				self._carousel.next();
+				this._carousel.next();
 			}
-		});
-		this.on('destruct', function() {
-			$(window).unbind('keydown.swipeCarousel');
 		});
 	},
 

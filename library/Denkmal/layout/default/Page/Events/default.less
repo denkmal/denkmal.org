@@ -71,25 +71,30 @@
 	}
 
 	.date {
+		position: relative;
 		display: block;
 		.box-sizing(border-box);
 		float: left;
-		padding: 8px 12px;
-
-		@media (min-width: 650px) {
-			padding: 8px 20px;
-		}
-
 		width: 100%;
 		height: 100%;
 		opacity: .6;
-		overflow-y: scroll;
+		overflow: hidden;
 		.transform(translate3d(0, 0, 0));
 		-webkit-overflow-scrolling: touch;
 		.transition(opacity 400ms 100ms);
 
 		&.active {
 			opacity: 1;
+		}
+
+		.hideScrollBar {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: -15px;
+			height: 100%;
+			padding-right: 15px; // hide scrollbar hack
+			overflow-y: scroll;
 		}
 	}
 }

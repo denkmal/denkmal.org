@@ -31,33 +31,20 @@
 		}
 	}
 
-	&.addButton, &.contactButton {
+	&.addButton {
 		float: right;
-		padding: 0 12px;
 
 		.label {
 			font-size: @fontSize;
 			vertical-align: top;
-			margin-left: 6px;
+			display: none;
 		}
-	}
 
-	&.addButton {
-		@media (max-width: 1050px) {
-			padding: 0;
+		@media (min-width: 800px) {
 
 			.label {
-				display: none;
-			}
-		}
-	}
-
-	&.contactButton {
-		@media (max-width: 1300px) {
-			padding: 0;
-
-			.label {
-				display: none;
+				padding: 0 12px;
+				display: inline;
 			}
 		}
 	}
@@ -81,7 +68,7 @@
 	width: 7*@barSize;
 	margin: 0 auto;
 
-	@media (min-width: 650px) {
+	@media (min-width: 600px) {
 		float: left;
 		width: auto;
 		margin-left: 25px;

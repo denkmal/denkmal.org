@@ -21,6 +21,9 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 
 	protected function _renderStart(CM_Params $params) {
 		$this->getField('date')->setValue(new DateTime());
+		$fromTime = new DateTime();
+		$fromTime->setTime(22, 00);
+		$this->getField('fromTime')->setValue($fromTime);
 	}
 
 	public static function ajax_previewEvent(CM_Params $params, CM_ComponentFrontendHandler $handler, CM_Response_View_Ajax $response) {

@@ -1,6 +1,5 @@
 <?php
 
-
 class Denkmal_Scraper_String {
 
 	/** @var string */

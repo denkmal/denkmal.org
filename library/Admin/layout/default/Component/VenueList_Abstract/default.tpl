@@ -1,7 +1,9 @@
-<ul>
+<ul class="venueList">
 	{foreach $venueList as $venue}
-		<li>
-			<a href="{linkUrl page='Admin_Page_Venue' venue={$venue->getId()}}">{$venue->getName()|escape}</a>
+		<li class="venueList-item">
+			{component name='Admin_Component_Venue' venue=$venue}
 		</li>
 	{/foreach}
 </ul>
+
+{paging paging=$venueList ajax=true}

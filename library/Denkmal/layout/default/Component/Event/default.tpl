@@ -1,4 +1,4 @@
-<div class="event featured">
+<div class="event {if $event->getStarred()}featured{/if}">
 	{if $event->getSong()}
 		{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
 	{/if}
@@ -14,7 +14,7 @@
 			<span class="icon icon-time"></span>
 			{date_time date=$event->getFrom()}
 		</time>
-		<p>
+		<p class="meta">
 			<span class="artists nowrap">{eventtext text=$event->getDescription()}</span>
 			<span class="genre nowrap">Genres</span>
 		</p>

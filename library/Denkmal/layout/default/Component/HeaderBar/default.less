@@ -11,45 +11,23 @@
 	}
 
 	&.logo {
+		position: relative;
 		display: inline-block;
+		padding: 0 12px 0 36px;
 		color: @colorFg;
 		text-transform: uppercase;
 		font-weight: bold;
 		opacity: 1;
 
 		.icon {
-			font-size: 20px;
-			margin-right: 6px;
+			position: absolute;
+			font-size: 28px;
+			left: 16px;
 		}
 
 		.label {
+			font-family: Verdana, Arial, sans-serif;
 			font-size: 18px;
-			display: none;
-		}
-
-		@media (min-width: 320px) and (max-width: 490px) {
-			padding: 0 12px;
-
-			.label {
-				display: inline;
-				font-size: 16px;
-			}
-		}
-
-		@media (min-width: 660px) {
-			padding: 0 12px;
-
-			.label {
-				display: inline;
-			}
-		}
-	}
-
-	&.searchButton {
-		float: right;
-
-		@media (min-width: 800px) {
-			display: none;
 		}
 	}
 
@@ -89,22 +67,24 @@
 	float: left;
 
 	.slogan {
-		display: inline-block;
+		display: none;
 		opacity: .4;
 		text-transform: uppercase;
 
-		@media (max-width: 950px) {
-			display: none;
+		@media (min-width: 950px) {
+			display: inline-block;
 		}
 	}
 }
 
 .menu {
-	float: left;
-	margin-left: 25px;
+	width: 7*@barSize;
+	margin: 0 auto;
 
-	@media (max-width: 660px) {
-		margin: 0;
+	@media (min-width: 650px) {
+		float: left;
+		width: auto;
+		margin-left: 25px;
 	}
 
 	&:before {
@@ -113,76 +93,4 @@
 		clear: both;
 	}
 
-	@media (max-width: 489px) {
-		float: none;
-		margin: 0;
-
-		> li {
-			width: 14.28%
-		}
-	}
-}
-
-.searchForm {
-	.box-sizing(border-box);
-	position: relative;
-	float: right;
-	width: 180px;
-
-	@media (min-width: 1180px) {
-		width: 300px;
-	}
-
-	height: @barSize;
-	line-height: @barSize - 2px;
-
-	.Denkmal_Form_SearchContent {
-		display: inline-block;
-		width: 100%;
-		vertical-align: middle;
-		line-height: 1;
-
-		.CM_FormField_Text {
-			.textinput {
-				background-color: fadeout(@colorBg, 85);
-				border-color: transparent;
-				color: @colorFgTheme;
-
-				&:focus {
-					border-color: fadeout(@colorBg, 50);
-					background-color: fadeout(@colorFg, 85);
-				}
-			}
-			.placeholder(@colorFgTheme);
-		}
-	}
-
-	.icon-search {
-		pointer-events: none;
-		position: absolute;
-		color: @colorFgTheme;
-		top: 2px;
-		right: 12px;
-		opacity: .6;
-	}
-}
-
-@media (max-width: 800px) {
-	.searchForm {
-		display: none;
-	}
-}
-
-@media (max-width: 800px) {
-	.search-expand {
-		.navButton, .menu, .logoWrapper {
-			display: none;
-		}
-
-		.searchForm {
-			display: block;
-			width: 100%;
-			padding: 0 6px;
-		}
-	}
 }

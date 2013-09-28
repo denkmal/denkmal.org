@@ -36,7 +36,7 @@ class Denkmal_Params extends CM_Params {
 	public function getDate($key) {
 		return $this->_getObject($key, 'Denkmal_Date', null, function ($className, $param) {
 			if (!preg_match('#^(\d{4})-(\d{1,2})-(\d{1,2})$#', $param, $matches)) {
-				throw new CM_Exception_Invalid('Cannot parse date `' . $param . '`');
+				throw new CM_Exception_InvalidParam('Cannot parse date `' . $param . '`');
 			}
 			return new Denkmal_Date($matches[3], $matches[2], $matches[1]);
 		});

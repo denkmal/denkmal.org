@@ -111,7 +111,7 @@ Where `<HASH>` is `sha1($secret . $text)`.
 
 
 ## Receive message (WebSocket)
-Connect via WebSocket to "ws://stream.denkmal.org:8090/websocket".
+Connect via WebSocket to `ws://stream.denkmal.org:8090/websocket`.
 Send the following JSON-string to subscribe to messages:
 ```
 {

@@ -212,8 +212,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 			'latitude'  => array('type' => 'float', 'optional' => true),
 			'longitude' => array('type' => 'float', 'optional' => true),
 			'queued'    => array('type' => 'boolean'),
-			'enabled'   => array('type' => 'boolean'),
-			'hidden'    => array('type' => 'boolean'),
+			'ignore'    => array('type' => 'boolean'),
 		));
 	}
 

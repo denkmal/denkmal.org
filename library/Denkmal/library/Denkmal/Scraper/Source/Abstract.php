@@ -9,7 +9,7 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 	 */
 	protected function _getDateList() {
 		$day = new DateInterval('P1D');
-		$dayCount = (int) self::_getConfig()->dayCount;
+		$dayCount = $this->_getDayCount();
 		$dateList = array();
 		$date = new DateTime();
 		$date->setTime(0, 0, 0);
@@ -27,13 +27,45 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 	 * @param DateTime|null              $until        Until-date
 	 */
 	protected function _addEventAndVenue($venue, $description, DateTime $from, DateTime $until = null) {
-		if (is_string($venue)) {
+		if (!$venue instanceof Denkmal_Model_Venue) {
 			$venue = Denkmal_Model_Venue::findByNameOrAlias($venue);
 			if (null === $venue) {
-				$venue = Denkmal_Model_Venue::create($venue, true, false, false);
+				$venue = Denkmal_Model_Venue::create($venue, true, false);
 			}
 		}
-//		$this->_addEvent($venue, $description, $from, $until);
+		$description = new Denkmal_Scraper_Description($description);
+
+		if ($venue->getIgnore()) {
+			return;
+		}
+
+		$eventListVenueDate = new Admin_Paging_Event_VenueDate($from, $venue);
+		if ($eventListVenueDate->getCount()) {
+			return;
+		}
+
+		try {
+			$this->_addEvent($venue, $description, $from, $until);
+		} catch (Denkmal_Scraper_Exception_InvalidEvent $e) {
+			// Ignore
+		}
+	}
+
+	/**
+	 * @param Denkmal_Model_Venue         $venue        Location
+	 * @param Denkmal_Scraper_Description $description  Description
+	 * @param DateTime                    $from         From-date
+	 * @param DateTime|null               $until        Until-date
+	 * @throws Denkmal_Scraper_Exception_InvalidEvent
+	 */
+	protected function _addEvent(Denkmal_Model_Venue $venue, Denkmal_Scraper_Description $description, DateTime $from, DateTime $until = null) {
+	}
+
+	/**
+	 * @return int
+	 */
+	protected function _getDayCount() {
+		return (int) self::_getConfig()->dayCount;
 	}
 
 	/**

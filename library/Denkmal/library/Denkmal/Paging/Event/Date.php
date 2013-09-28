@@ -2,6 +2,10 @@
 
 class Denkmal_Paging_Event_Date extends Denkmal_Paging_Event_Abstract {
 
+	/**
+	 * @param DateTime $date
+	 * @param null     $showAll
+	 */
 	public function __construct(DateTime $date, $showAll = null) {
 		$date = clone $date;
 		$date->setTime(6, 0, 0);

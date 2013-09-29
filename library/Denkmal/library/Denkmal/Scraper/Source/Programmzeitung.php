@@ -18,11 +18,12 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 	 */
 	public function processPageDate(Denkmal_Scraper_String $html, DateTime $date) {
 		foreach ($html->matchAll('#<div class="veranstaltung">(.+?)</div>\s*<div class="ort">(.+?)(\[.+?\].*?)?(,.*?)?</div>\s*<div class="zeit">(\d+)\.(\d+)(\s+.\s+(\d+)\.(\d+))?</div>#u') as $matches) {
-			$description = new Denkmal_Scraper_String($matches[1]);
-			$description->replace('#^<b>(.+?)</b>\s*([^\s]+.+)$#u', '$1: $2', true);
-			$description->stripTags();
+			$text = new Denkmal_Scraper_String($matches[1]);
+			$text->replace('#^<b>(.+?)</b>\s*([^\s]+.+)$#u', '$1: $2', true);
+			$text->stripTags();
 			$locationName = new Denkmal_Scraper_String($matches[2]);
 			$locationName->stripTags();
+			$description = new Denkmal_Scraper_Description($text);
 			$from = new Denkmal_Scraper_Date($date);
 			$from->setTime($matches[5], $matches[6]);
 			$until = null;

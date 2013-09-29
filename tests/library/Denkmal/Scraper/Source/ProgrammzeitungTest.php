@@ -10,13 +10,13 @@ EOT;
 		$scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Programmzeitung')->setMethods(array('_addEventAndVenue'))->getMock();
 		$scraper->expects($this->at(0))->method('_addEventAndVenue')->with(
 			'Rest. Les Gareçons',
-			'Milonga@LesGarecons: Tango tanzen, sehen oder zuhören ',
+			new Denkmal_Scraper_Description('Milonga@LesGarecons: Tango tanzen, sehen oder zuhören '),
 			new DateTime('2013-03-13 19:30:00'),
 			new DateTime('2013-03-13 23:30:00')
 		);
 		$scraper->expects($this->at(1))->method('_addEventAndVenue')->with(
 			'Tango Schule Basel',
-			'Tango: Übungsabend mit Schnupperstunde ',
+			new Denkmal_Scraper_Description('Tango: Übungsabend mit Schnupperstunde '),
 			new DateTime('2013-03-13 20:00:00'),
 			new DateTime('2013-03-13 22:30:00')
 		);

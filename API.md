@@ -27,6 +27,7 @@ Response:
    "events":[
       {
          "id":934,
+         "venue":123,
          "description":"Foo",
          "title":"Bar",
          "from":1371386731,
@@ -39,6 +40,7 @@ Response:
       },
       {
          "id":935,
+         "venue":123,
          "description":"Foo",
          "from":1371386731,
          "starred":false

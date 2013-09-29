@@ -147,6 +147,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
 	public function toArrayApi(CM_Render $render) {
 		$array = array();
 		$array['id'] = $this->getId();
+		$array['venue'] = $this->getVenue()->getId();
 		$array['description'] = $this->getDescription();
 		if ($title = $this->getTitle()) {
 			$array['title'] = $title;

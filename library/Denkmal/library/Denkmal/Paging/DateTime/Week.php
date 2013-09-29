@@ -4,9 +4,8 @@ class Denkmal_Paging_DateTime_Week extends Denkmal_Paging_DateTime_Abstract {
 
 	public function __construct() {
 		$day = new DateInterval('P1D');
+		$date = Denkmal_Site::getCurrentDate();
 		$dateList = array();
-		$date = new DateTime();
-		$date->setTime(0, 0, 0);
 		for ($i = 0; $i < 7; $i++) {
 			$dateList[] = clone $date;
 			$date->add($day);

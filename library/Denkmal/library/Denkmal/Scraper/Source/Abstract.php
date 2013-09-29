@@ -11,8 +11,7 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 		$day = new DateInterval('P1D');
 		$dayCount = $this->_getDayCount();
 		$dateList = array();
-		$date = new DateTime();
-		$date->setTime(0, 0, 0);
+		$date = Denkmal_Site::getCurrentDate();
 		for ($i = 0; $i < $dayCount; $i++) {
 			$dateList[] = clone $date;
 			$date->add($day);
@@ -54,11 +53,12 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
 	 * @return bool
 	 */
 	protected function _isValidEvent($venue, Denkmal_Scraper_Description $description, DateTime $from, DateTime $until = null) {
-		if ($from < new DateTime()) {
+		$now = Denkmal_Site::getCurrentDate();
+		if ($from < $now) {
 			return false; // From-date is in the past
 		}
 
-		$fromMax = new DateTime();
+		$fromMax = clone $now;
 		$fromMax->add(new DateInterval('P' . $this->_getDayCount() . 'D'));
 		if ($from > $fromMax) {
 			return false; // From-date is too far in the future

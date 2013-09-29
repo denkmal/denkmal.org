@@ -24,4 +24,21 @@ class Denkmal_Site extends CM_Site_Abstract {
 		}
 		return false;
 	}
+
+	/**
+	 * @return int
+	 */
+	public static function getDayOffset() {
+		return (int) CM_Config::get()->dayOffset;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public static function getCurrentDate() {
+		$date = new DateTime();
+		$date->sub(new DateInterval('PT' . self::getDayOffset() . 'H'));
+		$date->setTime(0, 0, 0);
+		return $date;
+	}
 }

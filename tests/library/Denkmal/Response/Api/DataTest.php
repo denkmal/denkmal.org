@@ -48,6 +48,7 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
 				$message1->toArrayApi($response->getRender()),
 				$message2->toArrayApi($response->getRender()),
 			),
+			'dayOffset' => Denkmal_Site::getDayOffset(),
 		);
 
 		$this->assertSame($expected, json_decode($response->getContent(), true));

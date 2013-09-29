@@ -59,7 +59,8 @@ Response:
          "created":1371386731,
          "text":"Foo 2"
       }
-   ]
+   ],
+   "dayOffset" : 6
 }
 ```
 

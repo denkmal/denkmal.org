@@ -32,8 +32,6 @@ class Denkmal_Scraper_Description {
 	public function getDescriptionAndGenres() {
 		$description = '';
 		if ($this->_description) {
-			$description = $this->_endOnPunctuation($description, ':');
-			$description .= ' ';
 			$description .= ucfirst(substr($this->_description, 0, 500));
 		}
 		if ($this->_genres && $this->_genres->count() > 0) {

@@ -28,7 +28,14 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
 			$messageListArray[] = $message->toArrayApi($this->getRender());
 		}
 
-		$this->_setContent(array('venues' => $venueListArray, 'events' => $eventListArray, 'messages' => $messageListArray));
+		$dayOffset = (int) CM_Config::get()->dayOffset;
+
+		$this->_setContent(array(
+			'venues'    => $venueListArray,
+			'events'    => $eventListArray,
+			'messages'  => $messageListArray,
+			'dayOffset' => $dayOffset,
+		));
 	}
 
 	public static function match(CM_Request_Abstract $request) {

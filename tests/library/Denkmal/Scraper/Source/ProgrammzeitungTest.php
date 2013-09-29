@@ -8,6 +8,7 @@ class Denkmal_Scraper_Source_ProgrammzeitungTest extends CMTest_TestCase {
 EOT;
 
 		$scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Programmzeitung')->setMethods(array('_addEventAndVenue'))->getMock();
+		$scraper->expects($this->exactly(2))->method('_addEventAndVenue');
 		$scraper->expects($this->at(0))->method('_addEventAndVenue')->with(
 			'Rest. Les Gareçons',
 			new Denkmal_Scraper_Description('Milonga@LesGarecons: Tango tanzen, sehen oder zuhören '),

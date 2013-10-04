@@ -8,6 +8,8 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
 
 		$this->setTplParam('event', $event);
 		$this->setTplParam('venue', $venue);
+		$this->_setJsParam('event', $event);
+		$this->_setJsParam('venue', $venue);
 
 		$this->_params = CM_Params::factory(); // Empty params to not send them to client
 	}

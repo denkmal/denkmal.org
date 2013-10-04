@@ -32,14 +32,14 @@
 	position: relative;
 	min-height: @sizeButton;
 	margin-left: @sizeButton;
+	margin-right: @barSize;
 	padding: 0 8px;
 	border-left: 1px solid @colorFgBorderEmphasize2;
+	border-right: 1px solid @colorFgBorderEmphasize2;
 	color: @colorFg;
 
 	@media (min-width: 700px) {
 		padding-right: 140px;
-		margin-right: @barSize;
-
 	}
 
 	.location, .name, .artists, .genre {
@@ -71,7 +71,6 @@
 			width: 135px;
 			margin-top: 6px;
 			padding: 6px 12px;
-			border-right: 1px solid @colorFgBorderEmphasize1;
 		}
 	}
 	.meta {
@@ -82,4 +81,3 @@
 		}
 	}
 }
-

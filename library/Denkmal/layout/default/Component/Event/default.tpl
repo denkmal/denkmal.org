@@ -2,7 +2,7 @@
 	{if $event->getSong()}
 		{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
 	{/if}
-	{link icon="map" class="mapButton navButton showMap"}
+	{link icon="map" class="mapButton navButton showDetails"}
 	<div class="event-content">
 		{if $venue->getUrl()}
 			<a href="{$venue->getUrl()|escape}" class="location nowrap">{$venue->getName()|escape}</a>

@@ -5,5 +5,6 @@
 	<div class="toggleNext-content">
 		{component name='Admin_Component_SongAdd'}
 	</div>
+	<hr />
 	{component name='Admin_Component_SongList_All'}
 {/block}

@@ -11,6 +11,14 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
 		'clickNoMeta .menu.dates a': function(event) {
 			var url = $(event.currentTarget).attr('href');
 			return this.activateMenu(url);
+		},
+
+		'click .showWeek': function() {
+			this.toggleMenu(true);
+		},
+
+		'click .menu.dates .navButton': function() {
+			this.toggleMenu(false);
 		}
 	},
 
@@ -23,5 +31,14 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
 			return true;
 		}
 		return !pageEvents.showPane(url);
+	},
+
+	/**
+	 *
+	 * @param {Boolean} state
+	 */
+	toggleMenu: function(state) {
+		this.$('.bar').toggleClass('menu-expand', state);
 	}
+
 });

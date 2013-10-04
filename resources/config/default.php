@@ -3,6 +3,7 @@
 $config->debug = true;
 $config->deployVersion = '1';
 $config->timeZone = 'Europe/Zurich';
+$config->googleApi = 'AIzaSyB85laUBhcLyjf7vff7WE62__6jPxjK8qI';
 
 $config->CM_Render->cdnResource = false;
 $config->CM_Render->cdnUserContent = false;

@@ -8,9 +8,9 @@ var Admin_Component_LinkList = Admin_Component_Abstract.extend({
 	_class: 'Admin_Component_LinkList',
 
 	events: {
-		'click .delete': function(event) {
-			var id = $(event.currentTarget).closest('.link').data('id');
-			this.delete(id);
+		'clickConfirmed .deleteLink': function(event) {
+			var id = $(event.currentTarget).closest('li.link').data('id');
+			this.deleteLink(id);
 			return false;
 		}
 	},
@@ -18,7 +18,7 @@ var Admin_Component_LinkList = Admin_Component_Abstract.extend({
 	/**
 	 * @param {Number} id
 	 */
-	delete: function(id) {
-		this.ajax('delete', {id: id});
+	deleteLink: function(id) {
+		this.ajax('deleteLink', {id: id});
 	}
 });

@@ -8,8 +8,8 @@ var Admin_Component_VenueAliasList = Admin_Component_Abstract.extend({
 	_class: 'Admin_Component_VenueAliasList',
 
 	events: {
-		'click .deleteAlias': function(event) {
-			var id = $(event.currentTarget).closest('li').data('id');
+		'clickConfirmed .deleteAlias': function(event) {
+			var id = $(event.currentTarget).closest('li.venueAlias').data('id');
 			this.deleteAlias(id);
 			return false;
 		}

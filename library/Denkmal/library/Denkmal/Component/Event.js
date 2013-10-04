@@ -14,10 +14,10 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 	event: null,
 
 	events: {
-		'click .showDetails': 'loadDetails'
+		'click .showDetails': 'showDetails'
 	},
 
-	loadDetails: function() {
+	showDetails: function() {
 		var handler = this;
 		var details = this.findChild('Denkmal_Component_EventDetails');
 		if (details) {

@@ -6,19 +6,16 @@
 		{link icon="map" class="mapButton navButton showDetails"}
 	{/if}
 	<div class="event-content">
-		{if $venue->getUrl()}
-			<a href="{$venue->getUrl()|escape}" class="location nowrap">{$venue->getName()|escape}</a>
-		{else}
-			<span class="location nowrap">{$venue->getName()|escape}</span>
-		{/if}
-		<span class="name nowrap">{eventtext text=$event->getTitle()}</span>
 		<time class="time">
 			<span class="icon icon-time"></span>
 			{date_time date=$event->getFrom()}
 		</time>
-		<p class="meta">
-			<span class="artists nowrap">{eventtext text=$event->getDescription()}</span>
-			<span class="genre nowrap">Genres</span>
-		</p>
+		{if $venue->getUrl()}
+			<a href="{$venue->getUrl()|escape}" class="event-location nowrap">{$venue->getName()|escape}</a>
+		{else}
+			<span class="event-location nowrap">{$venue->getName()|escape}</span>
+		{/if}
+		<p class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+			<span class="description">{eventtext text=$event->getDescription()}</span></p>
 	</div>
 </div>

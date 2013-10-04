@@ -13,6 +13,6 @@ append={input name='untilTime' placeholder={translate 'Ende (optional)'}}}
 {formField name='urls' label={translate 'Webseiten'} placeholder={translate 'www.myspace.com/ich (optional)'}}
 
 {formAction action='Create' label={translate 'Hinzufügen'} alternatives="
-	{button_link onclick="window.open('mailto:kontakt@denkmal.org')" icon='mailbox' label={translate 'Kontakt'}}
+		{button_link onclick="window.open('mailto:kontakt@denkmal.org')" icon='mailbox' label={translate 'Kontakt'}}
 "}
 {/form}

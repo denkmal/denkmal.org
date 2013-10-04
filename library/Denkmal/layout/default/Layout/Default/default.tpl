@@ -1,5 +1,25 @@
 {extends file=$render->getLayoutPath('Layout/Abstract/default.tpl', 'CM')}
 
+{block name="before-html"}
+	<!--
+
+
+		You like to see what's under the hood?
+
+		 __                                 __
+		/   _  _ _  _   |\/| _ _|. _    /\ / _
+		\__(_|| (_)(_)  |  |(-(_||(_|  /--\\__)
+				_/
+
+			  Large Scale Web Development
+
+
+				--- We Hire ---
+			   www.cargomedia.ch
+
+
+	-->
+{/block}
 {block name='tileColor'}#99cc6b{/block}
 
 {block name='body'}

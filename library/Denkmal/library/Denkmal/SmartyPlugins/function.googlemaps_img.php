@@ -19,11 +19,6 @@ function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template 
 		$height = (int) $params['height'];
 	}
 
-	$class = 'googlemaps_img';
-	if (isset($params['class'])) {
-		$class .= ' ' . (string) $params['class'];
-	}
-
 	$zoom = 13;
 	if (isset($params['zoom'])) {
 		$zoom = $params['zoom'];
@@ -42,7 +37,5 @@ function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template 
 	$linkParams['sensor'] = 'false';
 	$linkParams['key'] = CM_Config::get()->googleApi;
 
-	$url = CM_Util::link('https://maps.googleapis.com/maps/api/staticmap', $linkParams);
-
-	return '<img src="' . $url . '" class="' . $class . '">';
+	return CM_Util::link('https://maps.googleapis.com/maps/api/staticmap', $linkParams);
 }

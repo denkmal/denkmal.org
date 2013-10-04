@@ -5,3 +5,5 @@
 		</li>
 	{/foreach}
 </ul>
+
+{paging paging=$linkList}

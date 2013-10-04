@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f0df1e862d2598f941ec2062853ef915",
+    "hash": "27a0b5ddbb8a7edd464d837bc586b130",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -11,13 +11,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
-                "reference": "42d86270e9458acffff721a661f62d818ca7282f"
+                "reference": "1.5.17.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/amazonwebservices-aws-sdk-for-php-42d86270e9458acffff721a661f62d818ca7282f-zip-5cd94d.zip",
-                "reference": "42d86270e9458acffff721a661f62d818ca7282f",
-                "shasum": "0c41e551cc1caee9b45bd220eb2eb46f6226bc9e"
+                "url": "http://satis.cargomedia.ch/dist/dist/amazonwebservices-aws-sdk-for-php-1.5.17.1-1.5.17.1-2b3d6a.zip",
+                "reference": "1.5.17.1",
+                "shasum": "dd36e267918b50a3ef8155fe660970962ae6a86a"
             },
             "require": {
                 "php": ">=5.2.0"
@@ -56,20 +56,21 @@
         },
         {
             "name": "cargomedia/CM",
-            "version": "1.2.24",
+            "version": "1.2.28",
             "source": {
                 "type": "git",
                 "url": "git@github.com:cargomedia/CM.git",
-                "reference": "fd0691dc78f6aa321875c8b5afae47ecaeec54a7"
+                "reference": "07b033af04fa5c9ded72fc4151f27df9fb60ef64"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
                 "easybook/geshi": "1.0.8.11",
                 "leafo/lessphp": "0.3.*",
+                "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.3-beta5",
                 "phpmailer/phpmailer": "5.2.1",
                 "ruflin/elastica": "v0.19.8.0",
-                "smarty/smarty": "3.1.*",
+                "smarty/smarty": "3.1.14",
                 "wurfl/tera-wurfl": "2.1.5"
             },
             "bin": [
@@ -83,21 +84,21 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "time": "2013-09-28 02:16:12"
+            "time": "2013-10-04 12:18:13"
         },
         {
             "name": "easybook/geshi",
             "version": "1.0.8.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/easybook/geshi.git",
-                "reference": "2582e8134c8af41d7f367e421ee0b8b111e89f36"
+                "url": "https://github.com/javiereguiluz/geshi",
+                "reference": "1.0.8.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/easybook-geshi-2582e8134c8af41d7f367e421ee0b8b111e89f36-zip-f3a77f.zip",
-                "reference": "2582e8134c8af41d7f367e421ee0b8b111e89f36",
-                "shasum": "58898963f2e942961d71cb664212e57cec07fb3c"
+                "url": "http://satis.cargomedia.ch/dist/dist/easybook-geshi-1.0.8.11-1.0.8.11-21a143.zip",
+                "reference": "1.0.8.11",
+                "shasum": "64dee8d66d084e889c2a84aaf7d5f127c2fd62c7"
             },
             "require": {
                 "php": ">4.3.0"
@@ -128,7 +129,7 @@
                 "highlighter",
                 "syntax"
             ],
-            "time": "2012-09-28 10:14:18"
+            "time": "2012-09-28 03:14:18"
         },
         {
             "name": "leafo/lessphp",
@@ -136,13 +137,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/lessphp.git",
-                "reference": "a11a6141b5715162b933c405379765d817891c5d"
+                "reference": "v0.3.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/leafo-lessphp-a11a6141b5715162b933c405379765d817891c5d-zip-5c3bef.zip",
-                "reference": "a11a6141b5715162b933c405379765d817891c5d",
-                "shasum": "52384b7a566d6a832ede493ae7e10531bc93330f"
+                "url": "http://satis.cargomedia.ch/dist/dist/leafo-lessphp-v0.3.9-v0.3.9-cdc0ce.zip",
+                "reference": "v0.3.9",
+                "shasum": "f426d502eb735867a9f84bf58dd13a68ec015909"
             },
             "type": "library",
             "extra": {
@@ -171,18 +172,61 @@
             "time": "2013-03-02 16:13:31"
         },
         {
+            "name": "lstrojny/functional-php",
+            "version": "1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lstrojny/functional-php.git",
+                "reference": "a3972246bacb52d9080f89fd56d9ab4df60e874f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/lstrojny-functional-php-a3972246bacb52d9080f89fd56d9ab4df60e874f-zip-bf2880.zip",
+                "reference": "a3972246bacb52d9080f89fd56d9ab4df60e874f",
+                "shasum": "26ece59fadbdcfd1fd6caa91eb516639f70cb228"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Functional/_import.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Strojny",
+                    "email": "lstrojny@php.net",
+                    "homepage": "http://usrportage.de"
+                },
+                {
+                    "name": "Max Beutel",
+                    "email": "nash12@gmail.com"
+                }
+            ],
+            "description": "Functional primitives for PHP",
+            "keywords": [
+                "functional"
+            ],
+            "time": "2013-03-24 00:30:09"
+        },
+        {
             "name": "michelf/php-markdown",
             "version": "1.3-beta5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "ca799f80fa11559c02273164dafda9b475cc693f"
+                "reference": "1.3-beta5"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/michelf-php-markdown-ca799f80fa11559c02273164dafda9b475cc693f-zip-d53a4b.zip",
-                "reference": "ca799f80fa11559c02273164dafda9b475cc693f",
-                "shasum": "a890eb6f62b17dc349f5379984aef3c8801ca731"
+                "url": "http://satis.cargomedia.ch/dist/dist/michelf-php-markdown-1.3-beta5-1.3-beta5-a3d5ff.zip",
+                "reference": "1.3-beta5",
+                "shasum": "8f90970144c2f9b9f6d96a5c5dd015703a6801ee"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -226,8 +270,8 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-5.2.1.zip",
-                "reference": null,
-                "shasum": "70540a00a6916b5125b292e1c5a4c8e7b080dd99"
+                "reference": "5.2.1",
+                "shasum": "e073095c9e5a4ec1b5a9a1fe05f507adda4cc5cd"
             },
             "type": "library",
             "autoload": {
@@ -241,14 +285,14 @@
             "version": "v0.19.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "34a7e62a257febd5295efeacfa0209712e0ceb65"
+                "url": "https://github.com/ruflin/Elastica",
+                "reference": "v0.19.8.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-34a7e62a257febd5295efeacfa0209712e0ceb65-zip-f92c51.zip",
-                "reference": "34a7e62a257febd5295efeacfa0209712e0ceb65",
-                "shasum": "17ec72c8f0969c0f260eee70445f36417215f814"
+                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-v0.19.8.0-v0.19.8.0-93e4c9.zip",
+                "reference": "v0.19.8.0",
+                "shasum": "37182b397fc33ade8522569ea8ee7ce928a5c78e"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -274,7 +318,7 @@
                 "client",
                 "search"
             ],
-            "time": "2012-08-12 16:51:36"
+            "time": "2012-08-12 09:51:36"
         },
         {
             "name": "smarty/smarty",
@@ -331,8 +375,8 @@
             "dist": {
                 "type": "zip",
                 "url": "http://satis.cargomedia.ch/dist/dist/wurfl-tera-wurfl-2.1.5.zip",
-                "reference": null,
-                "shasum": "de2b5873c8bcda173da5f9dff75b94cde479ff93"
+                "reference": "2.1.5",
+                "shasum": "d577f0b291ba6666f145e279799e0655c7610178"
             },
             "type": "library"
         }
@@ -343,7 +387,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "beta",
+    "minimum-stability": "alpha",
     "stability-flags": [
 
     ],

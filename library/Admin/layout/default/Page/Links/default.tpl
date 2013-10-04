@@ -5,5 +5,6 @@
 	<div class="toggleNext-content">
 		{component name='Admin_Component_LinkAdd'}
 	</div>
+	<hr />
 	{component name='Admin_Component_LinkList'}
 {/block}

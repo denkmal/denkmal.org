@@ -4,13 +4,22 @@
 	margin-top: -(@sizeButton/2);
 }
 
-.link {
+.navButton {
 	font-size: 26px;
-	color: lighten(@colorFgIcon, 30);
-	opacity: .3;
+	color: @colorFgHeading;
+	opacity: .9;
+
+	&:hover {
+		opacity: 1;
+	}
 
 	&.disabled {
 		opacity: .3;
+	}
+
+	&.pauseSong {
+		color: @colorFgIcon;
+		.animation(blink, 1500ms, ease, 0, infinite);
 	}
 }
 

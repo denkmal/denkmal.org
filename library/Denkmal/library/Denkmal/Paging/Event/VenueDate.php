@@ -6,10 +6,10 @@ class Denkmal_Paging_Event_VenueDate extends Denkmal_Paging_Event_Abstract {
 	 * @param Denkmal_Model_Venue        $venue
 	 * @param DateTime                   $fromDate
 	 * @param DateTime                   $untilDate
-	 * @param Denkmal_Model_Event[]|null $without
+	 * @param Denkmal_Model_Event[]|null $excludeEvents
 	 * @param bool|null                  $showAll
 	 */
-	public function __construct(Denkmal_Model_Venue $venue, DateTime $fromDate = null, DateTime $untilDate = null, $without = null, $showAll = null) {
+	public function __construct(Denkmal_Model_Venue $venue, DateTime $fromDate = null, DateTime $untilDate = null, $excludeEvents = null, $showAll = null) {
 		$where = '`venue` = ' . $venue->getId();
 
 		$order = '`from`';
@@ -25,8 +25,8 @@ class Denkmal_Paging_Event_VenueDate extends Denkmal_Paging_Event_Abstract {
 			}
 		}
 
-		if ($without) {
-			foreach($without as $event){
+		if ($excludeEvents) {
+			foreach($excludeEvents as $event){
 				$where .= ' AND `id` != ' . $event->getId();
 			}
 		}

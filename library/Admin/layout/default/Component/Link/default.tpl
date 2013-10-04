@@ -1,6 +1,6 @@
 <div class="venue-content toggleNext">
 	{$link->getLabel()|escape}
-	<a target="_blank" href="{$link->getUrl()}">{$link->getUrl()}</a>
+	<a target="_blank" href="{$link->getUrl()|escape}">{$link->getUrl()|escape}</a>
 	{if !$link->getAutomatic()}[manual]{/if}
 </div>
 <div class="venue-edit toggleNext-content">

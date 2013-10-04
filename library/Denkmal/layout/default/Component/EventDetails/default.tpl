@@ -1,15 +1,17 @@
+{function event}
+	<li class="nowrap {if isset($class)}{$class}{/if}">
+		{date time=$event->getFrom()->getTimestamp()}
+		{eventtext text=$event->getDescription()}
+	</li>
+{/function}
+
 <ul class="events">
 	{foreach $pastEvents as $pastEvent}
-		<li class="nowrap pastEvent">
-			{date time=$pastEvent->getFrom()->getTimestamp()}
-			{eventtext text=$pastEvent->getDescription()}
-		</li>
+		{event event=$pastEvent class='pastEvent'}
 	{/foreach}
+
 	{foreach $futureEvents as $futureEvent}
-		<li class="nowrap">
-			{date time=$futureEvent->getFrom()->getTimestamp()}
-			{eventtext text=$futureEvent->getDescription()}
-		</li>
+		{event event=$futureEvent}
 	{/foreach}
 </ul>
 <div class="map">

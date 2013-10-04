@@ -9,9 +9,14 @@ function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template 
 	/** @var CM_Geo_Point $coordinates */
 	$coordinates = $params['coordinates'];
 
-	$size = array('width' => 400, 'height' => 400);
-	if (isset($params['size'])) {
-		$size = (array) $params['size'];
+	$width = 400;
+	if (isset($params['width'])) {
+		$width = (int) $params['width'];
+	}
+
+	$height = 400;
+	if (isset($params['height'])) {
+		$height = (int) $params['height'];
 	}
 
 	$class = 'googlemaps_img';
@@ -30,7 +35,7 @@ function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template 
 	}
 
 	$linkParams['center'] = $coordinates->getLatitude() . ',' . $coordinates->getLongitude();
-	$linkParams['size'] = $size['width'] . 'x' . $size['height'];
+	$linkParams['size'] = $width . 'x' . $height;
 	$linkParams['zoom'] = $zoom;
 	$linkParams['scale'] = $scale;
 	$linkParams['markers'] = 'color:0x99cc6b|' . $coordinates->getLatitude() . ',' . $coordinates->getLongitude();

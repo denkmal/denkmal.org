@@ -5,6 +5,3 @@
 		</li>
 	{/foreach}
 </ul>
-
-
-

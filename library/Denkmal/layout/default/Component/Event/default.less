@@ -1,10 +1,16 @@
 .event {
+	.box-sizing(border-box);
+	min-height: @sizeButton;
 	position: relative;
 	background-color: @colorBg;
 	border: 1px solid @colorBgEmphasize3;
 	margin-bottom: 5px;
-	padding: 10px 0;
-	padding-left: 3px;
+
+	@media (min-width: 900px) {
+		margin-bottom: 3px;
+	}
+
+	padding: 7px 0;
 	border-radius: 4px;
 
 	&.featured:before {
@@ -19,7 +25,9 @@
 }
 
 .mapButton {
-	float: right;
+	position: absolute;
+	right: 0;
+	top: 0;
 	color: @colorFgIcon;
 
 	&:hover {
@@ -30,54 +38,71 @@
 
 .event-content {
 	position: relative;
-	min-height: @sizeButton;
-	margin-left: @sizeButton;
-	margin-right: @barSize;
+	margin: 0  @sizeButton;
 	padding: 0 8px;
 	border-left: 1px solid @colorFgBorderEmphasize2;
-	border-right: 1px solid @colorFgBorderEmphasize2;
 	color: @colorFg;
 
-	@media (min-width: 700px) {
-		padding-right: 140px;
+	@media (min-width: 900px) {
+		margin-top: 3px;
 	}
 
-	.location, .name, .artists, .genre {
-		display: inline-block;
-		max-width: 100%;
-	}
-
-	.location {
-		margin-bottom: 2px;
+	time {
 		font-size: @fontSize + 1;
-	}
-
-	.name {
-		color: @colorFgShy;
 	}
 
 	.time {
 		display: block;
-		.box-sizing(border-box);
+		float: right;
 
 		.icon {
 			color: fadeout(@colorFgIcon, 70);
-		}
-
-		@media (min-width: 700px) {
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 135px;
-			margin-top: 6px;
-			padding: 6px 12px;
+			margin-right: 3px;
 		}
 	}
-	.meta {
-		margin-top: 2px;
-		.genre {
+
+	.event-location {
+		display: block;
+		font-weight: bold;
+		margin-bottom: 2px;
+		margin-right: 5px;
+		color: @colorFg;
+	}
+
+	a.event-location:hover {
+		text-decoration: underline;
+	}
+
+	.event-details {
+		.title {
+			color: darken(@colorFgShy, 15);
+			margin-right: 4px;
+
+			&:after {
+				content: ":";
+			}
+		}
+
+		.description {
 			color: @colorFgShy;
 			font-style: italic;
+
+			> a {
+				color: @colorFgShy;
+				border-bottom: 1px dotted @colorFgShy;
+
+				&:hover {
+					border-bottom-style: solid;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 900px) {
+		.event-location, .event-details {
+			display: inline-block;
+			vertical-align: middle;
 		}
 	}
 }
+

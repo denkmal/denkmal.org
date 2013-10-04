@@ -78,28 +78,37 @@
 
 .menu {
 
-	&:not(.full) {
-		> li {
-			display: none;
+	> li {
+		display: none;
 
-			&.active {
-				display: block;
-			}
-		}
-
-		@media (min-width: 580px) {
-			float: left;
-			width: auto;
-			margin-left: 25px;
-
-			> li {
-				display: block;
-			}
+		&.active {
+			display: block;
 		}
 	}
 
-	&.full {
+	@media (min-width: 580px) {
+		float: left;
+		width: auto;
+		margin-left: 25px;
+
+		> li {
+			display: block;
+		}
+	}
+}
+
+.menu-expand {
+
+	.logoWrapper, .addButton, .showWeek {
+		display: none;
+	}
+
+	.menu {
 		width: 7*@barSize;
 		margin: 0 auto;
+
+		> li {
+			display: block;
+		}
 	}
 }

@@ -1,4 +1,4 @@
-<div class="sheet">
+<div class="bar">
 	<div class="logoWrapper">
 		{link icon="baslerstab" label="denkmal.org" page="Denkmal_Page_Index" class="logo navButton"}
 		<p class="slogan">{translate 'Was loift in Basel?!'}</p>

@@ -22,22 +22,6 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
 		}
 	},
 
-	ready: function() {
-		var self = this;
-		var mediaQueryNavigationFull = enquire.register('(min-width: 580px)', {
-			match: function() {
-				self.$('.showWeek').hide();
-			},
-			unmatch: function() {
-				self.$('.showWeek').show();
-			}
-		});
-
-		this.on('destruct', function() {
-			mediaQueryNavigationFull.unregister();
-		});
-	},
-
 	/**
 	 * @param {String} url
 	 */
@@ -54,10 +38,7 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
 	 * @param {Boolean} state
 	 */
 	toggleMenu: function(state) {
-		var $menu = this.$('.menu.dates');
-		var $hideElements = this.$('.logoWrapper, .addButton, .showWeek');
-		$menu.toggleClass('full', state);
-		$hideElements.toggle(!state);
+		this.$('.bar').toggleClass('menu-expand', state);
 	}
 
 });

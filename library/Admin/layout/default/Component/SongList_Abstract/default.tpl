@@ -6,4 +6,4 @@
 	{/foreach}
 </ul>
 
-{paging paging=$linkList}
+{paging paging=$songList}

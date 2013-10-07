@@ -1,7 +1,7 @@
-<div class="venue-content toggleNext">
+<div class="song-content toggleNext">
 	{$song->getLabel()|escape}
 </div>
-<div class="venue-edit toggleNext-content">
+<div class="song-edit toggleNext-content">
 	{form name='Admin_Form_Song' song=$song}
 		{formField name='label' label={translate 'Name'}}
 

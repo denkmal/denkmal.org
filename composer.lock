@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f0df1e862d2598f941ec2062853ef915",
+    "hash": "27a0b5ddbb8a7edd464d837bc586b130",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,20 +56,21 @@
         },
         {
             "name": "cargomedia/CM",
-            "version": "1.2.24",
+            "version": "1.2.28",
             "source": {
                 "type": "git",
                 "url": "git@github.com:cargomedia/CM.git",
-                "reference": "fd0691dc78f6aa321875c8b5afae47ecaeec54a7"
+                "reference": "07b033af04fa5c9ded72fc4151f27df9fb60ef64"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
                 "easybook/geshi": "1.0.8.11",
                 "leafo/lessphp": "0.3.*",
+                "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.3-beta5",
                 "phpmailer/phpmailer": "5.2.1",
                 "ruflin/elastica": "v0.19.8.0",
-                "smarty/smarty": "3.1.*",
+                "smarty/smarty": "3.1.14",
                 "wurfl/tera-wurfl": "2.1.5"
             },
             "bin": [
@@ -83,7 +84,7 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "time": "2013-09-28 02:16:12"
+            "time": "2013-10-04 12:18:13"
         },
         {
             "name": "easybook/geshi",
@@ -169,6 +170,49 @@
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
             "time": "2013-03-02 16:13:31"
+        },
+        {
+            "name": "lstrojny/functional-php",
+            "version": "1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lstrojny/functional-php.git",
+                "reference": "a3972246bacb52d9080f89fd56d9ab4df60e874f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/lstrojny-functional-php-a3972246bacb52d9080f89fd56d9ab4df60e874f-zip-bf2880.zip",
+                "reference": "a3972246bacb52d9080f89fd56d9ab4df60e874f",
+                "shasum": "26ece59fadbdcfd1fd6caa91eb516639f70cb228"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Functional/_import.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Strojny",
+                    "email": "lstrojny@php.net",
+                    "homepage": "http://usrportage.de"
+                },
+                {
+                    "name": "Max Beutel",
+                    "email": "nash12@gmail.com"
+                }
+            ],
+            "description": "Functional primitives for PHP",
+            "keywords": [
+                "functional"
+            ],
+            "time": "2013-03-24 00:30:09"
         },
         {
             "name": "michelf/php-markdown",
@@ -343,7 +387,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "beta",
+    "minimum-stability": "alpha",
     "stability-flags": [
 
     ],

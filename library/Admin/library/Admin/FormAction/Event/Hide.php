@@ -11,6 +11,7 @@ class Admin_FormAction_Event_Hide extends CM_FormAction_Abstract {
 		$event = $params->getEvent('eventId');
 
 		$event->setHidden(true);
+		$event->setEnabled(false);
 
 		$response->reloadComponent();
 	}

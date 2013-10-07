@@ -7,5 +7,5 @@
 			</li>
 		{/foreach}
 	</ul>
-	{paging paging=$eventList ajax=true}
+	{paging paging=$eventList}
 {/if}

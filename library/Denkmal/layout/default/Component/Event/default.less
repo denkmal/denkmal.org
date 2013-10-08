@@ -4,14 +4,12 @@
 	position: relative;
 	background-color: @colorBg;
 	border: 1px solid @colorBgEmphasize3;
-	margin-bottom: 5px;
-
-	@media (min-width: 900px) {
-		margin-bottom: 3px;
-	}
-
 	padding: 7px 0;
 	border-radius: 4px;
+
+	&.event-details-open {
+		.box-shadow(5px 0 12px rgba(0, 0, 0, .4));
+	}
 
 	&.featured:before {
 		position: absolute;
@@ -29,11 +27,18 @@
 	right: 0;
 	top: 0;
 	color: @colorFgIcon;
+	.transition(200ms);
 
 	&:hover {
 		color: @colorFgLink;
 		opacity: 1;
 	}
+}
+
+.event-details-open .mapButton {
+	color: @colorFgLink;
+	opacity: 1;
+	.transform(rotate(90deg));
 }
 
 .event-content {
@@ -86,7 +91,9 @@
 		.description {
 			color: @colorFgShy;
 			font-style: italic;
+		}
 
+		.title, .description {
 			> a {
 				color: @colorFgShy;
 				border-bottom: 1px dotted @colorFgShy;

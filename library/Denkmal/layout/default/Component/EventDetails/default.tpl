@@ -1,24 +1,39 @@
 {function event}
-	<li class="nowrap {if isset($class)}{$class}{/if}">
-		{date time=$event->getFrom()->getTimestamp()}
-		{eventtext text=$event->getDescription()}
+	<li class="previewEvent {if isset($class)}{$class}{/if}">
+		<div class="event-inner">
+			{date time=$event->getFrom()->getTimestamp()}
+			{eventtext text=$event->getDescription()}
+		</div>
 	</li>
 {/function}
 
-<ul class="events">
-	{foreach $pastEvents as $pastEvent}
-		{event event=$pastEvent class='pastEvent'}
-	{/foreach}
+{if $pastEvents->getCount() || $futureEvents->getCount() || $venue->getCoordinates()}
 
-	{foreach $futureEvents as $futureEvent}
-		{event event=$futureEvent}
-	{/foreach}
-</ul>
-<div class="map">
 	{if $venue->getCoordinates()}
-		<img src="{googlemaps_img coordinates=$venue->getCoordinates() width=200 height=200}">
-		<a href="https://maps.google.com/maps?saddr=&daddr={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target="_blank">show on Maps</a>
-	{else}
-		no coordinates
+		<div class="map">
+			{if $venue->getCoordinates()}
+				<img src="{googlemaps_img coordinates=$venue->getCoordinates() width=300 height=300}">
+				<a href="https://maps.google.com/maps?saddr=&daddr={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target="_blank">{translate 'In Google Maps öffnen'}</a>
+			{else}
+				no coordinates
+			{/if}
+		</div>
 	{/if}
-</div>
+
+	{if $pastEvents->getCount() || $futureEvents->getCount()}
+		<p class="more-events">{translate 'Weitere Events:'}</p>
+		<ul class="previewEvents">
+			{foreach $pastEvents as $pastEvent}
+				{event event=$pastEvent class='pastEvent'}
+			{/foreach}
+
+			{foreach $futureEvents as $futureEvent}
+				{event event=$futureEvent}
+			{/foreach}
+		</ul>
+	{/if}
+{else}
+	<div class="noContent">
+		{translate 'Keine zusätzlichen Informationen!'}
+	</div>
+{/if}

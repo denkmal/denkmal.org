@@ -1,7 +1,7 @@
 {extends file=$render->getLayoutPath('Layout/Abstract/default.tpl', 'CM')}
 
 {block name="before-html"}
-	<!--
+<!--
 						   You like to see what's under the hood?
 
 
@@ -33,7 +33,7 @@
 
 								   --- We're Hiring ---
 									www.cargomedia.ch
-	-->
+-->
 {/block}
 {block name='tileColor'}#99cc6b{/block}
 

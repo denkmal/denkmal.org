@@ -18,14 +18,17 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 	},
 
 	showDetails: function() {
-		var handler = this;
+		var $event = this.$('.event');
 		var details = this.findChild('Denkmal_Component_EventDetails');
+
+		$event.toggleClass('event-details-open');
+
 		if (details) {
 			details.$el.slideToggle('fast');
 		} else {
 			this.loadComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event}, {
 				'success': function() {
-					this.$el.hide().appendTo(handler.$('.event-content')).slideDown('fast');
+					this.$el.hide().appendTo($event.parent()).slideDown('fast');
 				}
 			});
 		}

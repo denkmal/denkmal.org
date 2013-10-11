@@ -24,4 +24,19 @@
 			opacity: 0.3;
 		}
 	}
+
+	&.featured {
+		.event-content {
+			&:before {
+				position: absolute;
+				content: "";
+				top: 0%;
+				left: -1px;
+				height: 100%;
+				width: 4px;
+				background-color: @colorFeatured;
+				border-radius: 4px 0 0 4px;
+			}
+		}
+	}
 }

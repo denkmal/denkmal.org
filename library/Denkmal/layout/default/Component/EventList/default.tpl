@@ -1,4 +1,4 @@
-<time class="currentDate">{date time=$date->getTimestamp()}</time>
+<time class="currentDate"><span class="weekday">{date_weekday date=$date}</span>{date time=$date->getTimestamp()}</time>
 
 {if $events->getCount()}
 	<ul class="eventList">

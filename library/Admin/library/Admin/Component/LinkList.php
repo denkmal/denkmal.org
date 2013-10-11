@@ -2,6 +2,12 @@
 
 class Admin_Component_LinkList extends Admin_Component_Abstract {
 
+	public function checkAccessible() {
+		if (!$this->_getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN)) {
+			throw new CM_Exception_NotAllowed();
+		}
+	}
+
 	public function prepare() {
 		$searchTerm = $this->_params->has('searchTerm') ? $this->_params->getString('searchTerm') : null;
 

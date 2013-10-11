@@ -1,7 +1,7 @@
 {function event}
 	<li class="previewEvent {if isset($class)}{$class}{/if}">
 		<div class="event-inner">
-			{date time=$event->getFrom()->getTimestamp()}
+			<span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}
 			{eventtext text=$event->getDescription()}
 		</div>
 	</li>
@@ -26,7 +26,6 @@
 			{foreach $pastEvents as $pastEvent}
 				{event event=$pastEvent class='pastEvent'}
 			{/foreach}
-
 			{foreach $futureEvents as $futureEvent}
 				{event event=$futureEvent}
 			{/foreach}

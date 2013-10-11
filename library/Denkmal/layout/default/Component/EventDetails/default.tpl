@@ -8,7 +8,6 @@
 {/function}
 
 {if $pastEvents->getCount() || $futureEvents->getCount() || $venue->getCoordinates()}
-
 	{if $venue->getCoordinates()}
 		<div class="map">
 			{if $venue->getCoordinates()}
@@ -20,7 +19,6 @@
 			{/if}
 		</div>
 	{/if}
-
 	{if $pastEvents->getCount() || $futureEvents->getCount()}
 		<p class="more-events">{translate 'Weitere Events:'}</p>
 		<ul class="previewEvents">

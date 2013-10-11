@@ -1,9 +1,17 @@
-<ul class="linkList">
-	{foreach $linkList as $link}
-		<li class="link">
-			{component name='Admin_Component_Link' link=$link}
-		</li>
-	{/foreach}
-</ul>
+{if $searchTerm}
+	<h2>{translate 'Suchergebnis für `{$searchTerm}`' searchTerm=$searchTerm}</h2>
+{/if}
 
-{paging paging=$linkList}
+{if $linkList->getCount()}
+	<ul class="linkList">
+		{foreach $linkList as $link}
+			<li class="link">
+				{component name='Admin_Component_Link' link=$link}
+			</li>
+		{/foreach}
+	</ul>
+	{paging paging=$linkList}
+{else}
+	{translate 'Keine Links gefunden.'}
+{/if}
+

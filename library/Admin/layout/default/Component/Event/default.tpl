@@ -1,4 +1,4 @@
-<div class="event {if $event->getHidden()}hidden{/if} {if $event->getStarred()}starred{/if}">
+<div class="event{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if}">
 	<div class="event-content toggleNext">
 		{if $event->getSong()}
 			{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}

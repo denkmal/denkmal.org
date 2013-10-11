@@ -14,7 +14,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
 			var $pageScrollables = view.$('.scrollable');
 
 			var onScroll = function() {
-				var scrolledNotTop = view.$('.active .scrollable').scrollTop() > 0;
+				var scrolledNotTop = view.$('.active .scrollable').scrollTop() > 20;
 				$layout.toggleClass('scrolledNotTop', scrolledNotTop);
 			};
 

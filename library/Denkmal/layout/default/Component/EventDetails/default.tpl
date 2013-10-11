@@ -31,6 +31,10 @@
 				{event event=$futureEvent}
 			{/foreach}
 		</ul>
+	{else}
+		<div class="noContent">
+			{translate 'Keine weiteren Events!'}
+		</div>
 	{/if}
 {else}
 	<div class="noContent">

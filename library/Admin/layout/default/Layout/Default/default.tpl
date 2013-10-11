@@ -2,6 +2,7 @@
 
 {block name='body'}
 	<header id="header">
+		{component name='Admin_Component_Logout'}
 		{link icon="baslerstab" label="denkmal.org" page="Denkmal_Page_Index" class="logo navButton toggleMenu"}
 		{menu name='main'}
 	</header>

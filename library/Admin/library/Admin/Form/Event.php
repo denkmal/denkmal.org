@@ -11,6 +11,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
 		$this->registerField('title', new CM_FormField_Text());
 		$this->registerField('description', new CM_FormField_Text());
 		$this->registerField('song', new Denkmal_FormField_Song());
+		$this->registerField('starred', new CM_FormField_Boolean());
 
 		$this->registerAction(new Admin_FormAction_Event_Save($this));
 		$this->registerAction(new Admin_FormAction_Event_Delete($this));
@@ -30,5 +31,6 @@ class Admin_Form_Event extends CM_Form_Abstract {
 		$this->getField('title')->setValue($event->getTitle());
 		$this->getField('description')->setValue($event->getDescription());
 		$this->getField('song')->setValue($event->getSong());
+		$this->getField('starred')->setValue($event->getStarred());
 	}
 }

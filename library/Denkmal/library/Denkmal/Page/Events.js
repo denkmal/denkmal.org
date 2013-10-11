@@ -17,6 +17,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 	},
 
 	ready: function() {
+		var self = this;
 		var $carousel = this.$('.swipeCarousel');
 		$carousel.removeClass('beforeload');
 		this._carousel = new Carousel(".swipeCarousel");
@@ -57,5 +58,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
 		cm.router.pushState(url);
 		cm.findView()._onPageSetup(this, title, url, [menuEntryHash]);
+		this.trigger('swipe', $element);
 	}
 });

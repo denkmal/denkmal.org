@@ -26,7 +26,7 @@
 				{foreach $menu->getEntries() as $entry}
 					{$menuDate = $entry->getLabel()}
 					<li class="date {if $menuDate == $date}active{/if}" data-title="{date_weekday date=$menuDate} - {$render->getSiteName()}" data-url="{linkUrl page=$entry->getPage() params=$entry->getParams()}" data-menu-entry-hash="{$entry->getHash()}">
-						<div class="hideScrollBar">
+						<div class="hideScrollBar scrollable">
 							{component name='Denkmal_Component_EventList' date=$menuDate}
 						</div>
 					</li>

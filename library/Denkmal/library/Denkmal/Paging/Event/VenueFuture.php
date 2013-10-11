@@ -17,7 +17,7 @@ class Denkmal_Paging_Event_VenueFuture extends Denkmal_Paging_Event_Abstract {
 			$where .=  ' AND `enabled` = 1 AND `hidden` = 0';
 		}
 
-		$source = new CM_PagingSource_Sql('id', 'denkmal_model_event', $where, '`starred`, `id`');
+		$source = new CM_PagingSource_Sql('id', 'denkmal_model_event', $where, '`starred` DESC, `id`');
 		parent::__construct($source);
 	}
 }

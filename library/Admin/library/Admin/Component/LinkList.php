@@ -10,7 +10,7 @@ class Admin_Component_LinkList extends Admin_Component_Abstract {
 		} else {
 			$linkList = new Denkmal_Paging_Link_All();
 		}
-		$linkList->setPage($this->_params->getPage(), $this->_params->getInt('count', 3));
+		$linkList->setPage($this->_params->getPage(), $this->_params->getInt('count', 30));
 
 		$this->setTplParam('linkList', $linkList);
 		$this->setTplParam('searchTerm', $searchTerm);

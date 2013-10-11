@@ -65,4 +65,4 @@ $config->CM_Paging_ContentList_Abstract->types[CM_Paging_ContentList_Badwords::T
 
 
 $config->CM_Action_Abstract->verbs = array();
-$config->CM_Action_Abstract->verbs[Denkmal_Action_Message::CREATE] = 'Create';
+$config->CM_Action_Abstract->verbs[Denkmal_Action_Abstract::CREATE] = 'Create';

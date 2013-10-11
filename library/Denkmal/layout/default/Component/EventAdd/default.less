@@ -1,14 +1,19 @@
 .Denkmal_Form_EventAdd {
 	padding: 15px;
 	margin-bottom: 12px;
-	background: @colorBgEmphasize1;
+	background: fadeout(@colorBgEmphasize1, 90);
 	box-shadow: inset 0 0 12px 3px rgba(0, 0, 0, 0.2);
 	outline: 2px dashed rgba(255, 255, 255, .3);
 	outline-offset: 2px;
 
+	.formField > label {
+		color: @colorFgTheme;
+	}
+
 	.formField.date, .formField.fromTime {
 		display: inline-block;
 	}
+
 	.formField.fromTime .Denkmal_FormField_Time {
 		display: inline-block;
 		box-sizing: border-box;

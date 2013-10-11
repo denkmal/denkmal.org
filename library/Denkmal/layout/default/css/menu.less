@@ -3,6 +3,7 @@
 		display: block;
 		float: left;
 		position: relative;
+		-webkit-backface-visibility: hidden; // chrome rendering bug
 
 		> a {
 			text-decoration: none;
@@ -19,6 +20,8 @@
 				top: auto;
 				left: 50%;
 				margin: 0 0 0 -6px;
+				.transform(translate3d(0, 0, 0));
+				.transition(100ms ease);
 			}
 		}
 	}

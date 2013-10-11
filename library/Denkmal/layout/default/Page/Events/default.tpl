@@ -9,12 +9,13 @@
 				<p>Nicolas Schmutz</p>
 				<p>Andreas Sigrist</p>
 				<p>Reto Kaiser</p>
-
-				<p class="separator">------ {translate 'Sponsor'} ------</p>
-				<div class="logo cargomedia"></div>
-				<p class="hire">{translate 'We\'re hiring!'}</p>
+				<div class="sponsor">
+					<p class="separator">------ {translate 'Sponsor'} ------</p>
+					<div class="logo cargomedia"></div>
+					<p class="hire">{translate 'We\'re hiring!'}</p>
+				</div>
 			</div>
-			<div class="sponsors">
+			<div class="labels">
 				<div class="logo denkmal"></div>
 				<div class="logo madeinbasel"></div>
 			</div>

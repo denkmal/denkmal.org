@@ -8,7 +8,7 @@
 	<div class="event-content">
 		<time class="time">
 			<span class="icon icon-time"></span>
-			{date_time date=$event->getFrom()}
+			{date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
 		</time>
 		{if $venue->getUrl()}
 			<a href="{$venue->getUrl()|escape}" class="event-location nowrap">{$venue->getName()|escape}</a>

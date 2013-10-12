@@ -12,6 +12,6 @@
 	</ul>
 	{paging paging=$linkList}
 {else}
-	{translate 'Keine Links gefunden.'}
+	<div class="noContent">{translate 'Keine Links gefunden.'}</div>
 {/if}
 

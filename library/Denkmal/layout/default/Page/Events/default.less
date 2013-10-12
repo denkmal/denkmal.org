@@ -29,24 +29,21 @@
 
 		.separator {
 			text-transform: uppercase;
-			margin-top: 12px;
-
-			@media (min-height: 600px) {
-				margin: 30px 0 8px;
-			}
+			margin: 15px 0 8px;
 			font-size: @fontSizeSmall;
 			opacity: .6;
 		}
 
-		.sponsor {
-			@media(max-height: 300px) {
-				display: none;
-			}
-
-			.hire {
-				font-style: italic;
-			}
+		.hire {
+			font-style: italic;
 		}
+	}
+
+	.cat {
+		position: absolute;
+		color: @colorFgTheme;
+		right: 5px;
+		top: 10px;
 	}
 
 	.labels {
@@ -55,7 +52,7 @@
 		left: 0;
 		padding: 3px;
 
-		@media(max-height: 350px) {
+		@media (max-height: 350px) {
 			display: none;
 		}
 	}
@@ -79,6 +76,12 @@
 
 		&.madeinbasel {
 			background-image: image('MadeInBasel.svg');
+		}
+
+		&.cat {
+			background-image: image('Cat.svg');
+			width: 120px;
+			height: 120px;
 		}
 	}
 

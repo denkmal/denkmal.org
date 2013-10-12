@@ -5,22 +5,18 @@
 	<div class="swipeCarousel beforeload">
 		<div class="underTheHood">
 			<div class="credits">
-				<p class="separator">------ {translate 'Credits'} ------</p>
-				<p>Nicolas Schmutz</p>
-				<p>Andreas Sigrist</p>
-				<p>Reto Kaiser</p>
-				<div class="sponsor">
-					<p class="separator">------ {translate 'Sponsor'} ------</p>
-					<div class="logo cargomedia"></div>
-					<p class="hire">{translate 'We\'re hiring!'}</p>
-				</div>
+				<p class="separator">------ {translate 'Sponsor'} ------</p>
+				<div class="logo cargomedia"></div>
+				<p class="hire">{translate 'We\'re hiring!'}</p>
 			</div>
 			<div class="labels">
 				<div class="logo denkmal"></div>
 				<div class="logo madeinbasel"></div>
 			</div>
+			<div class="cat">
+				<span class="logo cat"></span>
+			</div>
 		</div>
-
 		{if $menu->getEntries()}
 			<ul class="dateList">
 				{foreach $menu->getEntries() as $entry}

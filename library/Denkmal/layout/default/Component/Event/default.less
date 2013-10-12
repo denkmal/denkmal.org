@@ -5,24 +5,27 @@
 	background-color: @colorBg;
 	border: 1px solid @colorBgEmphasize3;
 	padding: 7px 0;
-	border-radius: 4px;
+	border-radius: 3px;
 
 	&.event-details-open {
 		.box-shadow(5px 0 12px rgba(0, 0, 0, .4));
 	}
 
-	&.starred{
-
+	&.starred {
 		&:before {
 			position: absolute;
 			content: "";
-			top: 0%;
+			top: -1px;
 			left: -1px;
-			height: 100%;
+			bottom: -1px;
 			width: 4px;
 			background-color: @colorFeatured;
-			border-radius: 4px 0 0 4px;
+			border-radius: 3px 0 0 3px;
 		}
+	}
+
+	&.past {
+		opacity: .7;
 	}
 }
 
@@ -47,21 +50,27 @@
 .event-content {
 	position: relative;
 	margin: 0  @sizeButton;
-	padding: 0 8px;
+	padding-left: 8px;
 	border-left: 1px solid @colorFgBorderEmphasize2;
 	color: @colorFg;
+	font-size: @fontSize - 1px;
+
+	@media (min-width: 360px) {
+		font-size: @fontSize;
+	}
 
 	@media (min-width: 900px) {
 		margin-top: 3px;
 	}
 
-	time {
-		font-size: @fontSize + 1;
-	}
-
 	.time {
 		display: block;
-		float: right;
+		font-size: @fontSizeSmall;
+
+		@media (min-width: 360px) {
+			float: right;
+			font-size: @fontSize;
+		}
 
 		.icon {
 			color: fadeout(@colorFgIcon, 70);

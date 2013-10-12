@@ -35,7 +35,7 @@
                                     www.cargomedia.ch
 -->
 {/block}
-{block name='tileColor'}#99cc6b{/block}
+{block name='tileColor'}#3CC94D{/block}
 
 {block name='body'}
 	<header id="header">

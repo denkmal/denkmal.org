@@ -1,0 +1,26 @@
+.columns {
+	.clearfix;
+}
+
+.column {
+	.box-sizing(border-box);
+	width: 100%;
+}
+
+.column2 {
+	.column;
+
+	@media (min-width: 600px) {
+		width: 50%;
+		float: left;
+
+		&:first-child {
+			padding-right: 8px;
+			border-right: 1px dashed fadeout(@colorFgBorderEmphasize3, 90);
+		}
+
+		&:last-child {
+			padding-left: 8px;
+		}
+	}
+}

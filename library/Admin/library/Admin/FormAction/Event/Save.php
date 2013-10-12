@@ -26,6 +26,7 @@ class Admin_FormAction_Event_Save extends CM_FormAction_Abstract {
 		$title = $params->has('title') ? $params->getString('title') : null;
 		$description = $params->getString('description');
 		$song = $params->has('song') ? $params->getSong('song') : null;
+		$starred = $params->getBoolean('starred');
 
 		$event->setVenue($venue);
 		$event->setDescription($description);
@@ -35,6 +36,7 @@ class Admin_FormAction_Event_Save extends CM_FormAction_Abstract {
 		$event->setUntil($until);
 		$event->setTitle($title);
 		$event->setSong($song);
+		$event->setStarred($starred);
 
 		$response->reloadComponent();
 	}

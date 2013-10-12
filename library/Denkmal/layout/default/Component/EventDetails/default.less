@@ -23,6 +23,12 @@
 		border-bottom: 1px solid @colorFgBorderEmphasize2;
 		background-color: @colorBg;
 
+		.weekday {
+			font-weight: bold;
+			margin-right: 5px;
+			color: @colorFgShy;
+		}
+
 		&.pastEvent {
 			border-bottom-style: dashed;
 			background-color: darken(@colorBg, 2);
@@ -50,6 +56,7 @@
 	}
 
 	img {
+		max-width: 100%;
 		display: inline-block;
 		border-radius: 10px;
 		border: 1px solid @colorFgBorderEmphasize3;
@@ -61,8 +68,7 @@
 }
 
 .noContent {
-	color: @colorNotice;
 	border: 2px dashed @colorFgBorderEmphasize3;
 	margin: 0;
-
+	color: @colorFg;
 }

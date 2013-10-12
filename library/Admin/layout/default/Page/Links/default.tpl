@@ -6,5 +6,6 @@
 		{component name='Admin_Component_LinkAdd'}
 	</div>
 	<hr />
-	{component name='Admin_Component_LinkList'}
+	{component name='Admin_Component_Filter_Search' searchTerm=$searchTerm urlPage='Admin_Page_Links'}
+	{component name='Admin_Component_LinkList' searchTerm=$searchTerm}
 {/block}

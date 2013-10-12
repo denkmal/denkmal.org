@@ -11,14 +11,18 @@
 		.box-shadow(5px 0 12px rgba(0, 0, 0, .4));
 	}
 
-	&.featured:before {
-		position: absolute;
-		content: "";
-		top: 10%;
-		left: -4px;
-		height: 80%;
-		width: 2px;
-		background-color: @colorFeatured;
+	&.starred{
+
+		&:before {
+			position: absolute;
+			content: "";
+			top: 0%;
+			left: -1px;
+			height: 100%;
+			width: 4px;
+			background-color: @colorFeatured;
+			border-radius: 4px 0 0 4px;
+		}
 	}
 }
 
@@ -30,7 +34,7 @@
 	.transition(200ms);
 
 	&:hover {
-		color: @colorFgLink;
+		color: @colorFg;
 		opacity: 1;
 	}
 }
@@ -38,7 +42,6 @@
 .event-details-open .mapButton {
 	color: @colorFgLink;
 	opacity: 1;
-	.transform(rotate(90deg));
 }
 
 .event-content {

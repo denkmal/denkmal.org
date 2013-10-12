@@ -1,4 +1,4 @@
-<div class="event {if $event->getHidden()}hidden{/if}">
+<div class="event{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if}">
 	<div class="event-content toggleNext">
 		{if $event->getSong()}
 			{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
@@ -28,6 +28,7 @@
 		{formField name='title' label={translate 'Titel'}}
 		{formField name='description' label={translate 'Beschreibung'}}
 		{formField name='song' label={translate 'Lied'}}
+		{formField name='starred' label={translate 'Starred'}}
 		{formAction action='Save' label={translate 'Speichern'} alternatives="
 				{button action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
 				{if $event->getHidden()}

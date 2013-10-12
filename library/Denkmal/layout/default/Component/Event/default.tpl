@@ -1,4 +1,4 @@
-<div class="event {if $event->getStarred()}featured{/if}">
+<div class="event{if $event->getStarred()} starred{/if}">
 	{if $event->getSong()}
 		{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
 	{/if}

@@ -12,5 +12,7 @@
 	</ul>
 	{paging paging=$songList}
 {else}
-	{translate 'Keine Songs gefunden.'}
+	<div class="noContent">
+		{translate 'Keine Songs gefunden.'}
+	</div>
 {/if}

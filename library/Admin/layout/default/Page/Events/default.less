@@ -1,16 +1,11 @@
-.weekdays {
+.currentDate {
+	color: @colorFgTheme;
 
-	border-bottom: 1px solid @colorBgBody;
-	margin-bottom: 5px;
-
-	> li {
-
-		> a {
-			color: @colorFg;
-		}
-
-		&.active a {
-			color: @colorFgHeading;
-		}
+	.weekday {
+		margin-right: 5px;
 	}
+}
+
+.weekdays {
+	border-bottom: 1px dashed fadeout(@colorFgBorderEmphasize3, 90);
 }

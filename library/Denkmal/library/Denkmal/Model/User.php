@@ -53,9 +53,6 @@ class Denkmal_Model_User extends CM_Model_User {
 			throw new CM_Exception_AuthFailed('Login fehlgeschlagen', 'E-Mail order Passwort ist falsch.');
 		}
 
-		if (isset($_SERVER['HTTP_USER_AGENT'])) {
-			$user->getUseragents()->add($_SERVER['HTTP_USER_AGENT']);
-		}
 		return $user;
 	}
 

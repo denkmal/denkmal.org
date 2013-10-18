@@ -1,6 +1,6 @@
 {form name='Admin_Form_SignIn'}
-	{formField name='login' label={translate 'Username'}}
-	{formField name='password' label={translate 'Password'}}
+	{formField name='login' label={translate 'Benutzername'}}
+	{formField name='password' label={translate 'Passwort'}}
 
-	{formAction action='Process' label={translate 'SignIn'}}
+	{formAction action='Process' label={translate 'Anmelden'}}
 {/form}

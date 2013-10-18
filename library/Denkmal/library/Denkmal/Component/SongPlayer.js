@@ -10,7 +10,7 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
 	/** @type MediaElement */
 	_player: null,
 
-	/** @type {Object} */
+	/** @type {Object|Null} */
 	_song: null,
 
 	ready: function() {

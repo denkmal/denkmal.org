@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Link_Save extends CM_FormAction_Abstract {
+class Admin_FormAction_Link_Save extends Admin_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('label', 'url');

@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Search_Process extends CM_FormAction_Abstract {
+class Admin_FormAction_Search_Process extends Admin_FormAction_Abstract {
 
 	protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
 		$searchTerm = $params->getString('searchTerm', '');

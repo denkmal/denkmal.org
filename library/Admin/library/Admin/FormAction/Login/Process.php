@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Login_Process extends CM_FormAction_Abstract {
+class Admin_FormAction_Login_Process extends Admin_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('login', 'password');

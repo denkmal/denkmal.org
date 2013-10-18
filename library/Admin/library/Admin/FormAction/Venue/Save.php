@@ -1,12 +1,13 @@
 <?php
 
-class Admin_FormAction_Venue_Save extends CM_FormAction_Abstract {
+class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('venueId', 'name');
 	}
 
 	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+		parent::_checkData($params, $response, $form);
 		/** @var Denkmal_Params $params */
 		$venue = $params->getVenue('venueId');
 		$name = $params->getString('name');

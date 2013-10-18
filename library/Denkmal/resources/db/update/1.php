@@ -50,4 +50,3 @@ $german->setTranslation('{$file} has an invalid extension. Only {$extensions} ar
 $german->setTranslation('Drag files here', 'Ziehe deine Datein hierhin');
 $german->setTranslation('or', 'oder');
 $german->setTranslation('Upload Files', 'Datein hochladen');
-$german->setTranslation('Name already used by venue `{$venueName}`', 'Name wird bereits von einem anderen Ort verwendet `{$venueName}`', array('venueName'));

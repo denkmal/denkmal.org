@@ -12,14 +12,6 @@ class Denkmal_App_Auth {
 	}
 
 	/**
-	 * @param Denkmal_Model_User $user
-	 * @return string
-	 */
-	public static function generateHashUser(Denkmal_Model_User $user) {
-		return self::_generateHash($user->getId(), 'zikc686c8k5647khkbjkhlbjk45iogrepi7887wuguw5768o576niugt94u938jng94j595gj4f');
-	}
-
-	/**
 	 * @param string $login
 	 * @param string $password
 	 * @return bool|Denkmal_Model_User

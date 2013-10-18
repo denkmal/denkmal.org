@@ -56,6 +56,19 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
 	}
 
 	/**
+	 * @param string $label
+	 * @return Denkmal_Model_Song|null
+	 */
+	public static function findByLabel($label) {
+		$label = (string) $label;
+		$linkId = CM_Db_Db::select('denkmal_model_song', 'id', array('label' => $label))->fetchColumn();
+		if (!$linkId) {
+			return null;
+		}
+		return new self($linkId);
+	}
+
+	/**
 	 * @param string  $label
 	 * @param CM_File $file
 	 * @return Denkmal_Model_Song

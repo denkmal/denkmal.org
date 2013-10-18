@@ -13,7 +13,8 @@ DROP TABLE IF EXISTS `denkmal_model_link`;
 CREATE TABLE `denkmal_model_song` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `label` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `label` (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

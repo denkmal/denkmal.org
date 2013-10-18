@@ -43,6 +43,9 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 		}
 	},
 
+	/**
+	 * @param {Object} song
+	 */
 	showSongDetails: function(song) {
 		var $event = this.$('.event');
 		var songDetails = this.findChild('Denkmal_Component_SongDetails');

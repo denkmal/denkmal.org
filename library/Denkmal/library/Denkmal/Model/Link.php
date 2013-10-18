@@ -60,10 +60,6 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 		return $containingCacheables;
 	}
 
-	public static function deleteEventtextCaches() {
-		CM_Cache_Local::getInstance()->flush();
-	}
-
 	/**
 	 * @param string    $label
 	 * @param string    $url

@@ -18,10 +18,10 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 	},
 
 	childrenEvents: {
-		'Denkmal_Component_SongPlayerButton play': function(e, label) {
-			this.showSongDetails(label);
+		'Denkmal_Component_SongPlayerButton play': function(e, song) {
+			this.showSongDetails(song);
 		},
-		'Denkmal_Component_SongPlayerButton stop': function() {
+		'Denkmal_Component_SongPlayerButton pause': function() {
 			this.showSongDetails();
 		}
 	},
@@ -43,7 +43,7 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 		}
 	},
 
-	showSongDetails: function(label) {
+	showSongDetails: function(song) {
 		var $event = this.$('.event');
 		var songDetails = this.findChild('Denkmal_Component_SongDetails');
 
@@ -52,7 +52,7 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 		if (songDetails) {
 			songDetails.$el.slideToggle('fast');
 		} else {
-			this.loadComponent('Denkmal_Component_SongDetails', {label: label}, {
+			this.loadComponent('Denkmal_Component_SongDetails', {song: song}, {
 				'success': function() {
 					this.$el.hide().prependTo($event.parent()).slideDown('fast');
 				}

@@ -1,1 +1,1 @@
-<span class="icon icon-info"></span> {$label}
+<span class="icon icon-info"></span> {$song->getLabel()|escape}

@@ -12,7 +12,6 @@ class Admin_FormAction_Link_Save extends CM_FormAction_Abstract {
 		$link->setLabel($params->getString('label'));
 		$link->setUrl($params->getString('url'));
 		$link->setAutomatic($params->getBoolean('automatic'));
-		Denkmal_Model_Link::deleteEventtextCaches();
 
 		$response->reloadComponent();
 	}

@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Event_Save extends CM_FormAction_Abstract {
+class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('eventId', 'venue', 'date', 'fromTime', 'description');

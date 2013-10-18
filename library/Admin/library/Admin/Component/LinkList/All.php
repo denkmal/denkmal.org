@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Component_LinkList extends Admin_Component_Abstract {
+class Admin_Component_LinkList_All extends Admin_Component_LinkList_Abstract {
 
 	public function prepare() {
 		$searchTerm = $this->_params->has('searchTerm') ? $this->_params->getString('searchTerm') : null;
@@ -10,9 +10,7 @@ class Admin_Component_LinkList extends Admin_Component_Abstract {
 		} else {
 			$linkList = new Denkmal_Paging_Link_All();
 		}
-		$linkList->setPage($this->_params->getPage(), $this->_params->getInt('count', 30));
 
-		$this->setTplParam('linkList', $linkList);
-		$this->setTplParam('searchTerm', $searchTerm);
+		$this->_prepareList($linkList, $searchTerm);
 	}
 }

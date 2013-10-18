@@ -13,7 +13,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
 		$name = $params->getString('name');
 		if ($name !== $venue->getName()) {
 			if ($venue = Denkmal_Model_Venue::findByNameOrAlias($name)) {
-				$response->addError('Name already used by venue `' . $venue->getName() . '`', 'name');
+				$response->addError($response->getRender()->getTranslation('Name wird bereits verwendet'), 'name');
 			}
 		}
 	}

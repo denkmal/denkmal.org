@@ -50,3 +50,6 @@ $german->setTranslation('{$file} has an invalid extension. Only {$extensions} ar
 
 $user = Denkmal_Model_User::_createStatic(array('email' => 'admin@denkmal.org', 'password' => 'admin'));
 $user->getRoles()->add(Denkmal_Role::ADMIN);
+$german->setTranslation('Drag files here', 'Ziehe deine Datein hierhin');
+$german->setTranslation('or', 'oder');
+$german->setTranslation('Upload Files', 'Datein hochladen');

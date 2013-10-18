@@ -47,3 +47,4 @@ $german->setTranslation('Your browser is no longer supported. Click here to upgr
 $german->setTranslation('You can only select {$cardinality} items.', 'Maximal {$cardinality} Element.', array('cardinality'));
 $german->setTranslation('{$file} has an invalid extension. Only {$extensions} are allowed.', '{$file} hat eine ungültige Dateiendung. Nur {$extensions} werden unterstützt.', array('file',
 	'extensions'));
+$german->setTranslation('label is already used', 'Name wird bereits verwendet');

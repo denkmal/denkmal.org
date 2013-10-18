@@ -10,7 +10,7 @@ class Admin_FormAction_Link_Save extends CM_FormAction_Abstract {
 		parent::_checkData($params, $response, $form);
 		$label = $params->getString('label');
 		if (Denkmal_Model_Link::findByLabel($label)) {
-			$response->addError('Der Name wird bereits verwendet.', 'label');
+			$response->addError($response->getRender()->getTranslation('label is already used'), 'label');
 		}
 	}
 

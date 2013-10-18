@@ -10,7 +10,7 @@ class Admin_FormAction_Song_Add extends CM_FormAction_Abstract {
 		parent::_checkData($params, $response, $form);
 		$label = $params->getString('label');
 		if (Denkmal_Model_Song::findByLabel($label)) {
-			$response->addError($response->getRender()->getTranslation('label is already used'), 'label');
+			$response->addError($response->getRender()->getTranslation('Name wird bereits verwendet'), 'label');
 		}
 	}
 

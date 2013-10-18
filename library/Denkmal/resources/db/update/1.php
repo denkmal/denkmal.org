@@ -47,3 +47,6 @@ $german->setTranslation('Your browser is no longer supported. Click here to upgr
 $german->setTranslation('You can only select {$cardinality} items.', 'Maximal {$cardinality} Element.', array('cardinality'));
 $german->setTranslation('{$file} has an invalid extension. Only {$extensions} are allowed.', '{$file} hat eine ungültige Dateiendung. Nur {$extensions} werden unterstützt.', array('file',
 	'extensions'));
+$german->setTranslation('Drag files here', 'Ziehe deine Datein hierhin');
+$german->setTranslation('or', 'oder');
+$german->setTranslation('Upload Files', 'Datei hochladen');

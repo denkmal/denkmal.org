@@ -6,6 +6,9 @@ class Admin_FormAction_Login_Process extends Admin_FormAction_Abstract {
 		return array('login', 'password');
 	}
 
+	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+	}
+
 	protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
 		try {
 			$user = Denkmal_Model_User::authenticate($params->getString('login'), $params->getString('password'));

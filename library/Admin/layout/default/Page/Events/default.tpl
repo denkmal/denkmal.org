@@ -6,7 +6,6 @@
 	{menu name='weekdays' template='weekdays' class="clearfix"}
 	<div class="columns">
 		<div class="column2">
-
 			{component name='Admin_Component_VenueList_Queued' date=$date}
 			{component name='Admin_Component_EventList_Queued' date=$date}
 		</div>

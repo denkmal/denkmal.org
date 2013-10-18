@@ -58,6 +58,10 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 	 */
 	public function setFailedCount($failedCount) {
 		$this->_set('failedCount', $failedCount);
+		$linkList = new Denkmal_Paging_Link_All();
+		$linkList->_change();
+		$linkListBroken = new Denkmal_Paging_Link_Broken();
+		$linkListBroken->_change();
 	}
 
 	protected function _getSchema() {

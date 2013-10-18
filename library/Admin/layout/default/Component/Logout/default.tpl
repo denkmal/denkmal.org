@@ -1,3 +1,3 @@
 {form name='Admin_Form_Logout'}
-	{button action='Process' label="{translate 'Logout'}" icon="logout"}
+	{button action='Process' label="{translate 'Abmelden'}" icon="logout"}
 {/form}

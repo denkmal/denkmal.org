@@ -1,12 +1,13 @@
 <?php
 
-class Admin_FormAction_VenueAlias_Add extends CM_FormAction_Abstract {
+class Admin_FormAction_VenueAlias_Add extends Admin_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('name');
 	}
 
 	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+		parent::_checkData($params, $response, $form);
 		$name = $params->getString('name');
 		if ($venue = Denkmal_Model_Venue::findByNameOrAlias($name)) {
 			$response->addError($response->getRender()->getTranslation('Name wird bereits verwendet'), 'name');

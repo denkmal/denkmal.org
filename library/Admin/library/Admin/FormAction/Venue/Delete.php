@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Venue_Delete extends CM_FormAction_Abstract {
+class Admin_FormAction_Venue_Delete extends Admin_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('venueId');

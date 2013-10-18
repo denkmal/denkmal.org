@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_model_venue`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_model_link`;
+DROP TABLE IF EXISTS `denkmal_model_user`;
 
 
 
@@ -88,4 +89,13 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `automatic` tinyint(4) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_user` (
+		`userId` int(11) unsigned NOT NULL,
+		`email` varchar(32) NOT NULL,
+		`password` char(64) NULL,
+		PRIMARY KEY (`userId`),
+		UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

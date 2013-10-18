@@ -2,6 +2,9 @@
 
 {block name='body'}
 	<header id="header">
+		{if $viewer}
+			{component name='Admin_Component_Logout'}
+		{/if}
 		{link icon="baslerstab" label="denkmal.org" page="Denkmal_Page_Index" class="logo navButton toggleMenu"}
 		{menu name='main'}
 	</header>

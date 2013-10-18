@@ -1,1 +1,1 @@
-{component name='Admin_Component_SignIn'}
+{component name='Admin_Component_Login'}

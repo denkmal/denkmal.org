@@ -1,4 +1,4 @@
-{form name='Admin_Form_SignIn'}
+{form name='Admin_Form_Login'}
 	{formField name='login' label={translate 'Benutzername'}}
 	{formField name='password' label={translate 'Passwort'}}
 

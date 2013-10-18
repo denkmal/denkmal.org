@@ -8,7 +8,7 @@
 			{formField name='url' label={translate 'URL'}}
 			{formField name='address' label={translate 'Adresse'}}
 			{formField name='coordinates' label={translate 'Koordinaten'}}
-			{formField name='ignore' label={translate 'Scraper ignorieren'}}
+			{formField name='ignore' text={translate 'Scraper ignorieren'}}
 			{formAction action='Save' label={translate 'Speichern'} alternatives="
 				{button action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
 			"}

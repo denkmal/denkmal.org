@@ -1,7 +1,7 @@
 {
 	"name": "denkmal/denkmal.org",
 	"require": {
-		"cargomedia/CM": "1.2.28"
+		"cargomedia/CM": "1.2.40"
 	},
 	"minimum-stability": "alpha",
 	"repositories": [

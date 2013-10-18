@@ -7,16 +7,16 @@ class Denkmal_Model_User extends CM_Model_User {
 	/**
 	 * @return string
 	 */
-	public function getUsername() {
-		return $this->_get('username');
+	public function getEmail() {
+		return $this->_get('email');
 	}
 
 	/**
-	 * @param string $username
+	 * @param string $email
 	 * @return Denkmal_Model_User
 	 */
-	public function setUsername($username) {
-		CM_Db_Db::update('denkmal_model_user', array('username' => $username), array('userId' => $this->getId()));
+	public function setEmail($email) {
+		CM_Db_Db::update('denkmal_model_user', array('email' => $email), array('userId' => $this->getId()));
 	}
 
 	/**
@@ -39,18 +39,18 @@ class Denkmal_Model_User extends CM_Model_User {
 	}
 
 	/**
-	 * @param string $login
+	 * @param string $email
 	 * @param string $password
 	 * @return Denkmal_Model_User
 	 * @throws CM_Exception_AuthFailed
 	 */
-	public static function authenticate($login, $password) {
-		if (!$login || !$password) {
-			throw new CM_Exception_AuthFailed('Username and password required', 'Username or Password is empty');
+	public static function authenticate($email, $password) {
+		if (!$email || !$password) {
+			throw new CM_Exception_AuthFailed('E-Mail und Passwort benötigt', 'E-Mail oder Password ist nicht gesetzt.');
 		}
-		$user = Denkmal_App_Auth::checkLogin($login, $password);
+		$user = Denkmal_App_Auth::checkLogin($email, $password);
 		if (!$user) {
-			throw new CM_Exception_AuthFailed('Authentication failed', 'Password and Username do not match');
+			throw new CM_Exception_AuthFailed('Login fehlgeschlagen', 'E-Mail order Passwort ist falsch.');
 		}
 
 		if (isset($_SERVER['HTTP_USER_AGENT'])) {
@@ -65,10 +65,10 @@ class Denkmal_Model_User extends CM_Model_User {
 	 * @return Denkmal_Model_User
 	 */
 	public static function _createStatic(array $data) {
-		$username = (string) $data['username'];
+		$email = (string) $data['email'];
 		$password = (string) $data['password'];
 		$userId = CM_Model_User::createStatic(null)->getId();
-		$values = array('userId' => $userId, 'username' => $username,);
+		$values = array('userId' => $userId, 'email' => $email,);
 		try {
 			CM_Db_Db::insert('denkmal_model_user', $values);
 		} catch (CM_Exception $e) {

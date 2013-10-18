@@ -12,12 +12,12 @@ class Denkmal_App_Auth {
 	}
 
 	/**
-	 * @param string $login
+	 * @param string $email
 	 * @param string $password
 	 * @return bool|Denkmal_Model_User
 	 */
-	public static function checkLogin($login, $password) {
-		$userId = CM_Db_Db::exec("SELECT `userId`  FROM `denkmal_model_user` WHERE `username` = ?", array($login))->fetchColumn();
+	public static function checkLogin($email, $password) {
+		$userId = CM_Db_Db::exec("SELECT `userId`  FROM `denkmal_model_user` WHERE `email` = ?", array($email))->fetchColumn();
 		if (!$userId) {
 			return false;
 		}

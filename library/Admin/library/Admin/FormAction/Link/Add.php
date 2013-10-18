@@ -11,5 +11,6 @@ class Admin_FormAction_Link_Add extends CM_FormAction_Abstract {
 		$url = $params->getString('url');
 		$automatic = $params->getBoolean('automatic');
 		Denkmal_Model_Link::create($label, $url, $automatic);
+		Denkmal_Model_Link::deleteEventtextCaches();
 	}
 }

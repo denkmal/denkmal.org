@@ -37,6 +37,7 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
 	},
 
 	pauseSong: function() {
+		this._song = null;
 		this._player.pause();
 		_.invoke(cm.getViewList('Denkmal_Component_SongPlayerButton'), 'onPause');
 	},

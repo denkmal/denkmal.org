@@ -1,0 +1,13 @@
+{
+	"git-modules": {
+		"https://github.com/cargomedia/puppet-packages.git": "master",
+		"https://github.com/cargomedia/puppet-cm.git": "master"
+	},
+
+	"cm::standalone::appname": "denkmal.org",
+	"cm::standalone::path": "/var/www/denkmal.org",
+
+	"classes": [
+		"cm::standalone"
+	]
+}

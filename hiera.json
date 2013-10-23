@@ -6,6 +6,7 @@
 
 	"cm::standalone::appname": "denkmal.org",
 	"cm::standalone::path": "/var/www/denkmal.org",
+	"cm::standalone::debug": true,
 
 	"classes": [
 		"cm::standalone"

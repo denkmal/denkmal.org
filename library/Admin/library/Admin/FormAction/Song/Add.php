@@ -1,9 +1,17 @@
 <?php
 
-class Admin_FormAction_Song_Add extends CM_FormAction_Abstract {
+class Admin_FormAction_Song_Add extends Admin_FormAction_Abstract {
 
 	protected function _getRequiredFields() {
 		return array('label', 'file');
+	}
+
+	protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+		parent::_checkData($params, $response, $form);
+		$label = $params->getString('label');
+		if (Denkmal_Model_Song::findByLabel($label)) {
+			$response->addError($response->getRender()->getTranslation('Name wird bereits verwendet'), 'label');
+		}
 	}
 
 	protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {

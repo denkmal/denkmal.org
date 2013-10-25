@@ -31,9 +31,10 @@ $config->CM_Model_Abstract->types[Denkmal_Model_Event::TYPE] = 'Denkmal_Model_Ev
 $config->CM_Model_Abstract->types[Denkmal_Model_Link::TYPE] = 'Denkmal_Model_Link'; // #105
 $config->CM_Model_Abstract->types[Denkmal_Model_Message::TYPE] = 'Denkmal_Model_Message'; // #104
 $config->CM_Model_Abstract->types[Denkmal_Model_Song::TYPE] = 'Denkmal_Model_Song'; // #102
+$config->CM_Model_Abstract->types[Denkmal_Model_User::TYPE] = 'Denkmal_Model_User'; // #106
 $config->CM_Model_Abstract->types[Denkmal_Model_Venue::TYPE] = 'Denkmal_Model_Venue'; // #100
 $config->CM_Model_Abstract->types[Denkmal_Model_VenueAlias::TYPE] = 'Denkmal_Model_VenueAlias'; // #103
-// Highest type used: #105
+// Highest type used: #106
 
 $config->CM_Model_ActionLimit_Abstract->types = array();
 // Highest type used: #0

@@ -5,9 +5,9 @@
 </div>
 <div class="venue-edit toggleNext-content">
 	{form name='Admin_Form_Link' link=$link}
-		{formField name='label' label={translate 'label'}}
-		{formField name='url' label={translate 'url'}}
-		{formField name='automatic' label={translate 'automatic'}}
+		{formField name='label' label={translate 'Name'}}
+		{formField name='url' label={translate 'URL'}}
+		{formField name='automatic' label={translate 'automatisch'}}
 
 		{formAction action='Save' label={translate 'Speichern'} alternatives="
 			{button action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}

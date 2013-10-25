@@ -60,6 +60,23 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 		return $containingCacheables;
 	}
 
+	public static function deleteEventtextCaches() {
+		CM_Cache_Local::getInstance()->flush();
+	}
+
+	/**
+	 * @param string $label
+	 * @return Denkmal_Model_Link|null
+	 */
+	public static function findByLabel($label) {
+		$label = (string) $label;
+		$linkId = CM_Db_Db::select('denkmal_model_link', 'id', array('label' => $label))->fetchColumn();
+		if (!$linkId) {
+			return null;
+		}
+		return new self($linkId);
+	}
+
 	/**
 	 * @param string    $label
 	 * @param string    $url

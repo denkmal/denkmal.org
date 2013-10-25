@@ -1,3 +1,8 @@
+{if $event->getSong()}
+	<div class='songDetails'>
+		<span class="icon icon-info"></span> {$event->getSong()->getLabel()|escape}
+	</div>
+{/if}
 <div class="event{if $event->getStarred()} starred{/if}">
 	{if $event->getSong()}
 		{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}

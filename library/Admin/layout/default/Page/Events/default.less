@@ -8,4 +8,11 @@
 
 .weekdays {
 	border-bottom: 1px dashed fadeout(@colorFgBorderEmphasize3, 90);
+
+	&.menu > li {
+
+		&:nth-child(7) {
+			border-right: 1px solid @colorFgTheme;
+		}
+	}
 }

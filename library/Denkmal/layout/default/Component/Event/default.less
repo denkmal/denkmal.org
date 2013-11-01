@@ -12,9 +12,16 @@
 	font-size: @fontSizeSmall;
 }
 
+.Denkmal_Component_SongPlayerButton {
+	position: absolute;
+	top: 50%;
+	margin-top: -(@navButtonSize/2);
+}
+
+
 .event {
 	.box-sizing(border-box);
-	min-height: @sizeButton;
+	min-height: @navButtonSize;
 	position: relative;
 	background-color: @colorBg;
 	border: 1px solid @colorBgEmphasize3;
@@ -64,7 +71,7 @@
 
 .event-content {
 	position: relative;
-	margin: 0  @sizeButton;
+	margin: 0  @navButtonSize;
 	padding-left: 8px;
 	border-left: 1px solid @colorFgBorderEmphasize2;
 	color: @colorFg;

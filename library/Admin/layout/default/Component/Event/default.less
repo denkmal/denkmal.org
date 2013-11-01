@@ -1,29 +1,4 @@
 .event {
-	.event-content {
-		position: relative;
-
-		.title {
-			font-weight: bold;
-		}
-
-		.editEvent {
-			float: right;
-		}
-
-		.Denkmal_Component_SongPlayerButton {
-			right: 0;
-		}
-
-		.description {
-			display: inline-block;
-			max-width: 100%;
-		}
-	}
-
-	.event-edit {
-		display: none;
-	}
-
 	&.hidden {
 		.event-content {
 			opacity: 0.3;
@@ -36,12 +11,56 @@
 				position: absolute;
 				content: "";
 				top: 0%;
-				left: -1px;
+				left: 0;
 				height: 100%;
 				width: 4px;
 				background-color: @colorFeatured;
-				border-radius: 4px 0 0 4px;
 			}
 		}
 	}
+}
+
+.toggleNext .icon-arrow-right {
+	.navButton;
+	color: @colorFgShy;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -@navButtonSize/2;
+	font-size: 15px;
+}
+
+.event-content {
+	position: relative;
+	padding: 5px @navButtonSize;
+	.box-sizing(border-box);
+	min-height: @navButtonSize;
+
+	.Denkmal_Component_SongPlayerButton {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		margin-top: -@navButtonSize/2;
+	}
+
+	.date-time {
+		display: inline-block;
+
+		.date {
+			font-weight: bold;
+		}
+	}
+
+	.description {
+		display: block;
+	}
+
+	.title {
+		font-weight: bold;
+		margin-right: 5px;
+	}
+}
+
+.event-edit {
+	display: none;
 }

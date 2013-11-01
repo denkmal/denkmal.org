@@ -4,20 +4,24 @@
 			{component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
 		{/if}
 		<a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
-		<time class="date">{date time=$event->getFrom()->getTimestamp()}</time>
-		<time class="time">
-			{date_time date=$event->getFrom()}
-		</time>
-		{if $event->getUntil()}
-			-
+		<div class="date-time">
+			<time class="date">{date time=$event->getFrom()->getTimestamp()}</time> -
 			<time class="time">
-				{date_time date=$event->getUntil()}
+				{date_time date=$event->getFrom()}
 			</time>
-		{/if}
-		{if $event->getTitle()}
-			<span class="title nowrap">{eventtext text=$event->getTitle()}</span>
-		{/if}
-		<span class="description nowrap">{eventtext text=$event->getDescription()}</span>
+			{if $event->getUntil()}
+				-
+				<time class="time">
+					{date_time date=$event->getUntil()}
+				</time>
+			{/if}
+		</div>
+		<div class="description">
+			{if $event->getTitle()}
+				<span class="title">{eventtext text=$event->getTitle()}</span>
+			{/if}
+			{eventtext text=$event->getDescription()}
+		</div>
 	</div>
 	<div class="event-edit toggleNext-content">
 		{form name='Admin_Form_Event' event=$event}

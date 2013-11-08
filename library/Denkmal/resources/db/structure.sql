@@ -86,7 +86,8 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `label` varchar(30) NOT NULL,
   `url` varchar(100) NOT NULL,
-  `automatic` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `automatic` tinyint(4) unsigned NOT NULL,
+  `failedCount` tinyint(4) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -46,11 +46,30 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 		$this->_set('automatic', $automatic);
 	}
 
+	/**
+	 * @return int
+	 */
+	public function getFailedCount() {
+		return $this->_get('failedCount');
+	}
+
+	/**
+	 * @param int $failedCount
+	 */
+	public function setFailedCount($failedCount) {
+		$this->_set('failedCount', $failedCount);
+		$linkList = new Denkmal_Paging_Link_All();
+		$linkList->_change();
+		$linkListBroken = new Denkmal_Paging_Link_Broken();
+		$linkListBroken->_change();
+	}
+
 	protected function _getSchema() {
 		return new CM_Model_Schema_Definition(array(
-			'label'     => array('type' => 'string'),
-			'url'       => array('type' => 'string'),
-			'automatic' => array('type' => 'bool'),
+			'label'       => array('type' => 'string'),
+			'url'         => array('type' => 'string'),
+			'automatic'   => array('type' => 'bool'),
+			'failedCount' => array('type' => 'int'),
 		));
 	}
 
@@ -81,13 +100,18 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 	 * @param string    $label
 	 * @param string    $url
 	 * @param bool|null $automatic
+	 * @param int|null  $failedCount
 	 * @return Denkmal_Model_Link
 	 */
-	public static function create($label, $url, $automatic = null) {
+	public static function create($label, $url, $automatic = null, $failedCount = null) {
+		if (null === $failedCount) {
+			$failedCount = 0;
+		}
 		$link = new self();
 		$link->setLabel($label);
 		$link->setUrl($url);
 		$link->setAutomatic($automatic);
+		$link->setFailedCount($failedCount);
 		$link->commit();
 		return $link;
 	}

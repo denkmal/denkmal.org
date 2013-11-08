@@ -10,7 +10,7 @@ var Admin_Page_Links = Admin_Page_Abstract.extend({
 	childrenEvents: {
 		'Admin_Form_Link success.Add': function(form) {
 			form.reset();
-			this.findChild('Admin_Component_LinkList').reload();
+			this.findChild('Admin_Component_LinkList_All').reload();
 		}
 	}
 });

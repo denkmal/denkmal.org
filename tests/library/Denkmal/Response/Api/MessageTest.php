@@ -37,6 +37,8 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
 				. '&hash=' . hash($this->_hashAlgorithm, $this->_hashToken . $text);
 		$request = new CM_Request_Post('/api/message', array('host' => 'denkmal.test'), $body);
 		$response = new Denkmal_Response_Api_Message($request);
+		$dateTime = new DateTime();
+		$createTime = $dateTime->getTimestamp();
 		$response->process();
 
 		$messageList = new Denkmal_Paging_Message_All();
@@ -45,6 +47,6 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
 		$message = $messageList->getItem(0);
 		$this->assertEquals($venue, $message->getVenue());
 		$this->assertSame('hallo test', $message->getText());
-		$this->assertSameTime(time(), $message->getCreated()->getTimestamp());
+		$this->assertSameTime($createTime, $message->getCreated()->getTimestamp());
 	}
 }

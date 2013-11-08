@@ -13,7 +13,6 @@
 			{component name='Admin_Component_LinkList_All' searchTerm=$searchTerm}
 		</div>
 		<div class="column2">
-			<h2>{translate 'Defekte Links'}</h2>
 			{component name='Admin_Component_LinkList_Broken' searchTerm=$searchTerm}
 		</div>
 	</div>

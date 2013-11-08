@@ -1,6 +1,8 @@
-{if $searchTerm}
-	<h2>{translate 'Suchergebnis für `{$searchTerm}`' searchTerm=$searchTerm}</h2>
-{/if}
+{block name='headline'}
+	{if $searchTerm}
+		<h2>{translate 'Suchergebnis für `{$searchTerm}`' searchTerm=$searchTerm}</h2>
+	{/if}
+{/block}
 
 {if $linkList->getCount()}
 	<ul class="linkList">
@@ -12,6 +14,6 @@
 	</ul>
 	{paging paging=$linkList}
 {else}
-	<div class="noContent">{translate 'Keine Links gefunden.'}</div>
+	<div class="noContent">{block name='noContent'}{translate 'Keine Links vorhanden.'}{/block}</div>
 {/if}
 

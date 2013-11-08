@@ -18,7 +18,9 @@ class Denkmal_Paging_Event_Date extends Denkmal_Paging_Event_Abstract {
 			$where .= ' AND `enabled` = 1 AND `hidden` = 0';
 		}
 
-		$source = new CM_PagingSource_Sql('id', 'denkmal_model_event', $where, '`starred` DESC, `id`');
+		$join = 'LEFT JOIN `denkmal_model_venue` AS `v` ON `e`.`venue` = `v`.`id`';
+
+		$source = new CM_PagingSource_Sql('e.id', 'denkmal_model_event` AS `e', $where, '`starred` DESC, `name`', $join);
 		parent::__construct($source);
 	}
 }

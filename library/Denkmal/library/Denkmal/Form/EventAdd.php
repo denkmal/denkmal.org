@@ -97,7 +97,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 
 		$title = $params->getString('title');
 		$descriptionParts = array();
-		$descriptionParts[] = $params->getString('artists', '');
+		$descriptionParts[] = $params->getString('artists', '') . ($params->has('genres') ? '.' : '');
 		$descriptionParts[] = $params->getString('genres', '');
 		$descriptionParts[] = $params->getString('urls', '');
 		$descriptionParts = array_filter($descriptionParts, 'trim');

@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: "icon-webfont";
-  src: url(urlFont("icon-webfont.eot") + "");
-  src: url(urlFont("icon-webfont.eot") + "?#iefix") format("embedded-opentype"),
-       url(urlFont("icon-webfont.woff") + "") format("woff"),
-       url(urlFont("icon-webfont.ttf") + "") format("truetype"),
-       url(urlFont("icon-webfont.svg") + "#icon-webfont") format("svg");
+  src: url("./icon-webfont.eot");
+  src: url("./icon-webfont.eot?#iefix") format("embedded-opentype"),
+       url("./icon-webfont.woff") format("woff"),
+       url("./icon-webfont.ttf") format("truetype"),
+       url("./icon-webfont.svg#icon-webfont") format("svg");
   font-weight: normal;
   font-style: normal;
 }

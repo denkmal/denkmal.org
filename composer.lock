@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f8c97c32f735f80ca6fa05487aceec5e",
+    "hash": "c64ef87400f5e6ad86d26d9df67260d0",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,11 +56,11 @@
         },
         {
             "name": "cargomedia/CM",
-            "version": "1.2.40",
+            "version": "1.2.63",
             "source": {
                 "type": "git",
                 "url": "git@github.com:cargomedia/CM.git",
-                "reference": "d3435adc593e160007ce203c9fa4a48474df936b"
+                "reference": "d518cdd7e3f89811dc896d89afdea38fe7e3581c"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -84,7 +84,7 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "time": "2013-10-12 02:58:05"
+            "time": "2013-11-08 13:39:36"
         },
         {
             "name": "easybook/geshi",

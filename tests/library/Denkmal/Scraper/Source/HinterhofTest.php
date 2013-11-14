@@ -12,7 +12,7 @@ class Denkmal_Scraper_Source_HinterhofTest extends CMTest_TestCase {
 EOT;
 
 		$scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Hinterhof')->setMethods(array('_addEventAndVenue'))->getMock();
-		$scraper->expects($this->exactly(15))->method('_addEventAndVenue');
+		$scraper->expects($this->exactly(17))->method('_addEventAndVenue');
 		$scraper->expects($this->at(0))->method('_addEventAndVenue')->with(
 			Denkmal_Model_Venue::findByNameOrAlias('Hinterhof'),
 			new Denkmal_Scraper_Description('Dachterrasse Closing', null, new Denkmal_Scraper_Genres('electronica, house')),
@@ -23,6 +23,32 @@ EOT;
 			new Denkmal_Scraper_Description('Isolée | Live (Dachterrasse Closing Af...', 'Family Affairs', new Denkmal_Scraper_Genres('house, techno')),
 			new DateTime('2013-09-28 23:00:00')
 		);
+		$scraper->expects($this->at(2))->method('_addEventAndVenue')->with(
+			Denkmal_Model_Venue::findByNameOrAlias('Hinterhof'),
+			new Denkmal_Scraper_Description('Dachterrasse geschlossen', null, null),
+			new DateTime('2013-09-29 20:00:00')
+		);
+		$scraper->expects($this->at(3))->method('_addEventAndVenue')->with(
+			Denkmal_Model_Venue::findByNameOrAlias('Hinterhof'),
+			new Denkmal_Scraper_Description('Karocel | Live (Freude am Tanzen)', null, new Denkmal_Scraper_Genres('house, pop, techno')),
+			new DateTime('2013-10-04 20:00:00')
+		);
+		$scraper->expects($this->at(4))->method('_addEventAndVenue')->with(
+			Denkmal_Model_Venue::findByNameOrAlias('Hinterhof'),
+			new Denkmal_Scraper_Description('The 2nd SENSE pres. Donato Dozzy', null, new Denkmal_Scraper_Genres('electronica, house, techno')),
+			new DateTime('2013-10-05 23:00:00')
+		);
+		$scraper->expects($this->at(5))->method('_addEventAndVenue')->with(
+			Denkmal_Model_Venue::findByNameOrAlias('Hinterhof'),
+			new Denkmal_Scraper_Description('Hinterhof Slam', null, new Denkmal_Scraper_Genres('Poetry Grooves')),
+			new DateTime('2013-10-10 20:00:00')
+		);
+		$scraper->expects($this->at(6))->method('_addEventAndVenue')->with(
+			Denkmal_Model_Venue::findByNameOrAlias('Hinterhof'),
+			new Denkmal_Scraper_Description('Upon.You Labelnight', null, new Denkmal_Scraper_Genres('house, techno')),
+			new DateTime('2013-10-11 20:00:00')
+		);
+
 		/** @var Denkmal_Scraper_Source_Hinterhof $scraper */
 
 		$scraper->processPage(new Denkmal_Scraper_String($html));

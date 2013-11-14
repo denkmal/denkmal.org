@@ -37,9 +37,9 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 			} else {
 				$from->setTime(20);
 			}
-			$venue = Denkmal_Model_Venue::findByNameOrAlias('Hinterhof');
+
 			$this->_addEventAndVenue(
-				$venue,
+				'Hinterhof',
 				$description,
 				$from->getDateTime()
 			);

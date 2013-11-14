@@ -21,10 +21,10 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 			if (!empty($matches['titleAndGenres'])) {
 				$titleAndGenres = new Denkmal_Scraper_String($matches['titleAndGenres']) ;
 				$titleAndGenresMatch = $titleAndGenres->match('#(?<title><b>.*</b>)?( - )?((?<genres>.+?))?$#');
-				if($titleAndGenresMatch['title'] != ''){
+				if(!empty($titleAndGenresMatch['title'])){
 					$title = $titleAndGenresMatch['title'];
 				}
-				if($titleAndGenresMatch['genres'] != ''){
+				if(!empty($titleAndGenresMatch['genres'])){
 					$genres = new Denkmal_Scraper_Genres($titleAndGenresMatch['genres']);
 				}
 			}

@@ -14,7 +14,6 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 		$html = $html->between('<ul id="events"', '<div id="footer"');
 
 		foreach ($html->matchAll('#<div class="summary">\s*<div class="weekday">\w+ (?<day>\d+)\.(?<month>\d+) -\s*?(?<titleAndGenres>.+?)?</div>\s*<div class="title">(?<description>.+?)</div>\s*</div>#') as $matches) {
-			//
 			$title = null;
 			$genres = null;
 
@@ -37,7 +36,6 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 			} else {
 				$from->setTime(20);
 			}
-
 			$this->_addEventAndVenue(
 				'Hinterhof',
 				$description,

@@ -50,7 +50,6 @@ EOT;
 		);
 
 		/** @var Denkmal_Scraper_Source_Hinterhof $scraper */
-
 		$scraper->processPage(new Denkmal_Scraper_String($html));
 	}
 }

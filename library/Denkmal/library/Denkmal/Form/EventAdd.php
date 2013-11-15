@@ -64,16 +64,21 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 		$venue = $params->get('venue');
 		if (!$venue instanceof Denkmal_Model_Venue) {
 			$name = (string) $venue;
-			$address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;
-			$url = $params->has('venueUrl') ? $params->getString('venueUrl') : null;
+			$venue = Denkmal_Model_Venue::findByNameOrAlias($name);
 
-			$venue = new Denkmal_Model_Venue();
-			$venue->setName($name);
-			$venue->setUrl($url);
-			$venue->setAddress($address);
-			$venue->setCoordinates(null);
-			$venue->setQueued(true);
-			$venue->setIgnore(false);
+			if (null === $venue) {
+				$address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;
+				$url = $params->has('venueUrl') ? $params->getString('venueUrl') : null;
+
+				$venue = new Denkmal_Model_Venue();
+				$venue->setName($name);
+				$venue->setUrl($url);
+				$venue->setAddress($address);
+				$venue->setCoordinates(null);
+				$venue->setQueued(true);
+				$venue->setIgnore(false);
+				$venue->commit();
+			}
 		}
 		return $venue;
 	}

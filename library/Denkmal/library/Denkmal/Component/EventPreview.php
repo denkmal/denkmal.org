@@ -20,32 +20,4 @@ class Denkmal_Component_EventPreview extends Denkmal_Component_Abstract {
 
 		$this->_params = CM_Params::factory(); // Empty params to not send them to client
 	}
-
-	private function _matchDayNames($day) {
-		switch ($day) {
-			case 0:
-				return 'So';
-				break;
-			case 1:
-				return 'Mo';
-				break;
-			case 2:
-				return 'Di';
-				break;
-			case 3:
-				return 'Mi';
-				break;
-			case 4:
-				return 'Do';
-				break;
-			case 5:
-				return 'Fr';
-				break;
-			case 6:
-				return 'Sa';
-				break;
-			default:
-				throw new CM_Exception_Invalid('Day with index `' . $day . '` does not exist.');
-		}
-	}
 }

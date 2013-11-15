@@ -38,7 +38,7 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
 
 	renderPreview: function() {
 		var self = this;
-		var preview = this.loadComponent('Denkmal_Component_Event', {data: this.getData()}, {
+		var preview = this.loadComponent('Denkmal_Component_EventPreview', {data: this.getData()}, {
 			success: function() {
 				if (self._preview) {
 					self._preview.replaceWith(this);

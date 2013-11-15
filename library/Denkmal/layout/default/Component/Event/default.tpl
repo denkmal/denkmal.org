@@ -1,6 +1,6 @@
 {if $event->getSong()}
 	<div class='songDetails nowrap'>
-		<span class="icon icon-music"></span> {$event->getSong()->getLabel()|escape}
+		<span class="icon icon-music"></span>{$event->getSong()->getLabel()|escape}
 	</div>
 {/if}
 <div class="event{if $event->getStarred()} starred{/if}">

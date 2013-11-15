@@ -13,12 +13,14 @@ var Denkmal_Component_EventAdd = Denkmal_Component_Abstract.extend({
 
 	childrenEvents: {
 		'Denkmal_Form_EventAdd success': function() {
+			this.$('.Denkmal_Form_EventAdd .preview').hide();
 			this.$('.Denkmal_Form_EventAdd .formWrapper').slideUp();
 			this.$('.thankYou').slideDown();
 		}
 	},
 
 	addSimilar: function(){
+		this.$('.Denkmal_Form_EventAdd .preview').show();
 		this.$('.Denkmal_Form_EventAdd .formWrapper').slideDown();
 		this.$('.thankYou').slideUp();
 	}

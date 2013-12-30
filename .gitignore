@@ -1,3 +1,7 @@
+/.vagrant
+/puppet/.tmp
+/puppet/modules
+
 /vendor
 
 /data

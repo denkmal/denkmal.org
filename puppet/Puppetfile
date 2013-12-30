@@ -1,0 +1,4 @@
+mod 'cm',
+  :git => 'git@github.com:njam/puppet-cm.git',
+  :ref => 'deps',
+  :path => 'modules/cm'

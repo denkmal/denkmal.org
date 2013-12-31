@@ -1,0 +1,239 @@
+GIT
+  remote: git://github.com/puppetlabs/puppetlabs-stdlib.git
+  ref: 4.1.0
+  sha: 1ffd72daaaf21e71e762b6cd543043680bdb6694
+  specs:
+    stdlib (4.1.0)
+
+GIT
+  remote: git@github.com:njam/puppet-cm.git
+  path: modules/cm
+  ref: deps
+  sha: 6b86c884d0fd56c861fc8cdc3bd5ab9a8f16eff7
+  specs:
+    cm (0.0.1)
+      composer (>= 0)
+      foreman (>= 0)
+      memcached (>= 0)
+      mysql (>= 0)
+      nginx (>= 0)
+      php5 (>= 0)
+      redis (>= 0)
+      socket-redis (>= 0)
+      stdlib (>= 0)
+      uglify (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/apache2
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    apache2 (0.0.1)
+      monit (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/apt
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    apt (0.0.1)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/bipbip
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    bipbip (0.0.1)
+      monit (>= 0)
+      ruby (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/build
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    build (0.0.1)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/cgi-fcgi
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    cgi-fcgi (0.0.1)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/composer
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    composer (0.0.1)
+      php5 (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/foreman
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    foreman (0.0.1)
+      ruby (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/gearmand
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    gearmand (0.0.1)
+      bipbip (>= 0)
+      helper (>= 0)
+      monit (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/helper
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    helper (0.0.1)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/memcached
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    memcached (0.0.1)
+      bipbip (>= 0)
+      monit (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/monit
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    monit (0.0.1)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/mysql
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    mysql (0.0.1)
+      bipbip (>= 0)
+      monit (>= 0)
+      sysctl (>= 0)
+      ulimit (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/nginx
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    nginx (0.0.1)
+      apt (>= 0)
+      monit (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/nodejs
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    nodejs (0.0.1)
+      build (>= 0)
+      helper (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/php5
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    php5 (0.0.1)
+      apache2 (>= 0)
+      apt (>= 0)
+      bipbip (>= 0)
+      build (>= 0)
+      gearmand (>= 0)
+      helper (>= 0)
+      monit (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/redis
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    redis (0.0.1)
+      bipbip (>= 0)
+      build (>= 0)
+      helper (>= 0)
+      monit (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/ruby
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    ruby (0.0.1)
+      cgi-fcgi (>= 0)
+      helper (>= 0)
+      unzip (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/socket-redis
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    socket-redis (0.0.1)
+      monit (>= 0)
+      nodejs (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/sysctl
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    sysctl (0.0.1)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/uglify
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    uglify (0.0.1)
+      nodejs (>= 0)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/ulimit
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    ulimit (0.0.1)
+
+GIT
+  remote: git@github.com:njam/puppet-packages.git
+  path: modules/unzip
+  ref: deps
+  sha: 08ae1664941956198fdb348336590586b4e9d740
+  specs:
+    unzip (0.0.1)
+
+DEPENDENCIES
+  cm (>= 0)
+

@@ -10,7 +10,7 @@ node default {
     debug => true,
     vhosts => {
       "www.${domain}" => {
-        aliases => ["denkmal.dev", "admin.${domain}"],
+        aliases => [$domain, "admin.${domain}"],
         cdn_origin => "origin-www.${domain}",
       }
     },

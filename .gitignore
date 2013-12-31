@@ -1,6 +1,6 @@
 /.vagrant
 /puppet/.tmp
-/puppet/modules
+/puppet/modules/*
 
 /vendor
 

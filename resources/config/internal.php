@@ -8,9 +8,9 @@ $config->CM_Site_Abstract->types[Admin_Site::TYPE] = 'Admin_Site'; // #101
 // Highest type used: #101
 
 $config->CM_Action_Abstract->types = array();
-$config->CM_Action_Abstract->types[CM_Action_Email::TYPE] = 'CM_Action_Email'; // #6
-$config->CM_Action_Abstract->types[Denkmal_Action_Message::TYPE] = 'Denkmal_Action_Message'; // #100
-// Highest type used: #100
+$config->CM_Action_Abstract->types[CM_Action_Email::TYPE] = 'CM_Action_Email'; // #31
+$config->CM_Action_Abstract->types[Denkmal_Action_Message::TYPE] = 'Denkmal_Action_Message'; // #107
+// Highest type used: #107
 
 $config->CM_Model_Abstract->types = array();
 $config->CM_Model_Abstract->types[CM_Model_DeviceCapabilities::TYPE] = 'CM_Model_DeviceCapabilities'; // #20
@@ -28,14 +28,14 @@ $config->CM_Model_Abstract->types[CM_Model_StreamChannel_Message::TYPE] = 'CM_Mo
 $config->CM_Model_Abstract->types[CM_Model_StreamChannel_Video::TYPE] = 'CM_Model_StreamChannel_Video'; // #19
 $config->CM_Model_Abstract->types[CM_Model_StreamChannel_Message_User::TYPE] = 'CM_Model_StreamChannel_Message_User'; // #29
 $config->CM_Model_Abstract->types[CM_Model_StreamChannelArchive_Video::TYPE] = 'CM_Model_StreamChannelArchive_Video'; // #25
-$config->CM_Model_Abstract->types[Denkmal_Model_Event::TYPE] = 'Denkmal_Model_Event'; // #101
+$config->CM_Model_Abstract->types[Denkmal_Model_Event::TYPE] = 'Denkmal_Model_Event'; // #109
 $config->CM_Model_Abstract->types[Denkmal_Model_Link::TYPE] = 'Denkmal_Model_Link'; // #105
 $config->CM_Model_Abstract->types[Denkmal_Model_Message::TYPE] = 'Denkmal_Model_Message'; // #104
 $config->CM_Model_Abstract->types[Denkmal_Model_Song::TYPE] = 'Denkmal_Model_Song'; // #102
 $config->CM_Model_Abstract->types[Denkmal_Model_User::TYPE] = 'Denkmal_Model_User'; // #106
-$config->CM_Model_Abstract->types[Denkmal_Model_Venue::TYPE] = 'Denkmal_Model_Venue'; // #100
+$config->CM_Model_Abstract->types[Denkmal_Model_Venue::TYPE] = 'Denkmal_Model_Venue'; // #108
 $config->CM_Model_Abstract->types[Denkmal_Model_VenueAlias::TYPE] = 'Denkmal_Model_VenueAlias'; // #103
-// Highest type used: #106
+// Highest type used: #109
 
 $config->CM_Model_ActionLimit_Abstract->types = array();
 // Highest type used: #0
@@ -50,20 +50,20 @@ $config->CM_Model_StreamChannel_Abstract->types[CM_Model_StreamChannel_Message_U
 // Highest type used: #29
 
 $config->CM_Mail->types = array();
-$config->CM_Mail->types[CM_Mail_Welcome::TYPE] = 'CM_Mail_Welcome'; // #2
-// Highest type used: #2
+$config->CM_Mail->types[CM_Mail_Welcome::TYPE] = 'CM_Mail_Welcome'; // #49
+// Highest type used: #49
 
 $config->CM_Paging_Log_Abstract->types = array();
-$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Error::TYPE] = 'CM_Paging_Log_Error'; // #1
-$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Fatal::TYPE] = 'CM_Paging_Log_Fatal'; // #5
-$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_JsError::TYPE] = 'CM_Paging_Log_JsError'; // #6
-$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Mail::TYPE] = 'CM_Paging_Log_Mail'; // #3
-$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Warn::TYPE] = 'CM_Paging_Log_Warn'; // #4
-// Highest type used: #6
+$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Error::TYPE] = 'CM_Paging_Log_Error'; // #68
+$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Fatal::TYPE] = 'CM_Paging_Log_Fatal'; // #69
+$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_JsError::TYPE] = 'CM_Paging_Log_JsError'; // #70
+$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Mail::TYPE] = 'CM_Paging_Log_Mail'; // #71
+$config->CM_Paging_Log_Abstract->types[CM_Paging_Log_Warn::TYPE] = 'CM_Paging_Log_Warn'; // #72
+// Highest type used: #72
 
 $config->CM_Paging_ContentList_Abstract->types = array();
-$config->CM_Paging_ContentList_Abstract->types[CM_Paging_ContentList_Badwords::TYPE] = 'CM_Paging_ContentList_Badwords'; // #2
-// Highest type used: #2
+$config->CM_Paging_ContentList_Abstract->types[CM_Paging_ContentList_Badwords::TYPE] = 'CM_Paging_ContentList_Badwords'; // #73
+// Highest type used: #73
 
 
 $config->CM_Action_Abstract->verbs = array();

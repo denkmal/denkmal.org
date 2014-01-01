@@ -9,7 +9,7 @@ GIT
   remote: git@github.com:njam/puppet-cm.git
   path: modules/cm
   ref: deps
-  sha: 8c695c521b714ea9c84ff4d8247906d1e1bb78de
+  sha: ea4feceef4540dae94dab666634fb3c9cb4b5078
   specs:
     cm (0.0.1)
       composer (>= 0)

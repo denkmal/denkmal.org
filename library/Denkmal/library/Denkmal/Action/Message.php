@@ -2,8 +2,6 @@
 
 class Denkmal_Action_Message extends Denkmal_Action_Abstract {
 
-	const TYPE = 107;
-
 	public function notify(Denkmal_Model_Message $message) {
 		$this->_notify($message);
 	}

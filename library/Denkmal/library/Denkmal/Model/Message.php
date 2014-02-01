@@ -2,8 +2,6 @@
 
 class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
-	const TYPE = 104;
-
 	/**
 	 * @param DateTime $timestamp
 	 */

@@ -1,16 +1,12 @@
 {
 	"name": "denkmal/denkmal.org",
 	"require": {
-		"cargomedia/CM": "1.2.87"
+		"cargomedia/CM": "1.2.97"
 	},
 	"minimum-stability": "alpha",
 	"repositories": [
 		{
 			"packagist": false
-		},
-		{
-			"type": "composer",
-			"url": "http://satis.cargomedia.ch/source"
 		},
 		{
 			"type": "composer",

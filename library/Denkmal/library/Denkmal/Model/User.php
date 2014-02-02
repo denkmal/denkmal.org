@@ -2,8 +2,6 @@
 
 class Denkmal_Model_User extends CM_Model_User {
 
-	const TYPE = 106;
-
 	/**
 	 * @return string
 	 */

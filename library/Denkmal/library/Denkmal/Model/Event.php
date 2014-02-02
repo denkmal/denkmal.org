@@ -2,8 +2,6 @@
 
 class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
-	const TYPE = 109;
-
 	/**
 	 * @return Denkmal_Model_Venue
 	 */

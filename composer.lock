@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ebeea9f47117b446fdcb61b1da7a478a",
+    "hash": "abc98f0b7e9de74e551d71d1871eab39",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -55,21 +55,22 @@
             "time": "2012-11-26 23:59:55"
         },
         {
-            "name": "cargomedia/CM",
-            "version": "1.2.97",
+            "name": "cargomedia/cm",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
-                "url": "git@github.com:cargomedia/CM.git",
-                "reference": "1fe0fd02bd00a0870c09f0ce126dd4ef68b94616"
+                "url": "https://github.com/cargomedia/CM.git",
+                "reference": "f84f8cdd96979f3cda81d093f46693bad1dd2f7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-1.2.97-9f0ff8.zip",
-                "reference": "1fe0fd02bd00a0870c09f0ce126dd4ef68b94616",
-                "shasum": "b20c331d993596d214f73e12abe7be1a8147eef0"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-f84f8cdd96979f3cda81d093f46693bad1dd2f7a-zip-d312c5.zip",
+                "reference": "f84f8cdd96979f3cda81d093f46693bad1dd2f7a",
+                "shasum": "833163204a8c3da0599962fcf23f6faded214049"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "composer/composer": "1.0.0-alpha7",
                 "easybook/geshi": "1.0.8.11",
                 "leafo/lessphp": "0.3.*",
                 "lstrojny/functional-php": "1.0.0-alpha2",
@@ -83,6 +84,13 @@
                 "scripts/cm.php"
             ],
             "type": "library",
+            "extra": {
+                "cm-modules": {
+                    "CM": {
+                        "path": ""
+                    }
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "CM_": "library/",
@@ -90,7 +98,79 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "time": "2014-02-01 13:17:03"
+            "support": {
+                "source": "https://github.com/cargomedia/CM/tree/1.3.5",
+                "issues": "https://github.com/cargomedia/CM/issues"
+            },
+            "time": "2014-02-02 20:49:26"
+        },
+        {
+            "name": "composer/composer",
+            "version": "1.0.0-alpha7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/composer.git",
+                "reference": "3e6afd8975b6ff6eb3045ba00e532d6c0e302fe6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/composer-composer-3e6afd8975b6ff6eb3045ba00e532d6c0e302fe6-zip-1bff4a.zip",
+                "reference": "3e6afd8975b6ff6eb3045ba00e532d6c0e302fe6",
+                "shasum": "df55e2cb224b0825bfa80976e55f859e18af8f65"
+            },
+            "require": {
+                "justinrainbow/json-schema": "1.1.*",
+                "php": ">=5.3.2",
+                "seld/jsonlint": "1.*",
+                "symfony/console": "~2.3@dev",
+                "symfony/finder": "~2.1",
+                "symfony/process": "~2.1@dev"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.10"
+            },
+            "suggest": {
+                "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages",
+                "ext-zip": "Enabling the zip extension allows you to unzip archives, and allows gzip compression of all internet traffic"
+            },
+            "bin": [
+                "bin/composer"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Nils Adermann",
+                    "email": "naderman@naderman.de",
+                    "homepage": "http://www.naderman.de"
+                }
+            ],
+            "description": "Dependency Manager",
+            "homepage": "http://getcomposer.org/",
+            "keywords": [
+                "autoload",
+                "dependency",
+                "package"
+            ],
+            "time": "2013-05-04 09:15:22"
         },
         {
             "name": "easybook/geshi",
@@ -136,6 +216,60 @@
                 "syntax"
             ],
             "time": "2012-09-28 10:14:18"
+        },
+        {
+            "name": "justinrainbow/json-schema",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/justinrainbow/json-schema.git",
+                "reference": "05ff6d8d79fe3ad190b0663d80d3f9deee79416c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/justinrainbow-json-schema-05ff6d8d79fe3ad190b0663d80d3f9deee79416c-zip-ce5f8b.zip",
+                "reference": "05ff6d8d79fe3ad190b0663d80d3f9deee79416c",
+                "shasum": "3f76e8896d89cde5a0040baff2dac3e5bdf675fc"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonSchema": "src/"
+                }
+            },
+            "license": [
+                "NewBSD"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch",
+                    "homepage": "http://wiedler.ch/igor/"
+                },
+                {
+                    "name": "Bruno Prieto Reis",
+                    "email": "bruno.p.reis@gmail.com"
+                },
+                {
+                    "name": "Justin Rainbow",
+                    "email": "justin.rainbow@gmail.com"
+                },
+                {
+                    "name": "Robert Schönthal",
+                    "email": "seroscho@googlemail.com",
+                    "homepage": "http://digitalkaoz.net"
+                }
+            ],
+            "description": "A library to validate a json schema.",
+            "homepage": "https://github.com/justinrainbow/json-schema",
+            "keywords": [
+                "json",
+                "schema"
+            ],
+            "time": "2012-01-03 00:33:17"
         },
         {
             "name": "leafo/lessphp",
@@ -327,6 +461,52 @@
             "time": "2012-08-12 16:51:36"
         },
         {
+            "name": "seld/jsonlint",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/jsonlint.git",
+                "reference": "7cd4c4965e17e6e4c07f26d566619a4c76f8c672"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/seld-jsonlint-7cd4c4965e17e6e4c07f26d566619a4c76f8c672-zip-ad0c5b.zip",
+                "reference": "7cd4c4965e17e6e4c07f26d566619a4c76f8c672",
+                "shasum": "5a8883c7bfb27d7526cfba74bd23e5b8cf672255"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "bin": [
+                "bin/jsonlint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Seld\\JsonLint": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON Linter",
+            "keywords": [
+                "json",
+                "linter",
+                "parser",
+                "validator"
+            ],
+            "time": "2013-11-04 15:41:11"
+        },
+        {
             "name": "smarty/smarty",
             "version": "v3.1.16",
             "source": {
@@ -374,6 +554,150 @@
                 "templating"
             ],
             "time": "2013-12-17 16:56:58"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.4.1",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-4c1ed2ff514bd85ee186eebb010ccbdeeab05af7-zip-04e417.zip",
+                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
+                "shasum": "d9c485c08cd111f5e5e58c25d96a69d39a733cc0"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "suggest": {
+                "symfony/event-dispatcher": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-01-01 08:14:50"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v2.4.1",
+            "target-dir": "Symfony/Component/Finder",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Finder.git",
+                "reference": "6904345cf2b3bbab1f6d6e4ce1724cb99df9f00a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-6904345cf2b3bbab1f6d6e4ce1724cb99df9f00a-zip-e6aeb2.zip",
+                "reference": "6904345cf2b3bbab1f6d6e4ce1724cb99df9f00a",
+                "shasum": "1b606b935191be1c1cb5d5e243c91831a9634f85"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Finder\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-01-01 08:14:50"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v2.4.1",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "58fdccb311e44f28866f976c2d7b3227e9f713db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-58fdccb311e44f28866f976c2d7b3227e9f713db-zip-90a3f7.zip",
+                "reference": "58fdccb311e44f28866f976c2d7b3227e9f713db",
+                "shasum": "949c5755652257a4b9207598d98fb5ac516ca2d5"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-01-05 02:10:50"
         },
         {
             "name": "wurfl/tera-wurfl",

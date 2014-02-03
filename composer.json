@@ -1,7 +1,7 @@
 {
 	"name": "denkmal/denkmal.org",
 	"require": {
-		"cargomedia/CM": "1.2.97"
+		"cargomedia/cm": "~1.3.7"
 	},
 	"minimum-stability": "alpha",
 	"repositories": [
@@ -17,6 +17,13 @@
 		"psr-0": {
 			"Denkmal_": "library/Denkmal/library/",
 			"Admin_": "library/Admin/library/"
+		}
+	},
+	"extra": {
+		"cm-modules": {
+			"Denkmal": {
+				"path": "library/Denkmal/"
+			}
 		}
 	}
 }

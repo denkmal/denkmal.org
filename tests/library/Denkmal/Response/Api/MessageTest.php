@@ -35,7 +35,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
 		$body = 'venue=' . urlencode($venueId)
 				. '&text=' . urlencode($text)
 				. '&hash=' . hash($this->_hashAlgorithm, $this->_hashToken . $text);
-		$request = new CM_Request_Post('/api/message', array('host' => 'denkmal.test'), $body);
+		$request = new CM_Request_Post('/api/message', array('host' => 'denkmal.test'), array('remote_addr' => '1.2.3.4'), $body);
 		$response = new Denkmal_Response_Api_Message($request);
 		$dateTime = new DateTime();
 		$createTime = $dateTime->getTimestamp();

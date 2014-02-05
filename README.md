@@ -1,8 +1,9 @@
-# denkmal.org
+denkmal.org
+===========
 
-## Dev Installation
-### Apache
-
+Dev Installation
+----------------
+Apache:
 ```conf
 <VirtualHost *:80>
   ServerName denkmal.dev

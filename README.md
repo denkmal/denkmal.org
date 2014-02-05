@@ -1,4 +1,4 @@
-denkmal.org
+denkmal.org [![Build Status](https://travis-ci.org/denkmal/denkmal.org.png)](https://travis-ci.org/denkmal/denkmal.org)
 ===========
 
 Dev Installation

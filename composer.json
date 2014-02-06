@@ -23,6 +23,9 @@
 		"cm-modules": {
 			"Denkmal": {
 				"path": "library/Denkmal/"
+			},
+			"Admin": {
+				"path": "library/Admin/"
 			}
 		}
 	}

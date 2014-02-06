@@ -1,8 +1,9 @@
-# denkmal.org
+denkmal.org [![Build Status](https://travis-ci.org/denkmal/denkmal.org.png)](https://travis-ci.org/denkmal/denkmal.org)
+===========
 
-## Dev Installation
-### Apache
-
+Dev Installation
+----------------
+Apache:
 ```conf
 <VirtualHost *:80>
   ServerName denkmal.dev

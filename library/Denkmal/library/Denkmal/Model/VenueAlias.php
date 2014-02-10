@@ -2,8 +2,6 @@
 
 class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
 
-	const TYPE = 103;
-
 	/**
 	 * @return string
 	 */

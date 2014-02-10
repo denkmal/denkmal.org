@@ -2,8 +2,6 @@
 
 class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
-	const TYPE = 102;
-
 	/**
 	 * @param string $label
 	 */

@@ -2,8 +2,6 @@
 
 class Admin_Site extends Denkmal_Site {
 
-	const TYPE = 101;
-
 	public function __construct() {
 		parent::__construct();
 		$this->_setNamespace('Admin');

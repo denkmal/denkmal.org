@@ -2,8 +2,6 @@
 
 class Denkmal_Model_Link extends CM_Model_Abstract {
 
-	const TYPE = 105;
-
 	/**
 	 * @return string
 	 */

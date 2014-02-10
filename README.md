@@ -1,8 +1,8 @@
-# denkmal.org
+denkmal.org [![Build Status](https://travis-ci.org/denkmal/denkmal.org.png)](https://travis-ci.org/denkmal/denkmal.org)
+===========
 
-## Vagrant box
-
-### Setup
+Vagrant box
+-----------
 Install the [`librarian-puppet` plugin for vagrant](https://github.com/mhahn/vagrant-librarian-puppet):
 ```
 vagrant plugin install vagrant-librarian-puppet

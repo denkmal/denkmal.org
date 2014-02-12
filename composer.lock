@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "5322a68cc8368f0f0fbbafb6b2a01ad4",
+    "hash": "7150bb71a739c4f44073ac23253079a5",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,17 +56,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.3.7",
+            "version": "1.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "c52195003635708c794dcff20dbb536f08c69a77"
+                "reference": "5dacc2966c5224c9da702900bf8735e29103037d"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-c52195003635708c794dcff20dbb536f08c69a77-zip-a208ec.zip",
-                "reference": "c52195003635708c794dcff20dbb536f08c69a77",
-                "shasum": "912b3eaec4ac96e978983eae258f4f8732af67c1"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-5dacc2966c5224c9da702900bf8735e29103037d-zip-7637e0.zip",
+                "reference": "5dacc2966c5224c9da702900bf8735e29103037d",
+                "shasum": "16582a6379dc7f8ec7d35178093330af57586b33"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -75,13 +75,15 @@
                 "leafo/lessphp": "0.3.*",
                 "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.3-beta5",
-                "phpmailer/phpmailer": "5.2.1",
+                "phpmailer/phpmailer": "5.2.6",
                 "ruflin/elastica": "v0.19.8.0",
-                "smarty/smarty": "3.1.16",
-                "wurfl/tera-wurfl": "2.1.5"
+                "smarty/smarty": "3.1.16"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.10"
             },
             "bin": [
-                "scripts/cm.php"
+                "bin/cm"
             ],
             "type": "library",
             "extra": {
@@ -98,11 +100,14 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "support": {
-                "source": "https://github.com/cargomedia/CM/tree/master",
+                "source": "https://github.com/cargomedia/CM/tree/1.3.13",
                 "issues": "https://github.com/cargomedia/CM/issues"
             },
-            "time": "2014-02-03 18:16:43"
+            "time": "2014-02-12 11:32:44"
         },
         {
             "name": "composer/composer",
@@ -406,19 +411,55 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "5.2.1",
+            "version": "v5.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "4d9434e394496a5bb7acd9e73046587184b413df"
+            },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-5.2.1.zip",
-                "reference": null,
-                "shasum": "70540a00a6916b5125b292e1c5a4c8e7b080dd99"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-4d9434e394496a5bb7acd9e73046587184b413df-zip-244a31.zip",
+                "reference": "4d9434e394496a5bb7acd9e73046587184b413df",
+                "shasum": "3c2279e86f4243d35e3aec8cf3e4f2d5910ee9c4"
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "*",
+                "phpunit/phpunit": "*"
             },
             "type": "library",
             "autoload": {
                 "classmap": [
-                    "class.phpmailer.php"
+                    "class.phpmailer.php",
+                    "class.pop3.php",
+                    "class.smtp.php"
                 ]
-            }
+            },
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2013-04-11 16:45:39"
         },
         {
             "name": "ruflin/elastica",
@@ -698,17 +739,6 @@
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
             "time": "2014-01-05 02:10:50"
-        },
-        {
-            "name": "wurfl/tera-wurfl",
-            "version": "2.1.5",
-            "dist": {
-                "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/wurfl-tera-wurfl-2.1.5.zip",
-                "reference": null,
-                "shasum": "de2b5873c8bcda173da5f9dff75b94cde479ff93"
-            },
-            "type": "library"
         }
     ],
     "packages-dev": [

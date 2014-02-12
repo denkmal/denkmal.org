@@ -6,7 +6,7 @@ Vagrant.configure('2') do |config|
   config.dns.tld = 'dev'
   config.dns.patterns = [/^.*denkmal.dev$/]
 
-  config.vm.network :private_network, ip: '10.10.20.5'
+  config.vm.network :private_network, ip: '10.10.10.10'
   config.vm.synced_folder '.', '/app/denkmal.org', nfs: true
   config.ssh.forward_agent = true
 

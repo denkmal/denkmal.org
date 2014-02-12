@@ -8,6 +8,7 @@ node default {
     path => '/app/denkmal.org',
     web => true,
     debug => true,
+    development => true,
     vhosts => {
       "www.${domain}" => {
         aliases => [$domain, "admin.${domain}"],

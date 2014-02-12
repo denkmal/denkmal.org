@@ -4,6 +4,7 @@
 !/puppet/modules/.gitkeep
 
 /vendor
+/bin
 
 /data
 /public/userfiles

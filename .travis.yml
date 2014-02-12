@@ -23,14 +23,13 @@ before_script:
 
   - composer self-update
   - composer install --dev
-  - scripts/cm.php app generate-config-local tests/travis/config.json
-  - scripts/cm.php app set-deploy-version
+  - bin/cm app generate-config-local tests/travis/config.json
+  - bin/cm app set-deploy-version
 
-script: phpunit
+script: bin/phpunit
 
 matrix:
   allow_failures:
-    - php: 5.4
     - php: 5.5
 
 notifications:

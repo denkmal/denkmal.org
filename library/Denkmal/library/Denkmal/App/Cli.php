@@ -6,5 +6,4 @@ class Denkmal_App_Cli extends CM_App_Cli {
 		$admin = Denkmal_Model_User::create('admin@denkmal.org', 'admin');
 		$admin->getRoles()->add(Denkmal_Role::ADMIN);
 	}
-
 }

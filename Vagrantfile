@@ -7,7 +7,7 @@ Vagrant.configure('2') do |config|
   config.dns.patterns = [/^.*denkmal.dev$/]
 
   config.vm.network :private_network, ip: '10.10.10.10'
-  config.vm.synced_folder '.', '/app/denkmal.org', nfs: true
+  config.vm.synced_folder '.', '/vagrant', nfs: true
   config.ssh.forward_agent = true
 
   config.librarian_puppet.puppetfile_dir = 'puppet'

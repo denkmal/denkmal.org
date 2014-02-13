@@ -5,7 +5,7 @@ node default {
   include 'cm::services'
 
   cm::application{'denkmal.org':
-    path => '/app/denkmal.org',
+    path => '/vagrant',
     web => true,
     debug => true,
     development => true,

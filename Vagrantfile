@@ -27,8 +27,8 @@ Vagrant.configure('2') do |config|
     override.ssh.private_key_path = '~/.ssh/denkmal.org.pem'
     override.vm.synced_folder '.', '/vagrant', disabled: true
 
-    aws.access_key_id = 'AKIAJMEUUI54CZ3YN3DA'
-    aws.secret_access_key = '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'
+    aws.access_key_id = ENV['AWS_ACCESS_KEY']
+    aws.secret_access_key = ENV['AWS_SECRET_KEY']
     aws.keypair_name = 'denkmal.org'
 
     aws.ami = 'ami-a8d929df'

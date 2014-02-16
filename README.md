@@ -13,3 +13,8 @@ Install the [DNS plugin for vagrant](https://github.com/BerlinVagrant/vagrant-dn
 vagrant plugin install vagrant-dns
 vagrant dns --install
 ```
+
+Install the [AWS provider for vagrant](https://github.com/mitchellh/vagrant-aws):
+```
+vagrant plugin install vagrant-aws
+```

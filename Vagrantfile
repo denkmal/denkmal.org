@@ -31,7 +31,7 @@ Vagrant.configure('2') do |config|
     aws.secret_access_key = 'CTaYFjxqHrZ+tXe1jxyUVZpopX9VDmj89pCC1nGx'
     aws.keypair_name = 'denkmal.org'
 
-    aws.ami = 'ami-9ef001e9'
+    aws.ami = 'ami-a8d929df'
     aws.region = 'eu-west-1'
     aws.instance_type = 'm3.medium'
     aws.security_groups = 'denkmal.org'

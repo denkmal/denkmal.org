@@ -21,8 +21,8 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provider :aws do |aws, override|
-    override.vm.box = 'dummy'
-    override.vm.box_url = 'https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box'
+    config.vm.box = 'debian-7-amd64'
+    config.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/aws/debian-7-amd64-default.box'
     override.ssh.username = 'admin'
     override.ssh.private_key_path = '~/.ssh/denkmal.org.pem'
     override.vm.synced_folder '.', '/vagrant', disabled: true
@@ -31,7 +31,6 @@ Vagrant.configure('2') do |config|
     aws.secret_access_key = ENV['AWS_SECRET_KEY']
     aws.keypair_name = 'denkmal.org'
 
-    aws.ami = 'ami-a8d929df'
     aws.region = 'eu-west-1'
     aws.instance_type = 'm3.medium'
     aws.security_groups = 'denkmal.org'

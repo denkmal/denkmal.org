@@ -55,11 +55,23 @@ class Denkmal_Model_User extends CM_Model_User {
 	}
 
 	/**
+	 * @param string $email
+	 * @param string $password
+	 * @return Denkmal_Model_User
+	 */
+	public static function create($email, $password) {
+		return static::createStatic(array(
+			'email' => $email,
+			'password' => $password,
+		));
+	}
+
+	/**
 	 * @param array $data
 	 * @throws CM_Exception|Exception
 	 * @return Denkmal_Model_User
 	 */
-	public static function _createStatic(array $data) {
+	protected static function _createStatic(array $data) {
 		$email = (string) $data['email'];
 		$password = (string) $data['password'];
 		$userId = CM_Model_User::createStatic(null)->getId();

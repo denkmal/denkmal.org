@@ -1,10 +1,6 @@
 <?php
 
-$german = CM_Model_Language::findByAbbreviation('de');
-if (!$german) {
-	$german = CM_Model_Language::createStatic(array('name' => 'Deutsch', 'abbreviation' => 'de', 'enabled' => true));
-}
-
+$german = CM_Model_Language::create('Deutsch', 'de', true);
 $german->setTranslation('You', 'Du');
 $german->setTranslation('Ok', 'Ok');
 $german->setTranslation('Cancel', 'Abbrechen');
@@ -46,10 +42,7 @@ $german->setTranslation('The content you tried to interact with has been deleted
 $german->setTranslation('Your browser is no longer supported. Click here to upgrade…', 'Dein Browser wird nicht mehr unterstützt. Klicke hier um ihn zu aktualisieren…');
 $german->setTranslation('You can only select {$cardinality} items.', 'Maximal {$cardinality} Element.', array('cardinality'));
 $german->setTranslation('{$file} has an invalid extension. Only {$extensions} are allowed.', '{$file} hat eine ungültige Dateiendung. Nur {$extensions} werden unterstützt.', array('file',
-	'extensions'));
-
-$user = Denkmal_Model_User::_createStatic(array('email' => 'admin@denkmal.org', 'password' => 'admin'));
-$user->getRoles()->add(Denkmal_Role::ADMIN);
+		'extensions'));
 $german->setTranslation('Drag files here', 'Ziehe deine Datein hierhin');
 $german->setTranslation('or', 'oder');
 $german->setTranslation('Upload Files', 'Datein hochladen');

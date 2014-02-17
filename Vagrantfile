@@ -1,9 +1,7 @@
 Vagrant.configure('2') do |config|
-  config.vm.box = 'debian-7-amd64-cm'
   config.ssh.forward_agent = true
-
+  config.vm.box = 'debian-7-amd64-cm'
   config.vm.hostname = 'www.denkmal.org'
-
   config.vm.synced_folder '.', '/vagrant', nfs: true
 
   config.librarian_puppet.puppetfile_dir = 'puppet'

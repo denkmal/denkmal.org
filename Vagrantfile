@@ -33,8 +33,5 @@ Vagrant.configure('2') do |config|
     aws.region = 'eu-west-1'
     aws.instance_type = 'm3.medium'
     aws.security_groups = 'denkmal.org'
-    aws.tags = {
-        :app => 'denkmal.org',
-    }
   end
 end

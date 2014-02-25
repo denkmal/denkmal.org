@@ -25,9 +25,12 @@ Start and provision the box:
 vagrant up
 ```
 
-AWS Deployment
---------------
-Install the [AWS provider for vagrant](https://github.com/mitchellh/vagrant-aws):
+Create elasticsearch indices:
 ```
-vagrant plugin install vagrant-aws
+vagrant ssh -c 'denkmal/bin/cm search-index create'
+```
+
+Fill in some example data:
+```
+vagrant ssh -c 'denkmal/bin/cm app fill-example-data'
 ```

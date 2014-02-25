@@ -33,7 +33,6 @@
                     "sdk.class.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -57,21 +56,21 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.3.13",
+            "version": "1.3.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "5dacc2966c5224c9da702900bf8735e29103037d"
+                "reference": "c18eb624cf62dbe708a17874c9deb3411aa6b49f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-5dacc2966c5224c9da702900bf8735e29103037d-zip-7637e0.zip",
-                "reference": "5dacc2966c5224c9da702900bf8735e29103037d",
-                "shasum": "16582a6379dc7f8ec7d35178093330af57586b33"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-c18eb624cf62dbe708a17874c9deb3411aa6b49f-zip-2c9719.zip",
+                "reference": "c18eb624cf62dbe708a17874c9deb3411aa6b49f",
+                "shasum": "3c8dfafd02c705949423583d799e8f7525f8a02d"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
-                "composer/composer": "1.0.0-alpha7",
+                "composer/composer": "1.0.0-alpha8",
                 "easybook/geshi": "1.0.8.11",
                 "leafo/lessphp": "0.3.*",
                 "lstrojny/functional-php": "1.0.0-alpha2",
@@ -105,29 +104,29 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-02-12 11:32:44"
+            "time": "2014-02-21 16:54:49"
         },
         {
             "name": "composer/composer",
-            "version": "1.0.0-alpha7",
+            "version": "1.0.0-alpha8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "3e6afd8975b6ff6eb3045ba00e532d6c0e302fe6"
+                "reference": "1eb1df44a97fb2daca1bb8b007f3bee012f0aa46"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/composer-composer-3e6afd8975b6ff6eb3045ba00e532d6c0e302fe6-zip-1bff4a.zip",
-                "reference": "3e6afd8975b6ff6eb3045ba00e532d6c0e302fe6",
-                "shasum": "df55e2cb224b0825bfa80976e55f859e18af8f65"
+                "url": "http://satis.cargomedia.ch/dist/dist/composer-composer-1eb1df44a97fb2daca1bb8b007f3bee012f0aa46-zip-b3273d.zip",
+                "reference": "1eb1df44a97fb2daca1bb8b007f3bee012f0aa46",
+                "shasum": "ccb2c240b9aa72653440934212dd534446aa67b2"
             },
             "require": {
                 "justinrainbow/json-schema": "1.1.*",
                 "php": ">=5.3.2",
                 "seld/jsonlint": "1.*",
-                "symfony/console": "~2.3@dev",
-                "symfony/finder": "~2.1",
-                "symfony/process": "~2.1@dev"
+                "symfony/console": "~2.3",
+                "symfony/finder": "~2.2",
+                "symfony/process": "~2.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7.10"
@@ -174,7 +173,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2013-05-04 09:15:22"
+            "time": "2014-01-06 18:39:59"
         },
         {
             "name": "easybook/geshi",
@@ -199,7 +198,6 @@
                     "./"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0"
             ],
@@ -302,7 +300,6 @@
                     "lessc.inc.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT",
                 "GPL-3.0"
@@ -341,7 +338,6 @@
                     "src/Functional/_import.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -390,7 +386,6 @@
                     "Michelf": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -489,7 +484,6 @@
                     "Elastica": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache 2.0"
             ],
@@ -761,17 +755,17 @@
     "packages-dev": [
         {
             "name": "phpunit/php-code-coverage",
-            "version": "1.2.15",
+            "version": "1.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "6ba4ed2895d538a039d5d5866edc4ec0424c7852"
+                "reference": "69e55e68481cf708a6db43aff0b504e31402fe27"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-6ba4ed2895d538a039d5d5866edc4ec0424c7852-zip-2e1e0d.zip",
-                "reference": "6ba4ed2895d538a039d5d5866edc4ec0424c7852",
-                "shasum": "98ae598e577e25b6887933785f97dd3edbd15f47"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-69e55e68481cf708a6db43aff0b504e31402fe27-zip-9776f0.zip",
+                "reference": "69e55e68481cf708a6db43aff0b504e31402fe27",
+                "shasum": "d017b34d63c79c88c89d3bcc2de03784d8439530"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -818,7 +812,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-02-03 07:44:47"
+            "time": "2014-02-25 03:34:05"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1005,17 +999,17 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.31",
+            "version": "3.7.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d24e9877331039582497052cc3c4d9f465b88210"
+                "reference": "2752cbb9ea5bd84c2811b34b6953f76965ec7a2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-d24e9877331039582497052cc3c4d9f465b88210-zip-9d2e75.zip",
-                "reference": "d24e9877331039582497052cc3c4d9f465b88210",
-                "shasum": "c1b85f85f67e10787eaa3e291187a135262804d1"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-2752cbb9ea5bd84c2811b34b6953f76965ec7a2f-zip-67bf72.zip",
+                "reference": "2752cbb9ea5bd84c2811b34b6953f76965ec7a2f",
+                "shasum": "3ce05904cfa5ee47a693cb630b963b773f1bc3a5"
             },
             "require": {
                 "ext-dom": "*",
@@ -1031,7 +1025,7 @@
                 "symfony/yaml": "~2.0"
             },
             "require-dev": {
-                "pear-pear/pear": "1.9.4"
+                "pear-pear.php.net/pear": "1.9.4"
             },
             "suggest": {
                 "ext-json": "*",
@@ -1075,7 +1069,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-02-03 07:46:27"
+            "time": "2014-02-25 03:47:29"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

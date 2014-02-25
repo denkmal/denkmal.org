@@ -1,31 +1,31 @@
 denkmal.org [![Build Status](https://travis-ci.org/denkmal/denkmal.org.png)](https://travis-ci.org/denkmal/denkmal.org)
 ===========
 
-Dev Installation
-----------------
-Apache:
-```conf
-<VirtualHost *:80>
-  ServerName denkmal.dev
-  RedirectPermanent / http://www.denkmal.dev/
-</VirtualHost>
+Development
+-----------
+Install the [`librarian-puppet` plugin for vagrant](https://github.com/mhahn/vagrant-librarian-puppet):
+```
+vagrant plugin install vagrant-librarian-puppet
+```
 
-<VirtualHost *:80>
-  ServerName www.denkmal.dev
-  ServerAlias admin.denkmal.dev
-  DocumentRoot /Users/reto/Projects/denkmal.org
+Install the [DNS plugin for vagrant](https://github.com/BerlinVagrant/vagrant-dns) and register it in OSX:
+**This plugin is [currently broken with vagrant 1.4.3](https://github.com/BerlinVagrant/vagrant-dns/issues/27). It is recommended to use `/etc/hosts` instead.**
+```
+vagrant plugin install vagrant-dns
+vagrant dns --install
+```
 
-  <Directory /Users/reto/Projects/denkmal.org/>
-    RewriteEngine on
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ public/$1
-  </Directory>
+Start and provision the box:
+```
+vagrant up
+```
 
-  <Directory /Users/reto/Projects/denkmal.org/public/>
-    RewriteEngine on
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ index.php
-    RewriteRule .* - [E=HTTP_X_REQUESTED_WITH:%{HTTP:X-Requested-With}]
-  </Directory>
-</VirtualHost>
+Create elasticsearch indices:
+```
+vagrant ssh -c 'denkmal/bin/cm search-index create'
+```
+
+Fill in some example data:
+```
+vagrant ssh -c 'denkmal/bin/cm app fill-example-data'
 ```

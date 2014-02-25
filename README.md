@@ -15,11 +15,6 @@ vagrant plugin install vagrant-dns
 vagrant dns --install
 ```
 
-Install the [PhpStorm tunnel plugin for vagrant](https://github.com/cargomedia/vagrant-phpstorm-tunnel):
-```
-vagrant plugin install vagrant-phpstorm-tunnel
-```
-
 Start and provision the box:
 ```
 vagrant up

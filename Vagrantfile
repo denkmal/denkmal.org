@@ -9,10 +9,12 @@ Vagrant.configure('2') do |config|
     config.dns.patterns = [/^.*fuckbook.dev$/]
   end
 
+  if Vagrant.has_plugin? 'vagrant-phpstorm-tunnel'
+    config.phpstorm_tunnel.project_home = '/home/vagrant/denkmal'
+  end
+
   config.vm.network :private_network, ip: '10.10.10.12'
   config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => 'nfs'
-
-  config.phpstorm_tunnel.project_home = '/home/vagrant/denkmal'
 
   config.librarian_puppet.puppetfile_dir = 'puppet'
   config.librarian_puppet.placeholder_filename = '.gitkeep'

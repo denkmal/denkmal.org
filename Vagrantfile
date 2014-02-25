@@ -1,7 +1,16 @@
 Vagrant.configure('2') do |config|
   config.ssh.forward_agent = true
   config.vm.box = 'debian-7-amd64-cm'
-  config.vm.synced_folder '.', '/vagrant', nfs: true
+  config.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-cm.box'
+
+  config.vm.hostname = 'www.fuckbook.dev'
+  if Vagrant.has_plugin? 'vagrant-dns'
+    config.dns.tld = 'dev'
+    config.dns.patterns = [/^.*fuckbook.dev$/]
+  end
+
+  config.vm.network :private_network, ip: '10.10.10.11'
+  config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => 'nfs'
 
   config.librarian_puppet.puppetfile_dir = 'puppet'
   config.librarian_puppet.placeholder_filename = '.gitkeep'
@@ -11,33 +20,11 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provision 'shell', inline: [
-      'cd /vagrant',
-      'composer --no-interaction install --dev',
-      'bin/cm app set-deploy-version',
-      'bin/cm app setup',
-      'bin/cm db run-updates',
+    'sudo service redis start || true',	# Workaround for https://github.com/cargomedia/puppet-packages/issues/488
+    'cd /home/vagrant/denkmal',
+    'composer --no-interaction install --dev',
+    'bin/cm app set-deploy-version',
+    'bin/cm app setup',
+    'bin/cm db run-updates',
   ].join(' && ')
-
-  config.vm.provider :virtualbox do |virtualbox, override|
-    override.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-cm.box'
-    override.vm.hostname = 'www.denkmal.dev'
-    #override.dns.tld = 'dev'
-    #override.dns.patterns = [/^.*denkmal.dev$/]
-    override.vm.network :private_network, ip: '10.10.10.12'
-  end
-
-  config.vm.provider :aws do |aws, override|
-    override.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/aws/debian-7-amd64-cm.box'
-    override.vm.hostname = 'www.denkmal.org'
-    override.ssh.username = 'admin'
-    override.ssh.private_key_path = '~/.ssh/denkmal.org.pem'
-
-    aws.access_key_id = ENV['AWS_ACCESS_KEY']
-    aws.secret_access_key = ENV['AWS_SECRET_KEY']
-    aws.keypair_name = 'denkmal.org'
-
-    aws.region = 'eu-west-1'
-    aws.instance_type = 'm3.medium'
-    aws.security_groups = 'denkmal.org'
-  end
 end

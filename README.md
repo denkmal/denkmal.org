@@ -14,6 +14,11 @@ vagrant plugin install vagrant-dns
 vagrant dns --install
 ```
 
+Start and provision the box:
+```
+vagrant up
+```
+
 AWS Deployment
 --------------
 Install the [AWS provider for vagrant](https://github.com/mitchellh/vagrant-aws):

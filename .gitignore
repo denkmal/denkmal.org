@@ -1,8 +1,4 @@
 /.vagrant
-/puppet/.tmp
-/puppet/modules/*
-!/puppet/modules/.gitkeep
-
 /vendor
 /bin
 

@@ -24,7 +24,6 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provision 'shell', inline: [
-    'sudo service redis start || true',	# Workaround for https://github.com/cargomedia/puppet-packages/issues/488
     'cd /home/vagrant/denkmal',
     'composer --no-interaction install --dev',
     'bin/cm app set-deploy-version',

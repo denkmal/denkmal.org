@@ -7,9 +7,6 @@ $config->googleApi = 'AIzaSyB85laUBhcLyjf7vff7WE62__6jPxjK8qI';
 
 $config->CM_Model_User->class = 'Denkmal_Model_User';
 
-$config->CM_Render->cdnResource = true;
-$config->CM_Render->cdnUserContent = true;
-
 $config->CM_Params->class = 'Denkmal_Params';
 
 $config->CM_Site_Abstract->class = 'Denkmal_Site';

@@ -1,20 +1,15 @@
 <?php
 
 $config->debug = true;
-$config->deployVersion = '1';
 $config->timeZone = 'Europe/Zurich';
 $config->googleApi = 'AIzaSyB85laUBhcLyjf7vff7WE62__6jPxjK8qI';
 
 $config->CM_Model_User->class = 'Denkmal_Model_User';
 
-$config->CM_Render->cdnResource = true;
-$config->CM_Render->cdnUserContent = true;
-
 $config->CM_Params->class = 'Denkmal_Params';
 
 $config->CM_Site_Abstract->class = 'Denkmal_Site';
 
-$config->CM_Stream_Adapter_Message_SocketRedis->hostPrefix = false;
 $config->CM_Stream_Adapter_Message_SocketRedis->servers = array(
 	array('httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => array(
 		'http://www.denkmal.dev:8090',

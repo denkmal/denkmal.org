@@ -3,10 +3,10 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'debian-7-amd64-cm'
   config.vm.box_url = 'http://vagrant-boxes.cargomedia.ch/virtualbox/debian-7-amd64-cm.box'
 
-  config.vm.hostname = 'www.fuckbook.dev'
+  config.vm.hostname = 'www.denkmal.dev'
   if Vagrant.has_plugin? 'vagrant-dns'
     config.dns.tld = 'dev'
-    config.dns.patterns = [/^.*fuckbook.dev$/]
+    config.dns.patterns = [/^.*denkmal.dev$/]
   end
 
   if Vagrant.has_plugin? 'vagrant-phpstorm-tunnel'

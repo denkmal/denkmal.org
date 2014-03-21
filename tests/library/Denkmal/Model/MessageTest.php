@@ -6,12 +6,6 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
 		CMTest_TH::clearEnv();
 	}
 
-    public function testTimelapse() {
-        $time = time();
-        sleep(2);
-        $this->assertSame($time, time());
-    }
-
 	public function testCreate() {
 		$text = 'foo bar';
 		$venue = Denkmal_Model_Venue::create('Example', true, false);

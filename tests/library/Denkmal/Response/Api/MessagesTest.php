@@ -4,6 +4,7 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 
     protected function setUp() {
         CM_Config::get()->Denkmal_Site->url = 'http://denkmal.test';
+        CM_Config::get()->Denkmal_Site->urlCdn = 'http://cdn.denkmal.test';
     }
 
     public function tearDown() {

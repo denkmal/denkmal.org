@@ -1,89 +1,89 @@
 .navButton {
-	color: @colorFgTheme;
-	opacity: .5;
+  color: @colorFgTheme;
+  opacity: .5;
 
-	.label {
-		text-decoration: none;
-	}
+  .label {
+    text-decoration: none;
+  }
 
-	&:hover {
-		opacity: 1;
-	}
+  &:hover {
+    opacity: 1;
+  }
 
-	&.addButton {
-		float: right;
+  &.addButton {
+    float: right;
 
-		.label {
-			font-size: @fontSize;
-			vertical-align: top;
-			display: none;
-		}
+    .label {
+      font-size: @fontSize;
+      vertical-align: top;
+      display: none;
+    }
 
-		@media (min-width: 800px) {
+    @media (min-width: 800px) {
 
-			.label {
-				padding: 0 12px;
-				display: inline;
-			}
-		}
-	}
+      .label {
+        padding: 0 12px;
+        display: inline;
+      }
+    }
+  }
 
-	&.showWeek {
-		float: left;
+  &.showWeek {
+    float: left;
 
-		@media (min-width: 580px) {
-			display: none;
-		}
-	}
+    @media (min-width: 580px) {
+      display: none;
+    }
+  }
 }
 
 .logoWrapper {
-	float: left;
+  float: left;
 
-	.slogan {
-		display: none;
-		opacity: .4;
-		text-transform: uppercase;
+  .slogan {
+    display: none;
+    opacity: .4;
+    text-transform: uppercase;
 
-		@media (min-width: 950px) {
-			display: inline-block;
-		}
-	}
+    @media (min-width: 950px) {
+      display: inline-block;
+    }
+  }
 }
 
 .menu {
 
-	> li {
-		display: none;
+  > li {
+    display: none;
 
-		&.active {
-			display: block;
-		}
-	}
+    &.active {
+      display: block;
+    }
+  }
 
-	@media (min-width: 580px) {
-		float: left;
-		width: auto;
-		margin-left: 25px;
+  @media (min-width: 580px) {
+    float: left;
+    width: auto;
+    margin-left: 25px;
 
-		> li {
-			display: block;
-		}
-	}
+    > li {
+      display: block;
+    }
+  }
 }
 
 .menu-expand {
 
-	.logoWrapper, .addButton, .showWeek {
-		display: none;
-	}
+  .logoWrapper, .addButton, .showWeek {
+    display: none;
+  }
 
-	.menu {
-		width: 7*@barSize;
-		margin: 0 auto;
+  .menu {
+    width: 7*@barSize;
+    margin: 0 auto;
 
-		> li {
-			display: block;
-		}
-	}
+    > li {
+      display: block;
+    }
+  }
 }

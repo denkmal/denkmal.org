@@ -4,6 +4,6 @@
  */
 var Admin_Component_EventList_DateTime = Admin_Component_EventList_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_EventList_DateTime'
+  /** @type String */
+  _class: 'Admin_Component_EventList_DateTime'
 });

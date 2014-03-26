@@ -2,42 +2,42 @@
 
 class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
 
-	protected function _getRequiredFields() {
-		return array('eventId', 'venue', 'date', 'fromTime', 'description');
-	}
+    protected function _getRequiredFields() {
+        return array('eventId', 'venue', 'date', 'fromTime', 'description');
+    }
 
-	protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
-		/** @var Denkmal_Params $params */
-		$event = $params->getEvent('eventId');
-		$venue = $params->getVenue('venue');
+    protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+        /** @var Denkmal_Params $params */
+        $event = $params->getEvent('eventId');
+        $venue = $params->getVenue('venue');
 
-		$date = $params->getDateTime('date');
-		$from = clone $date;
-		$from->add($params->getDateInterval('fromTime'));
-		$until = null;
-		if ($params->has('untilTime')) {
-			$until = clone $date;
-			$until->add($params->getDateInterval('untilTime'));
-			if ($until < $from) {
-				$until->add(new DateInterval('P1D'));
-			}
-		}
+        $date = $params->getDateTime('date');
+        $from = clone $date;
+        $from->add($params->getDateInterval('fromTime'));
+        $until = null;
+        if ($params->has('untilTime')) {
+            $until = clone $date;
+            $until->add($params->getDateInterval('untilTime'));
+            if ($until < $from) {
+                $until->add(new DateInterval('P1D'));
+            }
+        }
 
-		$title = $params->has('title') ? $params->getString('title') : null;
-		$description = $params->getString('description');
-		$song = $params->has('song') ? $params->getSong('song') : null;
-		$starred = $params->getBoolean('starred');
+        $title = $params->has('title') ? $params->getString('title') : null;
+        $description = $params->getString('description');
+        $song = $params->has('song') ? $params->getSong('song') : null;
+        $starred = $params->getBoolean('starred');
 
-		$event->setVenue($venue);
-		$event->setDescription($description);
-		$event->setEnabled(true);
-		$event->setQueued(false);
-		$event->setFrom($from);
-		$event->setUntil($until);
-		$event->setTitle($title);
-		$event->setSong($song);
-		$event->setStarred($starred);
+        $event->setVenue($venue);
+        $event->setDescription($description);
+        $event->setEnabled(true);
+        $event->setQueued(false);
+        $event->setFrom($from);
+        $event->setUntil($until);
+        $event->setTitle($title);
+        $event->setSong($song);
+        $event->setStarred($starred);
 
-		$response->reloadComponent();
-	}
+        $response->reloadComponent();
+    }
 }

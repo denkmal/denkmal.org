@@ -4,6 +4,6 @@
  */
 var Admin_Component_Event = Admin_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_Event'
+  /** @type String */
+  _class: 'Admin_Component_Event'
 });

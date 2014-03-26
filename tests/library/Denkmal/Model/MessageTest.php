@@ -9,10 +9,11 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
     public function testCreate() {
         $text = 'foo bar';
         $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $created = new DateTime();
         $message = Denkmal_Model_Message::create($venue, $text);
         $this->assertEquals($venue, $message->getVenue());
         $this->assertSame($text, $message->getText());
-        $this->assertSameTime(time(), $message->getCreated()->getTimestamp());
+        $this->assertSameTime($created->getTimestamp(), $message->getCreated()->getTimestamp());
     }
 
     /**

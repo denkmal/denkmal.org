@@ -27,6 +27,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'shell', inline: [
     'cd /home/vagrant/denkmal',
     'composer --no-interaction install --dev',
+    'cp resources/config/local.dev.php resources/config/local.php',
     'bin/cm app set-deploy-version',
     'bin/cm app setup',
     'bin/cm db run-updates',

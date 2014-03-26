@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6e7d49bfe094c6539a9d85d16f89e52d",
+    "hash": "a44f9fb9e42351672d3518c9320912b4",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -33,7 +33,6 @@
                     "sdk.class.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -57,17 +56,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.7.2",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "cda943b1fe09394ed7b768eac918c94d79b31579"
+                "reference": "4f97125232640045c426a0347dca4c3b1abf42e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-cda943b1fe09394ed7b768eac918c94d79b31579-zip-b198f3.zip",
-                "reference": "cda943b1fe09394ed7b768eac918c94d79b31579",
-                "shasum": "dfe276b326caeaad4c5d340a5c36f5f56e0f82bf"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-4f97125232640045c426a0347dca4c3b1abf42e6-zip-6d4ac3.zip",
+                "reference": "4f97125232640045c426a0347dca4c3b1abf42e6",
+                "shasum": "3e50b6776573170f751e79e7e6888a268c6c47a2"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -105,7 +104,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-03-18 14:50:02"
+            "time": "2014-03-25 09:43:44"
         },
         {
             "name": "composer/composer",
@@ -199,7 +198,6 @@
                     "./"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0"
             ],
@@ -245,7 +243,6 @@
                     "JsonSchema": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "NewBSD"
             ],
@@ -302,7 +299,6 @@
                     "lessc.inc.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT",
                 "GPL-3.0"
@@ -341,7 +337,6 @@
                     "src/Functional/_import.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -390,7 +385,6 @@
                     "Michelf": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -442,7 +436,6 @@
                     "class.smtp.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-2.1"
             ],
@@ -489,7 +482,6 @@
                     "Elastica": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache 2.0"
             ],
@@ -533,7 +525,6 @@
                     "Seld\\JsonLint": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -579,7 +570,6 @@
                     "distribution/libs/sysplugins/smarty_security.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0"
             ],
@@ -843,7 +833,6 @@
                     "File/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -888,7 +877,6 @@
                     "Text/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -932,7 +920,6 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1103,7 +1090,6 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],

@@ -4,6 +4,6 @@
  */
 var Admin_Page_Error_AuthRequired = Admin_Page_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Page_Error_AuthRequired'
+  /** @type String */
+  _class: 'Admin_Page_Error_AuthRequired'
 });

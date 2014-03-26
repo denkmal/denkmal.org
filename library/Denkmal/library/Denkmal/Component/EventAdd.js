@@ -4,6 +4,6 @@
  */
 var Denkmal_Component_EventAdd = Denkmal_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Denkmal_Component_EventAdd'
+  /** @type String */
+  _class: 'Denkmal_Component_EventAdd'
 });

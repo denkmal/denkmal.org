@@ -4,6 +4,6 @@
  */
 var Denkmal_Page_Add_ThankYou = Denkmal_Page_Abstract.extend({
 
-	/** @type String */
-	_class: 'Denkmal_Page_Add_ThankYou'
+  /** @type String */
+  _class: 'Denkmal_Page_Add_ThankYou'
 });

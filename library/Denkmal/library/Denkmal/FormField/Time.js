@@ -4,6 +4,6 @@
  */
 var Denkmal_FormField_Time = CM_FormField_Text.extend({
 
-	/** @type String */
-	_class: 'Denkmal_FormField_Time'
+  /** @type String */
+  _class: 'Denkmal_FormField_Time'
 });

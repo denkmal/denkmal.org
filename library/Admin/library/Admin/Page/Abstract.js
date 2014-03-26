@@ -4,6 +4,6 @@
  */
 var Admin_Page_Abstract = CM_Page_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Page_Abstract'
+  /** @type String */
+  _class: 'Admin_Page_Abstract'
 });

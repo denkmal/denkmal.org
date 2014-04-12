@@ -61,7 +61,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     var title = $element.data('title');
     var url = $element.data('url');
     var menuEntryHash = $element.data('menu-entry-hash');
-    var page = cm.findView('CM_Page_Abstract');
 
     cm.findView()._onPageSetup(this, title, url, [menuEntryHash]);
     this.trigger('swipe', $element);

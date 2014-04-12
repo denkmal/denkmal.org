@@ -8,6 +8,10 @@ Vagrant.configure('2') do |config|
     config.landrush.tld = 'dev'
     config.landrush.host 'denkmal.dev'
   end
+  if Vagrant.has_plugin? 'vagrant-dns'
+    config.dns.tld = 'dev'
+    config.dns.patterns = [/^.*denkmal.dev$/]
+  end
 
   if Vagrant.has_plugin? 'vagrant-phpstorm-tunnel'
     config.phpstorm_tunnel.project_home = '/home/vagrant/denkmal'

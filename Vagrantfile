@@ -17,12 +17,10 @@ Vagrant.configure('2') do |config|
     config.phpstorm_tunnel.project_home = '/home/vagrant/denkmal'
   end
 
-  synced_folder_type = ENV.fetch('SYNC_TYPE', 'nfs')
-  synced_folder_type = nil if 'vboxsf' == synced_folder_type
 
   config.vm.network :private_network, ip: '10.10.10.12'
   config.vm.network :public_network, :bridge => 'en0: Wi-Fi (AirPort)'
-  config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => synced_folder_type
+  config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => 'nfs'
 
   config.librarian_puppet.puppetfile_dir = 'puppet'
   config.librarian_puppet.placeholder_filename = '.gitkeep'
@@ -34,6 +32,7 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision 'shell', inline: [
     'cd /home/vagrant/denkmal',
+    '(test ! -L vendor/cargomedia/cm || rm vendor/cargomedia/cm)',
     'composer --no-interaction install --dev',
     'cp resources/config/local.dev.php resources/config/local.php',
     'bin/cm app set-deploy-version',
@@ -42,7 +41,7 @@ Vagrant.configure('2') do |config|
   ].join(' && ')
 
   if ENV['LINK']
-      config.vm.synced_folder '../CM', '/home/vagrant/CM', :type => synced_folder_type
+      config.vm.synced_folder '../CM', '/home/vagrant/CM', :type => 'nfs'
       config.vm.provision 'shell', inline: [
         'cd /home/vagrant/denkmal',
         'rm -rf vendor/cargomedia/cm',

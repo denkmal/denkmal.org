@@ -5,7 +5,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
     public function setup() {
         $this->registerField('eventId', new CM_FormField_Hidden());
         $this->registerField('venue', new Denkmal_FormField_Venue(false));
-        $this->registerField('date', new CM_FormField_Date(date('Y'), (int) date('Y') + 1));
+        $this->registerField('date', new CM_FormField_Date(date('Y') - 1, (int) date('Y') + 1));
         $this->registerField('fromTime', new Denkmal_FormField_Time());
         $this->registerField('untilTime', new Denkmal_FormField_Time());
         $this->registerField('title', new CM_FormField_Text());

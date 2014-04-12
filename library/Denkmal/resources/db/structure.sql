@@ -16,7 +16,7 @@ CREATE TABLE `denkmal_model_song` (
   `label` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 CREATE TABLE `denkmal_model_venue` (
@@ -32,7 +32,7 @@ CREATE TABLE `denkmal_model_venue` (
   UNIQUE KEY `name` (`name`),
   KEY `queued` (`queued`),
   KEY `ignore` (`ignore`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 CREATE TABLE `denkmal_model_venuealias` (
@@ -43,7 +43,7 @@ CREATE TABLE `denkmal_model_venuealias` (
   UNIQUE KEY `name` (`name`),
   KEY `venue` (`venue`),
   CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 CREATE TABLE `denkmal_model_event` (
@@ -67,7 +67,7 @@ CREATE TABLE `denkmal_model_event` (
   KEY `song` (`song`),
   CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`song`) REFERENCES `denkmal_model_song` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 CREATE TABLE `denkmal_model_message` (
@@ -79,7 +79,7 @@ CREATE TABLE `denkmal_model_message` (
   KEY `venue` (`venue`),
   KEY `created` (`created`),
   CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `failedCount` tinyint(4) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 CREATE TABLE IF NOT EXISTS `denkmal_model_user` (
@@ -99,4 +99,4 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_user` (
 		`password` char(64) NULL,
 		PRIMARY KEY (`userId`),
 		UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

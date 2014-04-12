@@ -4,27 +4,32 @@
 if (CM_Db_Db::existsTable('url')) {
     echo 'Importing urls...' . PHP_EOL;
     $rows = CM_Db_Db::exec('SELECT * FROM url GROUP BY name')->fetchAll();
-    foreach ($rows as $row) {
+    foreach ($rows as $i => $row) {
+        echo '  ' . $i . '/' . count($rows) . "\r";
         Denkmal_Model_Link::create($row['name'], $row['url'], !((bool) $row['onlyifmarked']));
     }
+    echo "\n";
 }
 
 # Songs
 if (is_dir('/tmp/audio')) {
     echo 'Importing songs...' . PHP_EOL;
     $paths = glob('/tmp/audio/*.mp3');
-    foreach ($paths as $path) {
+    foreach ($paths as $i => $path) {
+        echo '  ' . $i . '/' . count($paths) . "\r";
         $file = new CM_File($path);
         $label = strtolower($file->getFileNameWithoutExtension());
         Denkmal_Model_Song::create($label, $file);
     }
+    echo "\n";
 }
 
 # Location
 if (CM_Db_Db::existsTable('location')) {
     echo 'Importing locations...' . PHP_EOL;
     $rows = CM_Db_Db::select('location', '*')->fetchAll();
-    foreach ($rows as $row) {
+    foreach ($rows as $i => $row) {
+        echo '  ' . $i . '/' . count($rows) . "\r";
         $aliases = CM_Db_Db::select('location_alias', '*', array('locationId' => $row['id']))->fetchAll();
         $enabled = (bool) $row['enabled'];
         $blocked = (bool) $row['blocked'];
@@ -38,13 +43,15 @@ if (CM_Db_Db::existsTable('location')) {
             Denkmal_Model_VenueAlias::create($venue, $alias['name']);
         }
     }
+    echo "\n";
 }
 
 # Events
 if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
     echo 'Importing events...' . PHP_EOL;
     $events = CM_Db_Db::exec('SELECT e.*, l.name FROM event e JOIN location l ON e.locationId = l.id')->fetchAll();
-    foreach ($events as $event) {
+    foreach ($events as $i => $event) {
+        echo '  ' . $i . '/' . count($events) . "\r";
         if ('0000-00-00 00:00:00' == $event['from']) {
             continue;
         }
@@ -70,4 +77,5 @@ if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
         Denkmal_Model_Event::create($venue, $event['description'], ($enabled && !$blocked), (!$enabled && !$blocked),
             $dateFrom, $dateUntil, null, $song, $blocked, $event['star']);
     }
+    echo "\n";
 }

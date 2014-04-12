@@ -6,7 +6,7 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
         $event = $this->_params->getEvent('event');
         $venue = $this->_params->has('venue') ? $this->_params->getVenue('venue') : $event->getVenue();
 
-        $isPersistent = ($event->hasId() && $venue->hasId());
+        $isPersistent = ($event->hasIdRaw() && $venue->hasIdRaw());
 
         $this->setTplParam('event', $event);
         $this->setTplParam('venue', $venue);

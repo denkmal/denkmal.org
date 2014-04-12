@@ -13,16 +13,17 @@
   &.addButton {
     float: right;
 
-    .label {
+    @media (min-width: @breakpointMedium) {
+      padding: 0 12px;
+    }
+
+    &.hasIcon.hasLabel > .label {
+      margin-left: 10px;
       font-size: @fontSize;
       vertical-align: top;
       display: none;
-    }
 
-    @media (min-width: 800px) {
-
-      .label {
-        padding: 0 12px;
+      @media (min-width: @breakpointMedium) {
         display: inline;
       }
     }
@@ -40,6 +41,10 @@
 .logoWrapper {
   float: left;
 
+  .logo.hasIcon.hasLabel > .label {
+    margin-left: 10px;
+  }
+
   .slogan {
     display: none;
     opacity: .4;
@@ -52,7 +57,6 @@
 }
 
 .menu {
-
   > li {
     display: none;
 
@@ -73,7 +77,6 @@
 }
 
 .menu-expand {
-
   .logoWrapper, .addButton, .showWeek {
     display: none;
   }

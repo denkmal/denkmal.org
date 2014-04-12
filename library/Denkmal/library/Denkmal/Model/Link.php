@@ -62,6 +62,10 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
         $linkListBroken->_change();
     }
 
+    protected function _onChange() {
+        Denkmal_Usertext_Filter_Links::clearCache();
+    }
+
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
             'label'       => array('type' => 'string'),

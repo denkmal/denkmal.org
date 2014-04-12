@@ -1,26 +1,38 @@
 {
-	"name": "denkmal/denkmal.org",
-	"require": {
-		"cargomedia/CM": "1.2.63"
-	},
-	"minimum-stability": "alpha",
-	"repositories": [
-		{
-			"packagist": false
-		},
-		{
-			"type": "composer",
-			"url": "http://satis.cargomedia.ch/source"
-		},
-		{
-			"type": "composer",
-			"url": "http://satis.cargomedia.ch/dist"
-		}
-	],
-	"autoload": {
-		"psr-0": {
-			"Denkmal_": "library/Denkmal/library/",
-			"Admin_": "library/Admin/library/"
-		}
-	}
+    "name": "denkmal/denkmal.org",
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "require": {
+        "cargomedia/cm": "~1.12.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7.10"
+    },
+    "minimum-stability": "alpha",
+    "repositories": [
+        {
+            "packagist": false
+        },
+        {
+            "type": "composer",
+            "url": "http://satis.cargomedia.ch/dist"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Denkmal_": "library/Denkmal/library/",
+            "Admin_": "library/Admin/library/"
+        }
+    },
+    "extra": {
+        "cm-modules": {
+            "Denkmal": {
+                "path": "library/Denkmal/"
+            },
+            "Admin": {
+                "path": "library/Admin/"
+            }
+        }
+    }
 }

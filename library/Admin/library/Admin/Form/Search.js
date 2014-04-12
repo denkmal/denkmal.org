@@ -4,6 +4,6 @@
  */
 var Admin_Form_Search = CM_Form_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Form_Search'
+  /** @type String */
+  _class: 'Admin_Form_Search'
 });

@@ -4,6 +4,6 @@
  */
 var Denkmal_FormField_FileSong = CM_FormField_File.extend({
 
-	/** @type String */
-	_class: 'Denkmal_FormField_FileSong'
+  /** @type String */
+  _class: 'Denkmal_FormField_FileSong'
 });

@@ -4,6 +4,6 @@
  */
 var Admin_Component_LinkAdd = Admin_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_LinkAdd'
+  /** @type String */
+  _class: 'Admin_Component_LinkAdd'
 });

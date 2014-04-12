@@ -2,9 +2,9 @@
 
 class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 
-	protected function _getRequiredFields() {
-		return array('venue', 'date', 'fromTime', 'title');
-	}
+    protected function _getRequiredFields() {
+        return array('venue', 'date', 'fromTime', 'title');
+    }
 
 	protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
 		$venue = Denkmal_Form_EventAdd::getVenueFromData($params);

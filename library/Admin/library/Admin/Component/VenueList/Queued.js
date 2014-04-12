@@ -4,6 +4,6 @@
  */
 var Admin_Component_VenueList_Queued = Admin_Component_VenueList_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_VenueList_Queued'
+  /** @type String */
+  _class: 'Admin_Component_VenueList_Queued'
 });

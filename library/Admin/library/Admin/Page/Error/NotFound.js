@@ -4,6 +4,6 @@
  */
 var Admin_Page_Error_NotFound = Admin_Page_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Page_Error_NotFound'
+  /** @type String */
+  _class: 'Admin_Page_Error_NotFound'
 });

@@ -4,12 +4,12 @@
  */
 var Admin_Component_VenueList_Abstract = Admin_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_VenueList_Abstract',
+  /** @type String */
+  _class: 'Admin_Component_VenueList_Abstract',
 
-	childrenEvents: {
-		'Admin_Form_Venue success.Delete': function() {
-			this.reload();
-		}
-	}
+  childrenEvents: {
+    'Admin_Form_Venue success.Delete': function() {
+      this.reload();
+    }
+  }
 });

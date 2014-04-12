@@ -4,6 +4,6 @@
  */
 var Admin_Component_Logout = Admin_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_Logout'
+  /** @type String */
+  _class: 'Admin_Component_Logout'
 });

@@ -4,6 +4,6 @@
  */
 var Admin_Component_Filter_Search = Admin_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_Filter_Search'
+  /** @type String */
+  _class: 'Admin_Component_Filter_Search'
 });

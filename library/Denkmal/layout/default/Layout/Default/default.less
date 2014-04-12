@@ -1,29 +1,29 @@
 #body-container {
-	height: 100%;
+  height: 100%;
 }
 
 #header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 1;
-	background-color: @colorBgTheme;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: @colorBgTheme;
 }
 
 #middle {
-	.box-sizing(border-box);
-	height: 100%;
-	padding-top: @barSize;
+  .box-sizing(border-box);
+  height: 100%;
+  padding-top: @barSize;
 }
 
 .sheet {
-	max-width: 1200px;
-	margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 &.scrolledNotTop {
-	.Denkmal_Component_HeaderBar .menu > li.active:after {
-		.transform(translate3d(0, 6px, 0));
-	}
+  .Denkmal_Component_HeaderBar .menu > li.active:after {
+    .transform(translate3d(0, 6px, 0));
+  }
 }

@@ -1,137 +1,139 @@
 & {
-	height: 100%;
-	overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
 .currentDate {
-	display: block;
-	padding: 2px 5px;
-	color: @colorFgShy;
+  display: block;
+  padding: 2px 5px;
+  color: @colorFgSubtle;
 }
 
 .swipeCarousel {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	background-color: @colorSpecial;
-	background-image: image("pattern.png");
-	.box-shadow(inset 0 0 20px 2px rgb(0, 0, 0, .8));
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: @colorSpecial;
+  background-image: image("pattern.png");
+  box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, .8);
 
-	.credits {
-		position: absolute;
-		color: @colorFgTheme;
-		left: 15px;
-		top: 15px;
-		width: 140px;
-		text-align: center;
+  .underTheHood {
+    color: @colorFgTheme;
 
-		.separator {
-			text-transform: uppercase;
-			margin: 15px 0 8px;
-			font-size: @fontSizeSmall;
-			opacity: .6;
-		}
+    a {
+      color: @colorFgTheme;
+    }
 
-		.hire {
-			font-style: italic;
-		}
-	}
+    .separator {
+      text-transform: uppercase;
+      margin: 35px 0 8px;
+      font-size: @fontSizeSmall;
+      opacity: .8;
 
-	.cat {
-		position: absolute;
-		color: @colorFgTheme;
-		right: 5px;
-		top: 10px;
-	}
+      &:first-child {
+        margin-top: 15px;
+      }
+    }
 
-	.labels {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		padding: 3px;
+    .hire {
+      font-size: @fontSizeSmall;
+      font-style: italic;
+      opacity: .8;
+    }
 
-		@media (max-height: 350px) {
-			display: none;
-		}
-	}
+    .logo {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
 
-	.logo {
-		display: inline-block;
-		width: 60px;
-		height: 60px;
-		background-size: contain;
-		background-position: center;
+      &.denkmal {
+        background-image: image('Denkmal.svg');
+      }
 
-		&.denkmal {
-			background-image: image('Denkmal.svg');
-		}
+      &.cargomedia {
+        background-image: image('CargoMedia.svg');
+        width: 120px;
+        height: 60px;
+      }
 
-		&.cargomedia {
-			background-image: image('CargoMedia.svg');
-			width: 120px;
-			height: 60px;
-		}
+      &.madeinbasel {
+        background-image: image('MadeInBasel-text.svg');
+        width: 120px;
+        height: 56px;
+      }
 
-		&.madeinbasel {
-			background-image: image('MadeInBasel.svg');
-		}
+      &.cat {
+        background-image: image('Cat.svg');
+        width: 120px;
+        height: 120px;
+      }
+    }
 
-		&.cat {
-			background-image: image('Cat.svg');
-			width: 120px;
-			height: 120px;
-		}
-	}
+  }
 
-	&.beforeload {
-		.date:not(.active) {
-			display: none;
-		}
-	}
+  .underTheHood-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 180px;
+    text-align: center;
+  }
+
+  .underTheHood-right {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+  }
+
+  &.beforeload {
+    .date:not(.active) {
+      display: none;
+    }
+  }
 }
 
 .dateList {
-	margin-right: 122px;
-	position: relative;
-	width: 100%;
-	height: 100%;
-	.transform3d(0, 0, 0);
-	background-color: @colorBgBody;
-	background-image: image("pattern2.png");
-	background-size: 20px;
-	outline: 2px dashed @colorBgBody;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .transform(translate3d(0, 0, 0));
+  background-color: @colorBgBody;
+  background-image: image("pattern.png");
+  background-size: 20px;
+  outline: 2px dashed @colorBgBody;
 
-	&.animate {
-		.transition(300ms);
-	}
+  &.animate {
+    .transition(300ms);
+  }
 
-	.date {
-		position: relative;
-		display: block;
-		.box-sizing(border-box);
-		float: left;
-		width: 100%;
-		height: 100%;
-		opacity: .6;
-		overflow: hidden;
-		.transform(translate3d(0, 0, 0));
-		-webkit-overflow-scrolling: touch;
-		.transition(opacity 400ms 100ms);
+  .date {
+    position: relative;
+    display: block;
+    .box-sizing(border-box);
+    float: left;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    overflow: hidden;
+    .transform(translate3d(0, 0, 0));
+    -webkit-overflow-scrolling: touch;
+    .transition(opacity 400ms 100ms);
 
-		&.active {
-			opacity: 1;
-		}
+    &.active {
+      opacity: 1;
+    }
 
-		.hideScrollBar {
-			position: absolute;
-			left: 0;
-			top: 0;
-			right: -15px;
-			height: 100%;
-			padding-right: 15px; // hide scrollbar hack
-			overflow-y: scroll;
-		}
-	}
+    .hideScrollBar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: -15px;
+      height: 100%;
+      padding-right: 15px; // hide scrollbar hack
+      overflow-y: scroll;
+    }
+  }
 }
-
-

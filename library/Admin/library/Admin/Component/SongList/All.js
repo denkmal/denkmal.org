@@ -4,6 +4,6 @@
  */
 var Admin_Component_SongList_All = Admin_Component_SongList_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_SongList_All'
+  /** @type String */
+  _class: 'Admin_Component_SongList_All'
 });

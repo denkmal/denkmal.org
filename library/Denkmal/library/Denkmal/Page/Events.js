@@ -10,6 +10,8 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   /** @type Carousel */
   _carousel: null,
 
+  _stateParams: ['date'],
+
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
       this._onShowPane($(data.element));
@@ -34,11 +36,11 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   },
 
   /**
-   * @param {String} url
+   * @param {String} date
    * @returns Boolean
    */
-  showPane: function(url) {
-    var $element = this.$('.dateList > .date[data-url="' + url + '"]');
+  showPane: function(date) {
+    var $element = this.$('.dateList > .date[data-date="' + date + '"]');
     if ($element.length) {
       this._carousel.showPane($element.index());
       return true;
@@ -59,5 +61,11 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     cm.router.pushState(url);
     cm.findView()._onPageSetup(this, title, url, [menuEntryHash]);
     this.trigger('swipe', $element);
+  },
+
+  _changeState: function(state) {
+    if (state['date']) {
+      this.showPane(state['date']);
+    }
   }
 });

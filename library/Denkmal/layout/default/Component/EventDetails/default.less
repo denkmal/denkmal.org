@@ -1,75 +1,75 @@
 & {
-	.box-sizing(border-box);
-	overflow: hidden;
-	margin: 0 4px;
-	padding: 12px;
-	border: 1px solid @colorFgBorderEmphasize3;
-	border-radius: 0 0 3px 3px;
-	background-color: @colorBgEmphasize2;
-	box-shadow: inset 0 0 12px 1px @colorBg;
-	margin-bottom: 12px;
+  .box-sizing(border-box);
+  overflow: hidden;
+  margin: 0 4px;
+  padding: 12px;
+  border: 1px solid @colorFgBorderEmphasize3;
+  border-radius: 0 0 3px 3px;
+  background-color: @colorBgEmphasize2;
+  box-shadow: inset 0 0 12px 1px @colorBg;
+  margin-bottom: 12px;
 }
 
 .more-events {
-	font-size: @fontSizeSmall;
-	padding: 0 8px 3px 8px;
+  font-size: @fontSizeSmall;
+  padding: 0 8px 3px 8px;
 }
 
 .previewEvents {
-	overflow: hidden;
+  overflow: hidden;
 
-	.previewEvent {
-		padding: 5px 8px;
-		border-bottom: 1px solid @colorFgBorderEmphasize2;
-		background-color: @colorBg;
+  .previewEvent {
+    padding: 5px 8px;
+    border-bottom: 1px solid @colorFgBorderEmphasize2;
+    background-color: @colorBg;
 
-		.weekday {
-			font-weight: bold;
-			margin-right: 5px;
-			color: @colorFgShy;
-		}
+    .weekday {
+      font-weight: bold;
+      margin-right: 5px;
+      color: @colorFgShy;
+    }
 
-		&.pastEvent {
-			border-bottom-style: dashed;
-			background-color: darken(@colorBg, 2);
+    &.pastEvent {
+      border-bottom-style: dashed;
+      background-color: darken(@colorBg, 2);
 
-			.event-inner {
-				opacity: .5;
-			}
-		}
+      .event-inner {
+        opacity: .5;
+      }
+    }
 
-	}
+  }
 }
 
 .map {
-	padding: 5px;
-	text-align: center;
+  padding: 5px;
+  text-align: center;
 
-	@media (min-width: 600px) {
-		float: right;
-		margin-left: 12px;
+  @media (min-width: 600px) {
+    float: right;
+    margin-left: 12px;
 
-		img {
-			width: 150px;
-			height: 150px;
-		}
-	}
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
 
-	img {
-		max-width: 100%;
-		display: inline-block;
-		border-radius: 10px;
-		border: 1px solid @colorFgBorderEmphasize3;
-	}
+  img {
+    max-width: 100%;
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid @colorFgBorderEmphasize3;
+  }
 
-	a {
-		display: block;
-	}
+  a {
+    display: block;
+  }
 }
 
 .noContent {
-	overflow: hidden;
-	border: 2px dashed @colorFgBorderEmphasize3;
-	margin: 5px;
-	color: @colorFgShy;
+  overflow: hidden;
+  border: 2px dashed @colorFgBorderEmphasize3;
+  margin: 5px;
+  color: @colorFgShy;
 }

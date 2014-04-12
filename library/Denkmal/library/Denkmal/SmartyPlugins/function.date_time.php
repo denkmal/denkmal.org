@@ -6,6 +6,6 @@ function smarty_function_date_time(array $params, Smarty_Internal_Template $temp
     /** @var DateTime $date */
     $date = $params['date'];
 
-    $formatter = new IntlDateFormatter($render->getLocale(), IntlDateFormatter::NONE, IntlDateFormatter::NONE, null, null, 'H:mm');
+    $formatter = $render->getFormatterDate(IntlDateFormatter::NONE, IntlDateFormatter::NONE, 'H:mm');
     return $formatter->format($date->getTimestamp());
 }

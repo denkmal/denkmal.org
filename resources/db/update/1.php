@@ -61,9 +61,11 @@ if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
         }
         $song = null;
         if ($event['audio']) {
-            $song = Denkmal_Model_Song::findByLabel($event['audio']);
+            $songName = strtolower($event['audio']);
+            $songName = preg_replace('/.mp3$/', '', $songName);
+            $song = Denkmal_Model_Song::findByLabel($songName);
             if (!$song) {
-                throw new CM_Exception('No song found for: ' . $event['audio']);
+                echo PHP_EOL . 'Warning: No song found for: ' . $event['audio'] . PHP_EOL;
             }
         }
         $dateFrom = new DateTime($event['from']);
@@ -78,4 +80,8 @@ if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
             $dateFrom, $dateUntil, null, $song, $blocked, $event['star']);
     }
     echo "\n";
+}
+
+foreach (array('event', 'location', 'location_alias', 'location_unknown', 'promotion', 'promotion_entry', 'url', 'user', 'weblink') as $table) {
+    CM_Db_Db::exec('DROP TABLE ' . $table);
 }

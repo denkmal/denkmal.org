@@ -10,7 +10,7 @@
       {formField name='coordinates' label={translate 'Koordinaten'}}
       {formField name='ignore' text={translate 'Scraper ignorieren'}}
       {formAction action='Save' label={translate 'Speichern'} alternatives="
-				{button action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
+      	{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 			"}
     {/form}
     {component name='Admin_Component_VenueAliasList' venue=$venue}

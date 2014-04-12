@@ -5,16 +5,13 @@
   <div class="swipeCarousel beforeload">
     <div class="underTheHood">
       <div class="underTheHood-left">
-        <p class="separator">------ {translate 'Sponsor'} ------</p>
-        <div class="logo cargomedia"></div>
+        <p class="separator">------ {translate 'With help'} ------</p>
+        <a href="http://www.cargomedia.ch" class="logo cargomedia" title="Cargo Media AG"></a>
         <p class="hire">{translate 'We\'re hiring!'}</p>
         <p class="separator">------ {translate 'For Nerds'} ------</p>
         <p><a href="https://github.com/denkmal/denkmal.org">Fork on Github</a></p>
-        <p class="separator">------ {translate 'Partner'} ------</p>
-        <div class="labels">
-          <div class="logo denkmal"></div>
-          <div class="logo madeinbasel"></div>
-        </div>
+        <p class="separator">------ {translate 'With love'} ------</p>
+        <a href="http://www.madeinbasel.org" class="logo madeinbasel"></a>
       </div>
       <div class="underTheHood-right">
         <span class="logo cat"></span>

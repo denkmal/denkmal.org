@@ -26,9 +26,13 @@
 
     .separator {
       text-transform: uppercase;
-      margin: 25px 0 8px;
+      margin: 35px 0 8px;
       font-size: @fontSizeSmall;
       opacity: .8;
+
+      &:first-child {
+        margin-top: 15px;
+      }
     }
 
     .hire {
@@ -56,7 +60,9 @@
       }
 
       &.madeinbasel {
-        background-image: image('MadeInBasel.svg');
+        background-image: image('MadeInBasel-text.svg');
+        width: 120px;
+        height: 56px;
       }
 
       &.cat {
@@ -80,10 +86,6 @@
     position: absolute;
     right: 5px;
     top: 10px;
-  }
-
-  .labels {
-    margin-top: 20px;
   }
 
   &.beforeload {

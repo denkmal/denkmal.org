@@ -1,4 +1,5 @@
 <div class="song-content toggleNext">
+  {component name="Denkmal_Component_SongPlayerButton" song=$song}
   {$song->getLabel()|escape}
 </div>
 <div class="song-edit toggleNext-content">

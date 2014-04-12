@@ -19,6 +19,7 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
                         /** @var Denkmal_Model_Link $link */
                         try {
                             CM_Util::getContents($link->getUrl());
+                            $link->setFailedCount(0);
                         } catch (CM_Exception_Invalid $ex) {
                             $link->setFailedCount($link->getFailedCount() + 1);
                         }

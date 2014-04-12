@@ -17,7 +17,6 @@ Vagrant.configure('2') do |config|
     config.phpstorm_tunnel.project_home = '/home/vagrant/denkmal'
   end
 
-
   config.vm.network :private_network, ip: '10.10.10.12'
   config.vm.network :public_network, :bridge => 'en0: Wi-Fi (AirPort)'
   config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => 'nfs'

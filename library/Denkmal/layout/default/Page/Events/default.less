@@ -17,71 +17,75 @@
   background-image: image("pattern.png");
   box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, .8);
 
-  .credits {
-    position: absolute;
+  .underTheHood {
     color: @colorFgTheme;
-    left: 15px;
-    top: 15px;
-    width: 140px;
-    text-align: center;
+
+    a {
+      color: @colorFgTheme;
+    }
 
     .separator {
       text-transform: uppercase;
-      margin: 15px 0 8px;
+      margin: 35px 0 8px;
       font-size: @fontSizeSmall;
-      opacity: .6;
+      opacity: .8;
+
+      &:first-child {
+        margin-top: 15px;
+      }
     }
 
     .hire {
+      font-size: @fontSizeSmall;
       font-style: italic;
+      opacity: .8;
     }
+
+    .logo {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &.denkmal {
+        background-image: image('Denkmal.svg');
+      }
+
+      &.cargomedia {
+        background-image: image('CargoMedia.svg');
+        width: 120px;
+        height: 60px;
+      }
+
+      &.madeinbasel {
+        background-image: image('MadeInBasel-text.svg');
+        width: 120px;
+        height: 56px;
+      }
+
+      &.cat {
+        background-image: image('Cat.svg');
+        width: 120px;
+        height: 120px;
+      }
+    }
+
   }
 
-  .cat {
+  .underTheHood-left {
     position: absolute;
-    color: @colorFgTheme;
+    left: 0;
+    top: 0;
+    width: 180px;
+    text-align: center;
+  }
+
+  .underTheHood-right {
+    position: absolute;
     right: 5px;
     top: 10px;
-  }
-
-  .labels {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 3px;
-
-    @media (max-height: 350px) {
-      display: none;
-    }
-  }
-
-  .logo {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &.denkmal {
-      background-image: image('Denkmal.svg');
-    }
-
-    &.cargomedia {
-      background-image: image('CargoMedia.svg');
-      width: 120px;
-      height: 60px;
-    }
-
-    &.madeinbasel {
-      background-image: image('MadeInBasel.svg');
-    }
-
-    &.cat {
-      background-image: image('Cat.svg');
-      width: 120px;
-      height: 120px;
-    }
   }
 
   &.beforeload {

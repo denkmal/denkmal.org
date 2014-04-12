@@ -29,6 +29,7 @@ class Denkmal_Site extends CM_Site_Abstract {
     public static function getCurrentDate() {
         $date = new DateTime();
         $date->sub(new DateInterval('PT' . self::getDayOffset() . 'H'));
+        $date->add(new DateInterval('P3D'));
         $date->setTime(0, 0, 0);
         return $date;
     }

@@ -20,19 +20,20 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
     }
 
     /**
-     * @param Denkmal_Model_Venue|string $venue       Location-name
-     * @param string                     $description Description
-     * @param DateTime                   $from        From-date
-     * @param DateTime|null              $until       Until-date
+     * @param Denkmal_Model_Venue|string $venue
+     * @param string|null                $title
+     * @param string                     $description
+     * @param DateTime                   $from
+     * @param DateTime|null              $until
      */
-    protected function _addEventAndVenue($venue, $description, DateTime $from, DateTime $until = null) {
+    protected function _addEventAndVenue($venue, $title = null, $description, DateTime $from, DateTime $until = null) {
         if ($venue instanceof Denkmal_Model_Venue) {
             $venueName = $venue->getName();
         } else {
             $venueName = (string) $venue;
             $venue = Denkmal_Model_Venue::findByNameOrAlias($venueName);
         }
-        $description = new Denkmal_Scraper_Description($description);
+        $description = new Denkmal_Scraper_Description($description, $title);
         if ($until && $until < $from) {
             $until->add(new DateInterval('P1D'));
         }

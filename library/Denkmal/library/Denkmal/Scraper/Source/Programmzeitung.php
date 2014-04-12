@@ -16,6 +16,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
     /**
      * @param string   $html
      * @param DateTime $date
+     * @throws CM_Exception_Invalid
      */
     public function processPageDate($html, DateTime $date) {
         $html = new CM_Dom_NodeList($html, true);
@@ -23,11 +24,22 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
         /** @var CM_Dom_NodeList $event */
         foreach ($eventList as $event) {
             $eventText = $event->find('.veranstaltung');
-            $locationName = $eventText->find('b')->getText();
-            $description = $eventText->getChildren(XML_TEXT_NODE)->getText();
+            $eventTitle = $eventText->find('b')->getText();
+            $eventDescription = $eventText->getChildren(XML_TEXT_NODE)->getText();
 
-            $time = $event->find('.zeit')->getText();
-            preg_match('#(\d+)\.(\d+)(\s+.\s+(\d+)\.(\d+))?#', $time, $matches);
+            $venueText = $event->find('.ort')->getText();
+            if (!preg_match('#^(.+?)(\[.+?\].*?)?(,.*?)?$#u', $venueText, $matches)) {
+                throw new CM_Exception_Invalid('Cannot detect venue from `' . $venueText . '`.');
+            }
+            $venueName = strip_tags($matches[1]);
+
+            $timeText = $event->find('.zeit')->getText();
+            if (0 === strlen(trim($timeText))) {
+                continue; // Missing time
+            }
+            if (!preg_match('#^(\d+)\.(\d+)(\s+.\s+(\d+)\.(\d+))?$#u', $timeText, $matches)) {
+                throw new CM_Exception_Invalid('Cannot detect time from `' . $timeText . '`.');
+            }
             $from = new Denkmal_Scraper_Date($date);
             $from->setTime($matches[1], $matches[2]);
 
@@ -38,8 +50,9 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             }
 
             $this->_addEventAndVenue(
-                $locationName,
-                $description,
+                $venueName,
+                $eventTitle,
+                $eventDescription,
                 $from->getDateTime(),
                 $until ? $until->getDateTime() : null
             );

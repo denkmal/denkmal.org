@@ -11,11 +11,6 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
   narrow: null,
 
   events: {
-    'clickNoMeta .menu.dates a': function(event) {
-      var url = $(event.currentTarget).attr('href');
-      return this.activateMenu(url);
-    },
-
     'click .showWeek': function() {
       this.toggleMenu(true);
     },
@@ -53,17 +48,6 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
     this.on('destruct', function() {
       enquire.unregister('(max-width: 580px)', handlers);
     });
-  },
-
-  /**
-   * @param {String} url
-   */
-  activateMenu: function(url) {
-    var pageEvents = cm.findView('Denkmal_Page_Events');
-    if (!pageEvents) {
-      return true;
-    }
-    return !pageEvents.showPane(url);
   },
 
   /**

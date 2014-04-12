@@ -4,16 +4,19 @@
 {block name='content-main'}
   <div class="swipeCarousel beforeload">
     <div class="underTheHood">
-      <div class="credits">
+      <div class="underTheHood-left">
         <p class="separator">------ {translate 'Sponsor'} ------</p>
         <div class="logo cargomedia"></div>
         <p class="hire">{translate 'We\'re hiring!'}</p>
+        <p class="separator">------ {translate 'For Nerds'} ------</p>
+        <p><a href="https://github.com/denkmal/denkmal.org">Fork on Github</a></p>
+        <p class="separator">------ {translate 'Partner'} ------</p>
+        <div class="labels">
+          <div class="logo denkmal"></div>
+          <div class="logo madeinbasel"></div>
+        </div>
       </div>
-      <div class="labels">
-        <div class="logo denkmal"></div>
-        <div class="logo madeinbasel"></div>
-      </div>
-      <div class="cat">
+      <div class="underTheHood-right">
         <span class="logo cat"></span>
       </div>
     </div>

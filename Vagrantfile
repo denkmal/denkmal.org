@@ -3,6 +3,11 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'cargomedia/debian-7-amd64-cm'
 
   config.vm.hostname = 'www.denkmal.dev'
+  if Vagrant.has_plugin? 'landrush'
+    config.landrush.enable
+    config.landrush.tld = 'dev'
+    config.landrush.host 'denkmal.dev'
+  end
   if Vagrant.has_plugin? 'vagrant-dns'
     config.dns.tld = 'dev'
     config.dns.patterns = [/^.*denkmal.dev$/]
@@ -13,6 +18,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.network :private_network, ip: '10.10.10.12'
+  config.vm.network :public_network, :bridge => 'en0: Wi-Fi (AirPort)'
   config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => 'nfs'
 
   config.librarian_puppet.puppetfile_dir = 'puppet'

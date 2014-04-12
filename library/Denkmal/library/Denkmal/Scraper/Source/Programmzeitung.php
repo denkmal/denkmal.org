@@ -16,6 +16,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
     /**
      * @param string   $html
      * @param DateTime $date
+     * @throws CM_Exception_Invalid
      */
     public function processPageDate($html, DateTime $date) {
         $html = new CM_Dom_NodeList($html, true);
@@ -27,7 +28,12 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             $description = $eventText->getChildren(XML_TEXT_NODE)->getText();
 
             $time = $event->find('.zeit')->getText();
-            preg_match('#(\d+)\.(\d+)(\s+.\s+(\d+)\.(\d+))?#', $time, $matches);
+            if (0 === strlen(trim($time))) {
+                continue; // Missing time
+            }
+            if (!preg_match('#(\d+)\.(\d+)(\s+.\s+(\d+)\.(\d+))?#', $time, $matches)) {
+                throw new CM_Exception_Invalid('Cannot detect time from `' . $time . '`.');
+            }
             $from = new Denkmal_Scraper_Date($date);
             $from->setTime($matches[1], $matches[2]);
 

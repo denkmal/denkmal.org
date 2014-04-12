@@ -4,6 +4,6 @@
  */
 var Denkmal_Page_Abstract = CM_Page_Abstract.extend({
 
-	/** @type String */
-	_class: 'Denkmal_Page_Abstract'
+  /** @type String */
+  _class: 'Denkmal_Page_Abstract'
 });

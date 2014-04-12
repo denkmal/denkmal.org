@@ -4,6 +4,6 @@
  */
 var Admin_Component_VenueMerge = Admin_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Component_VenueMerge'
+  /** @type String */
+  _class: 'Admin_Component_VenueMerge'
 });

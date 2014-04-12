@@ -4,6 +4,6 @@
  */
 var Admin_Form_Event = CM_Form_Abstract.extend({
 
-	/** @type String */
-	_class: 'Admin_Form_Event'
+  /** @type String */
+  _class: 'Admin_Form_Event'
 });

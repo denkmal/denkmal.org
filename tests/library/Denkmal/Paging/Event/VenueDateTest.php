@@ -2,79 +2,79 @@
 
 class Denkmal_Paging_Event_VenueDateTest extends CMTest_TestCase {
 
-	public function tearDown() {
-		CMTest_TH::clearEnv();
-	}
+    public function tearDown() {
+        CMTest_TH::clearEnv();
+    }
 
-	public function testGetItems() {
-		$today = new DateTime();
-		$tomorrow = clone $today;
-		$tomorrow->add(new DateInterval('P1D'));
+    public function testGetItems() {
+        $today = new DateTime();
+        $tomorrow = clone $today;
+        $tomorrow->add(new DateInterval('P1D'));
 
-		$venue = Denkmal_Model_Venue::create('Foo', true, false);
-		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
-		$event2->setHidden(true);
-		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
+        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
+        $event2->setHidden(true);
+        $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
 
-		$paging = new Denkmal_Paging_Event_VenueDate($venue, $today, $tomorrow);
-		$this->assertEquals(array($event1, $event3), $paging);
-	}
+        $paging = new Denkmal_Paging_Event_VenueDate($venue, $today, $tomorrow);
+        $this->assertEquals(array($event1, $event3), $paging);
+    }
 
-	public function testGetItemsFuture() {
-		$today = new DateTime();
-		$tomorrow = clone $today;
-		$tomorrow->add(new DateInterval('P1D'));
-		$yesterday = clone $today;
-		$yesterday->sub(new DateInterval('P1D'));
+    public function testGetItemsFuture() {
+        $today = new DateTime();
+        $tomorrow = clone $today;
+        $tomorrow->add(new DateInterval('P1D'));
+        $yesterday = clone $today;
+        $yesterday->sub(new DateInterval('P1D'));
 
-		$venue = Denkmal_Model_Venue::create('Foo', true, false);
-		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $yesterday);
-		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
+        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $yesterday);
+        $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
 
-		$paging = new Denkmal_Paging_Event_VenueDate($venue, $today);
-		$this->assertEquals(array($event2, $event3), $paging);
-	}
+        $paging = new Denkmal_Paging_Event_VenueDate($venue, $today);
+        $this->assertEquals(array($event2, $event3), $paging);
+    }
 
-	public function testGetItemsPast() {
-		$today = new DateTime();
-		$tomorrow = clone $today;
-		$tomorrow->add(new DateInterval('P1D'));
-		$yesterday = clone $today;
-		$yesterday->sub(new DateInterval('P1D'));
+    public function testGetItemsPast() {
+        $today = new DateTime();
+        $tomorrow = clone $today;
+        $tomorrow->add(new DateInterval('P1D'));
+        $yesterday = clone $today;
+        $yesterday->sub(new DateInterval('P1D'));
 
-		$venue = Denkmal_Model_Venue::create('Foo', true, false);
-		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $yesterday);
-		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
+        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $yesterday);
+        $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
 
-		$paging = new Denkmal_Paging_Event_VenueDate($venue, null, $today);
-		$this->assertEquals(array($event2, $event1), $paging);
-	}
+        $paging = new Denkmal_Paging_Event_VenueDate($venue, null, $today);
+        $this->assertEquals(array($event2, $event1), $paging);
+    }
 
-	public function testGetItemsExcludeEvents() {
-		$today = new DateTime();
+    public function testGetItemsExcludeEvents() {
+        $today = new DateTime();
 
-		$venue = Denkmal_Model_Venue::create('Foo', true, false);
-		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
 
-		$paging = new Denkmal_Paging_Event_VenueDate($venue, null, null, array($event2));
-		$this->assertEquals(array($event1, $event3), $paging);
-	}
+        $paging = new Denkmal_Paging_Event_VenueDate($venue, null, null, array($event2));
+        $this->assertEquals(array($event1, $event3), $paging);
+    }
 
-	public function testGetItemsShowAll() {
-		$today = new DateTime();
+    public function testGetItemsShowAll() {
+        $today = new DateTime();
 
-		$venue = Denkmal_Model_Venue::create('Foo', true, false);
-		$event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-		$event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
-		$event2->setHidden(true);
-		$event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
+        $event2->setHidden(true);
+        $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
 
-		$paging = new Denkmal_Paging_Event_VenueDate($venue, null, null, null, true);
-		$this->assertEquals(array($event1, $event2, $event3), $paging);
-	}
+        $paging = new Denkmal_Paging_Event_VenueDate($venue, null, null, null, true);
+        $this->assertEquals(array($event1, $event2, $event3), $paging);
+    }
 }

@@ -1,8 +1,10 @@
+/.vagrant
 /vendor
+/bin
 
 /data
+/public/userfiles
 /resources/config/local.php
+/resources/config/deploy.php
 /tmp
 /tests/tmp
-
-/public/userfiles

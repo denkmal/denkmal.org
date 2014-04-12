@@ -1,66 +1,66 @@
 .event {
-	&.hidden {
-		.event-content {
-			opacity: 0.3;
-		}
-	}
+  &.hidden {
+    .event-content {
+      opacity: 0.3;
+    }
+  }
 
-	&.starred {
-		.event-content {
-			&:before {
-				position: absolute;
-				content: "";
-				top: 0%;
-				left: 0;
-				height: 100%;
-				width: 4px;
-				background-color: @colorFeatured;
-			}
-		}
-	}
+  &.starred {
+    .event-content {
+      &:before {
+        position: absolute;
+        content: "";
+        top: 0%;
+        left: 0;
+        height: 100%;
+        width: 4px;
+        background-color: @colorFeatured;
+      }
+    }
+  }
 }
 
 .toggleNext .icon-arrow-right {
-	.navButton;
-	color: @colorFgShy;
-	position: absolute;
-	left: 0;
-	top: 50%;
-	margin-top: -@navButtonSize/2;
-	font-size: 15px;
+  .navButton;
+  color: @colorFgSubtle;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -@navButtonSize/2;
+  font-size: 15px;
 }
 
 .event-content {
-	position: relative;
-	padding: 5px @navButtonSize;
-	.box-sizing(border-box);
-	min-height: @navButtonSize;
+  position: relative;
+  padding: 5px @navButtonSize;
+  .box-sizing(border-box);
+  min-height: @navButtonSize;
 
-	.Denkmal_Component_SongPlayerButton {
-		position: absolute;
-		right: 0;
-		top: 50%;
-		margin-top: -@navButtonSize/2;
-	}
+  .Denkmal_Component_SongPlayerButton {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -@navButtonSize/2;
+  }
 
-	.date-time {
-		display: inline-block;
+  .date-time {
+    display: inline-block;
 
-		.date {
-			font-weight: bold;
-		}
-	}
+    .date {
+      font-weight: bold;
+    }
+  }
 
-	.description {
-		display: block;
-	}
+  .description {
+    display: block;
+  }
 
-	.title {
-		font-weight: bold;
-		margin-right: 5px;
-	}
+  .title {
+    font-weight: bold;
+    margin-right: 5px;
+  }
 }
 
 .event-edit {
-	display: none;
+  display: none;
 }

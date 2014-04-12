@@ -1,14 +1,16 @@
-.Denkmal_Form_EventAdd {
-  padding: 15px;
-
-  @media (min-width: 800px) {
-    padding: 30px 50px;
-  }
-
+& {
   margin-bottom: 12px;
-  background: @colorBg;
+  padding: 15px;
+  border: 1px solid @colorFgBorderEmphasize2;
+  background-color: @colorBg;
   border-radius: 4px;
 
+  @media (min-width: @breakpointMedium) {
+    padding: 30px 50px;
+  }
+}
+
+.Denkmal_Form_EventAdd {
   .formField.date, .formField.fromTime {
     display: inline-block;
   }
@@ -30,5 +32,10 @@
 }
 
 .venueDetails {
+  display: none;
+}
+
+.thankYou {
+  text-align: center;
   display: none;
 }

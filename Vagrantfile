@@ -31,10 +31,20 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision 'shell', inline: [
     'cd /home/vagrant/denkmal',
+    '(test ! -L vendor/cargomedia/cm || rm vendor/cargomedia/cm)',
     'composer --no-interaction install --dev',
     'cp resources/config/local.dev.php resources/config/local.php',
     'bin/cm app set-deploy-version',
     'bin/cm app setup',
     'bin/cm db run-updates',
   ].join(' && ')
+
+  if ENV['LINK']
+      config.vm.synced_folder '../CM', '/home/vagrant/CM', :type => 'nfs'
+      config.vm.provision 'shell', inline: [
+        'cd /home/vagrant/denkmal',
+        'rm -rf vendor/cargomedia/cm',
+        'ln -s ../../../CM vendor/cargomedia/cm',
+      ].join(' && ')
+    end
 end

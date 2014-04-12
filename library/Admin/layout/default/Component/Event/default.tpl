@@ -35,7 +35,7 @@
     {formField name='song' label={translate 'Lied'}}
     {formField name='starred' label={translate 'Starred'}}
     {formAction action='Save' label={translate 'Speichern'} alternatives="
-				{button action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
+				{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 				{if $event->getHidden()}
 					{button action='Show' label={translate 'Anzeigen'}}
 				{else}

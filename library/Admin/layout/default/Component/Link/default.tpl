@@ -10,7 +10,8 @@
     {formField name='automatic' label={translate 'automatisch'}}
 
     {formAction action='Save' label={translate 'Speichern'} alternatives="
-			{button action='Delete' label={translate 'Löschen'} theme='danger' event='clickConfirmed'}
+			{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+
 		"}
   {/form}
 </div>

@@ -1,5 +1,7 @@
 <?php
 
+return;
+
 # URLs
 if (CM_Db_Db::existsTable('url')) {
     echo 'Importing urls...' . PHP_EOL;

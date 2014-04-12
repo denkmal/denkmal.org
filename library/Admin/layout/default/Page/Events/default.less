@@ -1,5 +1,5 @@
 .currentDate {
-  color: @colorFgTheme;
+  color: @colorFg;
 
   .weekday {
     margin-right: 5px;
@@ -10,6 +10,10 @@
   border-bottom: 1px dashed fadeout(@colorFgBorderEmphasize3, 90);
 
   &.menu > li {
+
+    > a {
+      color: @colorFg;
+    }
 
     &:nth-child(7) {
       border-right: 1px solid @colorFgTheme;

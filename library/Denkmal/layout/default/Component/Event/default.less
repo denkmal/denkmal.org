@@ -54,12 +54,13 @@
   }
 }
 
-.mapButton {
+.contextButton {
   position: absolute;
   right: 0;
   top: 0;
   color: @colorFgSubtle;
   .transition(200ms);
+  opacity: .4;
 
   &:hover {
     color: @colorFg;
@@ -67,8 +68,8 @@
   }
 }
 
-.event-details-open .mapButton {
-  color: @colorFgLink;
+.event-details-open .contextButton {
+  color: @colorNotice;
   opacity: 1;
 }
 
@@ -82,9 +83,6 @@
 
   @media (min-width: 360px) {
     font-size: @fontSize;
-  }
-
-  @media (min-width: 900px) {
     margin-top: 3px;
   }
 
@@ -142,7 +140,7 @@
     }
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: @breakpointMedium) {
     .event-location, .event-details {
       display: inline-block;
       vertical-align: middle;

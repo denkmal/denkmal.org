@@ -1,3 +1,9 @@
+& {
+  @media (min-width: @breakpointSmall) {
+    padding: 0 12px;
+  }
+}
+
 .navButton {
   color: @colorFgTheme;
   opacity: .5;
@@ -13,16 +19,17 @@
   &.addButton {
     float: right;
 
-    .label {
+    @media (min-width: @breakpointMedium) {
+      padding: 0 12px;
+    }
+
+    &.hasIcon.hasLabel > .label {
+      margin-left: 10px;
       font-size: @fontSize;
       vertical-align: top;
       display: none;
-    }
 
-    @media (min-width: 800px) {
-
-      .label {
-        padding: 0 12px;
+      @media (min-width: @breakpointMedium) {
         display: inline;
       }
     }
@@ -52,7 +59,6 @@
 }
 
 .menu {
-
   > li {
     display: none;
 
@@ -73,7 +79,6 @@
 }
 
 .menu-expand {
-
   .logoWrapper, .addButton, .showWeek {
     display: none;
   }

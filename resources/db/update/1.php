@@ -7,7 +7,6 @@ if (CM_Db_Db::existsTable('url')) {
     foreach ($rows as $row) {
         Denkmal_Model_Link::create($row['name'], $row['url'], !((bool) $row['onlyifmarked']));
     }
-    CM_Db_Db::exec('DROP TABLE url');
 }
 
 # Songs
@@ -35,11 +34,40 @@ if (CM_Db_Db::existsTable('location')) {
             $location = new CM_Geo_Point($row['latitude'], $row['longitude']);
         }
         $venue = Denkmal_Model_Venue::create($row['name'], $queued, $blocked, $row['url'], $row['notes'], $location);
-        foreach($aliases as $alias) {
+        foreach ($aliases as $alias) {
             Denkmal_Model_VenueAlias::create($venue, $alias['name']);
         }
     }
-    CM_Db_Db::exec('DROP TABLE location');
-    CM_Db_Db::exec('DROP TABLE location_alias');
-    CM_Db_Db::exec('DROP TABLE location_unknown');
+}
+
+# Events
+if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
+    echo 'Importing events...' . PHP_EOL;
+    $events = CM_Db_Db::exec('SELECT e.*, l.name FROM event e JOIN location l ON e.locationId = l.id')->fetchAll();
+    foreach ($events as $event) {
+        if ('0000-00-00 00:00:00' == $event['from']) {
+            continue;
+        }
+        $venue = Denkmal_Model_Venue::findByName($event['name']);
+        if (!$venue) {
+            throw new CM_Exception('No venue found for: ' . $event['name']);
+        }
+        $song = null;
+        if ($event['audio']) {
+            $song = Denkmal_Model_Song::findByLabel($event['audio']);
+            if (!$song) {
+                throw new CM_Exception('No song found for: ' . $event['audio']);
+            }
+        }
+        $dateFrom = new DateTime($event['from']);
+        $dateUntil = null;
+        if ($event['until']) {
+            $dateUntil = new DateTime($event['until']);
+        }
+        $enabled = $event['enabled'];
+        $locked = $event['locked'];
+        $blocked = $event['blocked'];
+        Denkmal_Model_Event::create($venue, $event['description'], ($enabled && !$blocked), (!$enabled && !$blocked),
+            $dateFrom, $dateUntil, null, $song, $blocked, $event['star']);
+    }
 }

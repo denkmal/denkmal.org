@@ -1,19 +1,19 @@
 & {
-	padding: 15px;
+  margin-bottom: 12px;
+  padding: 15px;
+  border: 1px solid @colorFgBorderEmphasize2;
+  background-color: @colorBg;
+  border-radius: 4px;
 
-	@media (min-width: 800px) {
-		padding: 30px 50px;
-	}
-
-	margin-bottom: 12px;
-	background: @colorBg;
-	border-radius: 4px;
+  @media (min-width: @breakpointMedium) {
+    padding: 30px 50px;
+  }
 }
 
 .Denkmal_Form_EventAdd {
-	.formField.date, .formField.fromTime {
-		display: inline-block;
-	}
+  .formField.date, .formField.fromTime {
+    display: inline-block;
+  }
 
   .Denkmal_FormField_Time {
     vertical-align: top;
@@ -32,10 +32,10 @@
 }
 
 .venueDetails {
-	display: none;
+  display: none;
 }
 
 .thankYou {
-	text-align: center;
-	display: none;
+  text-align: center;
+  display: none;
 }

@@ -1,7 +1,7 @@
 & {
-  padding: 8px 12px;
+  padding: 8px;
 
-  @media (min-width: 650px) {
+  @media (min-width: @breakpointSmall) {
     padding: 8px 20px;
   }
 }
@@ -12,12 +12,7 @@
 }
 
 .eventList {
-
   > li {
-    margin-bottom: 5px;
-
-    @media (min-width: 900px) {
-      margin-bottom: 3px;
-    }
+    margin-bottom: 3px;
   }
 }

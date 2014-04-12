@@ -20,3 +20,26 @@ if (is_dir('/tmp/audio')) {
         Denkmal_Model_Song::create($label, $file);
     }
 }
+
+# Location
+if (CM_Db_Db::existsTable('location')) {
+    echo 'Importing locations...' . PHP_EOL;
+    $rows = CM_Db_Db::select('location', '*')->fetchAll();
+    foreach ($rows as $row) {
+        $aliases = CM_Db_Db::select('location_alias', '*', array('locationId' => $row['id']))->fetchAll();
+        $enabled = (bool) $row['enabled'];
+        $blocked = (bool) $row['blocked'];
+        $queued = !$enabled && !$blocked;
+        $location = null;
+        if ($row['latitude'] && $row['longitude']) {
+            $location = new CM_Geo_Point($row['latitude'], $row['longitude']);
+        }
+        $venue = Denkmal_Model_Venue::create($row['name'], $queued, $blocked, $row['url'], $row['notes'], $location);
+        foreach($aliases as $alias) {
+            Denkmal_Model_VenueAlias::create($venue, $alias['name']);
+        }
+    }
+    CM_Db_Db::exec('DROP TABLE location');
+    CM_Db_Db::exec('DROP TABLE location_alias');
+    CM_Db_Db::exec('DROP TABLE location_unknown');
+}

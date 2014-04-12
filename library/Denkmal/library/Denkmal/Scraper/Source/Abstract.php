@@ -92,6 +92,27 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
     }
 
     /**
+     * @param string $url
+     * @return string Content
+     */
+    public static function loadUrl($url) {
+        $context = stream_context_create(array('http' => array('ignore_errors' => true, 'header' => "Content-Type: text/xml; charset=utf-8")));
+        $content = file_get_contents($url, null, $context);
+
+        return self::_fixEncoding($content);
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    public static function loadFile($path) {
+        $file = new CM_File($path);
+
+        return self::_fixEncoding($file->read());
+    }
+
+    /**
      * @return Denkmal_Scraper_Source_Abstract[]
      */
     public static function getAll() {
@@ -100,5 +121,20 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
             $scraperList[] = new $className;
         }
         return $scraperList;
+    }
+
+    /**
+     * @param string $content
+     * @return string
+     */
+    private static function _fixEncoding($content) {
+        $content = preg_replace('#<meta[^>]+charset[^>]+>#i', '', $content);
+        $encoding = mb_detect_encoding($content, 'UTF-8, ISO-8859-1');
+        $content = mb_convert_encoding($content, 'UTF-8', $encoding);
+        $content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
+        $content = preg_replace('/\r?\n\r?/', ' ', $content);
+        $content = preg_replace('/[\xA0]/u', ' ', $content); // Replace '&nbsp' with ' '
+
+        return $content;
     }
 }

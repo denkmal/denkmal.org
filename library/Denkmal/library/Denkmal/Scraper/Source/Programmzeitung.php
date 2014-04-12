@@ -7,29 +7,36 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             $dateStr = $date->format('d.m.Y');
             $url = 'http://www.programmzeitung.ch/index.cfm?Datum_von=' . $dateStr . '&Datum_bis=' .
                 $dateStr . '&Rubrik=6&uuid=2BCD9733D9D9424C4EF093B3E35CB44B';
-            $html = new Denkmal_Scraper_String($url);
-            $this->processPageDate($html, $date);
+            $content = self::loadUrl($url);
+
+            $this->processPageDate($content, $date);
         }
     }
 
     /**
-     * @param Denkmal_Scraper_String $html
-     * @param DateTime               $date
+     * @param string   $html
+     * @param DateTime $date
      */
-    public function processPageDate(Denkmal_Scraper_String $html, DateTime $date) {
-        foreach ($html->matchAll('#<div class="veranstaltung">(.+?)</div>\s*<div class="ort">(.+?)(\[.+?\].*?)?(,.*?)?</div>\s*<div class="zeit">(\d+)\.(\d+)(\s+.\s+(\d+)\.(\d+))?</div>#u') as $matches) {
-            $description = new Denkmal_Scraper_String($matches[1]);
-            $description->replace('#^<b>(.+?)</b>\s*([^\s]+.+)$#u', '$1: $2', true);
-            $description->stripTags();
-            $locationName = new Denkmal_Scraper_String($matches[2]);
-            $locationName->stripTags();
+    public function processPageDate($html, DateTime $date) {
+        $html = new CM_Dom_NodeList($html, true);
+        $eventList = $html->find('.contentrahmen');
+        /** @var CM_Dom_NodeList $event */
+        foreach ($eventList as $event) {
+            $eventText = $event->find('.veranstaltung');
+            $locationName = $eventText->find('b')->getText();
+            $description = $eventText->getChildren(XML_TEXT_NODE)->getText();
+
+            $time = $event->find('.zeit')->getText();
+            preg_match('#(\d+)\.(\d+)(\s+.\s+(\d+)\.(\d+))?#', $time, $matches);
             $from = new Denkmal_Scraper_Date($date);
-            $from->setTime($matches[5], $matches[6]);
+            $from->setTime($matches[1], $matches[2]);
+
             $until = null;
-            if (isset($matches[8]) && isset($matches[9])) {
+            if (isset($matches[4]) && isset($matches[5])) {
                 $until = clone $from;
-                $until->setTime($matches[8], $matches[9]);
+                $until->setTime($matches[4], $matches[5]);
             }
+
             $this->_addEventAndVenue(
                 $locationName,
                 $description,

@@ -13,6 +13,9 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
       this._onShowPane($(data.element));
+    },
+    'swipeCarousel-change-eventual .swipeCarousel': function(event, data) {
+      this._onShowPaneSetUrl($(data.element));
     }
   },
 
@@ -60,8 +63,15 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     var menuEntryHash = $element.data('menu-entry-hash');
     var page = cm.findView('CM_Page_Abstract');
 
-    cm.router.pushState(url);
     cm.findView()._onPageSetup(this, title, url, [menuEntryHash]);
     this.trigger('swipe', $element);
+  },
+
+  /**
+   * @param {jQuery} $element
+   */
+  _onShowPaneSetUrl: function($element) {
+    var url = $element.data('url');
+    cm.router.pushState(url);
   }
 });

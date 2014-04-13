@@ -51,29 +51,37 @@ function Carousel(element) {
     var offset = -((100 / pane_count) * current_pane);
     setContainerOffset(offset, !skipAnimation);
     if (change) {
+      onChangeImmediate();
       if (skipAnimation) {
-        onChange();
+        onChangeEventual();
       } else {
-        onChangeDebounced();
+        onChangeEventualDebounced();
       }
     }
   };
 
-  var onChange = function() {
-    if (destroyed) {
-      return;
-    }
+  var onChangeImmediate = function() {
     var $currentPane = $('>ul>li:eq(' + current_pane + ')', element);
     $panes.removeClass('active');
-    $currentPane.addClass("active");
-
+    $currentPane.addClass('active');
     element.trigger('swipeCarousel-change', {
       index: current_pane,
       element: $currentPane.get(0)
     });
   };
 
-  var onChangeDebounced = _.debounce(onChange, 2000);
+  var onChangeEventual = function() {
+    if (destroyed) {
+      return;
+    }
+    var $currentPane = $('>ul>li:eq(' + current_pane + ')', element);
+    element.trigger('swipeCarousel-change-eventual', {
+      index: current_pane,
+      element: $currentPane.get(0)
+    });
+  };
+
+  var onChangeEventualDebounced = _.debounce(onChangeEventual, 2000);
 
   /**
    *

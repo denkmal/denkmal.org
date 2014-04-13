@@ -71,23 +71,33 @@ function Carousel(element) {
 	this.showPane = function(index, skipAnimation) {
 		// between the bounds
 		index = Math.max(0, Math.min(index, pane_count - 1));
+
+		var change = current_pane != index;
 		current_pane = index;
 
 		var offset = -((100 / pane_count) * current_pane);
 		setContainerOffset(offset, !skipAnimation);
+		if (change) {
+			if (skipAnimation) {
+				onChange();
+			} else {
+				onChangeDebounced();
+			}
+		}
+	};
 
+	var onChange = function() {
 		var $currentPane = $('>ul>li:eq(' + current_pane + ')', element);
-		var change = !$currentPane.hasClass('active');
 		$panes.removeClass('active');
 		$currentPane.addClass("active");
 
-		if (change) {
-			element.trigger('swipeCarousel-change', {
-				index: current_pane,
-				element: $currentPane.get(0)
-			});
-		}
+		element.trigger('swipeCarousel-change', {
+			index: current_pane,
+			element: $currentPane.get(0)
+		});
 	};
+
+	var onChangeDebounced = _.debounce(onChange, 500);
 
 	/**
 	 *
@@ -101,14 +111,7 @@ function Carousel(element) {
 			$container.addClass("animate");
 		}
 
-		if (Modernizr.csstransforms3d) {
-			$container.css("transform", "translate3d(" + percent + "%,0,0) scale3d(1,1,1)");
-		} else if (Modernizr.csstransforms) {
-			$container.css("transform", "translate(" + percent + "%,0)");
-		} else {
-			var px = ((pane_width * pane_count) / 100) * percent;
-			$container.css("left", px + "px");
-		}
+		$container.css("transform", "translate3d(" + percent + "%,0,0) scale3d(1,1,1)");
 	}
 
 	this.next = function() {

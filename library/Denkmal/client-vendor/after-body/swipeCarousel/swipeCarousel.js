@@ -105,22 +105,22 @@ function Carousel(element) {
 	 * @param {Boolean }animate
 	 */
 	function setContainerOffset(percent, animate) {
-		$container.removeClass("animate");
-
-		if (animate) {
-			$container.addClass("animate");
-		}
-
 		$container.css("transform", "translate3d(" + percent + "%,0,0) scale3d(1,1,1)");
 	}
 
-	this.next = function() {
-		return this.showPane(current_pane + 1);
-	};
-	this.prev = function() {
-		return this.showPane(current_pane - 1);
+  /**
+   * @param {Boolean} [skipAnimation]
+   */
+	this.next = function(skipAnimation) {
+		this.showPane(current_pane + 1, skipAnimation);
 	};
 
+  /**
+   * @param {Boolean} [skipAnimation]
+   */
+	this.prev = function(skipAnimation) {
+		this.showPane(current_pane - 1, skipAnimation);
+	};
 
 	function handleHammer(ev) {
 		// disable browser scrolling

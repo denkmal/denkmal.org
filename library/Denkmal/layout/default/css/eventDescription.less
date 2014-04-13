@@ -36,18 +36,11 @@
   }
 
   .event-details {
-    .title {
-      color: darken(@colorFgSubtle, 15);
-      margin-right: 4px;
+    color: @colorFgSubtle;
+    font-style: italic;
 
-      &:after {
-        content: ":";
-      }
-    }
-
-    .description {
-      color: @colorFgSubtle;
-      font-style: italic;
+    .title:after {
+      content: ":";
     }
 
     .title, .description {
@@ -56,6 +49,7 @@
         border-bottom: 1px dotted @colorFgSubtle;
 
         &:hover {
+          color: darken(@colorFgSubtle, 10);
           border-bottom-style: solid;
         }
       }

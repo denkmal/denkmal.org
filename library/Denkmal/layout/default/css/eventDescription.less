@@ -1,0 +1,71 @@
+.eventDescription {
+  position: relative;
+  color: @colorFg;
+  font-size: @fontSize - 1px;
+
+  @media (min-width: 360px) {
+    font-size: @fontSize;
+    margin-top: 3px;
+  }
+
+  .time {
+    display: block;
+    font-size: @fontSizeSmall;
+
+    @media (min-width: 360px) {
+      float: right;
+      font-size: @fontSize;
+    }
+
+    .icon {
+      color: fadeout(@colorFgSubtle, 70);
+      margin-right: 3px;
+    }
+  }
+
+  .event-location {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    color: @colorFg;
+  }
+
+  a.event-location:hover {
+    text-decoration: underline;
+  }
+
+  .event-details {
+    .title {
+      color: darken(@colorFgSubtle, 15);
+      margin-right: 4px;
+
+      &:after {
+        content: ":";
+      }
+    }
+
+    .description {
+      color: @colorFgSubtle;
+      font-style: italic;
+    }
+
+    .title, .description {
+      > a {
+        color: @colorFgSubtle;
+        border-bottom: 1px dotted @colorFgSubtle;
+
+        &:hover {
+          border-bottom-style: solid;
+        }
+      }
+    }
+  }
+
+  @media (min-width: @breakpointMedium) {
+    .event-location, .event-details {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}

@@ -10,7 +10,7 @@
   {if $allowDetails}
     {link icon="menu-micro" class="contextButton navButton showDetails"}
   {/if}
-  <div class="event-content">
+  <div class="eventDescription">
     <time class="time">
       <span class="icon icon-time"></span>
       {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}

@@ -1,8 +1,11 @@
 {function event}
   <li class="previewEvent {if isset($class)}{$class}{/if}">
-    <div class="event-inner">
-      <span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}
-      {eventtext text=$event->getDescription()}
+    <div class="eventDescription">
+      <strong>{date_weekday date=$event->getFrom()}, {date time=$event->getFrom()->getTimestamp()}</strong>
+      {if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+      <span class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+        <span class="description">{eventtext text=$event->getDescription()}</span></span>
+    </div>
     </div>
   </li>
 {/function}

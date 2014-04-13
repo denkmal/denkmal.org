@@ -25,6 +25,17 @@
     </div>
   </div>
   <div class="event-edit toggleNext-content">
+    {capture name="songSuggest"}
+      {if $songListSuggested}
+      <div class="songSuggest">
+        {translate 'Vorschlag'}:
+        {foreach $songListSuggested as $song}
+          <a href="javascript:;" class="selectSong" data-id="{$song->getId()}" data-label="{$song->getLabel()}">{$song->getLabel()}</a>,
+        {/foreach}
+       </div>
+      {/if}
+    {/capture}
+
     {form name='Admin_Form_Event' event=$event}
     {formField name='venue' label={translate 'Ort'}}
     {formField name='date' label={translate 'Datum'}}
@@ -32,7 +43,7 @@
     {formField name='untilTime' label={translate 'Ende'}}
     {formField name='title' label={translate 'Titel'}}
     {formField name='description' label={translate 'Beschreibung'}}
-    {formField name='song' label={translate 'Lied'}}
+    {formField name='song' label={translate 'Lied'} append=$smarty.capture.songSuggest}
     {formField name='starred' label={translate 'Starred'}}
     {formAction action='Save' label={translate 'Speichern'} alternatives="
 				{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}

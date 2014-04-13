@@ -15,13 +15,13 @@ var Denkmal_Component_EventAdd = Denkmal_Component_Abstract.extend({
 		'Denkmal_Form_EventAdd success': function() {
 			this.$('.Denkmal_Form_EventAdd .preview').hide();
 			this.$('.Denkmal_Form_EventAdd .formWrapper').slideUp();
-			this.$('.thankYou').slideDown();
+			this.$('.formSuccess').slideDown();
 		}
 	},
 
 	addSimilar: function(){
 		this.$('.Denkmal_Form_EventAdd .preview').show();
 		this.$('.Denkmal_Form_EventAdd .formWrapper').slideDown();
-		this.$('.thankYou').slideUp();
+		this.$('.formSuccess').slideUp();
 	}
 });

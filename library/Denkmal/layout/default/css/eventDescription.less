@@ -1,5 +1,6 @@
 .eventDescription {
   position: relative;
+  overflow: hidden;
   color: @colorFg;
   font-size: @fontSize - 1px;
 
@@ -57,9 +58,8 @@
   }
 
   @media (min-width: @breakpointMedium) {
-    .event-location, .event-details {
-      display: inline-block;
-      vertical-align: middle;
+    .event-location {
+      display: inline;
     }
   }
 }

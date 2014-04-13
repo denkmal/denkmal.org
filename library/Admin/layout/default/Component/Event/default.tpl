@@ -27,12 +27,12 @@
   <div class="event-edit toggleNext-content">
     {capture name="songSuggest"}
       {if $songListSuggested}
-      <div class="songSuggest">
-        {translate 'Vorschlag'}:
-        {foreach $songListSuggested as $song}
-          {link label={$song->getLabel()} class="selectSong" data=[id=>{$song->getId()}, label=>{$song->getLabel()}]},
-        {/foreach}
-       </div>
+        <div class="songSuggest">
+          {translate 'Vorschlag'}:
+          {foreach $songListSuggested as $song}
+            {link label={$song->getLabel()} class="selectSong" data=[id => $song->getId(), label => $song->getLabel()]},
+          {/foreach}
+        </div>
       {/if}
     {/capture}
 

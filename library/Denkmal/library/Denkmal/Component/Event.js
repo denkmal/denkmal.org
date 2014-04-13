@@ -58,6 +58,7 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     }
 
     this._detailsVisible = state;
+    this.trigger('toggleDetails', state)
   },
 
   showSongDetails: function() {

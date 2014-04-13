@@ -1,28 +1,15 @@
 <div class="event{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if}">
-  <div class="event-content toggleNext">
+  <div class="eventDescription toggleNext">
     {if $event->getSong()}
       {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
     {/if}
-    <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
-    <div class="date-time">
-      <time class="date">{date time=$event->getFrom()->getTimestamp()}</time>
-      -
-      <time class="time">
-        {date_time date=$event->getFrom()}
-      </time>
-      {if $event->getUntil()}
-        -
-        <time class="time">
-          {date_time date=$event->getUntil()}
-        </time>
-      {/if}
-    </div>
-    <div class="description">
-      {if $event->getTitle()}
-        <span class="title">{eventtext text=$event->getTitle()}</span>
-      {/if}
-      {eventtext text=$event->getDescription()}
-    </div>
+    <time class="time">
+      <span class="icon icon-time"></span>
+      {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
+    </time>
+    <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location nowrap">{$venue->getName()|escape}</a>
+    <p class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+      <span class="description">{eventtext text=$event->getDescription()}</span></p>
   </div>
   <div class="event-edit toggleNext-content">
     {capture name="songSuggest"}

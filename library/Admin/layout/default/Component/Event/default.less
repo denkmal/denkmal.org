@@ -1,12 +1,12 @@
 .event {
   &.hidden {
-    .event-content {
+    .eventDescription {
       opacity: 0.3;
     }
   }
 
   &.starred {
-    .event-content {
+    .eventDescription {
       &:before {
         position: absolute;
         content: "";
@@ -30,8 +30,7 @@
   font-size: 15px;
 }
 
-.event-content {
-  position: relative;
+.eventDescription {
   padding: 5px @navButtonSize;
   min-height: @navButtonSize;
 
@@ -40,23 +39,6 @@
     right: 0;
     top: 50%;
     margin-top: -@navButtonSize/2;
-  }
-
-  .date-time {
-    display: inline-block;
-
-    .date {
-      font-weight: bold;
-    }
-  }
-
-  .description {
-    display: block;
-  }
-
-  .title {
-    font-weight: bold;
-    margin-right: 5px;
   }
 }
 

@@ -12,15 +12,13 @@
 		{formField name='artists' label={translate 'KünstlerInnen'} placeholder={translate 'Gregor Rellemer, The Savvy Ones, DJ John (optional)'}}
 		{formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam (optional)'}}
 		{formField name='urls' label={translate 'Webseiten'} placeholder={translate 'www.myspace.com/ich (optional)'}}
-
 		{formAction action='Create' label={translate 'Hinzufügen'} alternatives=
-		{button_link onclick="window.open('mailto:kontakt@denkmal.org')" icon='mailbox' label={translate 'Kontakt'}}
+		  {button_link onclick="window.open('mailto:kontakt@denkmal.org')" icon='mailbox' label={translate 'Kontakt'}}
 		}
 	</div>
 {/form}
 
-<div class="thankYou">
-	<br><br>
+<div class="formSuccess">
 	<h2>{translate 'Das Event wurde hinzugefügt.'}</h2>
 	{translate 'Vielen Dank. Das Event wird innerhalb der nächsten 24 Stunden freigegeben.'}<br><br>
 	{translate 'Und wie geht es jetzt weiter? ...'}<br><br>

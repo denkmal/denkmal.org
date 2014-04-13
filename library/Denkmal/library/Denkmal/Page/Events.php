@@ -14,6 +14,7 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
                 'page'   => 'Denkmal_Page_Events',
                 'params' => array('date' => $date->format('Y-n-j')),
             )));
+            $this->_setJsParam('_stateParams', null);
         }
         $this->setTplParam('menu', $menu);
         $this->setTplParam('date', $date);

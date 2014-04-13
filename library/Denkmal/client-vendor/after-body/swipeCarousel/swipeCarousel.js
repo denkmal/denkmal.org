@@ -61,7 +61,7 @@ function Carousel(element) {
 			$(this).outerWidth(pane_width);
 		});
 		$container.width(pane_width * pane_count);
-	};
+	}
 
 
 	/**

@@ -2,9 +2,10 @@
   <li class="previewEvent {if isset($class)}{$class}{/if}">
     <div class="eventDescription">
       <strong>{date_weekday date=$event->getFrom()} {date time=$event->getFrom()->getTimestamp()}</strong>
-      {if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
       <span class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
-        <span class="description">{eventtext text=$event->getDescription()}</span></span>
+        {if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+        <span class="description">{eventtext text=$event->getDescription()}</span>
+      </span>
     </div>
     {if $event->getSong()}
       {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}

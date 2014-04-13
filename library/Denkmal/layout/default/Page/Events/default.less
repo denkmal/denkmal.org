@@ -14,7 +14,7 @@
   height: 100%;
   width: 100%;
   background-color: desaturate(darken(@colorSpecial, 5), 20);
-  background-image: image("pattern2.png");
+  background-image: image("pattern.png");
   box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, .8);
 
   .underTheHood {
@@ -101,11 +101,9 @@
   height: 100%;
   .transform(translate3d(0, 0, 0));
   background-color: @colorBgBody;
-  background-image: image("pattern2.png");
+  background-image: image("pattern-small.png");
   background-size: 20px;
-  outline: 2px dotted @colorBgBody;
-  outline-offset: -1px;
-  box-shadow: -10px 0 20px rgba(0, 0, 0, .2);
+  box-shadow: -10px 0 20px rgba(0, 0, 0, .3);
 
   &.animate {
     .transition(300ms);
@@ -132,9 +130,9 @@
       position: absolute;
       left: 0;
       top: 0;
-      right: -15px;
+      right: -20px;
       height: 100%;
-      padding-right: 15px; // hide scrollbar hack
+      padding-right: 20px; // hide scrollbar hack
       overflow-y: scroll;
     }
   }

@@ -20,19 +20,20 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
     }
 
     /**
-     * @param Denkmal_Model_Venue|string $venue       Location-name
-     * @param string                     $description Description
-     * @param DateTime                   $from        From-date
-     * @param DateTime|null              $until       Until-date
+     * @param Denkmal_Model_Venue|string $venue
+     * @param string|null                $title
+     * @param string                     $description
+     * @param DateTime                   $from
+     * @param DateTime|null              $until
      */
-    protected function _addEventAndVenue($venue, $description, DateTime $from, DateTime $until = null) {
+    protected function _addEventAndVenue($venue, $title = null, $description, DateTime $from, DateTime $until = null) {
         if ($venue instanceof Denkmal_Model_Venue) {
             $venueName = $venue->getName();
         } else {
             $venueName = (string) $venue;
             $venue = Denkmal_Model_Venue::findByNameOrAlias($venueName);
         }
-        $description = new Denkmal_Scraper_Description($description);
+        $description = new Denkmal_Scraper_Description($description, $title);
         if ($until && $until < $from) {
             $until->add(new DateInterval('P1D'));
         }
@@ -92,6 +93,27 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
     }
 
     /**
+     * @param string $url
+     * @return string Content
+     */
+    public static function loadUrl($url) {
+        $context = stream_context_create(array('http' => array('ignore_errors' => true, 'header' => "Content-Type: text/xml; charset=utf-8")));
+        $content = file_get_contents($url, null, $context);
+
+        return self::_fixEncoding($content);
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    public static function loadFile($path) {
+        $file = new CM_File($path);
+
+        return self::_fixEncoding($file->read());
+    }
+
+    /**
      * @return Denkmal_Scraper_Source_Abstract[]
      */
     public static function getAll() {
@@ -100,5 +122,20 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
             $scraperList[] = new $className;
         }
         return $scraperList;
+    }
+
+    /**
+     * @param string $content
+     * @return string
+     */
+    private static function _fixEncoding($content) {
+        $content = preg_replace('#<meta[^>]+charset[^>]+>#i', '', $content);
+        $encoding = mb_detect_encoding($content, 'UTF-8, ISO-8859-1');
+        $content = mb_convert_encoding($content, 'UTF-8', $encoding);
+        $content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
+        $content = preg_replace('/\r?\n\r?/', ' ', $content);
+        $content = preg_replace('/[\xA0]/u', ' ', $content); // Replace '&nbsp' with ' '
+
+        return $content;
     }
 }

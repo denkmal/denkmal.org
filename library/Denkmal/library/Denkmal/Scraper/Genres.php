@@ -9,8 +9,7 @@ class Denkmal_Scraper_Genres {
      * @param string $genres Genres list as string
      */
     function __construct($genres) {
-        $genres = new Denkmal_Scraper_String($genres);
-        foreach ($genres->split('#[,|/]#') as $genre) {
+        foreach (preg_split('#[,|/]#', $genres) as $genre) {
             if ($genre = strtolower(trim($genre))) {
                 $this->_genreList[] = $genre;
             }

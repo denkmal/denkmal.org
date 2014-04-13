@@ -2,8 +2,8 @@
   margin-bottom: 12px;
   padding: 15px;
   border: 1px solid @colorFgBorderEmphasize2;
-  background-color: @colorBg;
   border-radius: 4px;
+  background-color: @colorBg;
 
   @media (min-width: @breakpointMedium) {
     padding: 30px 50px;
@@ -21,10 +21,9 @@
 
   .formField.fromTime .Denkmal_FormField_Time {
     display: inline-block;
-    box-sizing: border-box;
     max-width: 50%;
-
     padding-left: 10px;
+
     &:first-child {
       padding-left: 0px;
     }
@@ -35,7 +34,12 @@
   display: none;
 }
 
-.thankYou {
-  text-align: center;
+.formSuccess {
   display: none;
+  padding-top: 25px;
+  text-align: center;
+
+  .button {
+    margin: 2px 1px;
+  }
 }

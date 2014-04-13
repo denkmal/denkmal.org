@@ -28,9 +28,9 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
                 $url = (string) $linkRow['url'];
                 $automatic = (bool) $linkRow['automatic'];
                 if (!$automatic) {
-                    $search = '#' . $wordBoundary . '\[' . preg_quote($label) . '\]' . $wordBoundary . '#ui';
+                    $search = '#' . $wordBoundary . '\[' . preg_quote($label, '#') . '\]' . $wordBoundary . '#ui';
                 } else {
-                    $search = '#' . $wordBoundary . preg_quote($label) . $wordBoundary . '#ui';
+                    $search = '#' . $wordBoundary . preg_quote($label, '#') . $wordBoundary . '#ui';
                 }
                 $replace = '$1<a href="' . $url . '" class="url" target="_blank">' . $label . '</a>$2';
                 $replacements[] = array(

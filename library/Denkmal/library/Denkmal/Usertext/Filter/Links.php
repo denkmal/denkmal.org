@@ -24,7 +24,7 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
             $replacements = array();
             $linkList = new Denkmal_Paging_Link_All('label,url,automatic');
             foreach ($linkList->getItemsRaw() as $linkRow) {
-                $label = (string) $linkRow['label'];
+                $label = CM_Util::htmlspecialchars($linkRow['label'], ENT_QUOTES);
                 $url = (string) $linkRow['url'];
                 $automatic = (bool) $linkRow['automatic'];
                 if (!$automatic) {

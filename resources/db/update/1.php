@@ -81,6 +81,7 @@ if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
         $blocked = $event['blocked'];
         if ((!$enabled && !$blocked) && $dateFrom < $now) {
             echo PHP_EOL . 'Warning: Ignoring queued event in past: ' . $dateFrom->format('Y-m-d') . ' - ' . $event['description'] . PHP_EOL;
+            continue;
         }
         Denkmal_Model_Event::create($venue, $event['description'], ($enabled && !$blocked), (!$enabled && !$blocked),
             $dateFrom, $dateUntil, null, $song, $blocked, $event['star']);

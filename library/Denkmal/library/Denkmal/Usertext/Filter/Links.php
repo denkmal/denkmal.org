@@ -4,7 +4,7 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
 
     public function transform($text, CM_Render $render) {
         $text = (string) $text;
-        foreach ($this->_getReplacements() as $replacement) {
+        foreach (self::getReplacements() as $replacement) {
             if (false === stripos($text, $replacement['label'])) {
                 continue;
             }
@@ -16,7 +16,7 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
     /**
      * @return array
      */
-    private function _getReplacements() {
+    public static function getReplacements() {
         $cacheKey = self::_getCacheKey();
         $cache = CM_Cache_Local::getInstance();
         if (($replacements = $cache->get($cacheKey)) === false) {

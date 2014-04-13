@@ -136,6 +136,25 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
+     * @return Denkmal_Paging_Song_Search|null
+     */
+    public function getSongListSuggested(){
+        $desc = $this->getDescription();
+        $findTermList = Denkmal_Usertext_Filter_Links::getReplacements();
+        $searchTermList = array();
+        foreach ($findTermList as $searchTerm) {
+            if (false !== stripos($desc, $searchTerm['label'])) {
+                $searchTermList[] =  $searchTerm['label'];
+            }
+        }
+
+        if (empty($searchTermList)){
+            return null;
+        }
+        return new Denkmal_Paging_Song_Search($searchTermList);
+    }
+
+    /**
      * @param boolean $starred
      */
     public function setStarred($starred) {

@@ -9,7 +9,7 @@ class Denkmal_Paging_Song_Search extends Denkmal_Paging_Song_Abstract {
         $term = (array) $term;
 
         $whereList = array_fill(0, count($term), 'LOWER(`label`) LIKE ?');
-        $where = implode(' AND ', $whereList);
+        $where = implode(' OR ', $whereList);
 
         $params = Functional\map($term, function ($value) {
             return '%' . strtolower($value) . '%';

@@ -3,7 +3,7 @@
 class Denkmal_FormField_Time extends CM_FormField_Abstract {
 
     public function validate($userInput, CM_Response_Abstract $response) {
-        if (!preg_match('/^(\d{1,2})(?::(\d{2}))?$/', $userInput, $matches)) {
+        if (!preg_match('/^(\d{1,2})(?:[:\.](\d{2}))?$/', $userInput, $matches)) {
             throw new CM_Exception_FormFieldValidation('Invalid time');
         }
         $hour = (int) $matches[1];

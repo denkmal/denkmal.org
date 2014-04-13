@@ -13,38 +13,64 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
   /** @type {Object} */
   event: null,
 
-  events: {
-    'click .showDetails': 'showDetails'
-  },
+  /** @type {Boolean} */
+  _detailsVisible: false,
 
-  childrenEvents: {
-    'Denkmal_Component_SongPlayerButton play': function() {
-      this.showSongDetails();
-    },
-    'Denkmal_Component_SongPlayerButton pause': function() {
-      this.showSongDetails();
+  events: {
+    'click .showDetails': function() {
+      this.toggleDetails();
     }
   },
 
-  showDetails: function() {
+  childrenEvents: {
+    'Denkmal_Component_SongPlayerButton play': function(view, song) {
+      this.showSongDetails(song.label);
+    },
+    'Denkmal_Component_SongPlayerButton pause': function() {
+      this.hideSongDetails(false);
+    }
+  },
+
+  /**
+   * @param {Boolean} [state]
+   */
+  toggleDetails: function(state) {
+    if ('undefined' === typeof state) {
+      state = !this._detailsVisible;
+    }
     var $event = this.$('.event');
     var details = this.findChild('Denkmal_Component_EventDetails');
 
-    $event.toggleClass('event-details-open');
+    $event.toggleClass('event-details-open', state);
 
     if (details) {
-      details.$el.slideToggle('fast');
-    } else {
+      if (state) {
+        details.$el.slideDown('fast');
+      } else {
+        details.$el.slideUp('fast');
+      }
+    } else if (state) {
       this.loadComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event}, {
         'success': function() {
           this.$el.hide().appendTo($event.parent()).slideDown('fast');
         }
       });
     }
+
+    this._detailsVisible = state;
+    this.trigger('toggleDetails', state)
   },
 
-  showSongDetails: function() {
-    this.$('.event').toggleClass('song-details-open');
-    this.$('.songDetails').slideToggle('fast');
+  hideSongDetails: function() {
+    this.$('.event').removeClass('song-details-open');
+    this.$('.songDetails').stop(true).slideUp('fast');
+  },
+
+  /**
+   * @param {String} label
+   */
+  showSongDetails: function(label) {
+    this.$('.event').addClass('song-details-open');
+    this.$('.songDetails').stop(true).slideDown('fast').find('.label').text(label);
   }
 });

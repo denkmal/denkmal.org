@@ -72,32 +72,32 @@ function Carousel(element) {
 		// between the bounds
 		index = Math.max(0, Math.min(index, pane_count - 1));
 
-    var change = current_pane != index;
+		var change = current_pane != index;
 		current_pane = index;
 
 		var offset = -((100 / pane_count) * current_pane);
 		setContainerOffset(offset, !skipAnimation);
-    if (change) {
-      if (skipAnimation) {
-        onChange();
-      } else {
-        onChangeDebounced();
-      }
-    }
-  };
+		if (change) {
+			if (skipAnimation) {
+				onChange();
+			} else {
+				onChangeDebounced();
+			}
+		}
+	};
 
-  var onChange = function() {
-    var $currentPane = $('>ul>li:eq(' + current_pane + ')', element);
-    $panes.removeClass('active');
-    $currentPane.addClass("active");
+	var onChange = function() {
+		var $currentPane = $('>ul>li:eq(' + current_pane + ')', element);
+		$panes.removeClass('active');
+		$currentPane.addClass("active");
 
-    element.trigger('swipeCarousel-change', {
-      index: current_pane,
-      element: $currentPane.get(0)
-    });
-  };
+		element.trigger('swipeCarousel-change', {
+			index: current_pane,
+			element: $currentPane.get(0)
+		});
+	};
 
-  var onChangeDebounced = _.debounce(onChange, 500);
+	var onChangeDebounced = _.debounce(onChange, 500);
 
 	/**
 	 *

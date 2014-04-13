@@ -1,8 +1,10 @@
 .toggleNext {
-  padding: 7px 10px;
-  background-color: @colorBgEmphasize1;
-  font-size: 12px;
   margin-top: 1px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  background-color: @colorBgEmphasize1;
+  .transition(200ms);
 
   &:hover, &.active {
     background-color: @colorBg;
@@ -11,13 +13,22 @@
       color: @colorBrand;
     }
   }
+
+  &.active {
+    border-top-color: @colorFgBorderEmphasize3;
+    border-right-color: @colorFgBorderEmphasize3;
+    border-left-color: @colorFgBorderEmphasize3;
+
+    &, & + .toggleNext-content {
+      .transform(translate(0, 2px));
+    }
+  }
 }
 
 .toggleNext-content {
   border: 1px solid @colorFgBorderEmphasize3;
-  border-top: 0;
-  margin: 0 2px 12px 2px;
+  border-top-style: dashed;
+  margin-bottom: 12px;
   padding: 12px;
   background-color: @colorBgEmphasize1;
-  box-shadow: inset 0 3px 20px 3px rgba(0, 0, 0, 0.15);
 }

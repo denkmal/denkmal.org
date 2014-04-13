@@ -19,6 +19,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $venue = $params->getVenue('venue');
         $this->getField('venueId')->setValue($venue->getId());
         $this->getField('name')->setValue($venue->getName());
+        $this->getField('url')->setValue($venue->getUrl());
         $this->getField('address')->setValue($venue->getAddress());
         $this->getField('coordinates')->setValue($venue->getCoordinates());
         $this->getField('ignore')->setValue($venue->getIgnore());

@@ -45,7 +45,7 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 
   hideSongDetails: function() {
     this.$('.event').removeClass('song-details-open');
-    this.$('.songDetails').slideUp('fast');
+    this.$('.songDetails').stop(true).slideUp('fast');
   },
 
   /**
@@ -53,6 +53,6 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
    */
   showSongDetails: function(label) {
     this.$('.event').addClass('song-details-open');
-    this.$('.songDetails').slideDown('fast').find('.label').text(label);
+    this.$('.songDetails').stop(true).slideDown('fast').find('.label').text(label);
   }
 });

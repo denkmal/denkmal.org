@@ -59,7 +59,7 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
 
       var self = this;
       _.defer(function() {
-        self.trigger('play');
+        self.trigger('play', song);
       }, self);
 
       this.showPauseIcon(true);

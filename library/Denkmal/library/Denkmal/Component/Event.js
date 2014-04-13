@@ -18,11 +18,11 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
   },
 
   childrenEvents: {
-    'Denkmal_Component_SongPlayerButton play': function() {
-      this.toggleSongDetails(true);
+    'Denkmal_Component_SongPlayerButton play': function(view, song) {
+      this.showSongDetails(song.label);
     },
     'Denkmal_Component_SongPlayerButton pause': function() {
-      this.toggleSongDetails(false);
+      this.hideSongDetails(false);
     }
   },
 
@@ -43,15 +43,16 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     }
   },
 
+  hideSongDetails: function() {
+    this.$('.event').removeClass('song-details-open');
+    this.$('.songDetails').slideUp('fast');
+  },
+
   /**
-   * @param {Boolean} state
+   * @param {String} label
    */
-  toggleSongDetails: function(state) {
-    this.$('.event').toggleClass('song-details-open', state);
-    if (state) {
-      this.$('.songDetails').slideDown('fast');
-    } else {
-      this.$('.songDetails').slideUp('fast');
-    }
+  showSongDetails: function(label) {
+    this.$('.event').addClass('song-details-open');
+    this.$('.songDetails').slideDown('fast').find('.label').text(label);
   }
 });

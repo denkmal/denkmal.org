@@ -6,6 +6,7 @@ class Denkmal_Scraper_Source_ProgrammzeitungTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'programmzeitung.html');
 
         $scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Programmzeitung')->setMethods(array('_addEventAndVenue'))->getMock();
+        $scraper->expects($this->exactly(18))->method('_addEventAndVenue');
         $scraper->expects($this->at(0))->method('_addEventAndVenue')->with(
             'Guggenheim Liestal',
             new Denkmal_Scraper_Description('unplugged@mooi. Kollekte', 'Djinbala'),

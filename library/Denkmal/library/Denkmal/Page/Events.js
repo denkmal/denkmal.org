@@ -23,6 +23,10 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     this._carousel = new Carousel(".swipeCarousel");
     this._carousel.init();
 
+    this.on('destruct', function() {
+      self._carousel.destroy();
+    });
+
     this.bindJquery($(window), 'keydown', function(event) {
       if (event.which === cm.keyCode.LEFT) {
         this._carousel.prev(true);

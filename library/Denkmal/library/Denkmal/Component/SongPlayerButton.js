@@ -56,7 +56,12 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
    */
   onPlay: function(song) {
     if (song.id == this.song.id) {
-      this.trigger('play');
+
+      var self = this;
+      _.defer(function() {
+        self.trigger('play');
+      }, self);
+
       this.showPauseIcon(true);
       this._playing = true;
     } else {

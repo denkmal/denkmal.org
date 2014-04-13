@@ -6,7 +6,7 @@ function smarty_function_date_weekday(array $params, Smarty_Internal_Template $t
     /** @var DateTime $date */
     $date = $params['date'];
 
-    $formatter = new IntlDateFormatter($render->getLocale(), IntlDateFormatter::NONE, IntlDateFormatter::NONE, null, null, 'eee');
+    $formatter = $render->getFormatterDate(IntlDateFormatter::NONE, IntlDateFormatter::NONE, 'eee');
     $weekday = $formatter->format($date->getTimestamp());
     return substr($weekday, 0, 2);
 }

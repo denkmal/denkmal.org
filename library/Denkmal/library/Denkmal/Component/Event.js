@@ -19,10 +19,10 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 
   childrenEvents: {
     'Denkmal_Component_SongPlayerButton play': function() {
-      this.showSongDetails();
+      this.toggleSongDetails(true);
     },
     'Denkmal_Component_SongPlayerButton pause': function() {
-      this.showSongDetails();
+      this.toggleSongDetails(false);
     }
   },
 
@@ -43,8 +43,15 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     }
   },
 
-  showSongDetails: function() {
-    this.$('.event').toggleClass('song-details-open');
-    this.$('.songDetails').slideToggle('fast');
+  /**
+   * @param {Boolean} state
+   */
+  toggleSongDetails: function(state) {
+    this.$('.event').toggleClass('song-details-open', state);
+    if (state) {
+      this.$('.songDetails').slideDown('fast');
+    } else {
+      this.$('.songDetails').slideUp('fast');
+    }
   }
 });

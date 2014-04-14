@@ -15,14 +15,13 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
       this._onShowPane($(data.element));
-      var nextState = {date: $(data.element).data('date')};
-      if (this.hasStateParams() && !_.isEqual(nextState, this.getState())) {
-        this.setState(nextState);
-        cm.router.pushState($(data.element).data('url'));
-      }
     },
     'swipeCarousel-change-eventual .swipeCarousel': function(event, data) {
-      this._onShowPaneSetUrl($(data.element));
+      var nextState = {date: $(data.element).data('date')};
+      if (this.hasStateParams() && !_.isEqual(nextState, this.getState())) {
+        this._onShowPaneSetUrl($(data.element));
+        this.setState(nextState);
+      }
     }
   },
 

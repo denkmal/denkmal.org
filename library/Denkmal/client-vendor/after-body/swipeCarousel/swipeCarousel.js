@@ -1,6 +1,5 @@
 /**
  * super simple carousel
- * animation between panes happens with css transitions
  */
 function Carousel(element) {
   var self = this;

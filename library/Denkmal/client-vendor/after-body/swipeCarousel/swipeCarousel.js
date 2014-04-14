@@ -53,7 +53,7 @@ function Carousel(element) {
     current_pane = index;
 
     var offset = -((100 / pane_count) * current_pane);
-    setContainerOffset(offset, !skipAnimation);
+    setContainerOffset(offset);
     if (change) {
       onChange(skipAnimation);
     }
@@ -76,9 +76,8 @@ function Carousel(element) {
   /**
    *
    * @param {Number} percent
-   * @param {Boolean }animate
    */
-  function setContainerOffset(percent, animate) {
+  function setContainerOffset(percent) {
     $container.css("transform", "translate3d(" + percent + "%,0,0) scale3d(1,1,1)");
   }
 

@@ -8,11 +8,17 @@ function Carousel(element) {
 
   var $container = $(">ul", element);
   var $panes = $(">ul>li", element);
+  if (0 == $panes.length) {
+    throw new Error('Cannot find carousel panes');
+  }
 
   var pane_width = 0;
   var pane_count = $panes.length;
 
   var current_pane = $panes.filter('.active').index();
+  if (-1 == current_pane) {
+    current_pane = 0;
+  }
   var destroyed = false;
 
   this.init = function() {

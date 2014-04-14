@@ -18,7 +18,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     },
     'swipeCarousel-change-eventual .swipeCarousel': function(event, data) {
       var nextState = {date: $(data.element).data('date')};
-      if (this.hasStateParams() && !_.isEqual(nextState, this.getState())) {
+      if (!_.isEqual(nextState, this.getState())) {
         this._onShowPaneSetUrl($(data.element));
         this.setState(nextState);
       }

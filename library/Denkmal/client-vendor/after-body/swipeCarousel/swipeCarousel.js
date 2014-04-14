@@ -19,7 +19,6 @@ function Carousel(element) {
   if (-1 == current_pane) {
     current_pane = 0;
   }
-  var destroyed = false;
 
   this.init = function() {
     setPaneDimensions();
@@ -29,7 +28,6 @@ function Carousel(element) {
   $(window).on('load resize orientationchange', this.init);
 
   this.destroy = function() {
-    destroyed = true;
     $(window).off('load resize orientationchange', this.init);
   };
 
@@ -57,37 +55,23 @@ function Carousel(element) {
     var offset = -((100 / pane_count) * current_pane);
     setContainerOffset(offset, !skipAnimation);
     if (change) {
-      onChangeImmediate();
-      if (skipAnimation) {
-        onChangeEventual();
-      } else {
-        onChangeEventualDebounced();
-      }
+      onChange(skipAnimation);
     }
   };
 
-  var onChangeImmediate = function() {
+  /**
+   * @param {Boolean} skipAnimation
+   */
+  var onChange = function(skipAnimation) {
     var $currentPane = $('>ul>li:eq(' + current_pane + ')', element);
     $panes.removeClass('active');
     $currentPane.addClass('active');
     element.trigger('swipeCarousel-change', {
       index: current_pane,
-      element: $currentPane.get(0)
+      element: $currentPane.get(0),
+      skipAnimation: skipAnimation
     });
   };
-
-  var onChangeEventual = function() {
-    if (destroyed) {
-      return;
-    }
-    var $currentPane = $('>ul>li:eq(' + current_pane + ')', element);
-    element.trigger('swipeCarousel-change-eventual', {
-      index: current_pane,
-      element: $currentPane.get(0)
-    });
-  };
-
-  var onChangeEventualDebounced = _.debounce(onChangeEventual, 2000);
 
   /**
    *

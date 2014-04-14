@@ -8,6 +8,7 @@
       {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
     </time>
     <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location nowrap">{$venue->getName()|escape}</a>
+    <time class="currentDate"><span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}</time>
     <p class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
       <span class="description">{eventtext text=$event->getDescription()}</span></p>
   </div>

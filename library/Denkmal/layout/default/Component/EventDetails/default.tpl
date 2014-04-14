@@ -30,11 +30,11 @@
     </ul>
   {else}
     <div class="noContent">
-      {translate 'Keine weiteren Events!'}
+      {translate 'Keine weiteren Events'}
     </div>
   {/if}
 {else}
   <div class="noContent">
-    {translate 'Keine zusätzlichen Informationen!'}
+    {translate 'Keine zusätzlichen Informationen'}
   </div>
 {/if}

@@ -20,8 +20,8 @@
 
 <div class="formSuccess">
 	<h2>{translate 'Das Event wurde hinzugefügt.'}</h2>
-	{translate 'Vielen Dank. Das Event wird innerhalb der nächsten 24 Stunden freigegeben.'}<br><br>
-	{translate 'Und wie geht es jetzt weiter? ...'}<br><br>
+	{translate 'Vielen Dank. Das Event wird innerhalb der nächsten 24 Stunden freigegeben.'}
+  <br><br><br><br>
 	{button_link class="addSimilar" label={translate 'Ähnliches Event eintragen'}}
 	{button_link page="Denkmal_Page_Index" theme="highlight" label={translate 'Was loift hüt'}}
 </div>

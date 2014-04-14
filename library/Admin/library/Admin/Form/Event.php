@@ -9,7 +9,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->registerField('fromTime', new Denkmal_FormField_Time());
         $this->registerField('untilTime', new Denkmal_FormField_Time());
         $this->registerField('title', new CM_FormField_Text());
-        $this->registerField('description', new CM_FormField_Text());
+        $this->registerField('description', new CM_FormField_Textarea());
         $this->registerField('song', new Denkmal_FormField_Song());
         $this->registerField('starred', new CM_FormField_Boolean());
 

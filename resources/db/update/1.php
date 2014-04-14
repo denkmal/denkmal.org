@@ -51,6 +51,7 @@ if (CM_Db_Db::existsTable('location')) {
 # Events
 if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
     echo 'Importing events...' . PHP_EOL;
+    $now = new DateTime();
     $events = CM_Db_Db::exec('SELECT e.*, l.name FROM event e JOIN location l ON e.locationId = l.id')->fetchAll();
     foreach ($events as $i => $event) {
         echo '  ' . $i . '/' . count($events) . "\r";
@@ -78,6 +79,10 @@ if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
         $enabled = $event['enabled'];
         $locked = $event['locked'];
         $blocked = $event['blocked'];
+        if ((!$enabled && !$blocked) && $dateFrom < $now) {
+            echo PHP_EOL . 'Warning: Ignoring queued event in past: ' . $dateFrom->format('Y-m-d') . ' - ' . $event['description'] . PHP_EOL;
+            continue;
+        }
         Denkmal_Model_Event::create($venue, $event['description'], ($enabled && !$blocked), (!$enabled && !$blocked),
             $dateFrom, $dateUntil, null, $song, $blocked, $event['star']);
     }

@@ -4,7 +4,7 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
 
     public function transform($text, CM_Render $render) {
         $text = (string) $text;
-        foreach ($this->_getReplacements() as $replacement) {
+        foreach (self::getReplacements() as $replacement) {
             if (false === stripos($text, $replacement['label'])) {
                 continue;
             }
@@ -16,7 +16,7 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
     /**
      * @return array
      */
-    private function _getReplacements() {
+    public static function getReplacements() {
         $cacheKey = self::_getCacheKey();
         $cache = CM_Cache_Local::getInstance();
         if (($replacements = $cache->get($cacheKey)) === false) {
@@ -24,13 +24,13 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
             $replacements = array();
             $linkList = new Denkmal_Paging_Link_All('label,url,automatic');
             foreach ($linkList->getItemsRaw() as $linkRow) {
-                $label = (string) $linkRow['label'];
+                $label = CM_Util::htmlspecialchars($linkRow['label'], ENT_QUOTES);
                 $url = (string) $linkRow['url'];
                 $automatic = (bool) $linkRow['automatic'];
                 if (!$automatic) {
-                    $search = '#' . $wordBoundary . '\[' . preg_quote($label) . '\]' . $wordBoundary . '#ui';
+                    $search = '#' . $wordBoundary . '\[' . preg_quote($label, '#') . '\]' . $wordBoundary . '#ui';
                 } else {
-                    $search = '#' . $wordBoundary . preg_quote($label) . $wordBoundary . '#ui';
+                    $search = '#' . $wordBoundary . preg_quote($label, '#') . $wordBoundary . '#ui';
                 }
                 $replace = '$1<a href="' . $url . '" class="url" target="_blank">' . $label . '</a>$2';
                 $replacements[] = array(

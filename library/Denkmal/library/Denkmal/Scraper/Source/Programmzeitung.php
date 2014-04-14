@@ -24,8 +24,10 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
         /** @var CM_Dom_NodeList $event */
         foreach ($eventList as $event) {
             $eventText = $event->find('.veranstaltung');
-            $eventTitle = $eventText->find('b')->getText();
-            $eventDescription = $eventText->getChildren(XML_TEXT_NODE)->getText();
+            $description = new Denkmal_Scraper_Description(
+                $eventText->getChildren(XML_TEXT_NODE)->getText(),
+                $eventText->find('b')->getText()
+            );
 
             $venueText = $event->find('.ort')->getText();
             if (!preg_match('#^(.+?)(\[.+?\].*?)?(,.*?)?$#u', $venueText, $matches)) {
@@ -51,8 +53,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 
             $this->_addEventAndVenue(
                 $venueName,
-                $eventTitle,
-                $eventDescription,
+                $description,
                 $from->getDateTime(),
                 $until ? $until->getDateTime() : null
             );

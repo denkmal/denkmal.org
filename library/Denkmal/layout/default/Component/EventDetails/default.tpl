@@ -1,22 +1,24 @@
 {function event}
   <li class="previewEvent {if isset($class)}{$class}{/if}">
-    <div class="event-inner">
-      <span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}
-      {eventtext text=$event->getDescription()}
+    <div class="eventDescription">
+      <strong>{date_weekday date=$event->getFrom()} {date time=$event->getFrom()->getTimestamp()}</strong>
+      <span class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+        {if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+        <span class="description">{eventtext text=$event->getDescription()}</span>
+      </span>
     </div>
+    {if $event->getSong()}
+      {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
+    {/if}
   </li>
 {/function}
 
 {if $futureEvents->getCount() || $venue->getCoordinates()}
   {if $venue->getCoordinates()}
     <div class="map">
-      {if $venue->getCoordinates()}
-        <a href="https://maps.google.com/maps?saddr=&daddr={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target="_blank">
-          <img src="{googlemaps_img coordinates=$venue->getCoordinates() width=300 height=300 scale=2}">
-        </a>
-      {else}
-        no coordinates
-      {/if}
+      <a href="https://maps.google.com/maps?saddr=&daddr={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target="_blank">
+        <img src="{googlemaps_img coordinates=$venue->getCoordinates() width=300 height=300 scale=2}">
+      </a>
     </div>
   {/if}
   {if $futureEvents->getCount()}

@@ -105,26 +105,15 @@
   background-size: 20px;
   box-shadow: -10px 0 20px rgba(0, 0, 0, .3);
 
-  &.animate {
-    .transition(300ms);
-  }
-
   .date {
     position: relative;
     display: block;
-    .box-sizing(border-box);
     float: left;
     width: 100%;
     height: 100%;
-    opacity: .6;
     overflow: hidden;
     .transform(translate3d(0, 0, 0));
     -webkit-overflow-scrolling: touch;
-    .transition(opacity 400ms 100ms);
-
-    &.active {
-      opacity: 1;
-    }
 
     .hideScrollBar {
       position: absolute;

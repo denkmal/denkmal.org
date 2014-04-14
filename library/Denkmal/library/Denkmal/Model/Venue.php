@@ -138,6 +138,11 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         return $cacheables;
     }
 
+    protected function _onChange() {
+        $list = new Denkmal_Paging_Venue_All();
+        $list->_change();
+    }
+
     /**
      * @param string $name
      * @return Denkmal_Model_Venue|null

@@ -1,5 +1,4 @@
 & {
-  .box-sizing(border-box);
   overflow: hidden;
   margin: 0 4px;
   padding: 12px;
@@ -19,30 +18,24 @@
   overflow: hidden;
 
   .previewEvent {
-    padding: 5px 8px;
+    position: relative;
+    padding: 7px 8px 7px @navButtonSize;
     border-bottom: 1px solid @colorFgBorderEmphasize2;
     background-color: @colorBg;
-
-    .weekday {
-      font-weight: bold;
-      margin-right: 5px;
-      color: @colorFgSubtle;
-    }
   }
+}
+
+.Denkmal_Component_SongPlayerButton {
+  left: 0;
 }
 
 .map {
   padding: 5px;
   text-align: center;
 
-  @media (min-width: @breakpointSmall) {
-    float: right;
-    margin-left: 12px;
-
-    img {
-      width: 150px;
-      height: 150px;
-    }
+  a {
+    display: inline-block;
+    max-width: 300px;
   }
 
   img {
@@ -52,8 +45,15 @@
     border: 1px solid @colorFgBorderEmphasize3;
   }
 
-  a {
-    display: block;
+  @media (min-width: @breakpointSmall) {
+    float: right;
+    margin-top: 14px;
+    margin-left: 12px;
+
+    img {
+      width: 160px;
+      height: 160px;
+    }
   }
 }
 

@@ -20,6 +20,9 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
         this.setState(nextState);
         cm.router.pushState($(data.element).data('url'));
       }
+    },
+    'swipeCarousel-change-eventual .swipeCarousel': function(event, data) {
+      this._onShowPaneSetUrl($(data.element));
     }
   },
 
@@ -30,12 +33,16 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     this._carousel = new Carousel(".swipeCarousel");
     this._carousel.init();
 
+    this.on('destruct', function() {
+      self._carousel.destroy();
+    });
+
     this.bindJquery($(window), 'keydown', function(event) {
       if (event.which === cm.keyCode.LEFT) {
-        this._carousel.prev();
+        this._carousel.prev(true);
       }
       if (event.which === cm.keyCode.RIGHT) {
-        this._carousel.next();
+        this._carousel.next(true);
       }
     });
   },
@@ -47,7 +54,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   showPane: function(date) {
     var $element = this.$('.dateList > .date[data-date="' + date + '"]');
     if ($element.length) {
-      this._carousel.showPane($element.index());
+      this._carousel.showPane($element.index(), true);
       return true;
     } else {
       return false;
@@ -64,6 +71,14 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
     cm.findView()._onPageSetup(this, title, url, [menuEntryHash]);
     this.trigger('swipe', $element);
+  },
+
+  /**
+   * @param {jQuery} $element
+   */
+  _onShowPaneSetUrl: function($element) {
+    var url = $element.data('url');
+    cm.router.pushState(url);
   },
 
   _changeState: function(state) {

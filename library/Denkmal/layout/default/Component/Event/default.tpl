@@ -1,6 +1,6 @@
 {if $event->getSong()}
   <div class='songDetails nowrap'>
-    <span class="icon icon-music"></span>{$event->getSong()->getLabel()|escape}
+    <span class="icon icon-music"></span><span class="label"></span>
   </div>
 {/if}
 <div class="event{if $event->getStarred()} starred{/if}">
@@ -10,7 +10,7 @@
   {if $allowDetails}
     {link icon="menu-micro" class="contextButton navButton showDetails"}
   {/if}
-  <div class="event-content">
+  <div class="eventDescription">
     <time class="time">
       <span class="icon icon-time"></span>
       {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
@@ -20,7 +20,8 @@
     {else}
       <span class="event-location nowrap">{$venue->getName()|escape}</span>
     {/if}
-    <p class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
-      <span class="description">{eventtext text=$event->getDescription()}</span></p>
+    <span class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+      <span class="description">{eventtext text=$event->getDescription()}</span>
+    </span>
   </div>
 </div>

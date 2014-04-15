@@ -84,8 +84,8 @@ CREATE TABLE `denkmal_model_message` (
 
 CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `label` varchar(30) NOT NULL,
-  `url` varchar(100) NOT NULL,
+  `label` varchar(100) NOT NULL,
+  `url` varchar(500) NOT NULL,
   `automatic` tinyint(4) unsigned NOT NULL,
   `failedCount` tinyint(4) unsigned NOT NULL,
   PRIMARY KEY (`id`),

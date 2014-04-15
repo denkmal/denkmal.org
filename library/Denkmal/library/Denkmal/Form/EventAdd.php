@@ -55,33 +55,33 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         return $response->loadComponent(new Denkmal_Params(array('className' => $className, 'event' => $event, 'venue' => $venue)));
     }
 
-	/**
-	 * @param Denkmal_Params $params
-	 * @return Denkmal_Model_Venue
-	 */
-	public static function getVenueFromData(Denkmal_Params $params) {
-		/** @var Denkmal_Params $params */
-		$venue = $params->get('venue');
-		if (!$venue instanceof Denkmal_Model_Venue) {
-			$name = (string) $venue;
-			$venue = Denkmal_Model_Venue::findByNameOrAlias($name);
+    /**
+     * @param Denkmal_Params $params
+     * @return Denkmal_Model_Venue
+     */
+    public static function getVenueFromData(Denkmal_Params $params) {
+        /** @var Denkmal_Params $params */
+        $venue = $params->get('venue');
+        if (!$venue instanceof Denkmal_Model_Venue) {
+            $name = (string) $venue;
+            $venue = Denkmal_Model_Venue::findByNameOrAlias($name);
 
-			if (null === $venue) {
-				$address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;
-				$url = $params->has('venueUrl') ? $params->getString('venueUrl') : null;
+            if (null === $venue) {
+                $address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;
+                $url = $params->has('venueUrl') ? $params->getString('venueUrl') : null;
 
-				$venue = new Denkmal_Model_Venue();
-				$venue->setName($name);
-				$venue->setUrl($url);
-				$venue->setAddress($address);
-				$venue->setCoordinates(null);
-				$venue->setQueued(true);
-				$venue->setIgnore(false);
-				$venue->commit();
-			}
-		}
-		return $venue;
-	}
+                $venue = new Denkmal_Model_Venue();
+                $venue->setName($name);
+                $venue->setUrl($url);
+                $venue->setAddress($address);
+                $venue->setCoordinates(null);
+                $venue->setQueued(true);
+                $venue->setIgnore(false);
+                $venue->commit();
+            }
+        }
+        return $venue;
+    }
 
     /**
      * @param Denkmal_Params $params

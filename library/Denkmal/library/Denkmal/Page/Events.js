@@ -14,24 +14,19 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
-      this._onShowPane($(data.element));
-    },
-    'swipeCarousel-change-eventual .swipeCarousel': function(event, data) {
-      var nextState = {date: $(data.element).data('date')};
-      if (!_.isEqual(nextState, this.getState())) {
-        this._onShowPaneSetUrl($(data.element));
-        this.setState(nextState);
-      }
+      this._onShowPane($(data.element), !data.skipAnimation);
     }
   },
 
   ready: function() {
-    var self = this;
+    this._onShowPaneSetUrlDelayed = _.debounce(this._onShowPaneSetUrl, 2000);
+
     var $carousel = this.$('.swipeCarousel');
     $carousel.removeClass('beforeload');
-    this._carousel = new Carousel(".swipeCarousel");
+    this._carousel = new Carousel('.swipeCarousel');
     this._carousel.init();
 
+    var self = this;
     this.on('destruct', function() {
       self._carousel.destroy();
     });
@@ -62,22 +57,38 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   /**
    * @param {jQuery} $element
+   * @param {Boolean} [delaySetUrl]
    */
-  _onShowPane: function($element) {
+  _onShowPane: function($element, delaySetUrl) {
     var title = $element.data('title');
     var url = $element.data('url');
+    var date = $element.data('date');
     var menuEntryHash = $element.data('menu-hash');
 
     cm.findView()._onPageSetup(this, title, url, [menuEntryHash]);
+
+    if (delaySetUrl) {
+      this._onShowPaneSetUrlDelayed(url, date);
+    } else {
+      this._onShowPaneSetUrl(url, date);
+    }
+
     this.trigger('swipe', $element);
   },
 
   /**
-   * @param {jQuery} $element
+   * @param {String} url
+   * @param {String} date
    */
-  _onShowPaneSetUrl: function($element) {
-    var url = $element.data('url');
-    cm.router.pushState(url);
+  _onShowPaneSetUrl: function(url, date) {
+    if (!document.contains(this.el)) {
+      return; // View has been destroyed in the meantime
+    }
+    var nextState = {date: date};
+    if (!_.isEqual(nextState, this.getState())) {
+      cm.router.pushState(url);
+      this.setState(nextState);
+    }
   },
 
   _changeState: function(state) {

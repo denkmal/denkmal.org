@@ -4,12 +4,12 @@
   </div>
   <div class="venue-edit toggleNext-content">
     {form name='Admin_Form_Venue' venue=$venue}
-      {formField name='name' label={translate 'Name'}}
-      {formField name='url' label={translate 'URL'}}
-      {formField name='address' label={translate 'Adresse'}}
-      {formField name='coordinates' label={translate 'Koordinaten'}}
-      {formField name='ignore' text={translate 'Scraper ignorieren'}}
-      {formAction action='Save' label={translate 'Speichern'} alternatives="
+    {formField name='name' label={translate 'Name'}}
+    {formField name='url' label={translate 'URL'}}
+    {formField name='address' label={translate 'Adresse'}}
+    {formField name='coordinates' label={translate 'Koordinaten'}}
+    {formField name='ignore' text={translate 'Scraper ignorieren'}}
+    {formAction action='Save' label={translate 'Speichern'} alternatives="
       	{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 			"}
     {/form}

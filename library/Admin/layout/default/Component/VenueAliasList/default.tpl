@@ -6,9 +6,8 @@
       {link icon="delete" class="deleteAlias"}
     </li>
   {/foreach}
-</ul>
-{form name='Admin_Form_VenueAlias' venue=$venue}
-  {formField name='name' label={translate 'Name'}}
-  {formAction action='Add' label={translate 'Hinzufügen'}}
+</ul>{form name='Admin_Form_VenueAlias' venue=$venue}
+{formField name='name' label={translate 'Name'}}
+{formAction action='Add' label={translate 'Hinzufügen'}}
 {/form}
 

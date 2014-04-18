@@ -22,7 +22,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
       view.on('destruct', function() {
         $pageScrollables.unbind('scroll', onScroll);
       });
-      view.on('swipe', function($element) {
+      view.on('swipe', function() {
         onScroll();
       });
       onScroll();

@@ -84,8 +84,11 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   },
 
   _changeState: function(state) {
-    if (state['date']) {
-      return this.showPane(state['date']);
+    var date = state['date'];
+    if (!date) {
+      date = this.$('.dateList > .date:first').data('date');
+      this.setState({date: date});
     }
+    return this.showPane(date);
   }
 });

@@ -14,7 +14,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
-      this._onShowPane($(data.element), !data.skipAnimation);
+      this._onShowPane($(data.element), true);
     }
   },
 
@@ -30,15 +30,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     this.on('destruct', function() {
       self._carousel.destroy();
     });
-
-    this.bindJquery($(window), 'keydown', function(event) {
-      if (event.which === cm.keyCode.LEFT) {
-        this._carousel.prev(true);
-      }
-      if (event.which === cm.keyCode.RIGHT) {
-        this._carousel.next(true);
-      }
-    });
   },
 
   /**
@@ -48,7 +39,8 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   showPane: function(date) {
     var $element = this.$('.dateList > .date[data-date="' + date + '"]');
     if ($element.length) {
-      this._carousel.showPane($element.index(), true);
+      this._carousel.showPane($element.index());
+      this._onShowPane($element);
       return true;
     } else {
       return false;

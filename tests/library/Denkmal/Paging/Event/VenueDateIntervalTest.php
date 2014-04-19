@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Paging_Event_VenueDateTest extends CMTest_TestCase {
+class Denkmal_Paging_Event_VenueDateIntervalTest extends CMTest_TestCase {
 
     public function tearDown() {
         CMTest_TH::clearEnv();
@@ -17,7 +17,7 @@ class Denkmal_Paging_Event_VenueDateTest extends CMTest_TestCase {
         $event2->setHidden(true);
         $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
 
-        $paging = new Denkmal_Paging_Event_VenueDate($venue, $today, $tomorrow);
+        $paging = new Denkmal_Paging_Event_VenueDateInterval($venue, $today, $tomorrow);
         $this->assertEquals(array($event1, $event3), $paging);
     }
 
@@ -33,7 +33,7 @@ class Denkmal_Paging_Event_VenueDateTest extends CMTest_TestCase {
         $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
         $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
 
-        $paging = new Denkmal_Paging_Event_VenueDate($venue, $today);
+        $paging = new Denkmal_Paging_Event_VenueDateInterval($venue, $today);
         $this->assertEquals(array($event2, $event3), $paging);
     }
 
@@ -49,7 +49,7 @@ class Denkmal_Paging_Event_VenueDateTest extends CMTest_TestCase {
         $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
         $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $tomorrow);
 
-        $paging = new Denkmal_Paging_Event_VenueDate($venue, null, $today);
+        $paging = new Denkmal_Paging_Event_VenueDateInterval($venue, null, $today);
         $this->assertEquals(array($event2, $event1), $paging);
     }
 
@@ -61,7 +61,7 @@ class Denkmal_Paging_Event_VenueDateTest extends CMTest_TestCase {
         $event2 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
         $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
 
-        $paging = new Denkmal_Paging_Event_VenueDate($venue, null, null, array($event2));
+        $paging = new Denkmal_Paging_Event_VenueDateInterval($venue, null, null, array($event2));
         $this->assertEquals(array($event1, $event3), $paging);
     }
 
@@ -74,7 +74,7 @@ class Denkmal_Paging_Event_VenueDateTest extends CMTest_TestCase {
         $event2->setHidden(true);
         $event3 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, $today);
 
-        $paging = new Denkmal_Paging_Event_VenueDate($venue, null, null, null, true);
+        $paging = new Denkmal_Paging_Event_VenueDateInterval($venue, null, null, null, true);
         $this->assertEquals(array($event1, $event2, $event3), $paging);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Paging_Event_VenueDate extends Denkmal_Paging_Event_Abstract {
+class Denkmal_Paging_Event_VenueDateInterval extends Denkmal_Paging_Event_Abstract {
 
     /**
      * @param Denkmal_Model_Venue        $venue

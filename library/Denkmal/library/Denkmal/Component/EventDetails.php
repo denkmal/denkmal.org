@@ -7,7 +7,7 @@ class Denkmal_Component_EventDetails extends Denkmal_Component_Abstract {
         $venue = $this->_params->getVenue('venue');
 
         $now = Denkmal_Site::getCurrentDate();
-        $futureEvents = new Denkmal_Paging_Event_VenueDate($venue, $now, null, array($event));
+        $futureEvents = new Denkmal_Paging_Event_VenueDateInterval($venue, $now, null, array($event));
         $futureEvents->setPage(1, 4);
 
         $this->setTplParam('event', $event);

@@ -15,8 +15,7 @@ class Denkmal_Component_EventPreview extends Denkmal_Component_Abstract {
         }
 
         if ($venue->hasIdRaw()) {
-            $eventDuplicates = new Denkmal_Paging_Event_VenueDate($event->getFrom(), $venue);
-            $this->setTplParam('eventDuplicates', $eventDuplicates);
+            $this->setTplParam('eventDuplicates', $event->getDuplicates());
         }
 
         $this->setTplParam('event', $event);

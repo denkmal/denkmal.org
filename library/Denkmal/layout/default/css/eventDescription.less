@@ -24,11 +24,14 @@
     }
   }
 
-  .event-location {
+  .event-header {
     display: block;
-    font-weight: bold;
     margin-bottom: 2px;
     margin-right: 5px;
+  }
+
+  .event-location {
+    font-weight: bold;
     color: @colorFg;
   }
 
@@ -58,8 +61,8 @@
   }
 
   @media (min-width: @breakpointMedium) {
-    .event-location {
-      display: inline;
+    .event-header {
+      display: inline-block;
     }
   }
 }

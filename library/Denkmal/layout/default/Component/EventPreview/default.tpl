@@ -3,7 +3,7 @@
   {if isset($fromDateDisplay)}
     <div class="info info-time">
 			<span class="icon icon-info"></span>
-      {translate 'Dieses Event wird am {$date} angezeigt (wegen frühmorgendlichem Anfang)!' date="<span class=\"day\">{date_weekday date=$fromDateDisplay} {date time=$fromDateDisplay->getTimestamp()}</span>"}
+      {translate 'Der Event wird am {$date} angezeigt (wegen frühmorgendlichem Anfang)!' date="<span class=\"day\">{date_weekday date=$fromDateDisplay} {date time=$fromDateDisplay->getTimestamp()}</span>"}
 		</div>
   {/if}
   {if isset($eventDuplicates) && $eventDuplicates->getCount()}

@@ -17,6 +17,10 @@ class Denkmal_Scraper_Description {
      * @param Denkmal_Scraper_Genres|null $genres      Event genres
      */
     public function __construct($description = null, $title = null, Denkmal_Scraper_Genres $genres = null) {
+        if (null === $description) {
+            $description = $title;
+            $title = null;
+        }
         if ($description) {
             $this->_description = $this->_parseString($description);
         }

@@ -3,7 +3,7 @@
 class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
 
     protected function _getRequiredFields() {
-        return array('venue', 'date', 'fromTime', 'title');
+        return array('venue', 'date', 'fromTime');
     }
 
     protected function _checkData(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
@@ -15,6 +15,10 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
         }
         if ($event->getUntil() < $now && $event->getUntil()) {
             $response->addError($response->getRender()->getTranslation('Event in der Vergangenheit'), 'date');
+        }
+
+        if (!$params->has('title') && !$params->has('description')) {
+            $response->addError($response->getRender()->getTranslation('Bitte Titel oder KünstlerInnen angeben'), 'title');
         }
     }
 

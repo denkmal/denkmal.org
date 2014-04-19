@@ -1,27 +1,16 @@
 .venue {
   .venue-content {
     position: relative;
-
-    .title {
-      font-weight: bold;
-    }
-
-    .editVenue {
-      float: right;
-    }
-
-    .Denkmal_Component_SongPlayerButton {
-      right: 0;
-    }
   }
 
   .venue-edit {
     display: none;
   }
 
-  &.hidden {
+  &.ignored {
     .venue-content {
       opacity: 0.3;
+      text-decoration: line-through;
     }
   }
 }

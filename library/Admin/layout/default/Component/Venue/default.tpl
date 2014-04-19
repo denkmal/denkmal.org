@@ -1,4 +1,4 @@
-<div class="venue {if $venue->getIgnore()}hidden{/if}">
+<div class="venue {if $venue->getIgnore()}ignored{/if}">
   <div class="venue-content toggleNext">
     <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
   </div>

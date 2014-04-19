@@ -38,10 +38,10 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
 
   renderPreview: function() {
     var self = this;
-    var preview = this.loadComponent('Denkmal_Component_EventPreview', {data: this.getData()}, {
+    this.loadComponent('Denkmal_Component_EventPreview', {data: this.getData()}, {
       success: function() {
         if (self._preview) {
-          self._preview.replaceWith(this);
+          self._preview.replaceWithHtml(this.$el);
         } else {
           self.$el.append(this.$el);
         }

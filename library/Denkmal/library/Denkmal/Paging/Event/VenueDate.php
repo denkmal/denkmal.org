@@ -3,27 +3,17 @@
 class Denkmal_Paging_Event_VenueDate extends Denkmal_Paging_Event_Abstract {
 
     /**
+     * @param DateTime                   $date
      * @param Denkmal_Model_Venue        $venue
-     * @param DateTime                   $fromDate
-     * @param DateTime                   $untilDate
      * @param Denkmal_Model_Event[]|null $excludeEvents
-     * @param bool|null                  $showAll
      */
-    public function __construct(Denkmal_Model_Venue $venue, DateTime $fromDate = null, DateTime $untilDate = null, $excludeEvents = null, $showAll = null) {
-        $where = '`venue` = ' . $venue->getId();
-
-        $order = '`from`';
-
-        if ($fromDate) {
-            $where .= ' AND `from` >= ' . $fromDate->getTimestamp();
-        }
-
-        if ($untilDate) {
-            $where .= ' AND `from` <= ' . $untilDate->getTimestamp();
-            if (!$fromDate) {
-                $order = '`from` DESC';
-            }
-        }
+    public function __construct(DateTime $date, Denkmal_Model_Venue $venue, $excludeEvents = null) {
+        $date = clone $date;
+        $date->setTime(0, 0);
+        $startStamp = $date->getTimestamp();
+        $date->add(new DateInterval('P1D'));
+        $endStamp = $date->getTimestamp();
+        $where = '`from` >= ' . $startStamp . ' AND `from` < ' . $endStamp . ' AND `venue` = ' . $venue->getId();
 
         if ($excludeEvents) {
             foreach ($excludeEvents as $event) {
@@ -31,11 +21,7 @@ class Denkmal_Paging_Event_VenueDate extends Denkmal_Paging_Event_Abstract {
             }
         }
 
-        if (!$showAll) {
-            $where .= ' AND `enabled` = 1 AND `hidden` = 0';
-        }
-
-        $source = new CM_PagingSource_Sql('id', 'denkmal_model_event', $where, $order);
+        $source = new CM_PagingSource_Sql('id', 'denkmal_model_event', $where);
         parent::__construct($source);
     }
 }

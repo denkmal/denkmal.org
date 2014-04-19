@@ -9,7 +9,11 @@
     </time>
     <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location {if $venue->getIgnore()}ignored{/if} nowrap">{$venue->getName()|escape}</a>
     <time class="currentDate"><span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}</time>
-    <p class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+    <p class="event-details">
+      {if $eventDuplicates->getCount()}
+        <span class="icon icon-info"></span>
+      {/if}
+      {if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
       <span class="description">{eventtext text=$event->getDescription()}</span></p>
   </div>
   <div class="event-edit toggleNext-content">
@@ -23,6 +27,13 @@
         </div>
       {/if}
     {/capture}
+
+    {if $eventDuplicates->getCount()}
+      <div class="info info-duplicate">
+        <span class="icon icon-info"></span>
+        {translate 'Es sind bereits {$count} Event(s) an diesem Tag für {$venue} eingetragen.' count=$eventDuplicates->getCount() venue="<span class=\"venue\">{$venue->getName()|escape}</span>"}
+      </div>
+    {/if}
 
     {form name='Admin_Form_Event' event=$event}
     {formField name='venue' label={translate 'Ort'}}

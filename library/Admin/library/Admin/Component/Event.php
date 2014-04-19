@@ -13,5 +13,6 @@ class Admin_Component_Event extends Admin_Component_Abstract {
         $this->setTplParam('event', $event);
         $this->setTplParam('venue', $venue);
         $this->setTplParam('songListSuggested', $songListSuggested);
+        $this->setTplParam('eventDuplicates', $event->getDuplicates());
     }
 }

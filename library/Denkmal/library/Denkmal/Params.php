@@ -57,7 +57,10 @@ class Denkmal_Params extends CM_Params {
             if (!preg_match('#^(\d{4})-(\d{1,2})-(\d{1,2})$#', $param, $matches)) {
                 throw new CM_Exception_InvalidParam('Cannot parse date `' . $param . '`');
             }
-            return new DateTime(((int) $matches[3]) . '-' . ((int) $matches[2]) . '-' . ((int) $matches[1]));
+            if (!checkdate($matches[2], $matches[3], $matches[1])) {
+                throw new CM_Exception_InvalidParam('Not a valid date: `' . $param . '`');
+            }
+            return new DateTime($matches[3] . '-' . $matches[2] . '-' . $matches[1]);
         });
     }
 

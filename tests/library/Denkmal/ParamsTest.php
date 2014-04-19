@@ -20,4 +20,28 @@ class Denkmal_ParamsTest extends CMTest_TestCase {
         $this->assertEquals($song, $params->getSong('song1'));
         $this->assertEquals($song, $params->getSong('song2'));
     }
+
+    public function testGetDate() {
+        $date = DateTime::createFromFormat('Y-n-j', '2013-03-12');
+        $date->setTime(0, 0);
+        $params = new Denkmal_Params(array('date1' => $date->format('Y-n-j')));
+
+        $this->assertEquals($date, $params->getDate('date1'));
+    }
+
+    /**
+     * @expectedException CM_Exception_InvalidParam
+     */
+    public function testGetDateInvalidString() {
+        $params = new Denkmal_Params(array('date1' => 'foo'));
+        $params->getDate('date1');
+    }
+
+    /**
+     * @expectedException CM_Exception_InvalidParam
+     */
+    public function testGetDateInvalidDate() {
+        $params = new Denkmal_Params(array('date1' => '2013-03-99'));
+        $params->getDate('date1');
+    }
 }

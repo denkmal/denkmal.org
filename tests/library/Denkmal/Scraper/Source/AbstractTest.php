@@ -41,10 +41,6 @@ class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
         $until = $this->_getDate()->add(new DateInterval('PT2H'));
         $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $from);
 
-        $scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Abstract')->setMethods(array('_addEvent'))->getMockForAbstractClass();
-        $scraper->expects($this->never())->method('_addEvent');
-        /** @var Denkmal_Scraper_Source_Abstract $scraper */
-
         $scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Abstract')->getMockForAbstractClass();
         /** @var Denkmal_Scraper_Source_Abstract $scraper */
 

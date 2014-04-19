@@ -19,7 +19,7 @@ class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
         $this->assertSame(true, $method->invoke($scraper, $venue, $description, $from, $until));
     }
 
-    public function testAddEventAndVenueIgnore() {
+    public function testIsValidEventVenueIgnore() {
         $venue = $this->getMockBuilder('Denkmal_Model_Venue')->setMethods(array('getIgnore'))->getMock();
         $venue->expects($this->any())->method('getIgnore')->will($this->returnValue(true));
         /** @var Denkmal_Model_Venue $venue */
@@ -34,7 +34,7 @@ class Denkmal_Scraper_Source_AbstractTest extends CMTest_TestCase {
         $this->assertSame(false, $method->invoke($scraper, $venue, $description, $from, $until));
     }
 
-    public function testAddEventAndVenueExistingEvent() {
+    public function testIsValidEventExistingEvent() {
         $venue = Denkmal_Model_Venue::create('foo', false, false);
         $description = new Denkmal_Scraper_Description('foo');
         $from = $this->_getDate()->add(new DateInterval('PT1H'));

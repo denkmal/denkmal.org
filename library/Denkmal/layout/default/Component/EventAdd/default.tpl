@@ -8,7 +8,7 @@
     {formField name='date' label={translate 'Datum'}}
     {formField name='fromTime' label={translate 'Zeit'} placeholder={translate 'Beginn'} class="required"
     append={input name='untilTime' placeholder={translate 'Ende (optional)'}}}
-    {formField name='title' label={translate 'Titel'} placeholder={translate 'Meet the Rich vol.8'} class="required"}
+    {formField name='title' label={translate 'Titel'} placeholder={translate 'Meet the Rich vol.8 (optional)'} class="required"}
     {formField name='artists' label={translate 'KünstlerInnen'} placeholder={translate 'Gregor Rellemer, The Savvy Ones, DJ John (optional)'}}
     {formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam (optional)'}}
     {formField name='urls' label={translate 'Webseiten'} placeholder={translate 'www.myspace.com/ich (optional)'}}

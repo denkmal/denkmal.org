@@ -74,7 +74,7 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
                 return false; // Venue ignored
             }
 
-            $eventListVenueDate = new Admin_Paging_Event_VenueDate($from, $venue);
+            $eventListVenueDate = new Denkmal_Paging_Event_VenueDate($from, $venue);
             if ($eventListVenueDate->getCount()) {
                 return false; // Venue has event on same day
             }

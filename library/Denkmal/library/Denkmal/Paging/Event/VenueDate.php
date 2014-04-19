@@ -1,10 +1,10 @@
 <?php
 
-class Admin_Paging_Event_VenueDate extends Denkmal_Paging_Event_Abstract {
+class Denkmal_Paging_Event_VenueDate extends Denkmal_Paging_Event_Abstract {
 
     /**
-     * @param DateTime                 $date
-     * @param Denkmal_Model_Venue|null $venue
+     * @param DateTime            $date
+     * @param Denkmal_Model_Venue $venue
      */
     public function __construct(DateTime $date, Denkmal_Model_Venue $venue) {
         $date = clone $date;

@@ -30,6 +30,12 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     this.on('destruct', function() {
       self._carousel.destroy();
     });
+
+    this.on('swipe', function() {
+      _.each(this.getChildren('Denkmal_Component_EventList'), function(eventListView) {
+        eventListView.closeAllEvents();
+      });
+    });
   },
 
   /**

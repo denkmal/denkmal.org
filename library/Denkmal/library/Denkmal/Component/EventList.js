@@ -16,11 +16,11 @@ var Denkmal_Component_EventList = Denkmal_Component_Abstract.extend({
   },
 
   /**
-   * @param {Denkmal_Component_Event} excludeEventView
+   * @param {Denkmal_Component_Event} [excludeEventView]
    */
   closeAllEvents: function(excludeEventView) {
     _.each(this.getChildren('Denkmal_Component_Event'), function(eventView) {
-      if (eventView !== excludeEventView) {
+      if (!excludeEventView || eventView !== excludeEventView) {
         eventView.toggleDetails(false);
       }
     }, this);

@@ -38,6 +38,10 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     if ('undefined' === typeof state) {
       state = !this._detailsVisible;
     }
+    if (this._detailsVisible === state) {
+      return;
+    }
+
     var $event = this.$('.event');
     var details = this.findChild('Denkmal_Component_EventDetails');
 

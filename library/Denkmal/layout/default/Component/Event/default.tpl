@@ -16,7 +16,7 @@
       {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
     </time>
     {if $venue->getUrl()}
-      <a href="{$venue->getUrl()|escape}" class="event-location nowrap">{$venue->getName()|escape}</a>
+      <a href="{$venue->getUrl()|escape}" target="_blank" class="event-location nowrap">{$venue->getName()|escape}</a>
     {else}
       <span class="event-location nowrap">{$venue->getName()|escape}</span>
     {/if}

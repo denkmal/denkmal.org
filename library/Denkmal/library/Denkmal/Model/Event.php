@@ -20,7 +20,10 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @return DateTime
      */
     public function getFrom() {
-        return $this->_get('from');
+        /** @var DateTime $date */
+        $date = $this->_get('from');
+        $date->setTimezone($this->getTimeZone());
+        return $date;
     }
 
     /**
@@ -34,7 +37,12 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @return DateTime|null
      */
     public function getUntil() {
-        return $this->_get('until');
+        /** @var DateTime $date */
+        $date = $this->_get('until');
+        if ($date) {
+            $date->setTimezone($this->getTimeZone());
+        }
+        return $date;
     }
 
     /**
@@ -133,6 +141,13 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
      */
     public function getStarred() {
         return $this->_get('starred');
+    }
+
+    /**
+     * @return DateTimeZone
+     */
+    public function getTimeZone() {
+        return CM_Bootloader::getInstance()->getTimeZone();
     }
 
     /**

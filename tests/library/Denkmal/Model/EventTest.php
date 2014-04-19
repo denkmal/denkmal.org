@@ -39,6 +39,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
         $later->add(new DateInterval('P1D'));
         $this->_event->setFrom($later);
         $this->assertSame($later->getTimestamp(), $this->_event->getFrom()->getTimestamp());
+        $this->assertEquals($this->_event->getTimeZone(), $this->_event->getFrom()->getTimezone());
     }
 
     public function testGetSetUntil() {
@@ -49,6 +50,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
 
         $this->_event->setUntil($now);
         $this->assertSame($now->getTimestamp(), $this->_event->getUntil()->getTimestamp());
+        $this->assertEquals($this->_event->getTimeZone(), $this->_event->getUntil()->getTimezone());
     }
 
     public function testGetSetDescription() {

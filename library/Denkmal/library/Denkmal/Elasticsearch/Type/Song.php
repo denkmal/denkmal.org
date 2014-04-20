@@ -33,7 +33,7 @@ class Denkmal_Elasticsearch_Type_Song extends CM_Elastica_Type_Abstract {
     protected function _getDocument(array $data) {
         $doc = new Elastica_Document($data['id'],
             array(
-                'label' => $data['label'],
+                'label' => (string) $data['label'],
             )
         );
         return $doc;

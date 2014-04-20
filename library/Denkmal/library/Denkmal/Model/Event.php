@@ -188,6 +188,10 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->_set('starred', $starred);
     }
 
+    public function updateSearchIndex() {
+        Denkmal_Elasticsearch_Type_Event::updateItemWithJob($this);
+    }
+
     public function toArrayApi(CM_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
@@ -253,5 +257,13 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
             'hidden'      => array('type' => 'boolean'),
             'starred'     => array('type' => 'boolean'),
         ));
+    }
+
+    protected function _onChange() {
+        $this->updateSearchIndex();
+    }
+
+    protected function _onDeleteAfter() {
+        $this->updateSearchIndex();
     }
 }

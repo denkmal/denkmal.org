@@ -41,7 +41,6 @@ class Denkmal_Elastica_Type_SongTest extends CMTest_TestCase {
 
         $song3->delete();
         self::$_searchIndexCli->update(self::$_type->getIndex()->getName());
-        print_r($pagingSource->getItems());
         $this->assertEquals(array($song2->getId(), $song1->getId()), $pagingSource->getItems());
     }
 

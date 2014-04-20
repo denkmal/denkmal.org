@@ -17,9 +17,9 @@ class Denkmal_Elasticsearch_Type_Song extends CM_Elastica_Type_Abstract {
 
     protected function _getQuery($ids = null, $limit = null) {
         $query = '
-            SELECT song.id, song.label
-			FROM `denkmal_model_song` song
-	    ';
+            SELECT `song`.*
+			      FROM `denkmal_model_song` `song`
+        ';
 
         if (is_array($ids)) {
             $query .= ' WHERE song.id IN (' . implode(',', $ids) . ')';

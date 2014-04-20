@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0a70e32fdcf73b4305c41cb3083c67d9",
+    "hash": "b813ce9bcd98827fabaf279b65fb3a58",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,17 +56,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.13.6",
+            "version": "1.13.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "efac131d9c4cb6b85322c09e250722d357894fb2"
+                "reference": "0a19366b6ce3ec5480896c7e627bc7dfc12fedad"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-efac131d9c4cb6b85322c09e250722d357894fb2-zip-aa2a74.zip",
-                "reference": "efac131d9c4cb6b85322c09e250722d357894fb2",
-                "shasum": "dc9a13db2cb2b2539691ea9eedb71b36119ba43c"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-0a19366b6ce3ec5480896c7e627bc7dfc12fedad-zip-0a820b.zip",
+                "reference": "0a19366b6ce3ec5480896c7e627bc7dfc12fedad",
+                "shasum": "4dde9fc6a55eb4bc9eb0925b83e52955e5e45af8"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -107,7 +107,7 @@
                 "source": "https://github.com/cargomedia/CM/tree/master",
                 "issues": "https://github.com/cargomedia/CM/issues"
             },
-            "time": "2014-04-20 14:51:02"
+            "time": "2014-04-20 17:58:58"
         },
         {
             "name": "composer/composer",

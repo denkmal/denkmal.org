@@ -16,7 +16,7 @@ class Denkmal_Elasticsearch_Query_Event extends CM_SearchQuery_Abstract {
      * @param string $terms
      */
     public function queryText($terms) {
-        $this->queryMatch(array('description', 'title'), $terms);
+        $this->queryMatch(array('description', 'title'), $terms, 'and');
     }
 
     /**

@@ -51,4 +51,17 @@ class Denkmal_Elasticsearch_Type_EventTest extends CMTest_TestCase {
         $this->assertEquals(array($event1->getId(), $event3->getId()), $pagingSource->getItems());
     }
 
+    public function testFilterEnabled() {
+        $venue = Denkmal_Model_Venue::create('foo', false, false);
+        $event1 = Denkmal_Model_Event::create($venue, 'foo', false, false, new DateTime('2008-08-01 18:11:31'));
+        $event2 = Denkmal_Model_Event::create($venue, 'foo', true, false, new DateTime('2008-08-03 18:11:31'));
+        $event3 = Denkmal_Model_Event::create($venue, 'foo', true, false, new DateTime('2008-08-03 18:11:31'));
+
+        $searchQuery = new Denkmal_Elasticsearch_Query_Event();
+        $searchQuery->filterEnabled();
+
+        $pagingSource = new CM_PagingSource_Search($this->_type, $searchQuery);
+        $this->assertEquals(array($event2->getId(), $event3->getId()), $pagingSource->getItems());
+    }
+
 }

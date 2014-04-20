@@ -25,7 +25,7 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
     }
 
     public function updateSearchIndex() {
-        Denkmal_Elastica_Type_Song::updateItem($this);
+        Denkmal_Elasticsearch_Type_Song::updateItemWithJob($this);
     }
 
     public function toArray() {

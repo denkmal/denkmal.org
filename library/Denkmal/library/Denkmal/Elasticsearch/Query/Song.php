@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_SearchQuery_Song extends CM_SearchQuery_Abstract {
+class Denkmal_Elasticsearch_Query_Song extends CM_SearchQuery_Abstract {
 
     /**
      * @param string $terms

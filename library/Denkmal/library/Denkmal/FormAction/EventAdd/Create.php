@@ -17,7 +17,7 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
             $response->addError($response->getRender()->getTranslation('Event in der Vergangenheit'), 'date');
         }
 
-        if (!$params->has('title') && !$params->has('description')) {
+        if (!$params->has('title') && !$params->has('artists')) {
             $response->addError($response->getRender()->getTranslation('Bitte Titel oder KünstlerInnen angeben'), 'title');
         }
     }

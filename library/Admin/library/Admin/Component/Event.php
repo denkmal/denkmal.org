@@ -6,9 +6,8 @@ class Admin_Component_Event extends Admin_Component_Abstract {
         $event = $this->_params->getEvent('event');
         $venue = $event->getVenue();
 
-        if ($songListSuggested = $event->getSongListSuggested()) {
-            $songListSuggested->setPage(1, 3);
-        }
+        $songListSuggested = new Denkmal_Paging_Song_Suggestion($event);
+        $songListSuggested->setPage(1, 3);
 
         $this->setTplParam('event', $event);
         $this->setTplParam('venue', $venue);

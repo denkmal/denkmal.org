@@ -18,7 +18,7 @@
   </div>
   <div class="event-edit toggleNext-content">
     {capture name="songSuggest"}
-      {if $songListSuggested && $songListSuggested->getCount() > 0}
+      {if $songListSuggested->getCount() > 0}
         <div class="songSuggest">
           {translate 'Vorschlag'}:
           {foreach $songListSuggested as $song}

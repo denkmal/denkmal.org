@@ -112,17 +112,6 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
     }
 
     /**
-     * @return Denkmal_Scraper_Source_Abstract[]
-     */
-    public static function getAll() {
-        $scraperList = array();
-        foreach (CM_Util::getClassChildren('Denkmal_Scraper_Source_Abstract') as $className) {
-            $scraperList[] = new $className;
-        }
-        return $scraperList;
-    }
-
-    /**
      * @param string $content
      * @return string
      */

@@ -24,7 +24,7 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
         $song4 = Denkmal_Model_Song::create('zoo', $file);
 
         Denkmal_Model_Link::create('foo', 'http://foo.com', true);
-        Denkmal_Model_Link::create('bar', 'http://foo.com', true);
+        Denkmal_Model_Link::create('bar', 'http://bar.com', true);
         Denkmal_Model_Link::create('my zoo', 'http://my-zoo.com', true);
 
         $venue = Denkmal_Model_Venue::create('my venue', false, false);

@@ -12,7 +12,7 @@ var Denkmal_Component_EventAdd = Denkmal_Component_Abstract.extend({
   },
 
   childrenEvents: {
-    'Denkmal_Form_EventAdd success': function() {
+    'Denkmal_Form_EventAdd success.Create': function() {
       this.$('.Denkmal_Form_EventAdd .preview').hide();
       this.$('.Denkmal_Form_EventAdd .formWrapper').slideUp();
       this.$('.formSuccess').slideDown();

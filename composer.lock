@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "54b0ab35cb1b8f799c05717129db49e7",
+    "hash": "361507ee31460d4a75f29d5171ec8f78",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,17 +56,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.13.3",
+            "version": "1.13.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "d0e84a19a65d1f1a34b85fb6982da73ef34416a1"
+                "reference": "645eb32f9b350f0a2e9df22d777bc38499272f7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-d0e84a19a65d1f1a34b85fb6982da73ef34416a1-zip-3f9607.zip",
-                "reference": "d0e84a19a65d1f1a34b85fb6982da73ef34416a1",
-                "shasum": "71635f6d7f145ed65eb61d0a91c7afdb3038f66e"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-645eb32f9b350f0a2e9df22d777bc38499272f7a-zip-2e801b.zip",
+                "reference": "645eb32f9b350f0a2e9df22d777bc38499272f7a",
+                "shasum": "3c2810b982317a6617334d659278b2192329b4dd"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -100,11 +100,14 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "time": "2014-04-14 09:02:43"
+            "support": {
+                "source": "https://github.com/cargomedia/CM/tree/master",
+                "issues": "https://github.com/cargomedia/CM/issues"
+            },
+            "time": "2014-04-20 21:10:59"
         },
         {
             "name": "composer/composer",

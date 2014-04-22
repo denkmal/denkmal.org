@@ -104,13 +104,19 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $genres = $params->has('genres') ? new Denkmal_Scraper_Genres($params->getString('genres')) : null;
         $description = new Denkmal_Scraper_Description($artists, $title, $genres);
 
+        $eventDescription = $description->getDescriptionAndGenres();
+        if ($params->has('urls')) {
+            $eventDescription .= ' // ' . $params->get('urls');
+        }
+        $eventTitle = $description->getTitle();
+
         $event = new Denkmal_Model_Event();
-        $event->setDescription($description->getDescriptionAndGenres());
+        $event->setDescription($eventDescription);
         $event->setEnabled(false);
         $event->setQueued(true);
         $event->setFrom($from);
         $event->setUntil($until);
-        $event->setTitle($description->getTitle());
+        $event->setTitle($eventTitle);
         $event->setSong(null);
         $event->setHidden(false);
         $event->setStarred(false);

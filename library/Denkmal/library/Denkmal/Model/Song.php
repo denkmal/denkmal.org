@@ -24,6 +24,10 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
         return new CM_File_UserContent('songs', $filename);
     }
 
+    public function updateSearchIndex() {
+        Denkmal_Elasticsearch_Type_Song::updateItemWithJob($this);
+    }
+
     public function toArray() {
         $array = parent::toArray();
         $array['path'] = $this->getFile()->getPathRelative();
@@ -44,6 +48,10 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
         ));
     }
 
+    protected function _onChange() {
+        $this->updateSearchIndex();
+    }
+
     protected function _onDelete() {
         $this->getFile()->delete();
 
@@ -52,6 +60,10 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
         foreach ($eventList as $event) {
             $event->setSong(null);
         }
+    }
+
+    protected function _onDeleteAfter() {
+        $this->updateSearchIndex();
     }
 
     /**

@@ -99,13 +99,13 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
     }
 
     /**
-     * @param string    $label
-     * @param string    $url
-     * @param bool|null $automatic
-     * @param int|null  $failedCount
+     * @param string   $label
+     * @param string   $url
+     * @param bool     $automatic
+     * @param int|null $failedCount
      * @return Denkmal_Model_Link
      */
-    public static function create($label, $url, $automatic = null, $failedCount = null) {
+    public static function create($label, $url, $automatic, $failedCount = null) {
         if (null === $failedCount) {
             $failedCount = 0;
         }

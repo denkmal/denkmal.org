@@ -158,34 +158,14 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
-     * @return Denkmal_Paging_Song_Search|null
-     */
-    public function getSongListSuggested() {
-        $text = $this->getDescription();
-        $searchTermList = array();
-
-        foreach (Denkmal_Usertext_Filter_Links::getReplacements() as $replacement) {
-            if (false === stripos($text, $replacement['label'])) {
-                continue;
-            }
-            if (preg_match($replacement['search'], $text)) {
-                $searchTermList[] = $replacement['label'];
-            }
-        }
-
-        $searchTermList = array_unique(array_filter($searchTermList));
-
-        if (empty($searchTermList)) {
-            return null;
-        }
-        return new Denkmal_Paging_Song_Search($searchTermList);
-    }
-
-    /**
      * @param boolean $starred
      */
     public function setStarred($starred) {
         $this->_set('starred', $starred);
+    }
+
+    public function updateSearchIndex() {
+        Denkmal_Elasticsearch_Type_Event::updateItemWithJob($this);
     }
 
     public function toArrayApi(CM_Render $render) {
@@ -253,5 +233,13 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
             'hidden'      => array('type' => 'boolean'),
             'starred'     => array('type' => 'boolean'),
         ));
+    }
+
+    protected function _onChange() {
+        $this->updateSearchIndex();
+    }
+
+    protected function _onDeleteAfter() {
+        $this->updateSearchIndex();
     }
 }

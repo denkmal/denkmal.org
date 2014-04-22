@@ -59,7 +59,19 @@
     font-style: italic;
   }
 
-  .songSuggest {
+  .songSuggestionList {
     font-size: @fontSizeSmall;
+
+    .songSuggestion {
+      display: inline-block;
+      margin: 2px;
+      padding: 0px 5px;
+      border-radius: 3px;
+      background-color: fadeout(@colorFgLink, 90);
+
+      &:hover {
+        background-color: fadeout(@colorFgLink, 85);
+      }
+    }
   }
 }

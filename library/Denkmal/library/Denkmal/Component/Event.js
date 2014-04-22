@@ -38,10 +38,17 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     if ('undefined' === typeof state) {
       state = !this._detailsVisible;
     }
+    if (this._detailsVisible === state) {
+      return;
+    }
+
     var $event = this.$('.event');
     var details = this.findChild('Denkmal_Component_EventDetails');
 
     $event.toggleClass('event-details-open', state);
+
+    var done = new $.Deferred();
+    done.resolve();
 
     if (details) {
       if (state) {
@@ -50,15 +57,19 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
         details.$el.slideUp('fast');
       }
     } else if (state) {
-      this.loadComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event}, {
+      done = this.loadComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event}, {
         'success': function() {
           this.$el.hide().appendTo($event.parent()).slideDown('fast');
         }
       });
     }
 
+    var self = this;
+    done.done(function() {
+      self.trigger('toggleDetails', state)
+    });
+
     this._detailsVisible = state;
-    this.trigger('toggleDetails', state)
   },
 
   hideSongDetails: function() {

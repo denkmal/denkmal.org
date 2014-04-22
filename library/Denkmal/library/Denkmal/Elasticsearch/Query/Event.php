@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Elasticsearch_Query_Event extends CM_SearchQuery_Abstract {
+class Denkmal_Elasticsearch_Query_Event extends CM_Elasticsearch_Query {
 
     /**
      * @param bool|null $state

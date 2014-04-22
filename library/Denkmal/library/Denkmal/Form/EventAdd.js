@@ -41,7 +41,7 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
     this.submit('Preview', {handleErrors: false}).done(function(response) {
       form._injectView(response, function() {
         if (form._preview) {
-          form._preview.replaceWith(this);
+          form._preview.replaceWithHtml(this.$el);
         } else {
           form.$el.append(this.$el);
         }

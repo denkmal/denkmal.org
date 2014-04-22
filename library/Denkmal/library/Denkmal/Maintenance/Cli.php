@@ -9,7 +9,8 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
         parent::_registerCallbacks();
         $this->_registerClockworkCallbacks(new DateInterval('PT12H'), array(
             'Scraper'     => function () {
-                    foreach (Denkmal_Scraper_Source_Abstract::getAll() as $scraper) {
+                    /** @var Denkmal_Scraper_Source_Abstract $scraper */
+                    foreach (new Denkmal_Paging_ScraperSource_All() as $scraper) {
                         $scraper->run();
                     }
                 },

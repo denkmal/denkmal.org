@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "361507ee31460d4a75f29d5171ec8f78",
+    "hash": "86bf9ac4e8b9e392d60d31b09d5b4db3",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,17 +56,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.13.8",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "645eb32f9b350f0a2e9df22d777bc38499272f7a"
+                "reference": "e3cbe42f844f6f785e2546cfa6e08ee942fe2d3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-645eb32f9b350f0a2e9df22d777bc38499272f7a-zip-2e801b.zip",
-                "reference": "645eb32f9b350f0a2e9df22d777bc38499272f7a",
-                "shasum": "3c2810b982317a6617334d659278b2192329b4dd"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-e3cbe42f844f6f785e2546cfa6e08ee942fe2d3d-zip-fbeaf9.zip",
+                "reference": "e3cbe42f844f6f785e2546cfa6e08ee942fe2d3d",
+                "shasum": "6009a8d98f8b4a3e30ca451e998eece0a9e3ffc8"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -107,7 +107,7 @@
                 "source": "https://github.com/cargomedia/CM/tree/master",
                 "issues": "https://github.com/cargomedia/CM/issues"
             },
-            "time": "2014-04-20 21:10:59"
+            "time": "2014-04-22 16:28:47"
         },
         {
             "name": "composer/composer",
@@ -997,17 +997,17 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.34",
+            "version": "3.7.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "248d6ce95e6ca7f0e3135252c0b984bbe1f52f19"
+                "reference": "83f9537e46346f75ed6925441ac259453213c7cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-248d6ce95e6ca7f0e3135252c0b984bbe1f52f19-zip-b166c1.zip",
-                "reference": "248d6ce95e6ca7f0e3135252c0b984bbe1f52f19",
-                "shasum": "cf18f71a80a7c373566979893b8005c2a10e3bba"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-83f9537e46346f75ed6925441ac259453213c7cc-zip-882a9c.zip",
+                "reference": "83f9537e46346f75ed6925441ac259453213c7cc",
+                "shasum": "c0d3c2446c8bd7892e4daf87f9d530d3487e557d"
             },
             "require": {
                 "ext-dom": "*",
@@ -1067,7 +1067,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-03-28 11:04:36"
+            "time": "2014-04-21 06:25:54"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

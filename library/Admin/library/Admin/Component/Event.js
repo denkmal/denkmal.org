@@ -11,6 +11,9 @@ var Admin_Component_Event = Admin_Component_Abstract.extend({
     'click .selectSong': function(event) {
       var $song = $(event.currentTarget).closest('.selectSong');
       this.findChild('Admin_Form_Event').getField('song').setValue({'id': $song.data('id'), 'name': $song.data('label')});
+    },
+    'toggleNext-open .eventDescription': function(event, data) {
+      $(document).scrollTo(data['toggler']);
     }
   }
 });

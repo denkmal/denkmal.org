@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Elasticsearch_Type_Event extends CM_Elastica_Type_Abstract {
+class Denkmal_Elasticsearch_Type_Event extends CM_Elasticsearch_Type_Abstract {
 
     const INDEX_NAME = 'event';
 

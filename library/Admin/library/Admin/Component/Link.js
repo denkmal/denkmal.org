@@ -5,5 +5,11 @@
 var Admin_Component_Link = Admin_Component_Abstract.extend({
 
   /** @type String */
-  _class: 'Admin_Component_Link'
+  _class: 'Admin_Component_Link',
+
+  events: {
+    'toggleNext-open .link-content': function(event, data) {
+      $(document).scrollTo(data['toggler']);
+    }
+  }
 });

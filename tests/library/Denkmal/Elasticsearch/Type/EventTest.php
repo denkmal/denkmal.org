@@ -28,7 +28,7 @@ class Denkmal_Elasticsearch_Type_EventTest extends CMTest_TestCase {
         $searchQuery->queryText('foo');
         $searchQuery->sortFrom();
 
-        $pagingSource = new CM_PagingSource_Search($this->_type, $searchQuery);
+        $pagingSource = new CM_PagingSource_Elasticsearch($this->_type, $searchQuery);
         $this->assertEquals(array($event3->getId(), $event1->getId()), $pagingSource->getItems());
 
         $event2->setDescription('aaa foo');
@@ -47,7 +47,7 @@ class Denkmal_Elasticsearch_Type_EventTest extends CMTest_TestCase {
         $searchQuery = new Denkmal_Elasticsearch_Query_Event();
         $searchQuery->queryText('Foo');
 
-        $pagingSource = new CM_PagingSource_Search($this->_type, $searchQuery);
+        $pagingSource = new CM_PagingSource_Elasticsearch($this->_type, $searchQuery);
         $this->assertEquals(array($event1->getId(), $event3->getId()), $pagingSource->getItems());
     }
 
@@ -60,7 +60,7 @@ class Denkmal_Elasticsearch_Type_EventTest extends CMTest_TestCase {
         $searchQuery = new Denkmal_Elasticsearch_Query_Event();
         $searchQuery->filterEnabled();
 
-        $pagingSource = new CM_PagingSource_Search($this->_type, $searchQuery);
+        $pagingSource = new CM_PagingSource_Elasticsearch($this->_type, $searchQuery);
         $this->assertEquals(array($event2->getId(), $event3->getId()), $pagingSource->getItems());
     }
 

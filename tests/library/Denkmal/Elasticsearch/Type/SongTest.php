@@ -28,7 +28,7 @@ class Denkmal_Elasticsearch_Type_SongTest extends CMTest_TestCase {
         $searchQuery->queryText('foo');
         $searchQuery->sortLabel();
 
-        $pagingSource = new CM_PagingSource_Search($this->_type, $searchQuery);
+        $pagingSource = new CM_PagingSource_Elasticsearch($this->_type, $searchQuery);
         $this->assertEquals(array($song3->getId(), $song1->getId()), $pagingSource->getItems());
 
         $song2->setLabel('aaa foo');
@@ -46,7 +46,7 @@ class Denkmal_Elasticsearch_Type_SongTest extends CMTest_TestCase {
         $searchQuery = new Denkmal_Elasticsearch_Query_Song();
         $searchQuery->queryText('Foo');
 
-        $pagingSource = new CM_PagingSource_Search($this->_type, $searchQuery);
+        $pagingSource = new CM_PagingSource_Elasticsearch($this->_type, $searchQuery);
         $this->assertEquals(array($song1->getId()), $pagingSource->getItems());
     }
 

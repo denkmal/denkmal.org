@@ -5,7 +5,7 @@ $config->CM_Redis_Client->server = array('host' => '127.0.0.1', 'port' => 6379);
 $config->CM_Stream_Adapter_Message_SocketRedis->servers = array(
     array('httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => array('http://www.denkmal.dev:8090')),
 );
-$config->CM_Search->servers = array(
+$config->CM_Elasticsearch_Client->servers = array(
     array('host' => '127.0.0.1', 'port' => 9200),
 );
 $config->CM_Memcache_Client->servers = array(

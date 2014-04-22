@@ -6,7 +6,7 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
     protected $_type;
 
     public function setUp() {
-        CM_Config::get()->CM_Search->enabled = true;
+        CM_Config::get()->CM_Elasticsearch_Client->enabled = true;
         $this->_type = new Denkmal_Elasticsearch_Type_Song();
         $this->_type->createVersioned();
     }

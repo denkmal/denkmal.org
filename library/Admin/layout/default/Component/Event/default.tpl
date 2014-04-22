@@ -7,8 +7,10 @@
       <span class="icon icon-time"></span>
       {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
     </time>
-    <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location {if $venue->getIgnore()}ignored{/if} nowrap">{$venue->getName()|escape}</a>
-    <time class="currentDate"><span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}</time>
+    <span class="event-header">
+      <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location {if $venue->getIgnore()}ignored{/if} nowrap">{$venue->getName()|escape}</a>
+      <time class="currentDate"><span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}</time>
+    </span>
     <p class="event-details">
       {if $eventDuplicates->getCount()}
         <span class="icon icon-info"></span>

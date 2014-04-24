@@ -34,7 +34,17 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
      * @param Denkmal_Model_Venue $venue
      */
     public function setVenue($venue) {
+        if ($this->hasIdRaw()) {
+            $messageListOld = new Denkmal_Paging_Message_Venue($this->getVenue());
+            $messageListOld->_change();
+        }
+
         $this->_set('venue', $venue);
+
+        if ($this->hasIdRaw()) {
+            $messageListNew = new Denkmal_Paging_Message_Venue($this->getVenue());
+            $messageListNew->_change();
+        }
     }
 
     /**

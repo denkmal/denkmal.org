@@ -39,4 +39,46 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 
         $this->assertSame($expected, json_decode($response->getContent(), true));
     }
+
+
+    public function testProcessMinimumMessagesPerVenue() {
+        $created = new DateTime();
+        $maxMessages = 5;
+        $minMessagesVenue = 4;
+
+        $venueNoEvents = Denkmal_Model_Venue::create('Example 1', true, false);
+        $messageListNoEvent = array();
+        for ($i = 0; $i < $minMessagesVenue + 6; $i++) {
+            $messageListNoEvent[] = Denkmal_Model_Message::create($venueNoEvents, 'Foo ' . $i, $created);
+            $created->add(new DateInterval('PT3S'));
+        }
+
+        $venueHasEvents = Denkmal_Model_Venue::create('Example 2', true, false);
+        $eventDate = Denkmal_Site::getCurrentDate()->add(new DateInterval('P2D'));
+        Denkmal_Model_Event::create($venueHasEvents, 'Foo', true, false, $eventDate);
+        $messageListHasEvent = array();
+        for ($i = 0; $i < $minMessagesVenue + 7; $i++) {
+            $messageListHasEvent[] = Denkmal_Model_Message::create($venueHasEvents, 'Foo ' . $i, $created);
+            $created->add(new DateInterval('PT3S'));
+        }
+
+        $venue = Denkmal_Model_Venue::create('Example 3', true, false);
+        $messageList = array();
+        for ($i = 0; $i < $maxMessages + 8; $i++) {
+            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, $created);
+            $created->add(new DateInterval('PT3S'));
+        }
+
+        $query = http_build_query(array('maxMessages' => $maxMessages, 'minMessagesVenue' => $minMessagesVenue));
+        $request = new CM_Request_Get('/api/messages?' . $query, array('host' => 'denkmal.test'));
+        $response = new Denkmal_Response_Api_Messages($request);
+        $response->process();
+
+        $expectedMessageList = array_merge(array_slice($messageListHasEvent, 7), array_slice($messageList, 8));
+        $expected = Functional\map($expectedMessageList, function (Denkmal_Model_Message $message) use ($response) {
+            return $message->toArrayApi($response->getRender());
+        });
+
+        $this->assertSame($expected, json_decode($response->getContent(), true));
+    }
 }

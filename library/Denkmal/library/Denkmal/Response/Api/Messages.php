@@ -74,7 +74,7 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
             return $message->toArrayApi($render);
         });
 
-        return $messageList;
+        return array_values($messageList);
     }
 
     public static function match(CM_Request_Abstract $request) {

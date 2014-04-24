@@ -69,8 +69,9 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
             return $message->getId();
         });
 
-        $messageList = Functional\map($messageList, function (Denkmal_Model_Message $message) {
-            return $message->toArrayApi($this->getRender());
+        $render = $this->getRender();
+        $messageList = Functional\map($messageList, function (Denkmal_Model_Message $message) use ($render) {
+            return $message->toArrayApi($render);
         });
 
         return $messageList;

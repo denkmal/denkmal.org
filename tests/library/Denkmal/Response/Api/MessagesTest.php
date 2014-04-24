@@ -19,17 +19,21 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 
     public function testProcess() {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
-        $message1 = Denkmal_Model_Message::create($venue, 'Foo 1');
-        $message2 = Denkmal_Model_Message::create($venue, 'Foo 2');
+        $maxMessages = 5;
 
-        $request = new CM_Request_Get('/api/messages', array('host' => 'denkmal.test'));
+        $messageList = array();
+        for ($i = 0; $i < $maxMessages + 3; $i++) {
+            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i);
+        }
+
+        $query = http_build_query(array('maxMessages' => $maxMessages));
+        $request = new CM_Request_Get('/api/messages?' . $query, array('host' => 'denkmal.test'));
         $response = new Denkmal_Response_Api_Messages($request);
         $response->process();
 
-        $expected = array(
-            $message1->toArrayApi($response->getRender()),
-            $message2->toArrayApi($response->getRender()),
-        );
+        $expected = Functional\map(array_slice($messageList, 3), function (Denkmal_Model_Message $message) use ($response) {
+            return $message->toArrayApi($response->getRender());
+        });
 
         $this->assertSame($expected, json_decode($response->getContent(), true));
     }

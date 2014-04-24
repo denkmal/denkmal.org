@@ -26,8 +26,6 @@ class Denkmal_Paging_Venue_HasEventsWithinTest extends CMTest_TestCase {
         $dateStart = Denkmal_Site::getCurrentDate();
         $dateEnd = Denkmal_Site::getCurrentDate();
         $dateEnd->add(new DateInterval('P6D'));
-        echo $dateStart->format('Y-m-d H:i:s') . PHP_EOL;
-        echo $dateEnd->format('Y-m-d H:i:s') . PHP_EOL;
 
         $paging = new Denkmal_Paging_Venue_HasEventsWithin($dateStart, $dateEnd);
         $this->assertEquals(array($venue1, $venue2, $venue3, $venue4, $venue5), $paging);

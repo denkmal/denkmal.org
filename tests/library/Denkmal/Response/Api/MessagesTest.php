@@ -18,12 +18,14 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
     }
 
     public function testProcess() {
+        $created = new DateTime();
         $venue = Denkmal_Model_Venue::create('Example', true, false);
         $maxMessages = 5;
 
         $messageList = array();
         for ($i = 0; $i < $maxMessages + 3; $i++) {
-            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i);
+            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, $created);
+            $created->add(new DateInterval('PT3S'));
         }
 
         $query = http_build_query(array('maxMessages' => $maxMessages));

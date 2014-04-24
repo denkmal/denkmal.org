@@ -70,13 +70,18 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     /**
      * @param Denkmal_Model_Venue $venue
      * @param string              $text
+     * @param DateTime|null       $created
      * @return Denkmal_Model_Message
      */
-    public static function create(Denkmal_Model_Venue $venue, $text) {
+    public static function create(Denkmal_Model_Venue $venue, $text, DateTime $created = null) {
+        if (null === $created) {
+            $created = new DateTime();
+        }
+
         $message = new self();
         $message->setVenue($venue);
         $message->setText($text);
-        $message->setCreated(new DateTime());
+        $message->setCreated($created);
         $message->commit();
 
         return $message;

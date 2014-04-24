@@ -8,6 +8,7 @@ class Denkmal_Paging_Message_Venue extends Denkmal_Paging_Message_Abstract {
     public function __construct(Denkmal_Model_Venue $venue) {
         $where = '`venue` = ' . $venue->getId();
         $source = new CM_PagingSource_Sql('id', 'denkmal_model_message', $where, '`created`');
+        $source->enableCache();
         parent::__construct($source);
     }
 }

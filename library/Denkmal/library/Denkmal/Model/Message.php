@@ -64,6 +64,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
         $containingCacheables[] = new Denkmal_Paging_Message_All();
+        $containingCacheables[] = new Denkmal_Paging_Message_Venue($this->getVenue());
         return $containingCacheables;
     }
 

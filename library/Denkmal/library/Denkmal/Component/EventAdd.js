@@ -20,6 +20,8 @@ var Denkmal_Component_EventAdd = Denkmal_Component_Abstract.extend({
   },
 
   addSimilar: function() {
+    this.findChild('Denkmal_Form_EventAdd').getField('urls').setValue('');
+
     this.$('.Denkmal_Form_EventAdd .preview').show();
     this.$('.Denkmal_Form_EventAdd .formWrapper').slideDown();
     this.$('.formSuccess').slideUp();

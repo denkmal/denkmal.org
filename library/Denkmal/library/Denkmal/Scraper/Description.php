@@ -57,6 +57,19 @@ class Denkmal_Scraper_Description {
     }
 
     /**
+     * @return string
+     */
+    public function getAll() {
+        $result = '';
+        $title = $this->getTitle();
+        if (null !== $title) {
+            $result .= $title . ': ';
+        }
+        $result .= $this->getDescriptionAndGenres();
+        return $result;
+    }
+
+    /**
      * @param string $str
      * @return string
      */

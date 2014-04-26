@@ -19,7 +19,6 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
         $this->assertInstanceOf('DateTime', $this->_event->getFrom());
         $this->assertSame(null, $this->_event->getUntil());
         $this->assertSame('Foo', $this->_event->getDescription());
-        $this->assertSame(null, $this->_event->getTitle());
         $this->assertSame(null, $this->_event->getSong());
         $this->assertSame(false, $this->_event->getQueued());
         $this->assertSame(true, $this->_event->getEnabled());
@@ -56,14 +55,6 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
     public function testGetSetDescription() {
         $this->_event->setDescription('Bar');
         $this->assertSame('Bar', $this->_event->getDescription());
-    }
-
-    public function testGetSetTitle() {
-        $this->_event->setTitle(null);
-        $this->assertSame(null, $this->_event->getTitle());
-
-        $this->_event->setTitle('Bar');
-        $this->assertSame('Bar', $this->_event->getTitle());
     }
 
     public function testGetSetSong() {

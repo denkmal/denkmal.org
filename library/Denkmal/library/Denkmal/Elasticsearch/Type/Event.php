@@ -7,7 +7,6 @@ class Denkmal_Elasticsearch_Type_Event extends CM_Elasticsearch_Type_Abstract {
     protected $_mapping = array(
         'from'        => array('type' => 'date'),
         'until'       => array('type' => 'date'),
-        'title'       => array('type' => 'string'),
         'description' => array('type' => 'string'),
         'queued'      => array('type' => 'boolean'),
         'enabled'     => array('type' => 'boolean'),
@@ -50,9 +49,6 @@ class Denkmal_Elasticsearch_Type_Event extends CM_Elasticsearch_Type_Abstract {
         );
         if (null !== $data['until']) {
             $doc->add('until', $this->convertDate((int) $data['until']));
-        }
-        if (null !== $data['title']) {
-            $doc->add('title', (string) $data['title']);
         }
         return $doc;
     }

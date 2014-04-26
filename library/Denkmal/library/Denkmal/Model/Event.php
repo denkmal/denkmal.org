@@ -67,20 +67,6 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
-     * @return string|null
-     */
-    public function getTitle() {
-        return $this->_get('title');
-    }
-
-    /**
-     * @param string|null $title
-     */
-    public function setTitle($title) {
-        $this->_set('title', $title);
-    }
-
-    /**
      * @return Denkmal_Model_Song|null
      */
     public function getSong() {
@@ -173,9 +159,6 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $array['id'] = $this->getId();
         $array['venue'] = $this->getVenue()->getId();
         $array['description'] = $this->getDescription();
-        if ($title = $this->getTitle()) {
-            $array['title'] = $title;
-        }
         $array['from'] = $this->getFrom()->getTimestamp();
         if ($until = $this->getUntil()) {
             $array['until'] = $until->getTimestamp();
@@ -194,13 +177,12 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @param boolean                 $queued
      * @param DateTime                $from
      * @param DateTime|null           $until
-     * @param string|null             $title
      * @param Denkmal_Model_Song|null $song
      * @param boolean|null            $hidden
      * @param boolean|null            $starred
      * @return Denkmal_Model_Event
      */
-    public static function create($venue, $description, $enabled, $queued, $from, $until = null, $title = null, $song = null, $hidden = null, $starred = null) {
+    public static function create($venue, $description, $enabled, $queued, $from, $until = null, $song = null, $hidden = null, $starred = null) {
         $event = new self();
         $event->setVenue($venue);
         $event->setDescription($description);
@@ -208,7 +190,6 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $event->setQueued($queued);
         $event->setFrom($from);
         $event->setUntil($until);
-        $event->setTitle($title);
         $event->setSong($song);
         $event->setHidden((boolean) $hidden);
         $event->setStarred((boolean) $starred);
@@ -225,7 +206,6 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
             'venue'       => array('type' => 'Denkmal_Model_Venue'),
             'from'        => array('type' => 'DateTime'),
             'until'       => array('type' => 'DateTime', 'optional' => true),
-            'title'       => array('type' => 'string', 'optional' => true),
             'description' => array('type' => 'string'),
             'song'        => array('type' => 'Denkmal_Model_Song', 'optional' => true),
             'queued'      => array('type' => 'boolean'),

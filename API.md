@@ -29,7 +29,6 @@ Response:
          "id":934,
          "venue":123,
          "description":"Foo",
-         "title":"Bar",
          "from":1371386731,
          "until":1371386731,
          "starred":false,

@@ -11,7 +11,6 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         $event = $params->getEvent('eventId');
         $venue = $params->getVenue('venue');
         list($from, $until) = $this->_processDate($params);
-        $title = $params->has('title') ? $params->getString('title') : null;
         $description = $params->getString('description');
         $song = $params->has('song') ? $params->getSong('song') : null;
         $starred = $params->getBoolean('starred');
@@ -22,7 +21,6 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         $event->setQueued(false);
         $event->setFrom($from);
         $event->setUntil($until);
-        $event->setTitle($title);
         $event->setSong($song);
         $event->setStarred($starred);
 

@@ -45,7 +45,7 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
         $paging = new Denkmal_Paging_Song_Suggestion($event);
         $this->assertEquals(array($song1, $song3), $paging->getItems());
 
-        $event->setTitle('mega bar jo');
+        $event->setDescription('mega foo bar test');
         $paging = new Denkmal_Paging_Song_Suggestion($event);
         $this->assertEquals(array($song3, $song1, $song2), $paging->getItems());
     }

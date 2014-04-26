@@ -30,4 +30,16 @@ class Denkmal_Scraper_DescriptionTest extends CMTest_TestCase {
         $this->assertSame('Foo bar', $description->getDescriptionAndGenres());
         $this->assertSame(null, $description->getTitle());
     }
+
+    public function getAll() {
+        $description = new Denkmal_Scraper_Description('foo', 'bar');
+
+        $this->assertSame('Foo: Bar', $description->getAll());
+    }
+
+    public function getAllDescriptionOnly() {
+        $description = new Denkmal_Scraper_Description('foo');
+
+        $this->assertSame('Far', $description->getAll());
+    }
 }

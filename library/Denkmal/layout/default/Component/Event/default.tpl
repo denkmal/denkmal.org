@@ -20,7 +20,7 @@
         <span class="event-location nowrap">{$venue->getName()|escape}</span>
       {/if}
     </span>
-    <span class="event-details">{if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
+    <span class="event-details">
       <span class="description">{eventtext text=$event->getDescription()}</span>
     </span>
   </div>

@@ -8,7 +8,6 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->registerField('date', new CM_FormField_Date(date('Y') - 1, (int) date('Y') + 1));
         $this->registerField('fromTime', new Denkmal_FormField_Time());
         $this->registerField('untilTime', new Denkmal_FormField_Time());
-        $this->registerField('title', new CM_FormField_Text());
         $this->registerField('description', new CM_FormField_Textarea());
         $this->registerField('song', new Denkmal_FormField_Song());
         $this->registerField('starred', new CM_FormField_Boolean());
@@ -29,7 +28,6 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->getField('date')->setValue($event->getFrom());
         $this->getField('fromTime')->setValue($event->getFrom());
         $this->getField('untilTime')->setValue($event->getUntil());
-        $this->getField('title')->setValue($event->getTitle());
         $this->getField('description')->setValue($event->getDescription());
         $this->getField('song')->setValue($event->getSong());
         $this->getField('starred')->setValue($event->getStarred());

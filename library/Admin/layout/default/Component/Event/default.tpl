@@ -15,7 +15,6 @@
       {if $eventDuplicates->getCount()}
         <span class="icon icon-info"></span>
       {/if}
-      {if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
       <span class="description">{eventtext text=$event->getDescription()}</span></p>
   </div>
 
@@ -43,7 +42,6 @@
       {formField name='date' label={translate 'Datum'}}
       {formField name='fromTime' label={translate 'Beginn'}}
       {formField name='untilTime' label={translate 'Ende'}}
-      {formField name='title' label={translate 'Titel'}}
       {formField name='description' label={translate 'Beschreibung'}}
       {formField name='song' label={translate 'Lied'} append=$smarty.capture.songSuggestionList}
       {formField name='starred' label={translate 'Starred'}}

@@ -3,7 +3,6 @@
     <div class="eventDescription">
       <strong>{date_weekday date=$event->getFrom()} {date time=$event->getFrom()->getTimestamp()}</strong>
       <span class="event-details">
-        {if $event->getTitle()}<span class="title">{eventtext text=$event->getTitle()}</span>{/if}
         <span class="description">{eventtext text=$event->getDescription()}</span>
       </span>
     </div>

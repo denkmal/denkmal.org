@@ -84,7 +84,7 @@ if (CM_Db_Db::existsTable('event') && CM_Db_Db::existsTable('location')) {
             continue;
         }
         Denkmal_Model_Event::create($venue, $event['description'], ($enabled && !$blocked), (!$enabled && !$blocked),
-            $dateFrom, $dateUntil, null, $song, $blocked, $event['star']);
+            $dateFrom, $dateUntil, $song, $blocked, $event['star']);
     }
     echo "\n";
 }

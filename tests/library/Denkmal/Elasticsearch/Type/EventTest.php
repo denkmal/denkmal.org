@@ -42,7 +42,7 @@ class Denkmal_Elasticsearch_Type_EventTest extends CMTest_TestCase {
         $venue = Denkmal_Model_Venue::create('foo', false, false);
         $event1 = Denkmal_Model_Event::create($venue, 'mega foo', true, false, new DateTime('2008-08-01 18:11:31'));
         $event2 = Denkmal_Model_Event::create($venue, 'bar', true, false, new DateTime('2008-08-03 18:11:31'));
-        $event3 = Denkmal_Model_Event::create($venue, 'mega', true, false, new DateTime('2008-08-03 18:11:31'), null, 'jo FOO');
+        $event3 = Denkmal_Model_Event::create($venue, 'jo FOO: mega', true, false, new DateTime('2008-08-03 18:11:31'));
 
         $searchQuery = new Denkmal_Elasticsearch_Query_Event();
         $searchQuery->queryText('Foo');

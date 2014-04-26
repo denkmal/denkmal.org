@@ -25,6 +25,11 @@ class Admin_FormAction_Venue_Merge extends Admin_FormAction_Abstract {
             $event->setVenue($newVenue);
         }
 
+        /** @var Denkmal_Model_Message $message */
+        foreach ($oldVenue->getMessageList() as $message) {
+            $message->setVenue($newVenue);
+        }
+
         Denkmal_Model_VenueAlias::create($newVenue, $oldVenue->getName());
         /** @var Denkmal_Model_VenueAlias $alias */
         foreach ($oldVenue->getAliasList() as $alias) {

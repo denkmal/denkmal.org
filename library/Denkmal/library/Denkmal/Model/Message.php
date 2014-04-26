@@ -34,7 +34,17 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
      * @param Denkmal_Model_Venue $venue
      */
     public function setVenue($venue) {
+        if ($this->hasIdRaw()) {
+            $messageListOld = new Denkmal_Paging_Message_Venue($this->getVenue());
+            $messageListOld->_change();
+        }
+
         $this->_set('venue', $venue);
+
+        if ($this->hasIdRaw()) {
+            $messageListNew = new Denkmal_Paging_Message_Venue($this->getVenue());
+            $messageListNew->_change();
+        }
     }
 
     /**
@@ -64,19 +74,25 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
         $containingCacheables[] = new Denkmal_Paging_Message_All();
+        $containingCacheables[] = new Denkmal_Paging_Message_Venue($this->getVenue());
         return $containingCacheables;
     }
 
     /**
      * @param Denkmal_Model_Venue $venue
      * @param string              $text
+     * @param DateTime|null       $created
      * @return Denkmal_Model_Message
      */
-    public static function create(Denkmal_Model_Venue $venue, $text) {
+    public static function create(Denkmal_Model_Venue $venue, $text, DateTime $created = null) {
+        if (null === $created) {
+            $created = new DateTime();
+        }
+
         $message = new self();
         $message->setVenue($venue);
         $message->setText($text);
-        $message->setCreated(new DateTime());
+        $message->setCreated($created);
         $message->commit();
 
         return $message;

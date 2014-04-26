@@ -90,6 +90,12 @@ Response:
 ]
 ```
 
+Optionally you can specify how many messages to receive maximum, and how many minimum for venues that have upcoming events:
+```
+GET /api/messages?maxMessages=500&minMessagesVenue=3 HTTP/1.1
+Host: www.denkmal.org
+```
+
 
 ## Send message
 Request:

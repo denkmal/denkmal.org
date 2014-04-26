@@ -11,7 +11,7 @@
     {formField name='title' label={translate 'Titel'} placeholder={translate 'Meet the Rich vol.8 (optional)'} class="required"}
     {formField name='artists' label={translate 'KünstlerInnen'} placeholder={translate 'Gregor Rellemer, The Savvy Ones, DJ John (optional)'}}
     {formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam (optional)'}}
-    {formField name='urls' label={translate 'Webseiten'} placeholder={translate 'www.myspace.com/ich (optional)'}}
+    {formField name='urls' label={translate 'Webseiten'} placeholder={translate 'www.myspace.com/ich (optional)'} append="<small>({translate 'Werden gespeichert. Bitte nur das erste Mal eingeben.'})</small>"}
     {formAction action='Create' label={translate 'Hinzufügen'} alternatives=
     {button_link onclick="window.open('mailto:{$render->getSite()->getEmailAddress()}')" icon='mailbox' label={translate 'Kontakt'}}
     }

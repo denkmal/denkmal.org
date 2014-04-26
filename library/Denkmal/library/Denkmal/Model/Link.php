@@ -81,6 +81,7 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
         $containingCacheables[] = new Denkmal_Paging_Link_All();
+        $containingCacheables[] = new Denkmal_Paging_Link_Manual();
         return $containingCacheables;
     }
 

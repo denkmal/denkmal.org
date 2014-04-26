@@ -7,7 +7,7 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Form_EventAdd',
 
-  /** @type Denkmal_Component_Event|Null */
+  /** @type Denkmal_Component_EventPreview|Null */
   _preview: null,
 
   childrenEvents: {

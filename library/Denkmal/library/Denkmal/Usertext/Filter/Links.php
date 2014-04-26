@@ -17,10 +17,9 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
      * @return array
      */
     public static function getReplacements() {
-        $cacheKey = self::_getCacheKey();
+        $cacheKey = self::_getCacheKeyReplacements();
         $cache = CM_Cache_Local::getInstance();
         if (($replacements = $cache->get($cacheKey)) === false) {
-            $wordBoundary = '([^\w]|^|$)';
             $replacements = array();
             $linkList = new Denkmal_Paging_Link_All('label,url,automatic');
             foreach ($linkList->getItemsRaw() as $linkRow) {
@@ -28,9 +27,9 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
                 $url = (string) $linkRow['url'];
                 $automatic = (bool) $linkRow['automatic'];
                 if (!$automatic) {
-                    $search = '#' . $wordBoundary . '\[' . preg_quote($label, '#') . '\]' . $wordBoundary . '#ui';
+                    $search = '#' . self::_getWordBoundaryPattern() . '\[' . preg_quote($label, '#') . '\]' . self::_getWordBoundaryPattern() . '#ui';
                 } else {
-                    $search = '#' . $wordBoundary . preg_quote($label, '#') . $wordBoundary . '#ui';
+                    $search = '#' . self::_getWordBoundaryPattern() . preg_quote($label, '#') . self::_getWordBoundaryPattern() . '#ui';
                 }
                 $replace = '$1<a href="' . $url . '" class="url" target="_blank">' . $label . '</a>$2';
                 $replacements[] = array(
@@ -44,16 +43,55 @@ class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
         return $replacements;
     }
 
-    public static function clearCache() {
-        $cacheKey = self::_getCacheKey();
+    /**
+     * @return array
+     */
+    public static function getSearchesForManualSuggestions() {
+        $cacheKey = self::_getCacheKeyManualSuggestions();
         $cache = CM_Cache_Local::getInstance();
-        $cache->delete($cacheKey);
+        if (($searches = $cache->get($cacheKey)) === false) {
+            $searches = array();
+            $linkList = new Denkmal_Paging_Link_Manual('id,label,url');
+            foreach ($linkList->getItemsRaw() as $linkRow) {
+                $label = CM_Util::htmlspecialchars($linkRow['label'], ENT_QUOTES);
+                $id = (int) $linkRow['id'];
+                $search = '#' . self::_getWordBoundaryPattern('\[') . preg_quote($label, '#') . self::_getWordBoundaryPattern('\]') . '#ui';
+                $searches[] = array(
+                    'label'  => $label,
+                    'search' => $search,
+                    'id'     => $id,
+                );
+            }
+            $cache->set($cacheKey, $searches);
+        }
+        return $searches;
+    }
+
+    public static function clearCache() {
+        $cache = CM_Cache_Local::getInstance();
+        $cache->delete(self::_getCacheKeyReplacements());
+        $cache->delete(self::_getCacheKeyManualSuggestions());
+    }
+
+    /**
+     * @param string|null $exclude
+     * @return string
+     */
+    private static function _getWordBoundaryPattern($exclude = null) {
+        return '([^\w' . $exclude . ']|^|$)';
     }
 
     /**
      * @return string
      */
-    private static function _getCacheKey() {
-        return 'Denkmal_Usertext_Filter_Links';
+    private static function _getCacheKeyReplacements() {
+        return 'Denkmal_Usertext_Filter_Links:replacements';
+    }
+
+    /**
+     * @return string
+     */
+    private static function _getCacheKeyManualSuggestions() {
+        return 'Denkmal_Usertext_Filter_Links:manualSuggestions';
     }
 }

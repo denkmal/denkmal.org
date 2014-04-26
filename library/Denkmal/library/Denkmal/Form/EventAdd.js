@@ -7,7 +7,7 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Form_EventAdd',
 
-  /** @type Denkmal_Component_Event|Null */
+  /** @type Denkmal_Component_EventPreview|Null */
   _preview: null,
 
   childrenEvents: {
@@ -37,25 +37,21 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
   },
 
   renderPreview: function() {
-    var self = this;
-    this.loadComponent('Denkmal_Component_EventPreview', {data: this.getData()}, {
-      success: function() {
-        if (self._preview) {
-          self._preview.replaceWithHtml(this.$el);
+    var form = this;
+    this.submit('Preview', {handleErrors: false}).done(function(response) {
+      form._injectView(response, function() {
+        if (form._preview) {
+          form._preview.replaceWithHtml(this.$el);
         } else {
-          self.$el.append(this.$el);
+          form.$el.append(this.$el);
         }
-        self._preview = this;
-      },
-      error: function() {
-        if (self._preview) {
-          self._preview.remove();
-          self._preview = null;
-        }
-        return false;
-      },
-      method: 'previewEvent',
-      modal: false
+        form._preview = this;
+      });
+    }).fail(function() {
+      if (form._preview) {
+        form._preview.remove();
+        form._preview = null;
+      }
     });
   }
 });

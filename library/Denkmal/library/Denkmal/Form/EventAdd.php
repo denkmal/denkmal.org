@@ -17,6 +17,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $this->registerField('urls', new CM_FormField_Text());
 
         $this->registerAction(new Denkmal_FormAction_EventAdd_Create($this));
+        $this->registerAction(new Denkmal_FormAction_EventAdd_Preview($this));
     }
 
     protected function _renderStart(CM_Params $params) {
@@ -24,35 +25,6 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $fromTime = new DateTime();
         $fromTime->setTime(22, 00);
         $this->getField('fromTime')->setValue($fromTime);
-    }
-
-    public static function ajax_previewEvent(CM_Params $params, CM_ComponentFrontendHandler $handler, CM_Response_View_Ajax $response) {
-        $className = $params->getString('className');
-        $data = $params->getArray('data');
-
-        $form = new self();
-        $form->setup();
-
-        $formAction = $form->getAction('Create');
-        foreach ($formAction->getFieldList() as $name => $required) {
-            $field = $form->getField($name);
-            $value = $data[$name];
-            $valueValidated = null;
-
-            if (!$field->isEmpty($value)) {
-                $valueValidated = $field->validate($value, $response);
-            } else {
-                if ($required) {
-                    throw new CM_Exception_FormFieldValidation('Field `' . $name . '` is required');
-                }
-            }
-            $data[$name] = $valueValidated;
-        }
-
-        $event = self::getEventFromData(new Denkmal_Params($data));
-        $venue = self::getVenueFromData(new Denkmal_Params($data));
-
-        return $response->loadComponent(new Denkmal_Params(array('className' => $className, 'event' => $event, 'venue' => $venue)));
     }
 
     /**

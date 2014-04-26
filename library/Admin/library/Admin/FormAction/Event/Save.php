@@ -10,19 +10,7 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         /** @var Denkmal_Params $params */
         $event = $params->getEvent('eventId');
         $venue = $params->getVenue('venue');
-
-        $date = $params->getDateTime('date');
-        $from = clone $date;
-        $from->add($params->getDateInterval('fromTime'));
-        $until = null;
-        if ($params->has('untilTime')) {
-            $until = clone $date;
-            $until->add($params->getDateInterval('untilTime'));
-            if ($until < $from) {
-                $until->add(new DateInterval('P1D'));
-            }
-        }
-
+        list($from, $until) = $this->_processDate($params);
         $title = $params->has('title') ? $params->getString('title') : null;
         $description = $params->getString('description');
         $song = $params->has('song') ? $params->getSong('song') : null;
@@ -39,5 +27,27 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         $event->setStarred($starred);
 
         $response->reloadComponent();
+    }
+
+    /**
+     * @param Denkmal_Params $params
+     * @return DateTime[]
+     */
+    protected function _processDate(Denkmal_Params $params) {
+        $date = $params->getDateTime('date');
+
+        $from = clone $date;
+        $from->add($params->getDateInterval('fromTime'));
+
+        $until = null;
+        if ($params->has('untilTime')) {
+            $until = clone $date;
+            $until->add($params->getDateInterval('untilTime'));
+            if ($until < $from) {
+                $until->add(new DateInterval('P1D'));
+            }
+        }
+
+        return array($from, $until);
     }
 }

@@ -1,6 +1,9 @@
 <div class="venue {if $venue->getIgnore()}ignored{/if}">
   <div class="venue-content toggleNext">
-    <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue nowrap">{$venue->getName()|escape}</a>
+    <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue-name nowrap toggleNext-excluded">{$venue->getName()|escape}</a>
+    {if $venue->getUrl()}
+      <a href="{$venue->getUrl()|escape}" class="toggleNext-excluded"><span class="icon icon-external"></span></a>
+    {/if}
   </div>
   <div class="venue-edit toggleNext-content">
     {form name='Admin_Form_Venue' venue=$venue}

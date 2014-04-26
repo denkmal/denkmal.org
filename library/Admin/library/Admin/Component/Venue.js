@@ -17,5 +17,11 @@ var Admin_Component_Venue = Admin_Component_Abstract.extend({
     'Admin_Form_VenueMerge success': function() {
       this.remove();
     }
+  },
+
+  ready: function() {
+    this.$('.toggleNext .toggleNext-excluded').on('click', function(event) {
+      event.stopPropagation();
+    });
   }
 });

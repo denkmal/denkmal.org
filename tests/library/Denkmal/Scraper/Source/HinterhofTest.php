@@ -18,7 +18,7 @@ class Denkmal_Scraper_Source_HinterhofTest extends CMTest_TestCase {
             new DateTime('2014-04-17 20:00:00')
         );
         $scraper->expects($this->at(16))->method('_addEventAndVenue')->with(
-            'Hinterhof',
+            'Hinterhof Dachterrasse',
             new Denkmal_Scraper_Description('Dachterasse geöffnet'),
             new DateTime('2014-05-07 20:00:00')
         );

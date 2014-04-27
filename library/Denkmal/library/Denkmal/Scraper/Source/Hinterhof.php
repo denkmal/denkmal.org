@@ -17,6 +17,11 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
         $eventList = $html->find('.events > .entry');
         /** @var CM_Dom_NodeList $event */
         foreach ($eventList as $i => $event) {
+            $venueName = 'Hinterhof';
+            if (false !== stripos($event->getAttribute('class'), 'dachterrasse')) {
+                $venueName = 'Hinterhof Dachterrasse';
+            }
+
             $textWeekday = $event->find('.summary .weekday')->getText();
             if (!preg_match('#^\w+ (?<day>\d+)\.(?<month>\d+) -\s*?(?<titleAndGenres>.+?)?$#u', $textWeekday, $matches)) {
                 throw new CM_Exception_Invalid('Cannot parse `weekday` from `' . $textWeekday . '`.');
@@ -50,7 +55,7 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
             }
 
             $this->_addEventAndVenue(
-                'Hinterhof',
+                $venueName,
                 $description,
                 $from->getDateTime()
             );

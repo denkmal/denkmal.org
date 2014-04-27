@@ -12,6 +12,7 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
         'Apr'       => 4,
         'April'     => 4,
         'Mai'       => 5,
+        'May'       => 5,
         'Jun'       => 6,
         'Juni'      => 6,
         'Jul'       => 7,
@@ -22,10 +23,12 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
         'Sept'      => 9,
         'September' => 9,
         'Okt'       => 10,
+        'Oct'       => 10,
         'Oktober'   => 10,
         'Nov'       => 11,
         'November'  => 11,
         'Dez'       => 12,
+        'Dec'       => 12,
         'Dezember'  => 12,
     );
 

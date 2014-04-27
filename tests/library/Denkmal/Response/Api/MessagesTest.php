@@ -24,7 +24,11 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 
         $messageList = array();
         for ($i = 0; $i < $maxMessages + 3; $i++) {
-            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, null, $created);
+            $image = null;
+            if (0 == $image) {
+                $image = Denkmal_Model_MessageImage::create(new CM_File(DIR_TEST_DATA . 'image.jpg'));
+            }
+            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, $image, $created);
             $created->add(new DateInterval('PT3S'));
         }
 

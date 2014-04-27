@@ -25,16 +25,20 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
     }
 
     /**
-     * @param CM_File $file
+     * @param CM_File|string $file
      * @return Denkmal_Model_MessageImage
      */
-    public static function create(CM_File $file) {
+    public static function create($file) {
         $image = new self();
         $image->commit();
 
         $userFile = $image->getFile();
         $userFile->mkDir();
-        $file->copy($userFile->getPath());
+        if ($file instanceof CM_File) {
+            $file->copy($userFile->getPath());
+        } else {
+            $userFile->write($file);
+        }
         @chmod($userFile->getPath(), 0666);
 
         return $image;

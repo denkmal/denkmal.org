@@ -80,7 +80,7 @@ CREATE TABLE `denkmal_model_message` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `venue` int(11) unsigned NOT NULL,
   `created` int(11) unsigned NOT NULL,
-  `text` varchar(1000) NOT NULL,
+  `text` varchar(1000) DEFAULT NULL,
   `image` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `venue` (`venue`),

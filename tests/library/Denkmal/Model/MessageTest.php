@@ -29,4 +29,27 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
         $this->assertFalse($image->getFile()->getExists());
         new Denkmal_Model_Message($message->getId());
     }
+
+    public function getSetHasImage() {
+        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $message = Denkmal_Model_Message::create($venue, 'foo');
+        $this->assertFalse($message->hasImage());
+        $this->assertNull($message->getImage());
+
+        $image = Denkmal_Model_MessageImage::create(new CM_File(DIR_TEST_DATA . 'image.jpg'));
+        $message->setImage($image);
+        $this->assertTrue($message->hasImage());
+        $this->assertEquals($image, $message->getImage());
+    }
+
+    public function getSetHasText() {
+        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $message = Denkmal_Model_Message::create($venue);
+        $this->assertFalse($message->hasText());
+        $this->assertNull($message->getText());
+
+        $message->setText('foo');
+        $this->assertTrue($message->hasText());
+        $this->assertSame('foo', $message->getText());
+    }
 }

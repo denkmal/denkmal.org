@@ -16,3 +16,10 @@ if (!CM_Db_Db::existsColumn('denkmal_model_message', 'image')) {
       ADD CONSTRAINT `denkmal_model_message__image` FOREIGN KEY (`image`) REFERENCES `denkmal_model_messageimage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
     ');
 }
+
+if (!CM_Db_Db::describeColumn('denkmal_model_message', 'text')->getAllowNull()) {
+    CM_Db_Db::exec('
+    ALTER TABLE `denkmal_model_message`
+      CHANGE COLUMN `text` `text` varchar(1000) DEFAULT NULL
+    ');
+}

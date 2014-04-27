@@ -6,14 +6,16 @@ class Denkmal_Scraper_Genres {
     private $_genreList = array();
 
     /**
-     * @param string $genres Genres list as string
+     * @param string|string[] $genres
      */
     function __construct($genres) {
-        foreach (preg_split('#[,|/]#', $genres) as $genre) {
-            if ($genre = strtolower(trim($genre))) {
-                $this->_genreList[] = $genre;
-            }
+        if (!is_array($genres)) {
+            $genres = Functional\map(preg_split('#[,|/]#', $genres), function ($genre) {
+                return strtolower(trim($genre));
+            });
         }
+        $genres = array_filter($genres);
+        $this->_genreList = $genres;
     }
 
     /**

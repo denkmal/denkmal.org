@@ -22,7 +22,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     this._onShowPaneSetUrlDelayed = _.debounce(this._onShowPaneSetUrl, 2000);
 
     var $carousel = this.$('.swipeCarousel');
-    $carousel.removeClass('beforeload');
     this._carousel = new Carousel('.swipeCarousel');
     this._carousel.init();
 
@@ -35,6 +34,10 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
       _.each(this.getChildren('Denkmal_Component_EventList'), function(eventListView) {
         eventListView.closeAllEvents();
       });
+    });
+
+    this.on('ready', function() {
+      $carousel.removeClass('beforeload');
     });
   },
 

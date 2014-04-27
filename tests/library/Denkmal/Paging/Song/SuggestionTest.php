@@ -49,4 +49,17 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
         $paging = new Denkmal_Paging_Song_Suggestion($event);
         $this->assertEquals(array($song3, $song1, $song2), $paging->getItems());
     }
+
+    public function testGetItemsApostrophe() {
+        $file = new CM_File(DIR_TEST_DATA . 'music.mp3');
+        $song1 = Denkmal_Model_Song::create('don\'t kill the beast - so alone', $file);
+
+        Denkmal_Model_Link::create('Don\'t Kill the Beast', 'http://foo.com', true);
+
+        $venue = Denkmal_Model_Venue::create('my venue', false, false);
+        $event = Denkmal_Model_Event::create($venue, 'my event: Don\'t Kill the Beast', true, false, new DateTime());
+
+        $paging = new Denkmal_Paging_Song_Suggestion($event);
+        $this->assertEquals(array($song1), $paging->getItems());
+    }
 }

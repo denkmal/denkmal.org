@@ -7,6 +7,7 @@ class Denkmal_Paging_Song_Suggestion extends Denkmal_Paging_Song_Abstract {
      */
     public function __construct(Denkmal_Model_Event $event) {
         $text = $event->getDescription();
+        $text = CM_Util::htmlspecialchars($text, ENT_QUOTES);
 
         $termList = array();
 

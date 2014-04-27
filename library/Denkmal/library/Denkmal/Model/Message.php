@@ -17,17 +17,45 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     }
 
     /**
-     * @param string $text
+     * @param string|null $text
      */
-    public function setText($text) {
+    public function setText($text = null) {
         $this->_set('text', $text);
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getText() {
         return $this->_get('text');
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasText() {
+        return null !== $this->_get('text');
+    }
+
+    /**
+     * @param Denkmal_Model_MessageImage|null $image
+     */
+    public function setImage(Denkmal_Model_MessageImage $image = null) {
+        $this->_set('image', $image);
+    }
+
+    /**
+     * @return Denkmal_Model_MessageImage|null
+     */
+    public function getImage() {
+        return $this->_get('image');
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasImage() {
+        return null !== $this->_get('image');
     }
 
     /**
@@ -60,14 +88,23 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $array['venue'] = $this->getVenue()->getId();
         $array['created'] = $this->getCreated()->getTimestamp();
         $array['text'] = $this->getText();
+        $array['image-url'] = $this->hasImage() ? $render->getUrlUserContent($this->getImage()->getFile()) : null;
         return $array;
+    }
+
+    protected function _onDelete() {
+        if ($image = $this->getImage()) {
+            $this->setImage(null);
+            $image->delete();
+        }
     }
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
             'venue'   => array('type' => 'Denkmal_Model_Venue'),
-            'text'    => array('type' => 'string'),
+            'text'    => array('type' => 'string', 'optional' => true),
             'created' => array('type' => 'DateTime'),
+            'image'   => array('type' => 'Denkmal_Model_MessageImage', 'optional' => true),
         ));
     }
 
@@ -79,12 +116,13 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     }
 
     /**
-     * @param Denkmal_Model_Venue $venue
-     * @param string              $text
-     * @param DateTime|null       $created
+     * @param Denkmal_Model_Venue             $venue
+     * @param string|null                     $text
+     * @param Denkmal_Model_MessageImage|null $image
+     * @param DateTime|null                   $created
      * @return Denkmal_Model_Message
      */
-    public static function create(Denkmal_Model_Venue $venue, $text, DateTime $created = null) {
+    public static function create(Denkmal_Model_Venue $venue, $text = null, Denkmal_Model_MessageImage $image = null, DateTime $created = null) {
         if (null === $created) {
             $created = new DateTime();
         }
@@ -93,6 +131,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $message->setVenue($venue);
         $message->setText($text);
         $message->setCreated($created);
+        $message->setImage($image);
         $message->commit();
 
         return $message;

@@ -50,13 +50,15 @@ Response:
          "id":401,
          "venue":78,
          "created":1371386731,
-         "text":"Foo 1"
+         "text":"Foo 1",
+         "image-url":null
       },
       {
          "id":402,
          "venue":78,
          "created":1371386731,
-         "text":"Foo 2"
+         "text":null,
+         "image-url":"http://www.example.com/image.jpg"
       }
    ],
    "dayOffset" : 6
@@ -78,13 +80,15 @@ Response:
       "id":4,
       "venue":2,
       "created":1371383458,
-      "text":"Foo 1"
+      "text":"Foo 1",
+      "image-url":null
    },
    {
       "id":5,
       "venue":3,
       "created":1371383458,
-      "text":"Foo 2"
+      "text":null,
+      "image-url":"http://www.example.com/image.jpg"
    }
 ]
 ```
@@ -112,10 +116,22 @@ Response:
 	"id":13,
 	"venue":1,
 	"created":1380379451,
-	"text":"foobar"
+	"text":"foobar",
+	"image-url":null
 }
 ```
 Where `<HASH>` is `sha1($secret . $text)`.
+
+Optionally send an image along:
+```
+POST /api/message HTTP/1.1
+Host: www.denkmal.org
+content-type: text/plain
+content-length: 1234
+
+venue=1&image-data=<BASE64-ENCODED-IMAGE-DATA>&hash=<HASH>
+```
+Where `<HASH>` is `sha1($secret . md5($file))`.
 
 
 ## Receive message (WebSocket)

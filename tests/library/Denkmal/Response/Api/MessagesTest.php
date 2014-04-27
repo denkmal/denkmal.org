@@ -24,7 +24,11 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 
         $messageList = array();
         for ($i = 0; $i < $maxMessages + 3; $i++) {
-            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, $created);
+            $image = null;
+            if (0 == $image) {
+                $image = Denkmal_Model_MessageImage::create(new CM_File(DIR_TEST_DATA . 'image.jpg'));
+            }
+            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, $image, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
@@ -49,7 +53,7 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
         $venueNoEvents = Denkmal_Model_Venue::create('Example 1', true, false);
         $messageListNoEvent = array();
         for ($i = 0; $i < $minMessagesVenue + 6; $i++) {
-            $messageListNoEvent[] = Denkmal_Model_Message::create($venueNoEvents, 'Foo ' . $i, $created);
+            $messageListNoEvent[] = Denkmal_Model_Message::create($venueNoEvents, 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
@@ -58,14 +62,14 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
         Denkmal_Model_Event::create($venueHasEvents, 'Foo', true, false, $eventDate);
         $messageListHasEvent = array();
         for ($i = 0; $i < $minMessagesVenue + 7; $i++) {
-            $messageListHasEvent[] = Denkmal_Model_Message::create($venueHasEvents, 'Foo ' . $i, $created);
+            $messageListHasEvent[] = Denkmal_Model_Message::create($venueHasEvents, 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
         $venue = Denkmal_Model_Venue::create('Example 3', true, false);
         $messageList = array();
         for ($i = 0; $i < $maxMessages + 8; $i++) {
-            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, $created);
+            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 

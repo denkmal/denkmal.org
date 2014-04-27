@@ -15,7 +15,7 @@
 {if $futureEvents->getCount() || $venue->getCoordinates()}
   {if $venue->getCoordinates()}
     <div class="map">
-      <a href="https://maps.google.com/maps?saddr=&daddr={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target="_blank">
+      <a href="https://maps.google.com/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target="_blank">
         <img src="{googlemaps_img coordinates=$venue->getCoordinates() width=300 height=300 scale=2}">
       </a>
     </div>

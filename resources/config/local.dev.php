@@ -31,6 +31,8 @@ $config->SK_Entertainment_UserTemplate->entertainerCountMin = 20;
 $config->CM_Model_Splittest->withoutPersistence = true;
 $config->CM_Model_Splitfeature->withoutPersistence = true;
 
+$config->Denkmal_Scraper_Source_Lastfm->apiKey = '68dda0be24c60cef36b7f05b70988b74';
+
 $config->Denkmal_Site->url = 'http://www.denkmal.dev';
 $config->Denkmal_Site->urlCdn = 'http://origin-www.denkmal.dev';
 $config->Admin_Site->url = 'http://admin.denkmal.dev';

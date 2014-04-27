@@ -26,7 +26,7 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
 
     /**
      * @param CM_File $file
-     * @return Denkmal_Model_Song
+     * @return Denkmal_Model_MessageImage
      */
     public static function create(CM_File $file) {
         $image = new self();

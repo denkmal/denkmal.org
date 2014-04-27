@@ -21,6 +21,12 @@ var Admin_Component_Event = Admin_Component_Abstract.extend({
     }
   },
 
+  ready: function() {
+    this.$('.toggleNext .toggleNext-excluded').on('click', function(event) {
+      event.stopPropagation();
+    });
+  },
+
   /**
    * @param {String} label
    * @param {String} searchPattern

@@ -31,6 +31,20 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     }
 
     /**
+     * @param Denkmal_Model_MessageImage|null $image
+     */
+    public function setImage(Denkmal_Model_MessageImage $image = null) {
+        $this->_set('image', $image);
+    }
+
+    /**
+     * @return Denkmal_Model_MessageImage|null
+     */
+    public function getImage() {
+        return $this->_get('image');
+    }
+
+    /**
      * @param Denkmal_Model_Venue $venue
      */
     public function setVenue($venue) {
@@ -60,7 +74,17 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $array['venue'] = $this->getVenue()->getId();
         $array['created'] = $this->getCreated()->getTimestamp();
         $array['text'] = $this->getText();
+        if ($image = $this->getImage()) {
+            $array['image-url'] = $render->getUrlUserContent($image->getFile());
+        }
         return $array;
+    }
+
+    protected function _onDelete() {
+        if ($image = $this->getImage()) {
+            $this->setImage(null);
+            $image->delete();
+        }
     }
 
     protected function _getSchema() {
@@ -68,6 +92,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
             'venue'   => array('type' => 'Denkmal_Model_Venue'),
             'text'    => array('type' => 'string'),
             'created' => array('type' => 'DateTime'),
+            'image'   => array('type' => 'Denkmal_Model_MessageImage', 'optional' => true),
         ));
     }
 
@@ -79,12 +104,13 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     }
 
     /**
-     * @param Denkmal_Model_Venue $venue
-     * @param string              $text
-     * @param DateTime|null       $created
+     * @param Denkmal_Model_Venue             $venue
+     * @param string                          $text
+     * @param DateTime|null                   $created
+     * @param Denkmal_Model_MessageImage|null $image
      * @return Denkmal_Model_Message
      */
-    public static function create(Denkmal_Model_Venue $venue, $text, DateTime $created = null) {
+    public static function create(Denkmal_Model_Venue $venue, $text, Denkmal_Model_MessageImage $image = null, DateTime $created = null) {
         if (null === $created) {
             $created = new DateTime();
         }
@@ -93,6 +119,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $message->setVenue($venue);
         $message->setText($text);
         $message->setCreated($created);
+        $message->setImage($image);
         $message->commit();
 
         return $message;

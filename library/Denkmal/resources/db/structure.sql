@@ -81,10 +81,12 @@ CREATE TABLE `denkmal_model_message` (
   `venue` int(11) unsigned NOT NULL,
   `created` int(11) unsigned NOT NULL,
   `text` varchar(1000) NOT NULL,
+  `image` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `venue` (`venue`),
   KEY `created` (`created`),
-  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `denkmal_model_message__image` FOREIGN KEY (`image`) REFERENCES `denkmal_model_messageimage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
@@ -100,9 +102,9 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
 
 
 CREATE TABLE IF NOT EXISTS `denkmal_model_user` (
-		`userId` int(11) unsigned NOT NULL,
-		`email` varchar(32) NOT NULL,
-		`password` char(64) NULL,
-		PRIMARY KEY (`userId`),
-		UNIQUE KEY `email` (`email`)
+  `userId` int(11) unsigned NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `password` char(64) NULL,
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

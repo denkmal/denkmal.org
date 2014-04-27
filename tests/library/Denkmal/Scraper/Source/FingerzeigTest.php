@@ -22,7 +22,7 @@ class Denkmal_Scraper_Source_FingerzeigTest extends CMTest_TestCase {
             new Denkmal_Scraper_Description('Balz – wolf+lamb', null, new Denkmal_Scraper_Genres('electro, house')),
             new DateTime('2014-04-23 22:00:00')
         );
-        /** @var Denkmal_Scraper_Source_Programmzeitung $scraper */
+        /** @var Denkmal_Scraper_Source_Fingerzeig $scraper */
 
         $scraper->processPageDate($html, new DateTime('2014-04-23'));
     }

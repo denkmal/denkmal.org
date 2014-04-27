@@ -28,7 +28,7 @@ var Admin_Component_Event = Admin_Component_Abstract.extend({
   selectLink: function(label) {
     var fieldDescription = this.findChild('Admin_Form_Event').getField('description');
     var text = fieldDescription.getValue();
-    var search = new RegExp('([^\\w\\[]|^|$)' + this._escapeRegexp(label) + '([^\\w\\]]|^|$)', 'ig');
+    var search = new RegExp('([^\\w\\[]|^|$)' + this._escapeRegexp(label) + '([^\\w\\]]|^|$)', 'i');
     fieldDescription.setValue(text.replace(search, '$1[' + label + ']$2'));
     fieldDescription.trigger('change');
   },

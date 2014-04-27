@@ -3,7 +3,7 @@
 class Denkmal_Scraper_Source_ProgrammzeitungTest extends CMTest_TestCase {
 
     public function testProcessPageDate() {
-        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'programmzeitung.html');
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/programmzeitung.html');
 
         $scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Programmzeitung')->setMethods(array('_addEventAndVenue'))->getMock();
         $scraper->expects($this->exactly(18))->method('_addEventAndVenue');

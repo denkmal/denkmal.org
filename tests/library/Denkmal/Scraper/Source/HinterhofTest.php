@@ -3,7 +3,7 @@
 class Denkmal_Scraper_Source_HinterhofTest extends CMTest_TestCase {
 
     public function testProcessPageDate() {
-        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'hinterhof.html');
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/hinterhof.html');
 
         $scraper = $this->getMockBuilder('Denkmal_Scraper_Source_Hinterhof')->setMethods(array('_addEventAndVenue'))->getMock();
         $scraper->expects($this->exactly(27))->method('_addEventAndVenue');

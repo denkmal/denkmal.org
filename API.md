@@ -51,14 +51,17 @@ Response:
          "venue":78,
          "created":1371386731,
          "text":"Foo 1",
-         "image-url":null
+         "image":null
       },
       {
          "id":402,
          "venue":78,
          "created":1371386731,
          "text":null,
-         "image-url":"http://www.example.com/image.jpg"
+         "image":{
+            "url-view":"http://www.example.com/image-view.jpg",
+            "url-thumb":"http://www.example.com/image-thumb.jpg"
+         }
       }
    ],
    "dayOffset" : 6
@@ -81,14 +84,17 @@ Response:
       "venue":2,
       "created":1371383458,
       "text":"Foo 1",
-      "image-url":null
+      "image":null
    },
    {
       "id":5,
       "venue":3,
       "created":1371383458,
       "text":null,
-      "image-url":"http://www.example.com/image.jpg"
+      "image":{
+         "url-view":"http://www.example.com/image-view.jpg",
+         "url-thumb":"http://www.example.com/image-thumb.jpg"
+      }
    }
 ]
 ```
@@ -117,7 +123,7 @@ Response:
 	"venue":1,
 	"created":1380379451,
 	"text":"foobar",
-	"image-url":null
+	"image":null
 }
 ```
 Where `<HASH>` is `sha1($secret . $text)`.
@@ -149,16 +155,20 @@ Send the following JSON-string to subscribe to messages:
 ```
 where `<TIMESTAMP>` is a unix timestamp in seconds from when on you want to receive messages.
 
-You will receive messages in the following format:
+You will receive messages in the following format (`data` is the same as in the HTTP API):
 ```
 {
-   "channel":"global-external:18",
+   "channel":"global-external:15",
    "event":"message-create",
    "data":{
-      "id":12,
-      "venue":1,
-      "created":1380409713,
-      "text":"hello world"
+      "id":5,
+      "venue":3,
+      "created":1371383458,
+      "text":null,
+      "image":{
+         "url-view":"http://www.example.com/image-view.jpg",
+         "url-thumb":"http://www.example.com/image-thumb.jpg"
+      }
    }
 }
 ```

@@ -88,7 +88,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $array['venue'] = $this->getVenue()->getId();
         $array['created'] = $this->getCreated()->getTimestamp();
         $array['text'] = $this->getText();
-        $array['image-url'] = $this->hasImage() ? $render->getUrlUserContent($this->getImage()->getFile()) : null;
+        $array['image-url'] = $this->hasImage() ? $this->getImage()->toArrayApi($render) : null;
         return $array;
     }
 

@@ -51,14 +51,17 @@ Response:
          "venue":78,
          "created":1371386731,
          "text":"Foo 1",
-         "image-url":null
+         "image":null
       },
       {
          "id":402,
          "venue":78,
          "created":1371386731,
          "text":null,
-         "image-url":"http://www.example.com/image.jpg"
+         "image":{
+            "url-view":"http://www.example.com/image-view.jpg",
+            "url-thumb":"http://www.example.com/image-thumb.jpg"
+         }
       }
    ],
    "dayOffset" : 6
@@ -81,14 +84,17 @@ Response:
       "venue":2,
       "created":1371383458,
       "text":"Foo 1",
-      "image-url":null
+      "image":null
    },
    {
       "id":5,
       "venue":3,
       "created":1371383458,
       "text":null,
-      "image-url":"http://www.example.com/image.jpg"
+      "image":{
+         "url-view":"http://www.example.com/image-view.jpg",
+         "url-thumb":"http://www.example.com/image-thumb.jpg"
+      }
    }
 ]
 ```
@@ -117,7 +123,7 @@ Response:
 	"venue":1,
 	"created":1380379451,
 	"text":"foobar",
-	"image-url":null
+	"image":null
 }
 ```
 Where `<HASH>` is `sha1($secret . $text)`.

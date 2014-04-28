@@ -2,17 +2,28 @@
 
 class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
+    private $_fileTypeList = array(
+        'thumb',
+        'view',
+    );
+
     /**
+     * @param string $type
+     * @throws CM_Exception_Invalid
      * @return CM_File_UserContent
      */
-    public function getFile() {
-        $filename = $this->getId() . '.jpg';
+    public function getFile($type) {
+        if (!in_array($type, $this->_fileTypeList, true)) {
+            throw new CM_Exception_Invalid('Unknown file type `' . $type . '`.');
+        }
+        $filename = $this->getId() . '-' . $type . '.jpg';
         return new CM_File_UserContent('message-image', $filename);
     }
 
     public function toArrayApi(CM_Render $render) {
         $array = array();
-        $array['url'] = $render->getUrlUserContent($this->getFile());
+        $array['url-view'] = $render->getUrlUserContent($this->getFile('view'));
+        $array['url-thumb'] = $render->getUrlUserContent($this->getFile('thumb'));
         return $array;
     }
 
@@ -21,25 +32,28 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
     }
 
     protected function _onDelete() {
-        $this->getFile()->delete();
+        foreach ($this->_fileTypeList as $fileType) {
+            $this->getFile($fileType)->delete();
+        }
     }
 
     /**
-     * @param CM_File|string $file
+     * @param CM_File_Image $file
+     * @throws CM_Exception
      * @return Denkmal_Model_MessageImage
      */
-    public static function create($file) {
+    public static function create(CM_File_Image $file) {
         $image = new self();
         $image->commit();
 
-        $userFile = $image->getFile();
-        $userFile->mkDir();
-        if ($file instanceof CM_File) {
-            $file->copy($userFile->getPath());
-        } else {
-            $userFile->write($file);
+        try {
+            $image->getFile('view')->mkDir();
+            $file->resize(2000, 2000, false, $image->getFile('view')->getPath(), CM_File_Image::FORMAT_JPEG);
+            $file->resize(400, 400, true, $image->getFile('thumb')->getPath(), CM_File_Image::FORMAT_JPEG);
+        } catch (CM_Exception $ex) {
+            $image->delete();
+            throw $ex;
         }
-        @chmod($userFile->getPath(), 0666);
 
         return $image;
     }

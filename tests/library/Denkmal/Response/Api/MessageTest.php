@@ -72,13 +72,16 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
         $message = $messageList->getItem(0);
         $this->assertEquals($venue, $message->getVenue());
         $this->assertSame(null, $message->getText());
-        $this->assertSame($file->read(), $message->getImage()->getFile()->read());
         $this->assertSameTime($createTime, $message->getCreated()->getTimestamp());
+        $imageFileThumb = new CM_File_Image($message->getImage()->getFile('thumb'));
+        $this->assertSame(CM_File_Image::FORMAT_JPEG, $imageFileThumb->getFormat());
+        $imageFileView = new CM_File_Image($message->getImage()->getFile('view'));
+        $this->assertSame(CM_File_Image::FORMAT_JPEG, $imageFileView->getFormat());
     }
 
     /**
      * @expectedException CM_Exception_Invalid
-     * @expectedExceptionMessage Either `text` or `imageData` is required.
+     * @expectedExceptionMessage Either `text` or `image-data` is required.
      */
     public function testProcessMissingTextOrImage() {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
@@ -93,7 +96,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
 
     /**
      * @expectedException CM_Exception_Invalid
-     * @expectedExceptionMessage Specifying both `text` and `imageData` is not allowed.
+     * @expectedExceptionMessage Specifying both `text` and `image-data` is not allowed.
      */
     public function testProcessBothTextAndImage() {
         $venue = Denkmal_Model_Venue::create('Example', true, false);

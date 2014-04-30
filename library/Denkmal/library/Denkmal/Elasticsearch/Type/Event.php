@@ -37,7 +37,7 @@ class Denkmal_Elasticsearch_Type_Event extends CM_Elasticsearch_Type_Abstract {
     }
 
     protected function _getDocument(array $data) {
-        $doc = new Elastica_Document($data['id'],
+        $doc = new Elastica\Document($data['id'],
             array(
                 'from'        => $this->convertDate((int) $data['from']),
                 'description' => (string) $data['description'],

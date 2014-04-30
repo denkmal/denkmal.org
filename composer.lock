@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0e4870e96f13ba357b69c2bece69c11c",
+    "hash": "5a49caa1ea3d2cbfe18b8e0ae12181ea",
     "packages": [
         {
             "name": "amazonwebservices/aws-sdk-for-php",
@@ -56,17 +56,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.15.8",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "451096220a8785a57b9dceba1fc942b459480f40"
+                "reference": "328405b0608d75c846f40bfc926c143831c70e31"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-451096220a8785a57b9dceba1fc942b459480f40-zip-447d08.zip",
-                "reference": "451096220a8785a57b9dceba1fc942b459480f40",
-                "shasum": "d542cb774ff9ddd99da99f4ad40a11ddeb256ce1"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-328405b0608d75c846f40bfc926c143831c70e31-zip-308415.zip",
+                "reference": "328405b0608d75c846f40bfc926c143831c70e31",
+                "shasum": "ca562a7509dd1f4eef72624ee554f611c6cd8b8c"
             },
             "require": {
                 "amazonwebservices/aws-sdk-for-php": "1.5.*",
@@ -76,7 +76,7 @@
                 "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.4.0",
                 "phpmailer/phpmailer": "5.2.6",
-                "ruflin/elastica": "v0.19.8.0",
+                "ruflin/elastica": "v1.1.1.1",
                 "smarty/smarty": "3.1.16"
             },
             "require-dev": {
@@ -104,7 +104,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-04-27 19:14:58"
+            "time": "2014-04-30 13:06:25"
         },
         {
             "name": "composer/composer",
@@ -462,27 +462,39 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "v0.19.8.0",
+            "version": "v1.1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "34a7e62a257febd5295efeacfa0209712e0ceb65"
+                "reference": "fc607170ab2ca751097648d48a5d38e15e9d5f6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-34a7e62a257febd5295efeacfa0209712e0ceb65-zip-f92c51.zip",
-                "reference": "34a7e62a257febd5295efeacfa0209712e0ceb65",
-                "shasum": "17ec72c8f0969c0f260eee70445f36417215f814"
+                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-fc607170ab2ca751097648d48a5d38e15e9d5f6a-zip-bd0136.zip",
+                "reference": "fc607170ab2ca751097648d48a5d38e15e9d5f6a",
+                "shasum": "2ff4040114640463446bb7867b063f31cdbafd97"
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "munkie/elasticsearch-thrift-php": "1.4.*",
+                "psr/log": "~1.0",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "suggest": {
+                "monolog/monolog": "Logging request",
+                "munkie/elasticsearch-thrift-php": "Allow using thrift transport",
+                "psr/log": "for logging"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Elastica": "lib/"
+                    "Elastica": "lib/",
+                    "Elastica\\Test": "test/lib/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache 2.0"
             ],
@@ -493,12 +505,12 @@
                 }
             ],
             "description": "Elasticsearch Client",
-            "homepage": "http://ruflin.github.com/Elastica/",
+            "homepage": "http://elastica.io/",
             "keywords": [
                 "client",
                 "search"
             ],
-            "time": "2012-08-12 16:51:36"
+            "time": "2014-04-27 17:30:35"
         },
         {
             "name": "seld/jsonlint",
@@ -597,18 +609,18 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.5.0-BETA1",
+            "version": "v2.5.0-BETA2",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "abfdf388c2f47c4d4ba721afab7e91f15ffa476f"
+                "reference": "d12686cea4e1155ed93449c0bca9db223f31bb2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-abfdf388c2f47c4d4ba721afab7e91f15ffa476f-zip-904508.zip",
-                "reference": "abfdf388c2f47c4d4ba721afab7e91f15ffa476f",
-                "shasum": "bcd0fb0bab34f3a42287db4aba98babf8371cd3b"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-d12686cea4e1155ed93449c0bca9db223f31bb2d-zip-f65cc4.zip",
+                "reference": "d12686cea4e1155ed93449c0bca9db223f31bb2d",
+                "shasum": "f3fdf03b0a7906428b56e971a78b901c8fef6b5b"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -650,22 +662,22 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-02 16:54:39"
+            "time": "2014-04-28 13:26:08"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.5.0-BETA1",
+            "version": "v2.5.0-BETA2",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "d45faef922df8438cce99b5ee226bf06c32d145e"
+                "reference": "51e3af2081d8497f6552cb3338e8a40541646773"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-d45faef922df8438cce99b5ee226bf06c32d145e-zip-484c39.zip",
-                "reference": "d45faef922df8438cce99b5ee226bf06c32d145e",
-                "shasum": "b82352f16649844de23118e52510c690b42b0179"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-51e3af2081d8497f6552cb3338e8a40541646773-zip-eae3d3.zip",
+                "reference": "51e3af2081d8497f6552cb3338e8a40541646773",
+                "shasum": "3c377816d1d49027d97734c068a09ac5c1e3110b"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -699,22 +711,22 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-03 12:53:01"
+            "time": "2014-04-28 05:15:04"
         },
         {
             "name": "symfony/process",
-            "version": "v2.5.0-BETA1",
+            "version": "v2.5.0-BETA2",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "10767aeb15bd6fc0c7cf18fa6883e5237ea7cf29"
+                "reference": "8a3edace8e8aabed8992b993bfc13df3b1e836f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-10767aeb15bd6fc0c7cf18fa6883e5237ea7cf29-zip-d64b9a.zip",
-                "reference": "10767aeb15bd6fc0c7cf18fa6883e5237ea7cf29",
-                "shasum": "48dbbcff2b1d53b495a6dd8c1ca5a60d59c6fcc8"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-8a3edace8e8aabed8992b993bfc13df3b1e836f2-zip-b5107c.zip",
+                "reference": "8a3edace8e8aabed8992b993bfc13df3b1e836f2",
+                "shasum": "fb8c4650d58af48f8d9a782769f9c5cbd04753a1"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -748,7 +760,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-03 05:23:50"
+            "time": "2014-04-28 05:15:04"
         }
     ],
     "packages-dev": [
@@ -994,20 +1006,22 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.35",
+            "version": "3.7.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "83f9537e46346f75ed6925441ac259453213c7cc"
+                "reference": "1735d588c9f35bd8686cae0208d8adde77b45365"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-83f9537e46346f75ed6925441ac259453213c7cc-zip-882a9c.zip",
-                "reference": "83f9537e46346f75ed6925441ac259453213c7cc",
-                "shasum": "c0d3c2446c8bd7892e4daf87f9d530d3487e557d"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-1735d588c9f35bd8686cae0208d8adde77b45365-zip-6a8558.zip",
+                "reference": "1735d588c9f35bd8686cae0208d8adde77b45365",
+                "shasum": "1462ddb4100f0bf8fca67c42978c67fa012d8b9a"
             },
             "require": {
+                "ext-ctype": "*",
                 "ext-dom": "*",
+                "ext-json": "*",
                 "ext-pcre": "*",
                 "ext-reflection": "*",
                 "ext-spl": "*",
@@ -1023,9 +1037,6 @@
                 "pear-pear.php.net/pear": "1.9.4"
             },
             "suggest": {
-                "ext-json": "*",
-                "ext-simplexml": "*",
-                "ext-tokenizer": "*",
                 "phpunit/php-invoker": "~1.1"
             },
             "bin": [
@@ -1064,7 +1075,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-04-21 06:25:54"
+            "time": "2014-04-29 07:24:10"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1116,18 +1127,18 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.5.0-BETA1",
+            "version": "v2.5.0-BETA2",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "cee3067d680232674c6505d91db9d3d635a9a8f4"
+                "reference": "e9525fc511a51e7bfa214c6c420515c580fda35a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-cee3067d680232674c6505d91db9d3d635a9a8f4-zip-668e66.zip",
-                "reference": "cee3067d680232674c6505d91db9d3d635a9a8f4",
-                "shasum": "26714f00c45af09b7971f69b7720d847c84620bd"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-e9525fc511a51e7bfa214c6c420515c580fda35a-zip-b9be45.zip",
+                "reference": "e9525fc511a51e7bfa214c6c420515c580fda35a",
+                "shasum": "f7bbd3d37a20d633a26448158ee46f70a392657b"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -1161,7 +1172,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-26 11:51:10"
+            "time": "2014-04-18 20:40:13"
         }
     ],
     "aliases": [

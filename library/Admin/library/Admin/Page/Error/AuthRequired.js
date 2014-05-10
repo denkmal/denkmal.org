@@ -1,8 +1,8 @@
 /**
  * @class Admin_Page_Error_AuthRequired
- * @extends Admin_Page_Abstract
+ * @extends CM_Page_Error_AuthRequired
  */
-var Admin_Page_Error_AuthRequired = Admin_Page_Abstract.extend({
+var Admin_Page_Error_AuthRequired = CM_Page_Error_AuthRequired.extend({
 
   /** @type String */
   _class: 'Admin_Page_Error_AuthRequired'

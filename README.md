@@ -3,15 +3,11 @@ denkmal.org [![Build Status](https://travis-ci.org/denkmal/denkmal.org.png)](htt
 
 Development
 -----------
-Install the [`librarian-puppet` plugin for vagrant](https://github.com/mhahn/vagrant-librarian-puppet):
+Install the [`librarian-puppet`](https://github.com/mhahn/vagrant-librarian-puppet)
+and [landrush](https://github.com/phinze/landrush) plugins for Vagrant:
 ```
 vagrant plugin install vagrant-librarian-puppet
-```
-
-Install the [DNS plugin for vagrant](https://github.com/BerlinVagrant/vagrant-dns) and register it in OSX:
-```
-vagrant plugin install vagrant-dns
-vagrant dns --install
+vagrant plugin install landrush
 ```
 
 Start and provision the box:

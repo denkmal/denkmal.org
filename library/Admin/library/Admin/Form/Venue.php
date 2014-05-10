@@ -7,6 +7,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->registerField('name', new CM_FormField_Text());
         $this->registerField('url', new CM_FormField_Url());
         $this->registerField('address', new CM_FormField_Text());
+        $this->registerField('email', new CM_FormField_Email());
         $this->registerField('coordinates', new CM_FormField_GeoPoint());
         $this->registerField('ignore', new CM_FormField_Boolean());
 
@@ -21,6 +22,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->getField('name')->setValue($venue->getName());
         $this->getField('url')->setValue($venue->getUrl());
         $this->getField('address')->setValue($venue->getAddress());
+        $this->getField('email')->setValue($venue->getEmail());
         $this->getField('coordinates')->setValue($venue->getCoordinates());
         $this->getField('ignore')->setValue($venue->getIgnore());
     }

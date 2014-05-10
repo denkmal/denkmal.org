@@ -47,9 +47,9 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
         $image->commit();
 
         try {
-            $image->getFile('view')->mkDir();
-            $file->resize(2000, 2000, false, $image->getFile('view')->getPath(), CM_File_Image::FORMAT_JPEG);
-            $file->resize(400, 400, true, $image->getFile('thumb')->getPath(), CM_File_Image::FORMAT_JPEG);
+            $image->getFile('view')->ensureParentDirectory();
+            $file->resize(2000, 2000, false, CM_File_Image::FORMAT_JPEG, $image->getFile('view'));
+            $file->resize(400, 400, true, CM_File_Image::FORMAT_JPEG, $image->getFile('thumb'));
         } catch (CM_Exception $ex) {
             $image->delete();
             throw $ex;

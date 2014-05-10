@@ -25,4 +25,4 @@ Create elasticsearch indices:
 vagrant ssh -c 'denkmal/bin/cm search-index create'
 ```
 
-The app should now be accessible on your host machine at http://www.denkmal.dev/!
+The app should now be accessible on your host machine at http://www.denkmal.dev/.

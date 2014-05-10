@@ -29,6 +29,7 @@ CREATE TABLE `denkmal_model_venue` (
   `longitude` float DEFAULT NULL,
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `ignore` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `queued` (`queued`),

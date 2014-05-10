@@ -42,4 +42,10 @@ class Denkmal_Scraper_DescriptionTest extends CMTest_TestCase {
 
         $this->assertSame('Foo', $description->getAll());
     }
+
+    public function testCapsLock() {
+        $description = new Denkmal_Scraper_Description('MY FOOD');
+
+        $this->assertSame('MY Food', $description->getAll());
+    }
 }

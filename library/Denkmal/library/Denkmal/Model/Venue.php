@@ -115,6 +115,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->_set('ignore', $ignore);
     }
 
+    /**
+     * @return string|null
+     */
+    public function getEmail() {
+        return $this->_get('email');
+    }
+
+    /**
+     * @param string|null $email
+     */
+    public function setEmail($email) {
+        $this->_set('email', $email);
+    }
+
     public function toArrayApi(CM_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
@@ -187,6 +201,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setCoordinates($coordinates);
         $venue->setQueued($queued);
         $venue->setIgnore($ignore);
+        $venue->setEmail(null);
         $venue->commit();
         return $venue;
     }
@@ -215,6 +230,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
             'longitude' => array('type' => 'float', 'optional' => true),
             'queued'    => array('type' => 'boolean'),
             'ignore'    => array('type' => 'boolean'),
+            'email'     => array('type' => 'string', 'optional' => true),
         ));
     }
 

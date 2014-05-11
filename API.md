@@ -64,9 +64,12 @@ Response:
          }
       }
    ],
-   "dayOffset" : 6
+   "dayOffset" : 6,
+   "suspendedUntil": null
 }
 ```
+
+When the site is suspended temporarily `suspendedUntil` can return a timestamp of the date of return.
 
 
 ## Get messages

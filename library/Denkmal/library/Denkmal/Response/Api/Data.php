@@ -7,6 +7,9 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
     }
 
     protected function _process() {
+        $site = new Denkmal_Site();
+        $suspension = $site->getSuspension();
+
         $venueListArray = array();
         /** @var Denkmal_Model_Venue $venue */
         foreach (new Denkmal_Paging_Venue_All() as $venue) {
@@ -14,11 +17,13 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
         }
 
         $eventListArray = array();
-        /** @var DateTime $date */
-        foreach (new Denkmal_Paging_DateTime_Days() as $date) {
-            /** @var Denkmal_Model_Event $event */
-            foreach (new Denkmal_Paging_Event_Date($date) as $event) {
-                $eventListArray[] = $event->toArrayApi($this->getRender());
+        if (!$suspension->isActive()) {
+            /** @var DateTime $date */
+            foreach (new Denkmal_Paging_DateTime_Days() as $date) {
+                /** @var Denkmal_Model_Event $event */
+                foreach (new Denkmal_Paging_Event_Date($date) as $event) {
+                    $eventListArray[] = $event->toArrayApi($this->getRender());
+                }
             }
         }
 
@@ -31,10 +36,11 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
         $dayOffset = Denkmal_Site::getDayOffset();
 
         $this->_setContent(array(
-            'venues'    => $venueListArray,
-            'events'    => $eventListArray,
-            'messages'  => $messageListArray,
-            'dayOffset' => $dayOffset,
+            'venues'         => $venueListArray,
+            'events'         => $eventListArray,
+            'messages'       => $messageListArray,
+            'dayOffset'      => $dayOffset,
+            'suspendedUntil' => $suspension->isActive() ? $suspension->getUntil()->getTimestamp() : null,
         ));
     }
 

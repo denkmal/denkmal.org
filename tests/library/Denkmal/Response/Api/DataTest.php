@@ -37,19 +37,20 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
         $response->process();
 
         $expected = array(
-            'venues'    => array(
+            'venues'         => array(
                 $venue1->toArrayApi($response->getRender()),
                 $venue2->toArrayApi($response->getRender()),
             ),
-            'events'    => array(
+            'events'         => array(
                 $event1->toArrayApi($response->getRender()),
                 $event2->toArrayApi($response->getRender()),
             ),
-            'messages'  => array(
+            'messages'       => array(
                 $message1->toArrayApi($response->getRender()),
                 $message2->toArrayApi($response->getRender()),
             ),
-            'dayOffset' => Denkmal_Site::getDayOffset(),
+            'dayOffset'      => Denkmal_Site::getDayOffset(),
+            'suspendedUntil' => null,
         );
 
         $this->assertSame($expected, json_decode($response->getContent(), true));

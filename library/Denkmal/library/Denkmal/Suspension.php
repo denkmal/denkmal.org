@@ -15,4 +15,13 @@ class Denkmal_Suspension extends CM_Class_Abstract {
     public function setUntil(DateTime $until = null) {
         CM_Option::getInstance()->set('suspendedUntil', $until);
     }
+
+    /**
+     * @return bool
+     */
+    public function isActive() {
+        $now = new DateTime();
+        $until = $this->getUntil();
+        return $until && $until > $now;
+    }
 }

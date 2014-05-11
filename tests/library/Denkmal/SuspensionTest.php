@@ -13,4 +13,20 @@ class Denkmal_SuspensionTest extends CMTest_TestCase {
         $suspension->setUntil(null);
         $this->assertSame(null, $suspension->getUntil());
     }
+
+    public function testIsActive() {
+        $suspension = new Denkmal_Suspension();
+        $suspension->setUntil(null);
+        $this->assertSame(false, $suspension->isActive());
+
+        $date = new DateTime();
+        $date->add(new DateInterval('PT1H'));
+        $suspension->setUntil($date);
+        $this->assertSame(true, $suspension->isActive());
+
+        $date = new DateTime();
+        $date->sub(new DateInterval('PT1H'));
+        $suspension->setUntil($date);
+        $this->assertSame(false, $suspension->isActive());
+    }
 }

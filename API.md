@@ -45,25 +45,6 @@ Response:
          "starred":false
       }
    ],
-   "messages":[
-      {
-         "id":401,
-         "venue":78,
-         "created":1371386731,
-         "text":"Foo 1",
-         "image":null
-      },
-      {
-         "id":402,
-         "venue":78,
-         "created":1371386731,
-         "text":null,
-         "image":{
-            "url-view":"http://www.example.com/image-view.jpg",
-            "url-thumb":"http://www.example.com/image-thumb.jpg"
-         }
-      }
-   ],
    "dayOffset" : 6,
    "suspendedDays": null
 }

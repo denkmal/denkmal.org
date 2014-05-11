@@ -15,9 +15,6 @@ $config->CM_Db_Db->db = 'denkmal';
 $config->CM_Db_Db->username = 'root';
 $config->CM_Db_Db->password = '';
 $config->CM_Db_Db->server = array('host' => '127.0.0.1', 'port' => 3306);
-$config->CM_Stream_Video->servers = array(
-    array('publicHost' => 'www.denkmal.dev', 'publicIp' => '127.0.0.1', 'privateIp' => '127.0.0.1'),
-);
 $config->CM_Jobdistribution_JobWorker->servers = array(
     array('host' => 'localhost', 'port' => 4730),
 );

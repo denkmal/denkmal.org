@@ -4,7 +4,7 @@
         "bin-dir": "bin/"
     },
     "require": {
-        "cargomedia/cm": "~1.22.0"
+        "cargomedia/cm": "~1.23.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7.10"

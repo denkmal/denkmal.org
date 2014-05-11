@@ -27,18 +27,11 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
             }
         }
 
-        $messageListArray = array();
-        /** @var Denkmal_Model_Message $message */
-        foreach (new Denkmal_Paging_Message_All() as $message) {
-            $messageListArray[] = $message->toArrayApi($this->getRender());
-        }
-
         $dayOffset = Denkmal_Site::getDayOffset();
 
         $this->_setContent(array(
             'venues'        => $venueListArray,
             'events'        => $eventListArray,
-            'messages'      => $messageListArray,
             'dayOffset'     => $dayOffset,
             'suspendedDays' => $suspension->isActive() ? $suspension->getDaysLeft() : null,
         ));

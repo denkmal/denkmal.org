@@ -14,7 +14,7 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
      */
     public function processPage($html) {
         $html = new CM_Dom_NodeList($html, true);
-        $eventList = $html->find('.events > .entry');
+        $eventList = $html->find('#page .events > .entry');
         /** @var CM_Dom_NodeList $event */
         foreach ($eventList as $i => $event) {
             $venueName = 'Hinterhof';

@@ -12,6 +12,10 @@ abstract class Denkmal_Page_Abstract extends CM_Page_Abstract {
             if (!$this instanceof Denkmal_Page_Suspended) {
                 $response->redirect('Denkmal_Page_Suspended');
             }
+        } else {
+            if ($this instanceof Denkmal_Page_Suspended) {
+                $response->redirect('Denkmal_Page_Index');
+            }
         }
     }
 }

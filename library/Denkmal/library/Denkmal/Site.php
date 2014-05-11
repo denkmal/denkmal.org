@@ -20,7 +20,7 @@ class Denkmal_Site extends CM_Site_Abstract {
      * @return Denkmal_Suspension
      */
     public function getSuspension() {
-        return new Denkmal_Suspension();
+        return new Denkmal_Suspension($this);
     }
 
     /**

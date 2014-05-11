@@ -65,11 +65,11 @@ Response:
       }
    ],
    "dayOffset" : 6,
-   "suspendedUntil": null
+   "suspendedDays": null
 }
 ```
 
-When the site is suspended temporarily `suspendedUntil` can return a timestamp of the date of return.
+When the site is suspended temporarily `suspendedDays` will contain the number of days left until we're back.
 
 
 ## Get messages

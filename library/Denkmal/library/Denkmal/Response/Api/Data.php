@@ -36,11 +36,11 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
         $dayOffset = Denkmal_Site::getDayOffset();
 
         $this->_setContent(array(
-            'venues'         => $venueListArray,
-            'events'         => $eventListArray,
-            'messages'       => $messageListArray,
-            'dayOffset'      => $dayOffset,
-            'suspendedUntil' => $suspension->isActive() ? $suspension->getUntil()->getTimestamp() : null,
+            'venues'        => $venueListArray,
+            'events'        => $eventListArray,
+            'messages'      => $messageListArray,
+            'dayOffset'     => $dayOffset,
+            'suspendedDays' => $suspension->isActive() ? $suspension->getDaysLeft() : null,
         ));
     }
 

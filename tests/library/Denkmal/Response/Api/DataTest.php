@@ -50,7 +50,7 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
                 $message2->toArrayApi($response->getRender()),
             ),
             'dayOffset'      => Denkmal_Site::getDayOffset(),
-            'suspendedUntil' => null,
+            'suspendedDays' => null,
         );
 
         $this->assertSame($expected, json_decode($response->getContent(), true));

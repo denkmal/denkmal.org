@@ -9,7 +9,7 @@ var Denkmal_Page_Suspended = Denkmal_Page_Abstract.extend({
 
   childrenEvents: {
     'Denkmal_Component_SongPlayerButton pause': function() {
-      this.reload();
+      this.reload({'autoPlay': false});
     }
   }
 });

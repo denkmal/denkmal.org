@@ -8,7 +8,7 @@
   </div>
   {if $song}
     <div class="song">
-      {component name="Denkmal_Component_SongPlayerButton" song=$song}
+      {component name="Denkmal_Component_SongPlayerButton" song=$song autoPlay=$autoPlay}
     </div>
   {/if}
 {/block}

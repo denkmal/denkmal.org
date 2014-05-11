@@ -24,12 +24,14 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $name = $params->getString('name');
         $url = $params->has('url') ? $params->getString('url') : null;
         $address = $params->has('address') ? $params->getString('address') : null;
+        $email = $params->has('email') ? $params->getString('email') : null;
         $coordinates = $params->has('coordinates') ? $params->getGeoPoint('coordinates') : null;
         $ignore = $params->getBoolean('ignore');
 
         $venue->setName($name);
         $venue->setUrl($url);
         $venue->setAddress($address);
+        $venue->setEmail($email);
         $venue->setCoordinates($coordinates);
         $venue->setIgnore($ignore);
         $venue->setQueued(false);

@@ -11,6 +11,9 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
   song: null,
 
   /** @type {Boolean} */
+  autoPlay: null,
+
+  /** @type {Boolean} */
   _playing: false,
 
   /** @type {Object} */
@@ -32,6 +35,9 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
     var playerSong = this._player.getSong();
     if (playerSong && playerSong.id == this.song.id) {
       this.onPlay(this.song);
+    }
+    if (this.autoPlay) {
+      this.playSong();
     }
   },
 

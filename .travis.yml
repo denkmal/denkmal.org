@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 5.3
   - 5.4
   - 5.5
 
@@ -10,6 +9,7 @@ services:
   - memcached
   - elasticsearch
   - redis-server
+  - mongodb
 
 before_script:
   - tests/travis/install-php-runkit.sh
@@ -21,16 +21,11 @@ before_script:
   - phpenv config-add tests/travis/php.ini
   - phpenv config-add tests/travis/php-$TRAVIS_PHP_VERSION.ini
 
-  - composer self-update
   - composer install --dev
   - cp tests/travis/config.php resources/config/local.php
   - bin/cm app set-deploy-version
 
 script: bin/phpunit
-
-matrix:
-  allow_failures:
-    - php: 5.5
 
 notifications:
   email: false

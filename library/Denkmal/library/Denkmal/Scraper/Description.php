@@ -80,7 +80,9 @@ class Denkmal_Scraper_Description {
         $str = preg_replace('#\[(.+?)\]#', '($1)', $str);
         $str = preg_replace('#\bdj[\'`]s\b#', 'DJs', $str);
         $str = preg_replace('#[\:\.]$#', '', $str);
-        $str = preg_replace('#\b([A-ZÖÄÜ])([A-ZÖÄÜ]{2,})\b#e', "'\\1'.strtolower('\\2')", $str);
+        $str = preg_replace_callback('#\b([A-ZÖÄÜ])([A-ZÖÄÜ]{2,})\b#', function ($matches) {
+            return $matches[1] . strtolower($matches[2]);
+        }, $str);
         $str = preg_replace('#\s+#u', ' ', $str);
         $str = preg_replace('#\bDJ[\'`‛’‘]?(s?)\b#i', 'DJ$1', $str);
         $str = trim($str);

@@ -10,6 +10,7 @@
     {formField name='name' label={translate 'Name'}}
     {formField name='url' label={translate 'URL'}}
     {formField name='address' label={translate 'Adresse'}}
+    {formField name='email' label={translate 'E-Mail'}}
     {formField name='coordinates' label={translate 'Koordinaten'}}
     {formField name='ignore' text={translate 'Scraper ignorieren'}}
     {formAction action='Save' label={translate 'Speichern'} alternatives="

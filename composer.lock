@@ -3,36 +3,53 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "5a49caa1ea3d2cbfe18b8e0ae12181ea",
+    "hash": "a9c460d32cb063bca16d79fafed6bb40",
     "packages": [
         {
-            "name": "amazonwebservices/aws-sdk-for-php",
-            "version": "1.5.17.1",
+            "name": "aws/aws-sdk-php",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
-                "reference": "42d86270e9458acffff721a661f62d818ca7282f"
+                "url": "https://github.com/aws/aws-sdk-php.git",
+                "reference": "629c5ba5b419d2730c0823d5c95ae03066b6817f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/amazonwebservices-aws-sdk-for-php-42d86270e9458acffff721a661f62d818ca7282f-zip-5cd94d.zip",
-                "reference": "42d86270e9458acffff721a661f62d818ca7282f",
-                "shasum": "0c41e551cc1caee9b45bd220eb2eb46f6226bc9e"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-629c5ba5b419d2730c0823d5c95ae03066b6817f-zip-bd7b93.zip",
+                "reference": "629c5ba5b419d2730c0823d5c95ae03066b6817f",
+                "shasum": "567c356ba610cd09d0a061f68029ee70f3216766"
             },
             "require": {
-                "php": ">=5.2.0"
+                "guzzle/guzzle": ">=3.7.0,<=3.9.9",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "doctrine/cache": "~1.0",
+                "ext-openssl": "*",
+                "monolog/monolog": "1.4.*",
+                "phpunit/phpunit": "3.7.*",
+                "symfony/class-loader": "2.*",
+                "symfony/yaml": "2.*"
+            },
+            "suggest": {
+                "doctrine/cache": "Adds support for caching of credentials and responses",
+                "ext-apc": "Allows service description opcode caching, request and response caching, and credentials caching",
+                "ext-openssl": "Allows working with CloudFront private distributions and verifying received SNS messages",
+                "monolog/monolog": "Adds support for logging HTTP requests and responses",
+                "symfony/yaml": "Eases the ability to write manifests for creating jobs in AWS Import/Export"
             },
             "type": "library",
-            "autoload": {
-                "classmap": [
-                    "authentication/",
-                    "extensions/",
-                    "lib/",
-                    "services/",
-                    "utilities/",
-                    "sdk.class.php"
-                ]
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6.x-dev"
+                }
             },
+            "autoload": {
+                "psr-0": {
+                    "Aws": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -42,34 +59,36 @@
                     "homepage": "http://aws.amazon.com"
                 }
             ],
-            "description": "AWS SDK for PHP",
-            "homepage": "http://aws.amazon.com/sdkforphp/",
+            "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project",
+            "homepage": "http://aws.amazon.com/sdkforphp",
             "keywords": [
                 "amazon",
                 "aws",
+                "cloud",
                 "dynamodb",
                 "ec2",
+                "glacier",
                 "s3",
                 "sdk"
             ],
-            "time": "2012-11-26 23:59:55"
+            "time": "2014-05-06 19:14:32"
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.17.0",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "328405b0608d75c846f40bfc926c143831c70e31"
+                "reference": "0d8b6655e3f485393f00e6c0705127bad9fe760f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-328405b0608d75c846f40bfc926c143831c70e31-zip-308415.zip",
-                "reference": "328405b0608d75c846f40bfc926c143831c70e31",
-                "shasum": "ca562a7509dd1f4eef72624ee554f611c6cd8b8c"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-0d8b6655e3f485393f00e6c0705127bad9fe760f-zip-50c15d.zip",
+                "reference": "0d8b6655e3f485393f00e6c0705127bad9fe760f",
+                "shasum": "30caa8c3c5413f40dfee3a7e51751532cf12e77e"
             },
             "require": {
-                "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "aws/aws-sdk-php": "~2.6.0",
                 "composer/composer": "1.0.0-alpha8",
                 "easybook/geshi": "1.0.8.11",
                 "leafo/lessphp": "0.3.*",
@@ -104,7 +123,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-04-30 13:06:25"
+            "time": "2014-05-09 11:22:34"
         },
         {
             "name": "composer/composer",
@@ -219,6 +238,98 @@
                 "syntax"
             ],
             "time": "2012-09-28 10:14:18"
+        },
+        {
+            "name": "guzzle/guzzle",
+            "version": "v3.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle3.git",
+                "reference": "92d9934f2fca1da15178c91239576ae26e505e60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/guzzle-guzzle-92d9934f2fca1da15178c91239576ae26e505e60-zip-a316cf.zip",
+                "reference": "92d9934f2fca1da15178c91239576ae26e505e60",
+                "shasum": "44238da7abedbc871b1282a8dc4d001bd324323c"
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3",
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "replace": {
+                "guzzle/batch": "self.version",
+                "guzzle/cache": "self.version",
+                "guzzle/common": "self.version",
+                "guzzle/http": "self.version",
+                "guzzle/inflection": "self.version",
+                "guzzle/iterator": "self.version",
+                "guzzle/log": "self.version",
+                "guzzle/parser": "self.version",
+                "guzzle/plugin": "self.version",
+                "guzzle/plugin-async": "self.version",
+                "guzzle/plugin-backoff": "self.version",
+                "guzzle/plugin-cache": "self.version",
+                "guzzle/plugin-cookie": "self.version",
+                "guzzle/plugin-curlauth": "self.version",
+                "guzzle/plugin-error-response": "self.version",
+                "guzzle/plugin-history": "self.version",
+                "guzzle/plugin-log": "self.version",
+                "guzzle/plugin-md5": "self.version",
+                "guzzle/plugin-mock": "self.version",
+                "guzzle/plugin-oauth": "self.version",
+                "guzzle/service": "self.version",
+                "guzzle/stream": "self.version"
+            },
+            "require-dev": {
+                "doctrine/cache": "~1.3",
+                "monolog/monolog": "~1.0",
+                "phpunit/phpunit": "3.7.*",
+                "psr/log": "~1.0",
+                "symfony/class-loader": "~2.1",
+                "zendframework/zend-cache": "2.*,<2.3",
+                "zendframework/zend-log": "2.*,<2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Guzzle": "src/",
+                    "Guzzle\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Guzzle Community",
+                    "homepage": "https://github.com/guzzle/guzzle/contributors"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2014-05-07 17:04:22"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -665,6 +776,64 @@
             "time": "2014-04-28 13:26:08"
         },
         {
+            "name": "symfony/event-dispatcher",
+            "version": "v2.5.0-BETA2",
+            "target-dir": "Symfony/Component/EventDispatcher",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/EventDispatcher.git",
+                "reference": "133627e57441b50128807702bea0d395129809ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-133627e57441b50128807702bea0d395129809ad-zip-74e82c.zip",
+                "reference": "133627e57441b50128807702bea0d395129809ad",
+                "shasum": "a96dcd30215fbc4c892b480537b302bd7e2e99fd"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/dependency-injection": "~2.0",
+                "symfony/stopwatch": "~2.2"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-04-16 10:36:21"
+        },
+        {
             "name": "symfony/finder",
             "version": "v2.5.0-BETA2",
             "target-dir": "Symfony/Component/Finder",
@@ -1006,17 +1175,17 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.36",
+            "version": "3.7.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1735d588c9f35bd8686cae0208d8adde77b45365"
+                "reference": "ae6cefd7cc84586a5ef27e04bae11ee940ec63dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-1735d588c9f35bd8686cae0208d8adde77b45365-zip-6a8558.zip",
-                "reference": "1735d588c9f35bd8686cae0208d8adde77b45365",
-                "shasum": "1462ddb4100f0bf8fca67c42978c67fa012d8b9a"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-ae6cefd7cc84586a5ef27e04bae11ee940ec63dc-zip-2f8703.zip",
+                "reference": "ae6cefd7cc84586a5ef27e04bae11ee940ec63dc",
+                "shasum": "9350ce4ade8ada9a1a281443fdc8ab4dad6eebec"
             },
             "require": {
                 "ext-ctype": "*",
@@ -1075,7 +1244,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-04-29 07:24:10"
+            "time": "2014-04-30 12:24:19"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1175,17 +1344,9 @@
             "time": "2014-04-18 20:40:13"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "alpha",
-    "stability-flags": [
-
-    ],
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "stability-flags": [],
+    "platform": [],
+    "platform-dev": []
 }

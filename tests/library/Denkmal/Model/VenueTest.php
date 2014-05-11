@@ -63,6 +63,17 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(false, $venue->getIgnore());
     }
 
+    public function testGetSetEmail() {
+        $venue = Denkmal_Model_Venue::create('Example', true, true);
+        $this->assertSame(null, $venue->getEmail());
+
+        $venue->setEmail('foo@example.com');
+        $this->assertSame('foo@example.com', $venue->getEmail());
+
+        $venue->setEmail(null);
+        $this->assertSame(null, $venue->getEmail());
+    }
+
     /**
      * @expectedException CM_Exception_Nonexistent
      */

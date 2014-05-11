@@ -64,9 +64,12 @@ Response:
          }
       }
    ],
-   "dayOffset" : 6
+   "dayOffset" : 6,
+   "suspendedDays": null
 }
 ```
+
+When the site is suspended temporarily `suspendedDays` will contain the number of days left until we're back.
 
 
 ## Get messages

@@ -90,9 +90,8 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
         $song->commit();
 
         $userFile = $song->getFile();
-        $userFile->mkDir();
-        $file->copy($userFile->getPath());
-        @chmod($userFile->getPath(), 0666);
+        $userFile->ensureParentDirectory();
+        $file->copyToFile($userFile);
 
         return $song;
     }

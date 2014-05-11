@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.23.0",
+            "version": "1.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "4ff78ae08802006633f25b5ea9a35040a2ce01cf"
+                "reference": "d076dd98f0c07f0e88183fd2f23e805b669d492f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-4ff78ae08802006633f25b5ea9a35040a2ce01cf-zip-2b66ab.zip",
-                "reference": "4ff78ae08802006633f25b5ea9a35040a2ce01cf",
-                "shasum": "879ed969b184f7d3a456ab3e22b956c3566a2a2e"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-d076dd98f0c07f0e88183fd2f23e805b669d492f-zip-2c5194.zip",
+                "reference": "d076dd98f0c07f0e88183fd2f23e805b669d492f",
+                "shasum": "0fc1f8ffbfb032c48e36a101ba703f007ebb4892"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -126,7 +126,7 @@
                 "source": "https://github.com/cargomedia/CM/tree/master",
                 "issues": "https://github.com/cargomedia/CM/issues"
             },
-            "time": "2014-05-11 17:22:44"
+            "time": "2014-05-11 18:15:29"
         },
         {
             "name": "composer/composer",

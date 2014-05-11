@@ -5,5 +5,11 @@
 var Denkmal_Page_Suspended = Denkmal_Page_Abstract.extend({
 
   /** @type String */
-  _class: 'Denkmal_Page_Suspended'
+  _class: 'Denkmal_Page_Suspended',
+
+  childrenEvents: {
+    'Denkmal_Component_SongPlayerButton pause': function() {
+      this.reload();
+    }
+  }
 });

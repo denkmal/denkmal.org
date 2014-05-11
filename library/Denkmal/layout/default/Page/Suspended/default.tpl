@@ -6,4 +6,9 @@
   <div class="message">
     {translate '{$count} Tage bis zum Alltag' count="<span class='days-count'>{$suspension->getDaysLeft()}</span>"}
   </div>
+  {if $song}
+    <div class="song">
+      {component name="Denkmal_Component_SongPlayerButton" song=$song}
+    </div>
+  {/if}
 {/block}

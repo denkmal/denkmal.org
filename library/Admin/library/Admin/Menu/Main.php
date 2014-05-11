@@ -8,6 +8,9 @@ class Admin_Menu_Main extends CM_Menu {
             array('label' => 'Orte', 'page' => 'Admin_Page_Venues'),
             array('label' => 'Links', 'page' => 'Admin_Page_Links'),
             array('label' => 'Lieder', 'page' => 'Admin_Page_Songs'),
+            array('label' => 'Mehr…', 'page' => 'Admin_Page_Settings', 'submenu' => array(
+                array('label' => 'Einstellungen', 'page' => 'Admin_Page_Settings'),
+            )),
         ));
     }
 }

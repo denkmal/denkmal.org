@@ -34,4 +34,17 @@ class Denkmal_Suspension extends CM_Class_Abstract {
         $until = $this->getUntil();
         return $until && $until > $now;
     }
+
+    /**
+     * @return int
+     */
+    public function getDaysLeft() {
+        $now = new DateTime();
+        $until = $this->getUntil();
+        $daysLeft = 0;
+        if ($until && $until > $now) {
+            $daysLeft = $now->diff($until)->d + 1;
+        }
+        return $daysLeft;
+    }
 }

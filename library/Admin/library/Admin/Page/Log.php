@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Page_Log extends CM_Page_Abstract {
+class Admin_Page_Log extends Admin_Page_Abstract {
 
     public function prepare() {
         $type = $this->_params->getInt('type');

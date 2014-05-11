@@ -14,6 +14,7 @@ class Admin_Menu_Main extends CM_Menu {
                       array('label' => 'Warnungen', 'page' => 'Admin_Page_Log', 'params' => array('type' => CM_Paging_Log_Warn::getTypeStatic())),
                       array('label' => 'JS Fehler', 'page' => 'Admin_Page_Log', 'params' => array('type' => CM_Paging_Log_JsError::getTypeStatic())),
                       array('label' => 'Einstellungen', 'page' => 'Admin_Page_Settings'),
+                      array('label' => 'E-Mail Vorschau', 'page' => 'Admin_Page_EmailPreview'),
                   )),
         ));
     }

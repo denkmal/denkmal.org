@@ -42,6 +42,9 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
      * @return Denkmal_Model_Venue[]
      */
     private function _getVenuesMissingMessages(array $messageList) {
+        if (0 === $this->_minMessagesVenue) {
+            return array();
+        }
         $dateStart = Denkmal_Site::getCurrentDate();
         $dateEnd = Denkmal_Site::getCurrentDate()->add(new DateInterval('P6D'));
         $venueList = new Denkmal_Paging_Venue_HasEventsWithin($dateStart, $dateEnd);

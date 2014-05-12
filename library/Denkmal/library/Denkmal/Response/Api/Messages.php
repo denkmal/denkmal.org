@@ -16,7 +16,7 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
 
         $params = new Denkmal_Params($request->getQuery());
         $this->_maxMessages = min(max($params->getInt('maxMessages', 500), 1), 5000);
-        $this->_minMessagesVenue = min(max($params->getInt('minMessagesVenue', 10), 0), 100);
+        $this->_minMessagesVenue = min(max($params->getInt('minMessagesVenue', 0), 0), 100);
         $this->_startAfterId = $params->has('startAfterId') ? $params->getInt('startAfterId') : null;
     }
 

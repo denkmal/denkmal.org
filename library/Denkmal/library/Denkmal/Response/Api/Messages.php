@@ -8,16 +8,24 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
     /** @var int */
     private $_minMessagesVenue = 500;
 
+    /** @var int|null */
+    private $_startAfterId;
+
     public function __construct(CM_Request_Get $request) {
         parent::__construct($request);
 
         $params = new Denkmal_Params($request->getQuery());
         $this->_maxMessages = min(max($params->getInt('maxMessages', 500), 1), 5000);
         $this->_minMessagesVenue = min(max($params->getInt('minMessagesVenue', 10), 0), 100);
+        $this->_startAfterId = $params->has('startAfterId') ? $params->getInt('startAfterId') : null;
     }
 
     protected function _process() {
-        $messageListAll = new Denkmal_Paging_Message_All();
+        if (null === $this->_startAfterId) {
+            $messageListAll = new Denkmal_Paging_Message_All();
+        } else {
+            $messageListAll = new Denkmal_Paging_Message_AllAfterId($this->_startAfterId);
+        }
         /** @var Denkmal_Model_Message[] $messageList */
         $messageList = $messageListAll->getItems(-$this->_maxMessages);
 

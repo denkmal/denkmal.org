@@ -89,6 +89,12 @@ GET /api/messages?maxMessages=500&minMessagesVenue=3 HTTP/1.1
 Host: www.denkmal.org
 ```
 
+Additionally you can specify what's the last message-id you have, so that the response doesn't include previous ones:
+```
+GET /api/messages?startAfterId=123 HTTP/1.1
+Host: www.denkmal.org
+```
+
 
 ## Send message
 Request:

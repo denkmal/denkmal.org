@@ -44,7 +44,6 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
         $this->assertSame($expected, json_decode($response->getContent(), true));
     }
 
-
     public function testProcessMinimumMessagesPerVenue() {
         $created = new DateTime();
         $maxMessages = 5;
@@ -80,6 +79,29 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
 
         $expectedMessageList = array_merge(array_slice($messageListHasEvent, 7), array_slice($messageList, 8));
         $expected = Functional\map($expectedMessageList, function (Denkmal_Model_Message $message) use ($response) {
+            return $message->toArrayApi($response->getRender());
+        });
+
+        $this->assertSame($expected, json_decode($response->getContent(), true));
+    }
+
+    public function testProcessStartAfterId() {
+        $created = new DateTime();
+        $venue = Denkmal_Model_Venue::create('Example', true, false);
+
+        /** @var Denkmal_Model_Message[] $messageList */
+        $messageList = array();
+        for ($i = 0; $i < 10; $i++) {
+            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, null, $created);
+            $created->add(new DateInterval('PT3S'));
+        }
+
+        $query = http_build_query(array('startAfterId' => $messageList[7]->getId()));
+        $request = new CM_Request_Get('/api/messages?' . $query, array('host' => 'denkmal.test'));
+        $response = new Denkmal_Response_Api_Messages($request);
+        $response->process();
+
+        $expected = Functional\map(array_slice($messageList, 8), function (Denkmal_Model_Message $message) use ($response) {
             return $message->toArrayApi($response->getRender());
         });
 

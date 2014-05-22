@@ -3,21 +3,21 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3476dc2b63be4c098d8b711b3cc2dd5b",
+    "hash": "abf58173936a5fcd6b9a4cd957e6c4d7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.6.2",
+            "version": "2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "629c5ba5b419d2730c0823d5c95ae03066b6817f"
+                "reference": "75aab119db3141e60ae7f786fd32b8ded0b18d6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-629c5ba5b419d2730c0823d5c95ae03066b6817f-zip-bd7b93.zip",
-                "reference": "629c5ba5b419d2730c0823d5c95ae03066b6817f",
-                "shasum": "567c356ba610cd09d0a061f68029ee70f3216766"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-75aab119db3141e60ae7f786fd32b8ded0b18d6f-zip-412fca.zip",
+                "reference": "75aab119db3141e60ae7f786fd32b8ded0b18d6f",
+                "shasum": "648c8c97019606db9468bb42dbf07ec11f385a29"
             },
             "require": {
                 "guzzle/guzzle": ">=3.7.0,<=3.9.9",
@@ -71,21 +71,21 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2014-05-06 19:14:32"
+            "time": "2014-05-20 21:52:40"
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.23.2",
+            "version": "1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "1f6b54479a47d31e0d5dc5361fa87c535b36f930"
+                "reference": "09ce301a7cc2aeb49627bc32b27ba1957f925b42"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-1f6b54479a47d31e0d5dc5361fa87c535b36f930-zip-63d7b2.zip",
-                "reference": "1f6b54479a47d31e0d5dc5361fa87c535b36f930",
-                "shasum": "a513051761f4c491867aba9bcbeca3a747c82fbb"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-09ce301a7cc2aeb49627bc32b27ba1957f925b42-zip-e531fa.zip",
+                "reference": "09ce301a7cc2aeb49627bc32b27ba1957f925b42",
+                "shasum": "61f2aeb65de4aae04584bffde9d1f85dd7859734"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -119,14 +119,11 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "support": {
-                "source": "https://github.com/cargomedia/CM/tree/master",
-                "issues": "https://github.com/cargomedia/CM/issues"
-            },
-            "time": "2014-05-11 20:01:54"
+            "time": "2014-05-21 15:22:35"
         },
         {
             "name": "composer/composer",

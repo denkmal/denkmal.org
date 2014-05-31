@@ -14,9 +14,9 @@ class Denkmal_FormField_Song extends CM_FormField_SuggestOne {
         );
     }
 
-    public function validate($userInput, CM_Response_Abstract $response) {
-        $value = parent::validate($userInput, $response);
-        return new Denkmal_Model_Song($value);
+    public function validate(CM_Frontend_Environment $environment, $userInput) {
+        $userInput = parent::validate($environment, $userInput);
+        return new Denkmal_Model_Song($userInput);
     }
 
     protected function _getSuggestions($term, array $options, CM_Frontend_Render $render) {

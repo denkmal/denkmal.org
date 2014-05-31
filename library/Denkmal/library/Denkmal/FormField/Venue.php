@@ -9,8 +9,8 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
         parent::__construct($enableChoiceCreate);
     }
 
-    public function validate($userInput, CM_Response_Abstract $response) {
-        $userInput = parent::validate($userInput, $response);
+    public function validate(CM_Frontend_Environment $environment, $userInput) {
+        $userInput = parent::validate($environment, $userInput);
         if (is_numeric($userInput)) {
             $userInput = new Denkmal_Model_Venue($userInput);
         }

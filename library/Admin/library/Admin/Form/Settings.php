@@ -8,7 +8,7 @@ class Admin_Form_Settings extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Settings_Save($this));
     }
 
-    protected function _renderStart(CM_Params $params) {
+    public function prepare(CM_Params $renderParams) {
         $site = new Denkmal_Site();
         $this->getField('suspensionUntil')->setValue($site->getSuspension()->getUntil());
     }

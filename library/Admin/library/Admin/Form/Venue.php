@@ -15,9 +15,9 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Venue_Delete($this));
     }
 
-    protected function _renderStart(CM_Params $params) {
-        /** @var Denkmal_Params $params */
-        $venue = $params->getVenue('venue');
+    public function prepare(CM_Params $renderParams) {
+        /** @var Denkmal_Params $renderParams */
+        $venue = $renderParams->getVenue('venue');
         $this->getField('venueId')->setValue($venue->getId());
         $this->getField('name')->setValue($venue->getName());
         $this->getField('url')->setValue($venue->getUrl());

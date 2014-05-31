@@ -9,9 +9,9 @@ class Admin_Form_VenueMerge extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Venue_Merge($this));
     }
 
-    protected function _renderStart(CM_Params $params) {
-        /** @var Denkmal_Params $params */
-        $venue = $params->getVenue('venue');
+    public function prepare(CM_Params $renderParams) {
+        /** @var Denkmal_Params $renderParams */
+        $venue = $renderParams->getVenue('venue');
 
         $this->getField('oldVenue')->setValue($venue->getId());
     }

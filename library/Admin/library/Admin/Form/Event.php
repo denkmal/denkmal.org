@@ -19,9 +19,9 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Event_Hide($this));
     }
 
-    protected function _renderStart(CM_Params $params) {
-        /** @var Denkmal_Params $params */
-        $event = $params->getEvent('event');
+    public function prepare(CM_Params $renderParams) {
+        /** @var Denkmal_Params $renderParams */
+        $event = $renderParams->getEvent('event');
 
         $this->getField('eventId')->setValue($event->getId());
         $this->getField('venue')->setValue($event->getVenue());

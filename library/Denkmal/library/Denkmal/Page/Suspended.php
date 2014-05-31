@@ -15,7 +15,7 @@ class Denkmal_Page_Suspended extends Denkmal_Page_Abstract {
         $viewResponse->set('autoPlay', $autoPlay);
     }
 
-    public function getLayout(CM_Site_Abstract $site, $layoutName = null) {
+    public function getLayout(CM_Frontend_Environment $environment, $layoutName = null) {
         return new Denkmal_Layout_Suspended();
     }
 }

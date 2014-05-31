@@ -27,7 +27,7 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
       this.showSongDetails(song.label);
     },
     'Denkmal_Component_SongPlayerButton pause': function() {
-      this.hideSongDetails(false);
+      this.hideSongDetails();
     }
   },
 

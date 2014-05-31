@@ -35,7 +35,7 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
         return $array;
     }
 
-    public function toArrayApi(CM_Render $render) {
+    public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['label'] = $this->getLabel();
         $array['url'] = $render->getUrlUserContent($this->getFile());

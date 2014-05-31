@@ -129,7 +129,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->_set('email', $email);
     }
 
-    public function toArrayApi(CM_Render $render) {
+    public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
         $array['name'] = $this->getName();

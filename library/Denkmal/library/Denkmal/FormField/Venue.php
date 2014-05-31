@@ -17,11 +17,11 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
         return $userInput;
     }
 
-    public function getSuggestion($item, CM_Render $render) {
+    public function getSuggestion($item, CM_Frontend_Render $render) {
         return array('id' => $item->getId(), 'name' => $item->getName());
     }
 
-    protected function _getSuggestions($term, array $options, CM_Render $render) {
+    protected function _getSuggestions($term, array $options, CM_Frontend_Render $render) {
         $term = (string) $term;
         $suggestions = array();
         /** @var $item Denkmal_Model_Venue */

@@ -25,5 +25,4 @@ class Denkmal_Elasticsearch_Query_Event extends CM_Elasticsearch_Query {
     public function sortFrom($order = null) {
         $this->_sort(array('from' => $order));
     }
-
 }

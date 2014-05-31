@@ -4,10 +4,10 @@ class Denkmal_FormField_Song extends CM_FormField_SuggestOne {
 
     /**
      * @param Denkmal_Model_Song $song
-     * @param CM_Render          $render
+     * @param CM_Frontend_Render $render
      * @return array
      */
-    public function getSuggestion($song, CM_Render $render) {
+    public function getSuggestion($song, CM_Frontend_Render $render) {
         return array(
             'id'   => $song->getId(),
             'name' => $song->getLabel(),
@@ -19,7 +19,7 @@ class Denkmal_FormField_Song extends CM_FormField_SuggestOne {
         return new Denkmal_Model_Song($value);
     }
 
-    protected function _getSuggestions($term, array $options, CM_Render $render) {
+    protected function _getSuggestions($term, array $options, CM_Frontend_Render $render) {
         $out = array();
         $songList = new Denkmal_Paging_Song_Search($term);
         $songList->setPage(1, 15);

@@ -14,8 +14,11 @@ class Denkmal_FormField_Time extends CM_FormField_Abstract {
         return new DateInterval('PT' . $hour . 'H' . $minute . 'M');
     }
 
-    public function prepare(array $params) {
-        $viewResponse->set('class', isset($params['class']) ? $params['class'] : null);
-        $viewResponse->set('placeholder', isset($params['placeholder']) ? $params['placeholder'] : null);
+    public function prepare(CM_Params $renderParams, CM_Frontend_ViewResponse $viewResponse) {
+        $class = $renderParams->has('class') ? $renderParams->getString('class') : null;
+        $placeholder = $renderParams->has('placeholder') ? $renderParams->getString('placeholder') : null;
+
+        $viewResponse->set('class', $class);
+        $viewResponse->set('placeholder', $placeholder);
     }
 }

@@ -2,8 +2,9 @@
 
 class Denkmal_FormField_FileSong extends CM_FormField_File {
 
-    public function __construct() {
-        parent::__construct(1);
+    protected function _initialize() {
+        $this->_params->set('cardinality', 1);
+        parent::_initialize();
     }
 
     protected function _getAllowedExtensions() {

@@ -2,13 +2,6 @@
 
 class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 
-    /**
-     * @param bool|null $enableChoiceCreate
-     */
-    public function __construct($enableChoiceCreate = null) {
-        parent::__construct($enableChoiceCreate);
-    }
-
     public function validate(CM_Frontend_Environment $environment, $userInput) {
         $userInput = parent::validate($environment, $userInput);
         if (is_numeric($userInput)) {

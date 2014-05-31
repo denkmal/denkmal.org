@@ -11,6 +11,6 @@ class Admin_Component_LinkList_All extends Admin_Component_LinkList_Abstract {
             $linkList = new Denkmal_Paging_Link_All();
         }
 
-        $this->_prepareList($linkList, $searchTerm);
+        $this->_prepareList($linkList, $searchTerm, $viewResponse);
     }
 }

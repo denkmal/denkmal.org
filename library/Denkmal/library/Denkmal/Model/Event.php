@@ -154,7 +154,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         Denkmal_Elasticsearch_Type_Event::updateItemWithJob($this);
     }
 
-    public function toArrayApi(CM_Render $render) {
+    public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
         $array['venue'] = $this->getVenue()->getId();

@@ -2,7 +2,7 @@
 
 class Admin_Component_VenueList_All extends Admin_Component_VenueList_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $searchTerm = $this->_params->has('searchTerm') ? $this->_params->getString('searchTerm') : null;
 
         if (null !== $searchTerm) {
@@ -13,6 +13,6 @@ class Admin_Component_VenueList_All extends Admin_Component_VenueList_Abstract {
 
         $venueList->setPage($this->_params->getPage(), $this->_params->getInt('count', 20));
 
-        $this->setTplParam('venueList', $venueList);
+        $viewResponse->set('venueList', $venueList);
     }
 }

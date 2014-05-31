@@ -7,7 +7,7 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Component_SongPlayer',
 
-  /** @type MediaElement */
+  /** @type mejs.MediaElement */
   _player: null,
 
   /** @type {Object|Null} */
@@ -15,7 +15,7 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
 
   ready: function() {
     var self = this;
-    this._player = new MediaElement(this.$('audio').get(0), {
+    this._player = new mejs.MediaElement(this.$('audio').get(0), {
       type: 'audio/mp3',
       success: function(mediaElement, domObject) {
         mediaElement.addEventListener('ended', function() {

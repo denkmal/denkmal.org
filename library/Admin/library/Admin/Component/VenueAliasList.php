@@ -2,16 +2,16 @@
 
 class Admin_Component_VenueAliasList extends Admin_Component_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $venue = $this->_params->getVenue('venue');
 
         $venueAliasList = new Denkmal_Paging_VenueAlias_Venue($venue);
 
-        $this->setTplParam('venue', $venue);
-        $this->setTplParam('venueAliasList', $venueAliasList);
+        $viewResponse->set('venue', $venue);
+        $viewResponse->set('venueAliasList', $venueAliasList);
     }
 
-    public static function ajax_deleteAlias(CM_Params $params, CM_ComponentFrontendHandler $handler, CM_Response_View_Ajax $response) {
+    public function ajax_deleteAlias(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Response_View_Ajax $response) {
         if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN)) {
             throw new CM_Exception_NotAllowed();
         }

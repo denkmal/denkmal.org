@@ -2,7 +2,7 @@
 
 class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
 
-    public function transform($text, CM_Render $render) {
+    public function transform($text, CM_Frontend_Render $render) {
         $text = (string) $text;
         foreach (self::getReplacements() as $replacement) {
             if (false === stripos($text, $replacement['label'])) {

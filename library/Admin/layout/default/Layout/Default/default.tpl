@@ -9,7 +9,7 @@
     {menu name='main'}
   </header>
   <section id="middle">
-    {component name=$viewObj->getPage()}
+    {$renderAdapter->fetchPage()}
   </section>
   {component name='Denkmal_Component_SongPlayer'}
 {/block}

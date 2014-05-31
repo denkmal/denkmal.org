@@ -2,22 +2,22 @@
 
 class Admin_Form_Venue extends CM_Form_Abstract {
 
-    public function setup() {
-        $this->registerField('venueId', new CM_FormField_Hidden());
-        $this->registerField('name', new CM_FormField_Text());
-        $this->registerField('url', new CM_FormField_Url());
-        $this->registerField('address', new CM_FormField_Text());
-        $this->registerField('email', new CM_FormField_Email());
-        $this->registerField('coordinates', new CM_FormField_GeoPoint());
-        $this->registerField('ignore', new CM_FormField_Boolean());
+    protected function _initialize() {
+        $this->registerField(new CM_FormField_Hidden(['name' => 'venueId']));
+        $this->registerField(new CM_FormField_Text(['name' => 'name']));
+        $this->registerField(new CM_FormField_Url(['name' => 'url']));
+        $this->registerField(new CM_FormField_Text(['name' => 'address']));
+        $this->registerField(new CM_FormField_Email(['name' => 'email']));
+        $this->registerField(new CM_FormField_GeoPoint(['name' => 'coordinates']));
+        $this->registerField(new CM_FormField_Boolean(['name' => 'ignore']));
 
         $this->registerAction(new Admin_FormAction_Venue_Save($this));
         $this->registerAction(new Admin_FormAction_Venue_Delete($this));
     }
 
-    protected function _renderStart(CM_Params $params) {
-        /** @var Denkmal_Params $params */
-        $venue = $params->getVenue('venue');
+    public function prepare(CM_Params $renderParams) {
+        /** @var Denkmal_Params $renderParams */
+        $venue = $renderParams->getVenue('venue');
         $this->getField('venueId')->setValue($venue->getId());
         $this->getField('name')->setValue($venue->getName());
         $this->getField('url')->setValue($venue->getUrl());

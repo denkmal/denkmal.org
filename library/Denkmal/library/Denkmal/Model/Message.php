@@ -82,7 +82,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         return $this->_get('venue');
     }
 
-    public function toArrayApi(CM_Render $render) {
+    public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
         $array['venue'] = $this->getVenue()->getId();

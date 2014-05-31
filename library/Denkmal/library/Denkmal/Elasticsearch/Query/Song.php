@@ -12,5 +12,4 @@ class Denkmal_Elasticsearch_Query_Song extends CM_Elasticsearch_Query {
     public function sortLabel() {
         $this->_sort(array('label' => 'asc'));
     }
-
 }

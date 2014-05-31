@@ -20,7 +20,7 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
         return new CM_File_UserContent('message-image', $filename);
     }
 
-    public function toArrayApi(CM_Render $render) {
+    public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['url-view'] = $render->getUrlUserContent($this->getFile('view'));
         $array['url-thumb'] = $render->getUrlUserContent($this->getFile('thumb'));

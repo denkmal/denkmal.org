@@ -2,7 +2,7 @@
 
 class Admin_Component_SongList_All extends Admin_Component_SongList_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $searchTerm = $this->_params->has('searchTerm') ? $this->_params->getString('searchTerm') : null;
 
         if (null !== $searchTerm) {
@@ -12,7 +12,7 @@ class Admin_Component_SongList_All extends Admin_Component_SongList_Abstract {
         }
         $songList->setPage($this->_params->getPage(), $this->_params->getInt('count', 30));
 
-        $this->setTplParam('songList', $songList);
-        $this->setTplParam('searchTerm', $searchTerm);
+        $viewResponse->set('songList', $songList);
+        $viewResponse->set('searchTerm', $searchTerm);
     }
 }

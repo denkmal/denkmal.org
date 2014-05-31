@@ -3,7 +3,7 @@
 class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 
     protected function _initialize() {
-        $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'enableChoiceCreate' => false]));
+        $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'enableChoiceCreate' => true]));
         $this->registerField(new CM_FormField_Text(['name' => 'venueAddress']));
         $this->registerField(new CM_FormField_Url(['name' => 'venueUrl']));
 

@@ -3,21 +3,21 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "abf58173936a5fcd6b9a4cd957e6c4d7",
+    "hash": "1dade638f3a53a27211b02d77163f263",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.6.4",
+            "version": "2.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "75aab119db3141e60ae7f786fd32b8ded0b18d6f"
+                "reference": "37d5572e2408c5ea7104c361b64a187b1a0a53bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-75aab119db3141e60ae7f786fd32b8ded0b18d6f-zip-412fca.zip",
-                "reference": "75aab119db3141e60ae7f786fd32b8ded0b18d6f",
-                "shasum": "648c8c97019606db9468bb42dbf07ec11f385a29"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-37d5572e2408c5ea7104c361b64a187b1a0a53bd-zip-12c71b.zip",
+                "reference": "37d5572e2408c5ea7104c361b64a187b1a0a53bd",
+                "shasum": "f7dbfce63cac8dcc068c8bfe05af2a0f11faf40a"
             },
             "require": {
                 "guzzle/guzzle": ">=3.7.0,<=3.9.9",
@@ -71,21 +71,21 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2014-05-20 21:52:40"
+            "time": "2014-05-29 18:57:57"
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.27.0",
+            "version": "1.29.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "09ce301a7cc2aeb49627bc32b27ba1957f925b42"
+                "reference": "fe4def45c3a5fa729687ca5170029dfed45a46a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-09ce301a7cc2aeb49627bc32b27ba1957f925b42-zip-e531fa.zip",
-                "reference": "09ce301a7cc2aeb49627bc32b27ba1957f925b42",
-                "shasum": "61f2aeb65de4aae04584bffde9d1f85dd7859734"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-fe4def45c3a5fa729687ca5170029dfed45a46a1-zip-24f40a.zip",
+                "reference": "fe4def45c3a5fa729687ca5170029dfed45a46a1",
+                "shasum": "aadc4411f241271d20fa032aafd79883c8b5a34a"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -123,7 +123,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-05-21 15:22:35"
+            "time": "2014-05-30 12:05:42"
         },
         {
             "name": "composer/composer",
@@ -720,18 +720,18 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.5.0-BETA2",
+            "version": "v2.5.0-RC1",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "d12686cea4e1155ed93449c0bca9db223f31bb2d"
+                "reference": "ef4ca73b0b3a10cbac653d3ca482d0cdd4502b2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-d12686cea4e1155ed93449c0bca9db223f31bb2d-zip-f65cc4.zip",
-                "reference": "d12686cea4e1155ed93449c0bca9db223f31bb2d",
-                "shasum": "f3fdf03b0a7906428b56e971a78b901c8fef6b5b"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-ef4ca73b0b3a10cbac653d3ca482d0cdd4502b2c-zip-53c2b8.zip",
+                "reference": "ef4ca73b0b3a10cbac653d3ca482d0cdd4502b2c",
+                "shasum": "4756f93245d0810e33da2bf1312d97b6eb619379"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -773,28 +773,29 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-28 13:26:08"
+            "time": "2014-05-22 08:54:24"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.0-BETA2",
+            "version": "v2.5.0-RC1",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "133627e57441b50128807702bea0d395129809ad"
+                "reference": "cb62ec8dd05893fc8e4f0e6e21e326e1fc731fe8"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-133627e57441b50128807702bea0d395129809ad-zip-74e82c.zip",
-                "reference": "133627e57441b50128807702bea0d395129809ad",
-                "shasum": "a96dcd30215fbc4c892b480537b302bd7e2e99fd"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-cb62ec8dd05893fc8e4f0e6e21e326e1fc731fe8-zip-fbdeee.zip",
+                "reference": "cb62ec8dd05893fc8e4f0e6e21e326e1fc731fe8",
+                "shasum": "c5fa1dea629127cf968ea268dcb8bb6281eb8d0e"
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
                 "psr/log": "~1.0",
+                "symfony/config": "~2.0",
                 "symfony/dependency-injection": "~2.0",
                 "symfony/stopwatch": "~2.2"
             },
@@ -831,22 +832,22 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-16 10:36:21"
+            "time": "2014-04-29 10:13:57"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.5.0-BETA2",
+            "version": "v2.5.0-RC1",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "51e3af2081d8497f6552cb3338e8a40541646773"
+                "reference": "307aad2c541bbdf43183043645e186ef2cd6b973"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-51e3af2081d8497f6552cb3338e8a40541646773-zip-eae3d3.zip",
-                "reference": "51e3af2081d8497f6552cb3338e8a40541646773",
-                "shasum": "3c377816d1d49027d97734c068a09ac5c1e3110b"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-307aad2c541bbdf43183043645e186ef2cd6b973-zip-58c3e1.zip",
+                "reference": "307aad2c541bbdf43183043645e186ef2cd6b973",
+                "shasum": "05085f89a9d6625f8295655e71880a074780b26d"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -880,22 +881,22 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-28 05:15:04"
+            "time": "2014-05-22 13:47:45"
         },
         {
             "name": "symfony/process",
-            "version": "v2.5.0-BETA2",
+            "version": "v2.5.0-RC1",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "8a3edace8e8aabed8992b993bfc13df3b1e836f2"
+                "reference": "5d7d78e23894544740219e006320678cfa4cd45b"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-8a3edace8e8aabed8992b993bfc13df3b1e836f2-zip-b5107c.zip",
-                "reference": "8a3edace8e8aabed8992b993bfc13df3b1e836f2",
-                "shasum": "fb8c4650d58af48f8d9a782769f9c5cbd04753a1"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-5d7d78e23894544740219e006320678cfa4cd45b-zip-4cb43a.zip",
+                "reference": "5d7d78e23894544740219e006320678cfa4cd45b",
+                "shasum": "11b78d21d2e3c0c11662cc587eb28aba705bd78a"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -929,7 +930,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-28 05:15:04"
+            "time": "2014-05-23 09:02:52"
         }
     ],
     "packages-dev": [
@@ -1296,18 +1297,18 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.5.0-BETA2",
+            "version": "v2.5.0-RC1",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "e9525fc511a51e7bfa214c6c420515c580fda35a"
+                "reference": "b4b09c68ec2f2727574544ef0173684281a5033c"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-e9525fc511a51e7bfa214c6c420515c580fda35a-zip-b9be45.zip",
-                "reference": "e9525fc511a51e7bfa214c6c420515c580fda35a",
-                "shasum": "f7bbd3d37a20d633a26448158ee46f70a392657b"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-b4b09c68ec2f2727574544ef0173684281a5033c-zip-7c1250.zip",
+                "reference": "b4b09c68ec2f2727574544ef0173684281a5033c",
+                "shasum": "1a55802103af51ca932a927de55722587dd26631"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -1341,12 +1342,20 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-18 20:40:13"
+            "time": "2014-05-16 14:25:18"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "alpha",
-    "stability-flags": [],
-    "platform": [],
-    "platform-dev": []
+    "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
 }

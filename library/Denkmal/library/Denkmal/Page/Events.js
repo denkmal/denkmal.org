@@ -82,7 +82,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
    * @param {String} date
    */
   _onShowPaneSetUrl: function(url, date) {
-    if (!document.contains(this.el)) {
+    if (!$.contains(document, this.el)) {
       return; // View has been destroyed in the meantime
     }
     var nextState = {date: date};

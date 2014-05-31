@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1dade638f3a53a27211b02d77163f263",
+    "hash": "d2693b348bab8ddbddd2f082ed4429fd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.29.4",
+            "version": "1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "fe4def45c3a5fa729687ca5170029dfed45a46a1"
+                "reference": "2386a17048796dc4d835e64c1aa5eb6091caa85a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-fe4def45c3a5fa729687ca5170029dfed45a46a1-zip-24f40a.zip",
-                "reference": "fe4def45c3a5fa729687ca5170029dfed45a46a1",
-                "shasum": "aadc4411f241271d20fa032aafd79883c8b5a34a"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-2386a17048796dc4d835e64c1aa5eb6091caa85a-zip-34a516.zip",
+                "reference": "2386a17048796dc4d835e64c1aa5eb6091caa85a",
+                "shasum": "903c61c7bc446574e68ca3e9a3e6917f35df38d1"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -94,6 +94,7 @@
                 "leafo/lessphp": "0.3.*",
                 "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.4.0",
+                "nicmart/tree": "~0.2.0",
                 "phpmailer/phpmailer": "5.2.6",
                 "ruflin/elastica": "v1.1.1.1",
                 "smarty/smarty": "3.1.16"
@@ -123,7 +124,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-05-30 12:05:42"
+            "time": "2014-05-30 22:04:12"
         },
         {
             "name": "composer/composer",
@@ -518,6 +519,44 @@
                 "markdown"
             ],
             "time": "2013-11-29 17:09:24"
+        },
+        {
+            "name": "nicmart/tree",
+            "version": "v0.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nicmart/Tree.git",
+                "reference": "da19b7a8ff5c1a0ee50eb08b42528faad31c85ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/nicmart-tree-da19b7a8ff5c1a0ee50eb08b42528faad31c85ae-zip-2f6836.zip",
+                "reference": "da19b7a8ff5c1a0ee50eb08b42528faad31c85ae",
+                "shasum": "d16e1c8a771c92226f9e8d9f8690d045b6e56949"
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Tree": "src/",
+                    "Tree\\Test": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolò Martini",
+                    "email": "nicmartnic@gmail.com",
+                    "homepage": "http://nicolo.martini.io"
+                }
+            ],
+            "description": "A basic but flexible php tree data structure and a fluent tree builder implementation.",
+            "time": "2014-04-21 20:11:51"
         },
         {
             "name": "phpmailer/phpmailer",

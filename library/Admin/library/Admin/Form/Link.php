@@ -2,11 +2,11 @@
 
 class Admin_Form_Link extends CM_Form_Abstract {
 
-    public function setup() {
-        $this->registerField('linkId', new CM_FormField_Hidden());
-        $this->registerField('label', new CM_FormField_Text());
-        $this->registerField('url', new CM_FormField_Url());
-        $this->registerField('automatic', new CM_FormField_Boolean());
+    protected function _initialize() {
+        $this->registerField(new CM_FormField_Hidden(['name' => 'linkId']));
+        $this->registerField(new CM_FormField_Text(['name' => 'label']));
+        $this->registerField(new CM_FormField_Url(['name' => 'url']));
+        $this->registerField(new CM_FormField_Boolean(['name' => 'automatic']));
 
         $this->registerAction(new Admin_FormAction_Link_Add($this));
         $this->registerAction(new Admin_FormAction_Link_Save($this));

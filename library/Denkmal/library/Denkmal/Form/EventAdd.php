@@ -2,19 +2,19 @@
 
 class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 
-    public function setup() {
-        $this->registerField('venue', new Denkmal_FormField_Venue(true));
-        $this->registerField('venueAddress', new CM_FormField_Text());
-        $this->registerField('venueUrl', new CM_FormField_Url());
+    protected function _initialize() {
+        $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'enableChoiceCreate' => false]));
+        $this->registerField(new CM_FormField_Text(['name' => 'venueAddress']));
+        $this->registerField(new CM_FormField_Url(['name' => 'venueUrl']));
 
-        $this->registerField('date', new CM_FormField_Date(date('Y'), (int) date('Y') + 1));
-        $this->registerField('fromTime', new Denkmal_FormField_Time());
-        $this->registerField('untilTime', new Denkmal_FormField_Time());
+        $this->registerField(new CM_FormField_Date(['name' => 'date', 'yearFirst' => date('Y'), 'yearLast' => (int) date('Y') + 1]));
+        $this->registerField(new Denkmal_FormField_Time(['name' => 'fromTime']));
+        $this->registerField(new Denkmal_FormField_Time(['name' => 'untilTime']));
 
-        $this->registerField('title', new CM_FormField_Text());
-        $this->registerField('artists', new CM_FormField_Text());
-        $this->registerField('genres', new CM_FormField_Text());
-        $this->registerField('urls', new CM_FormField_Text());
+        $this->registerField(new CM_FormField_Text(['name' => 'title']));
+        $this->registerField(new CM_FormField_Text(['name' => 'artists']));
+        $this->registerField(new CM_FormField_Text(['name' => 'genres']));
+        $this->registerField(new CM_FormField_Text(['name' => 'urls']));
 
         $this->registerAction(new Denkmal_FormAction_EventAdd_Create($this));
         $this->registerAction(new Denkmal_FormAction_EventAdd_Preview($this));

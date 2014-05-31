@@ -2,9 +2,9 @@
 
 class Admin_Form_VenueMerge extends CM_Form_Abstract {
 
-    public function setup() {
-        $this->registerField('oldVenue', new CM_FormField_Hidden());
-        $this->registerField('newVenue', new Denkmal_FormField_Venue(false));
+    protected function _initialize() {
+        $this->registerField(new CM_FormField_Hidden(['name' => 'oldVenue']));
+        $this->registerField(new Denkmal_FormField_Venue(['name' => 'newVenue', 'enableChoiceCreate' => false]));
 
         $this->registerAction(new Admin_FormAction_Venue_Merge($this));
     }

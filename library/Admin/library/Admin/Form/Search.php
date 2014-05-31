@@ -2,9 +2,9 @@
 
 class Admin_Form_Search extends CM_Form_Abstract {
 
-    public function setup() {
-        $this->registerField('searchTerm', new CM_FormField_Text());
-        $this->registerField('urlPage', new CM_FormField_Hidden());
+    protected function _initialize() {
+        $this->registerField(new CM_FormField_Text(['name' => 'searchTerm']));
+        $this->registerField(new CM_FormField_Hidden(['name' => 'urlPage']));
 
         $this->registerAction(new Admin_FormAction_Search_Process($this));
     }

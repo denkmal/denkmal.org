@@ -2,10 +2,10 @@
 
 class Admin_Form_Song extends CM_Form_Abstract {
 
-    public function setup() {
-        $this->registerField('songId', new CM_FormField_Hidden());
-        $this->registerField('label', new CM_FormField_Text());
-        $this->registerField('files', new Denkmal_FormField_FileSong());
+    protected function _initialize() {
+        $this->registerField(new CM_FormField_Hidden(['name' => 'songId']));
+        $this->registerField(new CM_FormField_Text(['name' => 'label']));
+        $this->registerField(new Denkmal_FormField_FileSong(['name' => 'files']));
 
         $this->registerAction(new Admin_FormAction_Song_Add($this));
         $this->registerAction(new Admin_FormAction_Song_Save($this));

@@ -8,7 +8,7 @@ class Denkmal_Params extends CM_Params {
      * @throws CM_Exception_InvalidParam
      */
     public function getVenue($key) {
-        return $this->_getObject($key, 'Denkmal_Model_Venue');
+        return $this->getObject($key, 'Denkmal_Model_Venue');
     }
 
     /**
@@ -17,7 +17,7 @@ class Denkmal_Params extends CM_Params {
      * @throws CM_Exception_InvalidParam
      */
     public function getVenueAlias($key) {
-        return $this->_getObject($key, 'Denkmal_Model_VenueAlias');
+        return $this->getObject($key, 'Denkmal_Model_VenueAlias');
     }
 
     /**
@@ -26,7 +26,7 @@ class Denkmal_Params extends CM_Params {
      * @throws CM_Exception_InvalidParam
      */
     public function getEvent($key) {
-        return $this->_getObject($key, 'Denkmal_Model_Event');
+        return $this->getObject($key, 'Denkmal_Model_Event');
     }
 
     /**
@@ -35,7 +35,7 @@ class Denkmal_Params extends CM_Params {
      * @throws CM_Exception_InvalidParam
      */
     public function getLink($key) {
-        return $this->_getObject($key, 'Denkmal_Model_Link');
+        return $this->getObject($key, 'Denkmal_Model_Link');
     }
 
     /**
@@ -44,7 +44,7 @@ class Denkmal_Params extends CM_Params {
      * @throws CM_Exception_InvalidParam
      */
     public function getSong($key) {
-        return $this->_getObject($key, 'Denkmal_Model_Song');
+        return $this->getObject($key, 'Denkmal_Model_Song');
     }
 
     /**
@@ -53,14 +53,14 @@ class Denkmal_Params extends CM_Params {
      * @return DateTime
      */
     public function getDate($key, $default = null) {
-        return $this->_getObject($key, 'DateTime', $default, function ($className, $param) {
+        return $this->getObject($key, 'DateTime', $default, function ($className, $param) {
             if (!preg_match('#^(\d{4})-(\d{1,2})-(\d{1,2})$#', $param, $matches)) {
                 throw new CM_Exception_InvalidParam('Cannot parse date `' . $param . '`');
             }
             if (!checkdate($matches[2], $matches[3], $matches[1])) {
                 throw new CM_Exception_InvalidParam('Not a valid date: `' . $param . '`');
             }
-            return new DateTime($matches[3] . '-' . $matches[2] . '-' . $matches[1]);
+            return new $className($matches[3] . '-' . $matches[2] . '-' . $matches[1]);
         });
     }
 
@@ -69,6 +69,6 @@ class Denkmal_Params extends CM_Params {
      * @return DateInterval
      */
     public function getDateInterval($key) {
-        return $this->_getObject($key, 'DateInterval');
+        return $this->getObject($key, 'DateInterval');
     }
 }

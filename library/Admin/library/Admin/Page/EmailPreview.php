@@ -2,7 +2,7 @@
 
 class Admin_Page_EmailPreview extends Admin_Page_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $emails = array(
             'Admin_Mail_EventNotification',
         );
@@ -16,8 +16,8 @@ class Admin_Page_EmailPreview extends Admin_Page_Abstract {
                 throw new CM_Exception_Invalid('No valid mail specified');
         }
 
-        $this->setTplParam('activeEmail', $class);
-        $this->setTplParam('emailList', $emails);
-        $this->setTplParam('email', $email);
+        $viewResponse->set('activeEmail', $class);
+        $viewResponse->set('emailList', $emails);
+        $viewResponse->set('email', $email);
     }
 }

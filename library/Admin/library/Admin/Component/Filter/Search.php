@@ -2,11 +2,11 @@
 
 class Admin_Component_Filter_Search extends Admin_Component_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $urlPage = $this->_params->getString('urlPage');
         $searchTerm = $this->_params->has('searchTerm') ? $this->_params->getString('searchTerm') : null;
 
-        $this->setTplParam('urlPage', $urlPage);
-        $this->setTplParam('searchTerm', $searchTerm);
+        $viewResponse->set('urlPage', $urlPage);
+        $viewResponse->set('searchTerm', $searchTerm);
     }
 }

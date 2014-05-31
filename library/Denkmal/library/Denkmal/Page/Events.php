@@ -2,7 +2,7 @@
 
 class Denkmal_Page_Events extends Denkmal_Page_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $date = $this->_params->getDate('date', Denkmal_Site::getCurrentDate());
         $dateList = new Denkmal_Paging_DateTime_Days();
 
@@ -15,7 +15,7 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
                 'params' => array('date' => $date->format('Y-n-j')),
             )));
         }
-        $this->setTplParam('menu', $menu);
-        $this->setTplParam('date', $date);
+        $viewResponse->set('menu', $menu);
+        $viewResponse->set('date', $date);
     }
 }

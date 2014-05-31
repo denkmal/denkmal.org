@@ -2,7 +2,7 @@
 
 class Denkmal_Component_EventPreview extends Denkmal_Component_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $event = $this->_params->getEvent('event');
         $venue = $this->_params->has('venue') ? $this->_params->getVenue('venue') : $event->getVenue();
 
@@ -11,15 +11,15 @@ class Denkmal_Component_EventPreview extends Denkmal_Component_Abstract {
         $fromDateDisplay->sub(new DateInterval('PT' . Denkmal_Site::getDayOffset() . 'H'));
 
         if ($fromDate->format('d.m.Y') != $fromDateDisplay->format('d.m.Y')) {
-            $this->setTplParam('fromDateDisplay', $fromDateDisplay);
+            $viewResponse->set('fromDateDisplay', $fromDateDisplay);
         }
 
         if ($venue->hasIdRaw()) {
-            $this->setTplParam('eventDuplicates', new Denkmal_Paging_Event_VenueDate($event->getFrom(), $venue));
+            $viewResponse->set('eventDuplicates', new Denkmal_Paging_Event_VenueDate($event->getFrom(), $venue));
         }
 
-        $this->setTplParam('event', $event);
-        $this->setTplParam('venue', $venue);
+        $viewResponse->set('event', $event);
+        $viewResponse->set('venue', $venue);
 
         $this->_params = CM_Params::factory(); // Empty params to not send them to client
     }

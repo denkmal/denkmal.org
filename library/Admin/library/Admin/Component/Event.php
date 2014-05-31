@@ -2,7 +2,7 @@
 
 class Admin_Component_Event extends Admin_Component_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $event = $this->_params->getEvent('event');
         $venue = $event->getVenue();
         $allowEditing = $this->_params->getBoolean('allowEditing', true);
@@ -12,11 +12,11 @@ class Admin_Component_Event extends Admin_Component_Abstract {
 
         $linkListSuggested = new Denkmal_Paging_Link_Suggestion($event);
 
-        $this->setTplParam('event', $event);
-        $this->setTplParam('venue', $venue);
-        $this->setTplParam('songListSuggested', $songListSuggested);
-        $this->setTplParam('linkListSuggested', $linkListSuggested);
-        $this->setTplParam('eventDuplicates', $event->getDuplicates());
-        $this->setTplParam('allowEditing', $allowEditing);
+        $viewResponse->set('event', $event);
+        $viewResponse->set('venue', $venue);
+        $viewResponse->set('songListSuggested', $songListSuggested);
+        $viewResponse->set('linkListSuggested', $linkListSuggested);
+        $viewResponse->set('eventDuplicates', $event->getDuplicates());
+        $viewResponse->set('allowEditing', $allowEditing);
     }
 }

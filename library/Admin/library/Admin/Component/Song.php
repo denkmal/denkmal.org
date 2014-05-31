@@ -2,9 +2,9 @@
 
 class Admin_Component_Song extends Admin_Component_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $song = $this->_params->getSong('song');
 
-        $this->setTplParam('song', $song);
+        $viewResponse->set('song', $song);
     }
 }

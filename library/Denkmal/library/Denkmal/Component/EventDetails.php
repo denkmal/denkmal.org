@@ -2,7 +2,7 @@
 
 class Denkmal_Component_EventDetails extends Denkmal_Component_Abstract {
 
-    public function prepare() {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $event = $this->_params->getEvent('event');
         $venue = $this->_params->getVenue('venue');
 
@@ -10,9 +10,9 @@ class Denkmal_Component_EventDetails extends Denkmal_Component_Abstract {
         $futureEvents = new Denkmal_Paging_Event_VenueDateInterval($venue, $now, null, array($event));
         $futureEvents->setPage(1, 4);
 
-        $this->setTplParam('event', $event);
-        $this->setTplParam('venue', $venue);
-        $this->setTplParam('futureEvents', $futureEvents);
+        $viewResponse->set('event', $event);
+        $viewResponse->set('venue', $venue);
+        $viewResponse->set('futureEvents', $futureEvents);
 
         $this->_params = CM_Params::factory(); // Empty params to not send them to client
     }

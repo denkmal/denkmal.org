@@ -3,7 +3,7 @@
 class Denkmal_Usertext_Filter_LinksTest extends CMTest_TestCase {
 
     public function testLinkChange() {
-        $render = new CM_Render();
+        $render = new CM_Frontend_Render();
         $link = Denkmal_Model_Link::create('foo', 'http://foo.com', true);
 
         $filter = new Denkmal_Usertext_Filter_Links();

@@ -11,7 +11,7 @@ class Admin_Component_VenueAliasList extends Admin_Component_Abstract {
         $viewResponse->set('venueAliasList', $venueAliasList);
     }
 
-    public static function ajax_deleteAlias(CM_Params $params, CM_ComponentFrontendHandler $handler, CM_Response_View_Ajax $response) {
+    public function ajax_deleteAlias(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Response_View_Ajax $response) {
         if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN)) {
             throw new CM_Exception_NotAllowed();
         }

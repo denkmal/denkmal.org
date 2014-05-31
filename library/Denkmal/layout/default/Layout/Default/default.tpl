@@ -46,7 +46,7 @@
     </div>
   </header>
   <section id="middle" class="sheet">
-    {component name=$viewObj->getPage()}
+    {$renderAdapter->fetchPage()}
   </section>
   {component name='Denkmal_Component_SongPlayer'}
 {/block}

@@ -28,7 +28,7 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
             if (0 == $i) {
                 $image = Denkmal_Model_MessageImage::create(new CM_File_Image(DIR_TEST_DATA . 'image.jpg'));
             }
-            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, $image, $created);
+            $messageList[] = Denkmal_Model_Message::create($venue, 'client', 'Foo ' . $i, $image, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
@@ -52,7 +52,7 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
         $venueNoEvents = Denkmal_Model_Venue::create('Example 1', true, false);
         $messageListNoEvent = array();
         for ($i = 0; $i < $minMessagesVenue + 6; $i++) {
-            $messageListNoEvent[] = Denkmal_Model_Message::create($venueNoEvents, 'Foo ' . $i, null, $created);
+            $messageListNoEvent[] = Denkmal_Model_Message::create($venueNoEvents, 'client', 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
@@ -61,14 +61,14 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
         Denkmal_Model_Event::create($venueHasEvents, 'Foo', true, false, $eventDate);
         $messageListHasEvent = array();
         for ($i = 0; $i < $minMessagesVenue + 7; $i++) {
-            $messageListHasEvent[] = Denkmal_Model_Message::create($venueHasEvents, 'Foo ' . $i, null, $created);
+            $messageListHasEvent[] = Denkmal_Model_Message::create($venueHasEvents, 'client', 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
         $venue = Denkmal_Model_Venue::create('Example 3', true, false);
         $messageList = array();
         for ($i = 0; $i < $maxMessages + 8; $i++) {
-            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, null, $created);
+            $messageList[] = Denkmal_Model_Message::create($venue, 'client', 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
@@ -92,7 +92,7 @@ class Denkmal_Response_Api_MessagesTest extends CMTest_TestCase {
         /** @var Denkmal_Model_Message[] $messageList */
         $messageList = array();
         for ($i = 0; $i < 10; $i++) {
-            $messageList[] = Denkmal_Model_Message::create($venue, 'Foo ' . $i, null, $created);
+            $messageList[] = Denkmal_Model_Message::create($venue, 'client', 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 

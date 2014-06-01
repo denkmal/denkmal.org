@@ -32,9 +32,10 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
         $text = 'hallo test';
         $body = http_build_query(array(
-            'venue' => $venue->getId(),
-            'text'  => $text,
-            'hash'  => hash($this->_hashAlgorithm, $this->_hashToken . $text),
+            'venue'    => $venue->getId(),
+            'clientId' => 'client',
+            'text'     => $text,
+            'hash'     => hash($this->_hashAlgorithm, $this->_hashToken . $text),
         ));
         $request = new CM_Request_Post('/api/message', array('host' => 'denkmal.test'), array('remote_addr' => '1.2.3.4'), $body);
         $response = new Denkmal_Response_Api_Message($request);
@@ -47,6 +48,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
         /** @var Denkmal_Model_Message $message */
         $message = $messageList->getItem(0);
         $this->assertEquals($venue, $message->getVenue());
+        $this->assertSame('client', $message->getClientId());
         $this->assertSame('hallo test', $message->getText());
         $this->assertSame(null, $message->getImage());
         $this->assertSameTime($createTime, $message->getCreated()->getTimestamp());
@@ -57,6 +59,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
         $file = $file = new CM_File(DIR_TEST_DATA . 'image.jpg');
         $body = http_build_query(array(
             'venue'      => $venue->getId(),
+            'clientId'   => 'client',
             'image-data' => base64_encode($file->read()),
             'hash'       => hash($this->_hashAlgorithm, $this->_hashToken . md5($file->read())),
         ));
@@ -71,6 +74,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
         /** @var Denkmal_Model_Message $message */
         $message = $messageList->getItem(0);
         $this->assertEquals($venue, $message->getVenue());
+        $this->assertSame('client', $message->getClientId());
         $this->assertSame(null, $message->getText());
         $this->assertSameTime($createTime, $message->getCreated()->getTimestamp());
         $imageFileThumb = new CM_File_Image($message->getImage()->getFile('thumb'));
@@ -86,8 +90,9 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
     public function testProcessMissingTextOrImage() {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
         $body = http_build_query(array(
-            'venue' => $venue->getId(),
-            'hash'  => 'foo',
+            'venue'    => $venue->getId(),
+            'clientId' => 'client',
+            'hash'     => 'foo',
         ));
         $request = new CM_Request_Post('/api/message', array('host' => 'denkmal.test'), array('remote_addr' => '1.2.3.4'), $body);
         $response = new Denkmal_Response_Api_Message($request);
@@ -102,6 +107,7 @@ class Denkmal_Response_Api_MessageTest extends CMTest_TestCase {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
         $body = http_build_query(array(
             'venue'      => $venue->getId(),
+            'clientId'   => 'client',
             'text'       => 'foo',
             'image-data' => 'bar',
             'hash'       => 'foo bar',

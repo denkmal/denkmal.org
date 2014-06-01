@@ -82,6 +82,20 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         return $this->_get('venue');
     }
 
+    /**
+     * @param string $clientId
+     */
+    public function setClientId($clientId) {
+        $this->_set('clientId', $clientId);
+    }
+
+    /**
+     * @return string
+     */
+    public function getClientId() {
+        return $this->_get('clientId');
+    }
+
     public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
@@ -101,10 +115,11 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
-            'venue'   => array('type' => 'Denkmal_Model_Venue'),
-            'text'    => array('type' => 'string', 'optional' => true),
-            'created' => array('type' => 'DateTime'),
-            'image'   => array('type' => 'Denkmal_Model_MessageImage', 'optional' => true),
+            'venue'    => array('type' => 'Denkmal_Model_Venue'),
+            'clientId' => array('type' => 'string'),
+            'text'     => array('type' => 'string', 'optional' => true),
+            'created'  => array('type' => 'DateTime'),
+            'image'    => array('type' => 'Denkmal_Model_MessageImage', 'optional' => true),
         ));
     }
 
@@ -117,18 +132,20 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 
     /**
      * @param Denkmal_Model_Venue             $venue
+     * @param string                          $clientId
      * @param string|null                     $text
      * @param Denkmal_Model_MessageImage|null $image
      * @param DateTime|null                   $created
      * @return Denkmal_Model_Message
      */
-    public static function create(Denkmal_Model_Venue $venue, $text = null, Denkmal_Model_MessageImage $image = null, DateTime $created = null) {
+    public static function create(Denkmal_Model_Venue $venue, $clientId, $text = null, Denkmal_Model_MessageImage $image = null, DateTime $created = null) {
         if (null === $created) {
             $created = new DateTime();
         }
 
         $message = new self();
         $message->setVenue($venue);
+        $message->setClientId($clientId);
         $message->setText($text);
         $message->setCreated($created);
         $message->setImage($image);

@@ -12,6 +12,7 @@ class Denkmal_Response_Api_Message extends Denkmal_Response_Api_Abstract {
         $hashAlgorithm = self::_getConfig()->hashAlgorithm;
 
         $venue = $this->_params->getVenue('venue');
+        $clientId = $this->_params->getString('clientId');
         $clientHash = $this->_params->getString('hash');
         list($text, $imageData) = $this->_getTextAndImage();
 
@@ -28,7 +29,7 @@ class Denkmal_Response_Api_Message extends Denkmal_Response_Api_Abstract {
             $imageFile = new CM_File_Image(CM_File_UserContent_Temp::create('message-image.jpg', $imageData));
             $image = Denkmal_Model_MessageImage::create($imageFile);
         }
-        $message = Denkmal_Model_Message::create($venue, $text, $image);
+        $message = Denkmal_Model_Message::create($venue, $clientId, $text, $image);
         $action->notify($message);
 
         $response = $message->toArrayApi($this->getRender());

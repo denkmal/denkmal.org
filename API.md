@@ -104,7 +104,7 @@ Host: www.denkmal.org
 content-type: text/plain
 content-length: 65
 
-venue=1&text=foobar&hash=<HASH>
+venue=1&clientId=my-client&text=foobar&hash=<HASH>
 ```
 Response:
 ```json

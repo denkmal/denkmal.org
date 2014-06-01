@@ -9,13 +9,13 @@ class Denkmal_Paging_Message_AllTest extends CMTest_TestCase {
     public function testGetItems() {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
 
-        $message1 = Denkmal_Model_Message::create($venue, 'Foo 1');
-        $message2 = Denkmal_Model_Message::create($venue, 'Foo 2');
+        $message1 = Denkmal_Model_Message::create($venue, 'client', 'Foo 1');
+        $message2 = Denkmal_Model_Message::create($venue, 'client', 'Foo 2');
         $paging = new Denkmal_Paging_Message_All();
 
         $this->assertEquals(array($message1, $message2), $paging->getItems());
 
-        $message3 = Denkmal_Model_Message::create($venue, 'Foo 3');
+        $message3 = Denkmal_Model_Message::create($venue, 'client', 'Foo 3');
         $paging = new Denkmal_Paging_Message_All();
         $this->assertEquals(array($message1, $message2, $message3), $paging->getItems());
 

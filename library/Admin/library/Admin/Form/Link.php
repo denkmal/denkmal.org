@@ -13,10 +13,12 @@ class Admin_Form_Link extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Link_Delete($this));
     }
 
-    public function prepare(CM_Params $renderParams) {
-        /** @var Denkmal_Params $renderParams */
-        if ($renderParams->has('link')) {
-            $link = $renderParams->getLink('link');
+    public function prepare(CM_Frontend_Environment $environment) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+
+        if ($params->has('link')) {
+            $link = $params->getLink('link');
             $this->getField('linkId')->setValue($link->getId());
             $this->getField('label')->setValue($link->getLabel());
             $this->getField('url')->setValue($link->getUrl());

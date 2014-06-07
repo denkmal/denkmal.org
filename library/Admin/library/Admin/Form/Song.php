@@ -12,10 +12,12 @@ class Admin_Form_Song extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Song_Delete($this));
     }
 
-    public function prepare(CM_Params $renderParams) {
-        /** @var Denkmal_Params $renderParams */
-        if ($renderParams->has('song')) {
-            $song = $renderParams->getSong('song');
+    public function prepare(CM_Frontend_Environment $environment) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+
+        if ($params->has('song')) {
+            $song = $params->getSong('song');
             $this->getField('songId')->setValue($song->getId());
             $this->getField('label')->setValue($song->getLabel());
         }

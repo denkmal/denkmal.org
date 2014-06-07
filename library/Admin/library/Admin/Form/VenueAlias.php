@@ -9,9 +9,11 @@ class Admin_Form_VenueAlias extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_VenueAlias_Add($this));
     }
 
-    public function prepare(CM_Params $renderParams) {
-        /** @var Denkmal_Params $renderParams */
-        $venue = $renderParams->getVenue('venue');
+    public function prepare(CM_Frontend_Environment $environment) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+
+        $venue = $params->getVenue('venue');
         $this->getField('venueId')->setValue($venue->getId());
     }
 }

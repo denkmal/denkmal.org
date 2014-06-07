@@ -9,11 +9,13 @@ class Admin_Form_Search extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Search_Process($this));
     }
 
-    public function prepare(CM_Params $renderParams) {
-        /** @var Denkmal_Params $renderParams */
-        if ($renderParams->has('searchTerm')) {
-            $this->getField('searchTerm')->setValue($renderParams->getString('searchTerm'));
+    public function prepare(CM_Frontend_Environment $environment) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+
+        if ($params->has('searchTerm')) {
+            $this->getField('searchTerm')->setValue($params->getString('searchTerm'));
         }
-        $this->getField('urlPage')->setValue($renderParams->getString('urlPage'));
+        $this->getField('urlPage')->setValue($params->getString('urlPage'));
     }
 }

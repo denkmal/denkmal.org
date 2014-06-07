@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d2693b348bab8ddbddd2f082ed4429fd",
+    "hash": "f411172360df8c9d82326fb5f2820eb0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.30.0",
+            "version": "1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "2386a17048796dc4d835e64c1aa5eb6091caa85a"
+                "reference": "ea189b3dc94b4401cb6c6d635068f7252977cfc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-2386a17048796dc4d835e64c1aa5eb6091caa85a-zip-34a516.zip",
-                "reference": "2386a17048796dc4d835e64c1aa5eb6091caa85a",
-                "shasum": "903c61c7bc446574e68ca3e9a3e6917f35df38d1"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-ea189b3dc94b4401cb6c6d635068f7252977cfc2-zip-3263c4.zip",
+                "reference": "ea189b3dc94b4401cb6c6d635068f7252977cfc2",
+                "shasum": "f418a0d1d973400a866855e4dda8eb056f42621d"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -120,11 +120,14 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "time": "2014-05-30 22:04:12"
+            "support": {
+                "source": "https://github.com/cargomedia/CM/tree/master",
+                "issues": "https://github.com/cargomedia/CM/issues"
+            },
+            "time": "2014-06-07 19:10:48"
         },
         {
             "name": "composer/composer",
@@ -759,7 +762,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.5.0-RC1",
+            "version": "v2.5.0",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
@@ -816,7 +819,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.0-RC1",
+            "version": "v2.5.0",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
@@ -875,7 +878,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v2.5.0-RC1",
+            "version": "v2.5.0",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
@@ -924,7 +927,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.5.0-RC1",
+            "version": "v2.5.0",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
@@ -1336,7 +1339,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.5.0-RC1",
+            "version": "v2.5.0",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",

@@ -33,10 +33,6 @@ Vagrant.configure('2') do |config|
     'cd /home/vagrant/denkmal',
     '(test ! -L vendor/cargomedia/cm || rm vendor/cargomedia/cm)',
     'composer --no-interaction install --dev',
-    'cp resources/config/local.dev.php resources/config/local.php',
-    'bin/cm app set-deploy-version',
-    'bin/cm app setup',
-    'bin/cm db run-updates',
   ].join(' && ')
 
   if ENV['LINK']
@@ -47,4 +43,12 @@ Vagrant.configure('2') do |config|
         'ln -s ../../../CM vendor/cargomedia/cm',
       ].join(' && ')
     end
+
+  config.vm.provision 'shell', inline: [
+    'cd /home/vagrant/denkmal',
+    'cp resources/config/local.dev.php resources/config/local.php',
+    'bin/cm app set-deploy-version',
+    'bin/cm app setup',
+    'bin/cm db run-updates',
+  ].join(' && ')
 end

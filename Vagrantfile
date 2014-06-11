@@ -42,7 +42,7 @@ Vagrant.configure('2') do |config|
         'rm -rf vendor/cargomedia/cm',
         'ln -s ../../../CM vendor/cargomedia/cm',
       ].join(' && ')
-    end
+  end
 
   config.vm.provision 'shell', inline: [
     'cd /home/vagrant/denkmal',

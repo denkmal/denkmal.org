@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Usertext_Filter_Links implements CM_Usertext_Filter_Interface {
+class Denkmal_Usertext_Filter_Links extends CM_Usertext_Filter_Abstract {
 
     public function transform($text, CM_Frontend_Render $render) {
         $text = (string) $text;

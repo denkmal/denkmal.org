@@ -8,7 +8,7 @@
         "kissmetrics/kissmetrics": "dev-master@dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "~3.7.10",
+        "phpunit/phpunit": "~4.1.3",
         "tomaszdurka/mocka": "~0.4.0"
     },
     "minimum-stability": "alpha",

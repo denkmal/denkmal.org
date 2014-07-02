@@ -7,7 +7,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Page_Events',
 
-  /** @type Carousel */
+  /** @type SwipeCarousel */
   _carousel: null,
 
   _stateParams: ['date'],
@@ -22,7 +22,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     this._onShowPaneSetUrlDelayed = _.debounce(this._onShowPaneSetUrl, 2000);
 
     var $carousel = this.$('.swipeCarousel');
-    this._carousel = new Carousel('.swipeCarousel');
+    this._carousel = new SwipeCarousel($carousel);
     this._carousel.init();
 
     var self = this;

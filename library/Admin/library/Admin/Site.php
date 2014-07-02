@@ -4,7 +4,7 @@ class Admin_Site extends Denkmal_Site {
 
     public function __construct() {
         parent::__construct();
-        $this->_setNamespace('Admin');
+        $this->_setModule('Admin');
     }
 
     public function getMenus() {

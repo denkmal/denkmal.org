@@ -4,7 +4,7 @@ class Denkmal_Site extends CM_Site_Abstract {
 
     public function __construct() {
         parent::__construct();
-        $this->_setNamespace('Denkmal');
+        $this->_setModule('Denkmal');
     }
 
     /**

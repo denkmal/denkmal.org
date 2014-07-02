@@ -20,9 +20,4 @@ Fill in some example data:
 vagrant ssh -c 'denkmal/bin/cm app fill-example-data'
 ```
 
-Create elasticsearch indices:
-```
-vagrant ssh -c 'denkmal/bin/cm search-index create'
-```
-
 The app should now be accessible on your host machine at http://www.denkmal.dev/.

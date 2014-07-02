@@ -12,12 +12,16 @@ return function (CM_Config_Node $config) {
     $config->CM_Memcache_Client->servers = array(
         array('host' => '127.0.0.1', 'port' => 11211),
     );
-    $config->CM_Db_Db->db = 'denkmal';
-    $config->CM_Db_Db->username = 'root';
-    $config->CM_Db_Db->password = '';
-    $config->CM_Db_Db->server = array('host' => '127.0.0.1', 'port' => 3306);
-    $config->CM_Jobdistribution_JobWorker->servers = array(
-        array('host' => 'localhost', 'port' => 4730),
+    $config->services['database-master'] = array(
+        'class'     => 'CM_Db_Client',
+        'arguments' => array(array(
+            'host'             => '127.0.0.1',
+            'port'             => 3306,
+            'username'         => 'root',
+            'password'         => '',
+            'db'               => 'denkmal',
+            'reconnectTimeout' => 300
+        ))
     );
     $config->CM_Jobdistribution_Job_Abstract->servers = array(
         array('host' => 'localhost', 'port' => 4730),

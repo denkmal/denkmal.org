@@ -3,7 +3,7 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
-  <div class="swipeCarousel beforeload">
+  <div class="swipeCarousel">
     <ul class="dateList">
       {foreach $menu->getEntries($render->getEnvironment()) as $entry}
         {$menuDate = $entry->getLabel()}

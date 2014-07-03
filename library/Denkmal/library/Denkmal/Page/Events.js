@@ -36,10 +36,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
         eventListView.closeAllEvents();
       });
     });
-
-    this.on('ready', function() {
-      $carousel.removeClass('beforeload');
-    });
   },
 
   /**

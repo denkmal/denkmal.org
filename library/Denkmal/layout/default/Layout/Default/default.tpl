@@ -17,7 +17,7 @@ https://github.com/denkmal/denkmal.org
 
 Made in Basel
 -------------
-Proud member of "Made in Basel", the city's local IT-label.
+Proud member of "Made in Basel", the city's local DIY-label.
 http://www.madeinbasel.org
 
 

@@ -13,80 +13,6 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: desaturate(darken(@colorSpecial, 5), 20);
-  background-image: image("pattern.png");
-  box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, .8);
-
-  .underTheHood {
-    color: @colorFgTheme;
-
-    a {
-      color: @colorFgTheme;
-    }
-
-    .separator {
-      text-transform: uppercase;
-      margin: 35px 0 8px;
-      font-size: @fontSizeSmall;
-      opacity: .8;
-
-      &:first-child {
-        margin-top: 15px;
-      }
-    }
-
-    .hire {
-      font-size: @fontSizeSmall;
-      font-style: italic;
-      opacity: .8;
-    }
-
-    .logo {
-      display: inline-block;
-      width: 60px;
-      height: 60px;
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-
-      &.denkmal {
-        background-image: image('Denkmal.svg');
-      }
-
-      &.cargomedia {
-        background-image: image('CargoMedia.svg');
-        width: 120px;
-        height: 60px;
-      }
-
-      &.madeinbasel {
-        background-image: image('MadeInBasel-text.svg');
-        width: 120px;
-        height: 56px;
-      }
-
-      &.cat {
-        background-image: image('Cat.svg');
-        width: 120px;
-        height: 120px;
-      }
-    }
-
-  }
-
-  .underTheHood-left {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 180px;
-    text-align: center;
-  }
-
-  .underTheHood-right {
-    position: absolute;
-    right: 5px;
-    top: 10px;
-  }
 
   &.beforeload {
     display: none;
@@ -101,7 +27,7 @@
   background-color: @colorBgBody;
   background-image: image("pattern-small.png");
   background-size: 20px;
-  box-shadow: -10px 0 20px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .3);
 
   .date {
     position: relative;

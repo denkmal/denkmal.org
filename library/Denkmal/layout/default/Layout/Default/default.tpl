@@ -2,37 +2,31 @@
 
 {block name="before-html"}
 <!--
-                           You like to see what's under the hood?
+
+WASLOIFT IN BASEL?
+==================
+Denkmal.org is an Oi!-project and aims to serve as an alternative event
+calendar for the city of Basel.
 
 
-                                     RRRR, RRRRV =RRRR
-                                    iRRRRR RRRRR RRRRR;
-                                     RRRR: RRRRX +RRRR
-                                      .,     ,     ..
-                                     VRRX  =RRR:  RRRI
-                                    +RRRRR RRRRR RRRRR:
-                                    ,RRRRV RRRRR RRRRR.
-                                     .IV:   iV+   ;VI
-                                     ,VV=   IXt   +XY.
-                                    :RRRRX RRRRR RRRRR.
-                                    =RRRRR RRRRR RRRRR:
-                                     IRRX  ;RRR,  RRRt
+Open source
+-----------
+Fork, contribute, open issues! Denkmal.org is on Github and licensed under MIT.
+https://github.com/denkmal/denkmal.org
 
 
-                                                                      R  R
-            ..    ...            ..     ..      ..  ..      ,      ,  R       ..
-          ,RRRR, ,RRR  ,RRRRI .RRRRV  RRRRR:  RV =RR:.Ri  RI IR  XX :RR  R  .t :R
-          RR     RR,R; ,Rt.RX RR     RR   RR  R   R.  ;X +X   R, R    R  R      X,
-          RR     RX:RR ,RRRX  RR RRR RR   RR  R   R   ;X tX     .R    R  R  Ri  R,
-          RRRiR RRRRRR:,Rt=RV RRRiRR =RRiRRI  R   R   ;X  R      R.  RR  R  R   R,
-            YRt YY   YY,Y+ tYt  YRY:   tRY    i   i   ,+   =RY;   +Rt i  i  .VY.;.
+Made in Basel
+-------------
+Proud member of "Made in Basel", the city's local DIY-label.
+http://www.madeinbasel.org
 
 
-                               Large Scale Web Development
+Thanks!
+-------
+Denkmal.org wouldn't be possible without the help of Cargo Media - they're hiring!
+http://www.cargomedia.ch
 
 
-                                   --- We're Hiring ---
-                                    www.cargomedia.ch
 -->
 {/block}
 {block name='tileColor'}#3CC94D{/block}

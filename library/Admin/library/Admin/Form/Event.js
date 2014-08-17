@@ -20,7 +20,7 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
 
   ready: function() {
     _.each(this.getChildren('CM_FormField_Text'), function(field) {
-      field.enableTriggerChange();
+      field.enableTriggerChangeOnInput();
     });
 
     this.on('change', _.debounce(this.renderPreview, 100));

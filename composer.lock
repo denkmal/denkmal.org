@@ -3,21 +3,21 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d25b2115e9c4ddc2d85f7ece20ff72bb",
+    "hash": "673b8618784bde2df00fba32ea1b2a16",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.6.13",
+            "version": "2.6.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d1f345a65b490bd83fff735d8a9e49b224ce24b5"
+                "reference": "4eaf38f0297533d48f013be7e1ffa1cb2c912e2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-d1f345a65b490bd83fff735d8a9e49b224ce24b5-zip-087780.zip",
-                "reference": "d1f345a65b490bd83fff735d8a9e49b224ce24b5",
-                "shasum": "19fbf865b4fc8b4955714494204ac06ecc7926e1"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-4eaf38f0297533d48f013be7e1ffa1cb2c912e2f-zip-669af8.zip",
+                "reference": "4eaf38f0297533d48f013be7e1ffa1cb2c912e2f",
+                "shasum": "f067f784c97073990521de726c05387826eedbec"
             },
             "require": {
                 "guzzle/guzzle": ">=3.7.0,<=3.9.9",
@@ -71,27 +71,27 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2014-07-31 20:34:29"
+            "time": "2014-08-14 20:49:47"
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.58.0",
+            "version": "1.61.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "577ced14ebfb813b31df54f9a7f7ccf5ba689928"
+                "reference": "da40d28639ccc0c640e3bf8429d3635ec93caac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-577ced14ebfb813b31df54f9a7f7ccf5ba689928-zip-cc3c94.zip",
-                "reference": "577ced14ebfb813b31df54f9a7f7ccf5ba689928",
-                "shasum": "2b7f311e861d5793b51bac45d38b9d3aee4a7a04"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-da40d28639ccc0c640e3bf8429d3635ec93caac6-zip-5df87a.zip",
+                "reference": "da40d28639ccc0c640e3bf8429d3635ec93caac6",
+                "shasum": "9ed4cdc9714fa76cd72d113c15dcf21ec0c48a54"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
                 "composer/composer": "1.0.0-alpha8",
                 "easybook/geshi": "1.0.8.11",
-                "guzzlehttp/guzzle": "4.1.4",
+                "guzzlehttp/guzzle": "~4.1.7",
                 "kickbox/kickbox": "~1.0.3",
                 "kissmetrics/kissmetrics-php": "~0.1.0",
                 "leafo/lessphp": "0.3.*",
@@ -99,7 +99,7 @@
                 "michelf/php-markdown": "1.4.0",
                 "nicmart/tree": "~0.2.0",
                 "phpmailer/phpmailer": "5.2.6",
-                "ruflin/elastica": "v1.1.1.1",
+                "ruflin/elastica": "v1.3.0.0",
                 "smarty/smarty": "3.1.16"
             },
             "require-dev": {
@@ -128,7 +128,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-08-07 11:07:56"
+            "time": "2014-08-17 15:29:56"
         },
         {
             "name": "composer/composer",
@@ -246,17 +246,17 @@
         },
         {
             "name": "guzzle/guzzle",
-            "version": "v3.7.4",
+            "version": "v3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "b170b028c6bb5799640e46c8803015b0f9a45ed9"
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/guzzle-guzzle-b170b028c6bb5799640e46c8803015b0f9a45ed9-zip-594bba.zip",
-                "reference": "b170b028c6bb5799640e46c8803015b0f9a45ed9",
-                "shasum": "e7f576524b2a2b4dff18ad7e2765113af746fad6"
+                "url": "http://satis.cargomedia.ch/dist/dist/guzzle-guzzle-4de0618a01b34aa1c8c33a3f13f396dcd3882eba-zip-52886a.zip",
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "shasum": "8a1150e986acca9b715c25b3997f905b6cfbaa8e"
             },
             "require": {
                 "ext-curl": "*",
@@ -293,19 +293,19 @@
                 "phpunit/phpunit": "3.7.*",
                 "psr/log": "1.0.*",
                 "symfony/class-loader": "*",
-                "zendframework/zend-cache": "2.0.*",
-                "zendframework/zend-log": "2.0.*"
+                "zendframework/zend-cache": "<2.3",
+                "zendframework/zend-log": "<2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.7-dev"
+                    "dev-master": "3.8-dev"
                 }
             },
             "autoload": {
                 "psr-0": {
-                    "Guzzle\\Tests": "tests/",
-                    "Guzzle": "src/"
+                    "Guzzle": "src/",
+                    "Guzzle\\Tests": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -334,21 +334,21 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-10-02 20:47:00"
+            "time": "2014-01-28 22:29:15"
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.1.4",
+            "version": "4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "5ae164dae6e65784286a698800190bc094407f7c"
+                "reference": "e196b8f44f9492a11261ea8f7b9724613a198daf"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-guzzle-5ae164dae6e65784286a698800190bc094407f7c-zip-b5b34c.zip",
-                "reference": "5ae164dae6e65784286a698800190bc094407f7c",
-                "shasum": "8f37a53ba3ce9c1a552ae87c1fd2e8ad8b6edbc9"
+                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-guzzle-e196b8f44f9492a11261ea8f7b9724613a198daf-zip-3a5237.zip",
+                "reference": "e196b8f44f9492a11261ea8f7b9724613a198daf",
+                "shasum": "15caf8ea3172852218a4f0976b870b1347df74fb"
             },
             "require": {
                 "ext-json": "*",
@@ -366,7 +366,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1.x-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -399,21 +399,21 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-07-23 00:52:39"
+            "time": "2014-08-14 20:29:51"
         },
         {
             "name": "guzzlehttp/streams",
-            "version": "1.4.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/streams.git",
-                "reference": "3b761a328e5ed6ed519e960aded95d7acbe77894"
+                "reference": "fb0d1ee29987c2bdc59867bffaade6fc88c2675f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-streams-3b761a328e5ed6ed519e960aded95d7acbe77894-zip-32558a.zip",
-                "reference": "3b761a328e5ed6ed519e960aded95d7acbe77894",
-                "shasum": "3d42e2bc2be5b8e1f353e2759f534d1ffd88fe3e"
+                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-streams-fb0d1ee29987c2bdc59867bffaade6fc88c2675f-zip-88ddd8.zip",
+                "reference": "fb0d1ee29987c2bdc59867bffaade6fc88c2675f",
+                "shasum": "7ece855e280b334874427aa175a51e30f866b305"
             },
             "require": {
                 "php": ">=5.4.0"
@@ -424,7 +424,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -452,7 +452,7 @@
                 "Guzzle",
                 "stream"
             ],
-            "time": "2014-07-19 18:43:42"
+            "time": "2014-08-10 23:57:01"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -510,21 +510,21 @@
         },
         {
             "name": "kickbox/kickbox",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kickboxio/kickbox-php.git",
-                "reference": "88ea644273459fe4c745bf60d0b3805b2ef1cce0"
+                "reference": "719ba1df640465462c083b79fb726cc84eaeb606"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/kickbox-kickbox-88ea644273459fe4c745bf60d0b3805b2ef1cce0-zip-441efc.zip",
-                "reference": "88ea644273459fe4c745bf60d0b3805b2ef1cce0",
-                "shasum": "af1024dcf38eb276425b347f51040a1d2992cfc4"
+                "url": "http://satis.cargomedia.ch/dist/dist/kickbox-kickbox-719ba1df640465462c083b79fb726cc84eaeb606-zip-94241e.zip",
+                "reference": "719ba1df640465462c083b79fb726cc84eaeb606",
+                "shasum": "5fdba0348de3c14f47871aeb01ab344cbd1db4f0"
             },
             "require": {
                 "ext-json": "*",
-                "guzzle/guzzle": "3.7.*"
+                "guzzle/guzzle": "3.8.*"
             },
             "type": "library",
             "autoload": {
@@ -554,7 +554,7 @@
                 "validation",
                 "verification"
             ],
-            "time": "2014-06-12 16:32:33"
+            "time": "2014-08-07 15:04:51"
         },
         {
             "name": "kissmetrics/kissmetrics",
@@ -783,7 +783,6 @@
                     "Tree\\Test": "tests"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -851,32 +850,39 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "v1.1.1.1",
+            "version": "v1.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "fc607170ab2ca751097648d48a5d38e15e9d5f6a"
+                "reference": "92155a36c94ebe15b09661ae804acbe4bdd4ad6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-fc607170ab2ca751097648d48a5d38e15e9d5f6a-zip-bd0136.zip",
-                "reference": "fc607170ab2ca751097648d48a5d38e15e9d5f6a",
-                "shasum": "2ff4040114640463446bb7867b063f31cdbafd97"
+                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-92155a36c94ebe15b09661ae804acbe4bdd4ad6b-zip-762852.zip",
+                "reference": "92155a36c94ebe15b09661ae804acbe4bdd4ad6b",
+                "shasum": "aaa0de1a98ef45dc0a8f14d44504676ae3508658"
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
                 "munkie/elasticsearch-thrift-php": "1.4.*",
+                "phpunit/phpunit": "4.1.*",
                 "psr/log": "~1.0",
                 "satooshi/php-coveralls": "dev-master"
             },
             "suggest": {
+                "guzzlehttp/guzzle": "Allow using guzzle 4.x as the http transport (requires php 5.4)",
                 "monolog/monolog": "Logging request",
                 "munkie/elasticsearch-thrift-php": "Allow using thrift transport",
                 "psr/log": "for logging"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Elastica": "lib/",
@@ -899,7 +905,7 @@
                 "client",
                 "search"
             ],
-            "time": "2014-04-27 17:30:35"
+            "time": "2014-07-27 13:45:09"
         },
         {
             "name": "seld/jsonlint",
@@ -1450,17 +1456,17 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.1.5",
+            "version": "4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e0de628ff849e1804c7d644cbaa16d0a5504807a"
+                "reference": "241116219bb7e3b8111a36ffd8f37546888738d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-e0de628ff849e1804c7d644cbaa16d0a5504807a-zip-2f91d0.zip",
-                "reference": "e0de628ff849e1804c7d644cbaa16d0a5504807a",
-                "shasum": "a711779061fabaf5fca3712b0903fa8276019e14"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-241116219bb7e3b8111a36ffd8f37546888738d6-zip-8be8f5.zip",
+                "reference": "241116219bb7e3b8111a36ffd8f37546888738d6",
+                "shasum": "2878421ed3a8b4e026ec7e3181ffcfbfd338c8f9"
             },
             "require": {
                 "ext-dom": "*",
@@ -1520,7 +1526,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-08-07 05:43:51"
+            "time": "2014-08-17 08:07:02"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1557,7 +1563,6 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1612,7 +1617,6 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1672,7 +1676,6 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1725,7 +1728,6 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1776,7 +1778,6 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1832,7 +1833,6 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1918,7 +1918,6 @@
                     "CodeGenerator\\": "source/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Tomasz Durka",
@@ -1954,24 +1953,17 @@
                     "Mocka": "source/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "time": "2014-06-18 22:09:56"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "alpha",
     "stability-flags": {
         "kissmetrics/kissmetrics": 20
     },
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "platform": [],
+    "platform-dev": []
 }

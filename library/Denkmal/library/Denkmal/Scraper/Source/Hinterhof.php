@@ -10,9 +10,10 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 
     /**
      * @param string $html
+     * @param int|null $year
      * @throws CM_Exception_Invalid
      */
-    public function processPage($html) {
+    public function processPage($html, $year = null) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('#page .events > .entry');
         /** @var CM_Dom_NodeList $event */
@@ -47,7 +48,7 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 
             $description = new Denkmal_Scraper_Description($textTitle, $title, $genres);
 
-            $from = new Denkmal_Scraper_Date($matches['day'], $matches['month']);
+            $from = new Denkmal_Scraper_Date($day, $month, $year);
             if ($from->getWeekday() == 6) {
                 $from->setTime(23); // Sa
             } else {

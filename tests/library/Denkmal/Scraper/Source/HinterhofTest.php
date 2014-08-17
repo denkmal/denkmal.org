@@ -24,6 +24,6 @@ class Denkmal_Scraper_Source_HinterhofTest extends CMTest_TestCase {
         );
 
         /** @var Denkmal_Scraper_Source_Hinterhof $scraper */
-        $scraper->processPage($html);
+        $scraper->processPage($html, 2014);
     }
 }

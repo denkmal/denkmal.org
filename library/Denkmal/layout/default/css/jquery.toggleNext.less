@@ -4,7 +4,7 @@
   border: 1px solid transparent;
   font-size: 12px;
   background-color: @colorBgEmphasize1;
-  .transition(200ms);
+  transition: 200ms;
 
   &:hover, &.active {
     background-color: @colorBg;
@@ -20,7 +20,7 @@
     border-left-color: @colorFgBorderEmphasize3;
 
     &, & + .toggleNext-content {
-      .transform(translate(0, 2px));
+      transform: translate(0, 2px);
     }
   }
 }

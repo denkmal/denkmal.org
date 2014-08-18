@@ -8,7 +8,7 @@ class Admin_Component_LinkList_All extends Admin_Component_LinkList_Abstract {
         if (null !== $searchTerm) {
             $linkList = new Denkmal_Paging_Link_Search($searchTerm);
         } else {
-            $linkList = new Denkmal_Paging_Link_All();
+            $linkList = new Denkmal_Paging_Link_Working();
         }
 
         $this->_prepareList($linkList, $searchTerm, $viewResponse);

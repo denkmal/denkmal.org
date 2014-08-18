@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Paging_Link_All extends Denkmal_Paging_Link_Abstract {
+class Denkmal_Paging_Link_Working extends Denkmal_Paging_Link_Abstract {
 
     /**
      * @param string|null $select

@@ -12,7 +12,6 @@ node default {
     path => '/home/vagrant/denkmal',
     debug => true,
     aliases => [$domain, "admin.${domain}"],
-    cdn_origin => "origin-www.${domain}",
   }
 
   environment::variable {'PHP_IDE_CONFIG':

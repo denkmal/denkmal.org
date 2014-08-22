@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "673b8618784bde2df00fba32ea1b2a16",
+    "hash": "8a3661db459b71faa98695f36302c3a7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.61.1",
+            "version": "1.62.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "da40d28639ccc0c640e3bf8429d3635ec93caac6"
+                "reference": "65d1f407d0b345a6d8a2a13223e72f9afcb79af2"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-da40d28639ccc0c640e3bf8429d3635ec93caac6-zip-5df87a.zip",
-                "reference": "da40d28639ccc0c640e3bf8429d3635ec93caac6",
-                "shasum": "9ed4cdc9714fa76cd72d113c15dcf21ec0c48a54"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-65d1f407d0b345a6d8a2a13223e72f9afcb79af2-zip-be7bee.zip",
+                "reference": "65d1f407d0b345a6d8a2a13223e72f9afcb79af2",
+                "shasum": "bc251e20e4a164cc84a6cd7b2444e886c3abf25d"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -124,11 +124,14 @@
                     "CMTest_": "tests/helpers/CMTest/library/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "time": "2014-08-17 15:29:56"
+            "support": {
+                "source": "https://github.com/cargomedia/CM/tree/master",
+                "issues": "https://github.com/cargomedia/CM/issues"
+            },
+            "time": "2014-08-22 18:01:34"
         },
         {
             "name": "composer/composer",

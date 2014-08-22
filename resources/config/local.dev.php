@@ -36,16 +36,14 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Lastfm->apiKey = '68dda0be24c60cef36b7f05b70988b74';
 
     $config->Denkmal_Site->url = 'http://www.denkmal.dev';
-    $config->Denkmal_Site->urlCdn = 'http://origin-www.denkmal.dev';
     $config->Admin_Site->url = 'http://admin.denkmal.dev';
-    $config->Admin_Site->urlCdn = 'http://origin-www.denkmal.dev';
 
     $config->services['usercontent'] = array(
         'class'     => 'CM_Service_UserContent',
         'arguments' => array(array(
             'default' => array(
                 'filesystem' => 'filesystem-usercontent',
-                'url'        => 'http://origin-www.denkmal.dev/userfiles',
+                'url'        => '/userfiles',
             )
         )));
 };

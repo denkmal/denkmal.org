@@ -4,7 +4,7 @@
         "bin-dir": "bin/"
     },
     "require": {
-        "cargomedia/cm": "~1.61.1",
+        "cargomedia/cm": "~1.62.7",
         "kissmetrics/kissmetrics": "dev-master@dev"
     },
     "require-dev": {

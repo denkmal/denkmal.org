@@ -74,17 +74,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.73.0",
+            "version": "1.73.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "58c455d63bdd3806032aa17471498f5e3d3d8534"
+                "reference": "e1ee75ba0ebadf2e5c61ac934b0948f3648fb7c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-58c455d63bdd3806032aa17471498f5e3d3d8534-zip-a3aa73.zip",
-                "reference": "58c455d63bdd3806032aa17471498f5e3d3d8534",
-                "shasum": "af821e4b2cc0db882f693c0b758c7fd712bdbb0d"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-e1ee75ba0ebadf2e5c61ac934b0948f3648fb7c8-zip-d0d99c.zip",
+                "reference": "e1ee75ba0ebadf2e5c61ac934b0948f3648fb7c8",
+                "shasum": "a0d73b03d702ab8d1770fe8686cb505c407c6fee"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -127,7 +127,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-10-07 11:57:32"
+            "time": "2014-10-07 20:32:57"
         },
         {
             "name": "composer/composer",
@@ -758,6 +758,7 @@
                     "Tree\\Test": "tests"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1586,6 +1587,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1858,6 +1860,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1943,6 +1946,7 @@
                     "CodeGenerator\\": "source/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Tomasz Durka",

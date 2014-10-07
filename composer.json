@@ -4,12 +4,12 @@
         "bin-dir": "bin/"
     },
     "require": {
-        "cargomedia/cm": "~1.62.7",
-        "kissmetrics/kissmetrics": "dev-master@dev"
+        "cargomedia/cm": "~1.73.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.1.3",
-        "tomaszdurka/mocka": "~0.4.0"
+        "tomaszdurka/mocka": "~0.7.0",
+        "fzaninotto/faker": "~1.4.0"
     },
     "minimum-stability": "alpha",
     "repositories": [

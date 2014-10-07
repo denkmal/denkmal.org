@@ -1,0 +1,3 @@
+{extends file=$render->getLayoutPath('resource/browserconfig.xml.smarty', 'CM')}
+
+{block name='tileColor'}#7bc791{/block}

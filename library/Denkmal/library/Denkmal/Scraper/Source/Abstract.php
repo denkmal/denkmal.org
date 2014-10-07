@@ -95,7 +95,14 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
      * @return string Content
      */
     public static function loadUrl($url) {
-        $context = stream_context_create(array('http' => array('ignore_errors' => true, 'header' => "Content-Type: text/xml; charset=utf-8")));
+        $context = stream_context_create(array(
+            'http' => array(
+                'ignore_errors' => true,
+                'header'        => join('', [
+                    "Content-Type: text/xml; charset=utf-8\r\n",
+                    "User-Agent: Mozilla/5.0 AppleWebKit\r\n",
+                ]),
+            )));
         $content = file_get_contents($url, null, $context);
 
         return self::_fixEncoding($content);

@@ -13,10 +13,9 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
         $clientId = (string) $response->getRequest()->getIp();
 
         $image = null;
-        $fileList = $params->getArray('image');
-        if (count($fileList) > 0) {
+        if ($params->has('image')) {
             /** @var CM_File_UserContent_Temp $file */
-            $file = $fileList[0];
+            $file = $params->getArray('image')[0];
             $image = Denkmal_Model_MessageImage::create(new CM_File_Image($file));
         }
 

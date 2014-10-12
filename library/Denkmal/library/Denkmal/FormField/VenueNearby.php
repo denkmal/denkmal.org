@@ -11,7 +11,7 @@ class Denkmal_FormField_VenueNearby extends CM_FormField_Abstract {
         $lon = $params->getFloat('lon');
         $geoPoint = new CM_Geo_Point($lat, $lon);
 
-        $venueList = new Denkmal_Paging_Venue_GeoPoint($geoPoint, 10000);
+        $venueList = new Denkmal_Paging_Venue_GeoPoint($geoPoint, 200);
 
         return Functional\map($venueList->getItems(), function (Denkmal_Model_Venue $venue) {
             return [

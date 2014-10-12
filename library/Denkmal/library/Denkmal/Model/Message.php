@@ -106,6 +106,20 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         return $array;
     }
 
+    /**
+     * @param CM_Frontend_Render $render
+     * @return array
+     */
+    public function toArrayStream(CM_Frontend_Render $render) {
+        $array = array();
+        $array['id'] = $this->getId();
+        $array['venue'] = $this->getVenue()->toArrayApi($render);
+        $array['created'] = $this->getCreated()->getTimestamp();
+        $array['text'] = $this->getText();
+        $array['image'] = $this->hasImage() ? $this->getImage()->toArrayApi($render) : null;
+        return $array;
+    }
+
     protected function _onDelete() {
         if ($image = $this->getImage()) {
             $this->setImage(null);

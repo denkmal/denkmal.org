@@ -17,6 +17,9 @@ var Denkmal_Component_MessageList_All = Denkmal_Component_MessageList_Abstract.e
    * @param {Object} message
    */
   _addMessage: function(message) {
+    if (this.$('.messageList > .message[data-id="' + message.id + '"]').length > 0) {
+      return;
+    }
     this.renderTemplate('template-message', {
       id: message.id,
       created: message.created,

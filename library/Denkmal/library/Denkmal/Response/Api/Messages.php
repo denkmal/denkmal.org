@@ -27,11 +27,11 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
             $messageListAll = new Denkmal_Paging_Message_AllAfterId($this->_startAfterId);
         }
         /** @var Denkmal_Model_Message[] $messageList */
-        $messageList = $messageListAll->getItems(-$this->_maxMessages);
+        $messageList = $messageListAll->setPage(1, $this->_maxMessages)->getItems();
 
         foreach ($this->_getVenuesMissingMessages($messageList) as $venue) {
             $messageListVenue = new Denkmal_Paging_Message_Venue($venue);
-            $messageList = array_merge($messageList, $messageListVenue->getItems(-$this->_minMessagesVenue));
+            $messageList = array_merge($messageList, $messageListVenue->setPage(1, $this->_minMessagesVenue)->getItems());
         }
 
         $this->_setContent($this->_getResponseByMessageList($messageList));

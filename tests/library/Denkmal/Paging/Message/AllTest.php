@@ -9,18 +9,18 @@ class Denkmal_Paging_Message_AllTest extends CMTest_TestCase {
     public function testGetItems() {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
 
-        $message1 = Denkmal_Model_Message::create($venue, 'client', 'Foo 1');
-        $message2 = Denkmal_Model_Message::create($venue, 'client', 'Foo 2');
+        $message1 = Denkmal_Model_Message::create($venue, 'client', 'Foo 1', null, new DateTime('2010-01-01'));
+        $message2 = Denkmal_Model_Message::create($venue, 'client', 'Foo 2', null, new DateTime('2010-01-02'));
         $paging = new Denkmal_Paging_Message_All();
 
-        $this->assertEquals(array($message1, $message2), $paging->getItems());
+        $this->assertEquals(array($message2, $message1), $paging->getItems());
 
         $message3 = Denkmal_Model_Message::create($venue, 'client', 'Foo 3');
         $paging = new Denkmal_Paging_Message_All();
-        $this->assertEquals(array($message1, $message2, $message3), $paging->getItems());
+        $this->assertEquals(array($message3, $message2, $message1), $paging->getItems());
 
         $message3->delete();
         $paging = new Denkmal_Paging_Message_All();
-        $this->assertEquals(array($message1, $message2), $paging->getItems());
+        $this->assertEquals(array($message2, $message1), $paging->getItems());
     }
 }

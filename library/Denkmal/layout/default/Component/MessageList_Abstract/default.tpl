@@ -3,23 +3,22 @@
     <li class="message" data-id="{$message->getId()}">
       {date_timeago time=$message->getCreated()->getTimestamp()}
 
-      <span class="message-location nowrap">
+      <div class="message-location nowrap">
         {$message->getVenue()->getName()|escape}
-      </span>
+      </div>
 
-      <span class="message-content">
+      <div class="message-content">
         {if $message->hasText()}
-          <span class="message-text">
+          <div class="message-text">
             {$message->getText()|escape}
-          </span>
+          </div>
         {/if}
         {if $message->hasImage()}
-          <span class="message-image">
+          <div class="message-image">
             <img src="{$render->getUrlUserContent($message->getImage()->getFile('thumb'))|escape}" />
-            <img src="{$render->getUrlUserContent($message->getImage()->getFile('view'))|escape}" />
-          </span>
+          </div>
         {/if}
-      </span>
+      </div>
     </li>
   {/foreach}
 </ul>

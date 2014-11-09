@@ -54,6 +54,22 @@ class Denkmal_Twitter_Client extends CM_Service_ManagerAware {
 
     /**
      * @param string $text
+     * @return int
+     */
+    public function getTweetLength($text) {
+        $length = mb_strlen($text);
+
+        $extractor = new Twitter_Extractor($text);
+        foreach ($extractor->extractURLs() as $url) {
+            $length -= mb_strlen($url);
+            $length += $this->getUrlLength($url);
+        }
+
+        return $length;
+    }
+
+    /**
+     * @param string $text
      */
     public function createTweet($text) {
         $this->_twitterOauth->post('statuses/update', array(

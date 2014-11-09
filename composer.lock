@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6b2d5edf44dc2312013af6f5604a0657",
+    "hash": "6e1b59ddccb860ad1794d7ce3af6c7c0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -771,6 +771,70 @@
             ],
             "description": "A basic but flexible php tree data structure and a fluent tree builder implementation.",
             "time": "2014-06-16 20:34:42"
+        },
+        {
+            "name": "nojimage/twitter-text-php",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nojimage/twitter-text-php.git",
+                "reference": "2cf4d681f7cbe0a564fb8f32c423b35b85baae20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nojimage/twitter-text-php/zipball/2cf4d681f7cbe0a564fb8f32c423b35b85baae20",
+                "reference": "2cf4d681f7cbe0a564fb8f32c423b35b85baae20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.8"
+            },
+            "require-dev": {
+                "php": ">=5.3.3",
+                "symfony/yaml": "*",
+                "twitter/twitter-text-conformance": "1.8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Twitter_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Takashi Nojima",
+                    "homepage": "http://php-tips.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Matt Sanford",
+                    "email": "matt@mzsanford.com",
+                    "homepage": "http://mzsanford.com"
+                },
+                {
+                    "name": "Mike Cochrane",
+                    "email": "mikec@mikenz.geek.nz",
+                    "homepage": "http://mikenz.geek.nz"
+                },
+                {
+                    "name": "Nick Pope",
+                    "email": "git@nickpope.me.uk",
+                    "homepage": "http://www.nickpope.me.uk"
+                }
+            ],
+            "description": "A library of PHP classes that provide auto-linking and extraction of usernames, lists, hashtags and URLs from tweets.",
+            "homepage": "https://github.com/nojimage/twitter-text-php",
+            "keywords": [
+                "autolink",
+                "extract",
+                "text",
+                "twitter"
+            ],
+            "time": "2014-02-28 15:18:45"
         },
         {
             "name": "phpmailer/phpmailer",

@@ -6,7 +6,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
         foreach ($this->_getDateList() as $date) {
             $dateStr = $date->format('d.m.Y');
             $url = 'http://programmzeitung.programmonline.ch/Content/Tagesagenda?startDate=' . $dateStr;
-            $content = self::loadUrl($url);
+            $content = self::loadUrl($url, 5);
 
             $this->processPageDate($content, $date);
         }

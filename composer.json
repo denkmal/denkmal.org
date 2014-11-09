@@ -1,40 +1,40 @@
 {
-    "name": "denkmal/denkmal.org",
-    "config": {
-        "bin-dir": "bin/"
+  "name": "denkmal/denkmal.org",
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "require": {
+    "cargomedia/cm": "~1.73.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.1.3",
+    "tomaszdurka/mocka": "~0.7.0",
+    "fzaninotto/faker": "~1.4.0"
+  },
+  "minimum-stability": "alpha",
+  "repositories": [
+    {
+      "packagist": false
     },
-    "require": {
-        "cargomedia/cm": "~1.73.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.1.3",
-        "tomaszdurka/mocka": "~0.7.0",
-        "fzaninotto/faker": "~1.4.0"
-    },
-    "minimum-stability": "alpha",
-    "repositories": [
-        {
-            "packagist": false
-        },
-        {
-            "type": "composer",
-            "url": "http://satis.cargomedia.ch/dist"
-        }
-    ],
-    "autoload": {
-        "psr-0": {
-            "Denkmal_": "library/Denkmal/library/",
-            "Admin_": "library/Admin/library/"
-        }
-    },
-    "extra": {
-        "cm-modules": {
-            "Denkmal": {
-                "path": "library/Denkmal/"
-            },
-            "Admin": {
-                "path": "library/Admin/"
-            }
-        }
+    {
+      "type": "composer",
+      "url": "http://satis.cargomedia.ch/dist"
     }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Denkmal_": "library/Denkmal/library/",
+      "Admin_": "library/Admin/library/"
+    }
+  },
+  "extra": {
+    "cm-modules": {
+      "Denkmal": {
+        "path": "library/Denkmal/"
+      },
+      "Admin": {
+        "path": "library/Admin/"
+      }
+    }
+  }
 }

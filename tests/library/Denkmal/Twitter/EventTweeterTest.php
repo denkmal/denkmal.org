@@ -65,6 +65,17 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
         );
     }
 
+    public function testGetEventTextWithLink() {
+        Denkmal_Model_Link::create('Lorem', 'http://www.lorem.com', true);
+
+        $this->_assertGetEventText(
+            '22:00 Example: Lorem ipsum… denkmal.org/events?date=2014-11-1',
+            'Lorem ipsum dolor sit amet',
+            new DateTime('2014-11-01 22:00'), null,
+            50
+        );
+    }
+
     /**
      * @expectedException CM_Exception_Invalid
      * @expectedExceptionMessage Suffix length exceeds max-length

@@ -51,4 +51,13 @@ class Denkmal_Twitter_Client extends CM_Service_ManagerAware {
         $configKey = $schemeConfigMap[$scheme];
         return (int) $this->getTwitterConfiguration()[$configKey];
     }
+
+    /**
+     * @param string $text
+     */
+    public function createTweet($text) {
+        $this->_twitterOauth->post('statuses/update', array(
+            'status' => $text,
+        ));
+    }
 }

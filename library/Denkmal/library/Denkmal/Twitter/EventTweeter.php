@@ -50,11 +50,11 @@ class Denkmal_Twitter_EventTweeter {
         }
 
         $prefix = $this->_formatEvent($event);
-        $prefixLength = $maxLength - $suffixLength;
+        $prefixLengthMax = $maxLength - $suffixLength;
         $prefixLengthSubtractor = 0;
-        while ($this->_client->getTweetLength($prefix) > $prefixLength) {
+        while ($this->_client->getTweetLength($prefix) > $prefixLengthMax) {
             $usertextMaxLength = new CM_Usertext_Usertext($this->_render);
-            $usertextMaxLength->addFilter(new CM_Usertext_Filter_MaxLength($prefixLength - $prefixLengthSubtractor));
+            $usertextMaxLength->addFilter(new CM_Usertext_Filter_MaxLength($prefixLengthMax - $prefixLengthSubtractor));
             $prefix = $usertextMaxLength->transform($prefix);
             $prefixLengthSubtractor++;
         }

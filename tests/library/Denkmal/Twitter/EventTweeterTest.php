@@ -15,11 +15,7 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
         $event5 = Denkmal_Model_Event::create($venue, 'Foo 5', true, false, new DateTime('2014-11-01 15:00'), null, null, null, true);
         $event6 = Denkmal_Model_Event::create($venue, 'Foo 5', true, false, new DateTime('2014-11-02 20:00'), null, null, null, true);
 
-        $client = $this->mockClass('Denkmal_Twitter_Client')->newInstanceWithoutConstructor();
-        $client->mockMethod('getUrlLength')->set(function () {
-            return 20;
-        });
-
+        $client = $this->_getTwitterClientMock();
         $eventTweeter = new Denkmal_Twitter_EventTweeter($client, $this->_getRender());
         $client->mockMethod('createTweet')->at(0, function ($text) use ($eventTweeter, $event1) {
             $this->assertSame($eventTweeter->getEventText($event1, 140), $text);
@@ -110,12 +106,13 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
     }
 
     /**
-     * @return Denkmal_Twitter_Client|PHPUnit_Framework_MockObject_MockObject
+     * @return Denkmal_Twitter_Client|\Mocka\AbstractClassTrait
      */
     private function _getTwitterClientMock() {
-        $client = $this->getMockBuilder('Denkmal_Twitter_Client')->disableOriginalConstructor()
-            ->setMethods(['getUrlLength'])->getMock();
-        $client->expects($this->any())->method('getUrlLength')->willReturn(20);
+        $client = $this->mockClass('Denkmal_Twitter_Client')->newInstanceWithoutConstructor();
+        $client->mockMethod('getUrlLength')->set(function () {
+            return 20;
+        });
         /** @var Denkmal_Twitter_Client $client */
         return $client;
     }

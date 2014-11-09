@@ -15,15 +15,21 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
         $event5 = Denkmal_Model_Event::create($venue, 'Foo 5', true, false, new DateTime('2014-11-01 15:00'), null, null, null, true);
         $event6 = Denkmal_Model_Event::create($venue, 'Foo 5', true, false, new DateTime('2014-11-02 20:00'), null, null, null, true);
 
-        $client = $this->getMockBuilder('Denkmal_Twitter_Client')->disableOriginalConstructor()
-            ->setMethods(['getUrlLength', 'createTweet'])->getMock();
-        $client->expects($this->any())->method('getUrlLength')->willReturn(20);
+        $client = $this->mockClass('Denkmal_Twitter_Client')->newInstanceWithoutConstructor();
+        $client->mockMethod('getUrlLength')->set(function () {
+            return 20;
+        });
 
-        $render = new CM_Frontend_Render();
-        $eventTweeter = new Denkmal_Twitter_EventTweeter($client, $render);
-        $client->expects($this->at(0))->method('createTweet')->with($eventTweeter->getEventText($event1, 140));
-        $client->expects($this->at(1))->method('createTweet')->with($eventTweeter->getEventText($event3, 140));
-        $client->expects($this->at(2))->method('createTweet')->with($eventTweeter->getEventText($event4, 140));
+        $eventTweeter = new Denkmal_Twitter_EventTweeter($client, $this->_getRender());
+        $client->mockMethod('createTweet')->at(0, function ($text) use ($eventTweeter, $event1) {
+            $this->assertSame($eventTweeter->getEventText($event1, 140), $text);
+        });
+        $client->mockMethod('createTweet')->at(1, function ($text) use ($eventTweeter, $event3) {
+            $this->assertSame($eventTweeter->getEventText($event3, 140), $text);
+        });
+        $client->mockMethod('createTweet')->at(2, function ($text) use ($eventTweeter, $event4) {
+            $this->assertSame($eventTweeter->getEventText($event4, 140), $text);
+        });
         /** @var Denkmal_Twitter_Client $client */
 
         $eventTweeter->tweetStarredEvents(new DateTime('2014-11-01'));
@@ -97,21 +103,31 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
      * @param int           $maxLength
      */
     private function _assertGetEventText($expected, $description, DateTime $from, DateTime $until = null, $maxLength) {
-        $site = $this->getMockSite('Denkmal_Site', null, [
-            'url' => 'http://www.denkmal.org',
-        ]);
-        $environment = new CM_Frontend_Environment($site);
-        $render = new CM_Frontend_Render($environment);
+        $eventTweeter = new Denkmal_Twitter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $venue = Denkmal_Model_Venue::create('Example', false, false);
+        $event = Denkmal_Model_Event::create($venue, $description, true, false, $from, $until);
+        $this->assertSame($expected, $eventTweeter->getEventText($event, $maxLength));
+    }
 
+    /**
+     * @return Denkmal_Twitter_Client|PHPUnit_Framework_MockObject_MockObject
+     */
+    private function _getTwitterClientMock() {
         $client = $this->getMockBuilder('Denkmal_Twitter_Client')->disableOriginalConstructor()
             ->setMethods(['getUrlLength'])->getMock();
         $client->expects($this->any())->method('getUrlLength')->willReturn(20);
         /** @var Denkmal_Twitter_Client $client */
+        return $client;
+    }
 
-        $eventTweeter = new Denkmal_Twitter_EventTweeter($client, $render);
-
-        $venue = Denkmal_Model_Venue::create('Example', false, false);
-        $event = Denkmal_Model_Event::create($venue, $description, true, false, $from, $until);
-        $this->assertSame($expected, $eventTweeter->getEventText($event, $maxLength));
+    /**
+     * @return CM_Frontend_Render
+     */
+    private function _getRender() {
+        $site = $this->getMockSite('Denkmal_Site', null, [
+            'url' => 'http://www.denkmal.org',
+        ]);
+        $environment = new CM_Frontend_Environment($site);
+        return new CM_Frontend_Render($environment);
     }
 }

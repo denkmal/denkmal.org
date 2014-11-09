@@ -27,4 +27,28 @@ class Denkmal_Twitter_Client extends CM_Service_ManagerAware {
         }
         return $configuration;
     }
+
+    /**
+     * @param string $url
+     * @throws CM_Exception_Invalid
+     * @return int
+     */
+    public function getUrlLength($url) {
+        $scheme = parse_url($url, PHP_URL_SCHEME);
+        if (false === $scheme) {
+            throw new CM_Exception_Invalid('Cannot detect URL scheme for `' . $url . '`.');
+        }
+        if (null === $scheme) {
+            $scheme = 'http';
+        }
+        $schemeConfigMap = [
+            'http'  => 'short_url_length',
+            'https' => 'short_url_length_https',
+        ];
+        if (!array_key_exists($scheme, $schemeConfigMap)) {
+            throw new CM_Exception_Invalid('Unexpected URL scheme `' . $scheme . '`.');
+        }
+        $configKey = $schemeConfigMap[$scheme];
+        return (int) $this->getTwitterConfiguration()[$configKey];
+    }
 }

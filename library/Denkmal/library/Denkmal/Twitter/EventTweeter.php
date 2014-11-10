@@ -68,13 +68,13 @@ class Denkmal_Twitter_EventTweeter {
      */
     private function _formatEvent(Denkmal_Model_Event $event) {
         $html = '';
+        $html .= $event->getVenue()->getName();
+        $html .= ' (';
         $html .= $this->_formatTime($event->getFrom());
         if ($event->getUntil()) {
             $html .= '-' . $this->_formatTime($event->getUntil());
         }
-        $html .= ' ';
-        $html .= $event->getVenue()->getName();
-        $html .= ': ';
+        $html .= '): ';
 
         $usertextLinks = new CM_Usertext_Usertext($this->_render);
         $usertextLinks->addFilter(new Denkmal_Usertext_Filter_Links());

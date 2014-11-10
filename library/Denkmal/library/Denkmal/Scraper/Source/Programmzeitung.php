@@ -52,7 +52,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 
             $timeTextList = explode('<br>', $timeNode->getChildren()->getHtml());
             $timeText = $timeTextList[0];
-            if (!preg_match('#^(\d+):(\d+)(\s+-\s+(\d+):(\d+))?$#u', $timeText, $matches)) {
+            if (!preg_match('#^(\d+):(\d+)(\s+.\s+(\d+):(\d+))?$#u', $timeText, $matches)) {
                 throw new CM_Exception_Invalid('Cannot detect time from `' . $timeText . '`.');
             }
             $from = new Denkmal_Scraper_Date($date);

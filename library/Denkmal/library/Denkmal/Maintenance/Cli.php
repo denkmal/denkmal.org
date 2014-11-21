@@ -7,6 +7,7 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
      */
     protected function _registerCallbacks() {
         parent::_registerCallbacks();
+
         $this->_registerClockworkCallbacks(new DateInterval('PT12H'), array(
             'Check links' => function () {
                     $linkList = new Denkmal_Paging_Link_All();

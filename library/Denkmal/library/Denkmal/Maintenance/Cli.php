@@ -7,6 +7,7 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
      */
     protected function _registerCallbacks() {
         parent::_registerCallbacks();
+
         $this->_registerClockworkCallbacks('12 hours', array(
             'Check links' => function () {
                     $linkList = new Denkmal_Paging_Link_All();
@@ -30,6 +31,17 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
                     }
             ));
         }
+
+        $this->_registerClockworkCallbacks('18:00', array(
+            'Daily event tweets' => function () {
+                $serviceManager = CM_Service_Manager::getInstance();
+                /** @var Denkmal_Twitter_Client $twitter */
+                $twitter = $serviceManager->get('twitter', 'Denkmal_Twitter_Client');
+
+                $eventTweeter = new Denkmal_Twitter_EventTweeter($twitter, new CM_Frontend_Render());
+                $eventTweeter->tweetStarredEvents(Denkmal_Site::getCurrentDate());
+            }
+        ));
     }
 
     public static function getPackageName() {

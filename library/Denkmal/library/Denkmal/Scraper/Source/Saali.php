@@ -5,16 +5,17 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
     public function run() {
         $html = self::loadUrl('http://www.goldenes-fass.ch/saali/');
 
-        $this->processPage($html);
+        return $this->processPage($html);
     }
 
     /**
      * @param string   $html
-     * @param int|null $year
+     * @param int|null $forceYear
+     * @return Denkmal_Scraper_EventData[]
+     * @throws CM_Exception
      */
-    public function processPage($html, $year = null) {
+    public function processPage($html, $forceYear = null) {
         $html = new CM_Dom_NodeList($html, true);
-        $venueName = 'Sääli';
 
         $textList = Functional\map($html->find('.content > *'), function (CM_Dom_NodeList $contentChild) {
             return $contentChild->getText();
@@ -37,7 +38,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
         }
         $eventListTextList = array_filter($eventListTextList);
 
-        foreach ($eventListTextList as $eventTextList) {
+        $eventDataList =  Functional\map($eventListTextList, function ($eventTextList) use ($forceYear) {
             if (count($eventTextList) < 2) {
                 throw new CM_Exception_Invalid('Unexpected eventTextList: `' . CM_Util::var_line($eventTextList) . '`.');
             }
@@ -45,7 +46,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             if (!preg_match('#^\w{2}_(\d+)\.(\d+)\.?\s+(.+)$#', $eventTextList[0], $matches0)) {
                 throw new CM_Exception_Invalid('Cannot parse event line: `' . $eventTextList[0] . '`.');
             }
-            $from = new Denkmal_Scraper_Date($matches0[1], $matches0[2], $year);
+            $from = new Denkmal_Scraper_Date($matches0[1], $matches0[2], $forceYear);
             $descriptionList = array($matches0[3]);
 
             if (!preg_match('#^(\d+)\.(\d+)h\s+(.+)?$#', $eventTextList[1], $matches1)) {
@@ -59,12 +60,10 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             $descriptionList = array_merge($descriptionList, array_splice($eventTextList, 2));
             $description = new Denkmal_Scraper_Description(implode(' ', $descriptionList));
 
-            $this->_addEventAndVenue(
-                $venueName,
-                $description,
-                $from->getDateTime()
-            );
-        }
+            return new Denkmal_Scraper_EventData('Sääli', $description, $from);
+        });
+
+        return array_values($eventDataList);
     }
 
     /**

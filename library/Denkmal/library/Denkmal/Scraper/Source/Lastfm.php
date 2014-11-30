@@ -12,18 +12,18 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
         $url = 'http://ws.audioscrobbler.com/2.0/?' . http_build_query($params);
         $content = self::loadUrl($url);
 
-        $this->processPageDate($content);
+        return $this->processPageDate($content);
     }
 
     /**
      * @param string $html
-     * @throws CM_Exception_Invalid
+     * @return Denkmal_Scraper_EventData[]
      */
     public function processPageDate($html) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('events > event');
-        /** @var CM_Dom_NodeList $event */
-        foreach ($eventList as $event) {
+
+        return Functional\map($eventList, function (CM_Dom_NodeList $event) {
             $venueName = $event->find('venue > name')->getText();
 
             $dateText = $event->find('startdate')->getText();
@@ -43,13 +43,8 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
             });
             $description = new Denkmal_Scraper_Description(implode(', ', $artists), $descriptionText, new Denkmal_Scraper_Genres($genres));
 
-            $this->_addEventAndVenue(
-                $venueName,
-                $description,
-                $from->getDateTime(),
-                null
-            );
-        }
+            return new Denkmal_Scraper_EventData($venueName, $description, $from);
+        });
     }
 
     /**

@@ -5,8 +5,8 @@ class Admin_Page_Scraper extends Admin_Page_Abstract {
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $scraperManager = new Denkmal_Scraper_Manager();
         $createdMin = (new DateTime())->sub(new DateInterval('P14D'));
-        $graphSeriesEvents = array();
 
+        $graphSeriesEvents = $graphSeriesErrors = array();
         foreach ($scraperManager->getScraperList() as $scraper) {
             $dataEvents = $dataErrors = array();
             $resultList = new Denkmal_Paging_ScraperSourceResult_ScraperSource($scraper, $createdMin);

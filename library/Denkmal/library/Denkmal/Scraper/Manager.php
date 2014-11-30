@@ -26,8 +26,13 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         );
 
         foreach ($scraperList as $scraper) {
-            $this->_output->writeln('Running scraper `' . get_class($scraper) . '`…');
-            $this->_processScraper($scraper);
+            $this->_output->write('Running scraper `' . get_class($scraper) . '`… ');
+            $result = $this->_processScraper($scraper);
+            if ($result->getError()) {
+                $this->_output->writeln('Error: `' . $result->getError()->getMessage() . '`.');
+            } else {
+                $this->_output->writeln($result->getEventDataCount() . ' events processed.');
+            }
         }
     }
 
@@ -61,18 +66,37 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
     }
 
     /**
-     * @param Denkmal_Scraper_Source_Abstract $scraper
+     * @param Denkmal_Scraper_Source_Abstract $source
+     * @return Denkmal_Scraper_SourceResult
      */
-    protected function _processScraper(Denkmal_Scraper_Source_Abstract $scraper) {
-        $eventDataList = $scraper->run($this);
-        foreach ($eventDataList as $eventData) {
-            if ($this->_isValidEvent($eventData)) {
+    protected function _processScraper(Denkmal_Scraper_Source_Abstract $source) {
+        $result = new Denkmal_Scraper_SourceResult();
+        $result->setScraperSource($source);
+        $result->setCreated(new DateTime());
+
+        try {
+            $eventDataList = $source->run($this);
+
+            /** @var Denkmal_Scraper_EventData[] $eventDataListValid */
+            $eventDataListValid = Functional\select($eventDataList, function (Denkmal_Scraper_EventData $eventData) {
+                return $this->_isValidEvent($eventData);
+            });
+
+            foreach ($eventDataListValid as $eventData) {
                 if (!$venue = $eventData->findVenue()) {
                     $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false);
                 }
                 Denkmal_Model_Event::create($venue, $eventData->getDescription()->getAll(), true, true, $eventData->getFrom(), $eventData->getUntil());
             }
+
+            $result->setEventDataCount(count($eventDataList));
+            $result->setError(null);
+        } catch (Exception $e) {
+            $result->setEventDataCount(0);
+            $result->setError(new CM_ExceptionHandling_SerializableException($e));
         }
+
+        return $result;
     }
 
     /**

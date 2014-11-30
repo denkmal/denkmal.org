@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.79.3",
+            "version": "1.79.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "0b3d02849963a1464fbcf966093b856f37a5bbd0"
+                "reference": "e0f41e1ce21fcb3ddd74357ff54b82782a861939"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-0b3d02849963a1464fbcf966093b856f37a5bbd0-zip-76210a.zip",
-                "reference": "0b3d02849963a1464fbcf966093b856f37a5bbd0",
-                "shasum": "8cc021a913d3a87f335b89f72e2f4687462c684b"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-e0f41e1ce21fcb3ddd74357ff54b82782a861939-zip-44cf4f.zip",
+                "reference": "e0f41e1ce21fcb3ddd74357ff54b82782a861939",
+                "shasum": "2870e050411aa4970b904adca5454efee6301683"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-11-21 22:48:54"
+            "time": "2014-11-27 17:55:51"
         },
         {
             "name": "composer/composer",
@@ -1091,18 +1091,18 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.0-BETA1",
+            "version": "v2.6.0",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "2fc3644d2e10e14935b2c79e57a5185281eb1eb7"
+                "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-2fc3644d2e10e14935b2c79e57a5185281eb1eb7-zip-51c22c.zip",
-                "reference": "2fc3644d2e10e14935b2c79e57a5185281eb1eb7",
-                "shasum": "ab71593d0c693a3dd01c5fa303495efb526dd656"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-d3bac228fd7a2aac9193e241b239880b3ba39a10-zip-770667.zip",
+                "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10",
+                "shasum": "81c048c37de6a1c552d1a8685c9ceced71b1997a"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -1144,22 +1144,22 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-03 03:55:50"
+            "time": "2014-11-20 13:24:23"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.6.0-BETA1",
+            "version": "v2.6.0",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "dcf345d5ed96bc6c3b4521c1989670d2c9e5014e"
+                "reference": "697331d4ac78668cf6d21a2bb009b3faae92814f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-dcf345d5ed96bc6c3b4521c1989670d2c9e5014e-zip-0be1c8.zip",
-                "reference": "dcf345d5ed96bc6c3b4521c1989670d2c9e5014e",
-                "shasum": "a7ae35d6d3e1b121cca53a7955a3ad8aad683b76"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-697331d4ac78668cf6d21a2bb009b3faae92814f-zip-538638.zip",
+                "reference": "697331d4ac78668cf6d21a2bb009b3faae92814f",
+                "shasum": "145ec70b90300013d2614acdbc993ebddfabf6bd"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -1202,22 +1202,22 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-03 03:55:50"
+            "time": "2014-11-28 10:00:40"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.6.0-BETA1",
+            "version": "v2.6.0",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "d556a66cbe5b2b81e7abc75b4066b057fbc7af94"
+                "reference": "d574347c652a14cfee0349f744c7880e1d9029fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-d556a66cbe5b2b81e7abc75b4066b057fbc7af94-zip-ff4f80.zip",
-                "reference": "d556a66cbe5b2b81e7abc75b4066b057fbc7af94",
-                "shasum": "330f5f12a3122d5fecdeee5b81a926402760cde9"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-d574347c652a14cfee0349f744c7880e1d9029fd-zip-3c2cc9.zip",
+                "reference": "d574347c652a14cfee0349f744c7880e1d9029fd",
+                "shasum": "c077f0c5584b54edf690c9a3cdfd9f86240963c5"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -1249,22 +1249,22 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2014-10-26 07:46:28"
+            "time": "2014-11-28 10:00:40"
         },
         {
             "name": "symfony/process",
-            "version": "v2.6.0-BETA1",
+            "version": "v2.6.0",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "8cf0045eb7796aac695d5f4b865dea8438fb5131"
+                "reference": "dc88f75d1c07791e5733f90be747961dce26cf05"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-8cf0045eb7796aac695d5f4b865dea8438fb5131-zip-24d787.zip",
-                "reference": "8cf0045eb7796aac695d5f4b865dea8438fb5131",
-                "shasum": "624ab090c59ebeb97bb599d4c44f99d999d85082"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-dc88f75d1c07791e5733f90be747961dce26cf05-zip-98090d.zip",
+                "reference": "dc88f75d1c07791e5733f90be747961dce26cf05",
+                "shasum": "517ffa2991206b5dc3678924ab7aa5bd0ac1a897"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -1296,7 +1296,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-03 19:49:01"
+            "time": "2014-11-04 14:29:39"
         },
         {
             "name": "tomaszdurka/codegenerator",
@@ -2024,18 +2024,18 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.0-BETA1",
+            "version": "v2.6.0",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "9da3813f36985a4089f7e83c601a1034d125ff69"
+                "reference": "51c845cf3e4bfc182d1d5c05ed1c7338361d86f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-9da3813f36985a4089f7e83c601a1034d125ff69-zip-a1250e.zip",
-                "reference": "9da3813f36985a4089f7e83c601a1034d125ff69",
-                "shasum": "20aef88557d3c6ff2af3b0df48cce0fb77a516cc"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-51c845cf3e4bfc182d1d5c05ed1c7338361d86f8-zip-8ee61c.zip",
+                "reference": "51c845cf3e4bfc182d1d5c05ed1c7338361d86f8",
+                "shasum": "6df3b8df34c8c26248470d640d8b71331eed0441"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -2067,7 +2067,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-03 03:55:50"
+            "time": "2014-11-20 13:24:23"
         },
         {
             "name": "tomaszdurka/mocka",

@@ -2,26 +2,27 @@
 
 class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract {
 
-    public function run() {
-        foreach ($this->_getDateList() as $date) {
+    public function run(Denkmal_Scraper_Manager $manager) {
+        return Functional\flatten(Functional\map($manager->getDateList(), function (DateTime $date) {
             $dateStr = $date->format('Y/m/d');
             $url = 'http://fingerzeig.ch/parties/' . $dateStr;
             $content = self::loadUrl($url);
 
-            $this->processPageDate($content, $date);
-        }
+            return $this->processPageDate($content, $date);
+        }));
     }
 
     /**
      * @param string   $html
      * @param DateTime $date
+     * @return Denkmal_Scraper_EventData[]
      * @throws CM_Exception_Invalid
      */
     public function processPageDate($html, DateTime $date) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('#content .box');
-        /** @var CM_Dom_NodeList $event */
-        foreach ($eventList as $event) {
+
+        return Functional\map($eventList, function (CM_Dom_NodeList $event) use ($date) {
             $dateText = $event->find('.right-big')->getText();
             if (!preg_match('#^\w+\s+(\d+)\.(\d+)\.(\d+),\s+(\d{1,2}):(\d{2})$#u', $dateText, $matches)) {
                 throw new CM_Exception_Invalid('Cannot detect date from `' . $dateText . '`.');
@@ -41,12 +42,7 @@ class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract 
             $titleText = $event->find('.title')->getText();
             $description = new Denkmal_Scraper_Description($titleText, null, $genres);
 
-            $this->_addEventAndVenue(
-                $venueName,
-                $description,
-                $from->getDateTime(),
-                null
-            );
-        }
+            return new Denkmal_Scraper_EventData($venueName, $description, $from);
+        });
     }
 }

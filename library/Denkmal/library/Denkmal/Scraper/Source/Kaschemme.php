@@ -2,24 +2,23 @@
 
 class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
 
-    public function run() {
+    public function run(Denkmal_Scraper_Manager $manager) {
         $html = self::loadUrl('http://www.kaschemme.ch/Programm');
 
-        $this->processPage($html);
+        return $this->processPage($html);
     }
 
     /**
      * @param string $html
-     * @throws CM_Exception_Invalid
+     * @return Denkmal_Scraper_EventData[]
      */
     public function processPage($html) {
         $html = new CM_Dom_NodeList($html, true);
-        $venueName = 'Kaschemme';
         $eventHtml = $html->find('#maincontainer .project_content')->getHtml();
         $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s+(?<title>.+?)\s*<br>(?<description>.+?)?\.{4,}';
         preg_match_all('#' . $regexp . '#u', $eventHtml, $matches, PREG_SET_ORDER);
 
-        foreach ($matches as $match) {
+        return Functional\map($matches, function(array $match) {
             $from = new Denkmal_Scraper_Date($match['day'], $match['month'], $match['year']);
             $from->setTime(22);
 
@@ -47,12 +46,8 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
                 $title = null;
             }
 
-            $this->_addEventAndVenue(
-                $venueName,
-                new Denkmal_Scraper_Description($description, $title, $genres),
-                $from->getDateTime()
-            );
-        }
+            return new Denkmal_Scraper_EventData('Kaschemme', new Denkmal_Scraper_Description($description, $title, $genres), $from);
+        });
     }
 
     /**

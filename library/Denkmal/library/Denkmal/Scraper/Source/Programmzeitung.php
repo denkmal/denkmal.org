@@ -2,20 +2,21 @@
 
 class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abstract {
 
-    public function run() {
-        foreach ($this->_getDateList() as $date) {
+    public function run(Denkmal_Scraper_Manager $manager) {
+        return Functional\flatten(Functional\map($manager->getDateList(), function (DateTime $date) {
             $dateStr = $date->format('d.m.Y');
             $url = 'http://programmzeitung.programmonline.ch/Content/Tagesagenda?startDate=' . $dateStr;
             $content = self::loadUrl($url, 5);
 
-            $this->processPageDate($content, $date);
-        }
+            return $this->processPageDate($content, $date);
+        }));
     }
 
     /**
      * @param string   $html
      * @param DateTime $date
      * @throws CM_Exception_Invalid
+     * @return Denkmal_Scraper_EventData[]
      */
     public function processPageDate($html, DateTime $date) {
         $html = new CM_Dom_NodeList($html, true);
@@ -37,12 +38,11 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
         }
 
         if (!isset($agendaTableList['Sounds & Floors'])) {
-            return;
+            return [];
         }
         $agendaTable = $agendaTableList['Sounds & Floors'];
 
-        /** @var CM_Dom_NodeList $event */
-        foreach ($agendaTable->find('tr') as $agendaTableRow) {
+        return Functional\map($agendaTable->find('tr'), function (CM_Dom_NodeList $agendaTableRow) use ($date) {
             if (3 != count($agendaTableRow->find('td'))) {
                 throw new CM_Exception_Invalid('Unexpected row count.', ['html' => $agendaTableRow->getHtml()]);
             }
@@ -74,13 +74,8 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             $venueText = preg_replace('#♦.*$#u', '', $venueText);
             $venueText = trim($venueText);
 
-            $this->_addEventAndVenue(
-                $venueText,
-                $description,
-                $from->getDateTime(),
-                $until ? $until->getDateTime() : null
-            );
-        }
+            return new Denkmal_Scraper_EventData($venueText, $description, $from, $until);
+        });
     }
 
     /**

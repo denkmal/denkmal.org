@@ -4,8 +4,7 @@ class Denkmal_Scraper_Source_ProgrammzeitungTest extends CMTest_TestCase {
 
     public function testProcessPageDate() {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/programmzeitung.html');
-        $manager = new Denkmal_Scraper_Manager();
-        $scraper = new Denkmal_Scraper_Source_Programmzeitung($manager);
+        $scraper = new Denkmal_Scraper_Source_Programmzeitung();
 
         $eventDataList = $scraper->processPageDate($html, new DateTime('2014-11-16'));
 

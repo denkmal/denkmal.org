@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
 
-    public function run() {
+    public function run(Denkmal_Scraper_Manager $manager) {
         $params = array(
             'method'   => 'geo.getevents',
             'location' => 'basel,switzerland',

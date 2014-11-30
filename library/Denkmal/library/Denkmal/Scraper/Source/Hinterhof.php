@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 
-    public function run() {
+    public function run(Denkmal_Scraper_Manager $manager) {
         $html = self::loadUrl('http://hinterhof.ch/programm/');
 
         return $this->processPage($html);

@@ -17,12 +17,12 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
 
     public function process() {
         $scraperList = array(
-            new Denkmal_Scraper_Source_Kaschemme($this),
-            new Denkmal_Scraper_Source_Programmzeitung($this),
-            new Denkmal_Scraper_Source_Hinterhof($this),
-            new Denkmal_Scraper_Source_Fingerzeig($this),
-            new Denkmal_Scraper_Source_Lastfm($this),
-            new Denkmal_Scraper_Source_Saali($this),
+            new Denkmal_Scraper_Source_Kaschemme(),
+            new Denkmal_Scraper_Source_Programmzeitung(),
+            new Denkmal_Scraper_Source_Hinterhof(),
+            new Denkmal_Scraper_Source_Fingerzeig(),
+            new Denkmal_Scraper_Source_Lastfm(),
+            new Denkmal_Scraper_Source_Saali(),
         );
 
         foreach ($scraperList as $scraper) {
@@ -64,7 +64,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
      * @param Denkmal_Scraper_Source_Abstract $scraper
      */
     protected function _processScraper(Denkmal_Scraper_Source_Abstract $scraper) {
-        $eventDataList = $scraper->run();
+        $eventDataList = $scraper->run($this);
         foreach ($eventDataList as $eventData) {
             if ($this->_isValidEvent($eventData)) {
                 if (!$venue = $eventData->findVenue()) {

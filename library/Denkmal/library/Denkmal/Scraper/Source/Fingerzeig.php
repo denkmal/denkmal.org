@@ -2,8 +2,8 @@
 
 class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract {
 
-    public function run() {
-        return Functional\flatten(Functional\map($this->_manager->getDateList(), function (DateTime $date) {
+    public function run(Denkmal_Scraper_Manager $manager) {
+        return Functional\flatten(Functional\map($manager->getDateList(), function (DateTime $date) {
             $dateStr = $date->format('Y/m/d');
             $url = 'http://fingerzeig.ch/parties/' . $dateStr;
             $content = self::loadUrl($url);

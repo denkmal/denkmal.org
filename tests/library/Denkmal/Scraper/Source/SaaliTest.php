@@ -4,8 +4,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
 
     public function testProcessPageDate() {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali.html');
-        $manager = new Denkmal_Scraper_Manager();
-        $scraper = new Denkmal_Scraper_Source_Saali($manager);
+        $scraper = new Denkmal_Scraper_Source_Saali();
 
         $eventDataList = $scraper->processPage($html, 2014);
 

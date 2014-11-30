@@ -2,20 +2,11 @@
 
 abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract implements CM_Typed {
 
-    /** @var Denkmal_Scraper_Manager */
-    protected $_manager;
-
     /**
      * @param Denkmal_Scraper_Manager $manager
-     */
-    public function __construct(Denkmal_Scraper_Manager $manager) {
-        $this->_manager = $manager;
-    }
-
-    /**
      * @return Denkmal_Scraper_EventData[]
      */
-    abstract public function run();
+    abstract public function run(Denkmal_Scraper_Manager $manager);
 
     /**
      * @param string   $url
@@ -58,6 +49,19 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
         $file = new CM_File($path);
 
         return self::_fixEncoding($file->read());
+    }
+
+    /**
+     * @param int $type
+     * @throws CM_Exception_Invalid
+     * @return static
+     */
+    public static function factoryByType($type) {
+        $className = self::_getClassName($type);
+        if (!is_a($className, get_called_class(), true)) {
+            throw new CM_Exception_Invalid('Unexpected className `' . $className . '`.');
+        }
+        return new $className();
     }
 
     /**

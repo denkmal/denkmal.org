@@ -4,8 +4,7 @@ class Denkmal_Scraper_Source_LastfmTest extends CMTest_TestCase {
 
     public function testProcessPageDate() {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/lastfm.xml');
-        $manager = new Denkmal_Scraper_Manager();
-        $scraper = new Denkmal_Scraper_Source_Lastfm($manager);
+        $scraper = new Denkmal_Scraper_Source_Lastfm();
 
         $eventDataList = $scraper->processPageDate($html);
 

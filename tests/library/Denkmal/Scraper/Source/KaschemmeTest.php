@@ -4,8 +4,7 @@ class Denkmal_Scraper_Source_KaschemmeTest extends CMTest_TestCase {
 
     public function testProcessPageDate() {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/kaschemme.html');
-        $manager = new Denkmal_Scraper_Manager();
-        $scraper = new Denkmal_Scraper_Source_Kaschemme($manager);
+        $scraper = new Denkmal_Scraper_Source_Kaschemme();
 
         $eventDataList = $scraper->processPage($html);
 

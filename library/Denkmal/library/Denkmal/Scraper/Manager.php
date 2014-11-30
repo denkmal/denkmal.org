@@ -15,7 +15,10 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         $this->_output = $output;
     }
 
-    public function process() {
+    /**
+     * @param bool|null $storeResults
+     */
+    public function process($storeResults = null) {
         $scraperList = array(
             new Denkmal_Scraper_Source_Kaschemme(),
             new Denkmal_Scraper_Source_Programmzeitung(),
@@ -32,6 +35,9 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
                 $this->_output->writeln('Error: `' . $result->getError()->getMessage() . '`.');
             } else {
                 $this->_output->writeln($result->getEventDataCount() . ' events processed.');
+            }
+            if ($storeResults) {
+                $result->commit();
             }
         }
     }

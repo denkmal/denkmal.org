@@ -26,7 +26,7 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
         $this->_registerClockworkCallbacks('12 hours', array(
             'Scraper' => function () {
                 $scraperManager = new Denkmal_Scraper_Manager($this->_getStreamOutput());
-                $scraperManager->process();
+                $scraperManager->process(true);
             }
         ));
 

@@ -12,7 +12,10 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
      * @return string
      */
     public function getName() {
-        return get_class($this);
+        $className = get_class($this);
+        $base = preg_replace('#_Abstract$#', '', __CLASS__);
+        $name = preg_replace('#^' . $base . '#', '', $className);
+        return CM_Util::titleize($name);
     }
 
     /**

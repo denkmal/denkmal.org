@@ -25,8 +25,46 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
         });
         $textList = array_splice($textList, $textSeparatorIndex + 1);
 
-        print_r($textList);
-        return;
+        $eventListTextList = array();
+        $eventIndex = 0;
+        foreach ($textList as $text) {
+            $text = trim($text);
+            if ('' === $text) {
+                $eventIndex++;
+            } else {
+                $eventListTextList[$eventIndex][] = $text;
+            }
+        }
+        $eventListTextList = array_filter($eventListTextList);
+
+        foreach ($eventListTextList as $eventTextList) {
+            if (count($eventTextList) < 2) {
+                throw new CM_Exception_Invalid('Unexpected eventTextList: `' . CM_Util::var_line($eventTextList) . '`.');
+            }
+
+            if (!preg_match('#^\w{2}_(\d+)\.(\d+)\.?\s+(.+)$#', $eventTextList[0], $matches0)) {
+                throw new CM_Exception_Invalid('Cannot parse event line: `' . $eventTextList[0] . '`.');
+            }
+            $from = new Denkmal_Scraper_Date($matches0[1], $matches0[2], $year);
+            $descriptionList = array($matches0[3]);
+
+            if (!preg_match('#^(\d+)\.(\d+)h\s+(.+)?$#', $eventTextList[1], $matches1)) {
+                throw new CM_Exception_Invalid('Cannot parse event line: `' . $eventTextList[1] . '`.');
+            }
+            $from->setTime($matches1[1], $matches1[2]);
+            if (isset($matches1[3])) {
+                $descriptionList[] = $matches1[3];
+            }
+
+            $descriptionList = array_merge($descriptionList, array_splice($eventTextList, 2));
+            $description = new Denkmal_Scraper_Description(implode(' ', $descriptionList));
+
+            $this->_addEventAndVenue(
+                $venueName,
+                $description,
+                $from->getDateTime()
+            );
+        }
     }
 
     /**

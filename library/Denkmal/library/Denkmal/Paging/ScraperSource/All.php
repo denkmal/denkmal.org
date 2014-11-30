@@ -9,6 +9,7 @@ class Denkmal_Paging_ScraperSource_All extends CM_Paging_Abstract {
             new Denkmal_Scraper_Source_Hinterhof(),
             new Denkmal_Scraper_Source_Fingerzeig(),
             new Denkmal_Scraper_Source_Lastfm(),
+            new Denkmal_Scraper_Source_Saali(),
         );
 
         $source = new CM_PagingSource_Array($scraperList);

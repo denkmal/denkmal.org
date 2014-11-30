@@ -6,11 +6,11 @@ return function (CM_Config_Node $config) {
     $config->CM_Mail->types[1] = 'CM_Mail';
     $config->CM_Mail->types[2] = 'CM_Mail_Welcome';
     $config->CM_Mail->types[38] = 'Admin_Mail_EventNotification';
-    
+
     $config->CM_Action_Abstract->types = array();
     $config->CM_Action_Abstract->types[3] = 'CM_Action_Email';
     $config->CM_Action_Abstract->types[27] = 'Denkmal_Action_Message';
-    
+
     $config->CM_Model_Abstract->types = array();
     $config->CM_Model_Abstract->types[5] = 'CM_Model_Language';
     $config->CM_Model_Abstract->types[6] = 'CM_Model_Location';
@@ -39,26 +39,34 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[41] = 'CM_Model_Location_State';
     $config->CM_Model_Abstract->types[42] = 'CM_Model_Location_Zip';
     $config->CM_Model_Abstract->types[43] = 'CM_Model_LanguageKey';
-    
+
     $config->CM_Paging_ContentList_Abstract->types = array();
     $config->CM_Paging_ContentList_Abstract->types[19] = 'CM_Paging_ContentList_Badwords';
-    
+
     $config->CM_Paging_Log_Abstract->types = array();
     $config->CM_Paging_Log_Abstract->types[20] = 'CM_Paging_Log_Error';
     $config->CM_Paging_Log_Abstract->types[21] = 'CM_Paging_Log_Fatal';
     $config->CM_Paging_Log_Abstract->types[22] = 'CM_Paging_Log_JsError';
     $config->CM_Paging_Log_Abstract->types[23] = 'CM_Paging_Log_Mail';
     $config->CM_Paging_Log_Abstract->types[24] = 'CM_Paging_Log_Warn';
-    
+
     $config->CM_Site_Abstract->types = array();
     $config->CM_Site_Abstract->types[35] = 'Denkmal_Site';
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
-    
+
     $config->CM_Stream_Adapter_Abstract->types = array();
     $config->CM_Stream_Adapter_Abstract->types[25] = 'CM_Stream_Adapter_Message_SocketRedis';
     $config->CM_Stream_Adapter_Abstract->types[26] = 'CM_Stream_Adapter_Video_Wowza';
-    
-    
+
+    $config->Denkmal_Scraper_Source_Abstract->types = array();
+    $config->Denkmal_Scraper_Source_Abstract->types[45] = 'Denkmal_Scraper_Source_Fingerzeig';
+    $config->Denkmal_Scraper_Source_Abstract->types[46] = 'Denkmal_Scraper_Source_Hinterhof';
+    $config->Denkmal_Scraper_Source_Abstract->types[47] = 'Denkmal_Scraper_Source_Kaschemme';
+    $config->Denkmal_Scraper_Source_Abstract->types[48] = 'Denkmal_Scraper_Source_Lastfm';
+    $config->Denkmal_Scraper_Source_Abstract->types[49] = 'Denkmal_Scraper_Source_Programmzeitung';
+    $config->Denkmal_Scraper_Source_Abstract->types[50] = 'Denkmal_Scraper_Source_Saali';
+
+
     $config->CM_Mail->type = 1;
     $config->CM_Mail_Welcome->type = 2;
     $config->CM_Action_Email->type = 3;
@@ -101,9 +109,15 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Location_State->type = 41;
     $config->CM_Model_Location_Zip->type = 42;
     $config->CM_Model_LanguageKey->type = 43;
-    
-    $config->CM_Class_Abstract->typesMaxValue = 43;
-    
+    $config->Denkmal_Scraper_Source_Fingerzeig->type = 45;
+    $config->Denkmal_Scraper_Source_Hinterhof->type = 46;
+    $config->Denkmal_Scraper_Source_Kaschemme->type = 47;
+    $config->Denkmal_Scraper_Source_Lastfm->type = 48;
+    $config->Denkmal_Scraper_Source_Programmzeitung->type = 49;
+    $config->Denkmal_Scraper_Source_Saali->type = 50;
+
+    $config->CM_Class_Abstract->typesMaxValue = 50;
+
     $config->CM_Action_Abstract->verbs = array();
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UPDATE] = 2;
@@ -117,5 +131,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UNPUBLISH] = 10;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::SUBSCRIBE] = 11;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UNSUBSCRIBE] = 12;
-    $config->CM_Action_Abstract->verbsMaxValue = 12;
+    $config->CM_Action_Abstract->verbs[CM_Action_Abstract::SEND] = 13;
+    $config->CM_Action_Abstract->verbsMaxValue = 13;
 };

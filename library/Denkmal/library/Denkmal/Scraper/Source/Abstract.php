@@ -1,6 +1,6 @@
 <?php
 
-abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
+abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract implements CM_Typed {
 
     /** @var Denkmal_Scraper_Manager */
     protected $_manager;

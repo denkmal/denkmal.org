@@ -46,16 +46,23 @@ class Denkmal_Scraper_SourceResult extends CM_Model_Abstract {
     }
 
     /**
-     * @return string|null
+     * @return CM_ExceptionHandling_SerializableException|null
      */
     public function getError() {
-        return $this->_get('error');
+        $error = $this->_get('error');
+        if (null !== $error) {
+            $error = unserialize($error);
+        }
+        return $error;
     }
 
     /**
-     * @param string|null $error
+     * @param CM_ExceptionHandling_SerializableException|null $error
      */
-    public function setError($error) {
+    public function setError(CM_ExceptionHandling_SerializableException $error = null) {
+        if (null !== $error) {
+            $error = serialize($error);
+        }
         $this->_set('error', $error);
     }
 
@@ -69,13 +76,13 @@ class Denkmal_Scraper_SourceResult extends CM_Model_Abstract {
     }
 
     /**
-     * @param Denkmal_Scraper_Source_Abstract $source
-     * @param DateTime                        $created
-     * @param int                             $eventDataCount
-     * @param string|null                     $error
+     * @param Denkmal_Scraper_Source_Abstract                 $source
+     * @param DateTime                                        $created
+     * @param int                                             $eventDataCount
+     * @param CM_ExceptionHandling_SerializableException|null $error
      * @return Denkmal_Scraper_SourceResult
      */
-    public static function create(Denkmal_Scraper_Source_Abstract $source, DateTime $created, $eventDataCount, $error = null) {
+    public static function create(Denkmal_Scraper_Source_Abstract $source, DateTime $created, $eventDataCount, CM_ExceptionHandling_SerializableException $error = null) {
         $sourceResult = new self();
         $sourceResult->setScraperSource($source);
         $sourceResult->setCreated($created);

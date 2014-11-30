@@ -19,16 +19,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
      * @param bool|null $storeResults
      */
     public function process($storeResults = null) {
-        $scraperList = array(
-            new Denkmal_Scraper_Source_Kaschemme(),
-            new Denkmal_Scraper_Source_Programmzeitung(),
-            new Denkmal_Scraper_Source_Hinterhof(),
-            new Denkmal_Scraper_Source_Fingerzeig(),
-            new Denkmal_Scraper_Source_Lastfm(),
-            new Denkmal_Scraper_Source_Saali(),
-        );
-
-        foreach ($scraperList as $scraper) {
+        foreach ($this->getScraperList() as $scraper) {
             $this->_output->write('Running scraper `' . get_class($scraper) . '`… ');
             $result = $this->_processScraper($scraper);
             if ($result->getError()) {
@@ -40,6 +31,20 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
                 $result->commit();
             }
         }
+    }
+
+    /**
+     * @return Denkmal_Scraper_Source_Abstract[]
+     */
+    public function getScraperList() {
+        return array(
+            new Denkmal_Scraper_Source_Kaschemme(),
+            new Denkmal_Scraper_Source_Programmzeitung(),
+            new Denkmal_Scraper_Source_Hinterhof(),
+            new Denkmal_Scraper_Source_Fingerzeig(),
+            new Denkmal_Scraper_Source_Lastfm(),
+            new Denkmal_Scraper_Source_Saali(),
+        );
     }
 
     /**

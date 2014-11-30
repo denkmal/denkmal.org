@@ -9,6 +9,13 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
     abstract public function run(Denkmal_Scraper_Manager $manager);
 
     /**
+     * @return string
+     */
+    public function getName() {
+        return get_class($this);
+    }
+
+    /**
      * @param string   $url
      * @param int|null $tryCount
      * @throws CM_Exception_Invalid

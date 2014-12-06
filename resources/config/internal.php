@@ -51,6 +51,13 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_Log_Abstract->types[23] = 'CM_Paging_Log_Mail';
     $config->CM_Paging_Log_Abstract->types[24] = 'CM_Paging_Log_Warn';
     
+    $config->CM_Provision_Script_OptionBased->types = array();
+    $config->CM_Provision_Script_OptionBased->types[52] = 'CM_App_SetupScript_Core';
+    $config->CM_Provision_Script_OptionBased->types[53] = 'CM_App_SetupScript_Translations';
+    $config->CM_Provision_Script_OptionBased->types[54] = 'CM_Elasticsearch_SetupScript';
+    $config->CM_Provision_Script_OptionBased->types[55] = 'Denkmal_App_SetupScript_LoadLanguage';
+    $config->CM_Provision_Script_OptionBased->types[56] = 'Denkmal_ExampleData_Users';
+    
     $config->CM_Site_Abstract->types = array();
     $config->CM_Site_Abstract->types[35] = 'Denkmal_Site';
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
@@ -117,8 +124,13 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Programmzeitung->type = 49;
     $config->Denkmal_Scraper_Source_Saali->type = 50;
     $config->Denkmal_Scraper_SourceResult->type = 51;
+    $config->CM_App_SetupScript_Core->type = 52;
+    $config->CM_App_SetupScript_Translations->type = 53;
+    $config->CM_Elasticsearch_SetupScript->type = 54;
+    $config->Denkmal_App_SetupScript_LoadLanguage->type = 55;
+    $config->Denkmal_ExampleData_Users->type = 56;
     
-    $config->CM_Class_Abstract->typesMaxValue = 51;
+    $config->CM_Class_Abstract->typesMaxValue = 56;
     
     $config->CM_Action_Abstract->verbs = array();
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

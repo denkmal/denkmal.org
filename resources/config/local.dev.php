@@ -1,6 +1,8 @@
 <?php
 
 return function (CM_Config_Node $config) {
+    $config->CM_App->setupScriptClasses[] = 'Denkmal_ExampleData_Users';
+
     $config->CM_Mail->send = false;
     $config->CM_Redis_Client->server = array('host' => '127.0.0.1', 'port' => 6379);
     $config->CM_Stream_Adapter_Message_SocketRedis->servers = array(
@@ -26,12 +28,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Jobdistribution_Job_Abstract->servers = array(
         array('host' => 'localhost', 'port' => 4730),
     );
-    $config->SK_PaymentProvider_Abstract->withoutRemoteConnection = true;
-    $config->SK_ModelAsset_User_Reviews->processPendingEnabled = false;
-    $config->SK_Entertainment_Schedule_Abstract->executingEnabled = false;
-    $config->SK_Entertainment_UserTemplate->entertainerCountMin = 20;
-    $config->CM_Model_Splittest->withoutPersistence = true;
-    $config->CM_Model_Splitfeature->withoutPersistence = true;
 
     $config->Denkmal_Scraper_Source_Lastfm->apiKey = '68dda0be24c60cef36b7f05b70988b74';
 

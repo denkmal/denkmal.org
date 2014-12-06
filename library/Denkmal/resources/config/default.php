@@ -9,6 +9,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Manager->dayCount = 10;
     $config->Denkmal_Scraper_Date->defaultTimeHour = 22;
 
+    $config->CM_App->setupScriptClasses[] = 'Denkmal_App_SetupScript_LoadLanguage';
+
     $config->CM_Stream_Video->servers = array();
 
     $config->services['twitter'] = array(

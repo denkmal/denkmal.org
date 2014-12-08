@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.82.2",
+            "version": "1.82.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "cc9f50915e18852446f72ec650900377c4fff17d"
+                "reference": "a48549dbef0ef0523b10e45a7c1814922d3e7d77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cargomedia/CM/zipball/cc9f50915e18852446f72ec650900377c4fff17d",
-                "reference": "cc9f50915e18852446f72ec650900377c4fff17d",
-                "shasum": ""
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-a48549dbef0ef0523b10e45a7c1814922d3e7d77-zip-9ab3ff.zip",
+                "reference": "a48549dbef0ef0523b10e45a7c1814922d3e7d77",
+                "shasum": "e7d544ac96a0814e52b7defd80bce842e02afa51"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2014-12-06 16:31:02"
+            "time": "2014-12-08 18:15:44"
         },
         {
             "name": "composer/composer",

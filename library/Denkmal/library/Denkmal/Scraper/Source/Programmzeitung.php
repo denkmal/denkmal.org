@@ -51,12 +51,15 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             $venueNode = $agendaTableRow->find('td:eq(2)');
 
             $timeTextList = explode('<br>', $timeNode->getChildren()->getHtml());
-            $timeText = $timeTextList[0];
-            if (!preg_match('#^(\d+):(\d+)(\s+.\s+(\d+):(\d+))?$#u', $timeText, $matches)) {
+            $timeText = trim($timeTextList[0]);
+            $from = new Denkmal_Scraper_Date($date);
+            if (0 === strlen($timeText)) {
+                $from->setTime(21, 00);
+            } elseif (preg_match('#^(\d+):(\d+)(\s+.\s+(\d+):(\d+))?$#u', $timeText, $matches)) {
+                $from->setTime($matches[1], $matches[2]);
+            } else {
                 throw new CM_Exception_Invalid('Cannot detect time from `' . $timeText . '`.');
             }
-            $from = new Denkmal_Scraper_Date($date);
-            $from->setTime($matches[1], $matches[2]);
             $until = null;
             if (isset($matches[4]) && isset($matches[5])) {
                 $until = clone $from;

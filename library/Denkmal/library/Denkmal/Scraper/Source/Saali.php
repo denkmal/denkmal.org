@@ -21,10 +21,18 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             return $contentChild->getText();
         });
 
-        $textSeparatorIndex = $this->_getFirstIndexOf($textList, function ($text) {
-            return preg_match('#Live:#', $text);
+        $textList = Functional\reject($textList, function ($text) {
+            return preg_match('#Programm \w+ \(pdf\)#i', $text);
         });
-        $textList = array_splice($textList, $textSeparatorIndex + 1);
+        $textList = Functional\reject(array_values($textList), function ($text, $index, $textList) {
+            if (0 === $index || count($textList) - 1 === $index) {
+                return false;
+            }
+            $textPrevious = $textList[$index - 1];
+            $textNext = $textList[$index + 1];
+            $previousAndNextEmpty = preg_match('#^\s*$#', $textPrevious) && preg_match('#^\s*$#', $textNext);
+            return $previousAndNextEmpty;
+        });
 
         $eventListTextList = array();
         $eventIndex = 0;
@@ -38,7 +46,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
         }
         $eventListTextList = array_filter($eventListTextList);
 
-        $eventDataList =  Functional\map($eventListTextList, function ($eventTextList) use ($forceYear) {
+        $eventDataList = Functional\map($eventListTextList, function ($eventTextList) use ($forceYear) {
             if (count($eventTextList) < 2) {
                 throw new CM_Exception_Invalid('Unexpected eventTextList: `' . CM_Util::var_line($eventTextList) . '`.');
             }

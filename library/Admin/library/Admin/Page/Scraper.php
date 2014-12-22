@@ -29,6 +29,20 @@ class Admin_Page_Scraper extends Admin_Page_Abstract {
         $viewResponse->set('graphSeriesErrors', $graphSeriesErrors);
 
         $viewResponse->set('errorFormatter', new CM_ExceptionHandling_Formatter_Plain());
-        $viewResponse->set('resultErrorList', $resultErrorList);
+        $viewResponse->set('resultErrorList', $this->_sortErrorResults($resultErrorList));
+    }
+
+    /**
+     * @param Denkmal_Scraper_SourceResult[] $resultList
+     * @return Denkmal_Scraper_SourceResult[]
+     */
+    private function _sortErrorResults($resultList) {
+        usort($resultList, function (Denkmal_Scraper_SourceResult $a, Denkmal_Scraper_SourceResult $b) {
+            if ($a->getCreated() == $b->getCreated()) {
+                return 0;
+            }
+            return ($a->getCreated() > $b->getCreated()) ? -1 : 1;
+        });
+        return $resultList;
     }
 }

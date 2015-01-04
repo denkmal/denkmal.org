@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
+class Denkmal_Http_Response_Api_DataTest extends CMTest_TestCase {
 
     protected function setUp() {
         CM_Config::get()->Denkmal_Site->url = 'http://denkmal.test';
@@ -12,9 +12,9 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
     }
 
     public function testMatch() {
-        $request = new CM_Request_Get('/api/data', array('host' => 'denkmal.test'));
-        $response = CM_Response_Abstract::factory($request);
-        $this->assertInstanceOf('Denkmal_Response_Api_Data', $response);
+        $request = new CM_Http_Request_Get('/api/data', array('host' => 'denkmal.test'));
+        $response = CM_Http_Response_Abstract::factory($request);
+        $this->assertInstanceOf('Denkmal_Http_Response_Api_Data', $response);
     }
 
     public function testProcess() {
@@ -29,8 +29,8 @@ class Denkmal_Response_Api_DataTest extends CMTest_TestCase {
         $event1 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now, $now, $song1);
         $event2 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now);
 
-        $request = new CM_Request_Get('/api/data', array('host' => 'denkmal.test'));
-        $response = new Denkmal_Response_Api_Data($request);
+        $request = new CM_Http_Request_Get('/api/data', array('host' => 'denkmal.test'));
+        $response = new Denkmal_Http_Response_Api_Data($request);
         $response->process();
 
         $expected = array(

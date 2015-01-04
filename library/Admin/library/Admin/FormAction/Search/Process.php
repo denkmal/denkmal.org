@@ -2,7 +2,7 @@
 
 class Admin_FormAction_Search_Process extends Admin_FormAction_Abstract {
 
-    protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+    protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         $searchTerm = $params->getString('searchTerm', '');
         $urlPage = $params->getString('urlPage');
 

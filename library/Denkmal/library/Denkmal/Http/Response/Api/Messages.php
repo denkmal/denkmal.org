@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
+class Denkmal_Http_Response_Api_Messages extends Denkmal_Http_Response_Api_Abstract {
 
     /** @var int */
     private $_maxMessages = 500;
@@ -11,7 +11,7 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
     /** @var int|null */
     private $_startAfterId;
 
-    public function __construct(CM_Request_Get $request) {
+    public function __construct(CM_Http_Request_Get $request) {
         parent::__construct($request);
 
         $params = new Denkmal_Params($request->getQuery());
@@ -88,7 +88,7 @@ class Denkmal_Response_Api_Messages extends Denkmal_Response_Api_Abstract {
         return array_values($messageList);
     }
 
-    public static function match(CM_Request_Abstract $request) {
+    public static function match(CM_Http_Request_Abstract $request) {
         if (!parent::match($request)) {
             return false;
         }

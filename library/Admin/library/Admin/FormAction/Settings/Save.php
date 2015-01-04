@@ -6,7 +6,7 @@ class Admin_FormAction_Settings_Save extends Admin_FormAction_Abstract {
         return array();
     }
 
-    protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+    protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         $suspensionUntil = $params->has('suspensionUntil') ? $params->getDateTime('suspensionUntil') : null;
 
         $site = new Denkmal_Site();

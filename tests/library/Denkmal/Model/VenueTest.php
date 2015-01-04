@@ -74,6 +74,17 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(null, $venue->getEmail());
     }
 
+    public function testGetSetTwitterUsername() {
+        $venue = Denkmal_Model_Venue::create('Example', true, true);
+        $this->assertSame(null, $venue->getTwitterUsername());
+
+        $venue->setTwitterUsername('foo');
+        $this->assertSame('foo', $venue->getTwitterUsername());
+
+        $venue->setTwitterUsername(null);
+        $this->assertSame(null, $venue->getTwitterUsername());
+    }
+
     /**
      * @expectedException CM_Exception_Nonexistent
      */

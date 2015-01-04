@@ -129,6 +129,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->_set('email', $email);
     }
 
+    /**
+     * @return string|null
+     */
+    public function getTwitterUsername() {
+        return $this->_get('twitterUsername');
+    }
+
+    /**
+     * @param string|null $twitterUsername
+     */
+    public function setTwitterUsername($twitterUsername) {
+        $this->_set('twitterUsername', $twitterUsername);
+    }
+
     public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
@@ -202,6 +216,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setQueued($queued);
         $venue->setIgnore($ignore);
         $venue->setEmail(null);
+        $venue->setTwitterUsername(null);
         $venue->commit();
         return $venue;
     }
@@ -223,14 +238,15 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
-            'name'      => array('type' => 'string'),
-            'url'       => array('type' => 'string', 'optional' => true),
-            'address'   => array('type' => 'string', 'optional' => true),
-            'latitude'  => array('type' => 'float', 'optional' => true),
-            'longitude' => array('type' => 'float', 'optional' => true),
-            'queued'    => array('type' => 'boolean'),
-            'ignore'    => array('type' => 'boolean'),
-            'email'     => array('type' => 'string', 'optional' => true),
+            'name'            => array('type' => 'string'),
+            'url'             => array('type' => 'string', 'optional' => true),
+            'address'         => array('type' => 'string', 'optional' => true),
+            'latitude'        => array('type' => 'float', 'optional' => true),
+            'longitude'       => array('type' => 'float', 'optional' => true),
+            'queued'          => array('type' => 'boolean'),
+            'ignore'          => array('type' => 'boolean'),
+            'email'           => array('type' => 'string', 'optional' => true),
+            'twitterUsername' => array('type' => 'string', 'optional' => true),
         ));
     }
 

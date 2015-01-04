@@ -27,7 +27,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
         $image = Denkmal_Model_MessageImage::create(new CM_File_Image(DIR_TEST_DATA . 'image.jpg'));
         $message = Denkmal_Model_Message::create($venue, 'client', 'foo', $image);
         $message->delete();
-        $this->assertFalse($image->getFile('view')->getExists());
+        $this->assertFalse($image->getFile('view')->exists());
         new Denkmal_Model_Message($message->getId());
     }
 

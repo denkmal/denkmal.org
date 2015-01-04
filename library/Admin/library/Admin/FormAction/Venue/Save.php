@@ -25,6 +25,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $url = $params->has('url') ? $params->getString('url') : null;
         $address = $params->has('address') ? $params->getString('address') : null;
         $email = $params->has('email') ? $params->getString('email') : null;
+        $twitterUsername = $params->has('twitterUsername') ? $params->getString('twitterUsername') : null;
         $coordinates = $params->has('coordinates') ? $params->getGeoPoint('coordinates') : null;
         $ignore = $params->getBoolean('ignore');
 
@@ -32,6 +33,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $venue->setUrl($url);
         $venue->setAddress($address);
         $venue->setEmail($email);
+        $venue->setTwitterUsername($twitterUsername);
         $venue->setCoordinates($coordinates);
         $venue->setIgnore($ignore);
         $venue->setQueued(false);

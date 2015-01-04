@@ -8,7 +8,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_Url(['name' => 'url']));
         $this->registerField(new CM_FormField_Text(['name' => 'address']));
         $this->registerField(new CM_FormField_Email(['name' => 'email']));
-        $this->registerField(new CM_FormField_Text(['name' => 'twitterUsername']));
+        $this->registerField(new Denkmal_FormField_TwitterUsername(['name' => 'twitterUsername']));
         $this->registerField(new CM_FormField_GeoPoint(['name' => 'coordinates']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'ignore']));
 

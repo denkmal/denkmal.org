@@ -1,8 +1,8 @@
 <?php
 
-class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
+class Denkmal_Http_Response_Api_Data extends Denkmal_Http_Response_Api_Abstract {
 
-    public function __construct(CM_Request_Get $request) {
+    public function __construct(CM_Http_Request_Get $request) {
         parent::__construct($request);
     }
 
@@ -37,7 +37,7 @@ class Denkmal_Response_Api_Data extends Denkmal_Response_Api_Abstract {
         ));
     }
 
-    public static function match(CM_Request_Abstract $request) {
+    public static function match(CM_Http_Request_Abstract $request) {
         if (!parent::match($request)) {
             return false;
         }

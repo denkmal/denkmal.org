@@ -3,6 +3,8 @@
 class Denkmal_FormField_TwitterUsername extends CM_FormField_Text {
 
     public function validate(CM_Frontend_Environment $environment, $userInput) {
+        $userInput = parent::validate($environment, $userInput);
+
         if ('@' === substr($userInput, 0, 1)) {
             $userInput = substr($userInput, 1);
         }
@@ -11,6 +13,6 @@ class Denkmal_FormField_TwitterUsername extends CM_FormField_Text {
             throw new CM_Exception_FormFieldValidation('Contains invalid characters');
         }
 
-        return parent::validate($environment, $userInput);
+        return $userInput;
     }
 }

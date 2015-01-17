@@ -33,7 +33,7 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
 
     public function testGetEventText() {
         $this->_assertGetEventText(
-            'Example (22:00): Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
+            'Denkmal recommends: Example (22:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
             'Lorem ipsum dolor sit amet',
             new DateTime('2014-11-01 22:00'), null,
             140
@@ -42,7 +42,7 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
 
     public function testGetEventTextWithUntil() {
         $this->_assertGetEventText(
-            'Example (22:00-2:00): Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
+            'Denkmal recommends: Example (22:00-2:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
             'Lorem ipsum dolor sit amet',
             new DateTime('2014-11-01 22:00'), new DateTime('2014-11-02 2:00'),
             140
@@ -51,19 +51,19 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
 
     public function testGetEventTextCutOff() {
         $this->_assertGetEventText(
-            'Example (22:00): Lorem ipsum… denkmal.org/events?date=2014-11-1',
+            'Denkmal recommends: Example (22:00) Lorem ipsum… denkmal.org/events?date=2014-11-1',
             'Lorem ipsum dolor sit amet',
             new DateTime('2014-11-01 22:00'), null,
-            50
+            70
         );
     }
 
     public function testGetEventTextWithUrl() {
         $this->_assertGetEventText(
-            'Example (22:00): example.com Lorem ipsum… denkmal.org/events?date=2014-11-1',
+            'Denkmal recommends: Example (22:00) example.com Lorem ipsum… denkmal.org/events?date=2014-11-1',
             'example.com Lorem ipsum dolor sit amet',
             new DateTime('2014-11-01 22:00'), null,
-            75
+            95
         );
     }
 
@@ -71,10 +71,10 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
         Denkmal_Model_Link::create('Lorem', 'http://www.lorem.com', true);
 
         $this->_assertGetEventText(
-            'Example (22:00): Lorem ipsum… denkmal.org/events?date=2014-11-1',
+            'Denkmal recommends: Example (22:00) Lorem ipsum… denkmal.org/events?date=2014-11-1',
             'Lorem ipsum dolor sit amet',
             new DateTime('2014-11-01 22:00'), null,
-            50
+            70
         );
     }
 
@@ -84,10 +84,21 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
      */
     public function testGetEventTextSuffixTooLong() {
         $this->_assertGetEventText(
-            'Example (22:00): Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
+            'Denkmal recommends: Example (22:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
             'Lorem ipsum dolor sit amet',
             new DateTime('2014-11-01 22:00'), null,
             10
+        );
+    }
+
+    public function testGetEventTextWithTwitterUsername() {
+        $eventTweeter = new Denkmal_Twitter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $venue = Denkmal_Model_Venue::create('Example', false, false);
+        $venue->setTwitterUsername('ExampleTwitter');
+        $event = Denkmal_Model_Event::create($venue, 'Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'));
+        $this->assertSame(
+            'Denkmal recommends: @ExampleTwitter (22:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
+            $eventTweeter->getEventText($event, 140)
         );
     }
 

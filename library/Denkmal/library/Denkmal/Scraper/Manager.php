@@ -140,6 +140,10 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
             if ($eventListVenueDate->getCount()) {
                 return false; // Venue has event on same day
             }
+        } else {
+            if ('' === trim($eventData->getVenueName())) {
+                return false;
+            }
         }
 
         return true;

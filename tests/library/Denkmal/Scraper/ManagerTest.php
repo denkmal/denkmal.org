@@ -60,6 +60,17 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $this->assertSame(false, $method->invoke($manager, $eventData));
     }
 
+    public function testIsValidEventVenueNameEmpty() {
+        $description = new Denkmal_Scraper_Description('foo');
+        $from = $this->_getDate()->add(new DateInterval('PT1H'));
+        $until = $this->_getDate()->add(new DateInterval('PT2H'));
+        $eventData = new Denkmal_Scraper_EventData('', $description, $from, $until);
+
+        $manager = new Denkmal_Scraper_Manager();
+        $method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Manager', '_isValidEvent');
+        $this->assertSame(false, $method->invoke($manager, $eventData));
+    }
+
     /**
      * @return DateTime
      */

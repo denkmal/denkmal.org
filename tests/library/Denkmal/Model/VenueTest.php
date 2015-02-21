@@ -14,6 +14,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(null, $venue->getCoordinates());
         $this->assertSame(true, $venue->getQueued());
         $this->assertSame(false, $venue->getIgnore());
+        $this->assertSame(true, $venue->getActive());
     }
 
     public function testGetSetName() {
@@ -61,6 +62,14 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
         $venue->setIgnore(false);
         $this->assertSame(false, $venue->getIgnore());
+    }
+
+    public function testGetSetActive() {
+        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $this->assertSame(true, $venue->getActive());
+
+        $venue->setActive(false);
+        $this->assertSame(false, $venue->getActive());
     }
 
     public function testGetSetEmail() {

@@ -30,6 +30,7 @@ CREATE TABLE `denkmal_model_venue` (
   `longitude` float DEFAULT NULL,
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `ignore` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(4) unsigned NOT NULL DEFAULT '1',
   `email` varchar(100) DEFAULT NULL,
   `twitterUsername` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),

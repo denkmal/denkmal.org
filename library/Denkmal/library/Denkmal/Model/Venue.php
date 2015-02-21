@@ -116,6 +116,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
+     * @return boolean
+     */
+    public function getActive() {
+        return $this->_get('active');
+    }
+
+    /**
+     * @param boolean $active
+     */
+    public function setActive($active) {
+        $this->_set('active', $active);
+    }
+
+    /**
      * @return string|null
      */
     public function getEmail() {
@@ -215,6 +229,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setCoordinates($coordinates);
         $venue->setQueued($queued);
         $venue->setIgnore($ignore);
+        $venue->setActive(true);
         $venue->setEmail(null);
         $venue->setTwitterUsername(null);
         $venue->commit();
@@ -245,6 +260,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
             'longitude'       => array('type' => 'float', 'optional' => true),
             'queued'          => array('type' => 'boolean'),
             'ignore'          => array('type' => 'boolean'),
+            'active'          => array('type' => 'boolean'),
             'email'           => array('type' => 'string', 'optional' => true),
             'twitterUsername' => array('type' => 'string', 'optional' => true),
         ));

@@ -28,6 +28,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $twitterUsername = $params->has('twitterUsername') ? $params->getString('twitterUsername') : null;
         $coordinates = $params->has('coordinates') ? $params->getGeoPoint('coordinates') : null;
         $ignore = $params->getBoolean('ignore');
+        $suspended = $params->getBoolean('suspended');
 
         $venue->setName($name);
         $venue->setUrl($url);
@@ -36,6 +37,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $venue->setTwitterUsername($twitterUsername);
         $venue->setCoordinates($coordinates);
         $venue->setIgnore($ignore);
+        $venue->setSuspended($suspended);
         $venue->setQueued(false);
 
         $response->reloadComponent();

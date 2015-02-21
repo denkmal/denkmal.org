@@ -229,7 +229,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setCoordinates($coordinates);
         $venue->setQueued($queued);
         $venue->setIgnore($ignore);
-        $venue->setSuspended(true);
+        $venue->setSuspended(false);
         $venue->setEmail(null);
         $venue->setTwitterUsername(null);
         $venue->commit();

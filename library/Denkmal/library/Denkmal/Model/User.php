@@ -18,6 +18,21 @@ class Denkmal_Model_User extends CM_Model_User {
     }
 
     /**
+     * @return string
+     */
+    public function getUsername() {
+        return $this->_get('username');
+    }
+
+    /**
+     * @param string $username
+     * @return Denkmal_Model_User
+     */
+    public function setUsername($username) {
+        CM_Db_Db::update('denkmal_model_user', array('username' => $username), array('userId' => $this->getId()));
+    }
+
+    /**
      * @param string $password
      * @return Denkmal_Model_User
      */
@@ -60,12 +75,14 @@ class Denkmal_Model_User extends CM_Model_User {
 
     /**
      * @param string $email
+     * @param string $username
      * @param string $password
      * @return Denkmal_Model_User
      */
-    public static function create($email, $password) {
+    public static function create($email, $username, $password) {
         return static::createStatic(array(
             'email'    => $email,
+            'username' => $username,
             'password' => $password,
         ));
     }
@@ -77,9 +94,14 @@ class Denkmal_Model_User extends CM_Model_User {
      */
     protected static function _createStatic(array $data) {
         $email = (string) $data['email'];
+        $username = (string) $data['username'];
         $password = (string) $data['password'];
         $userId = CM_Model_User::createStatic(null)->getId();
-        $values = array('userId' => $userId, 'email' => $email,);
+        $values = array(
+            'userId'   => $userId,
+            'email'    => $email,
+            'username' => $username,
+        );
         try {
             CM_Db_Db::insert('denkmal_model_user', $values);
         } catch (CM_Exception $e) {

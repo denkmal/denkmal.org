@@ -7,14 +7,22 @@ class Denkmal_Model_UserTest extends CMTest_TestCase {
     }
 
     public function testCreate() {
-        $user = Denkmal_Model_User::create('foo@bar', 'foo');
+        $user = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
         $this->assertRow('denkmal_model_user', null, 1);
         $this->assertSame('foo@bar', $user->getEmail());
+        $this->assertSame('foo', $user->getUsername());
+    }
+
+    public function testGetSetUsername() {
+        $user = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
+
+        $user->setUsername('bar');
+        $this->assertSame('bar', $user->getUsername());
     }
 
     public function testAuthenticate() {
-        $user = Denkmal_Model_User::create('foo@bar', 'foo');
-        $authenticatedUser = Denkmal_Model_User::authenticate('foo@bar', 'foo');
+        $user = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
+        $authenticatedUser = Denkmal_Model_User::authenticate('foo@bar', 'pass');
         $this->assertEquals($user, $authenticatedUser);
     }
 
@@ -22,7 +30,7 @@ class Denkmal_Model_UserTest extends CMTest_TestCase {
      * @expectedException CM_Exception_AuthFailed
      */
     public function testAuthenticateIncorrectLogin() {
-        Denkmal_Model_User::create('foo@bar', 'foo');
+        Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
         Denkmal_Model_User::authenticate('foo@bar', 'bar');
     }
 }

@@ -65,6 +65,21 @@ class Denkmal_Params extends CM_Params {
     }
 
     /**
+     * @param string             $key
+     * @param CM_Model_User|null $default
+     * @throws CM_Exception_Invalid
+     * @throws CM_Exception_InvalidParam
+     * @return Denkmal_Model_User
+     */
+    public function getUser($key, CM_Model_User $default = null) {
+        $param = parent::getUser($key, $default);
+        if (!$param instanceof Denkmal_Model_User) {
+            throw new CM_Exception_Invalid('Not a Denkmal_Model_User');
+        }
+        return $param;
+    }
+
+    /**
      * @param string $key
      * @return DateInterval
      */

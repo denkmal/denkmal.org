@@ -24,7 +24,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
 
     public function testMatch() {
         $request = new CM_Http_Request_Post('/api/message', array('host' => 'denkmal.test'));
-        $response = CM_Http_Response_Abstract::factory($request);
+        $response = CM_Http_Response_Abstract::factory($request, $this->getServiceManager());
         $this->assertInstanceOf('Denkmal_Http_Response_Api_Message', $response);
     }
 
@@ -38,7 +38,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
             'hash'     => hash($this->_hashAlgorithm, $this->_hashToken . $text),
         ));
         $request = new CM_Http_Request_Post('/api/message', array('host' => 'denkmal.test'), array('remote_addr' => '1.2.3.4'), $body);
-        $response = new Denkmal_Http_Response_Api_Message($request);
+        $response = new Denkmal_Http_Response_Api_Message($request, $this->getServiceManager());
         $dateTime = new DateTime();
         $createTime = $dateTime->getTimestamp();
         $response->process();
@@ -64,7 +64,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
             'hash'       => hash($this->_hashAlgorithm, $this->_hashToken . md5($file->read())),
         ));
         $request = new CM_Http_Request_Post('/api/message', array('host' => 'denkmal.test'), array('remote_addr' => '1.2.3.4'), $body);
-        $response = new Denkmal_Http_Response_Api_Message($request);
+        $response = new Denkmal_Http_Response_Api_Message($request, $this->getServiceManager());
         $dateTime = new DateTime();
         $createTime = $dateTime->getTimestamp();
         $response->process();
@@ -95,7 +95,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
             'hash'     => 'foo',
         ));
         $request = new CM_Http_Request_Post('/api/message', array('host' => 'denkmal.test'), array('remote_addr' => '1.2.3.4'), $body);
-        $response = new Denkmal_Http_Response_Api_Message($request);
+        $response = new Denkmal_Http_Response_Api_Message($request, $this->getServiceManager());
         $response->process();
     }
 
@@ -113,7 +113,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
             'hash'       => 'foo bar',
         ));
         $request = new CM_Http_Request_Post('/api/message', array('host' => 'denkmal.test'), array('remote_addr' => '1.2.3.4'), $body);
-        $response = new Denkmal_Http_Response_Api_Message($request);
+        $response = new Denkmal_Http_Response_Api_Message($request, $this->getServiceManager());
         $response->process();
     }
 }

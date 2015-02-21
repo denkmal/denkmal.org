@@ -2,9 +2,9 @@
 
 class Denkmal_Http_Response_Api_Message extends Denkmal_Http_Response_Api_Abstract {
 
-    public function __construct(CM_Http_Request_Post $request) {
+    public function __construct(CM_Http_Request_Post $request, CM_Service_Manager $serviceManager) {
         $request->setBodyEncoding(CM_Http_Request_Post::ENCODING_FORM);
-        parent::__construct($request);
+        parent::__construct($request, $serviceManager);
     }
 
     protected function _process() {

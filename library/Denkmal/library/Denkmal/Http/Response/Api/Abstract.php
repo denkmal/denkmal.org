@@ -7,10 +7,12 @@ abstract class Denkmal_Http_Response_Api_Abstract extends CM_Http_Response_Abstr
      */
     protected $_params;
 
-    public function __construct(CM_Http_Request_Abstract $request) {
-        $this->_request = $request;
+    public function __construct(CM_Http_Request_Abstract $request, CM_Service_Manager $serviceManager) {
+        $this->_request = clone $request;
         $this->_site = CM_Site_Abstract::factory();
         $this->_params = CM_Params::factory($request->getQuery());
+
+        $this->setServiceManager($serviceManager);
     }
 
     public static function match(CM_Http_Request_Abstract $request) {

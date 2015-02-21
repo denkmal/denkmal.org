@@ -11,8 +11,8 @@ class Denkmal_Http_Response_Api_Messages extends Denkmal_Http_Response_Api_Abstr
     /** @var int|null */
     private $_startAfterId;
 
-    public function __construct(CM_Http_Request_Get $request) {
-        parent::__construct($request);
+    public function __construct(CM_Http_Request_Get $request, CM_Service_Manager $serviceManager) {
+        parent::__construct($request, $serviceManager);
 
         $params = new Denkmal_Params($request->getQuery());
         $this->_maxMessages = min(max($params->getInt('maxMessages', 500), 1), 5000);

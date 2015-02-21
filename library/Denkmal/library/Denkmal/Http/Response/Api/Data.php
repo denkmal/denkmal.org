@@ -2,8 +2,8 @@
 
 class Denkmal_Http_Response_Api_Data extends Denkmal_Http_Response_Api_Abstract {
 
-    public function __construct(CM_Http_Request_Get $request) {
-        parent::__construct($request);
+    public function __construct(CM_Http_Request_Get $request, CM_Service_Manager $serviceManager) {
+        parent::__construct($request, $serviceManager);
     }
 
     protected function _process() {

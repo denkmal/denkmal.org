@@ -13,6 +13,14 @@ class Denkmal_Model_UserTest extends CMTest_TestCase {
         $this->assertSame('foo', $user->getUsername());
     }
 
+    /**
+     * @expectedException CM_Db_Exception
+     */
+    public function testCreateDuplicateUsername() {
+        Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
+        Denkmal_Model_User::create('bar@example.com', 'foo', 'pass');
+    }
+
     public function testGetSetUsername() {
         $user = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
 

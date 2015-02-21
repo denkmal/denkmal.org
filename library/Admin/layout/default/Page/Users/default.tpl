@@ -1,11 +1,12 @@
 {extends file=$render->getLayoutPath('Page/Abstract/default.tpl')}
 
 {block name='content-main'}
-  <div class="toggleNext">{translate 'Hinzufügen'}</div>
-  <div class="toggleNext-content">
-    {component name='Admin_Component_UserAdd'}
+  <div class="addNewUser">
+    <div class="toggleNext">{translate 'Hinzufügen'}<span class="icon-plus"></span></div>
+    <div class="toggleNext-content">
+      {component name='Admin_Component_UserAdd'}
+    </div>
   </div>
-
   <ul class="userList">
     {foreach $userList as $user}
       <li class="userList-item">

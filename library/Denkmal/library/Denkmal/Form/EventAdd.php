@@ -49,7 +49,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
                 $venue->setCoordinates(null);
                 $venue->setQueued(true);
                 $venue->setIgnore(false);
-                $venue->setActive(true);
+                $venue->setSuspended(true);
                 $venue->setEmail(null);
                 $venue->setTwitterUsername(null);
             }

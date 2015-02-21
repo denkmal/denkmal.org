@@ -13,7 +13,7 @@ class Denkmal_Http_Response_Api_DataTest extends CMTest_TestCase {
 
     public function testMatch() {
         $request = new CM_Http_Request_Get('/api/data', array('host' => 'denkmal.test'));
-        $response = CM_Http_Response_Abstract::factory($request);
+        $response = CM_Http_Response_Abstract::factory($request, $this->getServiceManager());
         $this->assertInstanceOf('Denkmal_Http_Response_Api_Data', $response);
     }
 
@@ -30,7 +30,7 @@ class Denkmal_Http_Response_Api_DataTest extends CMTest_TestCase {
         $event2 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now);
 
         $request = new CM_Http_Request_Get('/api/data', array('host' => 'denkmal.test'));
-        $response = new Denkmal_Http_Response_Api_Data($request);
+        $response = new Denkmal_Http_Response_Api_Data($request, $this->getServiceManager());
         $response->process();
 
         $expected = array(

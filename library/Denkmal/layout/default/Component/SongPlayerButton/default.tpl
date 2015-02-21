@@ -1,2 +1,2 @@
-{link icon="play" class="navButton playSong"}
-{link icon="pause" class="navButton pauseSong disabled"}
+{link icon="audio-play" class="navButton playSong"}
+{link icon="audio-pause" class="navButton pauseSong disabled"}

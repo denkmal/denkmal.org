@@ -11,6 +11,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->registerField(new Denkmal_FormField_TwitterUsername(['name' => 'twitterUsername']));
         $this->registerField(new CM_FormField_GeoPoint(['name' => 'coordinates']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'ignore']));
+        $this->registerField(new CM_FormField_Boolean(['name' => 'suspended']));
 
         $this->registerAction(new Admin_FormAction_Venue_Save($this));
         $this->registerAction(new Admin_FormAction_Venue_Delete($this));
@@ -29,5 +30,6 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->getField('twitterUsername')->setValue($venue->getTwitterUsername());
         $this->getField('coordinates')->setValue($venue->getCoordinates());
         $this->getField('ignore')->setValue($venue->getIgnore());
+        $this->getField('suspended')->setValue($venue->getSuspended());
     }
 }

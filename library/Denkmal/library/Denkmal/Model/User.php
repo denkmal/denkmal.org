@@ -15,6 +15,7 @@ class Denkmal_Model_User extends CM_Model_User {
      */
     public function setEmail($email) {
         CM_Db_Db::update('denkmal_model_user', array('email' => $email), array('userId' => $this->getId()));
+        $this->_change();
     }
 
     /**
@@ -30,6 +31,7 @@ class Denkmal_Model_User extends CM_Model_User {
      */
     public function setUsername($username) {
         CM_Db_Db::update('denkmal_model_user', array('username' => $username), array('userId' => $this->getId()));
+        $this->_change();
     }
 
     /**

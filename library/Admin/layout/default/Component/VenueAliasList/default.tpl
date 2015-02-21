@@ -3,7 +3,7 @@
   {foreach $venueAliasList as $venueAlias}
     <li class="venueAlias" data-id="{$venueAlias->getId()}">
       {$venueAlias->getName()|escape}
-      {link icon="delete" class="deleteAlias"}
+      {link icon="trash" class="deleteAlias"}
     </li>
   {/foreach}
 </ul>{form name='Admin_Form_VenueAlias' venue=$venue}

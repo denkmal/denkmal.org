@@ -2,7 +2,7 @@
   <div class="venue-content toggleNext">
     <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue-name nowrap toggleNext-excluded">{$venue->getName()|escape}</a>
     {if $venue->getUrl()}
-      <a href="{$venue->getUrl()|escape}" class="toggleNext-excluded"><span class="icon icon-external"></span></a>
+      <a href="{$venue->getUrl()|escape}" class="toggleNext-excluded"><span class="icon icon-pop-out"></span></a>
     {/if}
   </div>
   <div class="venue-edit toggleNext-content">
@@ -15,7 +15,7 @@
     {formField name='coordinates' label={translate 'Koordinaten'}}
     {formField name='ignore' text={translate 'Scraper ignorieren'}}
     {formAction action='Save' label={translate 'Speichern'} alternatives="
-      	{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+      	{button action='Delete' label={translate 'Löschen'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 			"}
     {/form}
     {component name='Admin_Component_VenueAliasList' venue=$venue}

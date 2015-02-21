@@ -3,7 +3,7 @@
 class Denkmal_Model_UserTest extends CMTest_TestCase {
 
     public function tearDown() {
-        CMTest_TH::clearDb();
+        CMTest_TH::clearEnv();
     }
 
     public function testCreate() {

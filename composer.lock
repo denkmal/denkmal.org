@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8b35849ee81bb02e5bc87d39839e37d7",
+    "hash": "3cf96f80d7a4f2a5bd2e7f14777ddb1d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.100.3",
+            "version": "1.102.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "f272e7d02fe05d116e4fb46fb8e35b8ff0d8fd88"
+                "reference": "c8c2295d0fe8320ec18c023ecaddc972ea4aff5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-f272e7d02fe05d116e4fb46fb8e35b8ff0d8fd88-zip-235a6c.zip",
-                "reference": "f272e7d02fe05d116e4fb46fb8e35b8ff0d8fd88",
-                "shasum": "fbe03e47f76336e3b19445b2d3bdfcada8e36b85"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-c8c2295d0fe8320ec18c023ecaddc972ea4aff5e-zip-18e636.zip",
+                "reference": "c8c2295d0fe8320ec18c023ecaddc972ea4aff5e",
+                "shasum": "6f8cdff42552790c963faf81642a95e7c9b22851"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-02-16 11:31:03"
+            "time": "2015-02-19 16:17:39"
         },
         {
             "name": "composer/composer",

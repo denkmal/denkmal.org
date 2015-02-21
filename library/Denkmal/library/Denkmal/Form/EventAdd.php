@@ -20,7 +20,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $this->registerAction(new Denkmal_FormAction_EventAdd_Preview($this));
     }
 
-    public function prepare(CM_Frontend_Environment $environment) {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $this->getField('date')->setValue(new DateTime());
         $fromTime = new DateTime();
         $fromTime->setTime(22, 00);

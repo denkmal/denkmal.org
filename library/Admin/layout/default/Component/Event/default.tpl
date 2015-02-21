@@ -8,7 +8,7 @@
       {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
     </time>
     <span class="event-header">
-      <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location toggleNext-excluded {if $venue->getIgnore()}ignored{/if} nowrap">{$venue->getName()|escape}</a>
+      <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location toggleNext-excluded {if $venue->getIgnore()}ignored{/if} {if $venue->getSuspended()}suspended{/if} nowrap">{$venue->getName()|escape}</a>
       {if $venue->getUrl()}
         <a href="{$venue->getUrl()|escape}" class="toggleNext-excluded"><span class="icon icon-pop-out"></span></a>
       {/if}

@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 return function (CM_Config_Node $config) {
     $config->CM_Site_Abstract->class = 'Denkmal_Site';

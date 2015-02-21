@@ -41,4 +41,10 @@ class Denkmal_Model_UserTest extends CMTest_TestCase {
         Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
         Denkmal_Model_User::authenticate('foo@bar', 'bar');
     }
+
+    public function testFindByEmail() {
+        $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
+        $this->assertEquals($user, Denkmal_Model_User::findByEmail('foo@example.com'));
+        $this->assertEquals(null, Denkmal_Model_User::findByEmail('bar@example.com'));
+    }
 }

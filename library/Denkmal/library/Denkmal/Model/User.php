@@ -92,6 +92,18 @@ class Denkmal_Model_User extends CM_Model_User {
     }
 
     /**
+     * @param string $email
+     * @return Denkmal_Model_User|null
+     */
+    public static function findByEmail($email) {
+        $id = CM_Db_Db::select('denkmal_model_user', 'userId', array('email' => $email))->fetchColumn();
+        if (!$id) {
+            return null;
+        }
+        return new self($id);
+    }
+
+    /**
      * @param array $data
      * @throws CM_Exception|Exception
      * @return Denkmal_Model_User

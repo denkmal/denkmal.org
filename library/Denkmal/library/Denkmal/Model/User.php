@@ -42,6 +42,10 @@ class Denkmal_Model_User extends CM_Model_User {
         return $this->_change();
     }
 
+    public function getDisplayName() {
+        return $this->getUsername();
+    }
+
     protected function _loadData() {
         $return = CM_Db_Db::exec("SELECT `main`.*, `secondary`.*, `online`.`userId` AS `online`, `online`.`visible`
 								  FROM `cm_user` AS `main`

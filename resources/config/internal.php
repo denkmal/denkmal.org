@@ -47,6 +47,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_Log_Abstract->types[22] = 'CM_Paging_Log_JsError';
     $config->CM_Paging_Log_Abstract->types[23] = 'CM_Paging_Log_Mail';
     $config->CM_Paging_Log_Abstract->types[24] = 'CM_Paging_Log_Warn';
+    $config->CM_Paging_Log_Abstract->types[57] = 'CM_Paging_Log_NotFound';
     $config->CM_Provision_Script_OptionBased->types = [];
     $config->CM_Provision_Script_OptionBased->types[52] = 'CM_Http_SetupScript';
     $config->CM_Provision_Script_OptionBased->types[53] = 'CM_App_SetupScript_Translations';
@@ -119,7 +120,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Elasticsearch_SetupScript->type = 54;
     $config->Denkmal_App_SetupScript_LoadLanguage->type = 55;
     $config->Denkmal_ExampleData_Users->type = 56;
-    $config->CM_Class_Abstract->typesMaxValue = 56;
+    $config->CM_Paging_Log_NotFound->type = 57;
+    $config->CM_Class_Abstract->typesMaxValue = 57;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

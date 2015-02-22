@@ -10,7 +10,7 @@ class Denkmal_Model_Tag extends CM_Model_Abstract {
     }
 
     /**
-     * @param $label
+     * @param string $label
      */
     public function setLabel($label) {
         $this->_set('label', $label);

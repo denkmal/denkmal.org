@@ -19,20 +19,22 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
     }
 
     /**
-     * @param string   $url
-     * @param int|null $tryCount
+     * @param string    $url
+     * @param int|null  $tryCount
+     * @param bool|null $ignoreErrors
      * @throws CM_Exception_Invalid
      * @return string Content
      */
-    public static function loadUrl($url, $tryCount = null) {
+    public static function loadUrl($url, $tryCount = null, $ignoreErrors = null) {
         if (null === $tryCount) {
             $tryCount = 1;
         }
         $tryCount = (int) $tryCount;
+        $ignoreErrors = (bool) $ignoreErrors;
 
         $context = stream_context_create(array(
             'http' => array(
-                'ignore_errors' => true,
+                'ignore_errors' => $ignoreErrors,
                 'header'        => join('', [
                     "Content-Type: text/xml; charset=utf-8\r\n",
                     "User-Agent: Mozilla/5.0 AppleWebKit\r\n",

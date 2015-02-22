@@ -12,17 +12,19 @@
 
 .Denkmal_Form_EventAdd {
   .formField.date, .formField.fromTime {
-    display: inline-block;
-  }
-
-  .Denkmal_FormField_Time {
     vertical-align: top;
+  }
+  @media (min-width: @breakpointMedium) {
+    .formField.date, .formField.fromTime {
+      display: inline-block;
+      width: 50%;
+    }
   }
 
   .formField.fromTime .Denkmal_FormField_Time {
     display: inline-block;
     max-width: 50%;
-    padding-left: 10px;
+    padding-left: 4px;
 
     &:first-child {
       padding-left: 0px;

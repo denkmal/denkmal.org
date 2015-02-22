@@ -14,6 +14,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(null, $venue->getCoordinates());
         $this->assertSame(true, $venue->getQueued());
         $this->assertSame(false, $venue->getIgnore());
+        $this->assertSame(false, $venue->getSuspended());
     }
 
     public function testGetSetName() {
@@ -63,6 +64,14 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(false, $venue->getIgnore());
     }
 
+    public function testGetSetSuspended() {
+        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $this->assertSame(false, $venue->getSuspended());
+
+        $venue->setSuspended(false);
+        $this->assertSame(false, $venue->getSuspended());
+    }
+
     public function testGetSetEmail() {
         $venue = Denkmal_Model_Venue::create('Example', true, true);
         $this->assertSame(null, $venue->getEmail());
@@ -72,6 +81,17 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
         $venue->setEmail(null);
         $this->assertSame(null, $venue->getEmail());
+    }
+
+    public function testGetSetTwitterUsername() {
+        $venue = Denkmal_Model_Venue::create('Example', true, true);
+        $this->assertSame(null, $venue->getTwitterUsername());
+
+        $venue->setTwitterUsername('foo');
+        $this->assertSame('foo', $venue->getTwitterUsername());
+
+        $venue->setTwitterUsername(null);
+        $this->assertSame(null, $venue->getTwitterUsername());
     }
 
     /**

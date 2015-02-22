@@ -41,7 +41,7 @@ class Denkmal_Scraper_Description {
         if ($this->_genres && $this->_genres->count() > 0) {
             $description = $this->_endOnPunctuation($description);
             $description .= ' ';
-            $description .= substr($this->_genres, 0, 100);
+            $description .= substr($this->_genres->getString(), 0, 100);
         }
         return $description;
     }

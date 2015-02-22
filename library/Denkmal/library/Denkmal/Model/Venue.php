@@ -116,6 +116,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
+     * @return boolean
+     */
+    public function getSuspended() {
+        return $this->_get('suspended');
+    }
+
+    /**
+     * @param boolean $suspended
+     */
+    public function setSuspended($suspended) {
+        $this->_set('suspended', $suspended);
+    }
+
+    /**
      * @return string|null
      */
     public function getEmail() {
@@ -127,6 +141,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
      */
     public function setEmail($email) {
         $this->_set('email', $email);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTwitterUsername() {
+        return $this->_get('twitterUsername');
+    }
+
+    /**
+     * @param string|null $twitterUsername
+     */
+    public function setTwitterUsername($twitterUsername) {
+        $this->_set('twitterUsername', $twitterUsername);
     }
 
     public function toArrayApi(CM_Frontend_Render $render) {
@@ -201,7 +229,9 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setCoordinates($coordinates);
         $venue->setQueued($queued);
         $venue->setIgnore($ignore);
+        $venue->setSuspended(false);
         $venue->setEmail(null);
+        $venue->setTwitterUsername(null);
         $venue->commit();
         return $venue;
     }
@@ -223,14 +253,16 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
-            'name'      => array('type' => 'string'),
-            'url'       => array('type' => 'string', 'optional' => true),
-            'address'   => array('type' => 'string', 'optional' => true),
-            'latitude'  => array('type' => 'float', 'optional' => true),
-            'longitude' => array('type' => 'float', 'optional' => true),
-            'queued'    => array('type' => 'boolean'),
-            'ignore'    => array('type' => 'boolean'),
-            'email'     => array('type' => 'string', 'optional' => true),
+            'name'            => array('type' => 'string'),
+            'url'             => array('type' => 'string', 'optional' => true),
+            'address'         => array('type' => 'string', 'optional' => true),
+            'latitude'        => array('type' => 'float', 'optional' => true),
+            'longitude'       => array('type' => 'float', 'optional' => true),
+            'queued'          => array('type' => 'boolean'),
+            'ignore'          => array('type' => 'boolean'),
+            'suspended'       => array('type' => 'boolean'),
+            'email'           => array('type' => 'string', 'optional' => true),
+            'twitterUsername' => array('type' => 'string', 'optional' => true),
         ));
     }
 

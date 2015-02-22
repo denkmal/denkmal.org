@@ -13,7 +13,7 @@ class Admin_Form_Link extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Link_Delete($this));
     }
 
-    public function prepare(CM_Frontend_Environment $environment) {
+    public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         /** @var Denkmal_Params $params */
         $params = $this->getParams();
 

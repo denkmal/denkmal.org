@@ -13,7 +13,7 @@ class Denkmal_Model_SongTest extends CMTest_TestCase {
 
         $this->assertInstanceOf('Denkmal_Model_Song', $song);
         $this->assertSame($label, $song->getLabel());
-        $this->assertTrue($song->getFile()->getExists());
+        $this->assertTrue($song->getFile()->exists());
     }
 
     public function testSetLabel() {
@@ -29,7 +29,7 @@ class Denkmal_Model_SongTest extends CMTest_TestCase {
     public function testDelete() {
         $song = Denkmal_Model_Song::create('foo', CM_File::createTmp());
         $song->delete();
-        $this->assertFalse($song->getFile()->getExists());
+        $this->assertFalse($song->getFile()->exists());
         new Denkmal_Model_Song($song->getId());
     }
 }

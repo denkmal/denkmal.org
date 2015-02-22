@@ -7,7 +7,7 @@
   {formField name='label' label={translate 'Name'}}
 
   {formAction action='Save' label={translate 'Speichern'} alternatives="
-			{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+			{button action='Delete' label={translate 'Löschen'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 
 		"}
   {/form}

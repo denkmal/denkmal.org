@@ -1,1041 +1,1131 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
 <head>
-        <title>ProgrammZeitung</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <META NAME="publisher" CONTENT="St&auml;mpfli all media AG, Bern - www.allmedia.ch">
-        <link rel="stylesheet" href="pz_assets/styles/pz_grundstyle.css" type="text/css">
-        <link rel="stylesheet" href="pz_assets/styles/pz_rock.css" type="text/css">
+  <title>Tagesagenda</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/file/resources/celJS/prototype.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/jquery.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/jquery%2Dnoconflict.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/initCelements.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/scriptaculous/effects.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/validation.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/SWFObject%2D2.2/swfobject.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/mobile/MobileSupport.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/yui/yahoo%2Ddom%2Devent/yahoo%2Ddom%2Devent.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/highslide/highslide%2Dfull.min.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/celanim/overlaySlide.js?version=20150130200616"></script>
+<script type="text/javascript" src="/file/resources/celJS/celanim/slideshow.js?version=20150130200616"></script>
+
+
+
+
+      
+  
+   <link rel="stylesheet" media="all" type="text/css" href="/file/resources/celJS/highslide/highslide.css?version=20150130200616" />
+<link rel="stylesheet" media="all" type="text/css" href="/file/resources/celRes/celanim/slideshow.css?version=20150130200618" />
+<link rel="stylesheet" media="all" type="text/css" href="/file/resources/celRes/celanim/overlay.css?version=20150130200618" />
+<link rel="stylesheet" media="all" type="text/css" href="/file/resources/celRes/celements2.css?version=20150130200618" />
+<link rel="stylesheet" media="all" type="text/css" href="/file/resources/celRes/login.css?version=20150130200618" />
+
+<!--[if lt IE 8]>
+<link rel="stylesheet" media="all" type="text/css" href="/file/resources/stylesheets/IE7fix.css?version=20150213105600" />
+<![endif]-->
+<meta name="generator" content="celements.web" />
 
 <script type="text/javascript">
-	var intranetpath="/";
-
-	function pop(file,windowname,features)
-	{
-	helpwindow = window.open(file,windowname,features);
-	helpwindow.focus();
-	return false;
-	}
-
-	function openSitemap(){
-		window.open('sitemap.cfm', 'frmSitemap', 'width=300,height=450,top=200,left=200,resizable=yes,scrollbars=yes');
-		}
-
-	function openPrintDialog(uuid,show_long){
-		window.open('index.cfm?uuid=' + uuid + '&cmd=print&show_long=' + show_long, 'frmPrint', 'width=600,height=500,top=150,left=200,resizable=yes,scrollbars=yes,menubar=yes');
-		}
-
-	function openVotingDialog(question_id, art_id){
-		window.open('index.cfm?question_id=' + question_id + '&art_id=' + art_id  + '&cmd=vote', 'frmPrint', 'width=600,height=500,top=150,left=200,resizable=yes,scrollbars=yes,menubar=yes');
-		}
-
-	function onOpenHrefwh(href,trg,t,l,w,h){
-	  	var wndhr=window.open(intranetpath + 'admin/empty.html',trg,'top='+t+',left='+l+',width='+w+',height='+h+',dependent=yes,hotkeys=no,locationbar=no,menubar=no,resizable=yes,scrollbars=yes');
-		wndhr.location.href = href;
-	   	if (wndhr.opener == null){
-			wndhr.opener=window;
-			}
-		wndhr.focus();
-		}
+  window.celFinishHeaderHandler();
 </script>
-
-
 
 </head>
 
-<body id="top">
+<body class="celdocpath_Content.Tagesagenda">
+<div id="sitecontainer" class="lang_de doclang_de ">
+<!-- start celements cells -->
+<div id="cell:celements2web..SimpleLayout.PageContent" class="cel_cell"><div class="cel_pagetype_RichText">
 
-        <div id="aussen">
-                <div id="wrapper">
-                        <div id="outer">
-                                <div id="inner">
-                                        <div id="left">
-
-<div style="padding-top:10px; padding-left:15px; padding-right:15px; height:161px;">
-
-							<div class="hauptnavi"><a class="hauptnavi" href="/index.cfm?1824BCBBD9D9424C432E16619483E5FF">&gt;&nbsp;Home</a></div>
+<div id="rteContentTagesagenda:currentPage:Content.Tagesagenda" class="rteContent cel_cm_rte_content" >
+ 
 
 
+<div class="tagesagenda">
 
-							<div class="hauptnavi"><a class="hauptnavi" href="index.cfm?uuid=3A18608DD9D9424C475A938A582D4155&Rubrik=11">&gt;&nbsp;Agenda</a></div>
+  <table border="0" class="ueberschrift"><tbody>
+    <tr><td>Zeit</td><td>Veranstaltung</td><td>Ort &diams; Veranstalter</td></tr>
+  </tbody></table>
 
+        <div class="category">
+    <h2>Film</h2>
+    <table border="0"><tbody>
+                                                  
+                                              <tr>
+        <td></td>
+        <td>
+          <b>Kinoprogramm</b>
+          Basel und Region. www.outnow.ch
+                    
+        </td>
+        <td>
+                              <a href='http://www.outnow.ch/Kinoprogramm/Basel/?range=25' target='_blank'>Kinoprogramm Basel/Region</a>
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>10:00</td>
+        <td>
+          <b>On the Side of the Road</b>
+          Lia Tarachansky, Israel 2013. Die Regisseurin ist anwesend. Organisiert von Palästina Solidarität
+                      &nbsp;&diams;&nbsp;
+                    Matinee
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.stadtkinobasel.ch' target='_blank'>Stadtkino Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Stadtkino Basel</h2></p>
+      <p class="strasse">Klostergasse 5</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.stadtkinobasel.ch" target="_blank">www.stadtkinobasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:00</td>
+        <td>
+          <b>Kult.klassik: Le Comte Ory</b>
+          Gioachino Rossini. Zürich 2011. Dirigent Muhai Tanz. Mit Cecilia Bartoli, Javier Camarena, Rebeca Olvera u.a. (140 Min. mit Pause)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.kultkino.ch' target='_blank'>Kultkino Atelier</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kultkino Atelier</h2></p>
+      <p class="strasse">Theaterstrasse 7</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.kultkino.ch" target="_blank">www.kultkino.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:15</td>
+        <td>
+          <b>Sonderveranstaltung: Unter die Haut</b>
+          Claudia Lorenz, CH 2015. Anschl. Gespräch mit der Regisseurin
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.kultkino.ch' target='_blank'>Kultkino Atelier</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kultkino Atelier</h2></p>
+      <p class="strasse">Theaterstrasse 7</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.kultkino.ch" target="_blank">www.kultkino.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>12:15</td>
+        <td>
+          <b>Padrone e Sotto </b>
+          Michele Cirigliano, CH 2014 (Premiere)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.stadtkinobasel.ch' target='_blank'>Stadtkino Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Stadtkino Basel</h2></p>
+      <p class="strasse">Klostergasse 5</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.stadtkinobasel.ch" target="_blank">www.stadtkinobasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>13:45</td>
+        <td>
+          <b>Titanic</b>
+          James Cameron, USA 1997 (Reihe: Xavier Dolan)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.stadtkinobasel.ch' target='_blank'>Stadtkino Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Stadtkino Basel</h2></p>
+      <p class="strasse">Klostergasse 5</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.stadtkinobasel.ch" target="_blank">www.stadtkinobasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>17:30</td>
+        <td>
+          <b>Il giorno della civetta</b>
+          Damiano Damiani, I/F 1968 (Reihe: Claudia Cardinale)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.stadtkinobasel.ch' target='_blank'>Stadtkino Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Stadtkino Basel</h2></p>
+      <p class="strasse">Klostergasse 5</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.stadtkinobasel.ch" target="_blank">www.stadtkinobasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>20:00</td>
+        <td>
+          <b>Il gattopardo</b>
+          Luchino Visconti, I/F 1963 (Reihe: Claudia Cardinale)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.stadtkinobasel.ch' target='_blank'>Stadtkino Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Stadtkino Basel</h2></p>
+      <p class="strasse">Klostergasse 5</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.stadtkinobasel.ch" target="_blank">www.stadtkinobasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+          <div class="category">
+    <h2>Theater</h2>
+    <table border="0"><tbody>
+                                          
+                                      <tr>
+        <td>18:30</td>
+        <td>
+          <b>Don Pasquale</b>
+          Dramma buffo in 3 Akten von Donizetti. In ital. Sprache mit Übertiteln (dt./e). Basel Sinfonietta. Musikalische Leitung Giuliano Betta/Martin Baeza-Rubio. Regie/Bühne Massimo Rocchi
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.theater-basel.ch' target='_blank'>Theater Basel, Grosse Bühne</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Theater Basel, Grosse Bühne</h2></p>
+      <p class="strasse">Theaterstrasse 7</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.theater-basel.ch" target="_blank">www.theater-basel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>19:30</td>
+        <td>
+          <b>Open Stage - die Rache der Talentierten</b>
+          Stand-Up, Kabarett, Chanson, Artistik. Moderation Florian Klein
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.sud.ch' target='_blank'>Sud</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Sud</h2></p>
+      <p class="strasse">Burgweg 7</p>
+      <p class="ort">4058 Basel</p>
+      <p class="url"><a href="http://www.sud.ch" target="_blank">www.sud.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+          <div class="category">
+    <h2>Tanz</h2>
+    <table border="0"><tbody>
+                                          
+                                              <tr>
+        <td>12:00</td>
+        <td>
+          <b>Schweizer Tanztage</b>
+          19.-22.2. Spielorte: Gessnerallee | Tanzhaus Zürich | Rote Fabrik | ZHdK. Programm: www.swissdancedays.ch
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='' target='_blank'>Diverse Orte Zürich</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Diverse Orte Zürich</h2></p>
+          <p class="ort">8000 Zürich</p>
+  
+            </div>
+                                &nbsp;&diams;&nbsp;
+                    <a href='http://www.swissdancedays.ch' target='_blank'>Zeitgenössische Schweizer Tanztage</a>
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+                <div class="category">
+    <h2>Klassik, Jazz</h2>
+    <table border="0"><tbody>
+                                          
+                                      <tr>
+        <td>11:00 – 13:00</td>
+        <td>
+          <b>Konzert zum Sonntagsbrunch</b>
+          Dominik Schürmann (b), George Ricci (cl/sax), Thomas Jaeger (g)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.zumkuss.ch' target='_blank'>Zum Kuss, Caffè Kultur Bar </a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Zum Kuss, Caffè Kultur Bar </h2></p>
+      <p class="strasse">Elisabethenstrasse 59</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.zumkuss.ch" target="_blank">www.zumkuss.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                              <tr>
+        <td>16:30</td>
+        <td>
+          <b>Caravaggio Quartett Basel</b>
+          Thomas Wicky-Stamm, Cosetta Ponte (Violine), Ferdinado Vietti (Violoncello), Andrey Smirnov (Viola), Vladimir Guryanov (Klavier). Werke von Glinka, Schostakowitsch, Strawinsky, Borodin
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.goetheanum-buehne.ch' target='_blank'>Goetheanum, Dornach</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Goetheanum</h2></p>
+      <p class="strasse">Rüttiweg 45</p>
+      <p class="ort">4143 Dornach</p>
+      <p class="url"><a href="http://www.goetheanum-buehne.ch" target="_blank">www.goetheanum-buehne.ch</a></p>
+  
+            </div>
+                                &nbsp;&diams;&nbsp;
+                    <a href='http://www.goetheanum-buehne.ch' target='_blank'>Goetheanum-Bühne</a>
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+          <div class="category">
+    <h2>Sounds & Floors</h2>
+    <table border="0"><tbody>
+                                          
+                                      <tr>
+        <td>18:00</td>
+        <td>
+          <b>Uferlos in der Kaschemme</b>
+          Soliparty (Bar 18.00 - durchgehend DJs)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.kaschemme.ch' target='_blank'>Kaschemme</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kaschemme</h2></p>
+      <p class="strasse">Lehenmattstrasse 356</p>
+      <p class="ort">4052 Basel</p>
+      <p class="url"><a href="http://www.kaschemme.ch" target="_blank">www.kaschemme.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>23:00</td>
+        <td>
+          <b>Morgestraich 2015</b>
+          The Purist (UK), DJ Bazooka, DJ Philister (BS). HipHop, Electronica (ab 18 J.)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.kaserne-basel.ch' target='_blank'>Kaserne Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kaserne Basel</h2></p>
+      <p class="strasse">Klybeckstrasse 1b</p>
+      <p class="ort">4057 Basel</p>
+      <p class="url"><a href="http://www.kaserne-basel.ch" target="_blank">www.kaserne-basel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>23:00</td>
+        <td>
+          <b>Morgestraich Party</b>
+          DJ Charles Per-S. All Styles
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.atlan-tis.ch' target='_blank'>Atlantis</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Atlantis</h2></p>
+      <p class="strasse">Klosterberg 13</p>
+      <p class="ort">4010 Basel</p>
+      <p class="url"><a href="http://www.atlan-tis.ch" target="_blank">www.atlan-tis.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>23:00</td>
+        <td>
+          <b>Tanz in den Morgenstraich</b>
+          Gelbes Billet: Raise, Thom Nagy. House, Techno
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.hirscheneck.ch' target='_blank'>Hirscheneck</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Hirscheneck</h2></p>
+      <p class="strasse">Lindenberg 23</p>
+      <p class="ort">4058 Basel</p>
+      <p class="url"><a href="http://www.hirscheneck.ch" target="_blank">www.hirscheneck.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>23:00</td>
+        <td>
+          <b>Balze bis zem Morgestraich</b>
+          DJs Fredski, Rumpel&Stilz, Hecht&Zander. House
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.balzklub.ch' target='_blank'>Balzbar</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Balzbar</h2></p>
+      <p class="strasse">Steinenbachgässlein 34</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.balzklub.ch" target="_blank">www.balzklub.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+          <div class="category">
+    <h2>Kunst</h2>
+    <table border="0"><tbody>
+                                                          
+                                      <tr>
+        <td>10:00 – 17:00</td>
+        <td>
+          <b>Isabella Rossellini – Green Porno</b>
+          Kurzvideos zu tierischen Sexual-Praktiken. 21.10.-22.2.
+                      &nbsp;&diams;&nbsp;
+                    Letzter Tag
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.freiburg.de/museen' target='_blank'>Museum für Neue Kunst, Freiburg (DE)</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Museum für Neue Kunst</h2></p>
+      <p class="strasse">Marienstrasse 10a</p>
+        <p class="ort">DE-79098 Freiburg</p>
+      <p class="url"><a href="http://www.freiburg.de/museen" target="_blank">www.freiburg.de/museen</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                                
+                                      <tr>
+        <td>10:00 – 17:00</td>
+        <td>
+          <b>Mathilde ter Heijne - Performing Change</b>
+          Genderspezifische Phänomene in verschiedenen Kulturen. 8.11.-22.2.
+                      &nbsp;&diams;&nbsp;
+                    Letzter Tag
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.freiburg.de/museen' target='_blank'>Museum für Neue Kunst, Freiburg (DE)</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Museum für Neue Kunst</h2></p>
+      <p class="strasse">Marienstrasse 10a</p>
+        <p class="ort">DE-79098 Freiburg</p>
+      <p class="url"><a href="http://www.freiburg.de/museen" target="_blank">www.freiburg.de/museen</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>11:00</td>
+        <td>
+          <b>Adolf Stäbli - Rundgang & Gespräch</b>
+          Mit Fritz Senn (Stäbli-Kenner & Sammler) und Thomas Schmutz (Kurator). Anschl. Apéro
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.aargauerkunsthaus.ch' target='_blank'>Aargauer Kunsthaus, Aarau</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Aargauer Kunsthaus</h2></p>
+      <p class="strasse">Aargauerplatz</p>
+      <p class="ort">5001 Aarau</p>
+      <p class="url"><a href="http://www.aargauerkunsthaus.ch" target="_blank">www.aargauerkunsthaus.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                                
+                                      <tr>
+        <td>11:00</td>
+        <td>
+          <b>Kurt Haug - Figur und Vision</b>
+          Malerei. 22.2.-18.4. (www.kunstverein-hochrhein.org)
+                      &nbsp;&diams;&nbsp;
+                    Vernissage (Einführung Angeline Schube-Focke, Kunsthistorikerin | Dietrich Zöller, Querflöte)
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.kunstverein-hochrhein.org' target='_blank'>Kulturhaus Villa Berberich, Bad Säckingen (DE)</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kulturhaus Villa Berberich</h2></p>
+      <p class="strasse">Parkstrasse 1</p>
+        <p class="ort">DE-79713 Bad Säckingen</p>
+      <p class="url"><a href="http://www.kunstverein-hochrhein.org" target="_blank">www.kunstverein-hochrhein.org</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:00 – 17:00</td>
+        <td>
+          <b>Joost Swarte</b>
+          Zeichner und Gestalter. 14.11.-22.2.
+                      &nbsp;&diams;&nbsp;
+                    Letzter Tag (Führung 14.00)
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.cartoonmuseum.ch' target='_blank'>Cartoonmuseum</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Cartoonmuseum</h2></p>
+      <p class="strasse">St. Alban-Vorstadt 28</p>
+      <p class="ort">4002 Basel</p>
+      <p class="url"><a href="http://www.cartoonmuseum.ch" target="_blank">www.cartoonmuseum.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                              <tr>
+        <td>11:00 – 18:00</td>
+        <td>
+          <b>David Nash</b>
+          Stencil Prints (im Abtsaal). 14.9.-22.2. www.schoenthal.ch
+                      &nbsp;&diams;&nbsp;
+                    Letzter Tag
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.schoenthal.ch' target='_blank'>Kloster Schönthal, Langenbruck</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kloster Schönthal</h2></p>
+      <p class="strasse">Schönthalstrasse 158</p>
+      <p class="ort">4438 Langenbruck</p>
+      <p class="url"><a href="http://www.schoenthal.ch" target="_blank">www.schoenthal.ch</a></p>
+  
+            </div>
+                                &nbsp;&diams;&nbsp;
+                    <a href='http://www.schoenthal.ch' target='_blank'>Sculpture at Schoenthal</a>
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:00 – 18:00</td>
+        <td>
+          <b>Peter Piller</b>
+          Belegkontrolle. 12.12.-22.2.
+                      &nbsp;&diams;&nbsp;
+                    Letzter Tag
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.fotomuseum.ch' target='_blank'>Fotomuseum Winterthur</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Fotomuseum Winterthur</h2></p>
+      <p class="strasse">Grüzenstrasse 44-45</p>
+      <p class="ort">8400 Winterthur</p>
+      <p class="url"><a href="http://www.fotomuseum.ch" target="_blank">www.fotomuseum.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>11:30</td>
+        <td>
+          <b>Friedensreich Hundertwasser</b>
+          Bis auf Weiteres. Führung
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.forum-wuerth.ch' target='_blank'>Forum Würth, Arlesheim</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Forum Würth</h2></p>
+      <p class="strasse">Dornwydenweg 11</p>
+      <p class="ort">4144 Arlesheim</p>
+      <p class="url"><a href="http://www.forum-wuerth.ch" target="_blank">www.forum-wuerth.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:30</td>
+        <td>
+          <b>Belle Haleine - Der Duft der Kunst</b>
+          10.2.-17.5.
+                      &nbsp;&diams;&nbsp;
+                    Führung
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.tinguely.ch' target='_blank'>Museum Tinguely</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Museum Tinguely</h2></p>
+      <p class="strasse">Paul Sacher-Anlage 2</p>
+      <p class="ort">4058 Basel</p>
+      <p class="url"><a href="http://www.tinguely.ch" target="_blank">www.tinguely.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>12:00 – 13:00</td>
+        <td>
+          <b>Cézanne bis Richter</b>
+          Sonntagsführung
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.mgkbasel.ch' target='_blank'>Museum für Gegenwartskunst</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Museum für Gegenwartskunst</h2></p>
+      <p class="strasse">St. Alban-Rheinweg 60</p>
+      <p class="ort">4052 Basel</p>
+      <p class="url"><a href="http://www.mgkbasel.ch" target="_blank">www.mgkbasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>13:00</td>
+        <td>
+          <b>Luigi Archetti | Cathrin Lüthi K</b>
+          On The Rocks. Zum Phänomen Gletscher. 30.1.-1.3. (in Koop. mit Gletschergarten Luzern, Ausstellung: Gletscher der Welt, bis 20.9.)
+                      &nbsp;&diams;&nbsp;
+                    Gemeinsame Führung Kunsthalle & Gletschergarten (Treffpunkt: Gletschergarten)
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.kunsthalleluzern.ch' target='_blank'>Kunsthalle Luzern (Bourbaki), Luzern</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kunsthalle Luzern (Bourbaki)</h2></p>
+      <p class="strasse">Löwenplatz 11</p>
+      <p class="ort">6004 Luzern</p>
+      <p class="url"><a href="http://www.kunsthalleluzern.ch" target="_blank">www.kunsthalleluzern.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>13:00 – 16:00</td>
+        <td>
+          <b>Im Gedenken an Pasquale Ciuccio (1950-2014)</b>
+          22.2.-12.4.
+                      &nbsp;&diams;&nbsp;
+                    Erster Tag
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.mollwo.ch' target='_blank'>Galerie Mollwo, Riehen</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Galerie Mollwo</h2></p>
+      <p class="strasse">Gartengasse 10</p>
+      <p class="ort">4125 Riehen</p>
+      <p class="url"><a href="http://www.mollwo.ch" target="_blank">www.mollwo.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>15:00</td>
+        <td>
+          <b>Führung</b>
+          Durch die aktuellen Ausstellungen
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.kunsthallebasel.ch' target='_blank'>Kunsthalle Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Kunsthalle Basel</h2></p>
+      <p class="strasse">Steinenberg 7</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.kunsthallebasel.ch" target="_blank">www.kunsthallebasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                              <tr>
+        <td>15:00 – 16:00</td>
+        <td>
+          <b>Paul Gauguin - Visite guidée</b>
+          Dans l'exposition temporaire (publique français)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.fondationbeyeler.ch' target='_blank'>Fondation Beyeler, Riehen</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Fondation Beyeler</h2></p>
+      <p class="strasse">Baselstrasse 101</p>
+      <p class="ort">4125 Riehen</p>
+      <p class="url"><a href="http://www.fondationbeyeler.ch" target="_blank">www.fondationbeyeler.ch</a></p>
+  
+            </div>
+                                &nbsp;&diams;&nbsp;
+                    <a href='http://www.fondationbeyeler.ch' target='_blank'>Fondation Beyeler</a>
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+          <div class="category">
+    <h2>Kinder</h2>
+    <table border="0"><tbody>
+                                                  
+                                              <tr>
+        <td></td>
+        <td>
+          <b>Kinderstadtplan Basel</b>
+          Freizeitangebote für Eltern und Kinder (6-13 J.). www.kinderstadtplan-basel.ch (Christoph Merian Stiftung)
+                    
+        </td>
+        <td>
+                              <a href='http://www.kinderstadtplan-basel.ch' target='_blank'>Kinderstadtplan</a>
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>10:00</td>
+        <td>
+          <b>Das namenlose Gespenst</b>
+          Rätselrundgang voller Düfte und Gerüche (dt./frz./engl.). Täglich zwischen 10.00 und 16.00. Dauer: ca. 1 Std. Für Familien mit Kindern ab Schulalter. Material: An der Museumskasse erhältlich. www.augusta-raurica.ch
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.augusta-raurica.ch' target='_blank'>Augusta Raurica, Augst</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Augusta Raurica</h2></p>
+      <p class="strasse">Giebenacherstrasse 17</p>
+      <p class="ort">4302 Augst</p>
+      <p class="url"><a href="http://www.augusta-raurica.ch" target="_blank">www.augusta-raurica.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+          <div class="category">
+    <h2>Diverses</h2>
+    <table border="0"><tbody>
+                                          
+                                      <tr>
+        <td>10:00 – 16:00</td>
+        <td>
+          <b>Brunch am Sonntag</b>
+          Buffet (bis 14.30)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.sud.ch' target='_blank'>Sud</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Sud</h2></p>
+      <p class="strasse">Burgweg 7</p>
+      <p class="ort">4058 Basel</p>
+      <p class="url"><a href="http://www.sud.ch" target="_blank">www.sud.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                              <tr>
+        <td>10:00 – 17:00</td>
+        <td>
+          <b>Brunch & Spiele</b>
+          Der Sonntag in der Markthalle
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.altemarkthalle.ch' target='_blank'>Markthalle Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Markthalle Basel</h2></p>
+      <p class="strasse">Viaduktstrasse 10</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.altemarkthalle.ch" target="_blank">www.altemarkthalle.ch</a></p>
+  
+            </div>
+                                &nbsp;&diams;&nbsp;
+                    <a href='http://www.altemarkthalle.ch' target='_blank'>Markthallen AG Basel</a>
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>10:30</td>
+        <td>
+          <b>Gäll de kennsch mi nit?</b>
+          Gottesdienstliche Feier am Sonntag vor dem Morgestraich. Mit Comité-Schnitzelbängg, Pfeifern, Trommlern & Überraschungsgast. Liturgie Monika Hungerbühler. Kollekte für www.farmhouseschool.ch
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.offenekirche.ch' target='_blank'>Offene Kirche Elisabethen</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Offene Kirche Elisabethen</h2></p>
+      <p class="strasse">Elisabethenstrasse 14</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.offenekirche.ch" target="_blank">www.offenekirche.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>10:30</td>
+        <td>
+          <b>Yysinge Bebbi Bängg </b>
+          Mit Brunch
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.theater-arlecchino.ch' target='_blank'>Theater Arlecchino (Baustelle)</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Theater Arlecchino (Baustelle)</h2></p>
+      <p class="strasse">Walkeweg 122</p>
+  <p class="zusatz">beim St. Jakob</p>
+      <p class="ort">4052 Basel</p>
+      <p class="url"><a href="http://www.theater-arlecchino.ch" target="_blank">www.theater-arlecchino.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>10:45 – 12:00</td>
+        <td>
+          <b>Im Tandem durchs Museum: Basler Fasnacht</b>
+          Erwachsenenführung | Kinderführung mit Atelierbesuch (Dominik Wunderlin & Margrit Gontha)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.mkb.ch' target='_blank'>Museum der Kulturen Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Museum der Kulturen Basel</h2></p>
+      <p class="strasse">Münsterplatz 20</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.mkb.ch" target="_blank">www.mkb.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>11:00</td>
+        <td>
+          <b>Begehlager</b>
+          Highlights aus der Schweizer Sportgeschichte, Erinnerungsstücke, Kurioses & Raritäten
+                      &nbsp;&diams;&nbsp;
+                    Führung
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.sportmuseum.ch' target='_blank'>Sportmuseum, Dreispitz, Münchenstein</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Sportmuseum, Dreispitz</h2></p>
+      <p class="strasse">Reinacherstrasse 1</p>
+      <p class="ort">4142 Münchenstein</p>
+      <p class="url"><a href="http://www.sportmuseum.ch" target="_blank">www.sportmuseum.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:00</td>
+        <td>
+          <b>Blumenreich</b>
+          Wiedergeburt in Pharaonengräbern (verl. bis 29.3.)
+                      &nbsp;&diams;&nbsp;
+                    Führung
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.antikenmuseumbasel.ch' target='_blank'>Antikenmuseum Basel und Sammlung Ludwig</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Antikenmuseum Basel und Sammlung Ludwig</h2></p>
+      <p class="strasse">St. Alban-Graben 5</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.antikenmuseumbasel.ch" target="_blank">www.antikenmuseumbasel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:00<br/>14:00</td>
+        <td>
+          <b>Parasiten - Life undercover</b>
+          Führung
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.nmb.bs.ch' target='_blank'>Naturhistorisches Museum</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Naturhistorisches Museum</h2></p>
+      <p class="strasse">Augustinergasse 2</p>
+      <p class="ort">4001 Basel</p>
+      <p class="url"><a href="http://www.nmb.bs.ch" target="_blank">www.nmb.bs.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>11:00 – 16:00</td>
+        <td>
+          <b>Offenes Atelier</b>
+          Für kleine und grosse kreative Köpfe. Mit gestalterischer Auseinandersetzung im Atelier
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.aargauerkunsthaus.ch' target='_blank'>Aargauer Kunsthaus, Aarau</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Aargauer Kunsthaus</h2></p>
+      <p class="strasse">Aargauerplatz</p>
+      <p class="ort">5001 Aarau</p>
+      <p class="url"><a href="http://www.aargauerkunsthaus.ch" target="_blank">www.aargauerkunsthaus.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>11:00 – 17:00</td>
+        <td>
+          <b>Textbau - Schweizer Architektur zur Diskussion</b>
+          Wie über Architektur geschrieben und gesprochen werden kann. 31.10.-22.2.
+                      &nbsp;&diams;&nbsp;
+                    Letzter Tag
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.sam-basel.org' target='_blank'>Architekturmuseum/S AM</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Architekturmuseum/S AM</h2></p>
+      <p class="strasse">Steinenberg 7</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.sam-basel.org" target="_blank">www.sam-basel.org</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                        
+                                      <tr>
+        <td>13:30</td>
+        <td>
+          <b>Blick hinter die Kulissen</b>
+          Führung. www.augusta-raurica.ch
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.augusta-raurica.ch' target='_blank'>Augusta Raurica, Augst</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Augusta Raurica</h2></p>
+      <p class="strasse">Giebenacherstrasse 17</p>
+      <p class="ort">4302 Augst</p>
+      <p class="url"><a href="http://www.augusta-raurica.ch" target="_blank">www.augusta-raurica.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>13:30 – 17:30</td>
+        <td>
+          <b>Traum-Flipflops gestalten</b>
+          Workshop für Klein und Gross. Zur Ausstellung: Die Geschichte unter den Füssen (18.10.-6.4.)
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.spielzeug-welten-museum-basel.ch' target='_blank'>Spielzeug Welten Museum Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Spielzeug Welten Museum Basel</h2></p>
+      <p class="strasse">Steinenvorstadt 1</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.spielzeug-welten-museum-basel.ch" target="_blank">www.spielzeug-welten-museum-basel.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>14:30 – 16:30</td>
+        <td>
+          <b>Scherenschnitte</b>
+          9.1.-19.4.
+                      &nbsp;&diams;&nbsp;
+                    Schau-Schneiden live
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.landesmuseum.ch' target='_blank'>Landesmuseum Zürich</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Landesmuseum Zürich</h2></p>
+      <p class="strasse">Museumstrasse 2</p>
+      <p class="ort">8023 Zürich</p>
+      <p class="url"><a href="http://www.landesmuseum.ch" target="_blank">www.landesmuseum.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>15:00 – 16:00</td>
+        <td>
+          <b>The Carnival of Basel</b>
+          Guided tour
+                      &nbsp;&diams;&nbsp;
+                    Margrit Gontha
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.mkb.ch' target='_blank'>Museum der Kulturen Basel</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Museum der Kulturen Basel</h2></p>
+      <p class="strasse">Münsterplatz 20</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.mkb.ch" target="_blank">www.mkb.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>16:00</td>
+        <td>
+          <b>Pfyfferli</b>
+          Hauseigene Vorfasnachtsveranstaltung. 8.1.-22.2. (Mo-Fr 20.00, Sa 18.00/21.00, So 16.00/19.00)
+                      &nbsp;&diams;&nbsp;
+                    Derniere
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.fauteuil.ch' target='_blank'>Fauteuil/Tabourettli</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Fauteuil/Tabourettli</h2></p>
+      <p class="strasse">Spalenberg 12</p>
+      <p class="ort">4051 Basel</p>
+      <p class="url"><a href="http://www.fauteuil.ch" target="_blank">www.fauteuil.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+                                                
+                                      <tr>
+        <td>19:15</td>
+        <td>
+          <b>Chienbäse Umzug</b>
+          Fasnacht durchs Stedtli Liestal. www.fasnacht-liestal.ch
+                    
+        </td>
+        <td>
+                      <a class="veranstaltungsOrt" href='http://www.liestal.ch' target='_blank'>Stedtli Liestal</a>
+            <div style="display:none" class="veranstaltungsOrtDetails">
+                        <p class="name"><h2>Stedtli Liestal</h2></p>
+          <p class="ort">4410 Liestal</p>
+      <p class="url"><a href="http://www.liestal.ch" target="_blank">www.liestal.ch</a></p>
+  
+            </div>
+                              
+        </td>      
+      </tr>
+               </tbody></table>
+    </div>
+   
+<p>&nbsp;</p>
+</div>
+<div class="rteEndClear"><!-- IE6 --></div>
+<!-- IE6 --></div>
 
-
-							<div class="hauptnavi"><a class="hauptnavi" href="/index.cfm?2BC7A162D9D9424C409AFFDEEEAADF15">&gt;&nbsp;Abonnieren</a></div>
-
-
-
-							<div class="hauptnavi"><a class="hauptnavi" href="/index.cfm?579692A3D9D9424C408481362E88B7EA">&gt;&nbsp;Kulturszene</a></div>
-
-
-
-							<div class="hauptnavi"><a class="hauptnavi" href="/index.cfm?2BC7F454D9D9424C454F1F1896C70EDC">&gt;&nbsp;Inserieren</a></div>
-
-
-
-							<div class="hauptnavi"><a class="hauptnavi" href="/index.cfm?2BC8563AD9D9424C4E64362B16C39E31">&gt;&nbsp;&Uuml;ber uns</a></div>
-
-
-
-							<div class="hauptnavi"><a class="hauptnavi" href="/index.cfm?2BC8F8E3D9D9424C42C79ADDFBBBFF6E">&gt;&nbsp;Kontakt</a></div>
-
-
-
-							<div class="hauptnavi"><a class="hauptnavi" href="/index.cfm?4F4B0A85D9D9424C42480A19E9FC852C">&gt;&nbsp;Varia</a></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- IE6 --></div>
 </div>
 
-	<div class="subnav"><a class="subnavi" href="index.cfm?Datum_von=12.04.2014&Datum_bis=19.04.2014&uuid=2BCD9733D9D9424C4EF093B3E35CB44B&Rubrik=6">&nbsp;die n&auml;chsten 7 Tage&nbsp;</a></div>
-	<div class="subnav"><a class="subnavi" href="index.cfm?Datum_von=12.04.2014&Datum_bis=26.04.2014&uuid=2BCD9733D9D9424C4EF093B3E35CB44B&Rubrik=6">&nbsp;die n&auml;chsten 14 Tage&nbsp;</a></div>
-	<div class="subnav"><a class="subnavi" href="index.cfm?Datum_von=12.04.2014&Datum_bis=03.05.2014&uuid=2BCD9733D9D9424C4EF093B3E35CB44B&Rubrik=6">&nbsp;die n&auml;chsten 21 Tage&nbsp;</a></div>
-<img src="pz_assets/images/space.gif" width="1" height="15">
+  <!-- end celements cells -->
+</div><!--sitecontainer-->
 
-
-
-		 <div id="suche">
-					 AGENDA<br>
-					 <form action="/index.cfm" method="get" name="editform" id="sola">
-					 <div>
-
-
-									<div class="vonbis">von:</div>
-									<div style="margin-bottom:2px;">&nbsp;<input type="text" class="input" style="width:68px;" name="Datum_von" value="12.04.2014">&nbsp;<a href="#" onClick="var e= onCalendar( 'editform', 'Datum_von', 'dd.mm.yyyy', '' );"><img src="pz_assets/images/kalender.gif" border="0" style="cursor:hand" alt="Kalender"></a></div>
-									<div class="clr"></div>
-									<div class="vonbis">bis:</div>
-									<div>&nbsp;<input type="text" class="input" style="width:68px;" name="Datum_bis" value="12.04.2014">&nbsp;<a href="#" onClick="var e= onCalendar( 'editform', 'Datum_bis', 'dd.mm.yyyy', '' );"><img src="pz_assets/images/kalender.gif" border="0" style="cursor:hand" alt="Kalender"></a></div>
-									</div>
-									<div style="margin-top:5px;margin-bottom:2px;">Suchkriterium:</div>
-									<input class="input" style="width:115px;" type="text" name="suchbegriffe" value="">
-									<div style="margin-top:5px;margin-bottom:2px;">Rubriken:</div>
-									<input type="hidden" name="uuid" value="2BCD9733D9D9424C4EF093B3E35CB44B">
-										  <select name="Rubrik" class="rubrik" size="1">
-											<option value="">Alle Rubriken</option>
-
-
-										  	<option value="1uuid2BD3698ED9D9424C4D70C24DC2E25F4F"
-
-
-
-											>Film</option>
-
-
-										  	<option value="2uuid2BD4B8A3D9D9424C4FE7C7FD1EA8C245"
-
-
-
-											>Theater</option>
-
-
-										  	<option value="3uuid2BD506C3D9D9424C44F3C9BF75E060CB"
-
-
-
-											>Tanz</option>
-
-
-										  	<option value="4uuid2BD55764D9D9424C4CC6A1DE245EE2A9"
-
-
-
-											>Literatur</option>
-
-
-										  	<option value="5uuid2BD6913CD9D9424C47D3CC307373DA44"
-
-
-
-											>Klassik, Jazz</option>
-
-
-										  	<option value="6uuid2BDE975FD9D9424C4F1169C24A4933AE"
-
-
-													selected
-
-
-											>Sounds & Floors</option>
-
-
-										  	<option value="7uuid2BDF654ED9D9424C41ACC23DC41FB787"
-
-
-
-											>Kunst</option>
-
-
-										  	<option value="8uuid2BE009FAD9D9424C459658BD55570AB9"
-
-
-
-											>Kinder</option>
-
-
-										  	<option value="9uuid2BE0DBB2D9D9424C41C8AAACF0CB2B57"
-
-
-
-											>Diverses</option>
-
-
-										  	<option value="10uuid"
-
-
-
-											>Art/Messen</option>
-
-
-										  	<option value="11uuid5B4D412AD9D9424C40A309E6E3AF0974"
-
-
-
-											>Agenda</option>
-
-							  				</select>
-									<input type="Submit" name="Go" class="senden" style="cursor:hand" value="&gt;&nbsp;Go" onclick="document.sola.submit()"><img src="pz_images/diverse/transparent.gif" alt="Hilfe Button Suche" border="0" width="8" height="1" />
-									<A onclick="return pop('help_popup.cfm?uuid=5B66540DD9D9424C4085C5399B9F63BC', 'fensterveranstaltungen', 'width=520,height=500', 'menubar=no', 'scrollbars=yes'); return false; focus()" href="help_popup.cfm?uuid=5B66540DD9D9424C4085C5399B9F63BC"><img src="pz_images/diverse/info.gif" alt="Hilfe Button Suche" border="0" width="14" height="14" /></A>
-									 </form>
-									 </div>
-
-                                                &nbsp;<br>
-                                                &nbsp;<br>
-                                        </div>
-                                        <div id="mitte">
-                                                <div class="header" style="height:171px;">
-                                                        <div class="logo">&nbsp;</div>
-                                                                <div style="height:113px;">
-                                                                        <div class="abo">Abonnieren Sie jetzt:<br>
-                                                                                <a class="abonavi" href="index.cfm?uuid=882B8BB8D9D9424C445FB52174D90018&abo=3">&gt;&nbsp;Schnupperabo</a>, 3 Ausgaben, CHF 14.-<br />
-                                                                                <a class="abonavi" href="index.cfm?uuid=882B31E0D9D9424C49C412735010CAEF&abo=4">&gt;&nbsp;Jahresabo</a>, 11 Ausgaben, CHF 78.-<br />
-                                                                                <a class="abonavi" href="index.cfm?uuid=882AB8B8D9D9424C42474DD8CA27F9E8">&gt;&nbsp;Tagesagenda</a>, kostenlos<br />
-                                                                        </div>
-                                                                </div>
-                                                                <div class="clr"></div>
-                                                                <div style="height:18px;">
-
-                                                                       <div class="pfeilagenda1">&gt;&nbsp;</div><div class="navi"><a class="navi" href="index.cfm?844B6C33D9D9424C462F379C212AB1B0">Redaktionelle Beitr&auml;ge</a></div>
-                                                                </div>
-                                                                <div class="clr"></div>
-                                                                <div style="height:18px;">
-
-                                                                        <div class="pfeilagenda">&gt;&nbsp;</div>
-
-
-                                                                                <a class="filmnavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=1&menu=17">Film</a>
-
-                                                                                <a class="theaternavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=2&menu=18">Theater</a>
-
-                                                                                <a class="tanznavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=3&menu=19">Tanz</a>
-
-                                                                                <a class="literaturnavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=4&menu=20">Literatur</a>
-
-                                                                                <a class="klassikjazznavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=5&menu=21">Klassik, Jazz</a>
-
-                                                                                <a class="soundsfloorsnaviakt" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=6&menu=22">Sounds & Floors</a>
-
-                                                                                <a class="kunstnavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=7&menu=23">Kunst</a>
-
-                                                                                <a class="kindernavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=8&menu=24">Kinder</a>
-
-                                                                                <a class="diversesnavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&rubrik=9&menu=25">Diverses</a>
-
-                                                                                <a class="tagesagendanavi" href="index.cfm?uuid=2BCD9733D9D9424C4EF093B3E35CB44B&menu=2">Tagesagenda 12.04.2014</a>
-
-
-                                                                </div>
-                                                                <div class="clr"></div>
-                                                </div>
-                                                <div id="content"><br><h1>Sounds & Floors</h1>
-
-
-
-		 <script language="JavaScript" src="js/admin.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-				<br>
-					<div class="contenttitel">
-						<div class="titeltag">Samstag | 12.04.2014</div>
-						<div class="titelort">Ort [Veranstalter]</div>
-						<div class="titelzeit">&nbsp;</div>
-					</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Djinbala</b> unplugged@mooi. Kollekte&nbsp;</div>
-						<div class="ort"><a href="http://www.guggenheimliestal.ch" target="_blank">Guggenheim Liestal</a>, Wasserturmplatz 7, Liestal </div>
-						<div class="zeit">19.00 - 22.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>2. Marabu Rocknacht </b> Regionale Pop- und Rockbands&nbsp;</div>
-						<div class="ort"><a href="http://www.marabu-bl.ch" target="_blank">Kulturraum Marabu</a>, Schulgasse 5, Gelterkinden </div>
-						<div class="zeit">19.15</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Tanznacht 40</b> Partytunes, Disco&nbsp;</div>
-						<div class="ort"><a href="http://www.querfeld-basel.ch" target="_blank">Querfeld-Halle, Gundeldinger Feld</a>, Dornacherstrasse 192<a href="http://www.parterre.net" target="_blank"> [Parterre]</a></div>
-						<div class="zeit">21.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Balkan Beat Box (IL/US)</b> Worldmusic, Dub, HipHop, Gipsy&nbsp;</div>
-						<div class="ort"><a href="http://www.kaserne-basel.ch" target="_blank">Kaserne Basel</a>, Klybeckstrasse 1 b</div>
-						<div class="zeit">21.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Planters Bunch Party</b> Reggae, Jungle, Drum'n'Bass, Elektro&nbsp;</div>
-						<div class="ort"><a href="http://www.alteswasserwerk.de" target="_blank">SAK Altes Wasserwerk</a>, Tumringer Strasse 269, D &ndash; L&ouml;rrach </div>
-						<div class="zeit">21.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Cabaret Bizarre</b> Performer: Lili La Scala (London) | Louise de Ville (Paris/USA) | MisSa Blue (London) | Miss Crash (Berlin) | Suka Off (Katowice Polen). Dresscode! | DJs Count Eastwood | Fiebertanz&nbsp;</div>
-						<div class="ort"><a href="http://www.sud.ch" target="_blank">Sud, Burgweg 7</a></div>
-						<div class="zeit">21.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>The Club</b> Rock&nbsp;</div>
-						<div class="ort">New York Caf&eacute;, Seewenweg 5, Reinach </div>
-						<div class="zeit">21.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Wazomba Overdrive Orchestra (CH)</b> Konzert. Reggae, Swing, Polka&nbsp;</div>
-						<div class="ort"><a href="http://www.meck.ch" target="_blank">Meck � Frick</a>, Geissgasse 17, Frick </div>
-						<div class="zeit">21.30</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>DJ Nachtruhe</b> Nachtwache. Funk, House, Soul&nbsp;</div>
-						<div class="ort"><a href="http://www.cargobar.ch" target="_blank">Cargo-Bar</a>, St. Johanns Rheinweg 46</div>
-						<div class="zeit">21.30</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Nordwescht� King Freestyle Battle Vol. 5</b> Hip Hop&nbsp;</div>
-						<div class="ort"><a href="http://www.sommercasino.ch" target="_blank">Sommercasino</a>, M&uuml;nchensteinerstrasse 1</div>
-						<div class="zeit">21.30</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Salsa Picante. DJ Theo (LU)</b> Salsa, Merengue, Latin Hits, Salsa-Cubana, Bachata&nbsp;</div>
-						<div class="ort"><a href="http://www.allegra-club.ch" target="_blank">Allegra-Club</a>, Aeschengraben 31</div>
-						<div class="zeit">22.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Balzen mit DJ tba</b> Hip-Hop, Funk, House, Disco. Eintritt frei (Bar 21.00)&nbsp;</div>
-						<div class="ort">Balzbar, Steinenbachg&auml;sslein 34</div>
-						<div class="zeit">22.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Tanzen feat. Lexer (D)</b> Live & Gin Tonic Soundsystem | Oliver Aden & Luis Cruz | Audiologism. Minimal, House, Tech-house&nbsp;</div>
-						<div class="ort"><a href="http://www.kuppel.ch" target="_blank">Kuppel</a>, Binningerstrasse 14</div>
-						<div class="zeit">22.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Die Goldenen Zitronen (D)</b> Punk | Mainstream DJ Team&nbsp;</div>
-						<div class="ort"><a href="http://www.hirscheneck.ch" target="_blank">Hirscheneck</a>, Lindenberg 23</div>
-						<div class="zeit">22.30</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Alex Austins Night Out</b> DJ Alex Austin. Hip Hop&nbsp;</div>
-						<div class="ort"><a href="http://www.atlan-tis.ch" target="_blank">Atlantis</a>, Klosterberg 13</div>
-						<div class="zeit">23.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>Beyond</b> DJs Dense & Pika (UK) | Terje Bakke (NOR) | Oliver K | Michael Berczelly | Cloudish Games | Visuals Aaawesome Colors. House, Techno&nbsp;</div>
-						<div class="ort"><a href="http://www.nordstern.com" target="_blank">Nordstern</a>, Voltastrasse 30</div>
-						<div class="zeit">23.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>B�renstark</b> Kaiser Souzai (Berlin) | Rearte, Nicolaj (ZH). Elektronika (Bar 22.00)&nbsp;</div>
-						<div class="ort"><a href="http://www.jaegerhalle.ch" target="_blank">Rest. J&auml;gerhalle</a>, Erlenstrasse 59</div>
-						<div class="zeit">23.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<div class="contentrahmen">
-						<div class="veranstaltung"><b>clubDER200 - Mathew Jonson (CA)</b> Live & Jamie Shar | Lila Hart. miniClub: Similar Disco & Neevo. House, Techno&nbsp;</div>
-						<div class="ort"><a href="http://www.hinterhof.ch" target="_blank">Hinterhof Bar, Dreispitz</a>, M&uuml;nchensteinerstrasse 81, M&uuml;nchenstein </div>
-						<div class="zeit">23.00</div>
-					</div>
-					<div class="clr"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                </div>
-                                        </div>
-                                        <div id="right">
-                                                 <div class="banner"><!-- Banner (F69978CFD9D9424C4E0B807B724A9D47) begin -->
-<a href="http://www.programmzeitung.ch/bannerclick.cfm?uuid=F69978CFD9D9424C4E0B807B724A9D47&id=7" style="cursor:hand" target="ExiRacerWnd"><img border=0 src="http://www.programmzeitung.ch/pz_banner/Sk_SB_2010.gif" alt="Sk_GGG" height=240 width=120></a>
-<!-- Banner (F69978CFD9D9424C4E0B807B724A9D47) end -->
-</div>
-                                                <div class="banner"><!-- Banner (72411A5F1CC45B04DA9A01ECF242EB48) begin -->
-<a href="http://www.programmzeitung.ch/bannerclick.cfm?uuid=72411A5F1CC45B04DA9A01ECF242EB48&id=4" style="cursor:hand" target="ExiRacerWnd"><img border=0 src="http://www.programmzeitung.ch/pz_banner/Sk_Blickfang_2014.gif" alt="Sk_Blickfang" height=240 width=120></a>
-<!-- Banner (72411A5F1CC45B04DA9A01ECF242EB48) end -->
-</div>
-                                                <div class="banner"><!-- Banner (3A708D5FD9D9424C4C2AB6AC49C76A16) begin -->
-<a href="http://www.programmzeitung.ch/bannerclick.cfm?uuid=3A708D5FD9D9424C4C2AB6AC49C76A16&id=8" style="cursor:hand" target="ExiRacerWnd"><img border=0 src="http://www.programmzeitung.ch/pz_banner/Bu_MuseumsPass_2008.gif" alt="Bu_MuseumsPass" height=90 width=120></a>
-<!-- Banner (3A708D5FD9D9424C4C2AB6AC49C76A16) end -->
-</div>
-                                                <div class="banner"></div>
-                                                <div class="banner"><!-- Banner (10BE24C3AD8B42372480F4BDDFFBA2E6) begin -->
-<a href="http://www.programmzeitung.ch/bannerclick.cfm?uuid=10BE24C3AD8B42372480F4BDDFFBA2E6&id=6" style="cursor:hand" target="ExiRacerWnd"><img border=0 src="http://www.programmzeitung.ch/pz_banner/Bu_Nachtstadtplan_2009.gif" alt="Bu_Nachtstadtplan" height=90 width=120></a>
-<!-- Banner (10BE24C3AD8B42372480F4BDDFFBA2E6) end -->
-</div>
-                                                <div class="banner"><!-- Banner (43A120D7A953BD8E445C40349D269EBE) begin -->
-<a href="http://www.programmzeitung.ch/bannerclick.cfm?uuid=43A120D7A953BD8E445C40349D269EBE&id=2" style="cursor:hand" target="ExiRacerWnd"><img border=0 src="http://www.programmzeitung.ch/pz_banner/Bu_Q4_2013.gif" alt="Bu_Q4" height=90 width=120></a>
-<!-- Banner (43A120D7A953BD8E445C40349D269EBE) end -->
-</div>
-                                        </div>
-                                </div>
-                        </div>
-                        <div id="footer">
-                                <div class="trennquer"></div>
-                                        <div style="padding-left:175px; float:left;">
-                                                <a href="#top">&gt;&nbsp;nach oben</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="pz_print_rubrik.cfm?&Datum_von=12.04.2014&Datum_bis=12.04.2014&uuid=18276F29D9D9424C4EF563A6AD4AB598&ShowFullText=1&Rubrik=6" target="_blank">&gt;&nbsp;Artikel drucken</a>
-                                        </div>
-                                        <div style="padding-right:160px; float:right; white-space:nowrap;">
-                                                &copy; 2006 ProgrammZeitung Verlags AG&nbsp;&nbsp;<a href="index.cfm?6F7AE2DAD9D9424C4DB42A8F6711ED02">&gt;&nbsp;Impressum</a>&nbsp;&nbsp;<a href="index.cfm?6F7BA966D9D9424C4F4C1A4F53B07468">&gt;&nbsp;rechtliche Hinweise</a>
-                                        </div>
-                        </div>
-                </div>
-        </div>
-
-
-	<!-- etracker TARGET PARAMETER 2.0.1 -->
-	<script type="text/javascript">
-	var et_target = "";
-	var et_tval = "";
-	var et_tsale = 0;
-	var et_tonr = "";
-	</script>
-	<!-- etracker TARGET PARAMETER END -->
-
-	<!-- etracker CAMPAIGN PARAMETER 2.0.2 -->
-	<script type="text/javascript">
-	var et_lpage = "";
-	var et_trig = "";
-	</script>
-	<!-- etracker CAMPAIGN PARAMETER END -->
-
-<!-- etracker PARAMETER 2.0.1 -->
-<script type="text/javascript">
-var et_easy = 0;
-var et_ssl = 0;
-var et_pagename = "%20%2FHome%2FRubriken";
-var et_areas = "";
-var et_ilevel = 1;
-</script>
-<!-- etracker PARAMETER END -->
-
-<!-- etracker TARGET PARAMETER 2.1.0 -->
-<script type="text/javascript">
-var et_basket = "";
-<!--- var et_basket = ""; --->
-</script>
-<!-- etracker TARGET PARAMETER END -->
-
-<!-- etracker CODE 2.1.0 -->
-<script type="text/javascript">
-var et_server="http://www.etracker.de";
-var et_sslserver="https://www.etracker.de";
-var et_referer=et_server+"/soverview.php?c=1&amp;et=";
-var et_sw,et_sc="na";var tmp,cex='';if(typeof(et_pl)=="undefined"){if(
-navigator.appName=='Netscape'||navigator.appName=='Opera'){for(i=0;i<navigator.
-plugins.length;++i)et_pl+=navigator.plugins[i].name+';';}else et_pl=''}
-function et_pQ(param){var ll,fl;var qS,pV,rS;qS=document.location.search;pV="";
-if(qS.length>1){qS=qS.substr(1);fl=qS.indexOf(param);if(fl!=-1){fl+=param.length+1;
-ll=qS.indexOf('&',fl);if(ll==-1) ll=qS.length;pV=qS.substring(fl,ll);rS=new RegExp
-(" ","g");pV=pV.replace(rS,"+");f1=pV.indexOf('=',0);pV=pV.substring(f1+1);}}
-return pV;} function et_eC(param){var et_a='',et_t='',et_p='',et_b='';var et_ref=
-escape(document.referrer);if(typeof(top.document)=="object")et_ref=escape(top.document.
-referrer);if(et_ref!="")et_ref="&amp;ref="+et_ref;et_sw="&amp;swidth="+et_sw;
-et_sc="&amp;scolor="+et_sc;if(et_easy)et_easy="&amp;et_easy=1";else et_easy="";
-if(et_pl!="")et_pl="&amp;p="+escape(et_pl);if(et_areas!="")et_a="&amp;et_areas="+
-escape(et_areas);if(typeof(et_target)=="undefined"||typeof(et_target)==
-"unknown"){et_target="";et_tval="0";et_tonr="0";et_tsale=0;}if(typeof(
-et_lpage)=="undefined"||typeof(et_lpage)=="unknown")et_lpage="";else
-et_lpage="&amp;et_lpage="+et_lpage;if(typeof(et_trig)=="undefined"||typeof(
-et_trig)=="unknown")et_trig="";if(et_trig!="")cex="&amp;et_trig="+
-et_trig;if((tc=et_pQ("et_cid"))&&(tl=et_pQ("et_lid")))cex=cex+"&amp;et_cid="+
-tc+"&amp;et_lid="+tl;if(tmp=et_pQ("et_target")||et_target!=""){tv=et_pQ
-("et_tval");to=et_pQ("et_tonr");ts=et_pQ("et_tsale");et_t="&amp;et_target="+
-escape(tmp.length?tmp:et_target)+","+(tv?tv:et_tval)+","+(to?to:et_tonr)+
-","+(ts?ts:et_tsale)+","+(typeof(et_cust)=="number"?et_cust:0);}if(
-et_pagename!="")et_p="&amp;et_pagename="+escape(et_pagename);if(typeof(
-et_basket)=="string")et_b="&amp;et_basket="+escape(et_basket);tc=
-new Date();document.write("<a target='_blank' href='"+et_referer+param+"'>"+
-"<img border='0' alt='' src='"+(et_ssl==1?et_sslserver:et_server)+"/cnt.php?"+
-"java=y&amp;et_se=89&amp;tc="+tc.getTime()+"&amp;et="+param+"&amp;et_ilevel="+
-et_ilevel+et_easy+et_p+et_a+cex+et_t+et_lpage+et_b+et_sw+et_sc+et_ref+et_pl+
-"'/><\/a>");}</script><script type="text/javascript1.2">et_sw=screen.width;et_sc=
-navigator.appName!='Netscape'?screen.colorDepth:screen.pixelDepth;</script>
-<script type="text/javascript">et_eC('7PK6P3');</script>
-
-<!-- etracker CODE NOSCRIPT -->
-<noscript>
-<a target="_blank" href="http://preview.etracker.de/soverview.php?c=1&amp;et=7PK6P3">
-<img border="0" alt="" src="http://preview.etracker.de/cnt.php?et=7PK6P3&amp;java=n&amp;
-et_easy=0&amp;et_pagename=&amp;et_areas=&amp;et_ilevel=0&amp;et_basket=&amp;
-et_target=,0,0,&amp;et_lpage=0&amp;et_trig=0,0"/></a>
-</noscript>
-<!-- etracker CODE END -->
-
-
-
+<script type="text/javascript" src="/file/resources/celJS/initCelementsAfter.js?version=20150130200616"></script>
 </body>
 </html>

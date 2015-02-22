@@ -3,11 +3,8 @@
 class Denkmal_Scraper_Cli extends CM_Cli_Runnable_Abstract {
 
     public function run() {
-        /** @var Denkmal_Scraper_Source_Abstract $scraper */
-        foreach (new Denkmal_Paging_ScraperSource_All() as $scraper) {
-            $this->_getStreamOutput()->writeln('Running scraper `' . get_class($scraper) . '`…');
-            $scraper->run();
-        }
+        $scraperManager = new Denkmal_Scraper_Manager($this->_getStreamOutput());
+        $scraperManager->process();
     }
 
     public static function getPackageName() {

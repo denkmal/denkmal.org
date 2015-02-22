@@ -1,109 +1,45 @@
 <?php
 
-abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
-
-    abstract public function run();
+abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract implements CM_Typed {
 
     /**
-     * @return DateTime[]
+     * @param Denkmal_Scraper_Manager $manager
+     * @return Denkmal_Scraper_EventData[]
      */
-    protected function _getDateList() {
-        $day = new DateInterval('P1D');
-        $dayCount = $this->_getDayCount();
-        $dateList = array();
-        $date = Denkmal_Site::getCurrentDate();
-        for ($i = 0; $i < $dayCount; $i++) {
-            $dateList[] = clone $date;
-            $date->add($day);
-        }
-        return $dateList;
+    abstract public function run(Denkmal_Scraper_Manager $manager);
+
+    /**
+     * @return string
+     */
+    public function getName() {
+        $className = get_class($this);
+        $base = preg_replace('#_Abstract$#', '', __CLASS__);
+        $name = preg_replace('#^' . $base . '#', '', $className);
+        return CM_Util::titleize($name);
     }
 
     /**
-     * @param Denkmal_Model_Venue|string  $venue
-     * @param Denkmal_Scraper_Description $description
-     * @param DateTime                    $from
-     * @param DateTime|null               $until
-     */
-    protected function _addEventAndVenue($venue, Denkmal_Scraper_Description $description, DateTime $from, DateTime $until = null) {
-        if ($venue instanceof Denkmal_Model_Venue) {
-            $venueName = $venue->getName();
-        } else {
-            $venueName = (string) $venue;
-            $venue = Denkmal_Model_Venue::findByNameOrAlias($venueName);
-        }
-        if ($until && $until < $from) {
-            $until->add(new DateInterval('P1D'));
-        }
-
-        if ($this->_isValidEvent($venue, $description, $from, $until)) {
-            if (null === $venue) {
-                $venue = Denkmal_Model_Venue::create($venueName, true, false);
-            }
-            Denkmal_Model_Event::create($venue, $description->getAll(), true, true, $from, $until);
-        }
-    }
-
-    /**
-     * @param Denkmal_Model_Venue|null           $venue
-     * @param Denkmal_Scraper_Description|string $description
-     * @param DateTime                           $from
-     * @param DateTime                           $until
-     * @return bool
-     */
-    protected function _isValidEvent($venue, Denkmal_Scraper_Description $description, DateTime $from, DateTime $until = null) {
-        $now = Denkmal_Site::getCurrentDate();
-        if ($from < $now) {
-            return false; // From-date is in the past
-        }
-
-        $fromMax = clone $now;
-        $fromMax->add(new DateInterval('P' . $this->_getDayCount() . 'D'));
-        if ($from > $fromMax) {
-            return false; // From-date is too far in the future
-        }
-
-        if ($until) {
-            if ($until < $from) {
-                return false; // Until-date is before from-date
-            }
-        }
-
-        if ($venue instanceof Denkmal_Model_Venue) {
-            if ($venue->getIgnore()) {
-                return false; // Venue ignored
-            }
-
-            $eventListVenueDate = new Denkmal_Paging_Event_VenueDate($from, $venue);
-            if ($eventListVenueDate->getCount()) {
-                return false; // Venue has event on same day
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * @return int
-     */
-    protected function _getDayCount() {
-        return (int) self::_getConfig()->dayCount;
-    }
-
-    /**
-     * @param string $url
+     * @param string   $url
+     * @param int|null $tryCount
      * @return string Content
      */
-    public static function loadUrl($url) {
-        $context = stream_context_create(array(
-            'http' => array(
-                'ignore_errors' => true,
-                'header'        => join('', [
-                    "Content-Type: text/xml; charset=utf-8\r\n",
-                    "User-Agent: Mozilla/5.0 AppleWebKit\r\n",
-                ]),
-            )));
-        $content = file_get_contents($url, null, $context);
+    public static function loadUrl($url, $tryCount = null) {
+        if (null === $tryCount) {
+            $tryCount = 1;
+        }
+        $tryCount = (int) $tryCount;
+
+        $content = null;
+        $try = 1;
+        while (null === $content) {
+            try {
+                $content = self::_requestUrl($url);
+            } catch (GuzzleHttp\Exception\RequestException $e) {
+                if ($try++ >= $tryCount) {
+                    throw $e;
+                }
+            }
+        }
 
         return self::_fixEncoding($content);
     }
@@ -119,6 +55,19 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
     }
 
     /**
+     * @param int $type
+     * @throws CM_Exception_Invalid
+     * @return static
+     */
+    public static function factoryByType($type) {
+        $className = self::_getClassName($type);
+        if (!is_a($className, get_called_class(), true)) {
+            throw new CM_Exception_Invalid('Unexpected className `' . $className . '`.');
+        }
+        return new $className();
+    }
+
+    /**
      * @param string $content
      * @return string
      */
@@ -131,5 +80,20 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract {
         $content = preg_replace('/[\xA0]/u', ' ', $content); // Replace '&nbsp' with ' '
 
         return $content;
+    }
+
+    /**
+     * @param string $url
+     * @return string
+     * @throws \GuzzleHttp\Exception\RequestException
+     */
+    private static function _requestUrl($url) {
+        $guzzle = new \GuzzleHttp\Client();
+        return $guzzle->get($url, [
+            'headers' => [
+                'User-Agent'   => 'Mozilla/5.0 AppleWebKit',
+                'Content-Type' => 'text/xml; charset=utf-8',
+            ]
+        ]);
     }
 }

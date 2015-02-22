@@ -6,7 +6,7 @@
     {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
   {/if}
   {if $allowDetails}
-    {link icon="menu-micro" class="contextButton navButton showDetails"}
+    {link icon="more" class="contextButton navButton showDetails"}
   {/if}
   <div class="eventDescription">
     <time class="time">

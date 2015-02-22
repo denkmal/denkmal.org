@@ -8,9 +8,9 @@
       {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
     </time>
     <span class="event-header">
-      <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location toggleNext-excluded {if $venue->getIgnore()}ignored{/if} nowrap">{$venue->getName()|escape}</a>
+      <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="event-location toggleNext-excluded {if $venue->getIgnore()}ignored{/if} {if $venue->getSuspended()}suspended{/if} nowrap">{$venue->getName()|escape}</a>
       {if $venue->getUrl()}
-        <a href="{$venue->getUrl()|escape}" class="toggleNext-excluded"><span class="icon icon-external"></span></a>
+        <a href="{$venue->getUrl()|escape}" class="toggleNext-excluded"><span class="icon icon-pop-out"></span></a>
       {/if}
       <time class="currentDate"><span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}</time>
     </span>
@@ -59,7 +59,7 @@
       {formField name='song' label={translate 'Lied'} append=$smarty.capture.songSuggestionList}
       {formField name='starred' label={translate 'Starred'}}
       {formAction action='Save' label={translate 'Speichern'} alternatives="
-				{button action='Delete' label={translate 'Löschen'} icon='delete' iconConfirm='delete-confirm' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+				{button action='Delete' label={translate 'Löschen'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 				{if $event->getHidden()}
 					{button action='Show' label={translate 'Anzeigen'}}
 				{else}

@@ -9,6 +9,9 @@ DROP TABLE IF EXISTS `denkmal_model_venue`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_model_link`;
 DROP TABLE IF EXISTS `denkmal_model_user`;
+DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
+DROP TABLE IF EXISTS `denkmal_model_tag`;
+DROP TABLE IF EXISTS `denkmal_model_tag_model`;
 
 
 
@@ -29,7 +32,9 @@ CREATE TABLE `denkmal_model_venue` (
   `longitude` float DEFAULT NULL,
   `queued` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `ignore` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `suspended` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `email` varchar(100) DEFAULT NULL,
+  `twitterUsername` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `queued` (`queued`),
@@ -81,6 +86,7 @@ CREATE TABLE `denkmal_model_message` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `venue` int(11) unsigned NOT NULL,
   `clientId` varchar(100) NOT NULL,
+  `user` int(11) unsigned NULL,
   `created` int(11) unsigned NOT NULL,
   `text` varchar(1000) DEFAULT NULL,
   `image` int(11) unsigned DEFAULT NULL,
@@ -106,7 +112,39 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
 CREATE TABLE IF NOT EXISTS `denkmal_model_user` (
   `userId` int(11) unsigned NOT NULL,
   `email` varchar(32) NOT NULL,
+  `username` varchar(32) NOT NULL,
   `password` char(64) NULL,
   PRIMARY KEY (`userId`),
-  UNIQUE KEY `email` (`email`)
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_scraper_sourceresult` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `sourceType` int(11) unsigned NOT NULL,
+  `created` int(11) unsigned NOT NULL,
+  `eventDataCount` int(11) unsigned NOT NULL,
+  `error` text NULL,
+  PRIMARY KEY (`id`),
+  KEY `sourceType` (`sourceType`),
+  KEY `created` (`created`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_tag` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(20) NOT NULL,
+  `active` tinyint(4) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `label` (`label`),
+  KEY `active` (`active`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_tag_model` (
+  `tagId` int(11) unsigned NOT NULL,
+  `modelType` int(11) unsigned NOT NULL,
+  `modelId` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`modelType`, `modelId`, `tagId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -15,6 +15,23 @@ class Denkmal_Model_User extends CM_Model_User {
      */
     public function setEmail($email) {
         CM_Db_Db::update('denkmal_model_user', array('email' => $email), array('userId' => $this->getId()));
+        $this->_change();
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername() {
+        return $this->_get('username');
+    }
+
+    /**
+     * @param string $username
+     * @return Denkmal_Model_User
+     */
+    public function setUsername($username) {
+        CM_Db_Db::update('denkmal_model_user', array('username' => $username), array('userId' => $this->getId()));
+        $this->_change();
     }
 
     /**
@@ -25,6 +42,10 @@ class Denkmal_Model_User extends CM_Model_User {
         $hash = Denkmal_App_Auth::generateHashUserPassword($this, $password);
         CM_Db_Db::update('denkmal_model_user', array('password' => $hash), array('userId' => $this->getId()));
         return $this->_change();
+    }
+
+    public function getDisplayName() {
+        return $this->getUsername();
     }
 
     protected function _loadData() {
@@ -60,14 +81,28 @@ class Denkmal_Model_User extends CM_Model_User {
 
     /**
      * @param string $email
+     * @param string $username
      * @param string $password
      * @return Denkmal_Model_User
      */
-    public static function create($email, $password) {
+    public static function create($email, $username, $password) {
         return static::createStatic(array(
             'email'    => $email,
+            'username' => $username,
             'password' => $password,
         ));
+    }
+
+    /**
+     * @param string $email
+     * @return Denkmal_Model_User|null
+     */
+    public static function findByEmail($email) {
+        $id = CM_Db_Db::select('denkmal_model_user', 'userId', array('email' => $email))->fetchColumn();
+        if (!$id) {
+            return null;
+        }
+        return new self($id);
     }
 
     /**
@@ -77,9 +112,14 @@ class Denkmal_Model_User extends CM_Model_User {
      */
     protected static function _createStatic(array $data) {
         $email = (string) $data['email'];
+        $username = (string) $data['username'];
         $password = (string) $data['password'];
         $userId = CM_Model_User::createStatic(null)->getId();
-        $values = array('userId' => $userId, 'email' => $email,);
+        $values = array(
+            'userId'   => $userId,
+            'email'    => $email,
+            'username' => $username,
+        );
         try {
             CM_Db_Db::insert('denkmal_model_user', $values);
         } catch (CM_Exception $e) {

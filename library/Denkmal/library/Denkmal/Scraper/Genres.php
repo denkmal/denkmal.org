@@ -28,7 +28,7 @@ class Denkmal_Scraper_Genres {
     /**
      * @return string
      */
-    public function __toString() {
+    public function getString() {
         $genres = $this->_genreList;
         if (count($genres) > 0) {
             $genres[0] = ucfirst($genres[0]);

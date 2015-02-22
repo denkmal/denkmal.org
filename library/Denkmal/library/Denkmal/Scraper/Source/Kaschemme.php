@@ -2,36 +2,61 @@
 
 class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
 
-    public function run() {
-        $html = self::loadUrl('http://www.kaschemme.ch/Programm');
+    public function run(Denkmal_Scraper_Manager $manager) {
+        $html = self::loadUrl('http://www.kaschemme.ch/Programm-1');
 
-        $this->processPage($html);
+        return $this->processPage($html);
     }
 
     /**
      * @param string $html
-     * @throws CM_Exception_Invalid
+     * @return Denkmal_Scraper_EventData[]
      */
     public function processPage($html) {
         $html = new CM_Dom_NodeList($html, true);
-        $venueName = 'Kaschemme';
-        $eventHtml = $html->find('#maincontainer .project_content')->getHtml();
-        $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s+(?<description>.+?)\s+(?<hour>\d+)h\s*<br';
+        $eventHtml = $html->find('projectcontent')->getHtml();
+        $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s*<br>(?<description>.+?)\.{4,}';
         preg_match_all('#' . $regexp . '#u', $eventHtml, $matches, PREG_SET_ORDER);
 
-        foreach ($matches as $match) {
+        return Functional\map($matches, function(array $match) {
             $from = new Denkmal_Scraper_Date($match['day'], $match['month'], $match['year']);
-            $from->setTime($match['hour']);
-            $description = $match['description'];
-            $description = html_entity_decode($description);
-            $description = preg_replace('#^///\s*#', '', $description);
-            $description = preg_replace('#\s*///$#', '', $description);
+            $from->setTime(22);
 
-            $this->_addEventAndVenue(
-                $venueName,
-                new Denkmal_Scraper_Description($description, null),
-                $from->getDateTime()
-            );
-        }
+            $descriptionList = explode('<br>', $match['description']);
+            $descriptionList = Functional\map($descriptionList, function ($descriptionItem) {
+                return $this->_parseText($descriptionItem);
+            });
+            $descriptionList = array_filter($descriptionList);
+
+            $genres = null;
+            foreach ($descriptionList as $i => $descriptionItem) {
+                if (preg_match('#^Sounds Like\s*: \(?(?<genres>.+?)\)?$#ui', $descriptionItem, $matchesGenres)) {
+                    $genres = new Denkmal_Scraper_Genres($matchesGenres['genres']);
+                    unset($descriptionList[$i]);
+                }
+                if (preg_match('#Eintritt frei#ui', $descriptionItem, $matchesGenres)) {
+                    unset($descriptionList[$i]);
+                }
+                if (preg_match('#(\b|^)\d{1,2}h(\b|$)#ui', $descriptionItem, $matchesGenres)) {
+                    unset($descriptionList[$i]);
+                }
+            }
+
+            $description = implode(', ', $descriptionList);
+
+            return new Denkmal_Scraper_EventData('Kaschemme', new Denkmal_Scraper_Description($description, null, $genres), $from);
+        });
+    }
+
+    /**
+     * @param string $text
+     * @return string
+     */
+    private function _parseText($text) {
+        $text = html_entity_decode($text);
+        $text = preg_replace('#^///\s*#', '', $text);
+        $text = preg_replace('#\s*///$#', '', $text);
+        $text = trim($text);
+        return $text;
     }
 }

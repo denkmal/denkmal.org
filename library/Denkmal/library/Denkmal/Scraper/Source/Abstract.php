@@ -19,35 +19,26 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
     }
 
     /**
-     * @param string    $url
-     * @param int|null  $tryCount
-     * @param bool|null $ignoreErrors
-     * @throws CM_Exception_Invalid
+     * @param string   $url
+     * @param int|null $tryCount
      * @return string Content
      */
-    public static function loadUrl($url, $tryCount = null, $ignoreErrors = null) {
+    public static function loadUrl($url, $tryCount = null) {
         if (null === $tryCount) {
             $tryCount = 1;
         }
         $tryCount = (int) $tryCount;
-        $ignoreErrors = (bool) $ignoreErrors;
 
-        $context = stream_context_create(array(
-            'http' => array(
-                'ignore_errors' => $ignoreErrors,
-                'header'        => join('', [
-                    "Content-Type: text/xml; charset=utf-8\r\n",
-                    "User-Agent: Mozilla/5.0 AppleWebKit\r\n",
-                ]),
-            )));
-
+        $content = null;
         $try = 1;
-        do {
-            $content = @file_get_contents($url, null, $context);
-        } while (false === $content && $try++ < $tryCount);
-
-        if (false === $content) {
-            throw new CM_Exception_Invalid('Failed to request URL `' . $url . '`.');
+        while (null === $content) {
+            try {
+                $content = self::_requestUrl($url);
+            } catch (GuzzleHttp\Exception\RequestException $e) {
+                if ($try++ >= $tryCount) {
+                    throw $e;
+                }
+            }
         }
 
         return self::_fixEncoding($content);
@@ -89,5 +80,20 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
         $content = preg_replace('/[\xA0]/u', ' ', $content); // Replace '&nbsp' with ' '
 
         return $content;
+    }
+
+    /**
+     * @param string $url
+     * @return string
+     * @throws \GuzzleHttp\Exception\RequestException
+     */
+    private static function _requestUrl($url) {
+        $guzzle = new \GuzzleHttp\Client();
+        return $guzzle->get($url, [
+            'headers' => [
+                'User-Agent'   => 'Mozilla/5.0 AppleWebKit',
+                'Content-Type' => 'text/xml; charset=utf-8',
+            ]
+        ]);
     }
 }

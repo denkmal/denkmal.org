@@ -21,7 +21,7 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
 
         $action = new Denkmal_Action_Message(Denkmal_Action_Message::CREATE, $response->getRequest()->getIp());
         $action->prepare();
-        $message = Denkmal_Model_Message::create($venue, $clientId, $text, $image);
+        $message = Denkmal_Model_Message::create($venue, $clientId, null, $text, $image);
         $action->notify($message);
 
         return $message;

@@ -3,9 +3,18 @@
 class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract {
 
     public function run(Denkmal_Scraper_Manager $manager) {
-        return Functional\flatten(Functional\map($manager->getDateList(), function (DateTime $date) {
+        $calendarPage = new CM_Dom_NodeList(self::loadUrl('http://fingerzeig.ch/parties/'), true);
+
+        $dateListExisting = Functional\filter($manager->getDateList(), function (DateTime $date) use ($calendarPage) {
+            return $calendarPage->has('a[href="/parties/' . $date->format('Y/m/d') . '"]');
+        });
+        if (0 === count($dateListExisting)) {
+            throw new CM_Exception_Invalid('Cannot find any calendar days with events');
+        }
+
+        return Functional\flatten(Functional\map($dateListExisting, function (DateTime $date) {
             $dateStr = $date->format('Y/m/d');
-            $url = 'http://fingerzeig.ch/parties/' . $dateStr;
+            $url = 'http://fingerzeig.ch/parties/' . $dateStr . '/';
             $content = self::loadUrl($url);
 
             return $this->processPageDate($content, $date);

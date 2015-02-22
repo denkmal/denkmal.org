@@ -3,7 +3,7 @@
 class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
 
     public function run(Denkmal_Scraper_Manager $manager) {
-        $html = self::loadUrl('http://www.kaschemme.ch/Programm');
+        $html = self::loadUrl('http://www.kaschemme.ch/Programm-1');
 
         return $this->processPage($html);
     }
@@ -14,15 +14,14 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
      */
     public function processPage($html) {
         $html = new CM_Dom_NodeList($html, true);
-        $eventHtml = $html->find('#maincontainer .project_content')->getHtml();
-        $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s+(?<title>.+?)\s*<br>(?<description>.+?)?\.{4,}';
+        $eventHtml = $html->find('projectcontent')->getHtml();
+        $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s*<br>(?<description>.+?)\.{4,}';
         preg_match_all('#' . $regexp . '#u', $eventHtml, $matches, PREG_SET_ORDER);
 
         return Functional\map($matches, function(array $match) {
             $from = new Denkmal_Scraper_Date($match['day'], $match['month'], $match['year']);
             $from->setTime(22);
 
-            $title = $this->_parseText($match['title']);
             $descriptionList = explode('<br>', $match['description']);
             $descriptionList = Functional\map($descriptionList, function ($descriptionItem) {
                 return $this->_parseText($descriptionItem);
@@ -35,18 +34,17 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
                     $genres = new Denkmal_Scraper_Genres($matchesGenres['genres']);
                     unset($descriptionList[$i]);
                 }
+                if (preg_match('#Eintritt frei#ui', $descriptionItem, $matchesGenres)) {
+                    unset($descriptionList[$i]);
+                }
+                if (preg_match('#(\b|^)\d{1,2}h(\b|$)#ui', $descriptionItem, $matchesGenres)) {
+                    unset($descriptionList[$i]);
+                }
             }
 
             $description = implode(', ', $descriptionList);
 
-            $title = $this->_parseText($title);
-            $description = $this->_parseText($description);
-            if (empty($description)) {
-                $description = $title;
-                $title = null;
-            }
-
-            return new Denkmal_Scraper_EventData('Kaschemme', new Denkmal_Scraper_Description($description, $title, $genres), $from);
+            return new Denkmal_Scraper_EventData('Kaschemme', new Denkmal_Scraper_Description($description, null, $genres), $from);
         });
     }
 

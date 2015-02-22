@@ -6,11 +6,11 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
         return array('venue', 'text');
     }
 
-    protected function _process(CM_Params $params, CM_Response_View_Form $response, CM_Form_Abstract $form) {
+    protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Params $params */
         $venue = $params->getVenue('venue');
         $text = $params->getString('text');
-        $clientId = (string) $response->getRequest()->getIp();
+        $clientId = (string) $response->getRequest()->getClientId();
 
         $image = null;
         if ($params->has('image')) {

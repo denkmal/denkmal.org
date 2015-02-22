@@ -22,7 +22,7 @@ class Denkmal_Http_Response_Api_Message extends Denkmal_Http_Response_Api_Abstra
             throw new CM_Exception_NotAllowed('Not authorised access.');
         }
 
-        $action = new Denkmal_Action_Message(Denkmal_Action_Message::CREATE, $this->getRequest()->getIp());
+        $action = new Denkmal_Action_Message(Denkmal_Action_Message::CREATE, $this->getRequest()->getClientId());
         $action->prepare();
         $image = null;
         if (null !== $imageData) {

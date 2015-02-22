@@ -96,6 +96,13 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         return $this->_get('clientId');
     }
 
+    /**
+     * @return Denkmal_ModelAsset_Tags
+     */
+    public function getTags() {
+        return $this->_getAsset('Denkmal_ModelAsset_Tags');
+    }
+
     public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
@@ -128,6 +135,12 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $containingCacheables[] = new Denkmal_Paging_Message_All();
         $containingCacheables[] = new Denkmal_Paging_Message_Venue($this->getVenue());
         return $containingCacheables;
+    }
+
+    protected function _getAssets() {
+        return [
+            new Denkmal_ModelAsset_Tags($this),
+        ];
     }
 
     /**

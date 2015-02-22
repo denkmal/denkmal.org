@@ -62,4 +62,11 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
         $message->setClientId('foo');
         $this->assertSame('foo', $message->getClientId());
     }
+
+    public function testGetTags() {
+        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $message = Denkmal_Model_Message::create($venue, 'client');
+
+        $this->assertInstanceOf('Denkmal_ModelAsset_Tags', $message->getTags());
+    }
 }

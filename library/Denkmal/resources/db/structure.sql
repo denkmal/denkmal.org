@@ -10,6 +10,8 @@ DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_model_link`;
 DROP TABLE IF EXISTS `denkmal_model_user`;
 DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
+DROP TABLE IF EXISTS `denkmal_model_tag`;
+DROP TABLE IF EXISTS `denkmal_model_tag_model`;
 
 
 
@@ -126,4 +128,22 @@ CREATE TABLE IF NOT EXISTS `denkmal_scraper_sourceresult` (
   PRIMARY KEY (`id`),
   KEY `sourceType` (`sourceType`),
   KEY `created` (`created`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_tag` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(20) NOT NULL,
+  `active` tinyint(4) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `label` (`label`),
+  KEY `active` (`active`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_tag_model` (
+  `tagId` int(11) unsigned NOT NULL,
+  `modelType` int(11) unsigned NOT NULL,
+  `modelId` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`modelType`, `modelId`, `tagId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

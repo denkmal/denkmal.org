@@ -39,6 +39,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[42] = 'CM_Model_Location_Zip';
     $config->CM_Model_Abstract->types[43] = 'CM_Model_LanguageKey';
     $config->CM_Model_Abstract->types[51] = 'Denkmal_Scraper_SourceResult';
+    $config->CM_Model_Abstract->types[58] = 'Denkmal_Model_Tag';
     $config->CM_Paging_ContentList_Abstract->types = [];
     $config->CM_Paging_ContentList_Abstract->types[19] = 'CM_Paging_ContentList_Badwords';
     $config->CM_Paging_Log_Abstract->types = [];
@@ -121,7 +122,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_App_SetupScript_LoadLanguage->type = 55;
     $config->Denkmal_ExampleData_Users->type = 56;
     $config->CM_Paging_Log_NotFound->type = 57;
-    $config->CM_Class_Abstract->typesMaxValue = 57;
+    $config->Denkmal_Model_Tag->type = 58;
+    $config->CM_Class_Abstract->typesMaxValue = 58;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

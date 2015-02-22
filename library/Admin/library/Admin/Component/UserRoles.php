@@ -7,4 +7,16 @@ class Admin_Component_UserRoles extends \Admin_Component_Abstract {
 
         $viewResponse->set('user', $user);
     }
+
+    public function ajax_setRole(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
+        $user = $this->_params->getUser('user');
+        $role = $params->getInt('role');
+        $state = $params->getBoolean('state');
+
+        if ($state) {
+            $user->getRoles()->add($role);
+        } else {
+            $user->getRoles()->delete($role);
+        }
+    }
 }

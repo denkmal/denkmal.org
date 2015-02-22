@@ -46,4 +46,12 @@ class Denkmal_Paging_Tag_Model extends Denkmal_Paging_Tag_Abstract {
         ]);
         $this->_change();
     }
+
+    public function deleteAll() {
+        CM_Db_Db::delete('denkmal_model_tag_model', [
+            'modelType' => $this->_model->getType(),
+            'modelId'   => $this->_model->getId(),
+        ]);
+        $this->_change();
+    }
 }

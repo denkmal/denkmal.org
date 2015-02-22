@@ -27,4 +27,19 @@ class Denkmal_Paging_Tag_ModelTest extends CMTest_TestCase {
         $this->assertEquals([$tag2], $tagList1);
         $this->assertEquals([], $tagList2);
     }
+
+    public function testDeleteAll(){
+        $model = Denkmal_Model_Link::create('foo', 'http://www.example.com', true);
+        $tag1 = Denkmal_Model_Tag::create('foo');
+        $tag2 = Denkmal_Model_Tag::create('bar');
+
+        $tagList = new Denkmal_Paging_Tag_Model($model);
+
+        $tagList->add($tag1);
+        $tagList->add($tag2);
+        $this->assertEquals([$tag1, $tag2], $tagList);
+
+        $tagList->deleteAll();
+        $this->assertEquals([], $tagList);
+    }
 }

@@ -23,14 +23,10 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 
         /** @var CM_Dom_NodeList[] $agendaTableList */
         $agendaTableList = [];
-        $agendaTableTitle = null;
-        foreach ($html->find('.tagesagenda > *') as $i => $agendaChild) {
-            if (0 === strpos($agendaChild->getHtml(), '<h2')) {
-                $agendaTableTitle = $agendaChild->getText();
-            }
-            if (0 === strpos($agendaChild->getHtml(), '<table') && null !== $agendaTableTitle) {
-                $agendaTableList[$agendaTableTitle] = $agendaChild;
-            }
+        foreach ($html->find('.tagesagenda > .category') as $i => $category) {
+            $title = $category->find('> h2')->getText();
+            $table = $category->find('> table');
+            $agendaTableList[$title] = $table;
         }
 
         if (empty($agendaTableList)) {
@@ -43,12 +39,13 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
         $agendaTable = $agendaTableList['Sounds & Floors'];
 
         return Functional\map($agendaTable->find('tr'), function (CM_Dom_NodeList $agendaTableRow) use ($date) {
-            if (3 != count($agendaTableRow->find('td'))) {
+            $agendaTableCell = $agendaTableRow->find('td');
+            if (3 != count($agendaTableCell)) {
                 throw new CM_Exception_Invalid('Unexpected row count.', ['html' => $agendaTableRow->getHtml()]);
             }
-            $timeNode = $agendaTableRow->find('td:eq(0)');
-            $descriptionNode = $agendaTableRow->find('td:eq(1)');
-            $venueNode = $agendaTableRow->find('td:eq(2)');
+            $timeNode = $agendaTableCell[0];
+            $descriptionNode = $agendaTableCell[1];
+            $venueNode = $agendaTableCell[2];
 
             $timeTextList = explode('<br>', $timeNode->getChildren()->getHtml());
             $timeText = trim($timeTextList[0]);
@@ -71,7 +68,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
                 $this->_cleanupText($descriptionNode->find('b')->getText())
             );
 
-            $venueText = $venueNode->getText();
+            $venueText = $venueNode->find('.veranstaltungsOrt')->getText();
             $venueText = preg_replace('#,.*?$#u', '', $venueText);
             $venueText = preg_replace('#\[.+?\].*$#u', '', $venueText);
             $venueText = preg_replace('#♦.*$#u', '', $venueText);

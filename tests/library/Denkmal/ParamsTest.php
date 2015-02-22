@@ -44,4 +44,20 @@ class Denkmal_ParamsTest extends CMTest_TestCase {
         $params = new Denkmal_Params(array('date1' => '2013-03-99'));
         $params->getDate('date1');
     }
+
+    public function testGetUser() {
+        $user = new Denkmal_Model_User();
+        $params = new Denkmal_Params(array('user1' => $user));
+
+        $this->assertSame($user, $params->getUser('user1'));
+    }
+
+    /**
+     * @expectedException CM_Exception_Invalid
+     */
+    public function testGetUserNotDenkmal() {
+        $user = new CM_Model_User();
+        $params = new Denkmal_Params(array('user1' => $user));
+        $params->getUser('user1');
+    }
 }

@@ -1,9 +1,9 @@
 <?php
 
-class Admin_FormAction_Settings_Save extends Admin_FormAction_Abstract {
+class Admin_FormAction_User_Create extends Admin_FormAction_Abstract {
 
     protected function _getRequiredFields() {
-        return array();
+        return array('email', 'username', 'password');
     }
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
@@ -13,10 +13,11 @@ class Admin_FormAction_Settings_Save extends Admin_FormAction_Abstract {
     }
 
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        $suspensionUntil = $params->has('suspensionUntil') ? $params->getDateTime('suspensionUntil') : null;
+        /** @var Denkmal_Params $params */
+        $email = $params->getString('email');
+        $username = $params->getString('username');
+        $password = $params->getString('password');
 
-        $site = new Denkmal_Site();
-        $site->getSuspension()->setUntil($suspensionUntil);
-        $response->reloadComponent();
+        Denkmal_Model_User::create($email, $username, $password);
     }
 }

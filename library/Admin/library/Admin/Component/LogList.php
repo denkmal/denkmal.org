@@ -3,7 +3,7 @@
 class Admin_Component_LogList extends CM_Component_LogList {
 
     public function checkAccessible(CM_Frontend_Environment $environment) {
-        if (!$environment->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN)) {
+        if (!$environment->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER)) {
             throw new CM_Exception_AuthRequired();
         }
     }

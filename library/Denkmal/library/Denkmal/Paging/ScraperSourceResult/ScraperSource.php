@@ -11,7 +11,7 @@ class Denkmal_Paging_ScraperSourceResult_ScraperSource extends Denkmal_Paging_Sc
         if (null !== $createdMin) {
             $where .= ' AND `created` > ' . $createdMin->getTimestamp();
         }
-        $source = new CM_PagingSource_Sql('id', 'denkmal_scraper_sourceresult', $where);
+        $source = new CM_PagingSource_Sql('id', 'denkmal_scraper_sourceresult', $where, 'created DESC');
         parent::__construct($source);
     }
 }

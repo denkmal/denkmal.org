@@ -5,6 +5,7 @@
     </li>
     <li class="stateList-item state-2">
       {formField name='venue' class='noLabel' labelPrefix={translate 'Ort'}}
+      {formField name='tags' class='noLabel'}
       {formField name='text' class='noLabel' placeholder={translate 'Deine Nachricht'}}
       {formAction action='Create' icon='chat' label={translate 'Los!'}}
     </li>

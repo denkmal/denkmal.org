@@ -19,6 +19,7 @@ class Denkmal_Paging_Tag_Model extends Denkmal_Paging_Tag_Abstract {
 
         $source = new CM_PagingSource_Sql('tagId', 'denkmal_model_tag_model', 'modelType=? AND modelId=?', null, null, null,
             [$modelType, $modelId]);
+        $source->enableCache();
         parent::__construct($source);
     }
 

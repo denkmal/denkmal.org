@@ -86,6 +86,7 @@ CREATE TABLE `denkmal_model_message` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `venue` int(11) unsigned NOT NULL,
   `clientId` varchar(100) NOT NULL,
+  `user` int(11) unsigned NULL,
   `created` int(11) unsigned NOT NULL,
   `text` varchar(1000) DEFAULT NULL,
   `image` int(11) unsigned DEFAULT NULL,

@@ -97,6 +97,20 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     }
 
     /**
+     * @param Denkmal_Model_User $user
+     */
+    public function setUser($user) {
+        $this->_set('user', $user);
+    }
+
+    /**
+     * @return Denkmal_Model_User
+     */
+    public function getUser() {
+        return $this->_get('user');
+    }
+
+    /**
      * @return Denkmal_ModelAsset_Tags
      */
     public function getTags() {
@@ -124,6 +138,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         return new CM_Model_Schema_Definition(array(
             'venue'    => array('type' => 'Denkmal_Model_Venue'),
             'clientId' => array('type' => 'string'),
+            'user'     => array('type' => 'Denkmal_Model_User', 'optional' => true),
             'text'     => array('type' => 'string', 'optional' => true),
             'created'  => array('type' => 'DateTime'),
             'image'    => array('type' => 'Denkmal_Model_MessageImage', 'optional' => true),
@@ -146,12 +161,14 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     /**
      * @param Denkmal_Model_Venue             $venue
      * @param string                          $clientId
+     * @param Denkmal_Model_User              $user
      * @param string|null                     $text
      * @param Denkmal_Model_MessageImage|null $image
      * @param DateTime|null                   $created
+     * @throws CM_Exception_Invalid
      * @return Denkmal_Model_Message
      */
-    public static function create(Denkmal_Model_Venue $venue, $clientId, $text = null, Denkmal_Model_MessageImage $image = null, DateTime $created = null) {
+    public static function create(Denkmal_Model_Venue $venue, $clientId, Denkmal_Model_User $user = null, $text = null, Denkmal_Model_MessageImage $image = null, DateTime $created = null) {
         if (null === $created) {
             $created = new DateTime();
         }
@@ -159,6 +176,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $message = new self();
         $message->setVenue($venue);
         $message->setClientId($clientId);
+        $message->setUser($user);
         $message->setText($text);
         $message->setCreated($created);
         $message->setImage($image);

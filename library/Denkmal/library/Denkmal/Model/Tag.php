@@ -33,7 +33,12 @@ class Denkmal_Model_Tag extends CM_Model_Abstract {
 
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
+        $containingCacheables[] = new Denkmal_Paging_Tag_All();
         return $containingCacheables;
+    }
+
+    protected function _onDeleteBefore() {
+        throw new CM_Exception_Invalid('Cannot delete tags');
     }
 
     /**

@@ -28,4 +28,12 @@ class Denkmal_Model_TagTest extends CMTest_TestCase {
         $tag->setActive(true);
         $this->assertSame(true, $tag->getActive());
     }
+
+    /**
+     * @expectedException CM_Exception_Invalid
+     */
+    public function testDelete() {
+        $tag = Denkmal_Model_Tag::create('foo');
+        $tag->delete();
+    }
 }

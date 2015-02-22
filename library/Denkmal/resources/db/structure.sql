@@ -135,5 +135,5 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_tag` (
   `active` tinyint(4) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`),
-  UNIQUE KEY `active` (`active`)
+  KEY `active` (`active`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

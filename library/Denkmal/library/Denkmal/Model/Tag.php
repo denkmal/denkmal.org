@@ -2,6 +2,9 @@
 
 class Denkmal_Model_Tag extends CM_Model_Abstract {
 
+    /**
+     * @return string
+     */
     public function getLabel() {
         return $this->_get('label');
     }
@@ -13,12 +16,15 @@ class Denkmal_Model_Tag extends CM_Model_Abstract {
         $this->_set('label', $label);
     }
 
+    /**
+     * @return bool
+     */
     public function getActive() {
         return $this->_get('active');
     }
 
     /**
-     * @param $active
+     * @param bool $active
      */
     public function setActive($active) {
         $this->_set('active', $active);

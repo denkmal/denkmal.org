@@ -29,7 +29,7 @@ class Denkmal_Http_Response_Api_Message extends Denkmal_Http_Response_Api_Abstra
             $imageFile = new CM_File_Image(CM_File_UserContent_Temp::create('message-image.jpg', $imageData));
             $image = Denkmal_Model_MessageImage::create($imageFile);
         }
-        $message = Denkmal_Model_Message::create($venue, $clientId, $text, $image);
+        $message = Denkmal_Model_Message::create($venue, $clientId, null, $text, $image);
         $action->notify($message);
 
         $response = $message->toArrayApi($this->getRender());

@@ -13,6 +13,14 @@ class Denkmal_Model_TagTest extends CMTest_TestCase {
         $this->assertSame(true, $tag->getActive());
     }
 
+    /**
+     * @expectedException CM_Db_Exception
+     */
+    public function testCreateDuplicate() {
+        Denkmal_Model_Tag::create('foo');
+        Denkmal_Model_Tag::create('foo');
+    }
+
     public function testGetSetLabel() {
         $tag = Denkmal_Model_Tag::create('foo');
         $tag->setLabel('bar');

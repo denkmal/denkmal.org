@@ -56,6 +56,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Provision_Script_OptionBased->types[55] = 'Denkmal_App_SetupScript_LoadLanguage';
     $config->CM_Provision_Script_OptionBased->types[56] = 'Denkmal_ExampleData_Users';
     $config->CM_Provision_Script_OptionBased->types[59] = 'Denkmal_App_SetupScript_Tags';
+    $config->CM_Provision_Script_OptionBased->types[60] = 'Denkmal_ExampleData_Venues';
     $config->CM_Site_Abstract->types = [];
     $config->CM_Site_Abstract->types[35] = 'Denkmal_Site';
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
@@ -125,7 +126,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_Log_NotFound->type = 57;
     $config->Denkmal_Model_Tag->type = 58;
     $config->Denkmal_App_SetupScript_Tags->type = 59;
-    $config->CM_Class_Abstract->typesMaxValue = 59;
+    $config->Denkmal_ExampleData_Venues->type = 60;
+    $config->CM_Class_Abstract->typesMaxValue = 60;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

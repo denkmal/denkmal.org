@@ -55,7 +55,7 @@
   }
 }
 
-.menu-wrapper {
+.menu-wrapper, .showWeek {
   float: left;
 
   @media (min-width: @breakpointMini) {
@@ -64,6 +64,22 @@
 
   @media (min-width: @breakpointSmall) {
     margin-left: 25px;
+  }
+}
+
+.menu-wrapper {
+  display: none;
+
+  .menu-visible & {
+    display: block;
+  }
+}
+
+.showWeek {
+  display: block;
+
+  .menu-visible & {
+    display: none;
   }
 }
 
@@ -94,7 +110,7 @@
     display: none;
 
     &.active {
-      display: block;
+      display: inline-block;
     }
   }
 
@@ -102,14 +118,18 @@
     width: auto;
 
     > li {
-      display: block;
+      display: inline-block;
     }
   }
 }
 
 .menu-expand {
-  .logoWrapper, .addButton, .navigate {
+  .logoWrapper, .addButton, .navigate, .showWeek {
     display: none;
+  }
+
+  .menu-wrapper, .menu {
+    float: none;
   }
 
   .menu {
@@ -117,7 +137,7 @@
     margin: 0 auto;
 
     > li {
-      display: block;
+      display: inline-block;
     }
   }
 }

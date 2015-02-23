@@ -1,11 +1,12 @@
 .menu {
   > li {
-    display: block;
-    float: left;
+    display: inline-block;
     position: relative;
-    -webkit-backface-visibility: hidden; // chrome rendering bug
+    height: auto;
+    overflow: visible;
 
     > a {
+      display: block;
       text-decoration: none;
       color: @colorFgTheme;
       opacity: .5;

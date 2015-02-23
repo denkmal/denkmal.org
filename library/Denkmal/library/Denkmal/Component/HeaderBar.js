@@ -11,6 +11,10 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
   narrow: null,
 
   events: {
+    'click .showWeek': function() {
+      this.toggleMenu(true);
+    },
+
     'click .menu.dates .active .navButton': function() {
       if (!this.narrow) {
         return;

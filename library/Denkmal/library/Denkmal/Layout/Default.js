@@ -32,6 +32,9 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
     'Denkmal_Page_Events destruct': function(view) {
       var $layout = this.$el;
       $layout.removeClass('menu-visible');
+
+      var headerBar = cm.findView('Denkmal_Component_HeaderBar');
+      headerBar.toggleMenu(false);
     }
   }
 });

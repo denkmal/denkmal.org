@@ -1,20 +1,97 @@
 .messageList {
 
   > .message {
-    &:not(:last-child) {
-      padding-bottom: 10px;
-      border-bottom: 1px solid red;
+    position: relative;
+
+    margin-bottom: 15px;
+    padding-top: 10px;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background-color: @colorFgBorderEmphasize3;
+      margin: 0 10%;
+    }
+
+    .message-header {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -50%);
+      color: @colorFgSubtle;
+      max-width: 70%;
+      padding: 0 5px;
+      background-color: @colorBgBody;
+
+      .message-venue {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    }
+
+    .timeago {
+      font-size: @fontSizeTiny;
+      color: lighten(@colorFgSubtle, 20);
+
+      position: absolute;
+      left: 50%;
+      top: 5px;
+      transform: translateX(-50%);
     }
 
     .message-content {
+      margin-top: 12px;
+      font-style: italic;
+
+      .message-text {
+        padding: 0 30px;
+      }
 
       .message-tags {
+        text-align: center;
         .tag {
-          width: 30px;
-          height: 30px;
+          width: 70px;
+          height: 70px;
           display: inline-block;
+          background: @colorBg;
+          border-radius: 50%;
+          padding: 12px;
+          margin: 0 5px;
         }
       }
     }
+
+    .message-image {
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .message-user-container {
+      display: block;
+      text-align: right;
+      padding-right: 30px;
+
+      .message-user {
+        position: relative;
+        font-size: @fontSizeSmall;
+
+        .icon-hipster {
+          position: absolute;
+          left: 50%;
+          top: @fontSizeSmall - 4px;
+          transform: translateX(-50%);
+
+          font-size: 20px;
+          line-height: 1;
+        }
+      }
+    }
+
   }
 }

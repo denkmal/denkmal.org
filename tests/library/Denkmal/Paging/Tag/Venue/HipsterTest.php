@@ -62,7 +62,7 @@ class Denkmal_Paging_Tag_Venue_HipsterTest extends CMTest_TestCase {
         $this->assertEquals(array($tag3, $tag2), $tagList);
 
         $timeMin = (new DateTime())->sub(new DateInterval('PT10M'));
-        $tagList = new Denkmal_Paging_Tag_Venue_Hipster($venue, $timeMin->getTimestamp());
+        $tagList = new Denkmal_Paging_Tag_Venue_Hipster($venue, $timeMin);
         $this->assertEquals(array($tag3), $tagList);
     }
 }

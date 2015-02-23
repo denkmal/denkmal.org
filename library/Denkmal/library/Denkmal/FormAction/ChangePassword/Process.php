@@ -11,10 +11,10 @@ class Denkmal_FormAction_ChangePassword_Process extends CM_FormAction_Abstract {
         $user = $response->getViewer(true);
 
         if (!Denkmal_App_Auth::checkLogin($user->getEmail(), $params->getString('old_password'))) {
-            $response->addError($response->getRender()->getTranslation('Falsches altes Passwort.'), 'old_password');
+            $response->addError($response->getRender()->getTranslation('Falsches Passwort.'), 'old_password');
         } else {
             if ($params->getString('new_password') != $params->getString('new_password_confirm')) {
-                $response->addError($response->getRender()->getTranslation('Passwörter passen nicht.'), 'new_password_confirm');
+                $response->addError($response->getRender()->getTranslation('Passwörter stimmen nicht überein.'), 'new_password_confirm');
             }
         }
     }

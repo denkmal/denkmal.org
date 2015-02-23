@@ -37,7 +37,7 @@ class Denkmal_Form_ChangePasswordTest extends CMTest_TestCase {
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
         $response->process();
 
-        $this->assertFormResponseError($response, 'Falsches altes Passwort.', 'old_password');
+        $this->assertFormResponseError($response, 'Falsches Passwort.', 'old_password');
         $this->assertFalse((bool) Denkmal_App_Auth::checkLogin($user->getEmail(), 'blabla1'));
     }
 }

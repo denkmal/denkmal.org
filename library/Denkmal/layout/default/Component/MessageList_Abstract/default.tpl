@@ -14,11 +14,15 @@
           </div>
         {/if}
         {if count($message->getTags()->getAll()) > 0}
-          <div class="message-tags">
+          {strip}
+          <ul class="message-tags">
             {foreach $message->getTags()->getAll() as $tag}
-              {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
+              <li class="tag">
+                {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
+              </li>
             {/foreach}
-          </div>
+          </ul>
+          {/strip}
         {/if}
         {if $message->hasImage()}
           <div class="message-image">
@@ -45,11 +49,13 @@
         </div>
       [[ } ]]
       [[ if (hasTags) { ]]
-      <div class="message-tags">
+      <ul class="message-tags">
         [[ _.each(tagList, function(tagLabel) { ]]
-          {img class='tag-image' path='tag/[[-tagLabel]].svg'}
+          <li class="tag">
+            {img class='tag-image' path='tag/[[-tagLabel]].svg'}
+          </li>
         [[ }); ]]
-      </div>
+      </ul>
       [[ } ]]
       [[ if (hasImage) { ]]
         <div class="message-image">

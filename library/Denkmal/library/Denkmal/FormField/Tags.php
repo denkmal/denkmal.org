@@ -6,13 +6,18 @@ class Denkmal_FormField_Tags extends \CM_FormField_Abstract {
     }
 
     public function prepare(CM_Params $renderParams, CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
-        $tagIdList = Functional\map($this->getValue(), function(Denkmal_Model_Tag $tag) {
+        $value = $this->getValue();
+        if (null === $value) {
+            $value = [];
+        }
+        $tagIdList = Functional\map($value, function(Denkmal_Model_Tag $tag) {
             return $tag->getId();
         });
 
         $viewResponse->set('tagListAvailable', $this->_getTagListAvailable());
         $viewResponse->set('tagList', $this->getValue());
         $viewResponse->set('tagIdList', $tagIdList);
+        $viewResponse->getJs()->setProperty('tagIdList', $tagIdList);
     }
 
     /**

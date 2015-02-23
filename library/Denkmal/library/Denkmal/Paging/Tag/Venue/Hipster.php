@@ -5,7 +5,6 @@ class Denkmal_Paging_Tag_Venue_Hipster extends Denkmal_Paging_Tag_Abstract {
     /**
      * @param Denkmal_Model_Venue $venue
      * @param string|null         $createdMin
-     * @throws CM_Class_Exception_TypeNotConfiguredException
      */
     public function __construct(Denkmal_Model_Venue $venue, $createdMin = null) {
         if ($createdMin == null) {

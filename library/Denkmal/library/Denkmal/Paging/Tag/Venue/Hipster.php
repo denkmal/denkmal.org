@@ -19,7 +19,8 @@ class Denkmal_Paging_Tag_Venue_Hipster extends Denkmal_Paging_Tag_Abstract {
         $where = '`m`.`venue` = ' . $venue->getId();
         $where .= ' AND `m`.`created` > ' . $createdMin->getTimestamp();
 
-        $source = new CM_PagingSource_Sql('`denkmal_model_tag_model`.tagId', 'denkmal_model_tag_model', $where, '`m`.`created` DESC', $join, $group);
+        $order = '`m`.`created` DESC, `denkmal_model_tag_model`.tagId ASC';
+        $source = new CM_PagingSource_Sql('`denkmal_model_tag_model`.tagId', 'denkmal_model_tag_model', $where, $order, $join, $group);
         $source->enableCache();
 
         parent::__construct($source);

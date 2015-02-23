@@ -1,7 +1,7 @@
 {strip}
   <ul class="tagList">
-    <li class="tag tag-text toggleText">
-      <a href="javascript:;" class="toggleTag">
+    <li class="tag tag-text">
+      <a href="javascript:;" class="toggleText">
         <div class="tag-image">{resourceFileContent path='img/icon/document2.svg'}</div>
       </a>
     </li>

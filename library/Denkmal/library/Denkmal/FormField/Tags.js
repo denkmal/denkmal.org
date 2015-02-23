@@ -40,7 +40,7 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
    * @param {Boolean} state
    */
   toggleText: function(state) {
-    this.$('.tag.toggleText').toggleClass('active', state);
+    this.$('.tag.tag-text').toggleClass('active', state);
     this.trigger('toggleText', state);
     this._textState = state;
   },

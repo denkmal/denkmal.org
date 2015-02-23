@@ -10,12 +10,13 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
   /** @type Array */
   tagIdList: null,
 
-  /** @type Boolean */
-  _textState: null,
+  /** @type Array */
+  _specialStateList: null,
 
   events: {
-    'click .toggleText': function() {
-      this.toggleText(!this._textState);
+    'click .toggleSpecial': function(event) {
+      var type = $(event.currentTarget).closest('.tag').data('type');
+      this.toggleSpecial(type, !this._specialStateList[type]);
     },
     'click .toggleTag': function(event) {
       var id = $(event.currentTarget).closest('.tag').data('id');
@@ -24,12 +25,12 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
   },
 
   ready: function() {
-    this._textState = false;
+    this._specialStateList = {};
     this._populateInput();
 
     var self = this;
     this.getForm().$el.on('reset', function() {
-      self.toggleText(false);
+      self.toggleSpecial(false);
       _.each(self.tagIdList, function(tagId) {
         self.toggleTag(tagId, false);
       });
@@ -37,12 +38,13 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
   },
 
   /**
+   * @param {String} type
    * @param {Boolean} state
    */
-  toggleText: function(state) {
-    this.$('.tag.tag-text').toggleClass('active', state);
-    this.trigger('toggleText', state);
-    this._textState = state;
+  toggleSpecial: function(type, state) {
+    this.$('.tag.tag-special[data-type="' + type + '"]').toggleClass('active', state);
+    this.trigger('toggleSpecial', {type: type, state: state});
+    this._specialStateList[type] = state;
   },
 
   /**

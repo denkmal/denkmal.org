@@ -67,11 +67,10 @@
     }
 
     .denkmal {
-      display: none;
-      width: 140px;
+      width: 110px;
 
       @media (min-width: @breakpointMini) {
-        display: inline-block;
+        width: 140px;
       }
     }
   }
@@ -85,6 +84,18 @@
     @media (min-width: 950px) {
       display: inline-block;
     }
+  }
+}
+
+.menu-wrapper {
+  float: left;
+
+  @media (min-width: @breakpointMini) {
+    margin-left: 12px;
+  }
+
+  @media (min-width: @breakpointSmall) {
+    margin-left: 25px;
   }
 }
 
@@ -105,18 +116,6 @@
 
   &.navigate-right {
     left: -6px;
-  }
-}
-
-.menu-wrapper {
-  float: left;
-
-  @media (min-width: @breakpointMini) {
-    margin-left: 12px;
-  }
-
-  @media (min-width: @breakpointSmall) {
-    margin-left: 25px;
   }
 }
 
@@ -142,7 +141,7 @@
 }
 
 .menu-expand {
-  .logoWrapper, .addButton, {
+  .logoWrapper, .addButton, .navigate {
     display: none;
   }
 

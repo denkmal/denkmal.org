@@ -1,6 +1,12 @@
 <ul class="messageList clearfix">
   {foreach $messageList->getItems() as $message}
-    <li class="message" data-id="{$message->getId()}">
+    <li class="message" data-id="{$message->getId()|escape}">
+
+      {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
+        <div class="message-actions">
+          {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+        </div>
+      {/if}
 
       <div class="message-header nowrap">
         <span class="message-venue">
@@ -48,6 +54,12 @@
 
 <script type="text/template" class="template-message">
   <li class="message" data-id="[[-id]]">
+
+    {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
+      <div class="message-actions">
+        {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+      </div>
+    {/if}
 
     <div class="message-header nowrap">
       <div class="message-venue">

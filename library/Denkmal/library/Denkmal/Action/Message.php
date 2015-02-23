@@ -11,4 +11,8 @@ class Denkmal_Action_Message extends Denkmal_Action_Abstract {
         CM_Model_StreamChannel_Message::publish('global-external', 'message-create', $message->toArrayApi($render));
         CM_Model_StreamChannel_Message::publish('global-internal', 'message-create', $message->toArrayStream($render));
     }
+
+    protected function _isAllowedDelete(Denkmal_Model_Message $message) {
+        return $this->_actor->getRoles()->contains(Denkmal_Role::ADMIN);
+    }
 }

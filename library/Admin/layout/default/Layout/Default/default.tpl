@@ -5,7 +5,10 @@
     {if $viewer}
       {component name='Denkmal_Component_Logout'}
     {/if}
-    {link icon="baslerstab" label="{$render->getSite()->getName()|escape}" page="Denkmal_Page_Index" class="logo toggleMenu"}
+    <a class="logo" href="{linkUrl page='Denkmal_Page_Index'}">
+      <span class="baslerstab">{resourceFileContent path='img/logo-baslerstab.svg'}</span>
+      <span class="denkmal">{resourceFileContent path='img/logo-denkmal.svg'}</span>
+    </a>
     {menu name='main'}
   </header>
   <section id="middle">

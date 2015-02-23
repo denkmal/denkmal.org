@@ -9,7 +9,6 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
 
   childrenEvents: {
     'Denkmal_Page_Events ready': function(view) {
-
       var $layout = this.$el;
       var $pageScrollables = view.$('.scrollable');
 
@@ -26,6 +25,16 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
         onScroll();
       });
       onScroll();
+
+      $layout.addClass('menu-visible');
+    },
+
+    'Denkmal_Page_Events destruct': function(view) {
+      var $layout = this.$el;
+      $layout.removeClass('menu-visible');
+
+      var headerBar = cm.findView('Denkmal_Component_HeaderBar');
+      headerBar.toggleMenu(false);
     }
   }
 });

@@ -11,6 +11,7 @@ Vagrant.configure('2') do |config|
 
   if Vagrant.has_plugin? 'vagrant-phpstorm-tunnel'
     config.phpstorm_tunnel.project_home = '/home/vagrant/denkmal'
+    config.phpstorm_tunnel.command_prefix = 'sudo'
   end
 
   config.vm.network :private_network, ip: '10.10.10.12'

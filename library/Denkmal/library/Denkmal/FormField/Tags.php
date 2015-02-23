@@ -2,6 +2,10 @@
 
 class Denkmal_FormField_Tags extends \CM_FormField_Abstract {
 
+    protected function _initialize() {
+        $this->_options['cardinality'] = $this->_params->has('cardinality') ? $this->_params->getInt('cardinality') : null;
+    }
+
     public function validate(\CM_Frontend_Environment $environment, $userInput) {
         $userInput = CM_Params::jsonDecode($userInput);
         $tagList = Functional\map($userInput, function ($tagId) {
@@ -10,6 +14,9 @@ class Denkmal_FormField_Tags extends \CM_FormField_Abstract {
         $tagList = Functional\select($tagList, function (Denkmal_Model_Tag $tag) {
             return $this->_getTagListAvailable()->contains($tag);
         });
+        if ($this->_options['cardinality'] && count($tagList) > $this->_options['cardinality']) {
+            throw new CM_Exception_FormFieldValidation('Too many tags.');
+        }
         return $tagList;
     }
 

@@ -43,8 +43,6 @@
     {$renderAdapter->fetchPage()}
     {if $viewer}
       {component name='Denkmal_Component_Logout'}
-    {else}
-      {link icon="signin" title="{translate 'Amelden'}" label="{translate 'Amelden'}" page="Denkmal_Page_Login" class="addButton navButton"}
     {/if}
   </section>
   {component name='Denkmal_Component_SongPlayer'}

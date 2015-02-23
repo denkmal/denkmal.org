@@ -59,6 +59,10 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
     }
     this.$('.tag[data-id="' + id + '"]').toggleClass('active', state);
     this._populateInput();
+
+    if (this._hasCardinality()) {
+      this.$('.cardinality-left').text(this._getCardinalityLeft());
+    }
   },
 
   _populateInput: function() {

@@ -18,7 +18,7 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
       this.toggleText(!this._textState);
     },
     'click .toggleTag': function(event) {
-      var id = $(event.currentTarget).data('id');
+      var id = $(event.currentTarget).closest('.tag').data('id');
       this.toggleTag(id);
     }
   },

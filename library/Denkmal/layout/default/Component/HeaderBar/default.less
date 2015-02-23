@@ -51,6 +51,40 @@
 .logoWrapper {
   float: left;
 
+  .logo {
+    display: block;
+    height: @barSize;
+    padding: 0 8px;
+
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .baslerstab, .denkmal {
+      display: inline-block;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      vertical-align: top;
+      line-height: 1;
+    }
+
+    .baslerstab {
+      width: 26px;
+    }
+
+    .denkmal {
+      display: none;
+      width: 150px;
+
+      @media (min-width: @breakpointSmall) {
+        display: inline-block;
+      }
+    }
+
+  }
+
   .slogan {
     display: none;
     opacity: .4;

@@ -1,5 +1,5 @@
 <div class="teaser">
-  {button_link label={translate 'Nachricht schreiben'} icon='chat' class='showForm'}
+  {button_link label={translate 'Was loift?!'} icon='chat' class='showForm' theme='highlight'}
 </div>
 
 <div class="form">
@@ -7,6 +7,6 @@
   {formField name='venue' class='noLabel' labelPrefix={translate 'Ort'}}
   {formField name='tags' class='noLabel'}
   {formField name='text' class='noLabel' placeholder={translate 'Deine Nachricht'}}
-  {formAction action='Create' icon='chat' label={translate 'Los!'} alternatives={button_link label={translate 'Abbrechen'} class='hideForm'}}
+  {formAction action='Create' icon='send' label={translate 'Senden'} alternatives={button_link label={translate 'Abbrechen'} class='hideForm'}}
   {/form}
 </div>

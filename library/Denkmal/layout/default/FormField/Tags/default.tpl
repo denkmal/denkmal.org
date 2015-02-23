@@ -4,7 +4,7 @@
   </li>
   {foreach $tagListAvailable as $tag}
     <li class="tag {if in_array($tag->getId(), $tagIdList)}active{/if} toggleTag" data-id="{$tag->getId()|escape}">
-      {$tag->getLabel()|escape}
+      {img class='tag-image' path="tag/{$tag->getId()}.svg"}
     </li>
   {/foreach}
 </ul>

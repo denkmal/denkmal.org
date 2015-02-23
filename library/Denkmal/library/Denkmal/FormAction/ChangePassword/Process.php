@@ -24,6 +24,5 @@ class Denkmal_FormAction_ChangePassword_Process extends CM_FormAction_Abstract {
         $user = $response->getViewer(true);
         $user->setPassword($params->getString('new_password'));
         $response->addMessage($response->getRender()->getTranslation('Passwort wurde geändert.'));
-        $response->popinComponent();
     }
 }

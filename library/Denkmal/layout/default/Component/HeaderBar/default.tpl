@@ -8,5 +8,4 @@
   </div>
   {link icon="plus" title="{translate 'Event hinzufügen'}" label="{translate 'Event hinzufügen'}" page="Denkmal_Page_Add" class="addButton navButton"}
   {menu name='dates' template='weekdays'}
-  {link icon="calendar" class="showWeek navButton"}
 </div>

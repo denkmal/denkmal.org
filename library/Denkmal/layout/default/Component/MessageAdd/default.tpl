@@ -1,7 +1,5 @@
 <div class="teaser">
-  <div class="formField noLabel">
-    {button_link label={translate 'Nachricht schreiben'} icon='chat' class='showForm'}
-  </div>
+  {button_link label={translate 'Nachricht schreiben'} icon='chat' class='showForm'}
 </div>
 
 <div class="form">

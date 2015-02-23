@@ -7,6 +7,12 @@
         {$message->getVenue()->getName()|escape}
       </div>
 
+      {if $message->getUser()}
+        <div class="message-user">
+          {$message->getUser()->getDisplayName()|escape}
+        </div>
+      {/if}
+
       <div class="message-content">
         {if $message->hasText()}
           <div class="message-text">
@@ -41,6 +47,12 @@
     <div class="message-location nowrap">
       [[-venue]]
     </div>
+
+    [[ if (hasUser) { ]]
+      <div class="message-user">
+        [[-user.displayName]]
+      </div>
+    [[ } ]]
 
     <div class="message-content">
       [[ if (hasText) { ]]

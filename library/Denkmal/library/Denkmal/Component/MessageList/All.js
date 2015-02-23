@@ -29,7 +29,9 @@ var Denkmal_Component_MessageList_All = Denkmal_Component_MessageList_Abstract.e
       hasImage: message.image !== null,
       imageUrl: (message.image !== null) ? message.image['url-thumb'] : null,
       hasTags: (message.tagList.length > 0),
-      tagList: message.tagList
+      tagList: message.tagList,
+      hasUser: (message.user !== null),
+      user: message.user
     }).prependTo(this.$('.messageList'));
   }
 });

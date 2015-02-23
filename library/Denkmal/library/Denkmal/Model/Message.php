@@ -141,6 +141,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $array['tagList'] = Functional\map($this->getTags()->getAll(), function (Denkmal_Model_Tag $tag) {
             return $tag->getLabel();
         });
+        $array['user'] = $this->getUser() ? $this->getUser()->toArray() : null;
         return $array;
     }
 

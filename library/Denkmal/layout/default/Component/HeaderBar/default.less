@@ -68,13 +68,12 @@
 
     .denkmal {
       display: none;
-      width: 150px;
+      width: 140px;
 
-      @media (min-width: @breakpointSmall) {
+      @media (min-width: @breakpointMini) {
         display: inline-block;
       }
     }
-
   }
 
   .slogan {
@@ -82,7 +81,6 @@
     line-height: @barSize;
     vertical-align: top;
     opacity: .4;
-    text-transform: uppercase;
 
     @media (min-width: 950px) {
       display: inline-block;
@@ -90,7 +88,42 @@
   }
 }
 
+.navigate {
+  position: relative;
+  float: left;
+  line-height: @barSize;
+  font-size: 8px;
+  color: fadeout(@colorFgTheme, 40);
+
+  @media (min-width: @breakpointSmall) {
+    display: none;
+  }
+
+  &.navigate-left {
+    right: -6px;
+  }
+
+  &.navigate-right {
+    left: -6px;
+  }
+}
+
+.menu-wrapper {
+  float: left;
+
+  @media (min-width: @breakpointMini) {
+    margin-left: 12px;
+  }
+
+  @media (min-width: @breakpointSmall) {
+    margin-left: 25px;
+  }
+}
+
 .menu {
+  float: left;
+  text-transform: uppercase;
+
   > li {
     display: none;
 
@@ -99,10 +132,8 @@
     }
   }
 
-  @media (min-width: 580px) {
-    float: left;
+  @media (min-width: @breakpointSmall) {
     width: auto;
-    margin-left: 25px;
 
     > li {
       display: block;
@@ -111,7 +142,7 @@
 }
 
 .menu-expand {
-  .logoWrapper, .addButton, .showWeek {
+  .logoWrapper, .addButton, {
     display: none;
   }
 

@@ -1,0 +1,33 @@
+
+.tagList {
+
+  .tag {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    margin: 1px;
+    border: 1px solid transparent;
+
+    &.active {
+      border-radius: 4px;
+      background-color: @colorBgEmphasize1;
+      border: 1px solid @colorFgButtonBorder;
+    }
+
+    img, svg {
+      display: block;
+    }
+  }
+
+  .tag-special svg path, polygon {
+    fill: @colorBrand;
+  }
+}
+
+.cardinality-info {
+  font-size: @fontSizeTiny;
+  color: @colorFgSubtle;
+  text-align: right;
+}

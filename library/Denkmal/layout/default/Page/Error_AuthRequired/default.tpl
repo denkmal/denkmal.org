@@ -3,5 +3,5 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
-  {component name='Admin_Component_Login'}
+  {component name='Denkmal_Component_Login'}
 {/block}

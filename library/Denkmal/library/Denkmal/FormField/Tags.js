@@ -11,6 +11,7 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
   tagIdList: null,
 
   events: {
+    'click .toggleText': 'toggleText',
     'click .toggleTag': function(event) {
       var id = $(event.currentTarget).data('id');
       this.toggleTag(id);
@@ -19,6 +20,13 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
 
   ready: function() {
     this._populateInput();
+  },
+
+  toggleText: function() {
+    var $tagText = this.$('.tag.toggleText');
+    var state = !$tagText.hasClass('active');
+    $tagText.toggleClass('active', state);
+    this.trigger('toggleText', state);
   },
 
   /**

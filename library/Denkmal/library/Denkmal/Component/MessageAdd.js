@@ -16,10 +16,23 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     }
   },
 
+  childrenEvents: {
+    'Denkmal_FormField_Tags toggleText': function(state) {
+      this.toggleText(state);
+    }
+  },
+
   /**
    * @param {Boolean} state
    */
   toggleActive: function(state) {
     this.$el.toggleClass('state-active', state);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  toggleText: function(state) {
+    this.$('.form').toggleClass('state-text', state);
   }
 });

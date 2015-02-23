@@ -54,11 +54,38 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
       state = !_.contains(this.tagIdList, id);
     }
     this.tagIdList = state ? _.union(this.tagIdList, [id]) : _.without(this.tagIdList, id);
+    if (state && this._hasCardinality() && this._getCardinalityLeft() < 0) {
+      this.toggleTag(this.tagIdList[0], false);
+    }
     this.$('.tag[data-id="' + id + '"]').toggleClass('active', state);
     this._populateInput();
   },
 
   _populateInput: function() {
     this.getInput().val(JSON.stringify(this.tagIdList));
+  },
+
+  /**
+   * @returns {Boolean}
+   */
+  _hasCardinality: function() {
+    return null !== this.getOption('cardinality');
+  },
+
+  /**
+   * @returns {Number}
+   */
+  _getCardinality: function() {
+    if (!this._hasCardinality()) {
+      cm.error.triggerThrow('Cardinality not set');
+    }
+    return this.getOption('cardinality');
+  },
+
+  /**
+   * @returns {Number}
+   */
+  _getCardinalityLeft: function() {
+    return this._getCardinality() - this.tagIdList.length;
   }
 });

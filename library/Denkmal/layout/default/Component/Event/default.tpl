@@ -11,7 +11,7 @@
   <div class="eventDescription">
     <time class="time">
       <span class="icon icon-time"></span>
-      {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
+      {date_time date=$event->getFrom()}
     </time>
     <span class="event-header">
       {if $venue->getUrl()}

@@ -6,4 +6,4 @@
   {/foreach}
 </ul>
 
-<input type="hidden" id="{$inputId}">
+<input type="hidden" name="{$name}" id="{$inputId}">

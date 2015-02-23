@@ -103,25 +103,24 @@
   position: relative;
   float: left;
   line-height: @barSize;
-  font-size: 8px;
-  color: fadeout(@colorFgTheme, 40);
+  font-size: 5px;
+  color: fadeout(@colorFgTheme, 20);
 
   @media (min-width: @breakpointSmall) {
     display: none;
   }
 
   &.navigate-left {
-    right: -6px;
+    right: -7px;
   }
 
   &.navigate-right {
-    left: -6px;
+    left: -7px;
   }
 }
 
 .menu {
   float: left;
-  text-transform: uppercase;
 
   > li {
     display: none;

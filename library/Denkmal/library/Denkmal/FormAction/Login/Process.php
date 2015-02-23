@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Login_Process extends Admin_FormAction_Abstract {
+class Denkmal_FormAction_Login_Process extends Denkmal_FormAction_Abstract {
 
     protected function _getRequiredFields() {
         return array('email', 'password');
@@ -19,6 +19,6 @@ class Admin_FormAction_Login_Process extends Admin_FormAction_Abstract {
 
         $response->getRequest()->getSession()->setUser($user);
         $response->addMessage($response->getRender()->getTranslation('Erfolgreich angemeldet. Bitte warten...'));
-        $response->redirect('Admin_Page_Index', null, true);
+        $response->redirect('Denkmal_Page_Index', null, true);
     }
 }

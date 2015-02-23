@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Component_Login extends Admin_Component_Abstract {
+class Denkmal_Page_Error_AuthRequired extends CM_Page_Error_AuthRequired {
 
     public function checkAccessible(CM_Frontend_Environment $environment) {
     }

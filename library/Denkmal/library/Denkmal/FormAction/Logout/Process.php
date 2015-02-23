@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_Logout_Process extends Admin_FormAction_Abstract {
+class Denkmal_FormAction_Logout_Process extends Denkmal_FormAction_Abstract {
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
     }
@@ -9,6 +9,6 @@ class Admin_FormAction_Logout_Process extends Admin_FormAction_Abstract {
         $response->getRequest()->getSession()->deleteUser();
         $response->getRequest()->getSession()->setLifetime();
 
-        $response->redirect('Admin_Page_Index', null, true);
+        $response->redirect('Denkmal_Page_Index', null, true);
     }
 }

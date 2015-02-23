@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Component_ChangePasswordTest extends DenkmalTest_TestCase {
+class Denkmal_Component_ChangePasswordTest extends CMTest_TestCase {
 
     public function testGuest() {
         $cmp = new Denkmal_Component_ChangePassword();
@@ -9,7 +9,8 @@ class Denkmal_Component_ChangePasswordTest extends DenkmalTest_TestCase {
     }
 
     public function testHipster() {
-        $viewer = DenkmalTest_TH::createUserHipster();
+        $viewer = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
+        $viewer->getRoles()->add(Denkmal_Role::HIPSTER);
         $cmp = new Denkmal_Component_ChangePassword(null);
         $page = $this->_renderComponent($cmp, $viewer);
 

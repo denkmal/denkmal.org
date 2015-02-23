@@ -23,7 +23,6 @@
   "autoload": {
     "psr-0": {
       "Denkmal_": "library/Denkmal/library/",
-      "DenkmalTest_": "tests/helpers/",
       "Admin_": "library/Admin/library/"
     }
   },

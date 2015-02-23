@@ -83,13 +83,6 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
    * @param {String} label
    */
   showSongDetails: function(label) {
-    var self = this;
-    var $songDetails = this.$('.songDetails');
-    $songDetails.find('.label').text(label);
-    this.$('.songDetails').transit({x: 0}, function() {
-      setTimeout(function() {
-        self.hideSongDetails();
-      }, 2000);
-    })
+    this.$('.songDetails').transit({x: 0}).find('.label').text(label);
   }
 });

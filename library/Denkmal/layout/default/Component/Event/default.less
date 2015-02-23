@@ -44,12 +44,13 @@
     .songDetails {
       position: absolute;
       top: 0;
-      left: 0;
+      left: -1px;
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
       padding: 4px @sizeButton 4px 12px;
-      background-color: fadeout(@colorBg, 5);
+      border: 1px solid @colorFgBorderEmphasize2;
+      background-color: fadeout(@colorBgEmphasize1, 5);
       font-size: @fontSizeSmall;
 
       .songDetails-inner, .button {

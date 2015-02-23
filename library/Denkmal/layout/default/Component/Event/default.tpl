@@ -1,3 +1,6 @@
+<div class='songDetails nowrap'>
+  <span class="icon icon-music"></span><span class="label"></span>
+</div>
 <div class="event{if $event->getStarred()} starred{/if}">
   {if $event->getSong()}
     {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
@@ -20,12 +23,5 @@
     <span class="event-details">
       <span class="description">{eventtext text=$event->getDescription()}</span>
     </span>
-    <div class='songDetails'>
-      <div class="songDetails-inner nowrap">
-        <span class="icon icon-music"></span>
-        <span class="label"></span>
-      </div>
-      {button_link class="closeSongDetails" icon='close' theme='transparent'}
-    </div>
   </div>
 </div>

@@ -14,15 +14,10 @@
     "fzaninotto/faker": "~1.4.0"
   },
   "minimum-stability": "alpha",
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://satis.cargomedia.ch/dist"
-    }
-  ],
   "autoload": {
     "psr-0": {
       "Denkmal_": "library/Denkmal/library/",
+      "DenkmalTest_": "tests/helpers/",
       "Admin_": "library/Admin/library/"
     }
   },

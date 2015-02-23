@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "883130599e2613f4b238c3d083f43847",
+    "hash": "5d377aa414767983caedf4a739b2649e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -174,7 +174,6 @@
                     "Composer": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -188,7 +187,8 @@
                 {
                     "name": "Nils Adermann",
                     "email": "naderman@naderman.de",
-                    "homepage": "http://www.naderman.de"
+                    "homepage": "http://www.naderman.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Dependency Manager",
@@ -1299,17 +1299,17 @@
         },
         {
             "name": "tomaszdurka/codegenerator",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomaszdurka/codegenerator.git",
-                "reference": "7a90518e83d3b9a91d50c73b00ffb375e550624c"
+                "reference": "d577a3f0b80adfd9a494db2c9c2589b8a4dfe901"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-codegenerator-7a90518e83d3b9a91d50c73b00ffb375e550624c-zip-848e56.zip",
-                "reference": "7a90518e83d3b9a91d50c73b00ffb375e550624c",
-                "shasum": "f1ee2ccf0742298071b816eeb5b06f78390f7338"
+                "url": "https://api.github.com/repos/tomaszdurka/codegenerator/zipball/d577a3f0b80adfd9a494db2c9c2589b8a4dfe901",
+                "reference": "d577a3f0b80adfd9a494db2c9c2589b8a4dfe901",
+                "shasum": ""
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7.10",
@@ -1328,7 +1328,7 @@
                     "email": "tomasz@durka.pl"
                 }
             ],
-            "time": "2014-06-18 21:48:49"
+            "time": "2015-02-23 00:56:29"
         }
     ],
     "packages-dev": [
@@ -2209,7 +2209,6 @@
     "minimum-stability": "alpha",
     "stability-flags": [],
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }

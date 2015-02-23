@@ -1,7 +1,9 @@
 {form name='Denkmal_Form_Message'}
   <ul class="stateList">
     <li class="stateList-item state-1">
-      {button_link label={translate 'Wasloift?'} icon='chat' class='startMessage'}
+      <div class="formField noLabel">
+        {button_link label={translate 'Wasloift?'} icon='chat' class='startMessage'}
+      </div>
     </li>
     <li class="stateList-item state-2">
       {formField name='venue' class='noLabel' labelPrefix={translate 'Ort'}}

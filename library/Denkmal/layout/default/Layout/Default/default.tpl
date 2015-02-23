@@ -1,33 +1,33 @@
 {extends file=$render->getLayoutPath('Layout/Abstract/default.tpl', 'CM')}
 
 {block name="before-html"}
-<!--
+  <!--
 
-WASLOIFT IN BASEL?
-==================
-Denkmal.org is an Oi!-project and aims to serve as an alternative event
-calendar for the city of Basel.
-
-
-Open source
------------
-Fork, contribute, open issues! Denkmal.org is on Github and licensed under MIT.
-https://github.com/denkmal/denkmal.org
+  WASLOIFT IN BASEL?
+  ==================
+  Denkmal.org is an Oi!-project and aims to serve as an alternative event
+  calendar for the city of Basel.
 
 
-Made in Basel
--------------
-Proud member of "Made in Basel", the city's local DIY-label.
-http://www.madeinbasel.org
+  Open source
+  -----------
+  Fork, contribute, open issues! Denkmal.org is on Github and licensed under MIT.
+  https://github.com/denkmal/denkmal.org
 
 
-Thanks!
--------
-Denkmal.org wouldn't be possible without the help of Cargo Media - they're hiring!
-http://www.cargomedia.ch
+  Made in Basel
+  -------------
+  Proud member of "Made in Basel", the city's local DIY-label.
+  http://www.madeinbasel.org
 
 
--->
+  Thanks!
+  -------
+  Denkmal.org wouldn't be possible without the help of Cargo Media - they're hiring!
+  http://www.cargomedia.ch
+
+
+  -->
 {/block}
 {block name='tileColor'}#3CC94D{/block}
 

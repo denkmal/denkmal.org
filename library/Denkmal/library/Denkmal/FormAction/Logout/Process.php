@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_FormAction_Logout_Process extends Denkmal_FormAction_Abstract {
+class Denkmal_FormAction_Logout_Process extends CM_FormAction_Abstract {
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
     }

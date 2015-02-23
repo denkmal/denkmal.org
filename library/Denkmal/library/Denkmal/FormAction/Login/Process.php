@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_FormAction_Login_Process extends Denkmal_FormAction_Abstract {
+class Denkmal_FormAction_Login_Process extends CM_FormAction_Abstract {
 
     protected function _getRequiredFields() {
         return array('email', 'password');

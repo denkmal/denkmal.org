@@ -19,11 +19,13 @@ class Denkmal_App_SetupScript_Tags extends CM_Provision_Script_OptionBased {
             'rock',
             'sexy',
             'suit',
-            'talk',
             'trash',
             'disco',
             'sleep',
-            'student',
+            'heart',
+            'coffee',
+            'foosball',
+            'loud',
         ];
 
         foreach ($labelList as $label) {

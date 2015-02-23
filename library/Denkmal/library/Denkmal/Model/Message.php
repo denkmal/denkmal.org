@@ -138,6 +138,9 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $array['created'] = $this->getCreated()->getTimestamp();
         $array['text'] = $this->getText();
         $array['image'] = $this->hasImage() ? $this->getImage()->toArrayApi($render) : null;
+        $array['tagList'] = Functional\map($this->getTags()->getAll(), function (Denkmal_Model_Tag $tag) {
+            return $tag->getId();
+        });
         return $array;
     }
 

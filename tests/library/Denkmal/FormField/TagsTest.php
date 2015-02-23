@@ -15,7 +15,7 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
         $field = new Denkmal_FormField_Tags(['name' => 'tags']);
         $doc = $this->_renderFormField($field);
 
-        $this->assertCount(2, $doc->find('li.tag'));
+        $this->assertCount(2, $doc->find('li.tag[data-id]'));
         $this->assertSame(true, $doc->has('li.tag[data-id="' . $tag1->getId() . '"]'));
         $this->assertSame(true, $doc->has('li.tag[data-id="' . $tag2->getId() . '"]'));
     }

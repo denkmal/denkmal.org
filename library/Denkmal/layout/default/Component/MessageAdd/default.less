@@ -27,12 +27,18 @@
     margin: 8px;
   }
 
-  .formField.text {
+  .formField.text, .formField.image {
     display: none;
   }
 
   &.state-text {
     .formField.text {
+      display: block;
+    }
+  }
+
+  &.state-image {
+    .formField.image {
       display: block;
     }
   }

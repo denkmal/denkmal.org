@@ -30,7 +30,9 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
 
     var self = this;
     this.getForm().$el.on('reset', function() {
-      self.toggleSpecial(false);
+      _.each(self._specialStateList, function(state, type) {
+        self.toggleSpecial(type, false);
+      });
       _.each(self.tagIdList, function(tagId) {
         self.toggleTag(tagId, false);
       });
@@ -43,7 +45,7 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
    */
   toggleSpecial: function(type, state) {
     this.$('.tag.tag-special[data-type="' + type + '"]').toggleClass('active', state);
-    this.trigger('toggleSpecial', {type: type, state: state});
+    this.trigger('toggleSpecial.' + type, state);
     this._specialStateList[type] = state;
   },
 

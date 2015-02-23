@@ -5,6 +5,13 @@
         <div class="tag-image">{resourceFileContent path='img/icon/document2.svg'}</div>
       </a>
     </li>
+    {if Denkmal_Form_Message::getImageAllowed($viewer)}
+      <li class="tag tag-special" data-type="image">
+        <a href="javascript:;" class="toggleSpecial">
+          <div class="tag-image">{resourceFileContent path='img/icon/photo.svg'}</div>
+        </a>
+      </li>
+    {/if}
     {foreach $tagListAvailable as $tag}
       <li class="tag {if in_array($tag->getId(), $tagIdList)}active{/if}" data-id="{$tag->getId()|escape}">
         <a href="javascript:;" class="toggleTag">

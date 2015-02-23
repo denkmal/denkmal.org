@@ -17,10 +17,11 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
   },
 
   childrenEvents: {
-    'Denkmal_FormField_Tags toggleSpecial': function(view, data) {
-      if ('text' === data.type) {
+    'Denkmal_FormField_Tags toggleSpecial.text': function(view, data) {
         this.toggleText(data.state);
-      }
+    },
+    'Denkmal_FormField_Tags toggleSpecial.image': function(view, data) {
+      this.toggleImage(data.state);
     },
     'Denkmal_Form_Message success': function(form) {
       this.toggleActive(false);
@@ -42,5 +43,12 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
    */
   toggleText: function(state) {
     this.$('.form').toggleClass('state-text', state);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  toggleImage: function(state) {
+    this.$('.form').toggleClass('state-image', state);
   }
 });

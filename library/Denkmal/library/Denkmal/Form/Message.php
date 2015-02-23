@@ -10,4 +10,15 @@ class Denkmal_Form_Message extends CM_Form_Abstract {
 
         $this->registerAction(new Denkmal_FormAction_Message_Create($this));
     }
+
+    /**
+     * @param Denkmal_Model_User $user
+     * @return bool
+     */
+    public static function getImageAllowed(Denkmal_Model_User $user = null) {
+        if (null === $user) {
+            return false;
+        }
+        return $user->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER, Denkmal_Role::HIPSTER);
+    }
 }

@@ -7,6 +7,7 @@
   {formField name='venue' class='noLabel' labelPrefix={translate 'Ort'}}
   {formField name='tags' class='noLabel'}
   {formField name='text' class='noLabel' placeholder={translate 'Deine Nachricht'}}
+  {formField name='image' class='noLabel'}
   {formAction action='Create' icon='send' label={translate 'Senden'} alternatives={button_link label={translate 'Abbrechen'} class='hideForm'}}
   {/form}
 </div>

@@ -52,7 +52,7 @@
   float: left;
 
   .logo {
-    display: block;
+    display: inline-block;
     height: @barSize;
     padding: 0 8px;
 
@@ -89,6 +89,8 @@
     display: none;
     opacity: .4;
     text-transform: uppercase;
+    line-height: @barSize;
+    vertical-align: top;
 
     @media (min-width: 950px) {
       display: inline-block;

@@ -7,6 +7,11 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
     }
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
+        /** @var Denkmal_Site $site */
+        $site = $response->getSite();
+        if ($site->getAnonymousMessagingDisabled()) {
+            $response->addError($response->getRender()->getTranslation('Zugriff gesperrt'));
+        }
         if (0 === count($params->get('tags')) && !$params->has('text')) {
             $response->addError($response->getRender()->getTranslation('Bitte Nachricht eingeben'), 'tags');
         }

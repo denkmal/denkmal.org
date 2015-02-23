@@ -85,4 +85,24 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
         $this->assertFormResponseError($response, 'Bitte Nachricht eingeben');
     }
+
+    public function testProcessAnonymousMessagingDisabled() {
+        $site = new Denkmal_Site();
+        $site->setAnonymousMessagingDisabled(true);
+
+        $venue = Denkmal_Model_Venue::create('Foo', false, false);
+
+        $form = new Denkmal_Form_Message();
+        $action = new Denkmal_FormAction_Message_Create($form);
+        $request = $this->createRequestFormAction($action, [
+            'venue' => $venue->getId(),
+            'text'  => 'Hello',
+            'tags'  => CM_Params::jsonEncode([]),
+        ]);
+        $request->mockMethod('getClientId')->set(12);
+        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response->process();
+
+        $this->assertFormResponseError($response, 'Zugriff gesperrt');
+    }
 }

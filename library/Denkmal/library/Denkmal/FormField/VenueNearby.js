@@ -11,8 +11,20 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   /** @type {Number} */
   _timeoutId: null,
 
+  /** @type {Boolean} */
+  _keepSelection: null,
+
   ready: function() {
+    this._watchId = null;
+    this._timeoutId = null;
+    this._keepSelection = false;
+
     this.detectLocation();
+
+    var self = this;
+    this.getForm().$el.on('reset', function() {
+      self.setKeepSelection(false);
+    });
   },
 
   detectLocation: function() {
@@ -46,6 +58,13 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   /**
+   * @param {Boolean} state
+   */
+  setKeepSelection: function(state) {
+    this._keepSelection = state;
+  },
+
+  /**
    * @param {Number} lat
    * @param {Number} lon
    * @param {Number} radius
@@ -67,10 +86,12 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   _setStateWaiting: function() {
+    this._setVenueList([]);
     this.trigger('waiting');
   },
 
   _setStateFailure: function() {
+    this._setVenueList([]);
     this.trigger('failure');
   },
 
@@ -78,17 +99,27 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
    * @param {Array} venueList
    */
   _setStateSuccess: function(venueList) {
+    this._setVenueList(venueList);
+    this.trigger('success');
+  },
+
+  /**
+   * @param {Array} venueList
+   */
+  _setVenueList: function(venueList) {
     var $select = this.getInput();
-    var valueBackup = $select.val();
+    var backupOption = $select.find('option:selected')[0];
+    var backupValue = backupOption ? parseInt(backupOption.value) : null;
     $select.empty();
     _.each(venueList, function(venue) {
       $select.append($('<option></option>').attr('value', venue.id).text(venue.name));
     });
-    if (null !== valueBackup) {
-      $select.val(valueBackup);
+    if (this._keepSelection && backupOption) {
+      if (!_.contains(_.pluck(venueList, 'id'), backupValue)) {
+        $select.prepend(backupOption);
+      }
+      $select.val(backupValue);
     }
     $select.trigger('change');
-
-    this.trigger('success');
   }
 });

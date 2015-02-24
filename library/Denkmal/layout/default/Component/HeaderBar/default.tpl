@@ -8,7 +8,9 @@
   </div>
   {link icon="plus" title="{translate 'Event hinzufügen'}" label="{translate 'Event hinzufügen'}" page="Denkmal_Page_Add" class="addButton navButton"}
   {if $viewer}
-    {link icon="chat-flash" title="{translate 'Now'}" page="Denkmal_Page_Now" class="nowButton navButton"}
+    <a href="{linkUrl page='Denkmal_Page_Now'}" class="nowButton navButton" title="{translate 'Now'}">
+      <span class="icon icon-chat-flash"><span class="indication chat-indication"></span></span>
+    </a>
   {/if}
   {link icon='calendar' page='Denkmal_Page_Events' class='navButton showWeek'}
   <div class="menu-wrapper">

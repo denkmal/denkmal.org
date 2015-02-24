@@ -8,3 +8,11 @@
   text-align: center;
   color: @colorFgTheme;
 }
+
+.indication(@size, @color: @colorBgIndication) {
+  display: block;
+  height: @size;
+  width: @size;
+  border-radius: @size * .5;
+  background-color: @color;
+}

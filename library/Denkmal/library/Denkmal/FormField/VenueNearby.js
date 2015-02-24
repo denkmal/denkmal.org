@@ -11,8 +11,24 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   /** @type {Number} */
   _timeoutId: null,
 
+  /** @type {Boolean} */
+  _keepSelection: null,
+
+  /** @type {String} */
+  _stateGeo: null,
+
   ready: function() {
+    this._watchId = null;
+    this._timeoutId = null;
+    this._keepSelection = false;
+    this._stateGeo = null;
+
     this.detectLocation();
+
+    var self = this;
+    this.getForm().$el.on('reset', function() {
+      self.setKeepSelection(false);
+    });
   },
 
   detectLocation: function() {
@@ -32,10 +48,12 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
     if (!this._watchId) {
       this._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
         window.clearTimeout(self._timeoutId);
-        self._lookupCoordinates(position.coords.latitude, position.coords.longitude);
+        self._lookupCoordinates(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
       }, 1000), function() {
         window.clearTimeout(self._timeoutId);
         self._setStateFailure();
+      }, {
+        enableHighAccuracy: true
       });
       this.on('destruct', function() {
         navigator.geolocation.clearWatch(self._watchId);
@@ -44,13 +62,28 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   /**
+   * @param {Boolean} state
+   */
+  setKeepSelection: function(state) {
+    this._keepSelection = state;
+  },
+
+  /**
+   * @returns {String}
+   */
+  getStateGeo: function() {
+    return this._stateGeo;
+  },
+
+  /**
    * @param {Number} lat
    * @param {Number} lon
+   * @param {Number} radius
    * @return jqXHR
    */
-  _lookupCoordinates: function(lat, lon) {
+  _lookupCoordinates: function(lat, lon, radius) {
     var self = this;
-    return this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon}, {
+    return this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon, radius: radius}, {
       success: function(venueList) {
         if (venueList.length == 0) {
           self._setStateFailure();
@@ -64,28 +97,51 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   _setStateWaiting: function() {
-    this.trigger('waiting');
+    this._setState('waiting', []);
   },
 
   _setStateFailure: function() {
-    this.trigger('failure');
+    this._setState('failure', []);
   },
 
   /**
    * @param {Array} venueList
    */
   _setStateSuccess: function(venueList) {
+    this._setState('success', venueList);
+  },
+
+  /**
+   * @param {String} state
+   * @param {Array} venueList
+   */
+  _setState: function(state, venueList) {
+    var change = (this._stateGeo !== state);
+    this._setVenueList(venueList);
+    this._stateGeo = state;
+
+    if (change) {
+      this.trigger('state-geo-change', state)
+    }
+  },
+
+  /**
+   * @param {Array} venueList
+   */
+  _setVenueList: function(venueList) {
     var $select = this.getInput();
-    var valueBackup = $select.val();
+    var backupOption = $select.find('option:selected')[0];
+    var backupValue = backupOption ? parseInt(backupOption.value) : null;
     $select.empty();
     _.each(venueList, function(venue) {
       $select.append($('<option></option>').attr('value', venue.id).text(venue.name));
     });
-    if (null !== valueBackup) {
-      $select.val(valueBackup);
+    if (this._keepSelection && backupOption) {
+      if (!_.contains(_.pluck(venueList, 'id'), backupValue)) {
+        $select.prepend(backupOption);
+      }
+      $select.val(backupValue);
     }
     $select.trigger('change');
-
-    this.trigger('success');
   }
 });

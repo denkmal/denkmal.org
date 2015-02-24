@@ -29,7 +29,7 @@
           {/strip}
         {/if}
         {if $message->hasText()}
-          <div class="message-text">
+          <div class="message-text usertext">
             {$message->getText()|escape}
           </div>
         {/if}
@@ -80,7 +80,7 @@
       </ul>
       [[ } ]]
       [[ if (hasText) { ]]
-      <div class="message-text">
+      <div class="message-text usertext">
         [[-text]]
       </div>
       [[ } ]]

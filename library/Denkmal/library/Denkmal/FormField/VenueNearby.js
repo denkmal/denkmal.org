@@ -36,6 +36,8 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
       }, 1000), function() {
         window.clearTimeout(self._timeoutId);
         self._setStateFailure();
+      }, {
+        enableHighAccuracy: true
       });
       this.on('destruct', function() {
         navigator.geolocation.clearWatch(self._watchId);

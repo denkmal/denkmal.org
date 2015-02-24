@@ -32,7 +32,7 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
     if (!this._watchId) {
       this._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
         window.clearTimeout(self._timeoutId);
-        self._lookupCoordinates(position.coords.latitude, position.coords.longitude);
+        self._lookupCoordinates(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
       }, 1000), function() {
         window.clearTimeout(self._timeoutId);
         self._setStateFailure();
@@ -48,11 +48,12 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   /**
    * @param {Number} lat
    * @param {Number} lon
+   * @param {Number} radius
    * @return jqXHR
    */
-  _lookupCoordinates: function(lat, lon) {
+  _lookupCoordinates: function(lat, lon, radius) {
     var self = this;
-    return this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon}, {
+    return this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon, radius: radius}, {
       success: function(venueList) {
         if (venueList.length == 0) {
           self._setStateFailure();

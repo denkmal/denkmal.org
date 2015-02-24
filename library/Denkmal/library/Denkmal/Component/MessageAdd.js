@@ -18,7 +18,14 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
 
   events: {
     'click .showForm': function() {
-      this._setStateActive(true);
+      /**
+       * Delay opening of the form because of an iOS Safari bug:
+       * The "click" on the button would lead to a "focus" event on the venue-nearby dropdown (keyboard shows)
+       */
+      var self = this;
+      _.delay(function() {
+        self._setStateActive(true);
+      }, 10);
     },
     'click .hideForm': function() {
       this._setStateActive(false);
@@ -32,11 +39,11 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     'Denkmal_Form_Message success': function() {
       this._setStateActive(false);
     },
-    'Denkmal_FormField_Tags toggleSpecial.text': function(view, data) {
-      this.toggleText(data.state);
+    'Denkmal_FormField_Tags toggleSpecial.text': function(view, state) {
+      this.toggleText(state);
     },
-    'Denkmal_FormField_Tags toggleSpecial.image': function(view, data) {
-      this.toggleImage(data.state);
+    'Denkmal_FormField_Tags toggleSpecial.image': function(view, state) {
+      this.toggleImage(state);
     },
     'Denkmal_FormField_VenueNearby state-geo-change': function(view, state) {
       if ('success' === state || !this._getStateActiveLocked()) {

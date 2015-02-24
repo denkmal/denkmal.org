@@ -13,7 +13,8 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     },
     'click .hideForm': function() {
       this.toggleActive(false);
-    }
+    },
+    'click .retryLocation': '_retryLocation'
   },
 
   childrenEvents: {
@@ -77,5 +78,9 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
    */
   _toggleSubmitEnabled: function(state) {
     this.findChild('Denkmal_Form_Message').$('button[type="submit"]').prop('disabled', !state);
+  },
+
+  _retryLocation: function() {
+    this.findChild('Denkmal_Form_Message').getField('venue').detectLocation();
   }
 });

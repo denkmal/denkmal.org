@@ -5,33 +5,42 @@
 var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   _class: 'Denkmal_FormField_VenueNearby',
 
+  /** @type {Number} */
+  _watchId: null,
+
+  /** @type {Number} */
+  _timeoutId: null,
+
   ready: function() {
     this.detectLocation();
   },
 
-  /**
-   * @return Promise
-   */
   detectLocation: function() {
     if (!'geolocation' in navigator) {
       this._setStateFailure();
       return;
     }
 
-    this._setStateWaiting();
-
     var self = this;
-    var deferred = $.Deferred();
-    navigator.geolocation.getCurrentPosition(deferred.resolve, deferred.reject);
 
-    deferred.then(function(position) {
-      return self._lookupCoordinates(position.coords.latitude, position.coords.longitude)
-    });
-    deferred.fail(function() {
+    this._setStateWaiting();
+    window.clearTimeout(this._timeoutId);
+    this._timeoutId = this.setTimeout(function() {
       self._setStateFailure();
-    });
+    }, 1000 * 10);
 
-    return deferred;
+    if (!this._watchId) {
+      this._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
+        window.clearTimeout(self._timeoutId);
+        self._lookupCoordinates(position.coords.latitude, position.coords.longitude);
+      }, 1000), function() {
+        window.clearTimeout(self._timeoutId);
+        self._setStateFailure();
+      });
+      this.on('destruct', function() {
+        navigator.geolocation.clearWatch(self._watchId);
+      });
+    }
   },
 
   /**
@@ -55,35 +64,28 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   _setStateWaiting: function() {
-    this._setStateCssClass('waiting');
+    this.trigger('waiting');
   },
 
   _setStateFailure: function() {
-    this._setStateCssClass('failure');
+    this.trigger('failure');
   },
 
   /**
    * @param {Array} venueList
    */
   _setStateSuccess: function(venueList) {
-    this._setStateCssClass('success');
-
     var $select = this.getInput();
+    var valueBackup = $select.val();
     $select.empty();
     _.each(venueList, function(venue) {
       $select.append($('<option></option>').attr('value', venue.id).text(venue.name));
     });
+    if (null !== valueBackup) {
+      $select.val(valueBackup);
+    }
     $select.trigger('change');
-  },
 
-  /**
-   * @param {String} state
-   */
-  _setStateCssClass: function(state) {
-    var classes = this.el.className.split(' ').filter(function(c) {
-      return c.lastIndexOf('state-', 0) !== 0;
-    });
-    classes.push('state-' + state);
-    this.el.className = $.trim(classes.join(' '));
+    this.trigger('success');
   }
 });

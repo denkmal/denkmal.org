@@ -13,18 +13,31 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     },
     'click .hideForm': function() {
       this.toggleActive(false);
-    }
+    },
+    'click .retryLocation': '_retryLocation'
   },
 
   childrenEvents: {
+    'Denkmal_Form_Message success': function() {
+      this.toggleActive(false);
+    },
     'Denkmal_FormField_Tags toggleSpecial.text': function(view, data) {
-        this.toggleText(data.state);
+      this.toggleText(data.state);
     },
     'Denkmal_FormField_Tags toggleSpecial.image': function(view, data) {
       this.toggleImage(data.state);
     },
-    'Denkmal_Form_Message success': function(form) {
-      this.toggleActive(false);
+    'Denkmal_FormField_VenueNearby waiting': function() {
+      this._setStateGeo('waiting');
+      this._toggleSubmitEnabled(false);
+    },
+    'Denkmal_FormField_VenueNearby failure': function() {
+      this._setStateGeo('failure');
+      this._toggleSubmitEnabled(false);
+    },
+    'Denkmal_FormField_VenueNearby success': function() {
+      this._setStateGeo('success');
+      this._toggleSubmitEnabled(true);
     }
   },
 
@@ -50,5 +63,27 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
    */
   toggleImage: function(state) {
     this.$('.form').toggleClass('state-image', state);
+  },
+
+  /**
+   * @param {String} state
+   */
+  _setStateGeo: function(state) {
+    var classes = this.el.className.split(' ').filter(function(c) {
+      return c.lastIndexOf('state-geo-', 0) !== 0;
+    });
+    classes.push('state-geo-' + state);
+    this.el.className = $.trim(classes.join(' '));
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  _toggleSubmitEnabled: function(state) {
+    this.findChild('Denkmal_Form_Message').$('button[type="submit"]').prop('disabled', !state);
+  },
+
+  _retryLocation: function() {
+    this.findChild('Denkmal_Form_Message').getField('venue').detectLocation();
   }
 });

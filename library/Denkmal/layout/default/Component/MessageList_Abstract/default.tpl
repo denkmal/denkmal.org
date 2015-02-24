@@ -17,7 +17,7 @@
       {date_timeago time=$message->getCreated()->getTimestamp()}
 
       <div class="message-content">
-        {if count($message->getTags()->getAll()) > 0}
+        {if count($message->getTags()->getAll()) > 0 || $message->hasImage()}
           {strip}
             <ul class="message-tags">
               {foreach $message->getTags()->getAll() as $tag}
@@ -25,17 +25,17 @@
                   {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
                 </li>
               {/foreach}
+              {if $message->hasImage()}
+                <li class="tag message-image">
+                  <img src="{$render->getUrlUserContent($message->getImage()->getFile('thumb'))|escape}" class="showImage" />
+                </li>
+              {/if}
             </ul>
           {/strip}
         {/if}
         {if $message->hasText()}
           <div class="message-text usertext">
             {$message->getText()|escape}
-          </div>
-        {/if}
-        {if $message->hasImage()}
-          <div class="message-image">
-            <img src="{$render->getUrlUserContent($message->getImage()->getFile('thumb'))|escape}" />
           </div>
         {/if}
       </div>
@@ -70,23 +70,23 @@
     [[print(cm.date.timeago(created))]]
 
     <div class="message-content">
-      [[ if (hasTags) { ]]
+      [[ if (hasTags || hasImage) { ]]
       <ul class="message-tags">
         [[ _.each(tagList, function(tagLabel) { ]]
         <li class="tag">
           {img class='tag-image' path='tag/[[-tagLabel]].svg'}
         </li>
         [[ }); ]]
+        [[ if (hasImage) { ]]
+        <li class="tag message-image">
+          <img src="[[-imageUrl]]" class="showImage" />
+        </li>
+        [[ } ]]
       </ul>
       [[ } ]]
       [[ if (hasText) { ]]
       <div class="message-text usertext">
         [[-text]]
-      </div>
-      [[ } ]]
-      [[ if (hasImage) { ]]
-      <div class="message-image">
-        <img src="[[-imageUrl]]" />
       </div>
       [[ } ]]
     </div>

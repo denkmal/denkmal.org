@@ -70,7 +70,8 @@
           height: 60px;
           margin: 0 5px;
           padding: 12px;
-          border: 1px dashed darken(@colorFgBorderEmphasize3, 10);
+          vertical-align: top;
+          border: 1px solid @colorFgBorderEmphasize3;
           border-radius: 50%;
           background: @colorBg;
 
@@ -78,25 +79,26 @@
             width: 70px;
             height: 70px;
           }
+
+          &.message-image {
+            padding: 0;
+
+            a {
+              display: block;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+          }
         }
       }
 
       .message-text {
-        padding: 0 15px;
-      }
-
-      .message-image {
         padding: 15px;
-        text-align: center;
-
-        img {
-          box-sizing: border-box;
-          max-width: 100%;
-          padding: 4px;
-          border: 1px solid @colorFgBorderEmphasize2;
-          border-radius: 3px;
-          background-color: @colorBg;
-        }
       }
     }
 

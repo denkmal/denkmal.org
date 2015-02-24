@@ -11,6 +11,10 @@ var Denkmal_Component_MessageList_Abstract = Denkmal_Component_Abstract.extend({
     'click .deleteMessage': function(event) {
       var messageId = $(event.currentTarget).closest('.message').data('id');
       this.deleteMessage(messageId);
+    },
+    'click .showImage': function(event) {
+      var $image = $(event.currentTarget);
+      $image.floatOut();
     }
   },
 

@@ -14,7 +14,11 @@
   </div>
 {/if}
 <div class="socialFollow">
-  {link icon='twitter' href='https://twitter.com/denkmal_org' title={translate 'Follow us on Twitter'}}
-  {link icon='facebook' href='https://www.facebook.com/denkmal.org' title={translate 'Find us on Facebook'}}
+  <a class="link hasIcon" href="https://twitter.com/denkmal_org" target="_blank" title="{translate 'Follow us on Twitter'}">
+    <span class="icon icon-twitter"></span>
+  </a>
+  <a class="link hasIcon" href="https://www.facebook.com/denkmal.org" target="_blank" title="{translate 'Find us on Facebook'}">
+    <span class="icon icon-facebook"></span>
+  </a>
 </div>
 

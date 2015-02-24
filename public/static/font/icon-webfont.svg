@@ -5,7 +5,7 @@
 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20141231 at Tue Feb 24 15:04:27 2015
+Created by FontForge 20141231 at Tue Feb 24 17:09:23 2015
  By Christophe Schwyzer
 Copyright (c) 2015, Christophe Schwyzer
 </metadata>
@@ -22,7 +22,7 @@ Copyright (c) 2015, Christophe Schwyzer
     bbox="-0.5 -58 500.5 443"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+F100-F186"
+    unicode-range="U+F100-F187"
   />
     <missing-glyph />
     <glyph glyph-name="uniF12C" unicode="&#xf12c;" 
@@ -74,6 +74,8 @@ v18h18v-18h-18zM482 283v18h18v-18h-18zM482 212v18h18v-18h-18zM482 141v17h18v-17h
 c-8 0 -14 6 -14 14s6 14 14 14h87v88c0 8 6 14 14 14s15 -6 15 -14v-88h85z" />
     <glyph glyph-name="uniF139" unicode="&#xf139;" horiz-adv-x="352" 
 d="M177 422c98 0 175 -76 175 -173c0 -122 -163 -278 -170 -285c-2 -1 -4 -2 -6 -2s-3 1 -5 2c-7 6 -171 159 -171 285c0 95 79 173 177 173zM177 193c34 0 61 27 61 61s-27 61 -61 61s-61 -27 -61 -61s27 -61 61 -61z" />
+    <glyph glyph-name="uniF187" unicode="&#xf187;" horiz-adv-x="343" 
+d="M0 384h343v-115h-16c-5 41 -21 70 -46 84c-14 8 -36 12 -64 13v-300c0 -21 4 -34 11 -41s23 -11 46 -11v-14h-203v14c22 0 37 4 44 11s11 20 11 41v300c-28 -1 -49 -5 -64 -13c-27 -15 -42 -43 -46 -84h-16v115z" />
     <glyph glyph-name="uniF148" unicode="&#xf148;" 
 d="M452 319c4 -7 8 -14 8 -22v-264c0 -25 -23 -43 -48 -43h-361c-25 0 -51 18 -51 43v264c0 7 5 14 8 20l164 -145c-3 -7 -5 -16 -5 -24c0 -34 28 -61 62 -61s61 27 61 61c0 8 -1 15 -4 22zM229 209c-18 0 -34 -7 -45 -19l-158 139c7 5 16 4 25 4h361c8 0 15 2 22 -2
 l-159 -142c-11 13 -28 20 -46 20z" />

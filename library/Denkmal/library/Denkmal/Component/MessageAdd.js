@@ -38,21 +38,10 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     'Denkmal_FormField_Tags toggleSpecial.image': function(view, data) {
       this.toggleImage(data.state);
     },
-    'Denkmal_FormField_VenueNearby waiting': function() {
-      if (!this._getStateActiveLocked()) {
-        this._setStateGeo('waiting');
-        this._toggleSubmitEnabled(false);
+    'Denkmal_FormField_VenueNearby state-geo-change': function(view, state) {
+      if ('success' === state || !this._getStateActiveLocked()) {
+        this._setStateGeo(state);
       }
-    },
-    'Denkmal_FormField_VenueNearby failure': function() {
-      if (!this._getStateActiveLocked()) {
-        this._setStateGeo('failure');
-        this._toggleSubmitEnabled(false);
-      }
-    },
-    'Denkmal_FormField_VenueNearby success': function() {
-      this._setStateGeo('success');
-      this._toggleSubmitEnabled(true);
     }
   },
 
@@ -88,11 +77,12 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
    */
   _setStateActive: function(state) {
     this.$el.toggleClass('state-active', state);
+    this._stateActive = state;
+
     if (!state) {
       this._getForm().reset();
     }
-    this._stateActive = state;
-    this._setStateActiveLocked();
+    this._updateStateActiveLocked();
   },
 
   /**
@@ -102,10 +92,18 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     return this._stateActiveLocked;
   },
 
-  _setStateActiveLocked: function() {
+  _updateStateActiveLocked: function() {
     var state = this._getStateActive() && ('success' === this._getStateGeo());
-    this._getVenueField().setKeepSelection(state);
+    var change = (this._stateActiveLocked !== state);
     this._stateActiveLocked = state;
+
+    if (change) {
+      this._getVenueField().setKeepSelection(state);
+
+      if (false === state) {
+        this._setStateGeo(this._getVenueField().getStateGeo());
+      }
+    }
   },
 
   /**
@@ -119,13 +117,18 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
    * @param {String} state
    */
   _setStateGeo: function(state) {
+    var change = (this._stateGeo !== state);
     var classes = this.el.className.split(' ').filter(function(c) {
       return c.lastIndexOf('state-geo-', 0) !== 0;
     });
     classes.push('state-geo-' + state);
     this.el.className = $.trim(classes.join(' '));
     this._stateGeo = state;
-    this._setStateActiveLocked();
+
+    this._updateStateActiveLocked();
+    if (change) {
+      this._updateSubmitEnabled();
+    }
   },
 
   /**
@@ -142,10 +145,8 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     return this._getForm().getField('venue');
   },
 
-  /**
-   * @param {Boolean} state
-   */
-  _toggleSubmitEnabled: function(state) {
+  _updateSubmitEnabled: function() {
+    var state = ('success' === this._getStateGeo());
     this._getForm().$('button[type="submit"]').prop('disabled', !state);
   }
 });

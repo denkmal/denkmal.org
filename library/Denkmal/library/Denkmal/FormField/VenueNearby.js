@@ -14,10 +14,14 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   /** @type {Boolean} */
   _keepSelection: null,
 
+  /** @type {String} */
+  _stateGeo: null,
+
   ready: function() {
     this._watchId = null;
     this._timeoutId = null;
     this._keepSelection = false;
+    this._stateGeo = null;
 
     this.detectLocation();
 
@@ -65,6 +69,13 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   /**
+   * @returns {String}
+   */
+  getStateGeo: function() {
+    return this._stateGeo;
+  },
+
+  /**
    * @param {Number} lat
    * @param {Number} lon
    * @param {Number} radius
@@ -86,21 +97,32 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   _setStateWaiting: function() {
-    this._setVenueList([]);
-    this.trigger('waiting');
+    this._setState('waiting', []);
   },
 
   _setStateFailure: function() {
-    this._setVenueList([]);
-    this.trigger('failure');
+    this._setState('failure', []);
   },
 
   /**
    * @param {Array} venueList
    */
   _setStateSuccess: function(venueList) {
+    this._setState('success', venueList);
+  },
+
+  /**
+   * @param {String} state
+   * @param {Array} venueList
+   */
+  _setState: function(state, venueList) {
+    var change = (this._stateGeo !== state);
     this._setVenueList(venueList);
-    this.trigger('success');
+    this._stateGeo = state;
+
+    if (change) {
+      this.trigger('state-geo-change', state)
+    }
   },
 
   /**

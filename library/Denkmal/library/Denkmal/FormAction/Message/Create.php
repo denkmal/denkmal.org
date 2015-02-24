@@ -47,6 +47,6 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
         }
         $action->notify($message);
 
-        return $message;
+        return $message->toArrayStream($response->getRender());
     }
 }

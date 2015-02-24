@@ -36,7 +36,7 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
   },
 
   childrenEvents: {
-    'Denkmal_Form_Message success': function() {
+    'Denkmal_Form_Message success': function(view, messageData) {
       this._setStateActive(false);
     },
     'Denkmal_FormField_Tags toggleSpecial.text': function(view, state) {

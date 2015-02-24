@@ -22,7 +22,7 @@
     <span class="event-header nowrap">
       {if $venue->getUrl()}
         <a href="{$venue->getUrl()|escape}" target="_blank" class="event-location">{$venue->getName()|escape}</a>
-       {else}
+      minor{else}
         <span class="event-location">{$venue->getName()|escape}</span>
       {/if}
     </span>

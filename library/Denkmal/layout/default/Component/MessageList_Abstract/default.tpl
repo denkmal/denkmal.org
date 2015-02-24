@@ -34,21 +34,22 @@
         {/if}
       </div>
 
-      {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
-        <div class="message-actions">
-          {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-        </div>
-      {/if}
-
-      {if $message->getUser()}
-        <span class="message-user-container">
-          <span class="message-user">
-            <span class="username nowrap">
-              {$message->getUser()->getDisplayName()|escape}
+      {if $message->getUser() || ($viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN))}
+        <div class="message-meta">
+          {if $message->getUser()}
+            <span class="message-user-container">
+            <span class="message-user">
+              <span class="username nowrap">
+                {$message->getUser()->getDisplayName()|escape}
+              </span>
+              <span class="icon icon-hipster"></span>
             </span>
-            <span class="icon icon-hipster"></span>
           </span>
-        </span>
+          {/if}
+          {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
+            {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+          {/if}
+        </div>
       {/if}
     </li>
   {/foreach}
@@ -87,19 +88,19 @@
       [[ } ]]
     </div>
 
-    {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
-      <div class="message-actions">
+    <div class="message-meta">
+      {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
         {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-      </div>
-    {/if}
+      {/if}
 
-    [[ if (hasUser) { ]]
-    <span class="message-user-container">
-      <span class="message-user">
-        <span class="icon icon-hipster"></span>
-        [[-user.displayName]]
+      [[ if (hasUser) { ]]
+      <span class="message-user-container">
+        <span class="message-user">
+          <span class="icon icon-hipster"></span>
+          [[-user.displayName]]
+        </span>
       </span>
-    </span>
-    [[ } ]]
+      [[ } ]]
+    </div>
   </li>
 </script>

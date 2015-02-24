@@ -5,7 +5,7 @@
   {if $venue->getCoordinates()}
     <a href="https://maps.google.com/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" class="location button button-transparent hasLabel hasIcon" target="_blank">
       <span class="icon icon-location"></span>
-      <span class="label">{translate 'Navigieren'}</span>
+      <span class="label">{translate 'Karte'}</span>
     </a>
   {/if}
 </div>

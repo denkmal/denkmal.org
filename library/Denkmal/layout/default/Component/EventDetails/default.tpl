@@ -1,4 +1,4 @@
-{if $viewer || $venue->getCoordinates() || $messageList->getCount()}
+{if $viewer || $venue->getCoordinates()}
   <div class="head clearfix">
     {if $viewer}
       {if !$messageList->getCount()}

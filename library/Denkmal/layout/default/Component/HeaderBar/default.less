@@ -6,19 +6,25 @@
 
 .navButton {
   color: @colorFgTheme;
-  opacity: .5;
+  opacity: .7;
 
   .label {
     text-decoration: none;
+  }
+
+  .icon {
+    font-size: 1.1em;
   }
 
   &:hover {
     opacity: 1;
   }
 
-  &.addButton {
+  &.addButton, &.nowButton {
     float: right;
+  }
 
+  &.addButton {
     @media (min-width: @breakpointMedium) {
       padding: 0 12px;
     }
@@ -35,7 +41,7 @@
     }
 
     .icon {
-      font-size: 1.4em;
+      font-size: 1.3em;
     }
   }
 }

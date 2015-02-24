@@ -13,7 +13,7 @@ class Denkmal_FormField_VenueNearby extends CM_FormField_Abstract {
     public function ajax_getVenuesByCoordinates(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
         $lat = $params->getFloat('lat');
         $lon = $params->getFloat('lon');
-        $radius = $params->getFloat('radius');
+        $radius = $params->getFloat('radius', 100);
         $radius = max(50, min(500, $radius));
         $geoPoint = new CM_Geo_Point($lat, $lon);
 

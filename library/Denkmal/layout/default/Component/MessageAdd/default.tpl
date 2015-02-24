@@ -1,5 +1,15 @@
 <div class="teaser">
-  {button_link label={translate 'Was loift?!'} icon='chat' class='showForm' theme='highlight'}
+  <div class="message-action">
+    {button_link label={translate 'Was loift?!'} icon='chat' class='showForm' theme='highlight'}
+  </div>
+
+  <div class="account">
+    {if $viewer}
+      {button_link icon='hipster' theme='transparent' label=$viewer->getDisplayName() page='Denkmal_Page_Account'}
+    {else}
+      {button_link icon='hipster' theme='transparent' page='Denkmal_Page_Login'}
+    {/if}
+  </div>
 </div>
 
 <div class="form">

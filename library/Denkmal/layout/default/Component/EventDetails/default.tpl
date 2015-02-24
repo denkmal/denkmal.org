@@ -8,4 +8,6 @@
   {/if}
 </div>
 
-{component name='Denkmal_Component_MessageList_Venue' venue=$venue}
+{if $messageList->getCount()}
+  {component name='Denkmal_Component_MessageList_Venue' venue=$venue}
+{/if}

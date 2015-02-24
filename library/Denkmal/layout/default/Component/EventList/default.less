@@ -24,12 +24,11 @@
 
   .link {
     display: inline-block;
-    margin: 2px;
     width: @socialFollowSize;
     line-height: @socialFollowSize;
     border-radius: 50%;
-    background-color: @colorBg;
-    font-size: @socialFollowSize - 20px;
-    color: @colorFgSubtle;
+    font-size: @socialFollowSize - 12px;
+    color: fadeout(darken(@colorBgBody, 4), 10);
+    text-shadow: 1px 1px 2px @colorBgBody, 0 0 0 @colorFg, 1px 1px 2px @colorBgBody;
   }
 }

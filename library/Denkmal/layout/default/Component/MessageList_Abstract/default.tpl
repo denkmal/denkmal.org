@@ -37,14 +37,12 @@
       {if $message->getUser() || ($viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN))}
         <div class="message-meta">
           {if $message->getUser()}
-            <span class="message-user-container">
             <span class="message-user">
               <span class="username nowrap">
                 {$message->getUser()->getDisplayName()|escape}
               </span>
               <span class="icon icon-hipster"></span>
             </span>
-          </span>
           {/if}
           {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
             {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
@@ -90,12 +88,12 @@
 
     <div class="message-meta">
       [[ if (hasUser) { ]]
-      <span class="message-user-container">
         <span class="message-user">
+          <span class="username nowrap">
+            [[-user.displayName]]
+          </span>
           <span class="icon icon-hipster"></span>
-          [[-user.displayName]]
         </span>
-      </span>
       [[ } ]]
       {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
         {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}

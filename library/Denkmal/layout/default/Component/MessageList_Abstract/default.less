@@ -2,7 +2,7 @@
 
   > .message {
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     padding-top: 10px;
 
     &:before {
@@ -25,10 +25,6 @@
 
     &:first-child {
       margin-top: 5px;
-    }
-
-    .message-actions {
-      text-align: right;
     }
 
     .message-header {
@@ -62,6 +58,7 @@
       font-style: italic;
 
       .message-tags {
+        margin-bottom: 12px;
         text-align: center;
 
         .tag {
@@ -98,26 +95,32 @@
       }
 
       .message-text {
-        padding: 15px;
+        margin-bottom: 12px;
+        padding: 0 15px;
       }
+    }
+
+    .message-actions {
+      float: right;
     }
 
     .message-user-container {
       display: block;
       text-align: right;
-      padding-right: 30px;
+      line-height: 1;
 
       .message-user {
         position: relative;
+        display: inline-block;
+        padding: 4px 10px 0;
+        text-align: center;
         font-size: @fontSizeSmall;
+        color: lighten(@colorFgSubtle, 10);
 
-        .icon-hipster {
-          position: absolute;
-          left: 50%;
-          top: @fontSizeSmall - 4px;
-          transform: translateX(-50%);
-
-          line-height: 1;
+        .username {
+          display: block;
+          max-width: 80px;
+          margin-bottom: -3px;
         }
       }
     }

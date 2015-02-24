@@ -2,12 +2,6 @@
   {foreach $messageList->getItems() as $message}
     <li class="message" data-id="{$message->getId()|escape}">
 
-      {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
-        <div class="message-actions">
-          {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-        </div>
-      {/if}
-
       <div class="message-header nowrap">
         <span class="message-venue">
           {$message->getVenue()->getName()|escape}
@@ -40,11 +34,19 @@
         {/if}
       </div>
 
+      {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
+        <div class="message-actions">
+          {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+        </div>
+      {/if}
+
       {if $message->getUser()}
         <span class="message-user-container">
           <span class="message-user">
+            <span class="username nowrap">
+              {$message->getUser()->getDisplayName()|escape}
+            </span>
             <span class="icon icon-hipster"></span>
-            {$message->getUser()->getDisplayName()|escape}
           </span>
         </span>
       {/if}
@@ -54,12 +56,6 @@
 
 <script type="text/template" class="template-message">
   <li class="message" data-id="[[-id]]">
-
-    {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
-      <div class="message-actions">
-        {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-      </div>
-    {/if}
 
     <div class="message-header nowrap">
       <div class="message-venue">
@@ -90,6 +86,12 @@
       </div>
       [[ } ]]
     </div>
+
+    {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
+      <div class="message-actions">
+        {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+      </div>
+    {/if}
 
     [[ if (hasUser) { ]]
     <span class="message-user-container">

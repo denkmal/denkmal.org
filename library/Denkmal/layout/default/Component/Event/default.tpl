@@ -19,7 +19,7 @@
         {/foreach}
       </ul>
     {/if}
-    <span class="event-header">
+    <span class="event-header nowrap">
       {if $venue->getUrl()}
         <a href="{$venue->getUrl()|escape}" target="_blank" class="event-location nowrap">{$venue->getName()|escape}</a>
        {else}

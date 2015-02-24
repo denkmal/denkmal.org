@@ -1,6 +1,5 @@
 .eventDescription {
   position: relative;
-  overflow: hidden;
   color: @colorFg;
   font-size: @fontSize - 1px;
 
@@ -28,10 +27,12 @@
 
   .tags {
     float: right;
-    margin-top: -3px;
+    margin-left: 5px;
     margin-right: 10px;
+    line-height: 0;
 
     @media (min-width: @breakpointMini) {
+      margin-top: -4px;
       margin-right: 25px;
     }
 

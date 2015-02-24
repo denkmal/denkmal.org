@@ -16,7 +16,7 @@
     </span>
     <p class="event-details">
       {if $eventDuplicates->getCount()}
-        <span class="icon icon-info"></span>
+        <span class="icon icon-error"></span>
       {/if}
       <span class="description">{eventtext text=$event->getDescription()}</span></p>
   </div>
@@ -25,7 +25,7 @@
     <div class="event-edit toggleNext-content">
       {if $eventDuplicates->getCount()}
         <div class="info info-duplicate">
-          <span class="icon icon-info"></span>
+          <span class="icon icon-error"></span>
           {translate 'Es sind bereits {$count} Event(s) an diesem Tag für {$venue} eingetragen.' count=$eventDuplicates->getCount() venue="<span class=\"venue\">{$venue->getName()|escape}</span>"}
         </div>
       {/if}

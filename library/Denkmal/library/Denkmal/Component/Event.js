@@ -22,15 +22,6 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     }
   },
 
-  childrenEvents: {
-    'Denkmal_Component_SongPlayerButton play': function(view, song) {
-      this.showSongDetails(song.label);
-    },
-    'Denkmal_Component_SongPlayerButton pause': function() {
-      this.hideSongDetails();
-    }
-  },
-
   /**
    * @param {Boolean} [state]
    */
@@ -70,18 +61,5 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     });
 
     this._detailsVisible = state;
-  },
-
-  hideSongDetails: function() {
-    this.$('.event').removeClass('song-details-open');
-    this.$('.songDetails').stop(true).slideUp('fast');
-  },
-
-  /**
-   * @param {String} label
-   */
-  showSongDetails: function(label) {
-    this.$('.event').addClass('song-details-open');
-    this.$('.songDetails').stop(true).slideDown('fast').find('.label').text(label);
   }
 });

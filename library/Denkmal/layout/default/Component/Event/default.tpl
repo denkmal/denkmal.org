@@ -1,6 +1,3 @@
-<div class='songDetails nowrap'>
-  <span class="icon icon-music"></span><span class="label"></span>
-</div>
 <div class="event{if $event->getStarred()} starred{/if}">
   {if $event->getSong()}
     {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
@@ -11,7 +8,7 @@
   <div class="eventDescription">
     <time class="time">
       <span class="icon icon-time"></span>
-      {date_time date=$event->getFrom()}{if $event->getUntil()} - {date_time date=$event->getUntil()}{/if}
+      {date_time date=$event->getFrom()}
     </time>
     <span class="event-header">
       {if $venue->getUrl()}

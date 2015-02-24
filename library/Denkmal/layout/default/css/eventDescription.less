@@ -4,7 +4,7 @@
   color: @colorFg;
   font-size: @fontSize - 1px;
 
-  @media (min-width: 360px) {
+  @media (min-width: @breakpointMini) {
     font-size: @fontSize;
     margin-top: 3px;
   }
@@ -13,7 +13,7 @@
     display: block;
     font-size: @fontSizeSmall;
 
-    @media (min-width: 360px) {
+    @media (min-width: @breakpointMini) {
       float: right;
       font-size: @fontSize;
     }
@@ -53,12 +53,6 @@
           border-bottom-style: solid;
         }
       }
-    }
-  }
-
-  @media (min-width: @breakpointMedium) {
-    .event-header {
-      display: inline-block;
     }
   }
 }

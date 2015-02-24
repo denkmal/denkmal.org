@@ -10,11 +10,11 @@ class Denkmal_FormAction_ChangePassword_Process extends CM_FormAction_Abstract {
         /** @var Denkmal_Model_User $user */
         $user = $response->getViewer(true);
 
-        if (!Denkmal_App_Auth::checkLogin($user->getUsername(), $params->getString('old_password'))) {
-            $response->addError($response->getRender()->getTranslation('Incorrect old password.'), 'old_password');
+        if (!Denkmal_App_Auth::checkLogin($user->getEmail(), $params->getString('old_password'))) {
+            $response->addError($response->getRender()->getTranslation('Falsches Passwort.'), 'old_password');
         } else {
             if ($params->getString('new_password') != $params->getString('new_password_confirm')) {
-                $response->addError($response->getRender()->getTranslation('Passwords do not match.'), 'new_password_confirm');
+                $response->addError($response->getRender()->getTranslation('Passwörter stimmen nicht überein.'), 'new_password_confirm');
             }
         }
     }
@@ -23,7 +23,6 @@ class Denkmal_FormAction_ChangePassword_Process extends CM_FormAction_Abstract {
         /** @var Denkmal_Model_User $user */
         $user = $response->getViewer(true);
         $user->setPassword($params->getString('new_password'));
-        $response->addMessage($response->getRender()->getTranslation('Password changed.'));
-        $response->popinComponent();
+        $response->addMessage($response->getRender()->getTranslation('Passwort wurde geändert.'));
     }
 }

@@ -24,6 +24,21 @@ class Denkmal_Site extends CM_Site_Abstract {
     }
 
     /**
+     * @return boolean
+     */
+    public function getAnonymousMessagingDisabled() {
+        return (bool) CM_Option::getInstance()->get('denkmal.anonymousMessagingDisabled');
+    }
+
+    /**
+     * @param bool $state
+     */
+    public function setAnonymousMessagingDisabled($state) {
+        $state = (int) $state;
+        CM_Option::getInstance()->set('denkmal.anonymousMessagingDisabled', $state);
+    }
+
+    /**
      * @return int
      */
     public static function getDayOffset() {

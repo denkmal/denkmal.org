@@ -1,1 +1,1 @@
-{translate 'Mein Account'}
+{$viewer->getDisplayName()|escape}

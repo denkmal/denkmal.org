@@ -76,10 +76,14 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
    */
   _setStateSuccess: function(venueList) {
     var $select = this.getInput();
+    var valueBackup = $select.val();
     $select.empty();
     _.each(venueList, function(venue) {
       $select.append($('<option></option>').attr('value', venue.id).text(venue.name));
     });
+    if (null !== valueBackup) {
+      $select.val(valueBackup);
+    }
     $select.trigger('change');
 
     this.trigger('success');

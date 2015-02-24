@@ -7,19 +7,24 @@ class Denkmal_Paging_Tag_VenueUserLatestTest extends CMTest_TestCase {
     }
 
     public function testGetTags() {
+        $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
         $tag1 = Denkmal_Model_Tag::create('foo');
         $tag2 = Denkmal_Model_Tag::create('bar');
         $tag3 = Denkmal_Model_Tag::create('zoo');
+        $tag4 = Denkmal_Model_Tag::create('tag4');
 
         $venue = Denkmal_Model_Venue::create('Example', true, false);
-        $message1 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 1', null, new DateTime());
+        $message1 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 1', null, new DateTime());
         $message1->getTags()->add($tag1);
         $message1->getTags()->add($tag2);
 
         $this->assertEquals(array($tag1, $tag2), new Denkmal_Paging_Tag_VenueUserLatest($venue));
 
-        $message2 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 2', null, new DateTime());
+        $message2 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 2', null, new DateTime());
         $message2->getTags()->add($tag3);
+
+        $messageWithoutUser = Denkmal_Model_Message::create($venue, 'client', null, 'Message 3', null, new DateTime());
+        $messageWithoutUser->getTags()->add($tag4);
 
         $this->assertEquals(array($tag1, $tag2), new Denkmal_Paging_Tag_VenueUserLatest($venue));
 
@@ -28,11 +33,12 @@ class Denkmal_Paging_Tag_VenueUserLatestTest extends CMTest_TestCase {
     }
 
     public function testAggregation() {
+        $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
         $venue = Denkmal_Model_Venue::create('Example', true, false);
 
-        $message1 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 1', null, (new DateTime())->sub(new DateInterval('PT3S')));
-        $message2 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 2', null, (new DateTime())->sub(new DateInterval('PT2S')));
-        $message3 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 3', null, (new DateTime())->sub(new DateInterval('PT1S')));
+        $message1 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 1', null, (new DateTime())->sub(new DateInterval('PT3S')));
+        $message2 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 2', null, (new DateTime())->sub(new DateInterval('PT2S')));
+        $message3 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 3', null, (new DateTime())->sub(new DateInterval('PT1S')));
 
         $tag1 = Denkmal_Model_Tag::create('foo');
         $tag2 = Denkmal_Model_Tag::create('bar');
@@ -51,11 +57,12 @@ class Denkmal_Paging_Tag_VenueUserLatestTest extends CMTest_TestCase {
     }
 
     public function testTimeLimit() {
+        $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
         $venue = Denkmal_Model_Venue::create('Example', true, false);
 
-        $message1 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 1', null, (new DateTime())->sub(new DateInterval('PT2H')));
-        $message2 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 2', null, (new DateTime())->sub(new DateInterval('PT30M')));
-        $message3 = Denkmal_Model_Message::create($venue, 'client', null, 'Message 3', null, new DateTime());
+        $message1 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 1', null, (new DateTime())->sub(new DateInterval('PT2H')));
+        $message2 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 2', null, (new DateTime())->sub(new DateInterval('PT30M')));
+        $message3 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 3', null, new DateTime());
 
         $tag1 = Denkmal_Model_Tag::create('foo');
         $tag2 = Denkmal_Model_Tag::create('bar');

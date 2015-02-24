@@ -10,10 +10,19 @@
       <span class="icon icon-time"></span>
       {date_time date=$event->getFrom()}
     </time>
+    {if $tagList->getCount()}
+      <ul class="tags">
+        {foreach $tagList as $tag}
+          <li class="tag showDetails">
+            {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
+          </li>
+        {/foreach}
+      </ul>
+    {/if}
     <span class="event-header">
       {if $venue->getUrl()}
         <a href="{$venue->getUrl()|escape}" target="_blank" class="event-location nowrap">{$venue->getName()|escape}</a>
-      {else}
+       {else}
         <span class="event-location nowrap">{$venue->getName()|escape}</span>
       {/if}
     </span>

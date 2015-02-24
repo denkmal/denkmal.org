@@ -16,6 +16,13 @@
   {form name='Denkmal_Form_Message'}
     <div class="form-fields">
 
+      <div class="geo-success-visible">
+        {formField name='venue' class='noLabel' labelPrefix={translate 'Ort'}}
+      </div>
+      {formField name='tags' class='noLabel'}
+      {formField name='text' class='noLabel' placeholder={translate 'Deine Nachricht'}}
+      {formField name='image' class='noLabel'}
+
       <div class="venueNearby-overlay geo-waiting-visible">
         <div class="venueNearby-overlay-content geo-waiting-visible">
           <div class="spinner"></div>
@@ -34,13 +41,6 @@
           </div>
         </div>
       </div>
-
-      <div class="geo-success-visible">
-        {formField name='venue' class='noLabel' labelPrefix={translate 'Ort'}}
-      </div>
-      {formField name='tags' class='noLabel'}
-      {formField name='text' class='noLabel' placeholder={translate 'Deine Nachricht'}}
-      {formField name='image' class='noLabel'}
 
     </div>
   {formAction action='Create' icon='send' label={translate 'Senden'} alternatives={button_link label={translate 'Abbrechen'} class='hideForm'}}

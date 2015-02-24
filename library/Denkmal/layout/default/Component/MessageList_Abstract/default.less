@@ -14,7 +14,13 @@
       top: 0;
       height: 1px;
       background-color: @colorFgBorderEmphasize3;
-      margin: 0 10%;
+      margin-left: 25px;
+      margin-right: 25px;
+
+      @media (min-width: @breakpointSmall) {
+        margin-left: 10%;
+        margin-right: 10%;
+      }
     }
 
     &:first-child {
@@ -52,11 +58,12 @@
       font-style: italic;
 
       .message-text {
-        padding: 0 30px;
+        padding: 0 15px;
       }
 
       .message-tags {
         text-align: center;
+
         .tag {
           width: 70px;
           height: 70px;
@@ -94,6 +101,5 @@
         }
       }
     }
-
   }
 }

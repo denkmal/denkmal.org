@@ -42,7 +42,7 @@ class Denkmal_Site extends CM_Site_Abstract {
      * @return string
      */
     public function getLoginPage() {
-        return 'Denkmal_Page_Chat';
+        return 'Denkmal_Page_Now';
     }
 
     /**

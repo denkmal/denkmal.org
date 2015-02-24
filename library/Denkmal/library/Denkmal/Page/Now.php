@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Page_Chat extends Denkmal_Page_Abstract {
+class Denkmal_Page_Now extends Denkmal_Page_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         /** @var Denkmal_Site $site */

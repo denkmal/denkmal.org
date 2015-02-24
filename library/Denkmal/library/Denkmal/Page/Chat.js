@@ -1,11 +1,11 @@
 /**
- * @class Denkmal_Page_Chat
+ * @class Denkmal_Page_Now
  * @extends Denkmal_Page_Abstract
  */
-var Denkmal_Page_Chat = Denkmal_Page_Abstract.extend({
+var Denkmal_Page_Now = Denkmal_Page_Abstract.extend({
 
   /** @type String */
-  _class: 'Denkmal_Page_Chat',
+  _class: 'Denkmal_Page_Now',
 
   ready: function() {
     this.bindStream('global-internal', cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(message) {

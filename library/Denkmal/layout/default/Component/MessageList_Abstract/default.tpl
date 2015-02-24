@@ -86,18 +86,20 @@
       [[ } ]]
     </div>
 
-    <div class="message-meta">
-      [[ if (hasUser) { ]]
-        <span class="message-user">
-          <span class="username nowrap">
-            [[-user.displayName]]
+    [[ if (hasUser || isAdmin) { ]]
+      <div class="message-meta">
+        [[ if (hasUser) { ]]
+          <span class="message-user">
+            <span class="username nowrap">
+              [[-user.displayName]]
+            </span>
+            <span class="icon icon-hipster"></span>
           </span>
-          <span class="icon icon-hipster"></span>
-        </span>
-      [[ } ]]
-      {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
-        {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-      {/if}
-    </div>
+        [[ } ]]
+        [[ if (isAdmin) { ]]
+          {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+        [[ } ]]
+      </div>
+    [[ } ]]
   </li>
 </script>

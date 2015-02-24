@@ -7,6 +7,9 @@ var Denkmal_Component_MessageList_Abstract = Denkmal_Component_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Component_MessageList_Abstract',
 
+  /** @type {Boolean} */
+  isAdmin: false,
+
   events: {
     'click .deleteMessage': function(event) {
       var messageId = $(event.currentTarget).closest('.message').data('id');
@@ -43,7 +46,8 @@ var Denkmal_Component_MessageList_Abstract = Denkmal_Component_Abstract.extend({
       hasTags: (message.tagList.length > 0),
       tagList: message.tagList,
       hasUser: (message.user !== null),
-      user: message.user
+      user: message.user,
+      isAdmin: this.isAdmin
     }).prependTo(this.$('.messageList'));
   }
 });

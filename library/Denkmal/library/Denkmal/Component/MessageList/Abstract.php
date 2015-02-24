@@ -5,7 +5,11 @@ abstract class Denkmal_Component_MessageList_Abstract extends Denkmal_Component_
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $messageList = $this->_params->getPaging('messageList');
 
+        $viewer = $environment->getViewer();
+        $isAdmin = $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN);
+
         $viewResponse->set('messageList', $messageList);
+        $viewResponse->getJs()->setProperty('isAdmin', $isAdmin);
     }
 
     public function ajax_deleteMessage(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {

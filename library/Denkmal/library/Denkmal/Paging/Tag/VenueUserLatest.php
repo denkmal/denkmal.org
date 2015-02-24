@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Paging_Tag_Venue_Hipster extends Denkmal_Paging_Tag_Abstract {
+class Denkmal_Paging_Tag_VenueUserLatest extends Denkmal_Paging_Tag_Abstract {
 
     /**
      * @param Denkmal_Model_Venue $venue
@@ -21,7 +21,7 @@ class Denkmal_Paging_Tag_Venue_Hipster extends Denkmal_Paging_Tag_Abstract {
 
         $order = '`m`.`created` DESC, `denkmal_model_tag_model`.tagId ASC';
         $source = new CM_PagingSource_Sql('`denkmal_model_tag_model`.tagId', 'denkmal_model_tag_model', $where, $order, $join, $group);
-        $source->enableCache();
+        $source->enableCacheLocal(100);
 
         parent::__construct($source);
     }

@@ -55,35 +55,24 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   _setStateWaiting: function() {
-    this._setStateCssClass('waiting');
+    this.trigger('waiting');
   },
 
   _setStateFailure: function() {
-    this._setStateCssClass('failure');
+    this.trigger('failure');
   },
 
   /**
    * @param {Array} venueList
    */
   _setStateSuccess: function(venueList) {
-    this._setStateCssClass('success');
-
     var $select = this.getInput();
     $select.empty();
     _.each(venueList, function(venue) {
       $select.append($('<option></option>').attr('value', venue.id).text(venue.name));
     });
     $select.trigger('change');
-  },
 
-  /**
-   * @param {String} state
-   */
-  _setStateCssClass: function(state) {
-    var classes = this.el.className.split(' ').filter(function(c) {
-      return c.lastIndexOf('state-', 0) !== 0;
-    });
-    classes.push('state-' + state);
-    this.el.className = $.trim(classes.join(' '));
+    this.trigger('success');
   }
 });

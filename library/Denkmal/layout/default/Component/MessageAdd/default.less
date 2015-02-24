@@ -37,6 +37,29 @@
     margin: 8px;
   }
 
+  .form-fields {
+    position: relative;
+
+    .venueNearby-waiting-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: fadeout(@colorBg, 10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .venueNearby-waiting-info {
+        text-align: center;
+        text-shadow: 0 0 2px @colorBg;
+
+        .spinner, .text {
+          display: block;
+        }
+      }
+    }
+  }
+
   .formField.text, .formField.image {
     display: none;
   }
@@ -52,4 +75,14 @@
       display: block;
     }
   }
+}
+
+&:not(.state-geo-waiting) .geo-waiting-visible {
+  display: none !important;
+}
+&:not(.state-geo-success) .geo-success-visible {
+  display: none !important;
+}
+&:not(.state-geo-failure) .geo-failure-visible {
+  display: none !important;
 }

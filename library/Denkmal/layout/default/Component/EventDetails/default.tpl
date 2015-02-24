@@ -1,39 +1,20 @@
-{function event}
-  <li class="previewEvent {if isset($class)}{$class}{/if}">
-    <div class="eventDescription">
-      <strong>{date_weekday date=$event->getFrom()} {date time=$event->getFrom()->getTimestamp()}</strong>
-      <span class="event-details">
-        <span class="description">{eventtext text=$event->getDescription()}</span>
-      </span>
-    </div>
-    {if $event->getSong()}
-      {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
+{if $viewer || $venue->getCoordinates() || $messageList->getCount()}
+  <div class="head clearfix">
+    {if $viewer}
+      {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Was loift?!'}}
     {/if}
-  </li>
-{/function}
-
-{if $futureEvents->getCount() || $venue->getCoordinates()}
-  {if $venue->getCoordinates()}
-    <div class="map">
-      <a href="https://maps.google.com/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target="_blank">
-        <img src="{googlemaps_img coordinates=$venue->getCoordinates() width=300 height=300 scale=2}">
+    {if $venue->getCoordinates()}
+      <a href="https://maps.google.com/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" class="location button button-transparent hasLabel hasIcon" target="_blank">
+        <span class="icon icon-location"></span>
+        <span class="label">{translate 'Karte'}</span>
       </a>
-    </div>
-  {/if}
-  {if $futureEvents->getCount()}
-    <p class="more-events">{translate 'Weitere Events:'}</p>
-    <ul class="previewEvents">
-      {foreach $futureEvents as $futureEvent}
-        {event event=$futureEvent}
-      {/foreach}
-    </ul>
-  {else}
-    <div class="noContent">
-      {translate 'Keine weiteren Events'}
-    </div>
+    {/if}
+  </div>
+  {if $messageList->getCount()}
+    {component name='Denkmal_Component_MessageList_Venue' venue=$venue}
   {/if}
 {else}
   <div class="noContent">
-    {translate 'Keine zusätzlichen Informationen'}
+    {translate 'Keine weiteren Informationen'}
   </div>
 {/if}

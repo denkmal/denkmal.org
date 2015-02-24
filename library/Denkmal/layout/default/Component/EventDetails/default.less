@@ -8,57 +8,21 @@
   background-color: @colorBgEmphasize1;
 }
 
-.more-events {
-  font-size: @fontSizeSmall;
-  padding: 0 8px 3px 8px;
-}
-
-.previewEvents {
-  overflow: hidden;
-
-  .previewEvent {
-    position: relative;
-    padding: 7px 8px 7px @navButtonSize;
-    border-bottom: 1px solid @colorFgBorderEmphasize2;
-    background-color: @colorBg;
-  }
-}
-
-.Denkmal_Component_SongPlayerButton {
-  left: 0;
-}
-
-.map {
-  padding: 5px;
-  text-align: center;
-
-  a {
+.head {
+  .location {
     display: inline-block;
-    max-width: 300px;
-  }
-
-  img {
-    max-width: 100%;
-    display: inline-block;
-    border-radius: 10px;
-    border: 1px solid @colorFgBorderEmphasize3;
-  }
-
-  @media (min-width: @breakpointSmall) {
     float: right;
-    margin-top: 14px;
-    margin-left: 12px;
 
-    img {
-      width: 160px;
-      height: 160px;
+    &, &:visited {
+      color: @colorFgButton;
     }
   }
 }
 
+.Denkmal_Component_MessageList_Venue {
+  margin-top: 15px;
+}
+
 .noContent {
-  overflow: hidden;
-  border: 2px dashed @colorFgBorderEmphasize3;
-  margin: 20px 5px 5px;
-  color: @colorFgSubtle;
+  margin: 0;
 }

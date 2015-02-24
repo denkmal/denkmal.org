@@ -25,9 +25,13 @@
 
       <div class="venueNearby-overlay geo-failure-visible">
         <div class="venueNearby-overlay-content geo-failure-visible">
-          {translate 'Standortbestimmung fehlgeschlagen.'}<br />
-          {translate 'Du musst Dich in der Nähe eines Denkmal Venues befinden, und GPS aktivieren.'}
-          {button_link label={translate 'Standort bestimmen'} icon='location' class='retryLocation'}
+          <p class="text">
+            {translate 'Standortbestimmung fehlgeschlagen.'}<br />
+            {translate 'Du musst Dich in der Nähe eines Denkmal Venues befinden, und GPS aktivieren.'}
+          </p>
+          <div class="action">
+            {button_link label={translate 'Standort bestimmen'} icon='location' class='retryLocation'}
+          </div>
         </div>
       </div>
 

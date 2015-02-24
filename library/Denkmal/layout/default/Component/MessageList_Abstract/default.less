@@ -2,8 +2,7 @@
 
   > .message {
     position: relative;
-
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding-top: 10px;
 
     &:before {
@@ -39,17 +38,17 @@
     }
 
     .timeago {
-      font-size: @fontSizeTiny;
-      color: lighten(@colorFgSubtle, 20);
-
       position: absolute;
       left: 50%;
-      top: 5px;
+      top: 6px;
       transform: translateX(-50%);
+      padding: 2px 4px;
+      font-size: @fontSizeTiny;
+      color: lighten(@colorFgSubtle, 20);
     }
 
     .message-content {
-      margin-top: 12px;
+      margin-top: 16px;
       font-style: italic;
 
       .message-text {

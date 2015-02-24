@@ -32,11 +32,11 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     'Denkmal_Form_Message success': function() {
       this._setStateActive(false);
     },
-    'Denkmal_FormField_Tags toggleSpecial.text': function(view, data) {
-      this.toggleText(data.state);
+    'Denkmal_FormField_Tags toggleSpecial.text': function(view, state) {
+      this.toggleText(state);
     },
-    'Denkmal_FormField_Tags toggleSpecial.image': function(view, data) {
-      this.toggleImage(data.state);
+    'Denkmal_FormField_Tags toggleSpecial.image': function(view, state) {
+      this.toggleImage(state);
     },
     'Denkmal_FormField_VenueNearby state-geo-change': function(view, state) {
       if ('success' === state || !this._getStateActiveLocked()) {

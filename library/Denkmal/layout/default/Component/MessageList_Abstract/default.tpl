@@ -34,7 +34,7 @@
         {/if}
       </div>
 
-      {if $message->getUser() || ($viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN))}
+      {if $message->getUser() || $canDelete}
         <div class="message-meta message-sheet">
           {if $message->getUser()}
             <span class="message-user">
@@ -44,7 +44,7 @@
               <span class="icon icon-hipster"></span>
             </span>
           {/if}
-          {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
+          {if $canDelete}
             {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
           {/if}
         </div>
@@ -86,7 +86,7 @@
       [[ } ]]
     </div>
 
-    [[ if (hasUser || isAdmin) { ]]
+    [[ if (hasUser || canDelete) { ]]
       <div class="message-meta message-sheet">
         [[ if (hasUser) { ]]
           <span class="message-user">
@@ -96,7 +96,7 @@
             <span class="icon icon-hipster"></span>
           </span>
         [[ } ]]
-        [[ if (isAdmin) { ]]
+        [[ if (canDelete) { ]]
           {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
         [[ } ]]
       </div>

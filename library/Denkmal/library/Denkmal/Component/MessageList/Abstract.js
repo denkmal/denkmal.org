@@ -8,7 +8,7 @@ var Denkmal_Component_MessageList_Abstract = Denkmal_Component_Abstract.extend({
   _class: 'Denkmal_Component_MessageList_Abstract',
 
   /** @type {Boolean} */
-  isAdmin: false,
+  canDelete: null,
 
   events: {
     'click .deleteMessage': function(event) {
@@ -61,7 +61,7 @@ var Denkmal_Component_MessageList_Abstract = Denkmal_Component_Abstract.extend({
       tagList: message.tagList,
       hasUser: (message.user !== null),
       user: message.user,
-      isAdmin: this.isAdmin
+      canDelete: this.canDelete
     }).prependTo(this.$('.messageList'));
   }
 });

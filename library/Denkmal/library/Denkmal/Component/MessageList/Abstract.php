@@ -6,10 +6,11 @@ abstract class Denkmal_Component_MessageList_Abstract extends Denkmal_Component_
         $messageList = $this->_params->getPaging('messageList');
 
         $viewer = $environment->getViewer();
-        $isAdmin = $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN);
+        $canDelete = $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN);
 
         $viewResponse->set('messageList', $messageList);
-        $viewResponse->getJs()->setProperty('isAdmin', $isAdmin);
+        $viewResponse->set('canDelete', $canDelete);
+        $viewResponse->getJs()->setProperty('canDelete', $canDelete);
     }
 
     public function ajax_deleteMessage(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {

@@ -1,5 +1,13 @@
 <div class="teaser">
   {button_link label={translate 'Was loift?!'} icon='chat' class='showForm' theme='highlight'}
+
+  <div class="account">
+    {if $viewer}
+      {component name='Denkmal_Component_Logout'}
+    {else}
+      {button_link icon='hipster' theme='transparent' page='Denkmal_Page_Login'}
+    {/if}
+  </div>
 </div>
 
 <div class="form">

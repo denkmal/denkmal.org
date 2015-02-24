@@ -5,44 +5,42 @@
 var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   _class: 'Denkmal_FormField_VenueNearby',
 
-  /** @var Number */
+  /** @type {Number} */
   _watchId: null,
+
+  /** @type {Number} */
+  _timeoutId: null,
 
   ready: function() {
     this.detectLocation();
   },
 
-  /**
-   * @return Promise
-   */
   detectLocation: function() {
     if (!'geolocation' in navigator) {
       this._setStateFailure();
       return;
     }
 
+    var self = this;
     this._setStateWaiting();
 
-    var self = this;
-    var deferred = $.Deferred();
-    navigator.geolocation.getCurrentPosition(deferred.resolve, deferred.reject);
+    if (!this._watchId) {
+      this._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
+        self._lookupCoordinates(position.coords.latitude, position.coords.longitude);
+      }, 1000), function() {
+        self._setStateFailure();
+      });
+      this.on('destruct', function() {
+        navigator.geolocation.clearWatch(self._watchId);
+      });
+    }
 
-    deferred.then(function(position) {
-      if (!self._watchId) {
-        self._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
-          self._lookupCoordinates(position.coords.latitude, position.coords.longitude)
-        }, 1000));
-        self.on('destruct', function() {
-          navigator.geolocation.clearWatch(this._watchId);
-        });
-      }
-      return self._lookupCoordinates(position.coords.latitude, position.coords.longitude);
-    });
-    deferred.fail(function() {
+    if (this._timeoutId) {
+      window.clearTimeout(this._timeoutId);
+    }
+    this._timeoutId = this.setTimeout(function() {
       self._setStateFailure();
-    });
-
-    return deferred;
+    }, 1000 * 10);
   },
 
   /**

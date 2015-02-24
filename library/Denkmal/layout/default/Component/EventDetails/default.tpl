@@ -1,5 +1,5 @@
 <div class="head clearfix">
-  {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Was loift?!'} theme='highlight'}
+  {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Was loift?!'}}
   {if $venue->getCoordinates()}
     <a href="https://maps.google.com/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" class="location button button-transparent hasLabel hasIcon" target="_blank">
       <span class="icon icon-location"></span>

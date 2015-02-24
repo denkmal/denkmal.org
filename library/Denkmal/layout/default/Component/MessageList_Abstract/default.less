@@ -58,7 +58,7 @@
       font-style: italic;
 
       .message-tags {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         text-align: center;
 
         .tag {
@@ -94,8 +94,7 @@
       }
 
       .message-text {
-        margin-bottom: 12px;
-        padding: 0 15px;
+        margin-bottom: 10px;
       }
     }
 
@@ -108,7 +107,6 @@
       .message-user {
         position: relative;
         display: inline-block;
-        padding: 4px 10px 0;
         text-align: center;
         font-size: @fontSizeSmall;
         color: lighten(@colorFgSubtle, 10);
@@ -118,6 +116,16 @@
           max-width: 80px;
           margin-bottom: -3px;
         }
+      }
+    }
+
+    .message-sheet {
+      padding-left: 10%;
+      padding-right: 10%;
+
+      @media (min-width: @breakpointMini) {
+        padding-left: 15%;
+        padding-right: 15%;
       }
     }
   }

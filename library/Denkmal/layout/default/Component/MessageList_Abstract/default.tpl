@@ -28,14 +28,14 @@
           {/strip}
         {/if}
         {if $message->hasText()}
-          <div class="message-text usertext">
+          <div class="message-text message-sheet usertext">
             {$message->getText()|escape}
           </div>
         {/if}
       </div>
 
       {if $message->getUser() || ($viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN))}
-        <div class="message-meta">
+        <div class="message-meta message-sheet">
           {if $message->getUser()}
             <span class="message-user">
               <span class="username nowrap">
@@ -80,14 +80,14 @@
       </ul>
       [[ } ]]
       [[ if (hasText) { ]]
-      <div class="message-text usertext">
+      <div class="message-text message-sheet usertext">
         [[-text]]
       </div>
       [[ } ]]
     </div>
 
     [[ if (hasUser || isAdmin) { ]]
-      <div class="message-meta">
+      <div class="message-meta message-sheet">
         [[ if (hasUser) { ]]
           <span class="message-user">
             <span class="username nowrap">

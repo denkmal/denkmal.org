@@ -22,25 +22,25 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
     }
 
     var self = this;
+
     this._setStateWaiting();
+    window.clearTimeout(this._timeoutId);
+    this._timeoutId = this.setTimeout(function() {
+      self._setStateFailure();
+    }, 1000 * 10);
 
     if (!this._watchId) {
       this._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
+        window.clearTimeout(self._timeoutId);
         self._lookupCoordinates(position.coords.latitude, position.coords.longitude);
       }, 1000), function() {
+        window.clearTimeout(self._timeoutId);
         self._setStateFailure();
       });
       this.on('destruct', function() {
         navigator.geolocation.clearWatch(self._watchId);
       });
     }
-
-    if (this._timeoutId) {
-      window.clearTimeout(this._timeoutId);
-    }
-    this._timeoutId = this.setTimeout(function() {
-      self._setStateFailure();
-    }, 1000 * 10);
   },
 
   /**

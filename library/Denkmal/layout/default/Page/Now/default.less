@@ -3,6 +3,16 @@
 }
 
 .Denkmal_Component_MessageList_Abstract {
-  padding: 8px;
-  max-width: 550px;
+  padding: 20px 12px;
+
+  @media (min-width: @breakpointSmall) {
+    margin: 8px;
+    border: 1px solid @colorFgBorderEmphasize2;
+    border-radius: 4px;
+    background-color: @colorBgEmphasize1;
+
+    .messageList > .message .message-header {
+      background-color: @colorBgEmphasize1;
+    }
+  }
 }

@@ -47,7 +47,7 @@
           </span>
           {/if}
           {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
-            {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+            {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
           {/if}
         </div>
       {/if}
@@ -90,7 +90,7 @@
 
     <div class="message-meta">
       {if $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN)}
-        {button_link class='deleteMessage' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+        {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
       {/if}
 
       [[ if (hasUser) { ]]

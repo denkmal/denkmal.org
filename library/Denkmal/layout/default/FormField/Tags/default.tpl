@@ -2,7 +2,7 @@
   <ul class="tagList">
     <li class="tag tag-special" data-type="text">
       <a href="javascript:;" class="toggleSpecial">
-        <div class="tag-image">{resourceFileContent path='img/icon/document2.svg'}</div>
+        <div class="tag-image">{resourceFileContent path='img/icon/text.svg'}</div>
       </a>
     </li>
     {if Denkmal_Form_Message::getImageAllowed($viewer)}

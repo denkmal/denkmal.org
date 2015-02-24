@@ -23,7 +23,6 @@ var Denkmal_Page_Now = Denkmal_Page_Abstract.extend({
    * @param {Object} data
    */
   _addMessage: function(data) {
-    console.log('message', data);
     var messageList = this.findChild('Denkmal_Component_MessageList_Abstract');
     if (messageList) {
       messageList.prependMessage(data);

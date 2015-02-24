@@ -41,9 +41,6 @@
   </header>
   <section id="middle" class="sheet">
     {$renderAdapter->fetchPage()}
-    {if $viewer}
-      {component name='Denkmal_Component_Logout'}
-    {/if}
   </section>
   {component name='Denkmal_Component_SongPlayer'}
 {/block}

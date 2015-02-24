@@ -13,4 +13,11 @@ class Admin_Site extends Denkmal_Site {
             'weekdays' => new Admin_Menu_Weekdays(),
         );
     }
+
+    /**
+     * @return string
+     */
+    public function getLoginPage() {
+        return 'Admin_Page_Events';
+    }
 }

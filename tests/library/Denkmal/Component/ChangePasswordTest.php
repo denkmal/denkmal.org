@@ -15,8 +15,8 @@ class Denkmal_Component_ChangePasswordTest extends CMTest_TestCase {
         $page = $this->_renderComponent($cmp, $viewer);
 
         $this->assertComponentAccessible($cmp, $viewer);
-        $this->assertContains('Altes Passwort', $page->find('.change_password')->getText());
-        $this->assertContains('Neues Passwort', $page->find('.change_password')->getText());
-        $this->assertContains('Passwort bestätigen', $page->find('.change_password')->getText());
+        $this->assertTrue($page->has('[name="old_password"]'));
+        $this->assertTrue($page->has('[name="new_password"]'));
+        $this->assertTrue($page->has('[name="new_password_confirm"]'));
     }
 }

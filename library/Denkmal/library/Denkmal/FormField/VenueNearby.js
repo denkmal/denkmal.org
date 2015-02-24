@@ -5,6 +5,9 @@
 var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   _class: 'Denkmal_FormField_VenueNearby',
 
+  /** @var Number */
+  _watchId: null,
+
   ready: function() {
     this.detectLocation();
   },
@@ -25,7 +28,15 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
     navigator.geolocation.getCurrentPosition(deferred.resolve, deferred.reject);
 
     deferred.then(function(position) {
-      return self._lookupCoordinates(position.coords.latitude, position.coords.longitude)
+      if (!self._watchId) {
+        self._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
+          self._lookupCoordinates(position.coords.latitude, position.coords.longitude)
+        }, 1000));
+        self.on('destruct', function() {
+          navigator.geolocation.clearWatch(this._watchId);
+        });
+      }
+      return self._lookupCoordinates(position.coords.latitude, position.coords.longitude);
     });
     deferred.fail(function() {
       self._setStateFailure();

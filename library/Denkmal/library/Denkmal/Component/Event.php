@@ -24,7 +24,7 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
     /**
      * @param Denkmal_Model_Venue $venue
      * @param Denkmal_Model_Event $event
-     * @return Denkmal_Paging_Tag_Abstract[]|null
+     * @return Denkmal_Paging_Tag_Abstract|null
      */
     private function _getTagList(Denkmal_Model_Venue $venue, Denkmal_Model_Event $event) {
         $tagList = null;

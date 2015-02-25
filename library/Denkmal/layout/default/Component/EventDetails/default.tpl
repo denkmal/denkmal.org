@@ -2,7 +2,7 @@
   <div class="head clearfix">
     {if $viewer}
       {if !$messageList->getCount()}
-        {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Schreib etwas!'} theme='transparent'}
+        {button_link page='Denkmal_Page_Now' venue=$venue->getId() icon='chat-flash' label={translate 'Schreib etwas!'} theme='transparent'}
       {/if}
     {/if}
 
@@ -20,7 +20,7 @@
   {if $viewer}
     {if $messageList->getCount()}
       <div class="action-chat">
-        {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Weiterlesen…'} theme='transparent'}
+        {button_link page='Denkmal_Page_Now' venue=$venue->getId() icon='chat-flash' label={translate 'Weiterlesen…'} theme='transparent'}
       </div>
     {/if}
   {/if}

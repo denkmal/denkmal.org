@@ -13,6 +13,7 @@ class Denkmal_Page_Now extends Denkmal_Page_Abstract {
         }
 
         $viewResponse->set('venue', $venue);
+        $viewResponse->getJs()->setProperty('venue', $venue);
         $viewResponse->set('allowAdd', $allowAdd);
     }
 }

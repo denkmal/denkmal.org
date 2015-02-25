@@ -53,6 +53,18 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
+     * @return DateTime
+     */
+    public function getUntilEndOfDay() {
+        $dayOffset = Denkmal_Site::getDayOffset();
+        $untilEndOfDay = $this->getFrom();
+        $untilEndOfDay->modify('-' . $dayOffset . ' hours');
+        $untilEndOfDay->modify('+1 day');
+        $untilEndOfDay = $untilEndOfDay->setTime($dayOffset, 0);
+        return $untilEndOfDay;
+    }
+
+    /**
      * @return string
      */
     public function getDescription() {

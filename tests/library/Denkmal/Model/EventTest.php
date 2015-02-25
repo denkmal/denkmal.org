@@ -52,6 +52,19 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
         $this->assertEquals($this->_event->getTimeZone(), $this->_event->getUntil()->getTimezone());
     }
 
+    public function testGetUntilEndOfDay() {
+        $venue = Denkmal_Model_Venue::create('My Example', false, false);
+        $event1 = Denkmal_Model_Event::create($venue, 'Foo1', true, false, new DateTime('2014-12-31 2:00'));
+        $event2 = Denkmal_Model_Event::create($venue, 'Foo2', true, false, new DateTime('2014-12-31 15:00'));
+        $event3 = Denkmal_Model_Event::create($venue, 'Foo3', true, false, new DateTime('2015-01-01 4:00'));
+        $event4 = Denkmal_Model_Event::create($venue, 'Foo3', true, false, new DateTime('2015-01-01 5:59'));
+
+        $this->assertEquals(new DateTime('2014-12-31 6:00'), $event1->getUntilEndOfDay());
+        $this->assertEquals(new DateTime('2015-01-01 6:00'), $event2->getUntilEndOfDay());
+        $this->assertEquals(new DateTime('2015-01-01 6:00'), $event3->getUntilEndOfDay());
+        $this->assertEquals(new DateTime('2015-01-01 6:00'), $event4->getUntilEndOfDay());
+    }
+
     public function testGetSetDescription() {
         $this->_event->setDescription('Bar');
         $this->assertSame('Bar', $this->_event->getDescription());

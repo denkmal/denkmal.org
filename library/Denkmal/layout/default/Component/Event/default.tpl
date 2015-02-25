@@ -10,7 +10,7 @@
       <span class="icon icon-time"></span>
       {date_time date=$event->getFrom()}
     </time>
-    {if $tagList->getCount()}
+    {if isset($tagList) && $tagList->getCount()}
       <ul class="tags">
         {foreach $tagList as $tag}
           <li class="tag showDetails">

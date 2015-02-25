@@ -1,3 +1,5 @@
+{block name='before'}{/block}
+
 <ul class="messageList clearfix">
   {foreach $messageList->getItems() as $message}
     <li class="message" data-id="{$message->getId()|escape}">

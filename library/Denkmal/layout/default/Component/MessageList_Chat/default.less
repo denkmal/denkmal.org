@@ -1,0 +1,19 @@
+.filter {
+  display: inline-block;
+  margin-bottom: 3px;
+  padding: 3px 10px;
+  background-color: @colorBgEmphasize3;
+  color: @colorFg;
+  border-radius: 3px;
+  border: 1px solid darken(@colorBgEmphasize3, 10);
+
+  .remove {
+    font-size: @fontSizeTiny;
+  }
+
+  &:hover {
+    .remove {
+      color: @colorClose;
+    }
+  }
+}

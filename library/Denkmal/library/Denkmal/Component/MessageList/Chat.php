@@ -10,8 +10,9 @@ class Denkmal_Component_MessageList_Chat extends Denkmal_Component_MessageList_A
         } else {
             $messageList = new Denkmal_Paging_Message_All();
         }
-
         $this->_params->set('messageList', $messageList);
+
+        $viewResponse->set('venue', $venue);
 
         parent::prepare($environment, $viewResponse);
     }

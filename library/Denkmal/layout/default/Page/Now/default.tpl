@@ -6,5 +6,5 @@
   {if $allowAdd}
     {component name='Denkmal_Component_MessageAdd'}
   {/if}
-  {component name='Denkmal_Component_MessageList_All'}
+  {component name='Denkmal_Component_MessageList_Chat'}
 {/block}

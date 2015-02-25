@@ -9,7 +9,7 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   _watchId: null,
 
   /** @type {Number} */
-  _timeoutId: null,
+  _waitingTimeoutId: null,
 
   /** @type {Boolean} */
   _keepSelection: null,
@@ -17,9 +17,12 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   /** @type {String} */
   _stateGeo: null,
 
+  /** @type {Deferred} */
+  _lookupCoordinatesDeferred: null,
+
   ready: function() {
     this._watchId = null;
-    this._timeoutId = null;
+    this._waitingTimeoutId = null;
     this._keepSelection = false;
     this._stateGeo = null;
 
@@ -38,27 +41,21 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
     }
 
     var self = this;
-
     this._setStateWaiting();
-    window.clearTimeout(this._timeoutId);
-    this._timeoutId = this.setTimeout(function() {
-      self._setStateFailure();
-    }, 1000 * 10);
 
-    if (!this._watchId) {
-      this._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
-        window.clearTimeout(self._timeoutId);
-        self._lookupCoordinates(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
-      }, 1000), function() {
-        window.clearTimeout(self._timeoutId);
-        self._setStateFailure();
-      }, {
-        enableHighAccuracy: true
-      });
-      this.on('destruct', function() {
-        navigator.geolocation.clearWatch(self._watchId);
-      });
+    if (this._watchId) {
+      navigator.geolocation.clearWatch(this._watchId);
     }
+    this._watchId = navigator.geolocation.watchPosition(_.throttle(function(position) {
+      self._onGeolocationUpdate(position.coords);
+    }, 1000), function() {
+      self._setStateFailure();
+    }, {
+      enableHighAccuracy: true
+    });
+    this.on('destruct', function() {
+      navigator.geolocation.clearWatch(this._watchId);
+    });
   },
 
   /**
@@ -76,31 +73,63 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   },
 
   /**
+   * @param {Coordinates} coords
+   */
+  _onGeolocationUpdate: function(coords) {
+    if (null === this._lookupCoordinatesDeferred) {
+      var self = this;
+      this._lookupCoordinatesDeferred = this._lookupCoordinates(coords.latitude, coords.longitude, coords.accuracy)
+        .done(function(venueList) {
+          self._setStateSuccess(venueList);
+        })
+        .fail(function() {
+          self._setStateFailure();
+        })
+        .always(function() {
+          self._lookupCoordinatesDeferred = null;
+        });
+    }
+  },
+
+  /**
    * @param {Number} lat
    * @param {Number} lon
    * @param {Number} radius
-   * @return jqXHR
+   * @return {Deferred}
    */
   _lookupCoordinates: function(lat, lon, radius) {
-    var self = this;
-    return this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon, radius: radius}, {
+    var deferred = $.Deferred();
+    this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon, radius: radius}, {
       success: function(venueList) {
         if (venueList.length == 0) {
-          self._setStateFailure();
+          deferred.reject();
         } else {
-          self._setStateSuccess(venueList);
+          deferred.resolve(venueList);
         }
       }, error: function() {
-        self._setStateFailure();
+        deferred.reject();
+      }
+    }).fail(function(xhr, textStatus) {
+      if (xhr.status === 0) {
+        // Request aborted/interruped - will be ignored by CM_App.ajax(), so we cover it here
+        deferred.reject();
       }
     });
+    return deferred;
   },
 
   _setStateWaiting: function() {
+    window.clearTimeout(this._waitingTimeoutId);
+    this._waitingTimeoutId = this.setTimeout(function() {
+      this._setStateFailure();
+    }, 1000 * 10);
+
     this._setState('waiting', []);
   },
 
   _setStateFailure: function() {
+    window.clearTimeout(this._waitingTimeoutId);
+
     this._setState('failure', []);
   },
 
@@ -108,6 +137,8 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
    * @param {Array} venueList
    */
   _setStateSuccess: function(venueList) {
+    window.clearTimeout(this._waitingTimeoutId);
+
     this._setState('success', venueList);
   },
 

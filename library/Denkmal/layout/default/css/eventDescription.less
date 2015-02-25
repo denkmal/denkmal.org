@@ -1,19 +1,20 @@
 .eventDescription {
   position: relative;
-  overflow: hidden;
   color: @colorFg;
   font-size: @fontSize - 1px;
 
   @media (min-width: @breakpointMini) {
     font-size: @fontSize;
-    margin-top: 3px;
+    padding-top: 3px;
   }
 
   .time {
+    float: left ;
     display: block;
     font-size: @fontSizeSmall;
 
     @media (min-width: @breakpointMini) {
+      margin-top: 2px;
       float: right;
       font-size: @fontSize;
     }
@@ -24,8 +25,39 @@
     }
   }
 
+  .tags {
+    float: right;
+    margin-left: 5px;
+    margin-right: 10px;
+    line-height: 0;
+
+    @media (min-width: @breakpointMini) {
+      margin-top: -4px;
+      margin-right: 25px;
+    }
+
+    .tag {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 1px solid @colorFgBorderEmphasize2;
+      padding: 4px;
+      border-radius: 50%;
+
+      @media (min-width: @breakpointMini) {
+        width: 26px;
+        height: 26px;
+      }
+
+      .tag-image {
+        opacity: .5;
+      }
+    }
+  }
+
   .event-header {
     display: block;
+    clear: left;
     margin-bottom: 2px;
     margin-right: 5px;
   }

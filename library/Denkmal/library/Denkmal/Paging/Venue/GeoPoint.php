@@ -21,6 +21,7 @@ class Denkmal_Paging_Venue_GeoPoint extends Denkmal_Paging_Venue_Abstract {
         $lonMax = $lon + $distanceMax / $metersPerDegree;
 
         $where = "MBRContains(LineString(Point($latMax, $lonMax), Point($latMin, $lonMin)), Point(`latitude`, `longitude`))";
+        $where .= ' AND `suspended` = 0';
         $order = "((POW($lat - `latitude`, 2)) + (POW($lon - `longitude`, 2))) ASC";
         $source = new CM_PagingSource_Sql('id', 'denkmal_model_venue', $where, $order);
         parent::__construct($source);

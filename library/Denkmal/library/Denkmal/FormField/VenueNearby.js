@@ -20,6 +20,21 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   /** @type {Deferred} */
   _lookupCoordinatesDeferred: null,
 
+  events: {
+    'change select': function(event) {
+      var select = event.currentTarget;
+      if ('' === select.value && select.options.length > 0) {
+        /**
+         * Workaround for iOS bug:
+         * When the select is opened (UI appears), and all options except the selected one are removed,
+         * and one of the removed options is chosen, then the select's "value" is an empty string.
+         * This would eventually make "_setVenueList()" not detect a selected option and therefore remove all entries.
+         */
+        select.value = select.options[0].value;
+      }
+    }
+  },
+
   ready: function() {
     this._watchId = null;
     this._waitingTimeoutId = null;

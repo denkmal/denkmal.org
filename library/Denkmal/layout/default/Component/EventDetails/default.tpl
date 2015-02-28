@@ -9,7 +9,9 @@
       <span class="label">{translate 'Karte'}</span>
     </a>
   {/if}
-</div>{if $messageList->getCount()}
+</div>
+
+{if $messageList->getCount()}
   {component name='Denkmal_Component_MessageList_Venue' venue=$venue count=3}
 {/if}
 

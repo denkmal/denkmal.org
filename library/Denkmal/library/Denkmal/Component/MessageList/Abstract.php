@@ -4,7 +4,7 @@ abstract class Denkmal_Component_MessageList_Abstract extends Denkmal_Component_
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $messageList = $this->_params->getPaging('messageList');
-        $messageList->setPage(1, $this->_params->getInt('count', 5));
+        $messageList->setPage(1, $this->_params->getInt('count', 100));
 
         $viewer = $environment->getViewer();
         $canDelete = $viewer && $viewer->getRoles()->contains(Denkmal_Role::ADMIN);

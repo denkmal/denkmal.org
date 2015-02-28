@@ -21,6 +21,8 @@ class Denkmal_FormAction_Login_Process extends CM_FormAction_Abstract {
         }
 
         $response->getRequest()->getSession()->setUser($user);
+        $response->getRequest()->getSession()->setLifetime(86400 * 14);
+
         $response->addMessage($response->getRender()->getTranslation('Erfolgreich angemeldet. Bitte warten...'));
         $response->redirect($site->getLoginPage(), null, true);
     }

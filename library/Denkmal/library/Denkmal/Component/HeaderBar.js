@@ -12,17 +12,15 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
 
   events: {
     'click .menu.dates .active .navButton': function() {
-      if (!this.narrow) {
-        return;
+      if (this.narrow) {
+        this.toggleMenu(true);
       }
-      this.toggleMenu(true);
     },
 
     'click .menu-expand .menu.dates .navButton': function() {
-      if (!this.narrow) {
-        return;
+      if (this.narrow) {
+        this.toggleMenu(false);
       }
-      this.toggleMenu(false);
     }
   },
 
@@ -51,7 +49,13 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    * @param {Boolean} state
    */
   toggleMenu: function(state) {
-    this.$('.bar').toggleClass('menu-expand', state);
+    if (state) {
+      this.$('.bar').toggleModal(function(state) {
+        $(this).toggleClass('menu-expand', state);
+      });
+    } else {
+      this.$('.bar').toggleModalClose();
+    }
   }
 
 });

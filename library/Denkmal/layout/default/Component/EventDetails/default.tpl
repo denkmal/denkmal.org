@@ -1,6 +1,6 @@
 <div class="head clearfix">
   {if !$messageList->getCount()}
-    {button_link page='Denkmal_Page_Now' venue=$venue->getId() icon='chat-flash' label={translate 'Schreib etwas!'} theme='transparent'}
+    {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Schreib etwas!'} theme='transparent'}
   {/if}
 
   {if $venue->getCoordinates()}

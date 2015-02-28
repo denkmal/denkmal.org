@@ -7,11 +7,9 @@
     <p class="slogan">{translate 'Was loift in Basel?!'}</p>
   </div>
   {link icon="plus" title="{translate 'Event hinzufügen'}" label="{translate 'Event hinzufügen'}" page="Denkmal_Page_Add" class="addButton navButton"}
-  {if $viewer}
-    <a href="{linkUrl page='Denkmal_Page_Now'}" class="nowButton navButton" title="{translate 'Now'}">
-      <span class="icon icon-chat-flash"><span class="indication chat-indication"></span></span>
-    </a>
-  {/if}
+  <a href="{linkUrl page='Denkmal_Page_Now'}" class="nowButton navButton" title="{translate 'Now'}">
+    <span class="icon icon-chat-flash"><span class="indication chat-indication"></span></span>
+  </a>
   {link icon='calendar' page='Denkmal_Page_Events' class='navButton showWeek'}
   <div class="menu-wrapper">
     <div class="navigate navigate-left">

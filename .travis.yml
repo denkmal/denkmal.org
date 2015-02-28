@@ -21,7 +21,7 @@ before_script:
   - phpenv config-add tests/travis/php.ini
   - phpenv config-add tests/travis/php-$TRAVIS_PHP_VERSION.ini
 
-  - composer install --dev
+  - composer install
   - cp tests/travis/config.php resources/config/local.php
   - bin/cm app set-deploy-version
 

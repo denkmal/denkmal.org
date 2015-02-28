@@ -5,9 +5,9 @@
     <li class="message" data-id="{$message->getId()|escape}">
 
       <div class="message-header">
-        <div class="message-venue nowrap">
+        <a href="{linkUrl page='Denkmal_Page_Now' venue=$message->getVenue()->getId()}" class="message-venue nowrap">
           {$message->getVenue()->getName()|escape}
-        </div>
+        </a>
         <div class="message-created nowrap">
           {date_timeago time=$message->getCreated()->getTimestamp()}
         </div>
@@ -60,9 +60,9 @@
   <li class="message" data-id="[[-id]]">
 
     <div class="message-header">
-      <div class="message-venue nowrap">
-        [[-venue]]
-      </div>
+      <a href="{literal}[[print(cm.getUrl('/now', {venue:venue.id}))]]{/literal}" class="message-venue nowrap">
+        [[-venue.name]]
+      </a>
       <div class="message-created nowrap">
         [[print(cm.date.timeago(created))]]
       </div>

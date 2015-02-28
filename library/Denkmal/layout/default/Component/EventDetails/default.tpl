@@ -14,7 +14,7 @@
     {/if}
   </div>
   {if $messageList->getCount()}
-    {component name='Denkmal_Component_MessageList_Venue' venue=$venue}
+    {component name='Denkmal_Component_MessageList_Venue' venue=$venue count=3}
   {/if}
 
   {if $viewer}

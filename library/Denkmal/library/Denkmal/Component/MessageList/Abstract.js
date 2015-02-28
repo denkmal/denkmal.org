@@ -52,7 +52,7 @@ var Denkmal_Component_MessageList_Abstract = Denkmal_Component_Abstract.extend({
     this.renderTemplate('template-message', {
       id: message.id,
       created: message.created,
-      venue: message.venue.name,
+      venue: message.venue,
       hasText: message.text !== null,
       text: message.text,
       hasImage: message.image !== null,

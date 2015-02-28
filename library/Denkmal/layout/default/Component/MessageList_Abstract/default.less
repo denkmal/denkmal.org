@@ -24,7 +24,7 @@
     }
 
     &:first-child {
-      margin-top: 5px;
+      margin-top: 10px;
     }
 
     .message-header {
@@ -39,18 +39,16 @@
 
       .message-venue {
         font-weight: bold;
-        margin-bottom: 5px;
       }
-    }
 
-    .timeago {
-      position: absolute;
-      left: 50%;
-      top: 6px;
-      transform: translateX(-50%);
-      padding: 2px 4px;
-      font-size: @fontSizeTiny;
-      color: lighten(@colorFgSubtle, 20);
+      .message-created {
+        margin-top: -1px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: @fontSizeTiny;
+        color: lighten(@colorFgSubtle, 20);
+      }
     }
 
     .message-content {

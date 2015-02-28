@@ -30,11 +30,11 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
         $tagList = null;
         $now = new DateTime();
         $dateFrom = clone $event->getFrom();
-        $dateFrom = $dateFrom->modify('-2 hours');
+        $dateFrom = $dateFrom->modify('-3 hours');
         $dateUntil = $event->getUntilEndOfDay();
 
         if ($dateFrom < $now && $now < $dateUntil) {
-            $tagList = new Denkmal_Paging_Tag_VenueUserLatest($venue, $now->modify('-2 hours'));
+            $tagList = new Denkmal_Paging_Tag_VenueUserLatest($venue, $now->modify('-4 hours'));
             $tagList->setPage(1, 3);
         }
 

@@ -7,6 +7,9 @@ var Denkmal_Page_Now = Denkmal_Page_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Page_Now',
 
+  /** @type Object */
+  venue: null,
+
   childrenEvents: {
     'Denkmal_Form_Message success': function(view, messageData) {
       this._addMessage(messageData);
@@ -20,12 +23,15 @@ var Denkmal_Page_Now = Denkmal_Page_Abstract.extend({
   },
 
   /**
-   * @param {Object} data
+   * @param {Object} messageData
    */
-  _addMessage: function(data) {
+  _addMessage: function(messageData) {
+    if (this.venue && this.venue.id != messageData.venue.id) {
+      return;
+    }
     var messageList = this.findChild('Denkmal_Component_MessageList_Abstract');
     if (messageList) {
-      messageList.prependMessage(data);
+      messageList.prependMessage(messageData);
     }
   }
 });

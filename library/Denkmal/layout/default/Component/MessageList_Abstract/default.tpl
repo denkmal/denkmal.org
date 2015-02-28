@@ -1,14 +1,17 @@
+{block name='before'}{/block}
+
 <ul class="messageList clearfix">
   {foreach $messageList->getItems() as $message}
     <li class="message" data-id="{$message->getId()|escape}">
 
-      <div class="message-header nowrap">
-        <span class="message-venue">
+      <div class="message-header">
+        <div class="message-venue nowrap">
           {$message->getVenue()->getName()|escape}
-        </span>
+        </div>
+        <div class="message-created nowrap">
+          {date_timeago time=$message->getCreated()->getTimestamp()}
+        </div>
       </div>
-
-      {date_timeago time=$message->getCreated()->getTimestamp()}
 
       <div class="message-content">
         {if count($message->getTags()->getAll()) > 0 || $message->hasImage()}
@@ -56,13 +59,14 @@
 <script type="text/template" class="template-message">
   <li class="message" data-id="[[-id]]">
 
-    <div class="message-header nowrap">
-      <div class="message-venue">
+    <div class="message-header">
+      <div class="message-venue nowrap">
         [[-venue]]
       </div>
+      <div class="message-created nowrap">
+        [[print(cm.date.timeago(created))]]
+      </div>
     </div>
-
-    [[print(cm.date.timeago(created))]]
 
     <div class="message-content">
       [[ if (hasTags || hasImage) { ]]
@@ -87,19 +91,19 @@
     </div>
 
     [[ if (hasUser || canDelete) { ]]
-      <div class="message-meta message-sheet">
-        [[ if (hasUser) { ]]
+    <div class="message-meta message-sheet">
+      [[ if (hasUser) { ]]
           <span class="message-user">
             <span class="username nowrap">
               [[-user.displayName]]
             </span>
             <span class="icon icon-hipster"></span>
           </span>
-        [[ } ]]
-        [[ if (canDelete) { ]]
-          {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-        [[ } ]]
-      </div>
+      [[ } ]]
+      [[ if (canDelete) { ]]
+      {button_link class='deleteMessage warning' icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+      [[ } ]]
+    </div>
     [[ } ]]
   </li>
 </script>

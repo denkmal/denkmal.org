@@ -58,21 +58,21 @@ class Denkmal_Model_User extends CM_Model_User {
     }
 
     /**
-     * @param string $email
+     * @param string $login
      * @param string $password
      * @return Denkmal_Model_User
      * @throws CM_Exception_AuthFailed
      */
-    public static function authenticate($email, $password) {
-        if (!$email || !$password) {
-            throw new CM_Exception_AuthFailed('E-Mail und Passwort benötigt', null, array(
-                'messagePublic' => 'E-Mail oder Password ist nicht gesetzt.',
+    public static function authenticate($login, $password) {
+        if (!$login || !$password) {
+            throw new CM_Exception_AuthFailed('Login und Passwort benötigt', null, array(
+                'messagePublic' => 'Login oder Password ist nicht gesetzt.',
             ));
         }
-        $user = Denkmal_App_Auth::checkLogin($email, $password);
+        $user = Denkmal_App_Auth::checkLogin($login, $password);
         if (!$user) {
             throw new CM_Exception_AuthFailed('Login fehlgeschlagen', null, array(
-                'messagePublic' => 'E-Mail oder Passwort ist falsch.',
+                'messagePublic' => 'Login oder Passwort ist falsch.',
             ));
         }
 

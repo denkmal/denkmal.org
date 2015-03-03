@@ -29,7 +29,7 @@ class Denkmal_Paging_Tag_VenueUserLatestTest extends CMTest_TestCase {
         $this->assertEquals(array($tag1, $tag2), new Denkmal_Paging_Tag_VenueUserLatest($venue));
 
         CMTest_TH::clearCache();
-        $this->assertEquals(array($tag1, $tag2, $tag3), new Denkmal_Paging_Tag_VenueUserLatest($venue));
+        $this->assertEquals(array($tag1, $tag2, $tag3, $tag4), new Denkmal_Paging_Tag_VenueUserLatest($venue));
     }
 
     public function testAggregation() {

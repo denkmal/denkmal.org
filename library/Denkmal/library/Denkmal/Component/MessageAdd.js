@@ -52,7 +52,9 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
     }
   },
 
-  ready: function() {
+  initialize: function() {
+    Denkmal_Component_Abstract.prototype.initialize.call(this);
+
     this._stateActive = false;
     this._stateActiveLocked = false;
     this._stateGeo = null;

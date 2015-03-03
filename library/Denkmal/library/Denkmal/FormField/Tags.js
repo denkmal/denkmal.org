@@ -24,8 +24,13 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
     }
   },
 
-  ready: function() {
+  initialize: function() {
+    CM_FormField_Abstract.prototype.initialize.call(this);
+
     this._specialStateList = {};
+  },
+
+  ready: function() {
     this._populateInput();
 
     var self = this;

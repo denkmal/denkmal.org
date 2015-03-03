@@ -6,19 +6,25 @@
 
 .navButton {
   color: @colorFgTheme;
-  opacity: .5;
+  opacity: .7;
 
   .label {
     text-decoration: none;
+  }
+
+  .icon {
+    font-size: 1.1em;
   }
 
   &:hover {
     opacity: 1;
   }
 
-  &.addButton {
+  &.addButton, &.nowButton {
     float: right;
+  }
 
+  &.addButton {
     @media (min-width: @breakpointMedium) {
       padding: 0 12px;
     }
@@ -35,7 +41,21 @@
     }
 
     .icon {
-      font-size: 1.4em;
+      font-size: 1.3em;
+    }
+  }
+
+  &.nowButton {
+    .icon {
+      position: relative;
+
+      .indication {
+        .indication(6px);
+        display: none;
+        position: absolute;
+        right: -2px;
+        top: 3px;
+      }
     }
   }
 }
@@ -60,10 +80,6 @@
 
   @media (min-width: @breakpointMini) {
     margin-left: 12px;
-  }
-
-  @media (min-width: @breakpointSmall) {
-    margin-left: 25px;
   }
 }
 
@@ -90,7 +106,7 @@
   font-size: 5px;
   color: fadeout(@colorFgTheme, 20);
 
-  @media (min-width: @breakpointSmall) {
+  @media (min-width: 640px) {
     display: none;
   }
 
@@ -114,7 +130,7 @@
     }
   }
 
-  @media (min-width: @breakpointSmall) {
+  @media (min-width: 640px) {
     width: auto;
 
     > li {
@@ -124,7 +140,7 @@
 }
 
 .menu-expand {
-  .logoWrapper, .addButton, .navigate, .showWeek {
+  .logoWrapper, .addButton, .nowButton, .navigate, .showWeek {
     display: none;
   }
 

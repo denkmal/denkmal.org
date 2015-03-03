@@ -1,1 +1,1 @@
-{translate 'Chat'}
+{translate 'Now'}

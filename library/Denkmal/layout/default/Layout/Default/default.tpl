@@ -32,6 +32,7 @@
 {block name='tileColor'}#3CC94D{/block}
 
 {block name='body'}
+  {component name='Denkmal_Component_SongPlayer'}
   <header id="header">
     <div class="sheet">
       {block name='header'}
@@ -42,5 +43,4 @@
   <section id="middle" class="sheet">
     {$renderAdapter->fetchPage()}
   </section>
-  {component name='Denkmal_Component_SongPlayer'}
 {/block}

@@ -2,8 +2,7 @@
 
   > .message {
     position: relative;
-
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     padding-top: 10px;
 
     &:before {
@@ -15,11 +14,17 @@
       top: 0;
       height: 1px;
       background-color: @colorFgBorderEmphasize3;
-      margin: 0 10%;
+      margin-left: 25px;
+      margin-right: 25px;
+
+      @media (min-width: @breakpointSmall) {
+        margin-left: 10%;
+        margin-right: 10%;
+      }
     }
 
     &:first-child {
-      margin-top: 5px;
+      margin-top: 10px;
     }
 
     .message-header {
@@ -33,68 +38,96 @@
       background-color: @colorBgBody;
 
       .message-venue {
+        display: block;
         font-weight: bold;
-        margin-bottom: 5px;
+        color: @colorFgSubtle;
       }
-    }
 
-    .timeago {
-      font-size: @fontSizeTiny;
-      color: lighten(@colorFgSubtle, 20);
-
-      position: absolute;
-      left: 50%;
-      top: 5px;
-      transform: translateX(-50%);
+      .message-created {
+        display: block;
+        margin-top: -1px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: @fontSizeTiny;
+        color: lighten(@colorFgSubtle, 20);
+      }
     }
 
     .message-content {
-      margin-top: 12px;
+      margin-top: 16px;
       font-style: italic;
 
-      .message-text {
-        padding: 0 30px;
-      }
-
       .message-tags {
+        margin-bottom: 10px;
         text-align: center;
+
         .tag {
-          width: 70px;
-          height: 70px;
           display: inline-block;
-          background: @colorBg;
-          border-radius: 50%;
-          padding: 12px;
+          width: 60px;
+          height: 60px;
           margin: 0 5px;
+          padding: 12px;
+          vertical-align: top;
+          border-radius: 50%;
+          background: @colorBg;
+
+          @media (min-width: @breakpointMedium) {
+            width: 70px;
+            height: 70px;
+          }
+
+          &.message-image {
+            padding: 0;
+
+            a {
+              display: block;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+          }
         }
       }
-    }
 
-    .message-image {
-      img {
-        max-width: 100%;
+      .message-text {
+        margin-bottom: 10px;
       }
     }
 
-    .message-user-container {
+    .message-meta {
       display: block;
+      margin-bottom: -10px;
       text-align: right;
-      padding-right: 30px;
+      line-height: 1;
 
       .message-user {
         position: relative;
+        display: inline-block;
+        text-align: center;
         font-size: @fontSizeSmall;
+        color: lighten(@colorFgSubtle, 10);
 
-        .icon-hipster {
-          position: absolute;
-          left: 50%;
-          top: @fontSizeSmall - 4px;
-          transform: translateX(-50%);
-
-          line-height: 1;
+        .username {
+          display: block;
+          max-width: 80px;
+          margin-bottom: -3px;
         }
       }
     }
 
+    .message-sheet {
+      padding-left: 10%;
+      padding-right: 10%;
+
+      @media (min-width: @breakpointMini) {
+        padding-left: 15%;
+        padding-right: 15%;
+      }
+    }
   }
 }

@@ -7,5 +7,12 @@
   text-decoration: none;
   text-align: center;
   color: @colorFgTheme;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.indication(@size, @color: @colorBgIndication) {
+  display: block;
+  height: @size;
+  width: @size;
+  border-radius: @size * .5;
+  background-color: @color;
 }

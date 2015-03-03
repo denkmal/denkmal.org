@@ -41,9 +41,15 @@ class Denkmal_Model_UserTest extends CMTest_TestCase {
         $this->assertSame('bar@example.com', $user->getEmail());
     }
 
-    public function testAuthenticate() {
+    public function testAuthenticateEmail() {
         $user = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
         $authenticatedUser = Denkmal_Model_User::authenticate('foo@bar', 'pass');
+        $this->assertEquals($user, $authenticatedUser);
+    }
+
+    public function testAuthenticateUsername() {
+        $user = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
+        $authenticatedUser = Denkmal_Model_User::authenticate('foo', 'pass');
         $this->assertEquals($user, $authenticatedUser);
     }
 
@@ -52,7 +58,7 @@ class Denkmal_Model_UserTest extends CMTest_TestCase {
      */
     public function testAuthenticateIncorrectLogin() {
         Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
-        Denkmal_Model_User::authenticate('foo@bar', 'bar');
+        Denkmal_Model_User::authenticate('hello', 'bar');
     }
 
     public function testFindByEmail() {

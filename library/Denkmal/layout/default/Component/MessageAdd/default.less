@@ -82,12 +82,16 @@
   }
 }
 
-&:not(.state-geo-waiting) .geo-waiting-visible {
-  display: none !important;
+&.state-geo-success, &.state-geo-failure {
+  .geo-waiting-visible {
+    display: none !important;
+  }
 }
+
 &:not(.state-geo-success) .geo-success-visible {
   display: none !important;
 }
+
 &:not(.state-geo-failure) .geo-failure-visible {
   display: none !important;
 }

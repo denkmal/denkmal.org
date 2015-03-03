@@ -18,9 +18,8 @@ class Denkmal_Paging_Tag_VenueUserLatest extends Denkmal_Paging_Tag_Abstract {
 
         $where = '`m`.`venue` = ' . $venue->getId();
         $where .= ' AND `m`.`created` > ' . $createdMin->getTimestamp();
-        $where .= ' AND `m`.`user` IS NOT NULL';
 
-        $order = '`m`.`created` DESC, `denkmal_model_tag_model`.tagId ASC';
+        $order = 'ISNULL(`m`.user) ASC, `m`.`created` DESC, `denkmal_model_tag_model`.tagId ASC';
         $source = new CM_PagingSource_Sql('`denkmal_model_tag_model`.tagId', 'denkmal_model_tag_model', $where, $order, $join, $group);
         $source->enableCacheLocal(100);
 

@@ -136,7 +136,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
                 return false; // Venue ignored
             }
 
-            $eventListVenueDate = new Denkmal_Paging_Event_VenueDate($eventData->getFrom(), $venue);
+            $eventListVenueDate = new Denkmal_Paging_Event_VenueDate($eventData->getFrom(), $venue, true);
             if ($eventListVenueDate->getCount()) {
                 return false; // Venue has event on same day
             }

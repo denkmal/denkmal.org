@@ -152,7 +152,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @return Denkmal_Paging_Event_VenueDate
      */
     public function getDuplicates() {
-        return new Denkmal_Paging_Event_VenueDate($this->getFrom(), $this->getVenue(), array($this));
+        return new Denkmal_Paging_Event_VenueDate($this->getFrom(), $this->getVenue(), true, array($this));
     }
 
     /**

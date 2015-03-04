@@ -15,6 +15,9 @@
         {$venue->getName()|escape}
       </a>
     </div>
+    {if isset($event)}
+      {component name='Denkmal_Component_Event' event=$event}
+    {/if}
   {/if}
 
   {if $venue}

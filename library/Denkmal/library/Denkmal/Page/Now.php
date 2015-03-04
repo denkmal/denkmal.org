@@ -12,6 +12,13 @@ class Denkmal_Page_Now extends Denkmal_Page_Abstract {
             $allowAdd = false;
         }
 
+        if ($venue) {
+            $currentDate = Denkmal_Site::getCurrentDate();
+            $eventList = new Denkmal_Paging_Event_VenueDate($currentDate, $venue);
+            $event = $eventList->getItem(0);
+            $viewResponse->set('event', $event);
+        }
+
         $viewResponse->set('venue', $venue);
         $viewResponse->getJs()->setProperty('venue', $venue);
         $viewResponse->set('allowAdd', $allowAdd);

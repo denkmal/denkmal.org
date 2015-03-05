@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
 
 CREATE TABLE IF NOT EXISTS `denkmal_model_user` (
   `userId` int(11) unsigned NOT NULL,
-  `email` varchar(32) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `username` varchar(32) NOT NULL,
   `password` char(64) NULL,
   PRIMARY KEY (`userId`),

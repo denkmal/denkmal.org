@@ -21,7 +21,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   childrenEvents: {
     'Denkmal_Component_Event toggleDetails-open': function(view) {
-      this.$('.scrollable').scrollTo(view.$el);
+      view.$el.closest('.scrollable').scrollTo(view.$el);
     }
   },
 

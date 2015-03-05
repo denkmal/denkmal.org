@@ -41,6 +41,13 @@ class Denkmal_Model_UserTest extends CMTest_TestCase {
         $this->assertSame('bar@example.com', $user->getEmail());
     }
 
+    public function testGetSetEmailLong() {
+        $user = Denkmal_Model_User::create('me@example.com', 'foo', 'pass');
+
+        $user->setEmail('this.is.a.very.long.email.address@example.com');
+        $this->assertSame('this.is.a.very.long.email.address@example.com', $user->getEmail());
+    }
+
     public function testAuthenticateEmail() {
         $user = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
         $authenticatedUser = Denkmal_Model_User::authenticate('foo@bar', 'pass');

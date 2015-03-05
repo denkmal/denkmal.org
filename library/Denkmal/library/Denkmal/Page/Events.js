@@ -19,6 +19,12 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     }
   },
 
+  childrenEvents: {
+    'Denkmal_Component_Event toggleDetails-open': function(view) {
+      this.$('.scrollable').scrollTo(view.$el);
+    }
+  },
+
   ready: function() {
     this._onShowPaneSetUrlDelayed = _.debounce(this._onShowPaneSetUrl, 2000);
 

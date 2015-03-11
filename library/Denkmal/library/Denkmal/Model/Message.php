@@ -145,7 +145,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         return $array;
     }
 
-    protected function _onDelete() {
+    protected function _onDeleteBefore() {
         if ($image = $this->getImage()) {
             $this->setImage(null);
             $image->delete();

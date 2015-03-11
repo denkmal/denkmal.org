@@ -52,7 +52,7 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
         $this->updateSearchIndex();
     }
 
-    protected function _onDelete() {
+    protected function _onDeleteBefore() {
         $this->getFile()->delete();
 
         $eventList = new Denkmal_Paging_Event_Song($this);

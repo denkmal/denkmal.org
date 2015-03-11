@@ -31,7 +31,7 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
         return new CM_Model_Schema_Definition(array());
     }
 
-    protected function _onDelete() {
+    protected function _onDeleteBefore() {
         foreach ($this->_fileTypeList as $fileType) {
             $this->getFile($fileType)->delete();
         }

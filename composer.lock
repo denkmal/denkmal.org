@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "883130599e2613f4b238c3d083f43847",
+    "hash": "39346fdfd4f8e383c17ba9dbcea83df5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.103.0",
+            "version": "1.107.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "07622507e3d325875fdffb4283bd6990e0e39467"
+                "reference": "f3e58520bab4066daf8d44e87bba33638353ac4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-07622507e3d325875fdffb4283bd6990e0e39467-zip-f0155b.zip",
-                "reference": "07622507e3d325875fdffb4283bd6990e0e39467",
-                "shasum": "22b26fbc2562fc1cca2fbc5c73e401bb52ff088a"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-f3e58520bab4066daf8d44e87bba33638353ac4a-zip-09bbc3.zip",
+                "reference": "f3e58520bab4066daf8d44e87bba33638353ac4a",
+                "shasum": "20f007f778ae190d4f79182e16d5f6cbe0047b23"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.6.0",
@@ -94,7 +94,7 @@
                 "guzzlehttp/guzzle": "~4.1.7",
                 "kickbox/kickbox": "~1.0.3",
                 "kissmetrics/kissmetrics-php": "~0.1.0",
-                "leafo/lessphp": "0.3.*",
+                "leafo/lessphp": "~0.5.0",
                 "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.4.0",
                 "nicmart/tree": "~0.2.0",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-02-22 13:38:39"
+            "time": "2015-03-11 15:19:08"
         },
         {
             "name": "composer/composer",
@@ -604,22 +604,22 @@
         },
         {
             "name": "leafo/lessphp",
-            "version": "v0.3.9",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/lessphp.git",
-                "reference": "a11a6141b5715162b933c405379765d817891c5d"
+                "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/leafo-lessphp-a11a6141b5715162b933c405379765d817891c5d-zip-5c3bef.zip",
-                "reference": "a11a6141b5715162b933c405379765d817891c5d",
-                "shasum": "52384b7a566d6a832ede493ae7e10531bc93330f"
+                "url": "http://satis.cargomedia.ch/dist/dist/leafo-lessphp-0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283-zip-5f9a38.zip",
+                "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
+                "shasum": "3625ff0ed782cb82cafd6859872d79b456c90a00"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.3-dev"
+                    "dev-master": "0.4.x-dev"
                 }
             },
             "autoload": {
@@ -627,6 +627,7 @@
                     "lessc.inc.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT",
                 "GPL-3.0"
@@ -640,7 +641,7 @@
             ],
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
-            "time": "2013-03-02 16:13:31"
+            "time": "2014-11-24 18:39:20"
         },
         {
             "name": "lstrojny/functional-php",
@@ -1299,17 +1300,17 @@
         },
         {
             "name": "tomaszdurka/codegenerator",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomaszdurka/codegenerator.git",
-                "reference": "7a90518e83d3b9a91d50c73b00ffb375e550624c"
+                "reference": "d577a3f0b80adfd9a494db2c9c2589b8a4dfe901"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-codegenerator-7a90518e83d3b9a91d50c73b00ffb375e550624c-zip-848e56.zip",
-                "reference": "7a90518e83d3b9a91d50c73b00ffb375e550624c",
-                "shasum": "f1ee2ccf0742298071b816eeb5b06f78390f7338"
+                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-codegenerator-d577a3f0b80adfd9a494db2c9c2589b8a4dfe901-zip-52de0b.zip",
+                "reference": "d577a3f0b80adfd9a494db2c9c2589b8a4dfe901",
+                "shasum": "39e5fa14f7072b25d8156138e8f324e19ae5ec0e"
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7.10",
@@ -1328,7 +1329,7 @@
                     "email": "tomasz@durka.pl"
                 }
             ],
-            "time": "2014-06-18 21:48:49"
+            "time": "2015-02-23 00:56:29"
         }
     ],
     "packages-dev": [
@@ -2173,20 +2174,20 @@
         },
         {
             "name": "tomaszdurka/mocka",
-            "version": "0.8.2",
+            "version": "0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomaszdurka/mocka.git",
-                "reference": "9f8e0381759d817589f9a110a965e0d9dea6a9c1"
+                "reference": "1541badf5305ea9667e2e1c9fdf462d887a01659"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-mocka-9f8e0381759d817589f9a110a965e0d9dea6a9c1-zip-c4d726.zip",
-                "reference": "9f8e0381759d817589f9a110a965e0d9dea6a9c1",
-                "shasum": "9d61b45cb6ccebb1a0554e4f335c0b8bc2f1bad8"
+                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-mocka-1541badf5305ea9667e2e1c9fdf462d887a01659-zip-a9acf4.zip",
+                "reference": "1541badf5305ea9667e2e1c9fdf462d887a01659",
+                "shasum": "9f99e737bb274200be830e84ea87a775f830866f"
             },
             "require": {
-                "tomaszdurka/codegenerator": "~0.4.1"
+                "tomaszdurka/codegenerator": "~0.4.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7.10",
@@ -2202,7 +2203,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-01-30 14:33:30"
+            "time": "2015-02-23 01:12:42"
         }
     ],
     "aliases": [],

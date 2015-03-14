@@ -38,26 +38,30 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
 
     $event.toggleClass('event-details-open', state);
 
-    var done = new $.Deferred();
-    done.resolve();
+    var deferredLoaded = new $.Deferred();
+    var deferredOpened = new $.Deferred();
 
     if (details) {
+      deferredLoaded.resolve();
       if (state) {
-        details.$el.slideDown('fast');
+        details.$el.slideDown('fast', deferredOpened.resolve);
       } else {
         details.$el.slideUp('fast');
       }
     } else if (state) {
-      done = this.loadComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event}, {
+      deferredLoaded = this.loadComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event}, {
         'success': function() {
-          this.$el.hide().appendTo($event.parent()).slideDown('fast');
+          this.$el.hide().appendTo($event.parent()).slideDown('fast', deferredOpened.resolve);
         }
       });
     }
 
     var self = this;
-    done.done(function() {
+    deferredLoaded.done(function() {
       self.trigger('toggleDetails', state)
+    });
+    deferredOpened.done(function() {
+      self.trigger('toggleDetails-open');
     });
 
     this._detailsVisible = state;

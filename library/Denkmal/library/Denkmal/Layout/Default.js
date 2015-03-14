@@ -23,7 +23,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
     },
 
     'Denkmal_Page_Events destruct': function(view) {
-      this.findChild('Denkmal_Component_HeaderBar').toggleMenu(false);
+      this.findChild('Denkmal_Component_HeaderBar').setWeekdayMenuVisible(false);
       this._setWeekMenuVisible(false);
     },
 
@@ -53,7 +53,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
    * @param {Boolean} state
    */
   _setWeekMenuVisible: function(state) {
-    this.findChild('Denkmal_Component_HeaderBar').setWeekMenuVisible(state);
+    this.findChild('Denkmal_Component_HeaderBar').setWeekdayVisible(state);
   },
 
   /**

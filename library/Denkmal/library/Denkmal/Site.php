@@ -12,6 +12,7 @@ class Denkmal_Site extends CM_Site_Abstract {
      */
     public function getMenus() {
         return array(
+            'main'  => new Denkmal_Menu_Main(),
             'dates' => new Denkmal_Menu_Weekdays(),
         );
     }

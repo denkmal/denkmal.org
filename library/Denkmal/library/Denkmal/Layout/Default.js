@@ -7,6 +7,9 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Layout_Default',
 
+  /** @type Number */
+  chatActivityStamp: null,
+
   appEvents: {
     'navigate': function() {
       this._setNavigationIndicationVisible(false);
@@ -33,6 +36,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
       this._bindContentScroll(view, $(document));
       this._onContentScroll($(document));
       this._setChatIndication(false);
+      this._updateChatRead();
     },
 
     'Denkmal_Page_Add ready': function(view) {
@@ -45,17 +49,14 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
     this.bindStream('global-internal', cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(message) {
       var page = this.findPage();
       var isChat = page && page.hasClass('Denkmal_Page_Now');
-      if (!isChat) {
+      if (isChat) {
+        this._updateChatRead();
+      } else {
         this._setChatIndication(true);
       }
     });
-  },
 
-  /**
-   * @param {Boolean} state
-   */
-  _setChatIndication: function(state) {
-    this.findChild('Denkmal_Component_HeaderBar').setChatIndication(state);
+    this._setChatIndicationFromLastActivity(this.chatActivityStamp);
   },
 
   /**
@@ -88,5 +89,28 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
    */
   _setNavigationIndicationVisible: function(state) {
     this.findChild('Denkmal_Component_HeaderBar').setNavigationIndicationVisible(state);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  _setChatIndication: function(state) {
+    this.findChild('Denkmal_Component_HeaderBar').setChatIndication(state);
+  },
+
+  /**
+   * @param {Number} lastActivityStamp
+   */
+  _setChatIndicationFromLastActivity: function(lastActivityStamp) {
+    var readStamp = cm.storage.get('chatReadStamp');
+    if (null == readStamp) {
+      readStamp = 0;
+    }
+    this._setChatIndication(lastActivityStamp > readStamp);
+  },
+
+  _updateChatRead: function() {
+    var readStamp = Math.floor(Date.now() / 1000);
+    cm.storage.set('chatReadStamp', readStamp);
   }
 });

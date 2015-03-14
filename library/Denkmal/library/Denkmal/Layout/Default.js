@@ -56,6 +56,6 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
    * @param {Boolean} state
    */
   setChatIndication: function(state) {
-    this.$('.nowButton .chat-indication').toggle(state);
+    this.$('.nowButton .chat-indication').toggleClass('active', state);
   }
 });

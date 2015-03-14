@@ -9,36 +9,26 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
 
   childrenEvents: {
     'Denkmal_Page_Events ready': function(view) {
-      var $layout = this.$el;
-      var $pageScrollables = view.$('.scrollable');
-
-      var onScroll = function() {
-        var scrolledNotTop = view.$('.active .scrollable').scrollTop() > 20;
-        $layout.toggleClass('scrolledNotTop', scrolledNotTop);
-      };
-
-      $pageScrollables.bind('scroll', onScroll);
-      view.on('destruct', function() {
-        $pageScrollables.unbind('scroll', onScroll);
+      var self = this;
+      view.bindJquery(view.$('.scrollable'), 'scroll', function(event) {
+        self._onContentScroll($(event.currentTarget));
       });
-      view.on('swipe', function() {
-        onScroll();
-      });
-      onScroll();
 
-      $layout.addClass('menu-visible');
+      this._onContentScroll(view.$('.active .scrollable'));
+      this._setMenuVisible(true);
+    },
+
+    'Denkmal_Page_Events swipe': function(view) {
+      this._onContentScroll(view.$('.active .scrollable'));
     },
 
     'Denkmal_Page_Events destruct': function(view) {
-      var $layout = this.$el;
-      $layout.removeClass('menu-visible');
-
-      var headerBar = cm.findView('Denkmal_Component_HeaderBar');
-      headerBar.toggleMenu(false);
+      this.findChild('Denkmal_Component_HeaderBar').toggleMenu(false);
+      this._setMenuVisible(false);
     },
 
     'Denkmal_Page_Now ready': function() {
-      this.setChatIndication(false);
+      this._setChatIndication(false);
     }
   },
 
@@ -47,7 +37,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
       var page = cm.getLayout().findPage();
       var isChat = page && page.hasClass('Denkmal_Page_Now');
       if (!isChat) {
-        this.setChatIndication(true);
+        this._setChatIndication(true);
       }
     });
   },
@@ -55,7 +45,22 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
   /**
    * @param {Boolean} state
    */
-  setChatIndication: function(state) {
+  _setChatIndication: function(state) {
     this.findChild('Denkmal_Component_HeaderBar').setChatIndication(state);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  _setMenuVisible: function(state) {
+    this.$el.toggleClass('menu-visible', state);
+  },
+
+  /**
+   * @param {jQuery} $scrollable
+   */
+  _onContentScroll: function($scrollable) {
+    var scrolledNotTop = $scrollable.scrollTop() > 20;
+    this.$el.toggleClass('scrolledNotTop', scrolledNotTop);
   }
 });

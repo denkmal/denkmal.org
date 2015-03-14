@@ -11,15 +11,10 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
   narrow: null,
 
   events: {
-    'click .menu.dates .active .navButton': function() {
+    'click .menu.dates .navButton': function() {
       if (this.narrow) {
-        this.toggleMenu(true);
-      }
-    },
-
-    'click .menu-expand .menu.dates .navButton': function() {
-      if (this.narrow) {
-        this.toggleMenu(false);
+        var state = !this.$el.hasClass('state-weekdayMenu');
+        this.setWeekdayMenuVisible(state);
       }
     }
   },
@@ -32,30 +27,47 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
       },
       unmatch: function() {
         self.narrow = false;
-        self.toggleMenu(false);
+        self.setWeekdayMenuVisible(false);
       }
-
     };
 
     enquire.register('(max-width: 580px)', handlers);
-
     this.on('destruct', function() {
       enquire.unregister('(max-width: 580px)', handlers);
     });
   },
 
   /**
-   *
    * @param {Boolean} state
    */
-  toggleMenu: function(state) {
+  setChatIndication: function(state) {
+    this.$('.nowButton .indication-chat').toggleClass('active', state);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  setWeekdayVisible: function(state) {
+    this.$el.toggleClass('state-weekday', state);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  setWeekdayMenuVisible: function(state) {
     if (state) {
-      this.$('.bar').toggleModal(function(state) {
-        $(this).toggleClass('menu-expand', state);
+      this.$el.toggleModal(function(state) {
+        $(this).toggleClass('state-weekdayMenu', state);
       });
     } else {
-      this.$('.bar').toggleModalClose();
+      this.$el.toggleModalClose();
     }
-  }
+  },
 
+  /**
+   * @param {Boolean} state
+   */
+  setNavigationIndicationVisible: function(state) {
+    this.$el.toggleClass('state-navigationIndication', state);
+  }
 });

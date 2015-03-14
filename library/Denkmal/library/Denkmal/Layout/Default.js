@@ -7,55 +7,110 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Layout_Default',
 
+  /** @type Number */
+  chatActivityStamp: null,
+
+  appEvents: {
+    'navigate': function() {
+      this._setNavigationIndicationVisible(false);
+    }
+  },
+
   childrenEvents: {
     'Denkmal_Page_Events ready': function(view) {
-      var $layout = this.$el;
-      var $pageScrollables = view.$('.scrollable');
+      this._bindContentScroll(view, view.$('.scrollable'));
+      this._onContentScroll(view.$('.active .scrollable'));
+      this._setWeekMenuVisible(true);
+    },
 
-      var onScroll = function() {
-        var scrolledNotTop = view.$('.active .scrollable').scrollTop() > 20;
-        $layout.toggleClass('scrolledNotTop', scrolledNotTop);
-      };
-
-      $pageScrollables.bind('scroll', onScroll);
-      view.on('destruct', function() {
-        $pageScrollables.unbind('scroll', onScroll);
-      });
-      view.on('swipe', function() {
-        onScroll();
-      });
-      onScroll();
-
-      $layout.addClass('menu-visible');
+    'Denkmal_Page_Events swipe': function(view) {
+      this._onContentScroll(view.$('.active .scrollable'));
     },
 
     'Denkmal_Page_Events destruct': function(view) {
-      var $layout = this.$el;
-      $layout.removeClass('menu-visible');
-
-      var headerBar = cm.findView('Denkmal_Component_HeaderBar');
-      headerBar.toggleMenu(false);
+      this.findChild('Denkmal_Component_HeaderBar').setWeekdayMenuVisible(false);
+      this._setWeekMenuVisible(false);
     },
 
-    'Denkmal_Page_Now ready': function() {
-      this.setChatIndication(false);
+    'Denkmal_Page_Now ready': function(view) {
+      this._bindContentScroll(view, $(document));
+      this._onContentScroll($(document));
+      this._setChatIndication(false);
+      this._updateChatRead();
+    },
+
+    'Denkmal_Page_Add ready': function(view) {
+      this._bindContentScroll(view, $(document));
+      this._onContentScroll($(document));
     }
   },
 
   ready: function() {
     this.bindStream('global-internal', cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(message) {
-      var page = cm.getLayout().findPage();
+      var page = this.findPage();
       var isChat = page && page.hasClass('Denkmal_Page_Now');
-      if (!isChat) {
-        this.setChatIndication(true);
+      if (isChat) {
+        this._updateChatRead();
+      } else {
+        this._setChatIndication(true);
       }
     });
+
+    this._setChatIndicationFromLastActivity(this.chatActivityStamp);
   },
 
   /**
    * @param {Boolean} state
    */
-  setChatIndication: function(state) {
-    this.$('.nowButton .chat-indication').toggle(state);
+  _setWeekMenuVisible: function(state) {
+    this.findChild('Denkmal_Component_HeaderBar').setWeekdayVisible(state);
+  },
+
+  /**
+   * @param {CM_View_Abstract} view
+   * @param {jQuery} $scrollable
+   */
+  _bindContentScroll: function(view, $scrollable) {
+    var self = this;
+    view.bindJquery($scrollable, 'scroll', function(event) {
+      self._onContentScroll($(event.currentTarget));
+    });
+  },
+
+  /**
+   * @param {jQuery} $scrollable
+   */
+  _onContentScroll: function($scrollable) {
+    this._setNavigationIndicationVisible($scrollable.scrollTop() <= 20);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  _setNavigationIndicationVisible: function(state) {
+    this.findChild('Denkmal_Component_HeaderBar').setNavigationIndicationVisible(state);
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  _setChatIndication: function(state) {
+    this.findChild('Denkmal_Component_HeaderBar').setChatIndication(state);
+  },
+
+  /**
+   * @param {Number} lastActivityStamp
+   */
+  _setChatIndicationFromLastActivity: function(lastActivityStamp) {
+    var readStamp = cm.storage.get('chatReadStamp');
+    if (null == readStamp) {
+      readStamp = 0;
+    }
+    this._setChatIndication(lastActivityStamp > readStamp);
+  },
+
+  _updateChatRead: function() {
+    var readStamp = Math.floor(Date.now() / 1000);
+    cm.storage.set('chatReadStamp', readStamp);
   }
 });

@@ -4,62 +4,6 @@
   }
 }
 
-.navButton {
-  color: @colorFgTheme;
-  opacity: .7;
-
-  .label {
-    text-decoration: none;
-  }
-
-  .icon {
-    font-size: 1.1em;
-  }
-
-  &:hover {
-    opacity: 1;
-  }
-
-  &.addButton, &.nowButton {
-    float: right;
-  }
-
-  &.addButton {
-    @media (min-width: @breakpointMedium) {
-      padding: 0 12px;
-    }
-
-    &.hasIcon.hasLabel > .label {
-      margin-left: 10px;
-      font-size: @fontSize;
-      vertical-align: top;
-      display: none;
-
-      @media (min-width: @breakpointMedium) {
-        display: inline;
-      }
-    }
-
-    .icon {
-      font-size: 1.3em;
-    }
-  }
-
-  &.nowButton {
-    .icon {
-      position: relative;
-
-      .indication {
-        .indication(6px);
-        display: none;
-        position: absolute;
-        right: -2px;
-        top: 3px;
-      }
-    }
-  }
-}
-
 .logoWrapper {
   float: left;
 
@@ -75,89 +19,149 @@
   }
 }
 
-.menu-wrapper, .showWeek {
-  float: left;
+.mainMenu-wrapper {
+  .menu.main {
+    > .navButton {
+      color: @colorFgTheme;
+      height: @barSize;
 
-  @media (min-width: @breakpointMini) {
-    margin-left: 12px;
+      .icon {
+        font-size: 1.1em;
+      }
+
+      &.addButton, &.nowButton {
+        float: right;
+      }
+
+      &.addButton {
+        @media (min-width: @breakpointMedium) {
+          padding: 0 12px;
+        }
+
+        &.hasIcon.hasLabel > .label {
+          margin-left: 10px;
+          font-size: @fontSize;
+          vertical-align: top;
+          display: none;
+
+          @media (min-width: @breakpointMedium) {
+            display: inline;
+          }
+        }
+
+        .icon {
+          font-size: 1.3em;
+        }
+      }
+
+      &.nowButton {
+        .icon {
+          position: relative;
+
+          .indication {
+            .indication(6px);
+            display: none;
+            position: absolute;
+            right: -2px;
+            top: 3px;
+
+            &.active {
+              display: block;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-.menu-wrapper {
+.weekMenu-wrapper {
   display: none;
 
-  .menu-visible & {
+  .showWeek {
+    float: left;
+
+    @media (min-width: @breakpointMini) {
+      margin-left: 12px;
+    }
+  }
+
+  .menu.dates {
+    float: left;
+
+    > li {
+      display: none;
+
+      &.active {
+        display: inline-block;
+      }
+    }
+
+    @media (min-width: 640px) {
+      width: auto;
+
+      > li {
+        display: inline-block;
+      }
+    }
+  }
+
+  .navigate {
+    position: relative;
+    float: left;
+    line-height: @barSize;
+    font-size: 5px;
+    color: fadeout(@colorFgTheme, 20);
+
+    @media (min-width: 640px) {
+      display: none;
+    }
+
+    &.navigate-left {
+      right: -7px;
+    }
+
+    &.navigate-right {
+      left: -7px;
+    }
+  }
+}
+
+&.state-weekdayMenu {
+  .mainMenu-wrapper {
+    display: none;
+  }
+
+  .weekMenu-wrapper {
+    .menu.dates {
+      width: 7*@barSize;
+      margin: 0 auto;
+
+      > li {
+        display: inline-block;
+      }
+    }
+
+    .navigate {
+      display: none;
+    }
+  }
+}
+
+&.state-weekday {
+  .mainMenu-wrapper {
+    .showWeek {
+      display: none;
+    }
+  }
+
+  .weekMenu-wrapper {
     display: block;
   }
 }
 
-.showWeek {
-  display: block;
-
-  .menu-visible & {
+&:not(.state-navigationIndication) {
+  .menu > li.active:after {
     display: none;
   }
-}
-
-.navigate {
-  position: relative;
-  float: left;
-  line-height: @barSize;
-  font-size: 5px;
-  color: fadeout(@colorFgTheme, 20);
-
-  @media (min-width: 640px) {
-    display: none;
-  }
-
-  &.navigate-left {
-    right: -7px;
-  }
-
-  &.navigate-right {
-    left: -7px;
-  }
-}
-
-.menu {
-  float: left;
-
-  > li {
-    display: none;
-
-    &.active {
-      display: inline-block;
-    }
-  }
-
-  @media (min-width: 640px) {
-    width: auto;
-
-    > li {
-      display: inline-block;
-    }
-  }
-}
-
-.menu-expand {
-  .logoWrapper, .addButton, .nowButton, .navigate, .showWeek {
-    display: none;
-  }
-
-  .menu-wrapper, .menu {
-    float: none;
-  }
-
-  .menu {
-    width: 7*@barSize;
-    margin: 0 auto;
-
-    > li {
-      display: inline-block;
-    }
-  }
-}
-
-.Denkmal_Component_Logout {
-  float: right;
 }

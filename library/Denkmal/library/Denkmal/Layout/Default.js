@@ -34,7 +34,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
 
   ready: function() {
     this.bindStream('global-internal', cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(message) {
-      var page = cm.getLayout().findPage();
+      var page = this.findPage();
       var isChat = page && page.hasClass('Denkmal_Page_Now');
       if (!isChat) {
         this._setChatIndication(true);

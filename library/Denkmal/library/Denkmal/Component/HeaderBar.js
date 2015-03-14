@@ -62,5 +62,12 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
     } else {
       this.$el.toggleModalClose();
     }
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  setNavigationIndicationVisible: function(state) {
+    this.$el.toggleClass('state-navigationIndication', state);
   }
 });

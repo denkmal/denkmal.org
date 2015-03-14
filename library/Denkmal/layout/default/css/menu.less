@@ -9,14 +9,16 @@
       display: block;
       text-decoration: none;
       color: @colorFgTheme;
-      opacity: .5;
+      opacity: .7;
     }
 
-    &.active {
+    &:hover, &.active {
       > a {
         opacity: 1;
       }
+    }
 
+    &.active {
       &:after {
         .triangle(transparent, transparent, @colorBgBody, transparent);
         bottom: 0;

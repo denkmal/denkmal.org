@@ -14,13 +14,11 @@ class Denkmal_Paging_Tag_VenueUserLatest extends Denkmal_Paging_Tag_Abstract {
         $join = 'JOIN `denkmal_model_message` m ON `m`.`id` = `denkmal_model_tag_model`.`modelId` ';
         $join .= 'AND `denkmal_model_tag_model`.`modelType` = ' . Denkmal_Model_Message::getTypeStatic();
 
-        $group = '`denkmal_model_tag_model`.`tagId`';
-
         $where = '`m`.`venue` = ' . $venue->getId();
         $where .= ' AND `m`.`created` > ' . $createdMin->getTimestamp();
 
         $order = 'ISNULL(`m`.user) ASC, `m`.`created` DESC, `denkmal_model_tag_model`.tagId ASC';
-        $source = new CM_PagingSource_Sql('`denkmal_model_tag_model`.tagId', 'denkmal_model_tag_model', $where, $order, $join, $group);
+        $source = new CM_PagingSource_Sql('`denkmal_model_tag_model`.tagId', 'denkmal_model_tag_model', $where, $order, $join);
         $source->enableCacheLocal(100);
 
         parent::__construct($source);

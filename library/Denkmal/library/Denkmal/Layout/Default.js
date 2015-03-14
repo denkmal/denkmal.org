@@ -106,7 +106,8 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
     if (null == readStamp) {
       readStamp = 0;
     }
-    this._setChatIndication(lastActivityStamp > readStamp);
+    var activityAge = (Math.floor(Date.now() / 1000) - lastActivityStamp);
+    this._setChatIndication(lastActivityStamp > readStamp && activityAge < (3600 * 12));
   },
 
   _updateChatRead: function() {

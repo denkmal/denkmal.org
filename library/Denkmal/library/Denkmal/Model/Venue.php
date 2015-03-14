@@ -236,7 +236,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         return $venue;
     }
 
-    protected function _onDelete() {
+    protected function _onDeleteBefore() {
         /** @var Denkmal_Model_Event $event */
         foreach ($this->getEventList() as $event) {
             $event->delete();

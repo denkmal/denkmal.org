@@ -56,6 +56,13 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
     } else {
       this.$('.bar').toggleModalClose();
     }
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  setChatIndication: function(state) {
+    this.$('.nowButton .chat-indication').toggleClass('active', state);
   }
 
 });

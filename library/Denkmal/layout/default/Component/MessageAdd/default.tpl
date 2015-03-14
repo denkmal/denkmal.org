@@ -1,6 +1,6 @@
 <div class="teaser">
   <div class="message-action">
-    {button_link label={translate 'Was loift?!'} icon='chat-flash' class='showForm' theme='highlight'}
+    {button_link label={translate 'Schreib etwas!'} icon='chat-flash' class='showForm' theme='highlight'}
   </div>
 
   <div class="account">

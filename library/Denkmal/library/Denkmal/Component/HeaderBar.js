@@ -34,11 +34,9 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
         self.narrow = false;
         self.toggleMenu(false);
       }
-
     };
 
     enquire.register('(max-width: 580px)', handlers);
-
     this.on('destruct', function() {
       enquire.unregister('(max-width: 580px)', handlers);
     });
@@ -63,6 +61,12 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    */
   setChatIndication: function(state) {
     this.$('.nowButton .chat-indication').toggleClass('active', state);
-  }
+  },
 
+  /**
+   * @param {Boolean} state
+   */
+  setWeekMenuVisible: function(state) {
+    this.$el.toggleClass('weekMenu-active', state);
+  }
 });

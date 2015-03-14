@@ -11,7 +11,7 @@
     <span class="icon icon-chat-flash"><span class="indication chat-indication"></span></span>
   </a>
   {link icon='calendar' page='Denkmal_Page_Events' class='navButton showWeek'}
-  <div class="menu-wrapper">
+  <div class="weekMenu-wrapper">
     <div class="navigate navigate-left">
       <span class="icon-arrow-left"></span>
     </div>

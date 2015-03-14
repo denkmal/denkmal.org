@@ -79,7 +79,7 @@
   }
 }
 
-.menu-wrapper, .showWeek {
+.weekMenu-wrapper, .showWeek {
   float: left;
 
   @media (min-width: @breakpointMini) {
@@ -87,18 +87,22 @@
   }
 }
 
-.menu-wrapper {
+.weekMenu-wrapper {
   display: none;
+}
 
-  .menu-visible & {
+&.weekMenu-active {
+  .weekMenu-wrapper {
     display: block;
   }
 }
 
 .showWeek {
   display: block;
+}
 
-  .menu-visible & {
+&.weekMenu-active {
+  .showWeek {
     display: none;
   }
 }

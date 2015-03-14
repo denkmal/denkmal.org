@@ -15,7 +15,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
       });
 
       this._onContentScroll(view.$('.active .scrollable'));
-      this._setMenuVisible(true);
+      this._setWeekMenuVisible(true);
     },
 
     'Denkmal_Page_Events swipe': function(view) {
@@ -24,7 +24,7 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
 
     'Denkmal_Page_Events destruct': function(view) {
       this.findChild('Denkmal_Component_HeaderBar').toggleMenu(false);
-      this._setMenuVisible(false);
+      this._setWeekMenuVisible(false);
     },
 
     'Denkmal_Page_Now ready': function() {
@@ -52,8 +52,8 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
   /**
    * @param {Boolean} state
    */
-  _setMenuVisible: function(state) {
-    this.$el.toggleClass('menu-visible', state);
+  _setWeekMenuVisible: function(state) {
+    this.findChild('Denkmal_Component_HeaderBar').setWeekMenuVisible(state);
   },
 
   /**

@@ -1,7 +1,7 @@
 {extends file=$render->getLayoutPath('Page/Abstract/default.tpl')}
 
 {block name='content-main'}
-  <div class="addNewUser">
+  <div class="addNew">
     <div class="toggleNext">{translate 'Hinzufügen'}<span class="icon-plus"></span></div>
     <div class="toggleNext-content">
       {component name='Admin_Component_UserAdd'}

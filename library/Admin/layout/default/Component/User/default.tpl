@@ -1,4 +1,11 @@
-<div class="toggleNext">{$user->getDisplayName()|escape}</div>
+<div class="toggleNext">
+  {$user->getDisplayName()|escape}
+  <ul class="roles">
+    {foreach $user->getRoles()->get() as $role}
+      <li class="role">{translate ".internals.role.{$role}"}</li>
+    {/foreach}
+  </ul>
+</div>
 <div class="toggleNext-content">
   {component name='Admin_Component_UserRoles' user=$user}
 

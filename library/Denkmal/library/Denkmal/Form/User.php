@@ -19,6 +19,10 @@ class Denkmal_Form_User extends \CM_Form_Abstract {
             $user = $params->getUser('user');
             $this->getField('email')->setValue($user->getEmail());
             $this->getField('username')->setValue($user->getUsername());
+
+        } elseif ($params->has('inviteKey')) {
+            $userInvite = Denkmal_Model_UserInvite::findByKey($params->getString('inviteKey'));
+            $this->getField('email')->setValue($userInvite->getEmail());
         }
     }
 }

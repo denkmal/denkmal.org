@@ -49,4 +49,30 @@ class Denkmal_Form_UserTest extends CMTest_TestCase {
 
         $this->assertFormResponseError($response);
     }
+
+    public function testProcessWithInvite() {
+        $inviter = Denkmal_Model_User::create('inviter@denkmal.org', 'inviter', 'pass');
+        $userInvite = Denkmal_Model_UserInvite::create($inviter);
+
+        $form = new Denkmal_Form_User(['inviteKey' => $userInvite->getKey()]);
+        $action = new Denkmal_FormAction_User_Create($form);
+        $request = $this->createRequestFormAction($action, [
+            'email'    => 'foo@example.com',
+            'username' => 'foo',
+            'password' => 'pass'
+        ]);
+        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response->process();
+
+        $this->assertFormResponseSuccess($response);
+
+        $user = Denkmal_Model_User::findByEmail('foo@example.com');
+        $this->assertNotNull($user);
+        $this->assertSame('foo@example.com', $user->getEmail());
+        $this->assertSame('foo', $user->getUsername());
+
+        $this->assertEquals($user, Denkmal_Model_User::authenticate('foo@example.com', 'pass'));
+
+        $this->assertModelNotInstantiable($userInvite);
+    }
 }

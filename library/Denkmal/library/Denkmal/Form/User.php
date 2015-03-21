@@ -4,7 +4,7 @@ class Denkmal_Form_User extends \CM_Form_Abstract {
 
     protected function _initialize() {
         $this->registerField(new CM_FormField_Email(['name' => 'email']));
-        $this->registerField(new CM_FormField_Text(['name' => 'username']));
+        $this->registerField(new CM_FormField_Text(['name' => 'username', 'lengthMin' => 2, 'lengthMax' => 15]));
         $this->registerField(new CM_FormField_Password(['name' => 'password']));
 
         $this->registerAction(new Denkmal_FormAction_User_Create($this));

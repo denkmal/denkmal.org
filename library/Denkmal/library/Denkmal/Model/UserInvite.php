@@ -50,7 +50,7 @@ class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
      * @return string
      */
     public function getKey() {
-        return base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, self::SALT, $this->getId(), MCRYPT_MODE_ECB));
+        return Base32\Base32::encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, self::SALT, $this->getId(), MCRYPT_MODE_ECB));
     }
 
     protected function _getSchema() {
@@ -82,7 +82,7 @@ class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
      * @return Denkmal_Model_UserInvite|null
      */
     public static function findByKey($key) {
-        $id = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, self::SALT, base64_decode($key), MCRYPT_MODE_ECB), "\0");
+        $id = rtrim(Base32\Base32::decode(MCRYPT_RIJNDAEL_128, self::SALT, base64_decode($key), MCRYPT_MODE_ECB), "\0");
         try {
             return new self($id);
         } catch (CM_Exception_Nonexistent $e) {

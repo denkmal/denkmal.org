@@ -2,6 +2,8 @@
 
 class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
 
+    const SALT = 'FAbyviKZecDdk8MWu7wzbGrkt';
+
     /**
      * @return Denkmal_Model_User
      */
@@ -44,6 +46,13 @@ class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
         $this->_set('expires', $expires);
     }
 
+    /**
+     * @return string
+     */
+    public function getKey() {
+        return base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, self::SALT, $this->getId(), MCRYPT_MODE_ECB));
+    }
+
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
             'inviter' => array('type' => 'Denkmal_Model_User'),
@@ -66,6 +75,19 @@ class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
         $userInvite->commit();
 
         return $userInvite;
+    }
+
+    /**
+     * @param string $key
+     * @return Denkmal_Model_UserInvite|null
+     */
+    public static function findByKey($key) {
+        $id = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, self::SALT, base64_decode($key), MCRYPT_MODE_ECB), "\0");
+        try {
+            return new self($id);
+        } catch (CM_Exception_Nonexistent $e) {
+            return null;
+        }
     }
 
     public static function getPersistenceClass() {

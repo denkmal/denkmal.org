@@ -36,4 +36,14 @@ class Denkmal_Model_UserInviteTest extends CMTest_TestCase {
         $userInvite->delete();
         new Denkmal_Model_User($userInvite->getId());
     }
+
+    public function testKey() {
+        $inviter = Denkmal_Model_User::create('foo@example.com', 'foo', '1234');
+        $userInvite = Denkmal_Model_UserInvite::create($inviter);
+
+        $this->assertInternalType('string', $userInvite->getKey());
+        $this->assertEquals($userInvite, Denkmal_Model_UserInvite::findByKey($userInvite->getKey()));
+
+        $this->assertNull(Denkmal_Model_UserInvite::findByKey('123456789'));
+    }
 }

@@ -6,6 +6,9 @@ class Denkmal_Page_SignUp extends \Denkmal_Page_Abstract {
         $inviteKey = $this->_params->getString('invite');
 
         $userInvite = Denkmal_Model_UserInvite::findByKey($inviteKey);
+        if (null === $userInvite) {
+            $viewResponse->setTemplateName('invalid');
+        }
 
         $viewResponse->set('userInvite', $userInvite);
     }

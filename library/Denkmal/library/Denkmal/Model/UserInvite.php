@@ -50,12 +50,20 @@ class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
      * @return string
      */
     public function getKey() {
-        return Base32\Base32::encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, self::SALT, $this->getId(), MCRYPT_MODE_ECB));
+        return $this->_get('key');
+    }
+
+    /**
+     * @param string $key
+     */
+    public function setKey($key) {
+        $this->_set('key', $key);
     }
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
             'inviter' => array('type' => 'Denkmal_Model_User'),
+            'key'     => array('type' => 'string'),
             'email'   => array('type' => 'string', 'optional' => true),
             'expires' => array('type' => 'DateTime', 'optional' => true),
         ));
@@ -70,6 +78,7 @@ class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
     public static function create(Denkmal_Model_User $inviter, $email = null, DateTime $expires = null) {
         $userInvite = new self();
         $userInvite->setInviter($inviter);
+        $userInvite->setKey(self::generateKey());
         $userInvite->setEmail($email);
         $userInvite->setExpires($expires);
         $userInvite->commit();
@@ -78,16 +87,22 @@ class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
     }
 
     /**
+     * @return string
+     */
+    public static function generateKey() {
+        return md5(rand() . uniqid());
+    }
+
+    /**
      * @param string $key
      * @return Denkmal_Model_UserInvite|null
      */
     public static function findByKey($key) {
-        $id = rtrim(Base32\Base32::decode(MCRYPT_RIJNDAEL_128, self::SALT, base64_decode($key), MCRYPT_MODE_ECB), "\0");
-        try {
-            return new self($id);
-        } catch (CM_Exception_Nonexistent $e) {
+        $id = CM_Db_Db::select('denkmal_model_userinvite', 'id', ['key' => $key])->fetchColumn();
+        if (false === $id) {
             return null;
         }
+        return new self($id);
     }
 
     public static function getPersistenceClass() {

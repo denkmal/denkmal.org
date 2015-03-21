@@ -1,5 +1,5 @@
 <div class="toggleNext">
-  {$user->getDisplayName()|escape}
+  {$user->getDisplayName()|escape} <span class="email">&lt;{$user->getEmail()|escape}&gt;</span>
   <ul class="roles">
     {foreach $user->getRoles()->get() as $role}
       <li class="role">{translate ".internals.role.{$role}"}</li>

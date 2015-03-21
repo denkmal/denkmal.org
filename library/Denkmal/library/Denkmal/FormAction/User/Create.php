@@ -12,7 +12,10 @@ class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
         $paramsForm = $form->getParams();
 
         $viewerIsAdmin = $response->getViewer() && $response->getViewer()->getRoles()->contains(Denkmal_Role::ADMIN);
-        $userInvite = Denkmal_Model_UserInvite::findByKey($paramsForm->getString('inviteKey'));
+        $userInvite = null;
+        if ($paramsForm->has('inviteKey')) {
+            $userInvite = Denkmal_Model_UserInvite::findByKey($paramsForm->getString('inviteKey'));
+        }
         $email = $params->getString('email');
         $username = $params->getString('username');
 
@@ -34,7 +37,10 @@ class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
         /** @var Denkmal_Params $paramsForm */
         $paramsForm = $form->getParams();
 
-        $userInvite = Denkmal_Model_UserInvite::findByKey($paramsForm->getString('inviteKey'));
+        $userInvite = null;
+        if ($paramsForm->has('inviteKey')) {
+            $userInvite = Denkmal_Model_UserInvite::findByKey($paramsForm->getString('inviteKey'));
+        }
         $email = $params->getString('email');
         $username = $params->getString('username');
         $password = $params->getString('password');

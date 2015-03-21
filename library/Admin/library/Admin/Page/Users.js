@@ -8,7 +8,7 @@ var Admin_Page_Users = Admin_Page_Abstract.extend({
 	_class: 'Admin_Page_Users',
 
   childrenEvents: {
-    'Admin_Form_User success.Create': function(form) {
+    'Denkmal_Form_User success.Create': function(form) {
       this.reload();
     }
   }

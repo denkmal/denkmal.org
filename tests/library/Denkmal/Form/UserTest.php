@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_UserTest extends CMTest_TestCase {
+class Denkmal_Form_UserTest extends CMTest_TestCase {
 
     protected function tearDown() {
         CMTest_TH::clearEnv();
@@ -10,8 +10,8 @@ class Admin_Form_UserTest extends CMTest_TestCase {
         $admin = Denkmal_Model_User::create('admin@denkmal.org', 'admin', 'pass');
         $admin->getRoles()->add(Denkmal_Role::ADMIN);
 
-        $form = new Admin_Form_User();
-        $action = new Admin_FormAction_User_Create($form);
+        $form = new Denkmal_Form_User();
+        $action = new Denkmal_FormAction_User_Create($form);
         $request = $this->createRequestFormAction($action, [
             'email'    => 'foo@example.com',
             'username' => 'foo',
@@ -36,8 +36,8 @@ class Admin_Form_UserTest extends CMTest_TestCase {
         $publisher = Denkmal_Model_User::create('publisher@denkmal.org', 'publisher', 'pass');
         $publisher->getRoles()->add(Denkmal_Role::PUBLISHER);
 
-        $form = new Admin_Form_User();
-        $action = new Admin_FormAction_User_Create($form);
+        $form = new Denkmal_Form_User();
+        $action = new Denkmal_FormAction_User_Create($form);
         $request = $this->createRequestFormAction($action, [
             'email'    => 'foo@example.com',
             'username' => 'foo',

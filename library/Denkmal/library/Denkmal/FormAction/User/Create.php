@@ -1,6 +1,6 @@
 <?php
 
-class Admin_FormAction_User_Create extends Admin_FormAction_Abstract {
+class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
 
     protected function _getRequiredFields() {
         return array('email', 'username', 'password');

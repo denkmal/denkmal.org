@@ -22,7 +22,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
         });
 
         $textList = Functional\reject($textList, function ($text) {
-            return preg_match('#Programm \w+ \(pdf\)#i', $text);
+            return preg_match('#\w+ \(?pdf\)?#i', $text);
         });
         $textList = Functional\reject(array_values($textList), function ($text, $index, $textList) {
             if (0 === $index || count($textList) - 1 === $index) {

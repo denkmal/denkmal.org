@@ -6,6 +6,16 @@ class Admin_FormAction_UserInvite_Create extends Admin_FormAction_Abstract {
         return [];
     }
 
+    protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
+        parent::_checkData($params, $response, $form);
+        $email = $params->has('email') ? $params->getString('email') : null;
+        $sendEmail = $params->getBoolean('sendEmail');
+
+        if (null === $email && true === $sendEmail) {
+            $response->addError($response->getRender()->getTranslation('Einladung kann nicht verschickt werden weil E-Mail fehlt.'), 'sendEmail');
+        }
+    }
+
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Params $params */
         $inviter = $response->getViewer(true);

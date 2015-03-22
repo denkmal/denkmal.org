@@ -7,8 +7,12 @@ class Admin_FormAction_UserInvite_Create extends Admin_FormAction_Abstract {
     }
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN)) {
-            $response->addError($response->getRender()->getTranslation('Not Allowed'));
+        parent::_checkData($params, $response, $form);
+        $email = $params->has('email') ? $params->getString('email') : null;
+        $sendEmail = $params->getBoolean('sendEmail');
+
+        if (null === $email && true === $sendEmail) {
+            $response->addError($response->getRender()->getTranslation('Einladung kann nicht verschickt werden weil E-Mail fehlt.'), 'sendEmail');
         }
     }
 

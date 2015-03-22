@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS `denkmal_model_venue`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_model_link`;
 DROP TABLE IF EXISTS `denkmal_model_user`;
+DROP TABLE IF EXISTS `denkmal_model_userinvite`;
 DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
 DROP TABLE IF EXISTS `denkmal_model_tag`;
 DROP TABLE IF EXISTS `denkmal_model_tag_model`;
@@ -117,6 +118,18 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_user` (
   PRIMARY KEY (`userId`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_userinvite` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `inviter` int(11) unsigned NOT NULL,
+  `key` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `expires` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `expires` (`expires`),
+  KEY `key` (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

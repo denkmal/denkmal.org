@@ -86,6 +86,7 @@ class Denkmal_Params extends CM_Params {
     public function getDateInterval($key) {
         return $this->getObject($key, 'DateInterval');
     }
+
     /**
      * @param string $key
      * @return Denkmal_Model_Message
@@ -93,5 +94,14 @@ class Denkmal_Params extends CM_Params {
      */
     public function getMessage($key) {
         return $this->getObject($key, 'Denkmal_Model_Message');
+    }
+
+    /**
+     * @param string $key
+     * @return Denkmal_Model_UserInvite
+     * @throws CM_Exception_InvalidParam
+     */
+    public function getUserInvite($key) {
+        return $this->getObject($key, 'Denkmal_Model_UserInvite');
     }
 }

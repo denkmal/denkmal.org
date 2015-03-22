@@ -40,6 +40,15 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
                 $eventTweeter->tweetStarredEvents(Denkmal_Site::getCurrentDate());
             }
         ));
+
+        $this->_registerClockworkCallbacks('1 hour', array(
+            'Delete expired invites' => function () {
+                /** @var Denkmal_Model_UserInvite $userInvite */
+                foreach ((new Denkmal_Paging_UserInvite_Expired())->getItems() as $userInvite) {
+                    $userInvite->delete();
+                }
+            }
+        ));
     }
 
     public static function getPackageName() {

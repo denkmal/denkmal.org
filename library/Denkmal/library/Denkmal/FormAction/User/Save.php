@@ -1,9 +1,9 @@
 <?php
 
-class Admin_FormAction_User_Create extends Admin_FormAction_Abstract {
+class Denkmal_FormAction_User_Save extends CM_FormAction_Abstract {
 
     protected function _getRequiredFields() {
-        return array('email', 'username', 'password');
+        return array('email', 'username');
     }
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
@@ -14,10 +14,20 @@ class Admin_FormAction_User_Create extends Admin_FormAction_Abstract {
 
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Params $params */
+        /** @var Denkmal_Params $paramsForm */
+        $paramsForm = $form->getParams();
+
+        $user = $paramsForm->getUser('user');
         $email = $params->getString('email');
         $username = $params->getString('username');
-        $password = $params->getString('password');
+        $password = $params->has('password') ? $params->getString('password') : null;
 
-        Denkmal_Model_User::create($email, $username, $password);
+        $user->setEmail($email);
+        $user->setUsername($username);
+        if (null !== $password) {
+            $user->setPassword($password);
+        }
+
+        $response->reloadComponent();
     }
 }

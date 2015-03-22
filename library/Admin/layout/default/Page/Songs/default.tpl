@@ -2,7 +2,7 @@
 
 {block name='content-main'}
   {component name='Admin_Component_Filter_Search' searchTerm=$searchTerm urlPage='Admin_Page_Songs'}
-  <div class="addNewSong">
+  <div class="addNew">
     <div class="toggleNext">{translate 'Hinzufügen'}<span class="icon-plus"></span></div>
     <div class="toggleNext-content">
       {component name='Admin_Component_SongAdd'}

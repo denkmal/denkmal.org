@@ -1,9 +1,9 @@
 <?php
 
-class Admin_FormAction_User_Save extends Admin_FormAction_Abstract {
+class Admin_FormAction_UserInvite_Save extends Admin_FormAction_Abstract {
 
     protected function _getRequiredFields() {
-        return array('email', 'username');
+        return [];
     }
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
@@ -17,16 +17,14 @@ class Admin_FormAction_User_Save extends Admin_FormAction_Abstract {
         /** @var Denkmal_Params $paramsForm */
         $paramsForm = $form->getParams();
 
-        $user = $paramsForm->getUser('user');
-        $email = $params->getString('email');
-        $username = $params->getString('username');
-        $password = $params->has('password') ? $params->getString('password') : null;
+        $userInvite = $paramsForm->getUserInvite('userInvite');
 
-        $user->setEmail($email);
-        $user->setUsername($username);
-        if (null !== $password) {
-            $user->setPassword($password);
-        }
+        /** @var Denkmal_Params $params */
+        $email = $params->has('email') ? $params->getString('email') : null;
+        $expires = $params->getDate('expires');
+
+        $userInvite->setEmail($email);
+        $userInvite->setExpires($expires);
 
         $response->reloadComponent();
     }

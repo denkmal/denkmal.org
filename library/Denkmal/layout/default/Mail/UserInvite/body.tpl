@@ -1,5 +1,5 @@
 <p>
-  {translate '{$inviter} hat dich eingeladen einen Hipster Account für Denkmal Now zu erstellen!' inviter=$userInvite->getInviter()->getDisplayName()|escape}
+  {translate '{$inviter} hat dich eingeladen, einen Hipster-Account für Denkmal Now zu erstellen!' inviter=$userInvite->getInviter()->getDisplayName()|escape}
 </p>
 
 <table cellspacing="0" border="0" cellpadding="0" style="{less}margin: 10px 0; height: @sizeButton; background-color: @colorBgButtonHighlight; color: @colorFgButtonHighlight; border-radius: @borderRadiusInput; border: 1px solid @colorBgButtonHighlight;{/less}">
@@ -19,7 +19,7 @@
 {/if}
 
 <p>
-  {translate 'Denkmal Now erlaubt dir mit dem Mobiltelefon anderen Leuten mitzuteilen was du gerade so treibst im Nachtleben.'}<br />
+  {translate 'Denkmal Now erlaubt dir, mit dem Mobiltelefon anderen Leuten mitzuteilen, was du gerade so treibst im Nachtleben.'}<br />
 </p>
 <ul>
   <li>{translate 'Login und Account-Einstellungen via Schnurrbart auf {$link}.' link={linkDomainShort page='Denkmal_Page_Now'}}</li>

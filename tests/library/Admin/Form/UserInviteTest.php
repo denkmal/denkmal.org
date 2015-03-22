@@ -35,23 +35,4 @@ class Admin_Form_UserInviteTest extends CMTest_TestCase {
         $this->assertContains('Einladung', $logMailEntry['msg']);
         $this->assertSame('foo@example.com', $logMailEntry['metaInfo']['to'][0]['address']);
     }
-
-    public function testProcessOnlyAdmin() {
-        $publisher = Denkmal_Model_User::create('publisher@denkmal.org', 'publisher', 'pass');
-        $publisher->getRoles()->add(Denkmal_Role::PUBLISHER);
-        $expires = new DateTime('2015-03-12');
-
-        $form = new Admin_Form_UserInvite();
-        $action = new Admin_FormAction_UserInvite_Create($form);
-        $request = $this->createRequestFormAction($action, [
-            'email'     => 'foo@example.com',
-            'expires'   => ['year' => $expires->format('Y'), 'month' => $expires->format('n'), 'day' => $expires->format('j')],
-            'sendEmail' => 0,
-        ]);
-        $request->mockMethod('getViewer')->set($publisher);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
-        $response->process();
-
-        $this->assertFormResponseError($response);
-    }
 }

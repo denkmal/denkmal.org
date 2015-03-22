@@ -6,6 +6,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Mail->types[1] = 'CM_Mail';
     $config->CM_Mail->types[2] = 'CM_Mail_Welcome';
     $config->CM_Mail->types[38] = 'Admin_Mail_EventNotification';
+    $config->CM_Mail->types[62] = 'Denkmal_Mail_UserInvite';
     $config->CM_Mail->type = 1;
     $config->CM_Action_Abstract->types = [];
     $config->CM_Action_Abstract->types[3] = 'CM_Action_Email';
@@ -129,7 +130,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_App_SetupScript_Tags->type = 59;
     $config->Denkmal_ExampleData_Venues->type = 60;
     $config->Denkmal_Model_UserInvite->type = 61;
-    $config->CM_Class_Abstract->typesMaxValue = 61;
+    $config->Denkmal_Mail_UserInvite->type = 62;
+    $config->CM_Class_Abstract->typesMaxValue = 62;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

@@ -17,7 +17,13 @@ class Admin_FormAction_UserInvite_Create extends Admin_FormAction_Abstract {
         $inviter = $response->getViewer(true);
         $email = $params->has('email') ? $params->getString('email') : null;
         $expires = $params->getDate('expires');
+        $sendEmail = $params->getBoolean('sendEmail');
 
-        Denkmal_Model_UserInvite::create($inviter, $email, $expires);
+        $userInvite = Denkmal_Model_UserInvite::create($inviter, $email, $expires);
+
+        if ($sendEmail) {
+            $email = new Denkmal_Mail_UserInvite($userInvite);
+            $email->send();
+        }
     }
 }

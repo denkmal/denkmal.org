@@ -14,8 +14,9 @@ class Admin_Form_UserInviteTest extends CMTest_TestCase {
         $form = new Admin_Form_UserInvite();
         $action = new Admin_FormAction_UserInvite_Create($form);
         $request = $this->createRequestFormAction($action, [
-            'email'   => 'foo@example.com',
-            'expires' => ['year' => $expires->format('Y'), 'month' => $expires->format('n'), 'day' => $expires->format('j')],
+            'email'     => 'foo@example.com',
+            'expires'   => ['year' => $expires->format('Y'), 'month' => $expires->format('n'), 'day' => $expires->format('j')],
+            'sendEmail' => 1,
         ]);
         $request->mockMethod('getViewer')->set($admin);
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
@@ -29,6 +30,10 @@ class Admin_Form_UserInviteTest extends CMTest_TestCase {
         $this->assertEquals($admin, $userInvite->getInviter());
         $this->assertSame('foo@example.com', $userInvite->getEmail());
         $this->assertEquals($expires, $userInvite->getExpires());
+
+        $logMailEntry = (new CM_Paging_Log_Mail())->getItem(0);
+        $this->assertContains('Einladung', $logMailEntry['msg']);
+        $this->assertSame('foo@example.com', $logMailEntry['metaInfo']['to'][0]['address']);
     }
 
     public function testProcessOnlyAdmin() {
@@ -39,8 +44,9 @@ class Admin_Form_UserInviteTest extends CMTest_TestCase {
         $form = new Admin_Form_UserInvite();
         $action = new Admin_FormAction_UserInvite_Create($form);
         $request = $this->createRequestFormAction($action, [
-            'email'   => 'foo@example.com',
-            'expires' => ['year' => $expires->format('Y'), 'month' => $expires->format('n'), 'day' => $expires->format('j')],
+            'email'     => 'foo@example.com',
+            'expires'   => ['year' => $expires->format('Y'), 'month' => $expires->format('n'), 'day' => $expires->format('j')],
+            'sendEmail' => 0,
         ]);
         $request->mockMethod('getViewer')->set($publisher);
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());

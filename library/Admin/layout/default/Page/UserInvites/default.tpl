@@ -7,6 +7,7 @@
       {form name='Admin_Form_UserInvite'}
       {formField name='email' label={translate 'E-Mail'}}
       {formField name='expires' label={translate 'Verfall'}}
+      {formField name='sendEmail' text={translate 'Einladung schicken'}}
       {formAction action='Create' label={translate 'Hinzufügen'}}
       {/form}
     </div>

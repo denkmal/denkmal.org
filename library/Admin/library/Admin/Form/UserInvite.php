@@ -5,6 +5,7 @@ class Admin_Form_UserInvite extends \CM_Form_Abstract {
     protected function _initialize() {
         $this->registerField(new CM_FormField_Email(['name' => 'email']));
         $this->registerField(new CM_FormField_Date(['name' => 'expires']));
+        $this->registerField(new CM_FormField_Boolean(['name' => 'sendEmail']));
 
         $this->registerAction(new Admin_FormAction_UserInvite_Create($this));
         $this->registerAction(new Admin_FormAction_UserInvite_Save($this));
@@ -20,6 +21,7 @@ class Admin_Form_UserInvite extends \CM_Form_Abstract {
             $this->getField('expires')->setValue($userInvite->getExpires());
         } else {
             $this->getField('expires')->setValue((new DateTime())->modify('+30 days'));
+            $this->getField('sendEmail')->setValue(true);
         }
     }
 }

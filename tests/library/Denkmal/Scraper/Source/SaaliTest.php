@@ -6,26 +6,26 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2014);
+        $eventDataList = $scraper->processPage($html, 2015);
 
         $this->assertCount(9, $eventDataList);
 
         $this->assertEquals(new Denkmal_Scraper_EventData(
             'Sääli',
-            new Denkmal_Scraper_Description('Monoglot (CH) Jazz'),
-            new DateTime('2014-11-20 21:00:00')
+            new Denkmal_Scraper_Description('Solotundra (IT) Rock\'n\'Roll One Man Show CANCELED !!!'),
+            new DateTime('2015-03-19 21:00:00')
         ), $eventDataList[0]);
 
         $this->assertEquals(new Denkmal_Scraper_EventData(
             'Sääli',
-            new Denkmal_Scraper_Description('The Roarings 420s (DE) & The Blank Tapes (US) Psychedelic,Surf,Garage'),
-            new DateTime('2014-11-28 21:00:00')
-        ), $eventDataList[3]);
+            new Denkmal_Scraper_Description('Mr. Marble Puddle Stompers Downtown Blues'),
+            new DateTime('2015-04-04 21:00:00')
+        ), $eventDataList[2]);
 
         $this->assertEquals(new Denkmal_Scraper_EventData(
             'Sääli',
-            new Denkmal_Scraper_Description('The Rebel Sperm (CH) One–Women–Show–By Jackie Brutsche'),
-            new DateTime('2014-12-12 21:00:00')
-        ), $eventDataList[8]);
+            new Denkmal_Scraper_Description('Andi\'s Blues Orchester (DE) Blues / Boogie / Ragtime'),
+            new DateTime('2015-04-17 21:00:00')
+        ), $eventDataList[6]);
     }
 }

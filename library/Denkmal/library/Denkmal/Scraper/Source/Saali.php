@@ -22,7 +22,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
         });
 
         $textList = Functional\reject($textList, function ($text) {
-            return preg_match('#Programm \w+ \(pdf\)#i', $text);
+            return preg_match('#\w+ \(?pdf\)?#i', $text);
         });
         $textList = Functional\reject(array_values($textList), function ($text, $index, $textList) {
             if (0 === $index || count($textList) - 1 === $index) {
@@ -72,20 +72,5 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
         });
 
         return array_values($eventDataList);
-    }
-
-    /**
-     * @param array    $array
-     * @param callable $callback
-     * @return mixed
-     * @throws CM_Exception
-     */
-    private function _getFirstIndexOf(array $array, callable $callback) {
-        foreach ($array as $index => $value) {
-            if (call_user_func($callback, $value)) {
-                return $index;
-            }
-        }
-        throw new CM_Exception('Cannot find first index in array.');
     }
 }

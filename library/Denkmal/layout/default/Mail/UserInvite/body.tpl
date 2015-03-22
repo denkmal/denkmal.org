@@ -22,7 +22,7 @@
   {translate 'Denkmal Now erlaubt dir mit dem Mobiltelefon anderen Leuten mitzuteilen was du gerade so treibst im Nachtleben.'}<br />
 </p>
 <ul>
-  <li>{translate 'Login und Passwort ändern via Schnurrbart auf {$link}.' link={linkDomainShort page='Denkmal_Page_Now'}}</li>
+  <li>{translate 'Login und Account-Einstellungen via Schnurrbart auf {$link}.' link={linkDomainShort page='Denkmal_Page_Now'}}</li>
   <li>{translate 'Deine Nachrichten sollen ein Stimmungsbild der Veranstaltung vermitteln.'}</li>
   <li>{translate 'Fotos bitte nur im Einvernehmen mit abgebildeten Personen hochladen.'}</li>
 </ul>

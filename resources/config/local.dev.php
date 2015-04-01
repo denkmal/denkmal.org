@@ -6,7 +6,7 @@ return function (CM_Config_Node $config) {
 
     $config->CM_Mail->send = false;
     $config->CM_Stream_Adapter_Message_SocketRedis->servers = array(
-        array('httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => array('http://www.denkmal.dev:8090')),
+        array('httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => array('https://www.denkmal.dev:8090')),
     );
     $config->CM_Elasticsearch_Client->servers = array(
         array('host' => '127.0.0.1', 'port' => 9200),
@@ -31,8 +31,10 @@ return function (CM_Config_Node $config) {
 
     $config->Denkmal_Scraper_Source_Lastfm->apiKey = '68dda0be24c60cef36b7f05b70988b74';
 
-    $config->Denkmal_Site->url = 'http://www.denkmal.dev';
-    $config->Admin_Site->url = 'http://admin.denkmal.dev';
+    $config->Denkmal_Site->url = 'https://www.denkmal.dev';
+    $config->Denkmal_Site->urlCdn = 'https://origin-www.denkmal.dev';
+    $config->Admin_Site->url = 'https://admin.denkmal.dev';
+    $config->Admin_Site->urlCdn = 'https://origin-www.denkmal.dev';
 
     $config->services['usercontent'] = array(
         'class'     => 'CM_Service_UserContent',

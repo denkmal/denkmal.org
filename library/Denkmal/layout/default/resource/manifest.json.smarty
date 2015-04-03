@@ -3,7 +3,7 @@
 	"display": "standalone",
 	"start_url": "/",
 	"gcm_sender_id": "155667704590",
-	"gcm_user_visible_only": true ,
+	"gcm_user_visible_only": true,
 	"icons": [
 		{
 			"src": "{resourceUrl path='img/meta/android-chrome-36x36.png' type='layout'}",

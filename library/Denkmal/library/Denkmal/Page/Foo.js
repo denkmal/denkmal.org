@@ -29,10 +29,8 @@ var Denkmal_Page_Foo = Denkmal_Page_Abstract.extend({
       return;
     }
 
-    //var workerPath = cm.getUrlResource('layout', 'js/serviceworker.js');
-    //workerPath = workerPath.replace(cm.getUrlResource(), cm.getUrl());  // No CORS supported
-
-    var workerPath = '/service-worker.js';
+    var workerPath = cm.getUrlResource('layout', 'js/serviceworker.js');
+    workerPath = workerPath.replace(cm.getUrlResource(), cm.getUrl());  // No CORS supported
 
     var self = this;
     navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {

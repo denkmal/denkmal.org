@@ -9,18 +9,18 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
     protected $_typeEvent;
 
     public function setUp() {
-        CM_Config::get()->CM_Elasticsearch_Client->enabled = true;
+        $this->getServiceManager()->getElasticsearch()->setEnabled(true);
 
         $this->_typeSong = new Denkmal_Elasticsearch_Type_Song();
-        $this->_typeSong->createVersioned();
+        $this->_typeSong->createIndex();
 
         $this->_typeEvent = new Denkmal_Elasticsearch_Type_Event();
-        $this->_typeEvent->createVersioned();
+        $this->_typeEvent->createIndex();
     }
 
     public function tearDown() {
-        $this->_typeSong->getIndex()->delete();
-        $this->_typeEvent->getIndex()->delete();
+        $this->_typeSong->deleteIndex();
+        $this->_typeEvent->deleteIndex();
         CMTest_TH::clearEnv();
     }
 

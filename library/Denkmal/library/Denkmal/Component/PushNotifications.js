@@ -1,11 +1,11 @@
 /**
- * @class Denkmal_Page_Foo
- * @extends Denkmal_Page_Abstract
+ * @class Denkmal_Component_PushNotifications
+ * @extends Denkmal_Component_Abstract
  */
-var Denkmal_Page_Foo = Denkmal_Page_Abstract.extend({
+var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
 
-  /** @type String */
-  _class: 'Denkmal_Page_Foo',
+	/** @type String */
+	_class: 'Denkmal_Component_PushNotifications',
 
   ready: function() {
 

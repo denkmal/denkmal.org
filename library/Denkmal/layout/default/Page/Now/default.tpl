@@ -7,6 +7,8 @@
     {component name='Denkmal_Component_MessageAdd'}
   {/if}
 
+  {component name='Denkmal_Component_PushNotifications'}
+
   {if $venue}
     <div class="filter-panel">
       {translate 'Filter'}:

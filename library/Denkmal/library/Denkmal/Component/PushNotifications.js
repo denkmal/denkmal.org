@@ -9,26 +9,8 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
 
   ready: function() {
     if (this._checkSupport()) {
-      var workerPath = cm.getUrlResource('layout', 'js/service-worker.js');
-      workerPath = workerPath.replace(cm.getUrlResource(), cm.getUrl());  // No CORS supported
-
-      var self = this;
-      navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-        console.log('serviceWorker ready');
-      }, function() {
-        console.log('serviceWorker failed');
-      });
-
-      navigator.serviceWorker.register(workerPath).then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-          console.log('serviceWorker ready');
-        });
-        self.enableSubscription();
-        self.initialiseSubscription();
-      }).catch(function(err) {
-        console.log('ServiceWorker registration failed: ', err);
-      });
+      this.enableSubscription();
+      this.initialiseSubscription();
     }
   },
 
@@ -36,45 +18,26 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
    * @return {Boolean}
    */
   _checkSupport: function() {
-    if (!('serviceWorker' in navigator)) {
-      console.warn('ServiceWorker not supported.');
-      return false;
-    }
     if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-      console.warn('Notifications not supported.');
+      cm.debug.log('Notifications not supported.');
       return false;
     }
     if (Notification.permission === 'denied') {
-      console.warn('The user has blocked notifications.');
+      cm.debug.log('Notifications denied by the user.');
       return false;
     }
     if (!('PushManager' in window)) {
-      console.warn('Push messaging not supported.');
+      cm.debug.log('Push messaging not supported.');
       return false;
     }
     return true;
   },
 
   initialiseSubscription: function(serviceWorkerRegistration) {
-    if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-      console.warn('Notifications not supported.');
-      return;
-    }
-
-    if (Notification.permission === 'denied') {
-      console.warn('The user has blocked notifications.');
-      return;
-    }
-
-    if (!('PushManager' in window)) {
-      console.warn('Push messaging not supported.');
-      return;
-    }
-
     navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
       serviceWorkerRegistration.pushManager.getSubscription()
         .then(function(subscription) {
-          console.log('hello', subscription);
+          cm.debug.log('hello', subscription);
 
           if (!subscription) {
             // We aren't subscribed to push, so set UI
@@ -83,28 +46,28 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
           }
 
           // Keep your server in sync with the latest subscriptionId
-          console.log('Successful subscription: ', subscription);
+          cm.debug.log('Successful subscription: ', subscription);
         })
         .catch(function(err) {
-          console.warn('Error during getSubscription()', err);
+          cm.debug.log('Error during getSubscription()', err);
         });
     });
   },
 
   enableSubscription: function() {
     navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-      console.log('subscribe');
+      cm.debug.log('subscribe');
       serviceWorkerRegistration.pushManager.subscribe()
         .then(function(subscription) {
-          console.log('The subscription was successful:', subscription);
+          cm.debug.log('The subscription was successful:', subscription);
 
           // TODO: Send the subscription.subscriptionId to the server
         })
         .catch(function(e) {
           if (Notification.permission === 'denied') {
-            console.warn('Permission for Notifications was denied');
+            cm.debug.log('Permission for Notifications was denied');
           } else {
-            console.error('Unable to subscribe to push.', e);
+            cm.debug.log('Unable to subscribe to push.', e);
           }
         });
     });

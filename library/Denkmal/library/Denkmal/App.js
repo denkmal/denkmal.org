@@ -13,7 +13,11 @@ var Denkmal_App = CM_App.extend({
   _registerServiceWorker: function() {
     if ('serviceWorker' in navigator) {
       var path = cm.getUrlResource('layout', 'js/service-worker.js');
-      path = path.replace(cm.getUrlResource(), cm.getUrl());  // No CORS supported
+      /**
+       * Same-origin workaround
+       * @todo replace with https://github.com/cargomedia/CM/pull/1715
+       */
+      path = path.replace(cm.getUrlResource(), cm.getUrl());
 
       navigator.serviceWorker.register(path).then(function(registration) {
         cm.debug.log('ServiceWorker registration succeeded.');

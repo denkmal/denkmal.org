@@ -4,51 +4,55 @@
  */
 var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
 
-	/** @type String */
-	_class: 'Denkmal_Component_PushNotifications',
+  /** @type String */
+  _class: 'Denkmal_Component_PushNotifications',
 
   ready: function() {
+    if (this._checkSupport()) {
+      var workerPath = cm.getUrlResource('layout', 'js/service-worker.js');
+      workerPath = workerPath.replace(cm.getUrlResource(), cm.getUrl());  // No CORS supported
 
-    if (!('serviceWorker' in navigator)) {
-      console.warn('ServiceWorker not supported.');
-      return;
-    }
-
-    if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-      console.warn('Notifications not supported.');
-      return;
-    }
-
-    if (Notification.permission === 'denied') {
-      console.warn('The user has blocked notifications.');
-      return;
-    }
-
-    if (!('PushManager' in window)) {
-      console.warn('Push messaging not supported.');
-      return;
-    }
-
-    var workerPath = cm.getUrlResource('layout', 'js/serviceworker.js');
-    workerPath = workerPath.replace(cm.getUrlResource(), cm.getUrl());  // No CORS supported
-
-    var self = this;
-    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-      console.log('serviceWorker ready');
-    }, function() {
-      console.log('serviceWorker failed');
-    });
-
-    navigator.serviceWorker.register(workerPath).then(function(registration) {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      var self = this;
       navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
         console.log('serviceWorker ready');
+      }, function() {
+        console.log('serviceWorker failed');
       });
-      self.enableSubscription();
-      self.initialiseSubscription();
-    }).catch(function(err) {
-      console.log('ServiceWorker registration failed: ', err);
-    });
+
+      navigator.serviceWorker.register(workerPath).then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+          console.log('serviceWorker ready');
+        });
+        self.enableSubscription();
+        self.initialiseSubscription();
+      }).catch(function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    }
+  },
+
+  /**
+   * @return {Boolean}
+   */
+  _checkSupport: function() {
+    if (!('serviceWorker' in navigator)) {
+      console.warn('ServiceWorker not supported.');
+      return false;
+    }
+    if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
+      console.warn('Notifications not supported.');
+      return false;
+    }
+    if (Notification.permission === 'denied') {
+      console.warn('The user has blocked notifications.');
+      return false;
+    }
+    if (!('PushManager' in window)) {
+      console.warn('Push messaging not supported.');
+      return false;
+    }
+    return true;
   },
 
   initialiseSubscription: function(serviceWorkerRegistration) {

@@ -21,8 +21,8 @@ var Denkmal_App = CM_App.extend({
 
       navigator.serviceWorker.register(path).then(function(registration) {
         cm.debug.log('ServiceWorker registration succeeded.');
-      }).catch(function(err) {
-        cm.debug.log('ServiceWorker registration failed.');
+      }).catch(function(error) {
+        cm.debug.log('ServiceWorker registration failed.', error);
       });
     } else {
       cm.debug.log('ServiceWorker not supported.');

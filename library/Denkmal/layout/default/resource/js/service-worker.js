@@ -1,17 +1,17 @@
 self.addEventListener('install', function(event) {
-  console.log('Service worker: install');
+  console.debug('Service worker: install');
 });
 
 self.addEventListener('activate', function(event) {
-  console.log('Service worker: activate');
+  console.debug('Service worker: activate');
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('Service worker: fetch', event);
+  console.debug('Service worker: fetch', event);
 });
 
 self.addEventListener('push', function(event) {
-  console.log('Service worker: push', event);
+  console.debug('Service worker: push', event);
 
   var title = 'Yay a message.';
   var body = 'We have received a push message.';

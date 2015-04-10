@@ -4,21 +4,21 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e6bd533afe1ccc41824e2ccb41a1318b",
+    "hash": "a3f1dca5991e51cca33af08fb4698478",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.7.26",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "340ba93eef5fdef99b8f1134987976b17d81624c"
+                "reference": "526a52732b11154aa937ec1e160668d7f7b83afc"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-340ba93eef5fdef99b8f1134987976b17d81624c-zip-363e99.zip",
-                "reference": "340ba93eef5fdef99b8f1134987976b17d81624c",
-                "shasum": "cda647663c007fb1ddc1e314d69e2c0ccb614c86"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-526a52732b11154aa937ec1e160668d7f7b83afc-zip-a6eb34.zip",
+                "reference": "526a52732b11154aa937ec1e160668d7f7b83afc",
+                "shasum": "cd9b7026e6ab119536cd90f8aa6a8139814d5cea"
             },
             "require": {
                 "guzzle/guzzle": "~3.7",
@@ -71,21 +71,21 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-04-02 21:59:44"
+            "time": "2015-04-09 18:58:17"
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.109.0",
+            "version": "1.110.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "dda54409f9f7a850adb4221181fedc0647bd6a7b"
+                "reference": "784c438d3b648e71e3ee8b57f788cde0ddc13c6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-dda54409f9f7a850adb4221181fedc0647bd6a7b-zip-f705c3.zip",
-                "reference": "dda54409f9f7a850adb4221181fedc0647bd6a7b",
-                "shasum": "c105ca8d84412bd1494a4be1cf94219b171f6890"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-784c438d3b648e71e3ee8b57f788cde0ddc13c6b-zip-b2d56e.zip",
+                "reference": "784c438d3b648e71e3ee8b57f788cde0ddc13c6b",
+                "shasum": "5b6f36326c41502166413a1e62053b81e112f9fb"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-04-03 13:27:36"
+            "time": "2015-04-08 08:56:11"
         },
         {
             "name": "composer/composer",
@@ -1653,17 +1653,17 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74"
+                "reference": "eab81d02569310739373308137284e0158424330"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-token-stream-db32c18eba00b121c145575fcbcd4d4d24e6db74-zip-869dbc.zip",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74",
-                "shasum": "7fe1bcc63321c111df94eea735695dd91c9f1f14"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-token-stream-eab81d02569310739373308137284e0158424330-zip-08460f.zip",
+                "reference": "eab81d02569310739373308137284e0158424330",
+                "shasum": "f1ad88dd48c8beb5d784b9d4e36362b67da5496b"
             },
             "require": {
                 "ext-tokenizer": "*",
@@ -1698,7 +1698,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-01-17 09:51:32"
+            "time": "2015-04-08 04:46:07"
         },
         {
             "name": "phpunit/phpunit",

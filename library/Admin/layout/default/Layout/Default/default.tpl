@@ -12,7 +12,7 @@
     {menu name='main'}
   </header>
   <section id="middle">
-    {$renderAdapter->fetchPage()}
+    {$smarty.capture.pageContent}
   </section>
   {component name='Denkmal_Component_SongPlayer'}
 {/block}

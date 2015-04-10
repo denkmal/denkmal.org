@@ -41,6 +41,6 @@
     </div>
   </header>
   <section id="middle" class="sheet">
-    {$renderAdapter->fetchPage()}
+    {$smarty.capture.pageContent}
   </section>
 {/block}

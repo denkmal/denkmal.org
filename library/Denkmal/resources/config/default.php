@@ -14,13 +14,15 @@ return function (CM_Config_Node $config) {
 
     $config->CM_Stream_Video->servers = array();
 
-    $config->services['twitter'] = array(
+    $config->services['twitter'] = [
         'class'     => 'Denkmal_Twitter_Client',
-        'arguments' => array(array(
-            'consumer_key'       => '<consumer-key>',
-            'consumer_secret'    => '<consumer-secret>',
-            'oauth_token'        => '<oauth-token>',
-            'oauth_token_secret' => '<oauth-token-secret>',
-        )),
-    );
+        'arguments' => [
+            'config' => [
+                'consumer_key'       => '<consumer-key>',
+                'consumer_secret'    => '<consumer-secret>',
+                'oauth_token'        => '<oauth-token>',
+                'oauth_token_secret' => '<oauth-token-secret>',
+            ],
+        ]
+    ];
 };

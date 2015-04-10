@@ -13,14 +13,16 @@ return function (CM_Config_Node $config) {
     );
     $config->services['database-master'] = array(
         'class'     => 'CM_Db_Client',
-        'arguments' => array(array(
-            'host'             => '127.0.0.1',
-            'port'             => 3306,
-            'username'         => 'root',
-            'password'         => '',
-            'db'               => 'denkmal',
-            'reconnectTimeout' => 300
-        ))
+        'arguments' => array(
+            'config' => array(
+                'host'             => '127.0.0.1',
+                'port'             => 3306,
+                'username'         => 'root',
+                'password'         => '',
+                'db'               => 'denkmal',
+                'reconnectTimeout' => 300
+            ),
+        )
     );
     $config->CM_Jobdistribution_Job_Abstract->servers = array(
         array('host' => 'localhost', 'port' => 4730),
@@ -33,10 +35,13 @@ return function (CM_Config_Node $config) {
 
     $config->services['usercontent'] = array(
         'class'     => 'CM_Service_UserContent',
-        'arguments' => array(array(
-            'default' => array(
-                'filesystem' => 'filesystem-usercontent',
-                'url'        => '/userfiles',
-            )
-        )));
+        'arguments' => array(
+            'configList' => array(
+                'default' => array(
+                    'filesystem' => 'filesystem-usercontent',
+                    'url'        => '/userfiles',
+                )
+            ),
+        )
+    );
 };

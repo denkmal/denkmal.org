@@ -31,6 +31,9 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
   },
 
   ready: function() {
+    _.each(_.countBy(this.tagIdList), function(count, tagId) {
+      this.setTag(tagId, count);
+    }, this);
     this._populateInput();
 
     var self = this;
@@ -39,7 +42,7 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
         self.toggleSpecial(type, false);
       });
       _.each(self.tagIdList, function(tagId) {
-        self.toggleTag(tagId, false);
+        self.setTag(tagId, 0);
       });
     });
   },
@@ -56,17 +59,31 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
 
   /**
    * @param {Number} id
-   * @param {Boolean} [state]
    */
-  toggleTag: function(id, state) {
-    if (typeof state === 'undefined') {
-      state = !_.contains(this.tagIdList, id);
+  toggleTag: function(id) {
+    var count = _.filter(this.tagIdList, function(el) {
+      return el === id;
+    }).length;
+    count = (count + 1) % (this.getOption('itemCardinality') + 1);
+
+    this.setTag(id, count);
+  },
+
+  /**
+   * @param {Number} id
+   * @param {Number} count
+   */
+  setTag: function(id, count) {
+    var nTimesId = _.times(count, _.constant(id));
+    this.tagIdList = _.without(this.tagIdList, id).concat(nTimesId);
+
+    if (count > 0 && this._hasCardinality() && this._getCardinalityLeft() < 0) {
+      this.setTag(this.tagIdList[0], 0);
     }
-    this.tagIdList = state ? _.union(this.tagIdList, [id]) : _.without(this.tagIdList, id);
-    if (state && this._hasCardinality() && this._getCardinalityLeft() < 0) {
-      this.toggleTag(this.tagIdList[0], false);
-    }
-    this.$('.tag[data-id="' + id + '"]').toggleClass('active', state);
+    this.$('.tag[data-id="' + id + '"] .count').text(count);
+    this.$('.tag[data-id="' + id + '"]')
+      .toggleClass('active', count > 0)
+      .toggleClass('hasCount', count > 1);
     this._populateInput();
 
     if (this._hasCardinality()) {

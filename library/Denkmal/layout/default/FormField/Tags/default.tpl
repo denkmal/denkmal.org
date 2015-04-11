@@ -13,7 +13,7 @@
       </li>
     {/if}
     {foreach $tagListAvailable as $tag}
-      <li class="tag {if in_array($tag->getId(), $tagIdList)}active{/if}" data-id="{$tag->getId()|escape}">
+      <li class="tag" data-id="{$tag->getId()|escape}">
         <a href="javascript:;" class="toggleTag">
           {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
         </a>

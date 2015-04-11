@@ -31,6 +31,9 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
   },
 
   ready: function() {
+    _.each(_.countBy(this.tagIdList), function(count, tagId) {
+      this.setTag(tagId, count);
+    }, this);
     this._populateInput();
 
     var self = this;

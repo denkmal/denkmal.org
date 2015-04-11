@@ -28,6 +28,17 @@ class Denkmal_Paging_Tag_ModelTest extends CMTest_TestCase {
         $this->assertEquals([], $tagList2);
     }
 
+    public function testAddSameTagTwice() {
+        $model = Denkmal_Model_Link::create('foo', 'http://www.example.com', true);
+        $tag = Denkmal_Model_Tag::create('foo');
+
+        $tagList = new Denkmal_Paging_Tag_Model($model);
+
+        $tagList->add($tag);
+        $tagList->add($tag);
+        $this->assertEquals([$tag, $tag], $tagList);
+    }
+
     public function testDeleteAll(){
         $model = Denkmal_Model_Link::create('foo', 'http://www.example.com', true);
         $tag1 = Denkmal_Model_Tag::create('foo');

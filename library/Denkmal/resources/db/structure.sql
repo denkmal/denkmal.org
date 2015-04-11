@@ -156,8 +156,10 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_tag` (
 
 
 CREATE TABLE IF NOT EXISTS `denkmal_model_tag_model` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tagId` int(11) unsigned NOT NULL,
   `modelType` int(11) unsigned NOT NULL,
   `modelId` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`modelType`, `modelId`, `tagId`)
+  PRIMARY KEY (`id`),
+  KEY `modelType-modelId-tagId` (`modelType`, `modelId`, `tagId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

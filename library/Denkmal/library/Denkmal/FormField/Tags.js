@@ -77,7 +77,7 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
     var nTimesId = _.times(count, _.constant(id));
     this.tagIdList = _.without(this.tagIdList, id).concat(nTimesId);
 
-    if (count && this._hasCardinality() && this._getCardinalityLeft() < 0) {
+    if (count > 0 && this._hasCardinality() && this._getCardinalityLeft() < 0) {
       this.setTag(this.tagIdList[0], 0);
     }
     this.$('.tag[data-id="' + id + '"] .count').text(count);

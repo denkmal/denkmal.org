@@ -2,6 +2,7 @@
 .tagList {
 
   .tag {
+    position: relative;
     display: inline-block;
     box-sizing: border-box;
     width: 40px;
@@ -18,6 +19,21 @@
 
     img, svg {
       display: block;
+    }
+
+    .count {
+      .indicationWithContent(15px);
+      display: none;
+      position: absolute;
+      right: -2px;
+      top: 3px;
+    }
+
+    &.hasCount {
+
+      .count {
+        display: block;
+      }
     }
   }
 

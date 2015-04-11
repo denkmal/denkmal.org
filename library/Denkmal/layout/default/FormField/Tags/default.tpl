@@ -17,6 +17,7 @@
         <a href="javascript:;" class="toggleTag">
           {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
         </a>
+        <div class="count"></div>
       </li>
     {/foreach}
   </ul>

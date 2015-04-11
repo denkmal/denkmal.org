@@ -16,3 +16,18 @@
   border-radius: @size * .5;
   background-color: @color;
 }
+
+.indicationWithContent(@size, @colorBgIndication: @colorBrand, @colorFgIndication: @colorFg) {
+  box-sizing: border-box;
+  display: block;
+  height: @size;
+  min-width: @size;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: @size * .5;
+  line-height: @size;
+  text-align: center;
+  font-size: floor(@size * 3 / 5);
+  background-color: @colorBgIndication;
+  color: @colorFgIndication;
+}

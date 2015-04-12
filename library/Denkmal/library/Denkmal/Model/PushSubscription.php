@@ -59,6 +59,12 @@ class Denkmal_Model_PushSubscription extends \CM_Model_Abstract {
         ));
     }
 
+    protected function _getContainingCacheables() {
+        return [
+            new Denkmal_Paging_PushNotification_All(),
+        ];
+    }
+
     /**
      * @param string             $subscriptionId
      * @param string             $endpoint

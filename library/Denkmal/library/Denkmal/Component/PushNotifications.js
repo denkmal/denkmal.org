@@ -20,12 +20,14 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
 
       if ('granted' === Notification.permission) {
         this._getPushSubscription().then(function(subscription) {
-          cm.debug.log('The subscription is present:', subscription);
+          cm.debug.log('The subscription is:', subscription ? 'present': 'disabled');
           // TODO: Send the subscriptionId, endpoint to the server
         }).catch(function(e) {
           cm.debug.log('Unable to retrieve push.', e);
         });
       }
+
+      this._updatePermissionUI();
     }
   },
 
@@ -42,6 +44,15 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   },
 
   /**
+   * @param {Boolean} [hasSubscription]
+   */
+  _updatePermissionUI: function(hasSubscription) {
+    this.$('.toggleNotifications')
+      .prop('disabled', ('denied' === Notification.permission))
+      .prop('checked', hasSubscription);
+  },
+
+  /**
    * @return {Boolean}
    */
   _checkSupport: function() {
@@ -51,10 +62,6 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
     }
     if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
       cm.debug.log('Notifications not supported.');
-      return false;
-    }
-    if (Notification.permission === 'denied') {
-      cm.debug.log('Notifications denied by the user.');
       return false;
     }
     if (!('PushManager' in window)) {
@@ -72,8 +79,6 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
       return serviceWorkerRegistration.pushManager.subscribe().then(function(subscription) {
         cm.debug.log('Push subscribed:', subscription);
         // TODO: Send the subscriptionId, endpoint to the server
-      }).catch(function(e) {
-        cm.debug.log('Unable to subscribe to push.', e);
       });
     });
   },
@@ -83,6 +88,10 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
    */
   _unsubscribePush: function() {
     return this._getPushSubscription().then(function(subscription) {
+      if (!subscription) {
+        return;
+      }
+
       return subscription.unsubscribe().then(function() {
         cm.debug.log('Push unsubscribed:', subscription);
         // TODO: Send the subscriptionId, endpoint to the server
@@ -96,12 +105,11 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
    * @returns {Promise}
    */
   _getPushSubscription: function() {
+    var self = this;
     return navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
       return serviceWorkerRegistration.pushManager.getSubscription()
         .then(function(subscription) {
-          if (!subscription) {
-            throw new Error('No push subscription available (disabled by user?)');
-          }
+          self._updatePermissionUI(!!subscription);
           return subscription;
         });
     });

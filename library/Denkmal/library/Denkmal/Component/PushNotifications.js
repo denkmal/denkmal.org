@@ -16,6 +16,8 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
 
   ready: function() {
     if (this._checkSupport()) {
+      this.$el.addClass('state-enabled');
+
       if ('granted' === Notification.permission) {
         this._getPushSubscription().then(function(subscription) {
           cm.debug.log('The subscription is present:', subscription);

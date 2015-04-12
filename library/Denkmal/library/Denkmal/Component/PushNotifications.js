@@ -7,10 +7,35 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Component_PushNotifications',
 
+  events: {
+    'change .toggleNotifications': function(event) {
+      var state = event.currentTarget.checked;
+      this.togglePush(state);
+    }
+  },
+
   ready: function() {
     if (this._checkSupport()) {
-      this._enableSubscription();
-      this._checkState();
+      if ('granted' === Notification.permission) {
+        this._getPushSubscription().then(function(subscription) {
+          cm.debug.log('The subscription is present:', subscription);
+          // TODO: Send the subscriptionId, endpoint to the server
+        }).catch(function(e) {
+          cm.debug.log('Unable to retrieve push.', e);
+        });
+      }
+    }
+  },
+
+  /**
+   * @param {Boolean} state
+   * @returns {Promise}
+   */
+  togglePush: function(state) {
+    if (state) {
+      return this._subscribePush();
+    } else {
+      return this._unsubscribePush();
     }
   },
 
@@ -18,6 +43,10 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
    * @return {Boolean}
    */
   _checkSupport: function() {
+    if (!('serviceWorker' in navigator)) {
+      cm.debug.log('ServiceWorker not supported.');
+      return false;
+    }
     if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
       cm.debug.log('Notifications not supported.');
       return false;
@@ -33,42 +62,45 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
     return true;
   },
 
-  _checkState: function() {
-    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-      serviceWorkerRegistration.pushManager.getSubscription()
-        .then(function(subscription) {
-          cm.debug.log('hello', subscription);
-
-          if (!subscription) {
-            // We aren't subscribed to push, so set UI
-            // to allow the user to enable push
-            return;
-          }
-
-          // Keep your server in sync with the latest subscriptionId
-          cm.debug.log('Successful subscription: ', subscription);
-        })
-        .catch(function(err) {
-          cm.debug.log('Error during getSubscription()', err);
-        });
+  /**
+   * @returns {Promise}
+   */
+  _subscribePush: function() {
+    return navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+      return serviceWorkerRegistration.pushManager.subscribe().then(function(subscription) {
+        cm.debug.log('Push subscribed:', subscription);
+        // TODO: Send the subscriptionId, endpoint to the server
+      }).catch(function(e) {
+        cm.debug.log('Unable to subscribe to push.', e);
+      });
     });
   },
 
-  _enableSubscription: function() {
-    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-      cm.debug.log('subscribe');
-      serviceWorkerRegistration.pushManager.subscribe()
-        .then(function(subscription) {
-          cm.debug.log('The subscription was successful:', subscription);
+  /**
+   * @returns {Promise}
+   */
+  _unsubscribePush: function() {
+    return this._getPushSubscription().then(function(subscription) {
+      return subscription.unsubscribe().then(function() {
+        cm.debug.log('Push unsubscribed:', subscription);
+        // TODO: Send the subscriptionId, endpoint to the server
+      }).catch(function(e) {
+        cm.debug.log('Unable to unsubscribe to push.', e);
+      });
+    });
+  },
 
-          // TODO: Send the subscription.subscriptionId to the server
-        })
-        .catch(function(e) {
-          if (Notification.permission === 'denied') {
-            cm.debug.log('Permission for Notifications was denied');
-          } else {
-            cm.debug.log('Unable to subscribe to push.', e);
+  /**
+   * @returns {Promise}
+   */
+  _getPushSubscription: function() {
+    return navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+      return serviceWorkerRegistration.pushManager.getSubscription()
+        .then(function(subscription) {
+          if (!subscription) {
+            throw new Error('No push subscription available (disabled by user?)');
           }
+          return subscription;
         });
     });
   }

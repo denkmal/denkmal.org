@@ -80,4 +80,27 @@ class Denkmal_Model_PushSubscription extends \CM_Model_Abstract {
 
         return $pushSubscription;
     }
+
+    /**
+     * @param string $subscriptionId
+     * @param string $endpoint
+     * @return self|null
+     */
+    public static function findBySubscriptionIdAndEndpoint($subscriptionId, $endpoint) {
+        $subscriptionId = (string) $subscriptionId;
+        $endpoint = (string) $endpoint;
+        /** @var CM_Model_StorageAdapter_Database $persistence */
+        $persistence = self::_getStorageAdapter(self::getPersistenceClass());
+
+        $model = $persistence->findByData(self::getTypeStatic(), [
+            'subscriptionId' => $subscriptionId,
+            'endpoint'       => $endpoint,
+        ]);
+
+        if (null !== $model) {
+            $model = new self($model['id']);
+        }
+
+        return $model;
+    }
 }

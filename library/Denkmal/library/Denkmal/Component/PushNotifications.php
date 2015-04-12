@@ -9,6 +9,11 @@ class Denkmal_Component_PushNotifications extends \Denkmal_Component_Abstract {
         $subscriptionId = $params->getString('subscriptionId');
         $endpoint = $params->getString('endpoint');
         $user = $params->has('user') ? $params->getUser('user') : null;
-        Denkmal_Model_PushSubscription::create($subscriptionId, $endpoint, $user);
+
+        $pushSubscription = Denkmal_Model_PushSubscription::findBySubscriptionIdAndEndpoint($subscriptionId, $endpoint);
+
+        if (!$pushSubscription) {
+            Denkmal_Model_PushSubscription::create($subscriptionId, $endpoint, $user);
+        }
     }
 }

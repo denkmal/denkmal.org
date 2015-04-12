@@ -15,5 +15,6 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         );
 
         $this->assertViewResponseSuccess($response);
+        $this->assertCount(1, new Denkmal_Paging_PushSubscription_All());
     }
 }

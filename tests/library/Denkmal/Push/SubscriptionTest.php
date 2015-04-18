@@ -26,6 +26,15 @@ class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
     }
 
     /**
+     * @expectedException CM_Db_Exception
+     */
+    public function testCreateDuplicate() {
+        $user = Denkmal_Model_User::create('foo@bar.com', 'test', 'pswd');
+        Denkmal_Push_Subscription::create('foo1', 'http://twitter.com/foo', $user);
+        Denkmal_Push_Subscription::create('foo1', 'http://twitter.com/foo', $user);
+    }
+
+    /**
      * @expectedException CM_Exception_Nonexistent
      */
     public function testDelete() {

@@ -1,31 +1,21 @@
 node default {
 
-  $domain = 'denkmal.dev'
-
   class {'cm::application':
     development => true,
   }
 
-  cm::vhost {"www.${domain}":
-    path => '/home/vagrant/denkmal',
-    debug => true,
-    aliases => [$domain, "admin.${domain}"],
-    ssl_key => file("/home/vagrant/denkmal/puppet/templates/ssl/*.denkmal.dev.key"),
-    ssl_cert => file("/home/vagrant/denkmal/puppet/templates/ssl/*.denkmal.dev.pem"),
-    cdn_origin => 'origin-www.denkmal.dev',
+  class {'cm::services':
+    ssl_key => file('/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.key'),
+    ssl_cert => file('/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.pem'),
   }
 
-  include 'redis'
-  include 'mysql::server'
-  include 'memcached'
-  include 'elasticsearch'
-  include 'gearman::server'
-  include 'cm::services::webserver'
-  include 'mongodb::role::standalone'
-
-  class { 'cm::services::stream':
-    ssl_key => file("/home/vagrant/denkmal/puppet/templates/ssl/*.denkmal.dev.key"),
-    ssl_cert => file("/home/vagrant/denkmal/puppet/templates/ssl/*.denkmal.dev.pem"),
+  cm::vhost {'www.denkmal.dev':
+    path => '/home/vagrant/denkmal',
+    debug => true,
+    ssl_key => file("/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.key"),
+    ssl_cert => file("/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.pem"),
+    aliases => ['denkmal.dev', 'admin.denkmal.dev'],
+    cdn_origin => 'origin-www.denkmal.dev',
   }
 
   environment::variable {'PHP_IDE_CONFIG':

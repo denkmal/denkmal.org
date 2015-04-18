@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Model_PushSubscription extends \CM_Model_Abstract {
+class Denkmal_Push_Subscription extends \CM_Model_Abstract {
 
     public static function getPersistenceClass() {
         return 'CM_Model_StorageAdapter_Database';
@@ -69,10 +69,10 @@ class Denkmal_Model_PushSubscription extends \CM_Model_Abstract {
      * @param string             $subscriptionId
      * @param string             $endpoint
      * @param Denkmal_Model_User $user
-     * @return \Denkmal_Model_PushSubscription
+     * @return \Denkmal_Push_Subscription
      */
     public static function create($subscriptionId, $endpoint, Denkmal_Model_User $user = null) {
-        $pushSubscription = new Denkmal_Model_PushSubscription();
+        $pushSubscription = new Denkmal_Push_Subscription();
         $pushSubscription->setSubscriptionId($subscriptionId);
         $pushSubscription->setEndpoint($endpoint);
         $pushSubscription->setUser($user);
@@ -84,7 +84,7 @@ class Denkmal_Model_PushSubscription extends \CM_Model_Abstract {
     /**
      * @param string $subscriptionId
      * @param string $endpoint
-     * @return self|null
+     * @return Denkmal_Push_Subscription|null
      */
     public static function findBySubscriptionIdAndEndpoint($subscriptionId, $endpoint) {
         $subscriptionId = (string) $subscriptionId;

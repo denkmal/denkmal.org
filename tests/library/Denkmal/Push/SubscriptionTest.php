@@ -1,15 +1,15 @@
 <?php
 
-class Denkmal_Model_PushSubscriptionTest extends CMTest_TestCase {
+class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
 
     protected function tearDown() {
         CMTest_TH::clearEnv();
     }
 
     public function testCreateWithoutUser() {
-        $pushSubscription = Denkmal_Model_PushSubscription::create('123321foo', 'http://twitter.com/foo');
+        $pushSubscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo');
 
-        $this->assertInstanceOf('Denkmal_Model_PushSubscription', $pushSubscription);
+        $this->assertInstanceOf('Denkmal_Push_Subscription', $pushSubscription);
         $this->assertSame('123321foo', $pushSubscription->getSubscriptionId());
         $this->assertSame('http://twitter.com/foo', $pushSubscription->getEndpoint());
         $this->assertNull($pushSubscription->getUser());
@@ -17,9 +17,9 @@ class Denkmal_Model_PushSubscriptionTest extends CMTest_TestCase {
 
     public function testCreateWithUser() {
         $user = Denkmal_Model_User::create('foo@bar.com', 'test', 'pswd');
-        $pushSubscription = Denkmal_Model_PushSubscription::create('123321foo', 'http://twitter.com/foo', $user);
+        $pushSubscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo', $user);
 
-        $this->assertInstanceOf('Denkmal_Model_PushSubscription', $pushSubscription);
+        $this->assertInstanceOf('Denkmal_Push_Subscription', $pushSubscription);
         $this->assertSame('123321foo', $pushSubscription->getSubscriptionId());
         $this->assertSame('http://twitter.com/foo', $pushSubscription->getEndpoint());
         $this->assertEquals($user, $pushSubscription->getUser());
@@ -29,8 +29,8 @@ class Denkmal_Model_PushSubscriptionTest extends CMTest_TestCase {
      * @expectedException CM_Exception_Nonexistent
      */
     public function testDelete() {
-        $pushSubscription = Denkmal_Model_PushSubscription::create('123321foo', 'http://twitter.com/foo');
+        $pushSubscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo');
         $pushSubscription->delete();
-        new Denkmal_Model_PushSubscription($pushSubscription->getId());
+        new Denkmal_Push_Subscription($pushSubscription->getId());
     }
 }

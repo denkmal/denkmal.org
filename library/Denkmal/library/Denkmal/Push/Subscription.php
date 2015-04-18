@@ -61,7 +61,7 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
 
     protected function _getContainingCacheables() {
         return [
-            new Denkmal_Paging_PushSubscription_All(),
+            new Denkmal_Push_SubscriptionList_All(),
         ];
     }
 

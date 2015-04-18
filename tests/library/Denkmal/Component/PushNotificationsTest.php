@@ -19,7 +19,7 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         );
 
         $this->assertViewResponseSuccess($response);
-        $this->assertCount(1, new Denkmal_Paging_PushSubscription_All());
+        $this->assertCount(1, new Denkmal_Push_SubscriptionList_All());
     }
 
     public function testAjax_storePushTwice() {
@@ -46,6 +46,6 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
 
         $this->assertViewResponseSuccess($response);
         $this->assertViewResponseSuccess($response2);
-        $this->assertCount(1, new Denkmal_Paging_PushSubscription_All());
+        $this->assertCount(1, new Denkmal_Push_SubscriptionList_All());
     }
 }

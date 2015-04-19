@@ -1,6 +1,6 @@
 <?php
 
-abstract class Denkmal_Push_NotificationProvider_Abstract implements CM_Service_ManagerAwareInterface {
+abstract class Denkmal_Push_Notification_Provider_Abstract implements CM_Service_ManagerAwareInterface {
 
     use CM_Service_ManagerAwareTrait;
 
@@ -21,12 +21,12 @@ abstract class Denkmal_Push_NotificationProvider_Abstract implements CM_Service_
      * @param CM_Service_Manager $serviceManager
      * @param string             $endpoint
      * @throws CM_Exception
-     * @return Denkmal_Push_NotificationProvider_Abstract
+     * @return Denkmal_Push_Notification_Provider_Abstract
      */
     public static function factoryByEndpoint(CM_Service_Manager $serviceManager, $endpoint) {
         switch ($endpoint) {
             case 'https://android.googleapis.com/gcm/send':
-                return new Denkmal_Push_NotificationProvider_GoogleCloudMessaging($serviceManager);
+                return new Denkmal_Push_Notification_Provider_GoogleCloudMessaging($serviceManager);
                 break;
             default:
                 throw new CM_Exception("Unknown notification endpoint `{$endpoint}`.");

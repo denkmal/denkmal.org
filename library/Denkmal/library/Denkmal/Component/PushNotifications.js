@@ -20,8 +20,10 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
       this._updateInputUI();
 
       if ('granted' === Notification.permission) {
+        var self = this;
         this._getPushSubscription().then(function(subscription) {
           cm.debug.log('Push subscription is:', subscription ? 'enabled' : 'disabled');
+          self._updateInputUI(!!subscription);
           // TODO: Send the subscriptionId, endpoint to the server
         });
       }
@@ -33,6 +35,7 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
    * @returns {Promise}
    */
   togglePush: function(state) {
+    this._updateInputUI(state);
     if (state) {
       return this._subscribePush();
     } else {
@@ -103,11 +106,7 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   _getPushSubscription: function() {
     var self = this;
     return navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-      return serviceWorkerRegistration.pushManager.getSubscription()
-        .then(function(subscription) {
-          self._updateInputUI(!!subscription);
-          return subscription;
-        });
+      return serviceWorkerRegistration.pushManager.getSubscription();
     });
   },
 

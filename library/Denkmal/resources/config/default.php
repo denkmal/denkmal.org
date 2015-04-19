@@ -25,4 +25,11 @@ return function (CM_Config_Node $config) {
             ],
         ]
     ];
+
+    $config->services['google-cloud-messaging'] = [
+        'class'     => '\CodeMonkeysRu\GCM\Sender',
+        'arguments' => [
+            'serverApiKey' => '<api-key>',
+        ]
+    ];
 };

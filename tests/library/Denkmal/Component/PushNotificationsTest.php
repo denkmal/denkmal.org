@@ -9,6 +9,7 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
     public function testAjax_storePushSubscription() {
         $environment = new CM_Frontend_Environment();
         $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
+            'state'          => true,
             'subscriptionId' => '123321f',
             'endpoint'       => 'https://google.com/push',
             'user'           => null,
@@ -21,12 +22,14 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
     public function testAjax_storePushSubscriptionTwice() {
         $environment = new CM_Frontend_Environment();
         $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
+            'state'          => true,
             'subscriptionId' => '123321f',
             'endpoint'       => 'https://google.com/push',
             'user'           => null,
         ], $environment);
 
         $response2 = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
+            'state'          => true,
             'subscriptionId' => '123321f',
             'endpoint'       => 'https://google.com/push',
             'user'           => null,
@@ -35,5 +38,20 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         $this->assertViewResponseSuccess($response);
         $this->assertViewResponseSuccess($response2);
         $this->assertCount(1, new Denkmal_Push_SubscriptionList_All());
+    }
+
+    public function testAjax_storePushSubscriptionRemoval() {
+        Denkmal_Push_Subscription::create('foo1', 'https://google.com/push');
+        $this->assertCount(1, new Denkmal_Push_SubscriptionList_All());
+
+        $environment = new CM_Frontend_Environment();
+        $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
+            'state'          => false,
+            'subscriptionId' => 'foo1',
+            'endpoint'       => 'https://google.com/push',
+        ], $environment);
+
+        $this->assertViewResponseSuccess($response);
+        $this->assertCount(0, new Denkmal_Push_SubscriptionList_All());
     }
 }

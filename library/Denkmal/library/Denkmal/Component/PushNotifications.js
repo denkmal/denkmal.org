@@ -79,7 +79,7 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
     return navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
       return serviceWorkerRegistration.pushManager.subscribe().then(function(subscription) {
         cm.debug.log('Push subscribed:', subscription);
-        self._storePushSubscription(subscription);
+        self._storePushSubscription(subscription, true);
       });
     });
   },
@@ -111,12 +111,13 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   },
 
   /**
-   *
    * @param {Object} notification
+   * @param {Boolean} state
    * @returns {jqXHR}
    */
-  _storePushSubscription: function(notification) {
+  _storePushSubscription: function(notification, state) {
     return this.ajax('storePushSubscription', {
+      state: state,
       subscriptionId: notification.subscriptionId,
       endpoint: notification.endpoint,
       user: cm.viewer

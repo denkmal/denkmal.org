@@ -12,10 +12,10 @@ abstract class Denkmal_Push_Notification_Provider_Abstract implements CM_Service
     }
 
     /**
-     * @param Denkmal_Push_Subscription[] $subscriptionList
-     * @param array                       $data
+     * @param Denkmal_Push_Subscription[]       $subscriptionList
+     * @param Denkmal_Push_Notification_Message $message
      */
-    abstract public function sendNotifications(array $subscriptionList, array $data);
+    abstract public function sendNotifications(array $subscriptionList, Denkmal_Push_Notification_Message $message);
 
     /**
      * @param CM_Service_Manager $serviceManager

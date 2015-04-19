@@ -2,26 +2,28 @@
 
 class Denkmal_Push_Notification_Provider_GoogleCloudMessaging extends Denkmal_Push_Notification_Provider_Abstract {
 
-    public function sendNotifications(array $subscriptionList, array $data) {
+    public function sendNotifications(array $subscriptionList, Denkmal_Push_Notification_Message $message) {
         $chunkList = array_chunk($subscriptionList, 1000);
         foreach ($chunkList as $subscriptionList) {
-            $this->_sendNotifications($subscriptionList, $data);
+            $this->_sendNotifications($subscriptionList, $message);
         }
     }
 
     /**
-     * @param Denkmal_Push_Subscription[] $subscriptionList
-     * @param array                       $data
+     * @param Denkmal_Push_Subscription[]       $subscriptionList
+     * @param Denkmal_Push_Notification_Message $message
      */
-    protected function _sendNotifications(array $subscriptionList, array $data) {
+    protected function _sendNotifications(array $subscriptionList, Denkmal_Push_Notification_Message $message) {
         /** @var Denkmal_Push_Subscription[] $subscriptionMap */
         $subscriptionMap = [];
         foreach ($subscriptionList as $subscription) {
             $subscriptionMap[$subscription->getSubscriptionId()] = $subscription;
         }
 
-        $message = new \CodeMonkeysRu\GCM\Message(array_keys($subscriptionMap), $data);
-        $message->setTtl(3600 * 6);
+        $message = new \CodeMonkeysRu\GCM\Message(array_keys($subscriptionMap), $message->getData());
+        if (null !== $message->getTtl()) {
+            $message->setTtl($message->getTtl());
+        }
         $response = $this->_getSender()->send($message);
 
         if ($response->getNewRegistrationIdsCount() > 0) {

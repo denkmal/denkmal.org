@@ -16,6 +16,9 @@ class Denkmal_Component_PushNotifications extends \Denkmal_Component_Abstract {
         if ($state) {
             if ($pushSubscription) {
                 $pushSubscription->setUpdated(new DateTime());
+                if ($user) {
+                    $pushSubscription->setUser($user);
+                }
             } else {
                 Denkmal_Push_Subscription::create($subscriptionId, $endpoint, $user);
             }

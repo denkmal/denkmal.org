@@ -134,7 +134,7 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Mail_UserInvite->type = 62;
     $config->Denkmal_Push_Subscription->type = 63;
     $config->CM_Class_Abstract->typesMaxValue = 63;
-
+    
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UPDATE] = 2;
@@ -150,5 +150,5 @@ return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UNSUBSCRIBE] = 12;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::SEND] = 13;
     $config->CM_Action_Abstract->verbsMaxValue = 13;
-
+    
 };

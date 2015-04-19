@@ -6,9 +6,9 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         CMTest_TH::clearEnv();
     }
 
-    public function testAjax_storePush() {
+    public function testAjax_storePushSubscription() {
         $environment = new CM_Frontend_Environment();
-        $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePush', [
+        $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'subscriptionId' => '123321f',
             'endpoint'       => 'https://google.com/push',
             'user'           => null,
@@ -18,15 +18,15 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         $this->assertCount(1, new Denkmal_Push_SubscriptionList_All());
     }
 
-    public function testAjax_storePushTwice() {
+    public function testAjax_storePushSubscriptionTwice() {
         $environment = new CM_Frontend_Environment();
-        $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePush', [
+        $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'subscriptionId' => '123321f',
             'endpoint'       => 'https://google.com/push',
             'user'           => null,
         ], $environment);
 
-        $response2 = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePush', [
+        $response2 = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'subscriptionId' => '123321f',
             'endpoint'       => 'https://google.com/push',
             'user'           => null,

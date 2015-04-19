@@ -35,6 +35,20 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
     }
 
     /**
+     * @return DateTime
+     */
+    public function getUpdated() {
+        return $this->_get('updated');
+    }
+
+    /**
+     * @param DateTime $updated
+     */
+    public function setUpdated(DateTime $updated) {
+        $this->_set('updated', $updated);
+    }
+
+    /**
      * @return Denkmal_Model_User|null
      */
     public function getUser() {
@@ -55,6 +69,7 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
         return new CM_Model_Schema_Definition(array(
             'subscriptionId' => array('type' => 'string'),
             'endpoint'       => array('type' => 'string'),
+            'updated'        => array('type' => 'DateTime'),
             'user'           => array('type' => 'Denkmal_Model_User', 'optional' => true),
         ));
     }
@@ -75,6 +90,7 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
         $pushSubscription = new Denkmal_Push_Subscription();
         $pushSubscription->setSubscriptionId($subscriptionId);
         $pushSubscription->setEndpoint($endpoint);
+        $pushSubscription->setUpdated(new DateTime());
         $pushSubscription->setUser($user);
         $pushSubscription->commit();
 

@@ -12,6 +12,7 @@ class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
         $this->assertInstanceOf('Denkmal_Push_Subscription', $pushSubscription);
         $this->assertSame('123321foo', $pushSubscription->getSubscriptionId());
         $this->assertSame('http://twitter.com/foo', $pushSubscription->getEndpoint());
+        $this->assertInstanceOf('DateTime', $pushSubscription->getUpdated());
         $this->assertNull($pushSubscription->getUser());
     }
 
@@ -22,6 +23,7 @@ class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
         $this->assertInstanceOf('Denkmal_Push_Subscription', $pushSubscription);
         $this->assertSame('123321foo', $pushSubscription->getSubscriptionId());
         $this->assertSame('http://twitter.com/foo', $pushSubscription->getEndpoint());
+        $this->assertInstanceOf('DateTime', $pushSubscription->getUpdated());
         $this->assertEquals($user, $pushSubscription->getUser());
     }
 

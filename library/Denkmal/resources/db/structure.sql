@@ -170,6 +170,7 @@ CREATE TABLE IF NOT EXISTS `denkmal_push_subscription` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `subscriptionId` varchar(255) NOT NULL,
   `endpoint` varchar(255) NOT NULL,
+  `updated` int(11) unsigned NOT NULL,
   `user` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`),

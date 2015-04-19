@@ -17,17 +17,14 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   ready: function() {
     if (this._checkSupport()) {
       this.$el.addClass('state-enabled');
+      this._updateInputUI();
 
       if ('granted' === Notification.permission) {
         this._getPushSubscription().then(function(subscription) {
-          cm.debug.log('The subscription is:', subscription ? 'present' : 'disabled');
+          cm.debug.log('Push subscription is:', subscription ? 'enabled' : 'disabled');
           // TODO: Send the subscriptionId, endpoint to the server
-        }).catch(function(e) {
-          cm.debug.log('Unable to retrieve push.', e);
         });
       }
-
-      this._updatePermissionUI();
     }
   },
 
@@ -46,7 +43,7 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   /**
    * @param {Boolean} [hasSubscription]
    */
-  _updatePermissionUI: function(hasSubscription) {
+  _updateInputUI: function(hasSubscription) {
     this.$('.toggleNotifications')
       .prop('disabled', ('denied' === Notification.permission))
       .prop('checked', hasSubscription);
@@ -96,8 +93,6 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
       return subscription.unsubscribe().then(function() {
         cm.debug.log('Push unsubscribed:', subscription);
         // TODO: Send the subscriptionId, endpoint to the server
-      }).catch(function(e) {
-        cm.debug.log('Unable to unsubscribe to push.', e);
       });
     });
   },
@@ -110,7 +105,7 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
     return navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
       return serviceWorkerRegistration.pushManager.getSubscription()
         .then(function(subscription) {
-          self._updatePermissionUI(!!subscription);
+          self._updateInputUI(!!subscription);
           return subscription;
         });
     });

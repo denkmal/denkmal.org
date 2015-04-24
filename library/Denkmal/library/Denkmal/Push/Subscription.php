@@ -2,10 +2,6 @@
 
 class Denkmal_Push_Subscription extends \CM_Model_Abstract {
 
-    public static function getPersistenceClass() {
-        return 'CM_Model_StorageAdapter_Database';
-    }
-
     /**
      * @return string
      */
@@ -78,6 +74,10 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
         return [
             new Denkmal_Push_SubscriptionList_All(),
         ];
+    }
+
+    public static function getPersistenceClass() {
+        return 'CM_Model_StorageAdapter_Database';
     }
 
     /**

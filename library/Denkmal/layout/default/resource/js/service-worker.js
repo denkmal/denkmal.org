@@ -10,17 +10,20 @@ self.addEventListener('push', function(event) {
     if (!subscription) {
       return;
     }
-    return sendRpc('CM_Component_Example.time', {subscriptionId: subscription.subscriptionId}).then(function(result) {
-      var title = 'Yay a message - ' + result;
-      var body = 'We have received a push message.';
-      var icon = '/images/icon-192x192.png';
-      var tag = 'simple-push-demo-notification-tag';
-
-      self.registration.showNotification(title, {
-        body: body,
-        icon: icon,
-        tag: tag
-      });
+    return sendRpc('Denkmal_Push_Notification_Message.getListBySubscription', {
+      subscriptionId: subscription.subscriptionId,
+      endpoint: subscription.endpoint
+    }).then(function(dataList) {
+      var promises = [];
+      for (var i = 0; i < dataList.length; i++) {
+        var data = dataList[i];
+        promises.push(self.registration.showNotification(data['title'], {
+          body: data['body'],
+          icon: data['icon'],
+          tag: data['tag']
+        }));
+      }
+      return Promise.all(promises);
     });
   }));
 });

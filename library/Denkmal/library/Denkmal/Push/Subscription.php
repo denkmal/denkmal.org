@@ -59,6 +59,13 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
     }
 
     /**
+     * @return Denkmal_Push_Notification_MessageMemoList_Subscription
+     */
+    public function getMessageMemoList() {
+        return new Denkmal_Push_Notification_MessageMemoList_Subscription($this);
+    }
+
+    /**
      * @return CM_Model_Schema_Definition
      */
     protected function _getSchema() {
@@ -68,6 +75,13 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
             'updated'        => array('type' => 'DateTime'),
             'user'           => array('type' => 'Denkmal_Model_User', 'optional' => true),
         ));
+    }
+
+    protected function _onDeleteBefore() {
+        /** @var Denkmal_Push_Notification_MessageMemo $messageMemo */
+        foreach ($this->getMessageMemoList() as $messageMemo) {
+            $messageMemo->delete();
+        }
     }
 
     protected function _getContainingCacheables() {

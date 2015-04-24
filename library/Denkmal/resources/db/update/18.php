@@ -16,9 +16,9 @@ if (!CM_Db_Db::existsTable('denkmal_push_subscription')) {
     ');
 }
 
-if (!CM_Db_Db::existsTable('denkmal_push_notification_messagememo')) {
+if (!CM_Db_Db::existsTable('denkmal_push_notification_message')) {
     CM_Db_Db::exec('
-        CREATE TABLE IF NOT EXISTS `denkmal_push_notification_messagememo` (
+        CREATE TABLE IF NOT EXISTS `denkmal_push_notification_message` (
           `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
           `subscription` int(11) unsigned NOT NULL,
           `created` int(11) unsigned NOT NULL,
@@ -26,7 +26,7 @@ if (!CM_Db_Db::existsTable('denkmal_push_notification_messagememo')) {
           `data` text,
           PRIMARY KEY (`id`),
           KEY `subscription` (`subscription`),
-          CONSTRAINT `denkmal_push_messagememo__subscription` FOREIGN KEY (`subscription`) REFERENCES `denkmal_push_subscription` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+          CONSTRAINT `denkmal_push_message__subscription` FOREIGN KEY (`subscription`) REFERENCES `denkmal_push_subscription` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
     ');
 }

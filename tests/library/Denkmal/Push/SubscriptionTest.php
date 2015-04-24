@@ -48,10 +48,10 @@ class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
     /**
      * @expectedException CM_Exception_Nonexistent
      */
-    public function testDeleteWithMessageMemo() {
+    public function testDeleteWithMessage() {
         $subscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo');
-        $messageMemo = Denkmal_Push_Notification_MessageMemo::create($subscription, new DateTime('2015-01-01'), ['foo' => 12]);
+        $message = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), ['foo' => 12]);
         $subscription->delete();
-        new Denkmal_Push_Notification_MessageMemo($messageMemo->getId());
+        new Denkmal_Push_Notification_Message($message->getId());
     }
 }

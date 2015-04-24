@@ -59,10 +59,10 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
     }
 
     /**
-     * @return Denkmal_Push_Notification_MessageMemoList_Subscription
+     * @return Denkmal_Push_Notification_MessageList_Subscription
      */
-    public function getMessageMemoList() {
-        return new Denkmal_Push_Notification_MessageMemoList_Subscription($this);
+    public function getMessageList() {
+        return new Denkmal_Push_Notification_MessageList_Subscription($this);
     }
 
     /**
@@ -78,9 +78,9 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
     }
 
     protected function _onDeleteBefore() {
-        /** @var Denkmal_Push_Notification_MessageMemo $messageMemo */
-        foreach ($this->getMessageMemoList() as $messageMemo) {
-            $messageMemo->delete();
+        /** @var Denkmal_Push_Notification_Message $message */
+        foreach ($this->getMessageList() as $message) {
+            $message->delete();
         }
     }
 

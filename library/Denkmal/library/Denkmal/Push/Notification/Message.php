@@ -1,53 +1,93 @@
 <?php
 
-class Denkmal_Push_Notification_Message {
-
-    /** @var int|null */
-    private $_ttl;
-
-    /** @var array|null */
-    private $_data;
+class Denkmal_Push_Notification_Message extends \CM_Model_Abstract {
 
     /**
-     * @param int|null   $ttl
-     * @param array|null $data
+     * @return Denkmal_Push_Subscription
      */
-    public function __construct($ttl = null, array $data = null) {
-        $this->setTtl($ttl);
-        $this->setData($data);
+    public function getSubscription() {
+        return $this->_get('subscription');
     }
 
     /**
-     * @return int|null
+     * @param Denkmal_Push_Subscription $subscription
      */
-    public function getTtl() {
-        return $this->_ttl;
+    public function setSubscription(Denkmal_Push_Subscription $subscription) {
+        $this->_set('subscription', $subscription);
     }
 
     /**
-     * @param int|null $ttl
+     * @return DateTime
      */
-    public function setTtl($ttl = null) {
-        if (null !== $ttl) {
-            $ttl = (int) $ttl;
-        }
-        $this->_ttl = $ttl;
+    public function getCreated() {
+        return $this->_get('created');
     }
 
     /**
-     * @return array|null
+     * @param DateTime $created
+     */
+    public function setCreated($created) {
+        $this->_set('created', $created);
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getExpires() {
+        return $this->_get('expires');
+    }
+
+    /**
+     * @param DateTime $expires
+     */
+    public function setExpires($expires) {
+        $this->_set('expires', $expires);
+    }
+
+    /**
+     * @return array
      */
     public function getData() {
-        return $this->_data;
+        return CM_Params::jsonDecode($this->_get('data'));
     }
 
     /**
-     * @param array|null $data
+     * @param array $data
      */
-    public function setData($data = null) {
-        if (null !== $data) {
-            $data = (array) $data;
-        }
-        $this->_data = $data;
+    public function setData(array $data) {
+        $this->_set('data', CM_Params::jsonEncode($data));
+    }
+
+    /**
+     * @return CM_Model_Schema_Definition
+     */
+    protected function _getSchema() {
+        return new CM_Model_Schema_Definition(array(
+            'subscription' => array('type' => 'Denkmal_Push_Subscription'),
+            'created'      => array('type' => 'DateTime'),
+            'expires'      => array('type' => 'DateTime'),
+            'data'         => array('type' => 'string'),
+        ));
+    }
+
+    public static function getPersistenceClass() {
+        return 'CM_Model_StorageAdapter_Database';
+    }
+
+    /**
+     * @param Denkmal_Push_Subscription $subscription
+     * @param DateTime                  $expires
+     * @param array                     $data
+     * @return Denkmal_Push_Notification_Message
+     */
+    public static function create(Denkmal_Push_Subscription $subscription, DateTime $expires, array $data) {
+        $message = new Denkmal_Push_Notification_Message();
+        $message->setSubscription($subscription);
+        $message->setCreated(new DateTime());
+        $message->setExpires($expires);
+        $message->setData($data);
+        $message->commit();
+
+        return $message;
     }
 }

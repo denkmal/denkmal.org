@@ -2,8 +2,13 @@
 
 class Denkmal_Push_Notification_SenderTest extends CMTest_TestCase {
 
+    protected function tearDown() {
+        CMTest_TH::clearEnv();
+    }
+
     public function testSendNotifications() {
         $message = new Denkmal_Push_Notification_Message();
+        /** @var Denkmal_Push_Subscription[] $subscriptionList */
         $subscriptionList = [
             $subscriptionFoo1 = Denkmal_Push_Subscription::create('foo1', 'foo'),
             $subscriptionBar1 = Denkmal_Push_Subscription::create('bar1', 'bar'),

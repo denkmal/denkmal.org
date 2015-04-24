@@ -4,21 +4,21 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "635c16e80115871de6b7c02e4a88522a",
+    "hash": "b3b904f230549b6433a347dc0cd8941a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.8.1",
+            "version": "2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9715c747724a10c0ba0e3bae741b165730cd1953"
+                "reference": "4237e97388d2906d2aa88f727736968fc2df9cb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-9715c747724a10c0ba0e3bae741b165730cd1953-zip-f28544.zip",
-                "reference": "9715c747724a10c0ba0e3bae741b165730cd1953",
-                "shasum": "dc47da49e8c8d3cb51c20f9a7ee1a99b2afe837c"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-4237e97388d2906d2aa88f727736968fc2df9cb6-zip-a1a272.zip",
+                "reference": "4237e97388d2906d2aa88f727736968fc2df9cb6",
+                "shasum": "fc90b9d09165e4344edb6b2a120b48f2ec34683d"
             },
             "require": {
                 "guzzle/guzzle": "~3.7",
@@ -71,21 +71,21 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-04-16 22:25:42"
+            "time": "2015-04-23 20:14:25"
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.112.0",
+            "version": "1.116.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "6a68ae8ced04f0db8fbe3400a9542a4288fcacb2"
+                "reference": "273fe73328a517eadc4c1a61ecca783b6c68a3c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-6a68ae8ced04f0db8fbe3400a9542a4288fcacb2-zip-d236f7.zip",
-                "reference": "6a68ae8ced04f0db8fbe3400a9542a4288fcacb2",
-                "shasum": "98f8ec16fb47c6c81d1651c6976714cc71a28a57"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-273fe73328a517eadc4c1a61ecca783b6c68a3c9-zip-6d3c49.zip",
+                "reference": "273fe73328a517eadc4c1a61ecca783b6c68a3c9",
+                "shasum": "1597378b787dc12326eb4be1a46ef9f22b0e1ddf"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-04-10 16:40:28"
+            "time": "2015-04-24 16:58:54"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -231,7 +231,8 @@
                 {
                     "name": "Nils Adermann",
                     "email": "naderman@naderman.de",
-                    "homepage": "http://www.naderman.de"
+                    "homepage": "http://www.naderman.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Dependency Manager",
@@ -266,13 +267,16 @@
                     "./"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0"
             ],
             "authors": [
                 {
                     "name": "Benny Baumann",
-                    "email": "BenBE@geshi.org"
+                    "email": "BenBE@geshi.org",
+                    "homepage": "http://blog.benny-baumann.de/",
+                    "role": "Developer"
                 },
                 {
                     "name": "Nigel McNie",
@@ -521,6 +525,7 @@
                     "JsonSchema": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "NewBSD"
             ],
@@ -540,7 +545,7 @@
                 },
                 {
                     "name": "Robert Schönthal",
-                    "email": "seroscho@googlemail.com",
+                    "email": "robert.schoenthal@gmail.com",
                     "homepage": "http://digitalkaoz.net"
                 }
             ],
@@ -709,6 +714,7 @@
                     "src/Functional/_import.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -910,6 +916,7 @@
                     "class.smtp.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-2.1"
             ],
@@ -1087,27 +1094,33 @@
             "name": "smarty/smarty",
             "version": "v3.1.16",
             "source": {
-                "type": "svn",
-                "url": "http://smarty-php.googlecode.com/svn",
-                "reference": "/tags/v3.1.16/@4802"
+                "type": "git",
+                "url": "https://github.com/smarty-php/smarty.git",
+                "reference": "43be80762e349837182397a4a6e6202af80a22bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/smarty-smarty-v3.1.16-2e0f6e.zip",
-                "reference": "/tags/v3.1.16/@4802",
-                "shasum": "b59a38c92ddee5e064db000df6166b4f6b7a820f"
+                "url": "http://satis.cargomedia.ch/dist/dist/smarty-smarty-43be80762e349837182397a4a6e6202af80a22bf-zip-f246dc.zip",
+                "reference": "43be80762e349837182397a4a6e6202af80a22bf",
+                "shasum": "7af612d7d9a01e8e4163d3d8711def494c035fe7"
             },
             "require": {
                 "php": ">=5.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
-                    "distribution/libs/Smarty.class.php",
-                    "distribution/libs/SmartyBC.class.php",
-                    "distribution/libs/sysplugins/smarty_security.php"
+                    "libs/Smarty.class.php",
+                    "libs/SmartyBC.class.php",
+                    "libs/sysplugins/smarty_security.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0"
             ],
@@ -1130,7 +1143,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-12-17 16:56:58"
+            "time": "2014-10-31 01:05:49"
         },
         {
             "name": "symfony/console",
@@ -1571,6 +1584,7 @@
                     "File/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1615,6 +1629,7 @@
                     "Text/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1658,6 +1673,7 @@
                     "PHP/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],

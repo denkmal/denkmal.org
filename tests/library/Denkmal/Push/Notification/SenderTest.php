@@ -8,6 +8,9 @@ class Denkmal_Push_Notification_SenderTest extends CMTest_TestCase {
 
     public function testSendNotifications() {
         $message = new Denkmal_Push_Notification_Message();
+        $message->setExpires(new DateTime('2015-01-01'));
+        $message->setData(['foo' => 'bar']);
+
         /** @var Denkmal_Push_Subscription[] $subscriptionList */
         $subscriptionList = [
             $subscriptionFoo1 = Denkmal_Push_Subscription::create('foo1', 'foo'),
@@ -48,5 +51,13 @@ class Denkmal_Push_Notification_SenderTest extends CMTest_TestCase {
 
         $this->assertSame(1, $sendNotificationFooMethod->getCallCount());
         $this->assertSame(1, $sendNotificationBarMethod->getCallCount());
+
+        foreach ($subscriptionList as $subscription) {
+            $this->assertCount(1, $subscription->getMessageList());
+            /** @var Denkmal_Push_Notification_Message $messageFromSubscription */
+            $messageFromSubscription = $subscription->getMessageList()->getItem(0);
+            $this->assertEquals($message->getExpires(), $messageFromSubscription->getExpires());
+            $this->assertEquals($message->getData(), $messageFromSubscription->getData());
+        }
     }
 }

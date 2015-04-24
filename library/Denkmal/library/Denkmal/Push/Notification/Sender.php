@@ -12,10 +12,14 @@ class Denkmal_Push_Notification_Sender implements CM_Service_ManagerAwareInterfa
     }
 
     /**
-     * @param Denkmal_Push_Subscription[]           $subscriptionList
+     * @param Denkmal_Push_Subscription[]       $subscriptionList
      * @param Denkmal_Push_Notification_Message $message
      */
     public function sendNotifications(array $subscriptionList, Denkmal_Push_Notification_Message $message) {
+        foreach ($subscriptionList as $subscription) {
+            Denkmal_Push_Notification_Message::create($subscription, $message->getExpires(), $message->getData());
+        }
+
         $subscriptionListGrouped = Functional\group($subscriptionList, function (Denkmal_Push_Subscription $subscription) {
             return $subscription->getEndpoint();
         });

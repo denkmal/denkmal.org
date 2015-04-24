@@ -4,8 +4,6 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('push', function(event) {
-  console.debug('Service worker: push', event);
-
   event.waitUntil(self.registration.pushManager.getSubscription().then(function(subscription) {
     if (!subscription) {
       return;

@@ -1,13 +1,6 @@
 self.addEventListener('install', function(event) {
-  console.debug('Service worker: install');
-});
-
-self.addEventListener('activate', function(event) {
-  console.debug('Service worker: activate');
-});
-
-self.addEventListener('fetch', function(event) {
-  console.debug('Service worker: fetch', event);
+  // Automatically take over the previous worker.
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener('push', function(event) {

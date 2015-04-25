@@ -15,6 +15,7 @@ class Denkmal_Scraper_Genres {
             });
         }
         $genres = array_filter($genres);
+        $genres = array_values($genres);
         $this->_genreList = $genres;
     }
 

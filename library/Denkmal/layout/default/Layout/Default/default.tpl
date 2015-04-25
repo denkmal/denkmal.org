@@ -33,6 +33,7 @@
 
 {block name='body'}
   {component name='Denkmal_Component_SongPlayer'}
+  {component name='Denkmal_Component_PushNotifications' autoSubscribe=true}
   <header id="header">
     <div class="sheet">
       {block name='header'}

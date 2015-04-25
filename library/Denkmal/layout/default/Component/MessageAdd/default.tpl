@@ -12,10 +12,6 @@
   </div>
 </div>
 
-<div class="pushNotifications">
-  {component name='Denkmal_Component_PushNotifications' autoSubscribe=true}
-</div>
-
 <div class="form">
   {form name='Denkmal_Form_Message'}
     <div class="form-fields">

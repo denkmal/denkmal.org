@@ -49,6 +49,15 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
                 }
             }
         ));
+
+        $this->_registerClockworkCallbacks('1 hour', array(
+            'Delete expired push subscriptions' => function () {
+                /** @var Denkmal_Push_Subscription $pushSubscription */
+                foreach ((new Denkmal_Push_SubscriptionList_Expired())->getItems() as $pushSubscription) {
+                    $pushSubscription->delete();
+                }
+            }
+        ));
     }
 
     public static function getPackageName() {

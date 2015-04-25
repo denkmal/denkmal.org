@@ -1,0 +1,22 @@
+prompt = no
+
+[req]
+req_extensions = v3_req
+x509_extensions = v3_ca
+distinguished_name = req_distinguished_name
+
+[req_distinguished_name]
+commonName = denkmal-dev
+countryName = CH
+
+[v3_req]
+basicConstraints = CA:true
+subjectAltName = @alt_names
+
+[v3_ca]
+basicConstraints = CA:true
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = denkmal.dev
+DNS.2 = *.denkmal.dev

@@ -14,6 +14,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.network :private_network, ip: '10.10.10.12'
+  config.vm.network :public_network, bridge: 'en0: Wi-Fi (AirPort)'
   config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => 'nfs'
   config.vm.synced_folder '../CM', '/home/vagrant/CM', :type => 'nfs' if Dir.exists? '../CM'
 

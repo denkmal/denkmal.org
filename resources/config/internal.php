@@ -42,6 +42,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[51] = 'Denkmal_Scraper_SourceResult';
     $config->CM_Model_Abstract->types[58] = 'Denkmal_Model_Tag';
     $config->CM_Model_Abstract->types[61] = 'Denkmal_Model_UserInvite';
+    $config->CM_Model_Abstract->types[63] = 'Denkmal_Push_Subscription';
+    $config->CM_Model_Abstract->types[64] = 'Denkmal_Push_Notification_Message';
     $config->CM_Paging_ContentList_Abstract->types = [];
     $config->CM_Paging_ContentList_Abstract->types[19] = 'CM_Paging_ContentList_Badwords';
     $config->CM_Paging_Log_Abstract->types = [];
@@ -131,7 +133,9 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_ExampleData_Venues->type = 60;
     $config->Denkmal_Model_UserInvite->type = 61;
     $config->Denkmal_Mail_UserInvite->type = 62;
-    $config->CM_Class_Abstract->typesMaxValue = 62;
+    $config->Denkmal_Push_Subscription->type = 63;
+    $config->Denkmal_Push_Notification_Message->type = 64;
+    $config->CM_Class_Abstract->typesMaxValue = 64;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

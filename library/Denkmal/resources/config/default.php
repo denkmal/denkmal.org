@@ -25,4 +25,20 @@ return function (CM_Config_Node $config) {
             ],
         ]
     ];
+
+    $config->services['push-notification-sender'] = [
+        'class'     => 'Denkmal_Push_Notification_Sender',
+        'arguments' => [
+            'clientConfig' => [
+                'gcm_sender_id' => '<gcm-sender-id>',
+            ]
+        ]
+    ];
+
+    $config->services['google-cloud-messaging'] = [
+        'class'     => '\CodeMonkeysRu\GCM\Sender',
+        'arguments' => [
+            'serverApiKey' => '<api-key>',
+        ]
+    ];
 };

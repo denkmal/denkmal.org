@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01c21d88077b446de0f9570ec3e1e979",
+    "hash": "b3b904f230549b6433a347dc0cd8941a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -130,6 +130,49 @@
                 "MIT"
             ],
             "time": "2015-04-24 16:58:54"
+        },
+        {
+            "name": "codemonkeys-ru/gcm-message",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CodeMonkeysRu/GCMMessage.git",
+                "reference": "c0facde3aca745d71bd095d746f0bc820a86aadd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CodeMonkeysRu/GCMMessage/zipball/c0facde3aca745d71bd095d746f0bc820a86aadd",
+                "reference": "c0facde3aca745d71bd095d746f0bc820a86aadd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CodeMonkeysRu\\GCM": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladimir Savenkov",
+                    "email": "ivariable@gmail.com",
+                    "homepage": "http://ivariable.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Google Cloud Messaging (GCM) PHP Server Library",
+            "keywords": [
+                "android",
+                "gcm",
+                "push message"
+            ],
+            "time": "2013-04-22 08:29:59"
         },
         {
             "name": "composer/composer",

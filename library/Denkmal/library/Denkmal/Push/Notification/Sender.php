@@ -4,11 +4,14 @@ class Denkmal_Push_Notification_Sender implements CM_Service_ManagerAwareInterfa
 
     use CM_Service_ManagerAwareTrait;
 
+    /** @var Denkmal_Push_ClientConfiguration */
+    private $_clientConfig;
+
     /**
-     * @param CM_Service_Manager $serviceManager
+     * @param array $clientConfig
      */
-    public function __construct(CM_Service_Manager $serviceManager) {
-        $this->setServiceManager($serviceManager);
+    public function __construct(array $clientConfig) {
+        $this->_clientConfig = new Denkmal_Push_ClientConfiguration($clientConfig);
     }
 
     /**
@@ -27,6 +30,13 @@ class Denkmal_Push_Notification_Sender implements CM_Service_ManagerAwareInterfa
         foreach ($subscriptionListGrouped as $endpoint => $subscriptionListForEndpoint) {
             $this->_getProvider($endpoint)->sendNotifications(array_values($subscriptionListForEndpoint), $message);
         }
+    }
+
+    /**
+     * @return Denkmal_Push_ClientConfiguration
+     */
+    public function getClientConfig() {
+        return $this->_clientConfig;
     }
 
     /**

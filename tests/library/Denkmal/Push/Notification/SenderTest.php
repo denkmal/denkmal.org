@@ -45,8 +45,10 @@ class Denkmal_Push_Notification_SenderTest extends CMTest_TestCase {
                 return $providerBar;
             });
 
-        $sender = $senderClass->newInstance([$this->getServiceManager()]);
+        $clientConfig = [];
+        $sender = $senderClass->newInstance([$clientConfig]);
         /** @var Denkmal_Push_Notification_Sender $sender */
+        $sender->setServiceManager($this->getServiceManager());
         $sender->sendNotifications($subscriptionList, $message);
 
         $this->assertSame(1, $sendNotificationFooMethod->getCallCount());

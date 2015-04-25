@@ -50,8 +50,9 @@ class Denkmal_Site extends CM_Site_Abstract {
      * @return Denkmal_Push_ClientConfiguration
      */
     public function getPushClientConfiguration() {
-        $serviceManager = CM_Service_Manager::getInstance();
-        return $serviceManager->get('push-client-configuration', 'Denkmal_Push_ClientConfiguration');
+        /** @var Denkmal_Push_Notification_Sender $pushNotificationSender */
+        $pushNotificationSender = CM_Service_Manager::getInstance()->get('push-notification-sender', 'Denkmal_Push_Notification_Sender');
+        return $pushNotificationSender->getClientConfig();
     }
 
     /**

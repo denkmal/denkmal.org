@@ -26,10 +26,10 @@ return function (CM_Config_Node $config) {
         ]
     ];
 
-    $config->services['push-client-configuration'] = [
-        'class'     => 'Denkmal_Push_ClientConfiguration',
+    $config->services['push-notification-sender'] = [
+        'class'     => 'Denkmal_Push_Notification_Sender',
         'arguments' => [
-            'config' => [
+            'clientConfig' => [
                 'gcm_sender_id' => '<gcm-sender-id>',
             ]
         ]

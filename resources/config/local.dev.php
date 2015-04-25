@@ -41,7 +41,7 @@ return function (CM_Config_Node $config) {
             'configList' => array(
                 'default' => array(
                     'filesystem' => 'filesystem-usercontent',
-                    'url'        => '/userfiles',
+                    'url'        => 'https://origin-www.denkmal.dev/userfiles',
                 )
             ),
         )

@@ -20,7 +20,7 @@ class Denkmal_MessagePushNotification_Formatter {
         return [
             'title' => $this->getTitle($message),
             'body'  => $this->getBody($message),
-            'icon'  => $this->_render->getUrlResource('layout', 'img/meta/push-notification.png'),
+            'icon'  => $this->getIcon($message),
             'tag'   => 'message-' . $message->getId(),
         ];
     }
@@ -52,5 +52,17 @@ class Denkmal_MessagePushNotification_Formatter {
             $itemList[] = '#image';
         }
         return implode(' ', $itemList);
+    }
+
+    /**
+     * @param Denkmal_Model_Message $message
+     * @return string
+     */
+    public function getIcon(Denkmal_Model_Message $message) {
+        if ($image = $message->getImage()) {
+            return $this->_render->getUrlUserContent($image->getFile('thumb'));
+        } else {
+            return $this->_render->getUrlResource('layout', 'img/meta/push-notification.png');
+        }
     }
 }

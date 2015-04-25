@@ -12,7 +12,7 @@ class Denkmal_Action_Message extends Denkmal_Action_Abstract {
         CM_Model_StreamChannel_Message::publish('global-internal', 'message-create', $message->toArrayStream($render));
 
         $pushNotificationSend = new Denkmal_MessagePushNotification_SendJob();
-        $pushNotificationSend->run(['message' => $message]);
+        $pushNotificationSend->queue(['message' => $message]);
     }
 
     protected function _isAllowedDelete(Denkmal_Model_Message $message) {

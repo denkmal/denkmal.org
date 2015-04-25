@@ -47,6 +47,14 @@ class Denkmal_Site extends CM_Site_Abstract {
     }
 
     /**
+     * @return Denkmal_Push_ClientConfiguration
+     */
+    public function getPushClientConfiguration() {
+        $serviceManager = CM_Service_Manager::getInstance();
+        return $serviceManager->get('push-client-configuration', 'Denkmal_Push_ClientConfiguration');
+    }
+
+    /**
      * @return int
      */
     public static function getDayOffset() {

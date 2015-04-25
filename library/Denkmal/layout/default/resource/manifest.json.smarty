@@ -2,7 +2,7 @@
 	"name": "{$render->getSite()->getName()}",
 	"display": "standalone",
 	"start_url": "/",
-	"gcm_sender_id": "155667704590",
+	"gcm_sender_id": "{$render->getSite()->getPushClientConfiguration()->getGcmSenderId()}",
 	"gcm_user_visible_only": true,
 	"icons": [
 		{

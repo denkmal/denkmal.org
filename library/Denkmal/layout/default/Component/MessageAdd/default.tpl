@@ -13,7 +13,7 @@
 </div>
 
 <div class="pushNotifications">
-  {component name='Denkmal_Component_PushNotifications'}
+  {component name='Denkmal_Component_PushNotifications' autoSubscribe=true}
 </div>
 
 <div class="form">

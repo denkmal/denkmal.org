@@ -3,6 +3,9 @@
 class Denkmal_Component_PushNotifications extends \Denkmal_Component_Abstract {
 
     public function prepare(\CM_Frontend_Environment $environment, \CM_Frontend_ViewResponse $viewResponse) {
+        $autoSubscribe = $this->_params->getBoolean('autoSubscribe', false);
+
+        $viewResponse->getJs()->setProperty('autoSubscribe', $autoSubscribe);
     }
 
     public function ajax_storePushSubscription(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {

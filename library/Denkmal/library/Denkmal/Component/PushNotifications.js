@@ -7,6 +7,9 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Component_PushNotifications',
 
+  /** @type {Boolean} */
+  autoSubscribe: null,
+
   events: {
     'change .toggleNotifications': function(event) {
       var state = event.currentTarget.checked;
@@ -19,14 +22,22 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
       this.$el.addClass('state-enabled');
       this._updateInputUI();
 
-      if ('granted' === Notification.permission) {
+      var checkSubscription =
+        ('granted' === Notification.permission) ||
+        ('denied' !== Notification.permission && this.autoSubscribe);
+
+      if (checkSubscription) {
         var self = this;
         this._getPushSubscription().then(function(subscription) {
           cm.debug.log('Push subscription is:', subscription ? 'enabled' : 'disabled');
           self._updateInputUI(!!subscription);
           if (subscription) {
-            self._storePushSubscription(subscription, true);
+            return self._storePushSubscription(subscription, true);
+          } else if (self.autoSubscribe) {
+            return self._subscribePush();
           }
+        }).catch(function(error) {
+          cm.debug.log('Updating push subscription failed:', error);
         });
       }
     }
@@ -124,6 +135,10 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
       subscriptionId: notification.subscriptionId,
       endpoint: notification.endpoint,
       user: cm.viewer
+    }, {
+      success: function() {
+        this._updateInputUI(state);
+      }
     });
   }
 });

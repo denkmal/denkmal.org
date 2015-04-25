@@ -2,7 +2,7 @@ prompt = no
 
 [req]
 req_extensions = v3_req
-x509_extensions	= v3_ca
+x509_extensions = v3_ca
 distinguished_name = req_distinguished_name
 
 [req_distinguished_name]

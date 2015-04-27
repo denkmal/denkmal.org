@@ -65,7 +65,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Site_Abstract->types[35] = 'Denkmal_Site';
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
     $config->CM_Stream_Adapter_Abstract->types = [];
-    $config->CM_Stream_Adapter_Abstract->types[25] = 'CM_Stream_Adapter_Message_SocketRedis';
+    $config->CM_Stream_Adapter_Abstract->types[25] = 'CM_MessageStream_Adapter_SocketRedis';
     $config->CM_Stream_Adapter_Abstract->types[26] = 'CM_Stream_Adapter_Video_Wowza';
     $config->Denkmal_Scraper_Source_Abstract->types = [];
     $config->Denkmal_Scraper_Source_Abstract->types[45] = 'Denkmal_Scraper_Source_Fingerzeig';
@@ -96,7 +96,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_Log_JsError->type = 22;
     $config->CM_Paging_Log_Mail->type = 23;
     $config->CM_Paging_Log_Warn->type = 24;
-    $config->CM_Stream_Adapter_Message_SocketRedis->type = 25;
+    $config->CM_MessageStream_Adapter_SocketRedis->type = 25;
     $config->CM_Stream_Adapter_Video_Wowza->type = 26;
     $config->Denkmal_Action_Message->type = 27;
     $config->Denkmal_Model_Event->type = 28;
@@ -136,7 +136,7 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Push_Subscription->type = 63;
     $config->Denkmal_Push_Notification_Message->type = 64;
     $config->CM_Class_Abstract->typesMaxValue = 64;
-    
+
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UPDATE] = 2;
@@ -152,5 +152,5 @@ return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UNSUBSCRIBE] = 12;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::SEND] = 13;
     $config->CM_Action_Abstract->verbsMaxValue = 13;
-    
+
 };

@@ -20,9 +20,16 @@ return function (CM_Config_Node $config) {
             ],
         ]
     );
-    $config->CM_Memcache_Client->servers = array(
-        array('host' => '127.0.0.1', 'port' => 11211),
+
+    $config->services['memcache'] = array(
+        'class'     => 'CM_Memcache_Client',
+        'arguments' => array(
+            'servers' => array(
+                ['host' => 'localhost', 'port' => 11211],
+            ),
+        ),
     );
+
     $config->services['database-master'] = array(
         'class'     => 'CM_Db_Client',
         'arguments' => array(

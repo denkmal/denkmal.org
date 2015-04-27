@@ -5,12 +5,31 @@ return function (CM_Config_Node $config) {
     $config->CM_App->setupScriptClasses[] = 'Denkmal_ExampleData_Venues';
 
     $config->CM_Mail->send = false;
-    $config->CM_Stream_Adapter_Message_SocketRedis->servers = array(
-        array('httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => array('https://www.denkmal.dev:8090')),
+
+    $config->services['stream-message'] = array(
+        'class'  => 'CM_MessageStream_Factory',
+        'method' => [
+            'name'      => 'createService',
+            'arguments' => [
+                'adapterClass'     => 'CM_MessageStream_Adapter_SocketRedis',
+                'adapterArguments' => [
+                    'servers' => [
+                        ['httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => ['http://www.denkmal.dev:8090']],
+                    ],
+                ],
+            ],
+        ]
     );
-    $config->CM_Memcache_Client->servers = array(
-        array('host' => '127.0.0.1', 'port' => 11211),
+
+    $config->services['memcache'] = array(
+        'class'     => 'CM_Memcache_Client',
+        'arguments' => array(
+            'servers' => array(
+                ['host' => 'localhost', 'port' => 11211],
+            ),
+        ),
     );
+
     $config->services['database-master'] = array(
         'class'     => 'CM_Db_Client',
         'arguments' => array(

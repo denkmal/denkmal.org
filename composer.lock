@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b3b904f230549b6433a347dc0cd8941a",
+    "hash": "0f38735d5174ae7bbf13e6e6c2a89df4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -75,17 +75,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.116.3",
+            "version": "1.117.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "273fe73328a517eadc4c1a61ecca783b6c68a3c9"
+                "reference": "0eab9e880d36839c803594b893c0a37b26257b8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-273fe73328a517eadc4c1a61ecca783b6c68a3c9-zip-6d3c49.zip",
-                "reference": "273fe73328a517eadc4c1a61ecca783b6c68a3c9",
-                "shasum": "1597378b787dc12326eb4be1a46ef9f22b0e1ddf"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-0eab9e880d36839c803594b893c0a37b26257b8a-zip-ec84f2.zip",
+                "reference": "0eab9e880d36839c803594b893c0a37b26257b8a",
+                "shasum": "6f23c3aa4cb4279a54e0165bfe5c0cfad6cc8948"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-04-24 16:58:54"
+            "time": "2015-04-27 13:22:34"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -857,11 +857,6 @@
             ],
             "authors": [
                 {
-                    "name": "Takashi Nojima",
-                    "homepage": "http://php-tips.com",
-                    "role": "Developer"
-                },
-                {
                     "name": "Matt Sanford",
                     "email": "matt@mzsanford.com",
                     "homepage": "http://mzsanford.com"
@@ -875,6 +870,10 @@
                     "name": "Nick Pope",
                     "email": "git@nickpope.me.uk",
                     "homepage": "http://www.nickpope.me.uk"
+                },
+                {
+                    "name": "Takashi Nojima",
+                    "homepage": "http://php-tips.com"
                 }
             ],
             "description": "A library of PHP classes that provide auto-linking and extraction of usernames, lists, hashtags and URLs from tweets.",
@@ -1364,17 +1363,17 @@
         },
         {
             "name": "tomaszdurka/codegenerator",
-            "version": "0.4.2",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomaszdurka/codegenerator.git",
-                "reference": "d577a3f0b80adfd9a494db2c9c2589b8a4dfe901"
+                "reference": "4b5d28b410410698bd054496666adab191c7b8cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-codegenerator-d577a3f0b80adfd9a494db2c9c2589b8a4dfe901-zip-52de0b.zip",
-                "reference": "d577a3f0b80adfd9a494db2c9c2589b8a4dfe901",
-                "shasum": "39e5fa14f7072b25d8156138e8f324e19ae5ec0e"
+                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-codegenerator-4b5d28b410410698bd054496666adab191c7b8cd-zip-e0153a.zip",
+                "reference": "4b5d28b410410698bd054496666adab191c7b8cd",
+                "shasum": "7465ae30b5fe781ab20ba220776758718b540348"
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7.10",
@@ -1393,7 +1392,7 @@
                     "email": "tomasz@durka.pl"
                 }
             ],
-            "time": "2015-02-23 00:56:29"
+            "time": "2015-04-27 12:12:17"
         }
     ],
     "packages-dev": [

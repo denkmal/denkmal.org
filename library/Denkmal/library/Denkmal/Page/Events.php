@@ -3,7 +3,8 @@
 class Denkmal_Page_Events extends Denkmal_Page_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
-        $date = $this->_params->getDate('date', Denkmal_Site::getCurrentDate());
+        $dateCurrent = Denkmal_Site::getCurrentDate();
+        $date = $this->_params->getDate('date', $dateCurrent);
         $dateList = new Denkmal_Paging_DateTime_Days();
 
         if (in_array($date, $dateList->getItems())) {
@@ -17,5 +18,6 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
         }
         $viewResponse->set('menu', $menu);
         $viewResponse->set('date', $date);
+        $viewResponse->getJs()->setProperty('dateCurrent', $dateCurrent->format('Y-n-j'));
     }
 }

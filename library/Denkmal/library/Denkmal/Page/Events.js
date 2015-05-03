@@ -7,6 +7,9 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Page_Events',
 
+  /** @type String */
+  dateCurrent: null,
+
   /** @type SwipeCarousel */
   _carousel: null,
 
@@ -98,7 +101,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   _changeState: function(state) {
     var date = state['date'];
     if (!date) {
-      date = this.$('.dateList > .date:first').data('date');
+      date = this.dateCurrent;
       this.setState({date: date});
     }
     return this.showPane(date);

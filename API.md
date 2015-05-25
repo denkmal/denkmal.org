@@ -28,7 +28,8 @@ Response:
       {
          "id":934,
          "venue":123,
-         "description":"Foo",
+         "description":"Foo Bar",
+         "descriptionHtml":"Foo <a href="http://bar.com" class="url" target="_blank">Bar</a>",
          "from":1371386731,
          "until":1371386731,
          "starred":false,
@@ -41,6 +42,7 @@ Response:
          "id":935,
          "venue":123,
          "description":"Foo",
+         "descriptionHtml":"Foo",
          "from":1371386731,
          "starred":false
       }

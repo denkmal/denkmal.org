@@ -1,6 +1,8 @@
-# API
+API
+===
 
-## Get data
+Get data
+--------
 Request:
 ```
 GET /api/data HTTP/1.1
@@ -55,7 +57,8 @@ Response:
 When the site is suspended temporarily `suspendedDays` will contain the number of days left until we're back.
 
 
-## Get messages
+Get messages
+------------
 Request:
 ```
 GET /api/messages HTTP/1.1
@@ -98,7 +101,8 @@ Host: www.denkmal.org
 ```
 
 
-## Send message
+Send message
+------------
 Request:
 ```
 POST /api/message HTTP/1.1

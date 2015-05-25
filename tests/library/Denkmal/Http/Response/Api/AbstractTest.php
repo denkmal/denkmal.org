@@ -20,6 +20,7 @@ class Denkmal_Http_Response_Api_AbstractTest extends CMTest_TestCase {
         CMTest_TH::callProtectedMethod($apiResponse, '_setContent', [$content]);
 
         $this->assertSame($content, CM_Params::jsonDecode($apiResponse->getContent()));
+        $this->assertContains('Content-Type: application/json', $apiResponse->getHeaders());
         $this->assertContains('Access-Control-Allow-Origin: *', $apiResponse->getHeaders());
     }
 }

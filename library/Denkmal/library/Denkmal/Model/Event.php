@@ -167,10 +167,14 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     public function toArrayApi(CM_Frontend_Render $render) {
+        $eventFormatter = new Denkmal_Usertext_EventFormatter($render);
+        $descriptionHtml = $eventFormatter->transform($this->getDescription());
+
         $array = array();
         $array['id'] = $this->getId();
         $array['venue'] = $this->getVenue()->getId();
-        $array['description'] = $this->getDescription();
+        $array['description'] = strip_tags($descriptionHtml);
+        $array['descriptionHtml'] = $descriptionHtml;
         $array['from'] = $this->getFrom()->getTimestamp();
         if ($until = $this->getUntil()) {
             $array['until'] = $until->getTimestamp();

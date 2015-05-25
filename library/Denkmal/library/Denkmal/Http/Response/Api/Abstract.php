@@ -21,6 +21,8 @@ abstract class Denkmal_Http_Response_Api_Abstract extends CM_Http_Response_Abstr
 
     protected function _setContent($content) {
         $content = CM_Params::encode($content, true);
+        $this->setHeader('Content-Type', 'application/json');
+        $this->setHeader('Access-Control-Allow-Origin', '*');
         parent::_setContent($content);
     }
 }

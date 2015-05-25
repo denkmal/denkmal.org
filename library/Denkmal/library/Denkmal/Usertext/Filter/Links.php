@@ -29,7 +29,7 @@ class Denkmal_Usertext_Filter_Links extends CM_Usertext_Filter_Abstract {
                 if (!$automatic) {
                     $search = '#' . self::_getWordBoundaryPattern() . '\[' . preg_quote($label, '#') . '\]' . self::_getWordBoundaryPattern() . '#ui';
                 } else {
-                    $search = '#' . self::_getWordBoundaryPattern() . preg_quote($label, '#') . self::_getWordBoundaryPattern() . '#ui';
+                    $search = '#' . self::_getWordBoundaryPattern() . '\[?' . preg_quote($label, '#') . '\]?'. self::_getWordBoundaryPattern() . '#ui';
                 }
                 $replace = '$1<a href="' . $url . '" class="url" target="_blank">' . $label . '</a>$2';
                 $replacements[] = array(

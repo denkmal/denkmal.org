@@ -107,4 +107,25 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
 
         new Denkmal_Model_Event($this->_event->getId());
     }
+
+    public function testToArrayApi() {
+        $venue = Denkmal_Model_Venue::create('Example 2', true, false);
+        $from = new DateTime();
+        $until = (new DateTime())->add(new DateInterval('PT1H'));
+        $song = Denkmal_Model_Song::create('My Song', CM_File::createTmp());
+        $link = Denkmal_Model_Link::create('foo', 'http://foo.com', true);
+        $event = Denkmal_Model_Event::create($venue, 'hello foo bar', true, false, $from, $until, $song, false, true);
+
+        $render = new CM_Frontend_Render();
+        $data = $event->toArrayApi($render);
+
+        $this->assertSame($event->getId(), $data['id']);
+        $this->assertSame($venue->getId(), $data['venue']);
+        $this->assertSame($from->getTimestamp(), $data['from']);
+        $this->assertSame($until->getTimestamp(), $data['until']);
+        $this->assertSame(true, $data['starred']);
+        $this->assertSame($song->toArrayApi($render), $data['song']);
+        $this->assertSame('hello foo bar', $data['description']);
+        $this->assertSame('hello <a href="http://foo.com" class="url" target="_blank">foo</a> bar', $data['descriptionHtml']);
+    }
 }

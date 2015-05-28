@@ -2,8 +2,6 @@
 
 class Denkmal_Model_UserInvite extends \CM_Model_Abstract {
 
-    const SALT = 'FAbyviKZecDdk8MWu7wzbGrkt';
-
     /**
      * @return Denkmal_Model_User
      */

@@ -7,6 +7,7 @@ class Denkmal_MessagePushNotification_SendJob extends CM_Jobdistribution_Job_Abs
         $message = $params->getMessage('message');
 
         $serviceManager = CM_Service_Manager::getInstance();
+        /** @var Denkmal_Push_Notification_Sender $sender */
         $sender = $serviceManager->get('push-notification-sender', 'Denkmal_Push_Notification_Sender');
         $render = new CM_Frontend_Render(null, null, $serviceManager);
         $formatter = new Denkmal_MessagePushNotification_Formatter($render);

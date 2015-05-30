@@ -38,4 +38,14 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
 
         $this->assertSame($expected, json_decode($response->getContent(), true));
     }
+
+    /**
+     * @expectedException CM_Exception
+     * @expectedExceptionMessage Cannot find venue
+     */
+    public function testProcessInvalidVenue() {
+        $request = new CM_Http_Request_Get('/api/events?venue=VenueNonexistent', array('host' => 'denkmal.test'));
+        $response = new Denkmal_Http_Response_Api_Events($request, $this->getServiceManager());
+        $response->process();
+    }
 }

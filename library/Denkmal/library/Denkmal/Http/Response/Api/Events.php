@@ -9,7 +9,11 @@ class Denkmal_Http_Response_Api_Events extends Denkmal_Http_Response_Api_Abstrac
     protected function _process() {
         $site = new Denkmal_Site();
         $suspension = $site->getSuspension();
-        $venue = Denkmal_Model_Venue::findByNameOrAlias($this->_params->getString('venue'));
+        $venueName = $this->_params->getString('venue');
+        $venue = Denkmal_Model_Venue::findByNameOrAlias($venueName);
+        if (null === $venue) {
+            throw new CM_Exception('Cannot find venue with name `' . $venueName . '`');
+        }
         $maxEvents = min(max($this->_params->getInt('maxEvents', 100), 1), 1000);
 
         $eventListArray = array();

@@ -21,7 +21,7 @@ class Denkmal_MessagePushNotification_Formatter {
             'title' => $this->getTitle($message),
             'body'  => $this->getBody($message),
             'icon'  => $this->getIcon($message),
-            'tag'   => 'message-' . $message->getId(),
+            'tag'   => 'message',
         ];
     }
 

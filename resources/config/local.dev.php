@@ -14,7 +14,7 @@ return function (CM_Config_Node $config) {
                 'adapterClass'     => 'CM_MessageStream_Adapter_SocketRedis',
                 'adapterArguments' => [
                     'servers' => [
-                        ['httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => ['http://www.denkmal.dev:8090']],
+                        ['httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => ['https://www.denkmal.dev:8090']],
                     ],
                 ],
             ],

@@ -4,21 +4,21 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0f38735d5174ae7bbf13e6e6c2a89df4",
+    "hash": "53dc67a29fda59ca7875b5694efcebb9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.8.2",
+            "version": "2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4237e97388d2906d2aa88f727736968fc2df9cb6"
+                "reference": "2b62281500f0c4671000f90255a73e6570d7a36a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-4237e97388d2906d2aa88f727736968fc2df9cb6-zip-a1a272.zip",
-                "reference": "4237e97388d2906d2aa88f727736968fc2df9cb6",
-                "shasum": "fc90b9d09165e4344edb6b2a120b48f2ec34683d"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-2b62281500f0c4671000f90255a73e6570d7a36a-zip-0e254d.zip",
+                "reference": "2b62281500f0c4671000f90255a73e6570d7a36a",
+                "shasum": "08bc3f2d883599adae8bddf1f85ded4466b31177"
             },
             "require": {
                 "guzzle/guzzle": "~3.7",
@@ -39,11 +39,6 @@
                 "symfony/yaml": "Eases the ability to write manifests for creating jobs in AWS Import/Export"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.7-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Aws": "src/"
@@ -71,7 +66,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-04-23 20:14:25"
+            "time": "2015-05-29 00:35:23"
         },
         {
             "name": "cargomedia/cm",
@@ -857,6 +852,11 @@
             ],
             "authors": [
                 {
+                    "name": "Takashi Nojima",
+                    "homepage": "http://php-tips.com",
+                    "role": "Developer"
+                },
+                {
                     "name": "Matt Sanford",
                     "email": "matt@mzsanford.com",
                     "homepage": "http://mzsanford.com"
@@ -870,10 +870,6 @@
                     "name": "Nick Pope",
                     "email": "git@nickpope.me.uk",
                     "homepage": "http://www.nickpope.me.uk"
-                },
-                {
-                    "name": "Takashi Nojima",
-                    "homepage": "http://php-tips.com"
                 }
             ],
             "description": "A library of PHP classes that provide auto-linking and extraction of usernames, lists, hashtags and URLs from tweets.",
@@ -1146,18 +1142,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.0-BETA1",
-            "target-dir": "Symfony/Component/Console",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "7a8b8e2b82827622ef60127547bc3c7ce2e18982"
+                "reference": "7f0bec04961c61c961df0cb8c2ae88dbfd83f399"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-7a8b8e2b82827622ef60127547bc3c7ce2e18982-zip-1b516b.zip",
-                "reference": "7a8b8e2b82827622ef60127547bc3c7ce2e18982",
-                "shasum": "5c373549d4f871d04d285eaedd5689d7f39db2e9"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-console-7f0bec04961c61c961df0cb8c2ae88dbfd83f399-zip-ea1045.zip",
+                "reference": "7f0bec04961c61c961df0cb8c2ae88dbfd83f399",
+                "shasum": "756c2a397ffa7ddcae9598d3dc7aae6ff1955752"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1180,7 +1175,7 @@
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Console\\": ""
                 }
             },
@@ -1190,32 +1185,31 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Console Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-10 15:31:32"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-29 16:22:24"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.7.0-BETA1",
-            "target-dir": "Symfony/Component/EventDispatcher",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "28008406abd5385496fb2cb79bdd0f8b8a8bd44d"
+                "reference": "687039686d0e923429ba6e958d0baa920cd5d458"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-28008406abd5385496fb2cb79bdd0f8b8a8bd44d-zip-fef2f9.zip",
-                "reference": "28008406abd5385496fb2cb79bdd0f8b8a8bd44d",
-                "shasum": "7e551ccae1211ec50fb7cc9e12cc6ecb36984696"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-687039686d0e923429ba6e958d0baa920cd5d458-zip-99b7a4.zip",
+                "reference": "687039686d0e923429ba6e958d0baa920cd5d458",
+                "shasum": "bb184177527d757e938e6ceb9d7ae7315ce02308"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1239,7 +1233,7 @@
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\EventDispatcher\\": ""
                 }
             },
@@ -1249,32 +1243,31 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony EventDispatcher Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-10 07:23:38"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-02 15:21:08"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.7.0-BETA1",
-            "target-dir": "Symfony/Component/Finder",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "3e0b09269a91264201517df15ca753e9b9329a9b"
+                "reference": "ccb8ed8339cf24824f2ef35dacec30d92ff44368"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-3e0b09269a91264201517df15ca753e9b9329a9b-zip-3664bb.zip",
-                "reference": "3e0b09269a91264201517df15ca753e9b9329a9b",
-                "shasum": "fde5b2d5d9fc497e1fd116e6666b780628bf6612"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-finder-ccb8ed8339cf24824f2ef35dacec30d92ff44368-zip-c260df.zip",
+                "reference": "ccb8ed8339cf24824f2ef35dacec30d92ff44368",
+                "shasum": "a837653ea09650f47c58807290e34f95dadb2d43"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1289,7 +1282,7 @@
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Finder\\": ""
                 }
             },
@@ -1299,32 +1292,31 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Finder Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-10 07:23:38"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-15 14:02:48"
         },
         {
             "name": "symfony/process",
-            "version": "v2.7.0-BETA1",
-            "target-dir": "Symfony/Component/Process",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "2930a2b76a5dde9ca8480714679fffb29bb304b5"
+                "reference": "e0a82b58e36afc60f8e79b8bc85a22bb064077c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-2930a2b76a5dde9ca8480714679fffb29bb304b5-zip-3f36d4.zip",
-                "reference": "2930a2b76a5dde9ca8480714679fffb29bb304b5",
-                "shasum": "77d680d3ea8b65b020c0c5fb8681ce1555e94904"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-process-e0a82b58e36afc60f8e79b8bc85a22bb064077c1-zip-3d5b63.zip",
+                "reference": "e0a82b58e36afc60f8e79b8bc85a22bb064077c1",
+                "shasum": "a424f882604476ba8604d4e109ba831f20c7d26e"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1339,7 +1331,7 @@
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Process\\": ""
                 }
             },
@@ -1349,17 +1341,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Process Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-10 07:23:38"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-15 13:33:16"
         },
         {
             "name": "tomaszdurka/codegenerator",
@@ -1451,6 +1443,47 @@
             "time": "2014-10-13 12:58:55"
         },
         {
+            "name": "facebook/webdriver",
+            "version": "v0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/php-webdriver.git",
+                "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bbcb697efb394d17bd9ec3d467e7da847cde4509",
+                "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.19"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "A php client for WebDriver",
+            "homepage": "https://github.com/facebook/php-webdriver",
+            "keywords": [
+                "facebook",
+                "php",
+                "selenium",
+                "webdriver"
+            ],
+            "time": "2014-11-05 20:53:09"
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.4.0",
             "source": {
@@ -1500,17 +1533,17 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.16",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c"
+                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-934fd03eb6840508231a7f73eb8940cf32c3b66c-zip-54a096.zip",
-                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c",
-                "shasum": "bfb69904f8c2356a5a2871460130b711daa30374"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-28a6b34e91d789b2608072ab3c82eaae7cdb973c-zip-44c665.zip",
+                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c",
+                "shasum": "d7f427a6cb9d8b43e07867bec9767486dcc4530a"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -1532,7 +1565,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -1558,7 +1591,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-04-11 04:35:00"
+            "time": "2015-06-03 07:01:01"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1818,17 +1851,17 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "2.3.1",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "74ffb87f527f24616f72460e54b595f508dccb5c"
+                "reference": "253c005852591fd547fc18cd5b7b43a1ec82d8f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-mock-objects-74ffb87f527f24616f72460e54b595f508dccb5c-zip-9e27e2.zip",
-                "reference": "74ffb87f527f24616f72460e54b595f508dccb5c",
-                "shasum": "c98abd05ee1086d754af5a6a445d718b276ac9b7"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-mock-objects-253c005852591fd547fc18cd5b7b43a1ec82d8f7-zip-5a2bba.zip",
+                "reference": "253c005852591fd547fc18cd5b7b43a1ec82d8f7",
+                "shasum": "63bc9b2b423ae3709bb19983ebc53b0e717e3376"
             },
             "require": {
                 "doctrine/instantiator": "~1.0,>=1.0.2",
@@ -1869,7 +1902,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-04-02 05:36:41"
+            "time": "2015-05-29 05:19:18"
         },
         {
             "name": "sebastian/comparator",
@@ -2193,18 +2226,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.7.0-BETA1",
-            "target-dir": "Symfony/Component/Yaml",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "43e7bee10c88f23252ee1b6b25140dc9917c3d96"
+                "reference": "4a29a5248aed4fb45f626a7bbbd330291492f5c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-43e7bee10c88f23252ee1b6b25140dc9917c3d96-zip-03a2f2.zip",
-                "reference": "43e7bee10c88f23252ee1b6b25140dc9917c3d96",
-                "shasum": "ad2c3743da784271856d379a488193b931e4a206"
+                "url": "http://satis.cargomedia.ch/dist/dist/symfony-yaml-4a29a5248aed4fb45f626a7bbbd330291492f5c3-zip-25c073.zip",
+                "reference": "4a29a5248aed4fb45f626a7bbbd330291492f5c3",
+                "shasum": "8b5c566a5dfa06c761f844d6dcd257b0b2d53cf3"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -2219,7 +2251,7 @@
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Yaml\\": ""
                 }
             },
@@ -2229,17 +2261,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Yaml Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-10 07:23:38"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-02 15:21:08"
         },
         {
             "name": "tomaszdurka/mocka",

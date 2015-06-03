@@ -2,64 +2,59 @@
 
 class MyTest extends CMTest_TestCase {
 
-    /** @var \RemoteWebDriver */
-    protected $_driver;
+    /** @var \WebNavigator\Navigator */
+    private $_navigator;
 
     protected function setUp() {
         $capabilities = new \DesiredCapabilities([\WebDriverCapabilityType::BROWSER_NAME => 'phantomjs']);
-        $this->_driver = \RemoteWebDriver::create('http://10.0.3.8:4444/wd/hub', $capabilities);
+        $driver = \RemoteWebDriver::create('http://10.0.3.8:4444/wd/hub', $capabilities);
+        $this->_navigator = new \WebNavigator\Navigator($driver, 'https://www.denkmal.dev');
     }
 
     protected function tearDown() {
-        if (isset($this->_driver)) {
-            $this->_driver->close();
+        if (isset($this->_navigator)) {
+            $this->_navigator->quit();
         }
     }
 
     public function testAddPage() {
-        $this->_driver->get('https://www.denkmal.dev/events');
+        $this->_navigator->get('/events');
 
-        $this->_driver->findElement(WebDriverBy::cssSelector('.addButton a'))->click();
-        $this->_driver->wait()->until(WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::cssSelector('.Denkmal_Page_Add')));
+        $this->_navigator->click('.addButton a');
+        $this->_navigator->waitForElement('.Denkmal_Page_Add');
+        $this->assertContains('Event hinzufügen', $this->_navigator->getText('h1'));
+        $this->assertContains('/add', $this->_navigator->getUrl());
 
-        $this->stringContains('Event hinzufügen', $this->_driver->findElement(WebDriverBy::cssSelector('h1'))->getText());
-        $this->stringContains('/add', $this->_driver->getCurrentURL());
-
-        $this->_driver->takeScreenshot(DIR_ROOT . '/screenshot.png');
+        $this->_navigator->takeScreenshot(DIR_ROOT . '/screenshot.png');
     }
 
     public function testNewEvent() {
-        $this->_driver->get('https://www.denkmal.dev/add');
+        $this->_navigator->get('/add');
 
-        $this->_driver->findElement(WebDriverBy::cssSelector('#s2id_autogen2'))->sendKeys('My venue' . time());
-        $this->_driver->wait()->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.select2-highlighted')));
-        $this->_driver->findElement(WebDriverBy::cssSelector('.select2-highlighted'))->click();
-        $this->_driver->wait()->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('[name="venueAddress"]')));
+        $this->_navigator->setField('.Denkmal_FormField_Venue .select2-input', 'My Venue' . time());
+        $this->_navigator->waitForAjax();
 
-        $this->_driver->findElement(WebDriverBy::cssSelector('[name="venueAddress"]'))->sendKeys('My Address 1');
-        $this->_driver->findElement(WebDriverBy::cssSelector('[name="venueUrl"]'))->sendKeys('http://www.example.com/');
+        $this->_navigator->click('.select2-results > .select2-result');
+        $this->_navigator->waitForElement('[name="venueAddress"]');
+
         $date = new DateTime();
-        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[year]"]'))))->selectByValue($date->format('Y'));
-        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[month]"]'))))->selectByValue($date->format('n'));
-        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[day]"]'))))->selectByValue($date->format('j'));
-        $this->_driver->findElement(WebDriverBy::cssSelector('[name="fromTime"]'))->clear()->sendKeys('20:30');
-        $this->_driver->findElement(WebDriverBy::cssSelector('[name="title"]'))->sendKeys('My Title');
+        $this->_navigator->setField('[name="venueAddress"]', 'My Address 1');
+        $this->_navigator->setField('[name="venueUrl"]', 'http://www.example.com/');
+        $this->_navigator->setField('[name="date[year]"]', $date->format('Y'));
+        $this->_navigator->setField('[name="date[month]"]', $date->format('n'));
+        $this->_navigator->setField('[name="date[day]"]', $date->format('j'));
+        $this->_navigator->setField('[name="fromTime"]', '20:30');
+        $this->_navigator->setField('[name="title"]', 'My Title');
 
-        $this->_driver->wait()->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.Denkmal_Component_EventPreview')));
+        usleep(1000000 * 0.2); // Preview update is debounced
+        $this->_navigator->waitForAjax();
+        $this->assertContains('My Venue', $this->_navigator->getText('.Denkmal_Component_EventPreview .event-location'));
+        $this->assertContains('My Title', $this->_navigator->getText('.Denkmal_Component_EventPreview .event-details'));
+        $this->assertContains('20:30', $this->_navigator->getText('.Denkmal_Component_EventPreview .time'));
 
-        $this->stringContains('My Venue', $this->_driver->findElement(WebDriverBy::cssSelector('.Denkmal_Component_EventPreview .event-location'))->getText());
-        $this->stringContains('My Title', $this->_driver->findElement(WebDriverBy::cssSelector('.Denkmal_Component_EventPreview .event-details'))->getText());
-        $this->stringContains('21:30', $this->_driver->findElement(WebDriverBy::cssSelector('.Denkmal_Component_EventPreview .time'))->getText());
-
-        $this->_driver->findElement(WebDriverBy::cssSelector('.Denkmal_Form_EventAdd'))->submit();
-        $this->_driver->findElement(WebDriverBy::cssSelector('button[type="submit"]'))->click();
-        $this->_driver->wait()->until(function (RemoteWebDriver $driver) {
-            return $driver->executeScript('return !$.active;');
-        });
-        usleep(0.5 * 1000000);
-
-        $this->assertTrue($this->_driver->findElement(WebDriverBy::cssSelector('.formSuccess'))->isDisplayed());
-        $this->assertFalse($this->_driver->findElement(WebDriverBy::cssSelector('.Denkmal_Form_EventAdd .preview'))->isDisplayed());
-        $this->assertFalse($this->_driver->findElement(WebDriverBy::cssSelector('.Denkmal_Form_EventAdd .formWrapper'))->isDisplayed());
+        $this->assertNotContains('Der Event wurde hinzugefügt', $this->_navigator->getText('body'));
+        $this->_navigator->click('button[type="submit"]');
+        $this->_navigator->waitForAjax();
+        $this->assertContains('Der Event wurde hinzugefügt', $this->_navigator->getText('body'));
     }
 }

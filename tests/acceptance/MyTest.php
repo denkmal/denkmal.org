@@ -7,17 +7,19 @@ class MyTest extends CMTest_TestCase {
 
     protected function setUp() {
         $capabilities = new \DesiredCapabilities([\WebDriverCapabilityType::BROWSER_NAME => 'phantomjs']);
-        $this->_driver = \RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
+        $this->_driver = \RemoteWebDriver::create('http://10.0.3.8:4444/wd/hub', $capabilities);
     }
 
     protected function tearDown() {
-        $this->_driver->close();
+        if (isset($this->_driver)) {
+            $this->_driver->close();
+        }
     }
 
     public function testAddPage() {
-        $this->_driver->get('http://www.denkmal.dev/');
+        $this->_driver->get('https://www.denkmal.dev/events');
 
-        $this->_driver->findElement(WebDriverBy::cssSelector('a.addButton'))->click();
+        $this->_driver->findElement(WebDriverBy::cssSelector('.addButton a'))->click();
         $this->_driver->wait()->until(WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::cssSelector('.Denkmal_Page_Add')));
 
         $this->stringContains('Event hinzufügen', $this->_driver->findElement(WebDriverBy::cssSelector('h1'))->getText());
@@ -27,7 +29,7 @@ class MyTest extends CMTest_TestCase {
     }
 
     public function testNewEvent() {
-        $this->_driver->get('http://www.denkmal.dev/add');
+        $this->_driver->get('https://www.denkmal.dev/add');
 
         $this->_driver->findElement(WebDriverBy::cssSelector('#s2id_autogen2'))->sendKeys('My venue' . time());
         $this->_driver->wait()->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.select2-highlighted')));
@@ -36,9 +38,10 @@ class MyTest extends CMTest_TestCase {
 
         $this->_driver->findElement(WebDriverBy::cssSelector('[name="venueAddress"]'))->sendKeys('My Address 1');
         $this->_driver->findElement(WebDriverBy::cssSelector('[name="venueUrl"]'))->sendKeys('http://www.example.com/');
-        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[year]"]'))))->selectByValue('2015');
-        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[month]"]'))))->selectByValue('3');
-        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[day]"]'))))->selectByValue('4');
+        $date = new DateTime();
+        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[year]"]'))))->selectByValue($date->format('Y'));
+        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[month]"]'))))->selectByValue($date->format('n'));
+        (new \WebDriverSelect($this->_driver->findElement(WebDriverBy::cssSelector('[name="date[day]"]'))))->selectByValue($date->format('j'));
         $this->_driver->findElement(WebDriverBy::cssSelector('[name="fromTime"]'))->clear()->sendKeys('20:30');
         $this->_driver->findElement(WebDriverBy::cssSelector('[name="title"]'))->sendKeys('My Title');
 

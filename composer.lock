@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "53dc67a29fda59ca7875b5694efcebb9",
+    "hash": "8361c47fae70585a74f6eb82b085c65d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -70,17 +70,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.117.1",
+            "version": "1.117.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "0eab9e880d36839c803594b893c0a37b26257b8a"
+                "reference": "779997c072dda67a136554e93daa37e71739ebfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-0eab9e880d36839c803594b893c0a37b26257b8a-zip-ec84f2.zip",
-                "reference": "0eab9e880d36839c803594b893c0a37b26257b8a",
-                "shasum": "6f23c3aa4cb4279a54e0165bfe5c0cfad6cc8948"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-779997c072dda67a136554e93daa37e71739ebfe-zip-8696b8.zip",
+                "reference": "779997c072dda67a136554e93daa37e71739ebfe",
+                "shasum": "fcc2203b44fb6c0d30b69e865733629a5574eb26"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -100,7 +100,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.3.5",
-                "tomaszdurka/mocka": "~0.8.1"
+                "tomaszdurka/mocka": "~0.10.0"
             },
             "bin": [
                 "bin/cm"
@@ -124,7 +124,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-04-27 13:22:34"
+            "time": "2015-05-07 10:14:51"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -1389,6 +1389,39 @@
     ],
     "packages-dev": [
         {
+            "name": "cargomedia/webnavigator",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cargomedia/webnavigator.git",
+                "reference": "5bbced73f86f024c48ca35ff733f85d005a9a8a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cargomedia/webnavigator/zipball/5bbced73f86f024c48ca35ff733f85d005a9a8a7",
+                "reference": "5bbced73f86f024c48ca35ff733f85d005a9a8a7",
+                "shasum": ""
+            },
+            "require": {
+                "facebook/webdriver": "~0.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6.10",
+                "tomaszdurka/mocka": "~0.10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "WebNavigator": "source/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2015-06-03 14:36:15"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.4",
             "source": {
@@ -1444,16 +1477,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "v0.5.1",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509"
+                "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bbcb697efb394d17bd9ec3d467e7da847cde4509",
-                "reference": "bbcb697efb394d17bd9ec3d467e7da847cde4509",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
+                "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1514,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2014-11-05 20:53:09"
+            "time": "2015-02-09 19:39:34"
         },
         {
             "name": "fzaninotto/faker",

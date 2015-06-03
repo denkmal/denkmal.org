@@ -13,7 +13,7 @@
     "phpunit/phpunit": "~4.3.5",
     "tomaszdurka/mocka": "~0.8.1",
     "fzaninotto/faker": "~1.4.0",
-    "facebook/webdriver": "~0.5.1"
+    "cargomedia/webnavigator": "~0.0.1"
   },
   "minimum-stability": "alpha",
   "repositories": [

@@ -2,15 +2,9 @@
   {translate '{$inviter} hat dich eingeladen, einen Hipster-Account für Denkmal Now zu erstellen!' inviter=$userInvite->getInviter()->getDisplayName()|escape}
 </p>
 
-<table cellspacing="0" border="0" cellpadding="0" style="{less}margin: 10px 0; height: @sizeButton; background-color: @colorBgButtonHighlight; color: @colorFgButtonHighlight; border-radius: @borderRadiusInput; border: 1px solid @colorBgButtonHighlight;{/less}">
-  <tr>
-    <td width="10" style="font-size:1px">&nbsp;</td>
-    <td>
-      <a href="{linkUrl page='Denkmal_Page_SignUp' invite=$userInvite->getKey()}" style="color: #ffffff">{translate 'Account Erstellen'}</a>
-    </td>
-    <td width="10" style="font-size:1px">&nbsp;</td>
-  </tr>
-</table>
+<p>
+  {load file='Mail/helper/button.tpl' label={translate 'Account Erstellen'} href={linkUrl page='Denkmal_Page_SignUp' invite=$userInvite->getKey()}}
+</p>
 
 {if $userInvite->getExpires()}
   <p>

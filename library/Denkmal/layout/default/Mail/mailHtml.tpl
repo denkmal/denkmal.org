@@ -1,47 +1,30 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-  </head>
-  <body style="margin: 10px 20px">
+{extends file=$render->getLayoutPath('Mail/mailHtml.tpl', 'CM')}
 
-    {img path="logo.png" title=$siteName height="50"}
+{block name='content'}
+  <table style="width: 100%;">
 
-    <p>
-      {translate 'Oi!'}
-    </p>
+    <tr>
+      <td class="header" style="text-align: center;">
+        <a href="{linkUrl page=Denkmal_Page_Index}" style="display: inline-block;">
+          {img path="logo.png" title=$siteName height="50"}
+        </a>
+      </td>
+    </tr>
 
-    <p>
-      {$body}
-    </p>
+    <tr>
+      <td class="content">
+        <p>
+          {translate 'Oi!'}
+        </p>
+        <p>
+          {$body}
+        </p>
+        <p>
+          {translate 'Have fun'},<br />
+          {$siteName}
+        </p>
+      </td>
+    </tr>
 
-    <p>
-      {translate 'Have fun'},<br />
-      {$siteName}
-    </p>
-  </body>
-  <style type="text/css">
-    {less}
-    p, td, h1, li {
-      font-family: @fontFamily;
-      font-size: @fontSize;
-      color: @colorFg;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    a {
-      color: @colorFgLink;
-      text-decoration: none
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-    {/less}
-  </style>
-</html>
+  </table>
+{/block}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c048a64ff800327333a00e1cab9d6e05",
+    "hash": "b411f9d16017e03821bb67107ab0ab3a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -71,17 +71,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.121.1",
+            "version": "1.122.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "d3cf10453d2869318bbcba9a7931089b55b8e6bf"
+                "reference": "5e8a3f07ba07976253560aea7ccb9c5d8c2e8bb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-d3cf10453d2869318bbcba9a7931089b55b8e6bf-zip-3daaaa.zip",
-                "reference": "d3cf10453d2869318bbcba9a7931089b55b8e6bf",
-                "shasum": "63fcc127abbec2b6c9684411b128366e63476b8e"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-5e8a3f07ba07976253560aea7ccb9c5d8c2e8bb1-zip-911db0.zip",
+                "reference": "5e8a3f07ba07976253560aea7ccb9c5d8c2e8bb1",
+                "shasum": "a019beddb6efe9d1529ff5306183f3a6e22b9eac"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -117,15 +117,14 @@
             "autoload": {
                 "psr-0": {
                     "CM_": "library/",
-                    "CMService_": "library/",
-                    "CMTest_": "tests/helpers/CMTest/library/"
+                    "CMService_": "library/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "time": "2015-05-22 14:44:10"
+            "time": "2015-06-17 12:36:33"
         },
         {
             "name": "codemonkeys-ru/gcm-message",

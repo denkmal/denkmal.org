@@ -33,37 +33,36 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
       return;
     }
 
-    var $event = this.$('.event');
-    var details = this.findChild('Denkmal_Component_EventDetails');
+    this.$('.event').toggleClass('event-details-open', state);
 
-    $event.toggleClass('event-details-open', state);
-
-    var deferredLoaded = new $.Deferred();
-    var deferredOpened = new $.Deferred();
-
-    if (details) {
-      deferredLoaded.resolve();
+    var self = this;
+    this._getDetails().then(function(details) {
+      self.trigger('toggleDetails', state);
       if (state) {
-        details.$el.slideDown('fast', deferredOpened.resolve);
+        details.$el.slideDown('fast', function() {
+          self.trigger('toggleDetails-open');
+        });
       } else {
         details.$el.slideUp('fast');
       }
-    } else if (state) {
-      deferredLoaded = this.loadComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event}, {
-        'success': function() {
-          this.$el.hide().appendTo($event.parent()).slideDown('fast', deferredOpened.resolve);
-        }
-      });
-    }
-
-    var self = this;
-    deferredLoaded.done(function() {
-      self.trigger('toggleDetails', state)
-    });
-    deferredOpened.done(function() {
-      self.trigger('toggleDetails-open');
     });
 
     this._detailsVisible = state;
+  },
+
+  /**
+   * @returns Promise
+   */
+  _getDetails: function() {
+    var details = this.findChild('Denkmal_Component_EventDetails');
+    if (details) {
+      return Promise.resolve(details);
+    }
+    var $container = this.$('.event').parent();
+    return this.prepareComponent('Denkmal_Component_EventDetails', {venue: this.venue, event: this.event})
+      .then(function(component) {
+        component.$el.hide().appendTo($container);
+        return component;
+      });
   }
 });

@@ -127,18 +127,17 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   /**
    * @param {Object} notification
    * @param {Boolean} state
-   * @returns {jqXHR}
+   * @returns Promise
    */
   _storePushSubscription: function(notification, state) {
+    var self = this;
     return this.ajax('storePushSubscription', {
       state: state,
       subscriptionId: notification.subscriptionId,
       endpoint: notification.endpoint,
       user: cm.viewer
-    }, {
-      success: function() {
-        this._updateInputUI(state);
-      }
+    }).then(function() {
+      self._updateInputUI(state);
     });
   }
 });

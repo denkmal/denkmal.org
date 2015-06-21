@@ -22,7 +22,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
         });
 
         if (Functional\some($textList, function ($text) {
-            return false !== stripos($text, 'sommerpause');
+            return strtolower($text) === 'sommerpause:';
         })) {
             return [];
         }

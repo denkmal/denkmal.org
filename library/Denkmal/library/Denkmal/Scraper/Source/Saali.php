@@ -21,6 +21,12 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             return $contentChild->getText();
         });
 
+        if (Functional\some($textList, function ($text) {
+            return strtolower($text) === 'sommerpause:';
+        })) {
+            return [];
+        }
+
         $textList = Functional\reject($textList, function ($text) {
             return preg_match('#\w+ \(?pdf\)?#i', $text);
         });

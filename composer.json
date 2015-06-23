@@ -4,7 +4,7 @@
     "bin-dir": "bin/"
   },
   "require": {
-    "cargomedia/cm": "~1.117.0",
+    "cargomedia/cm": "~1.126.0",
     "ricardoper/twitteroauth": "~1.1.1",
     "nojimage/twitter-text-php": "~1.1.1",
     "codemonkeys-ru/gcm-message": "~0.1.0"
@@ -25,6 +25,11 @@
     "psr-0": {
       "Denkmal_": "library/Denkmal/library/",
       "Admin_": "library/Admin/library/"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "CMTest_": "vendor/cargomedia/cm/tests/helpers/CMTest/library/"
     }
   },
   "extra": {

@@ -17,8 +17,8 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
   /** @type {String} */
   _stateGeo: null,
 
-  /** @type {Deferred} */
-  _lookupCoordinatesDeferred: null,
+  /** @type {Promise} */
+  _lookupCoordinatesPromise: null,
 
   events: {
     'change select': function(event) {
@@ -96,17 +96,17 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
    * @param {Coordinates} coords
    */
   _onGeolocationUpdate: function(coords) {
-    if (null === this._lookupCoordinatesDeferred) {
+    if (null === this._lookupCoordinatesPromise) {
       var self = this;
-      this._lookupCoordinatesDeferred = this._lookupCoordinates(coords.latitude, coords.longitude, coords.accuracy)
-        .done(function(venueList) {
+      this._lookupCoordinatesPromise = this._lookupCoordinates(coords.latitude, coords.longitude, coords.accuracy)
+        .then(function(venueList) {
           self._setStateSuccess(venueList);
         })
-        .fail(function() {
+        .catch(function() {
           self._setStateFailure();
         })
-        .always(function() {
-          self._lookupCoordinatesDeferred = null;
+        .finally(function() {
+          self._lookupCoordinatesPromise = null;
         });
     }
   },
@@ -115,27 +115,16 @@ var Denkmal_FormField_VenueNearby = CM_FormField_Abstract.extend({
    * @param {Number} lat
    * @param {Number} lon
    * @param {Number} radius
-   * @return {Deferred}
+   * @return Promise
    */
   _lookupCoordinates: function(lat, lon, radius) {
-    var deferred = $.Deferred();
-    this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon, radius: radius}, {
-      success: function(venueList) {
+    return this.ajax('getVenuesByCoordinates', {lat: lat, lon: lon, radius: radius})
+      .then(function(venueList) {
         if (venueList.length == 0) {
-          deferred.reject();
-        } else {
-          deferred.resolve(venueList);
+          throw new Error('Empty venue list received.');
         }
-      }, error: function() {
-        deferred.reject();
-      }
-    }).fail(function(xhr, textStatus) {
-      if (xhr.status === 0) {
-        // Request aborted/interruped - will be ignored by CM_App.ajax(), so we cover it here
-        deferred.reject();
-      }
-    });
-    return deferred;
+        return venueList;
+      });
   },
 
   _setStateWaiting: function() {

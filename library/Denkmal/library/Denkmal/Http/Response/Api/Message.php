@@ -26,7 +26,7 @@ class Denkmal_Http_Response_Api_Message extends Denkmal_Http_Response_Api_Abstra
         $action->prepare();
         $image = null;
         if (null !== $imageData) {
-            $imageFile = new CM_File_Image(CM_File_UserContent_Temp::create('message-image.jpg', $imageData));
+            $imageFile = CM_File_UserContent_Temp::create('message-image.jpg', $imageData);
             $image = Denkmal_Model_MessageImage::create($imageFile);
         }
         $message = Denkmal_Model_Message::create($venue, $clientId, null, $text, $image);

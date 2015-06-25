@@ -38,24 +38,26 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
     }
 
     /**
-     * @param CM_File_Image $file
+     * @param CM_File $file
      * @throws CM_Exception
      * @return Denkmal_Model_MessageImage
      */
-    public static function create(CM_File_Image $file) {
-        $image = new self();
-        $image->commit();
+    public static function create(CM_File $file) {
+        $messageImage = new self();
+        $messageImage->commit();
+        $image = new CM_Image_Image($file->read());
 
         try {
-            $image->getFile('view')->ensureParentDirectory();
-            $file->resize(2000, 2000, false, CM_File_Image::FORMAT_JPEG, $image->getFile('view'));
-            $file->resize(400, 400, true, CM_File_Image::FORMAT_JPEG, $image->getFile('thumb'));
+            $image->setFormat(CM_Image_Image::FORMAT_JPEG);
+            $messageImage->getFile('view')->ensureParentDirectory();
+            $messageImage->getFile('view')->write($image->getClone()->resize(2000, 2000)->getBlob());
+            $messageImage->getFile('thumb')->write($image->resize(400, 400, true)->getBlob());
         } catch (CM_Exception $ex) {
-            $image->delete();
+            $messageImage->delete();
             throw $ex;
         }
 
-        return $image;
+        return $messageImage;
     }
 
     public static function getPersistenceClass() {

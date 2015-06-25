@@ -77,10 +77,10 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
         $this->assertSame('client', $message->getClientId());
         $this->assertSame(null, $message->getText());
         $this->assertSameTime($createTime, $message->getCreated()->getTimestamp());
-        $imageFileThumb = new CM_File_Image($message->getImage()->getFile('thumb'));
-        $this->assertSame(CM_File_Image::FORMAT_JPEG, $imageFileThumb->getFormat());
-        $imageFileView = new CM_File_Image($message->getImage()->getFile('view'));
-        $this->assertSame(CM_File_Image::FORMAT_JPEG, $imageFileView->getFormat());
+        $imageFileThumb = new CM_Image_Image($message->getImage()->getFile('thumb')->read());
+        $this->assertSame(CM_Image_Image::FORMAT_JPEG, $imageFileThumb->getFormat());
+        $imageFileView = new CM_Image_Image($message->getImage()->getFile('view')->read());
+        $this->assertSame(CM_Image_Image::FORMAT_JPEG, $imageFileView->getFormat());
     }
 
     /**

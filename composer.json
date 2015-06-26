@@ -4,7 +4,7 @@
     "bin-dir": "bin/"
   },
   "require": {
-    "cargomedia/cm": "~1.126.0",
+    "cargomedia/CM": "dev-image-exif-resize",
     "ricardoper/twitteroauth": "~1.1.1",
     "nojimage/twitter-text-php": "~1.1.1",
     "codemonkeys-ru/gcm-message": "~0.1.0"
@@ -19,6 +19,10 @@
     {
       "type": "composer",
       "url": "http://satis.cargomedia.ch/dist"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/alexispeter/CM"
     }
   ],
   "autoload": {

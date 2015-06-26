@@ -33,7 +33,7 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
         if ($params->has('image')) {
             /** @var CM_File_UserContent_Temp $file */
             $file = $params->getArray('image')[0];
-            $image = Denkmal_Model_MessageImage::create($file);
+            $image = Denkmal_Model_MessageImage::create(new CM_Image_Image($file->read()));
         }
 
         /** @var Denkmal_Model_Tag[] $tagList */

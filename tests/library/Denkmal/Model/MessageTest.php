@@ -11,7 +11,8 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
         $created = new DateTime();
         $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
-        $image = Denkmal_Model_MessageImage::create(new CM_File(DIR_TEST_DATA . 'image.jpg'));
+        $imageFile = new CM_File(DIR_TEST_DATA . 'image.jpg');
+        $image = Denkmal_Model_MessageImage::create(new CM_Image_Image($imageFile->read()));
         $message = Denkmal_Model_Message::create($venue, 'client', $user, $text, $image, $created);
         $this->assertEquals($venue, $message->getVenue());
         $this->assertSame('client', $message->getClientId());
@@ -26,7 +27,8 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
      */
     public function testOnDelete() {
         $venue = Denkmal_Model_Venue::create('Example', true, false);
-        $image = Denkmal_Model_MessageImage::create(new CM_File(DIR_TEST_DATA . 'image.jpg'));
+        $imageFile = new CM_File(DIR_TEST_DATA . 'image.jpg');
+        $image = Denkmal_Model_MessageImage::create(new CM_Image_Image($imageFile->read()));
         $message = Denkmal_Model_Message::create($venue, 'client', null, 'foo', $image);
         $message->delete();
         $this->assertFalse($image->getFile('view')->exists());
@@ -39,7 +41,8 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
         $this->assertFalse($message->hasImage());
         $this->assertNull($message->getImage());
 
-        $image = Denkmal_Model_MessageImage::create(new CM_File(DIR_TEST_DATA . 'image.jpg'));
+        $imageFile = new CM_File(DIR_TEST_DATA . 'image.jpg');
+        $image = Denkmal_Model_MessageImage::create(new CM_Image_Image($imageFile->read()));
         $message->setImage($image);
         $this->assertTrue($message->hasImage());
         $this->assertEquals($image, $message->getImage());

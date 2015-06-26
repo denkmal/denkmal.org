@@ -38,14 +38,13 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
     }
 
     /**
-     * @param CM_File $file
+     * @param CM_Image_Image $image
      * @throws CM_Exception
      * @return Denkmal_Model_MessageImage
      */
-    public static function create(CM_File $file) {
+    public static function create(CM_Image_Image $image) {
         $messageImage = new self();
         $messageImage->commit();
-        $image = new CM_Image_Image($file->read());
 
         try {
             $image->setFormat(CM_Image_Image::FORMAT_JPEG);

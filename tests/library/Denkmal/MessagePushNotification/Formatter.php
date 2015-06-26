@@ -13,7 +13,8 @@ class Denkmal_MessagePushNotification_FormatterTest extends CMTest_TestCase {
         $venue = Denkmal_Model_Venue::create('Example', false, false);
         $tag1 = Denkmal_Model_Tag::create('foo');
         $tag2 = Denkmal_Model_Tag::create('bar');
-        $image = Denkmal_Model_MessageImage::create(new CM_File(DIR_TEST_DATA . 'image.jpg'));
+        $imageFile = new CM_File(DIR_TEST_DATA . 'image.jpg');
+        $image = Denkmal_Model_MessageImage::create(new CM_Image_Image($imageFile->read()));
         $message = Denkmal_Model_Message::create($venue, 'client', null, 'Hello World', $image);
         $message->getTags()->add($tag1);
         $message->getTags()->add($tag2);

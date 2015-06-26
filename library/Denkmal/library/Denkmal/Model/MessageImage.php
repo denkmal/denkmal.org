@@ -47,6 +47,7 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
         $messageImage->commit();
 
         try {
+            $image->clearAndApplyExifRotation();
             $image->setFormat(CM_Image_Image::FORMAT_JPEG);
             $messageImage->getFile('view')->ensureParentDirectory();
             $messageImage->getFile('view')->write($image->getClone()->resize(2000, 2000)->getBlob());

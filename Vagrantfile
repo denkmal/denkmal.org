@@ -29,7 +29,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'shell', run: 'always', inline: [
     'cd /home/vagrant/denkmal',
     '(test ! -L vendor/cargomedia/cm || rm vendor/cargomedia/cm)',
-    'composer --no-interaction install --dev',
+    'composer --no-interaction install',
   ].join(' && ')
 
   if ENV['LINK']

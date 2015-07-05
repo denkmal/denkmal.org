@@ -15,6 +15,7 @@
     {formField name='coordinates' label={translate 'Koordinaten'}}
     {formField name='ignore' text={translate 'Scraper ignorieren'}}
     {formField name='suspended' text={translate 'Suspendiert'}}
+    {formField name='secret' text={translate 'Geheim'}}
     {formAction action='Save' label={translate 'Speichern'} alternatives="
       	{button action='Delete' label={translate 'Löschen'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 			"}

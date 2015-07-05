@@ -50,6 +50,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
                 $venue->setQueued(true);
                 $venue->setIgnore(false);
                 $venue->setSuspended(false);
+                $venue->setSecret(false);
                 $venue->setEmail(null);
                 $venue->setTwitterUsername(null);
             }

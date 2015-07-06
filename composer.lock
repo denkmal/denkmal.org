@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7cfedacd8a3b9b58f168412807c7371d",
+    "hash": "05791fe552e60b192f38239509d3800d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.8.10",
+            "version": "2.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2ee053239be2ad4cf020f3b5998f29b5302d82c9"
+                "reference": "69cf65438b99051ce4d599f1611dea5d50551b3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-2ee053239be2ad4cf020f3b5998f29b5302d82c9-zip-b8ee1c.zip",
-                "reference": "2ee053239be2ad4cf020f3b5998f29b5302d82c9",
-                "shasum": "e4861cf5daa701ef3941ab41484bac254d579d98"
+                "url": "http://satis.cargomedia.ch/dist/dist/aws-aws-sdk-php-69cf65438b99051ce4d599f1611dea5d50551b3f-zip-be35d1.zip",
+                "reference": "69cf65438b99051ce4d599f1611dea5d50551b3f",
+                "shasum": "4d64db1066e6e7789d6f5700d26a77a61caa951c"
             },
             "require": {
                 "guzzle/guzzle": "~3.7",
@@ -67,21 +67,21 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-06-11 23:48:44"
+            "time": "2015-06-24 21:23:21"
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.126.4",
+            "version": "1.127.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/CM.git",
-                "reference": "3a16f748e4b419f0ec86dc9141480a94f1d20492"
+                "reference": "6e20aa67dfcd2cdacf03787c77ad056bececb3f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-3a16f748e4b419f0ec86dc9141480a94f1d20492-zip-30c799.zip",
-                "reference": "3a16f748e4b419f0ec86dc9141480a94f1d20492",
-                "shasum": "1cad32080226bfc388325bef71cccc45b8096b6e"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-6e20aa67dfcd2cdacf03787c77ad056bececb3f3-zip-7f9a2d.zip",
+                "reference": "6e20aa67dfcd2cdacf03787c77ad056bececb3f3",
+                "shasum": "6ab5d505c827927236cde296a421627522888335"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -120,19 +120,11 @@
                     "CMService_": "library/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "CMTest_": "tests/helpers/CMTest/library/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "support": {
-                "source": "https://github.com/cargomedia/CM/tree/master",
-                "issues": "https://github.com/cargomedia/CM/issues"
-            },
-            "time": "2015-06-22 17:31:10"
+            "time": "2015-06-29 13:02:19"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -1487,17 +1479,17 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.6",
+            "version": "2.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44"
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-631e365cf26bb2c078683e8d9bcf8bc631ac4d44-zip-9415b5.zip",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
-                "shasum": "19b88422c2347c8900ee4df05c6b078854edd6dc"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-07e27765596d72c378a6103e80da5d84e802f1e4-zip-88a3fc.zip",
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4",
+                "shasum": "0078f5ea610fdfd1e56558afcbceda37fd1edc92"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -1545,7 +1537,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-19 07:11:55"
+            "time": "2015-06-30 06:52:35"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1798,17 +1790,17 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "92408bb1968a81b3217a6fdf6c1a198da83caa35"
+                "reference": "1c330b1b6e1ea8fd15f2fbea46770576e366855c"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-mock-objects-92408bb1968a81b3217a6fdf6c1a198da83caa35-zip-6af519.zip",
-                "reference": "92408bb1968a81b3217a6fdf6c1a198da83caa35",
-                "shasum": "be8d773c2b53fa959996a3d4f6487f8169e4da4b"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-mock-objects-1c330b1b6e1ea8fd15f2fbea46770576e366855c-zip-20c9fc.zip",
+                "reference": "1c330b1b6e1ea8fd15f2fbea46770576e366855c",
+                "shasum": "ba9ce077b0f6667ca5092c00e6178aadf336f289"
             },
             "require": {
                 "doctrine/instantiator": "~1.0,>=1.0.2",
@@ -1849,7 +1841,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-06-11 15:55:48"
+            "time": "2015-07-04 05:41:32"
         },
         {
             "name": "sebastian/comparator",

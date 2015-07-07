@@ -130,6 +130,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
+     * @return boolean
+     */
+    public function getSecret() {
+        return $this->_get('secret');
+    }
+
+    /**
+     * @param boolean $secret
+     */
+    public function setSecret($secret) {
+        $this->_set('secret', $secret);
+    }
+
+    /**
      * @return string|null
      */
     public function getEmail() {
@@ -230,6 +244,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setQueued($queued);
         $venue->setIgnore($ignore);
         $venue->setSuspended(false);
+        $venue->setSecret(false);
         $venue->setEmail(null);
         $venue->setTwitterUsername(null);
         $venue->commit();
@@ -261,6 +276,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
             'queued'          => array('type' => 'boolean'),
             'ignore'          => array('type' => 'boolean'),
             'suspended'       => array('type' => 'boolean'),
+            'secret'          => array('type' => 'boolean'),
             'email'           => array('type' => 'string', 'optional' => true),
             'twitterUsername' => array('type' => 'string', 'optional' => true),
         ));

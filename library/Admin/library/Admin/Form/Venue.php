@@ -12,6 +12,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_GeoPoint(['name' => 'coordinates']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'ignore']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'suspended']));
+        $this->registerField(new CM_FormField_Boolean(['name' => 'secret']));
 
         $this->registerAction(new Admin_FormAction_Venue_Save($this));
         $this->registerAction(new Admin_FormAction_Venue_Delete($this));
@@ -31,5 +32,6 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->getField('coordinates')->setValue($venue->getCoordinates());
         $this->getField('ignore')->setValue($venue->getIgnore());
         $this->getField('suspended')->setValue($venue->getSuspended());
+        $this->getField('secret')->setValue($venue->getSecret());
     }
 }

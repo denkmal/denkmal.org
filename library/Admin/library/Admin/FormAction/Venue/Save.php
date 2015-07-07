@@ -29,6 +29,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $coordinates = $params->has('coordinates') ? $params->getGeoPoint('coordinates') : null;
         $ignore = $params->getBoolean('ignore');
         $suspended = $params->getBoolean('suspended');
+        $secret = $params->getBoolean('secret');
 
         $venue->setName($name);
         $venue->setUrl($url);
@@ -38,6 +39,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $venue->setCoordinates($coordinates);
         $venue->setIgnore($ignore);
         $venue->setSuspended($suspended);
+        $venue->setSecret($secret);
         $venue->setQueued(false);
 
         $response->reloadComponent();

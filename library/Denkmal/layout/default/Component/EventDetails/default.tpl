@@ -3,7 +3,7 @@
     {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Schreib etwas!'} theme='transparent'}
   {/if}
 
-  {if $venue->getCoordinates()}
+  {if $venue->getCoordinates() && !$venue->getSecret()}
     <a href="https://www.google.com/maps/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" class="location button button-transparent hasLabel hasIcon" target="_blank">
       <span class="icon icon-location"></span>
       <span class="label">{translate 'Karte'}</span>

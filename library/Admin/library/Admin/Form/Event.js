@@ -28,20 +28,30 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
 
   renderPreview: function() {
     var form = this;
-    this.submit('Save_Preview', {handleErrors: false, disableUI: false}).done(function(response) {
-      form._injectView(response, function() {
-        if (form._preview) {
-          form._preview.replaceWithHtml(this.$el);
-        } else {
-          form.$el.append(this.$el);
+    this.submit('Save_Preview', {handleErrors: false, disableUI: false})
+      .then(function(response) {
+        if (!response) {
+          /**
+           * Form validation failure will resolve Promise with empty response
+           * See https://github.com/cargomedia/CM/issues/1837
+           */
+          throw new Error('Empty preview response');
         }
-        form._preview = this;
+        var preview = form._injectView(response);
+        if (form._preview) {
+          form._preview.replaceWithHtml(preview.$el);
+        } else {
+          form.$el.append(preview.$el);
+        }
+        form._preview = preview;
+        preview._ready();
+      })
+      .catch(function(error) {
+        if (form._preview) {
+          form._preview.remove();
+          form._preview = null;
+        }
+        throw error;
       });
-    }).fail(function() {
-      if (form._preview) {
-        form._preview.remove();
-        form._preview = null;
-      }
-    });
   }
 });

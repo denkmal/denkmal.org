@@ -1,5 +1,5 @@
 <div class="event{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if}">
-  <div class="eventDescription toggleNext">
+  <div class="eventDescription {if $allowEditing}toggleNext{/if}">
     {if $event->getSong()}
       {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
     {/if}

@@ -14,6 +14,10 @@ class Denkmal_Component_PushNotifications extends \Denkmal_Component_Abstract {
         $endpoint = $params->getString('endpoint');
         $user = $params->has('user') ? $params->getUser('user') : null;
 
+        if (!Denkmal_Push_Notification_Provider_Abstract::hasEndpoint($response->getServiceManager(), $endpoint)){
+            throw new CM_Exception("Unknown notification endpoint `{$endpoint}`.");
+        }
+
         $pushSubscription = Denkmal_Push_Subscription::findBySubscriptionIdAndEndpoint($subscriptionId, $endpoint);
 
         if ($state) {

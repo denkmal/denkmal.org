@@ -20,6 +20,15 @@ abstract class Denkmal_Push_Notification_Provider_Abstract implements CM_Service
     /**
      * @param CM_Service_Manager $serviceManager
      * @param string             $endpoint
+     * @return boolean
+     */
+    public static function hasEndpoint(CM_Service_Manager $serviceManager, $endpoint) {
+        return (null !== self::findByEndpoint($serviceManager, $endpoint));
+    }
+
+    /**
+     * @param CM_Service_Manager $serviceManager
+     * @param string             $endpoint
      * @return Denkmal_Push_Notification_Provider_Abstract|null
      */
     public static function findByEndpoint(CM_Service_Manager $serviceManager, $endpoint) {

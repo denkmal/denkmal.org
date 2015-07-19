@@ -16,7 +16,7 @@ Vagrant.configure('2') do |config|
   config.vm.network :private_network, ip: '10.10.10.12'
   config.vm.network :public_network, bridge: 'en0: Wi-Fi (AirPort)'
   config.vm.synced_folder '.', '/home/vagrant/denkmal', :type => 'nfs'
-  config.vm.synced_folder '../CM', '/home/vagrant/CM', :type => 'nfs' if Dir.exists? '../CM'
+  config.vm.synced_folder '../cm', '/home/vagrant/cm', :type => 'nfs' if Dir.exists? '../cm'
 
   config.librarian_puppet.puppetfile_dir = 'puppet'
   config.librarian_puppet.placeholder_filename = '.gitkeep'
@@ -36,7 +36,7 @@ Vagrant.configure('2') do |config|
       config.vm.provision 'shell', run: 'always', inline: [
         'cd /home/vagrant/denkmal',
         'rm -rf vendor/cargomedia/cm',
-        'ln -s ../../../CM vendor/cargomedia/cm',
+        'ln -s ../../../cm vendor/cargomedia/cm',
       ].join(' && ')
   end
 

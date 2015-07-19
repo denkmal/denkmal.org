@@ -38,13 +38,6 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
     var form = this;
     this.submit('Preview', {handleErrors: false, disableUI: false})
       .then(function(response) {
-        if (!response) {
-          /**
-           * Form validation failure will resolve Promise with empty response
-           * See https://github.com/cargomedia/CM/issues/1837
-           */
-          throw new Error('Empty preview response');
-        }
         var preview = form._injectView(response);
         if (form._preview) {
           form._preview.replaceWithHtml(preview.$el);
@@ -59,7 +52,6 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
           form._preview.remove();
           form._preview = null;
         }
-        throw error;
       });
   }
 });

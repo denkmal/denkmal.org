@@ -107,7 +107,7 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
    */
   _getCardinality: function() {
     if (!this._hasCardinality()) {
-      cm.error.triggerThrow('Cardinality not set');
+      throw new CM_Exception('Cardinality not set');
     }
     return this.getOption('cardinality');
   },

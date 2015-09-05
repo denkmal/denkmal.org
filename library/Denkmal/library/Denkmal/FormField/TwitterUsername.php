@@ -10,7 +10,7 @@ class Denkmal_FormField_TwitterUsername extends CM_FormField_Text {
         }
 
         if (preg_match('#[^\w]#', $userInput)) {
-            throw new CM_Exception_FormFieldValidation('Contains invalid characters');
+            throw new CM_Exception_FormFieldValidation(new CM_I18n_Phrase('Enthält ungültige Zeichen.'));
         }
 
         return $userInput;

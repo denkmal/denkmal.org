@@ -1,5 +1,6 @@
 <?php
 
+CM_Db_Db::delete('denkmal_push_notification_message');
 CM_Db_Db::delete('denkmal_push_subscription');
 
 if (CM_Db_Db::existsIndex('denkmal_push_subscription', 'subscriptionId-endpoint')) {

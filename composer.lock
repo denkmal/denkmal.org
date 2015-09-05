@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "71eafca3a1513f0467368e8db4797a37",
+    "hash": "28894ff4afaa1b5f6b10975b74ce27c3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -71,17 +71,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.138.0",
+            "version": "1.140.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "18a42f27f6ec300049723bd8e63f6d7510a93028"
+                "reference": "0c67b71cccc95234797abeabeee5de4e0b2c7071"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-18a42f27f6ec300049723bd8e63f6d7510a93028-zip-551f65.zip",
-                "reference": "18a42f27f6ec300049723bd8e63f6d7510a93028",
-                "shasum": "52484ecf3f3b82e7cd6abd019e90ecdc2c82ef67"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-0c67b71cccc95234797abeabeee5de4e0b2c7071-zip-5e848c.zip",
+                "reference": "0c67b71cccc95234797abeabeee5de4e0b2c7071",
+                "shasum": "bd58cd4da8520e02c790697993b4846cca567f3d"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -120,11 +120,19 @@
                     "CMService_": "library/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "CMTest_": "tests/helpers/CMTest/library/"
+                }
+            },
             "license": [
                 "MIT"
             ],
-            "time": "2015-08-18 10:34:49"
+            "support": {
+                "source": "https://github.com/cargomedia/cm/tree/master",
+                "issues": "https://github.com/cargomedia/cm/issues"
+            },
+            "time": "2015-09-01 07:03:13"
         },
         {
             "name": "codemonkeys-ru/gcm-message",

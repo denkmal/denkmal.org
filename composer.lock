@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "025feadad8fd68ef0a3b1c786be90471",
+    "hash": "71eafca3a1513f0467368e8db4797a37",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -71,17 +71,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.137.5",
+            "version": "1.138.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "626fd566c2dbb7848ddba0cdc90b0da1c5ec711c"
+                "reference": "18a42f27f6ec300049723bd8e63f6d7510a93028"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-626fd566c2dbb7848ddba0cdc90b0da1c5ec711c-zip-a1d7d0.zip",
-                "reference": "626fd566c2dbb7848ddba0cdc90b0da1c5ec711c",
-                "shasum": "823a10f7cc350bceb8b1c945107007b6a9e69cf2"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-18a42f27f6ec300049723bd8e63f6d7510a93028-zip-551f65.zip",
+                "reference": "18a42f27f6ec300049723bd8e63f6d7510a93028",
+                "shasum": "52484ecf3f3b82e7cd6abd019e90ecdc2c82ef67"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -97,11 +97,11 @@
                 "phpmailer/phpmailer": "5.2.6",
                 "ruflin/elastica": "v1.3.0.0",
                 "smarty/smarty": "3.1.16",
-                "tomaszdurka/codegenerator": "~0.4.1"
+                "tomaszdurka/codegenerator": "~0.5.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.3.5",
-                "tomaszdurka/mocka": "~0.10.0"
+                "tomaszdurka/mocka": "~0.11.0"
             },
             "bin": [
                 "bin/cm"
@@ -124,20 +124,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-08-17 14:07:03"
+            "time": "2015-08-18 10:34:49"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
-            "version": "0.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CodeMonkeysRu/GCMMessage.git",
-                "reference": "c0facde3aca745d71bd095d746f0bc820a86aadd"
+                "reference": "1be0974fd181b067d02dcdcec3246eb3c716a94c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CodeMonkeysRu/GCMMessage/zipball/c0facde3aca745d71bd095d746f0bc820a86aadd",
-                "reference": "c0facde3aca745d71bd095d746f0bc820a86aadd",
+                "url": "https://api.github.com/repos/CodeMonkeysRu/GCMMessage/zipball/1be0974fd181b067d02dcdcec3246eb3c716a94c",
+                "reference": "1be0974fd181b067d02dcdcec3246eb3c716a94c",
                 "shasum": ""
             },
             "require": {
@@ -167,7 +167,7 @@
                 "gcm",
                 "push message"
             ],
-            "time": "2013-04-22 08:29:59"
+            "time": "2015-08-04 15:33:47"
         },
         {
             "name": "composer/composer",
@@ -1363,17 +1363,17 @@
         },
         {
             "name": "tomaszdurka/codegenerator",
-            "version": "0.4.3",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomaszdurka/codegenerator.git",
-                "reference": "4b5d28b410410698bd054496666adab191c7b8cd"
+                "reference": "479a04bb85784ae7650aa2c62db3946515bf8bbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-codegenerator-4b5d28b410410698bd054496666adab191c7b8cd-zip-e0153a.zip",
-                "reference": "4b5d28b410410698bd054496666adab191c7b8cd",
-                "shasum": "7465ae30b5fe781ab20ba220776758718b540348"
+                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-codegenerator-479a04bb85784ae7650aa2c62db3946515bf8bbc-zip-e88005.zip",
+                "reference": "479a04bb85784ae7650aa2c62db3946515bf8bbc",
+                "shasum": "02eae258639e519a8b3fa728857b4dab823b193c"
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7.10",
@@ -1392,7 +1392,7 @@
                     "email": "tomasz@durka.pl"
                 }
             ],
-            "time": "2015-04-27 12:12:17"
+            "time": "2015-08-14 15:03:26"
         }
     ],
     "packages-dev": [
@@ -1452,17 +1452,17 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0"
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/fzaninotto-faker-010c7efedd88bf31141a02719f51fb44c732d5a0-zip-75cad6.zip",
-                "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0",
-                "shasum": "811e33e921319a88f8809ddd74e425f2295bbd69"
+                "url": "http://satis.cargomedia.ch/dist/dist/fzaninotto-faker-d0190b156bcca848d401fb80f31f504f37141c8d-zip-b07a90.zip",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "shasum": "3657edb8b7d2498b00a1b0fd884f416bb304435c"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -1471,14 +1471,18 @@
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~1.5"
             },
+            "suggest": {
+                "ext-intl": "*"
+            },
             "type": "library",
             "extra": {
-                "branch-alias": []
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
             },
             "autoload": {
-                "psr-0": {
-                    "Faker": "src/",
-                    "Faker\\PHPUnit": "test/"
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1496,7 +1500,116 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2014-06-04 14:43:02"
+            "time": "2015-05-29 06:29:14"
+        },
+        {
+            "name": "phpdocumentor/reflection-docblock",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/phpdocumentor-reflection-docblock-d68dbdc53dc358a816f00b300704702b2eaff7b8-zip-b8dbaa.zip",
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8",
+                "shasum": "efad9e40d16d29d3351a6188250f2788abec1482"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "dflydev/markdown": "~1.0",
+                "erusev/parsedown": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "phpDocumentor": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "mike.vanriel@naenius.com"
+                }
+            ],
+            "time": "2015-02-03 12:10:50"
+        },
+        {
+            "name": "phpspec/prophecy",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpspec/prophecy.git",
+                "reference": "4745ded9307786b730d7a60df5cb5a6c43cf95f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/phpspec-prophecy-4745ded9307786b730d7a60df5cb5a6c43cf95f7-zip-682471.zip",
+                "reference": "4745ded9307786b730d7a60df5cb5a6c43cf95f7",
+                "shasum": "19de0f3669b6569bd96ef574ef37a8f86c180a53"
+            },
+            "require": {
+                "doctrine/instantiator": "^1.0.2",
+                "phpdocumentor/reflection-docblock": "~2.0",
+                "sebastian/comparator": "~1.1"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Prophecy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantin Kudryashov",
+                    "email": "ever.zet@gmail.com",
+                    "homepage": "http://everzet.com"
+                },
+                {
+                    "name": "Marcello Duarte",
+                    "email": "marcello.duarte@gmail.com"
+                }
+            ],
+            "description": "Highly opinionated mocking framework for PHP 5.3+",
+            "homepage": "https://github.com/phpspec/prophecy",
+            "keywords": [
+                "Double",
+                "Dummy",
+                "fake",
+                "mock",
+                "spy",
+                "stub"
+            ],
+            "time": "2015-08-13 10:07:40"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1562,31 +1675,33 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.3.4",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb"
+                "reference": "6150bf2c35d3fc379e50c7602b75caceaa39dbf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-file-iterator-acd690379117b042d1c8af1fafd61bde001bf6bb-zip-831201.zip",
-                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb",
-                "shasum": "51620effbec0558e41277a94a78da1599016e3e0"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-php-file-iterator-6150bf2c35d3fc379e50c7602b75caceaa39dbf0-zip-a7b18d.zip",
+                "reference": "6150bf2c35d3fc379e50c7602b75caceaa39dbf0",
+                "shasum": "ab30ee326b69c26928164b53acb77194359ee668"
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
-                    "File/"
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1603,7 +1718,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2013-10-10 15:34:57"
+            "time": "2015-06-21 13:08:43"
         },
         {
             "name": "phpunit/php-text-template",
@@ -1738,17 +1853,17 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.3.5",
+            "version": "4.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2dab9d593997db4abcf58d0daf798eb4e9cecfe1"
+                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-2dab9d593997db4abcf58d0daf798eb4e9cecfe1-zip-4fa20a.zip",
-                "reference": "2dab9d593997db4abcf58d0daf798eb4e9cecfe1",
-                "shasum": "09044ef7c672a07d8c2370d75f6460d3564c90b2"
+                "url": "http://satis.cargomedia.ch/dist/dist/phpunit-phpunit-2246830f4a1a551c67933e4171bf2126dc29d357-zip-5f31bd.zip",
+                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357",
+                "shasum": "56a25b743b99e91cd0e6bb2459c8c905fc59c220"
             },
             "require": {
                 "ext-dom": "*",
@@ -1757,17 +1872,19 @@
                 "ext-reflection": "*",
                 "ext-spl": "*",
                 "php": ">=5.3.3",
-                "phpunit/php-code-coverage": "~2.0",
-                "phpunit/php-file-iterator": "~1.3.2",
+                "phpspec/prophecy": "^1.3.1",
+                "phpunit/php-code-coverage": "~2.1",
+                "phpunit/php-file-iterator": "~1.4",
                 "phpunit/php-text-template": "~1.2",
-                "phpunit/php-timer": "~1.0.2",
+                "phpunit/php-timer": ">=1.0.6",
                 "phpunit/phpunit-mock-objects": "~2.3",
-                "sebastian/comparator": "~1.0",
-                "sebastian/diff": "~1.1",
-                "sebastian/environment": "~1.0",
-                "sebastian/exporter": "~1.0",
+                "sebastian/comparator": "~1.1",
+                "sebastian/diff": "~1.2",
+                "sebastian/environment": "~1.3",
+                "sebastian/exporter": "~1.2",
+                "sebastian/global-state": "~1.0",
                 "sebastian/version": "~1.0",
-                "symfony/yaml": "~2.0"
+                "symfony/yaml": "~2.1|~3.0"
             },
             "suggest": {
                 "phpunit/php-invoker": "~1.1"
@@ -1778,7 +1895,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3.x-dev"
+                    "dev-master": "4.8.x-dev"
                 }
             },
             "autoload": {
@@ -1787,10 +1904,6 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "",
-                "../../symfony/yaml/"
-            ],
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1802,13 +1915,13 @@
                 }
             ],
             "description": "The PHP Unit Testing framework.",
-            "homepage": "http://www.phpunit.de/",
+            "homepage": "https://phpunit.de/",
             "keywords": [
                 "phpunit",
                 "testing",
                 "xunit"
             ],
-            "time": "2014-11-11 10:11:09"
+            "time": "2015-08-24 04:09:38"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2099,6 +2212,57 @@
             "time": "2015-06-21 07:55:53"
         },
         {
+            "name": "sebastian/global-state",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/global-state.git",
+                "reference": "c7428acdb62ece0a45e6306f1ae85e1c05b09c01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/sebastian-global-state-c7428acdb62ece0a45e6306f1ae85e1c05b09c01-zip-13bbd1.zip",
+                "reference": "c7428acdb62ece0a45e6306f1ae85e1c05b09c01",
+                "shasum": "f23f8805c15f766b532e4e4281f6cdb96cd33bab"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.2"
+            },
+            "suggest": {
+                "ext-uopz": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                }
+            ],
+            "description": "Snapshotting of global state",
+            "homepage": "http://www.github.com/sebastianbergmann/global-state",
+            "keywords": [
+                "global state"
+            ],
+            "time": "2014-10-06 09:23:50"
+        },
+        {
             "name": "sebastian/recursion-context",
             "version": "1.0.1",
             "source": {
@@ -2237,20 +2401,20 @@
         },
         {
             "name": "tomaszdurka/mocka",
-            "version": "0.8.4",
+            "version": "0.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomaszdurka/mocka.git",
-                "reference": "960b38cf679d17aa37dea62385fec94c18a9516c"
+                "reference": "0efbbaa6a8c1d53724ce61759cd7ee13d4e7da1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-mocka-960b38cf679d17aa37dea62385fec94c18a9516c-zip-58a1b9.zip",
-                "reference": "960b38cf679d17aa37dea62385fec94c18a9516c",
-                "shasum": "3d0a0dad8cdcda223f075474c4cfc81a8b8b6682"
+                "url": "http://satis.cargomedia.ch/dist/dist/tomaszdurka-mocka-0efbbaa6a8c1d53724ce61759cd7ee13d4e7da1a-zip-10c19f.zip",
+                "reference": "0efbbaa6a8c1d53724ce61759cd7ee13d4e7da1a",
+                "shasum": "479ab1046c4f201163831649a16cbc64b2f1e3dc"
             },
             "require": {
-                "tomaszdurka/codegenerator": "~0.4.2"
+                "tomaszdurka/codegenerator": "~0.5.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~3.7.10",
@@ -2266,7 +2430,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-04-13 21:06:37"
+            "time": "2015-08-14 15:30:13"
         }
     ],
     "aliases": [],

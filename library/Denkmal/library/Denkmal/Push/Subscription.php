@@ -5,20 +5,6 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
     /**
      * @return string
      */
-    public function getSubscriptionId() {
-        return $this->_get('subscriptionId');
-    }
-
-    /**
-     * @param string $subscriptionId
-     */
-    public function setSubscriptionId($subscriptionId) {
-        $this->_set('subscriptionId', $subscriptionId);
-    }
-
-    /**
-     * @return string
-     */
     public function getEndpoint() {
         return $this->_get('endpoint');
     }
@@ -70,10 +56,9 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
      */
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
-            'subscriptionId' => array('type' => 'string'),
-            'endpoint'       => array('type' => 'string'),
-            'updated'        => array('type' => 'DateTime'),
-            'user'           => array('type' => 'Denkmal_Model_User', 'optional' => true),
+            'endpoint' => array('type' => 'string'),
+            'updated'  => array('type' => 'DateTime'),
+            'user'     => array('type' => 'Denkmal_Model_User', 'optional' => true),
         ));
     }
 
@@ -95,14 +80,12 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
     }
 
     /**
-     * @param string             $subscriptionId
      * @param string             $endpoint
      * @param Denkmal_Model_User $user
      * @return \Denkmal_Push_Subscription
      */
-    public static function create($subscriptionId, $endpoint, Denkmal_Model_User $user = null) {
+    public static function create($endpoint, Denkmal_Model_User $user = null) {
         $pushSubscription = new Denkmal_Push_Subscription();
-        $pushSubscription->setSubscriptionId($subscriptionId);
         $pushSubscription->setEndpoint($endpoint);
         $pushSubscription->setUpdated(new DateTime());
         $pushSubscription->setUser($user);
@@ -112,19 +95,16 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
     }
 
     /**
-     * @param string $subscriptionId
      * @param string $endpoint
      * @return Denkmal_Push_Subscription|null
      */
-    public static function findBySubscriptionIdAndEndpoint($subscriptionId, $endpoint) {
-        $subscriptionId = (string) $subscriptionId;
+    public static function findByEndpoint($endpoint) {
         $endpoint = (string) $endpoint;
         /** @var CM_Model_StorageAdapter_Database $persistence */
         $persistence = self::_getStorageAdapter(self::getPersistenceClass());
 
         $model = $persistence->findByData(self::getTypeStatic(), [
-            'subscriptionId' => $subscriptionId,
-            'endpoint'       => $endpoint,
+            'endpoint' => $endpoint,
         ]);
 
         if (null !== $model) {

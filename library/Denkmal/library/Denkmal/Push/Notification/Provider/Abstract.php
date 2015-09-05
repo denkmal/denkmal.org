@@ -18,6 +18,11 @@ abstract class Denkmal_Push_Notification_Provider_Abstract implements CM_Service
     abstract public function sendNotifications(array $subscriptionList, Denkmal_Push_Notification_Message $message);
 
     /**
+     * @return string
+     */
+    abstract public function getIdentifier();
+
+    /**
      * @param CM_Service_Manager $serviceManager
      * @param string             $endpoint
      * @return boolean
@@ -32,13 +37,10 @@ abstract class Denkmal_Push_Notification_Provider_Abstract implements CM_Service
      * @return Denkmal_Push_Notification_Provider_Abstract|null
      */
     public static function findByEndpoint(CM_Service_Manager $serviceManager, $endpoint) {
-        switch ($endpoint) {
-            case 'https://android.googleapis.com/gcm/send':
-                return new Denkmal_Push_Notification_Provider_GoogleCloudMessaging($serviceManager);
-                break;
-            default:
-                return null;
+        if (0 === strpos($endpoint, 'https://android.googleapis.com/gcm/send')) {
+            return new Denkmal_Push_Notification_Provider_GoogleCloudMessaging($serviceManager);
         }
+        return null;
     }
 
     /**
@@ -50,7 +52,7 @@ abstract class Denkmal_Push_Notification_Provider_Abstract implements CM_Service
     public static function factoryByEndpoint(CM_Service_Manager $serviceManager, $endpoint) {
         $provider = self::findByEndpoint($serviceManager, $endpoint);
         if (null === $provider) {
-            throw new CM_Exception("Unknown notification endpoint `{$endpoint}`.");
+            throw new CM_Exception("No provider for endpoint `{$endpoint}`.");
         }
         return $provider;
     }

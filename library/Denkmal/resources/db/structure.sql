@@ -170,13 +170,12 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_tag_model` (
 
 CREATE TABLE IF NOT EXISTS `denkmal_push_subscription` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `subscriptionId` varchar(255) NOT NULL,
   `endpoint` varchar(255) NOT NULL,
   `updated` int(11) unsigned NOT NULL,
   `user` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`),
-  UNIQUE KEY `subscriptionId-endpoint` (`subscriptionId`, `endpoint`),
+  UNIQUE KEY `endpoint` (`endpoint`),
   CONSTRAINT `denkmal_push_subscription__user` FOREIGN KEY (`user`) REFERENCES `denkmal_model_user` (`userId`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

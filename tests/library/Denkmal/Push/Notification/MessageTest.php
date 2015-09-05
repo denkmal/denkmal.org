@@ -7,7 +7,7 @@ class Denkmal_Push_Notification_MessageTest extends CMTest_TestCase {
     }
 
     public function testCreate() {
-        $subscription = Denkmal_Push_Subscription::create('foo1', 'http://example.com');
+        $subscription = Denkmal_Push_Subscription::create('http://example.com/foo1');
         $expires = new DateTime('2015-01-01');
         $data = ['foo' => 12, 'bar' => 13];
         $message = Denkmal_Push_Notification_Message::create($subscription, $expires, $data);
@@ -19,14 +19,14 @@ class Denkmal_Push_Notification_MessageTest extends CMTest_TestCase {
     }
 
     public function testRpcGetListBySubscription() {
-        $subscription = Denkmal_Push_Subscription::create('foo1', 'http://example.com');
+        $subscription = Denkmal_Push_Subscription::create('http://example.com/foo1');
         $message1 = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), ['foo' => 12]);
         $message2 = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), ['foo' => 13]);
 
-        $result = Denkmal_Push_Notification_Message::rpc_getListBySubscription('foo1', 'http://example.com');
+        $result = Denkmal_Push_Notification_Message::rpc_getListBySubscription('http://example.com/foo1');
         $this->assertEquals([$message2->getData(), $message1->getData()], $result);
 
-        $result = Denkmal_Push_Notification_Message::rpc_getListBySubscription('foo1', 'http://example.com');
+        $result = Denkmal_Push_Notification_Message::rpc_getListBySubscription('http://example.com/foo1');
         $this->assertEquals([], $result);
     }
 
@@ -34,8 +34,8 @@ class Denkmal_Push_Notification_MessageTest extends CMTest_TestCase {
      * @expectedException CM_Exception_Invalid
      */
     public function testRpcGetListBySubscriptionInvalidParams() {
-        Denkmal_Push_Subscription::create('foo1', 'http://example.com');
+        Denkmal_Push_Subscription::create('http://example.com/foo1');
 
-        Denkmal_Push_Notification_Message::rpc_getListBySubscription('foo2', 'http://example.com');
+        Denkmal_Push_Notification_Message::rpc_getListBySubscription('http://example.com/foo2');
     }
 }

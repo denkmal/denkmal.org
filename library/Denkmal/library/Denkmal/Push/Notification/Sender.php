@@ -23,12 +23,23 @@ class Denkmal_Push_Notification_Sender implements CM_Service_ManagerAwareInterfa
             Denkmal_Push_Notification_Message::create($subscription, $message->getExpires(), $message->getData());
         }
 
-        $subscriptionListGrouped = Functional\group($subscriptionList, function (Denkmal_Push_Subscription $subscription) {
-            return $subscription->getEndpoint();
-        });
+        $providerSubscriptionMap = [];
+        foreach ($subscriptionList as $subscription) {
+            $provider = $this->_getProvider($subscription);
+            $providerId = $provider->getIdentifier();
+            if (!isset($providerSubscriptionMap[$providerId])) {
+                $providerSubscriptionMap[$providerId] = ['provider' => $provider, 'subscriptionList' => []];
+            }
+            $providerSubscriptionMap[$providerId]['subscriptionList'][] = $subscription;
+        }
 
-        foreach ($subscriptionListGrouped as $endpoint => $subscriptionListForEndpoint) {
-            $this->_getProvider($endpoint)->sendNotifications(array_values($subscriptionListForEndpoint), $message);
+        foreach ($providerSubscriptionMap as $providerSubscriptionData) {
+            /** @var Denkmal_Push_Notification_Provider_Abstract $provider */
+            $provider = $providerSubscriptionData['provider'];
+            /** @var Denkmal_Push_Subscription[] $subscriptionList */
+            $subscriptionList = $providerSubscriptionData['subscriptionList'];
+
+            $provider->sendNotifications($subscriptionList, $message);
         }
     }
 
@@ -40,10 +51,10 @@ class Denkmal_Push_Notification_Sender implements CM_Service_ManagerAwareInterfa
     }
 
     /**
-     * @param string $endpoint
+     * @param Denkmal_Push_Subscription $subscription
      * @return Denkmal_Push_Notification_Provider_Abstract
      */
-    protected function _getProvider($endpoint) {
-        return Denkmal_Push_Notification_Provider_Abstract::factoryByEndpoint($this->getServiceManager(), $endpoint);
+    protected function _getProvider(Denkmal_Push_Subscription $subscription) {
+        return Denkmal_Push_Notification_Provider_Abstract::factoryByEndpoint($this->getServiceManager(), $subscription->getEndpoint());
     }
 }

@@ -7,22 +7,20 @@ class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
     }
 
     public function testCreateWithoutUser() {
-        $pushSubscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo');
+        $pushSubscription = Denkmal_Push_Subscription::create('http://twitter.com/foo/123321foo');
 
         $this->assertInstanceOf('Denkmal_Push_Subscription', $pushSubscription);
-        $this->assertSame('123321foo', $pushSubscription->getSubscriptionId());
-        $this->assertSame('http://twitter.com/foo', $pushSubscription->getEndpoint());
+        $this->assertSame('http://twitter.com/foo/123321foo', $pushSubscription->getEndpoint());
         $this->assertInstanceOf('DateTime', $pushSubscription->getUpdated());
         $this->assertNull($pushSubscription->getUser());
     }
 
     public function testCreateWithUser() {
         $user = Denkmal_Model_User::create('foo@bar.com', 'test', 'pswd');
-        $pushSubscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo', $user);
+        $pushSubscription = Denkmal_Push_Subscription::create('http://twitter.com/foo/123321foo', $user);
 
         $this->assertInstanceOf('Denkmal_Push_Subscription', $pushSubscription);
-        $this->assertSame('123321foo', $pushSubscription->getSubscriptionId());
-        $this->assertSame('http://twitter.com/foo', $pushSubscription->getEndpoint());
+        $this->assertSame('http://twitter.com/foo/123321foo', $pushSubscription->getEndpoint());
         $this->assertInstanceOf('DateTime', $pushSubscription->getUpdated());
         $this->assertEquals($user, $pushSubscription->getUser());
     }
@@ -32,15 +30,15 @@ class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
      */
     public function testCreateDuplicate() {
         $user = Denkmal_Model_User::create('foo@bar.com', 'test', 'pswd');
-        Denkmal_Push_Subscription::create('foo1', 'http://twitter.com/foo', $user);
-        Denkmal_Push_Subscription::create('foo1', 'http://twitter.com/foo', $user);
+        Denkmal_Push_Subscription::create('http://twitter.com/foo/foo1', $user);
+        Denkmal_Push_Subscription::create('http://twitter.com/foo/foo1', $user);
     }
 
     /**
      * @expectedException CM_Exception_Nonexistent
      */
     public function testDelete() {
-        $pushSubscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo');
+        $pushSubscription = Denkmal_Push_Subscription::create('http://twitter.com/foo/123321foo');
         $pushSubscription->delete();
         new Denkmal_Push_Subscription($pushSubscription->getId());
     }
@@ -49,7 +47,7 @@ class Denkmal_Push_SubscriptionTest extends CMTest_TestCase {
      * @expectedException CM_Exception_Nonexistent
      */
     public function testDeleteWithMessage() {
-        $subscription = Denkmal_Push_Subscription::create('123321foo', 'http://twitter.com/foo');
+        $subscription = Denkmal_Push_Subscription::create('http://twitter.com/foo/123321foo');
         $message = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), ['foo' => 12]);
         $subscription->delete();
         new Denkmal_Push_Notification_Message($message->getId());

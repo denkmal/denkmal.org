@@ -13,22 +13,24 @@ class Denkmal_Push_Notification_SenderTest extends CMTest_TestCase {
 
         /** @var Denkmal_Push_Subscription[] $subscriptionList */
         $subscriptionList = [
-            $subscriptionFoo1 = Denkmal_Push_Subscription::create('foo1', 'foo'),
-            $subscriptionBar1 = Denkmal_Push_Subscription::create('bar1', 'bar'),
-            $subscriptionFoo2 = Denkmal_Push_Subscription::create('foo2', 'foo'),
-            $subscriptionBar2 = Denkmal_Push_Subscription::create('bar2', 'bar'),
+            $subscriptionFoo1 = Denkmal_Push_Subscription::create('foo/foo1'),
+            $subscriptionBar1 = Denkmal_Push_Subscription::create('bar/bar1'),
+            $subscriptionFoo2 = Denkmal_Push_Subscription::create('foo/foo2'),
+            $subscriptionBar2 = Denkmal_Push_Subscription::create('bar/bar2'),
         ];
         $subscriptionListFoo = [$subscriptionFoo1, $subscriptionFoo2];
         $subscriptionListBar = [$subscriptionBar1, $subscriptionBar2];
 
         $providerClass = $this->mockClass('Denkmal_Push_Notification_Provider_Abstract');
         $providerFoo = $providerClass->newInstance([$this->getServiceManager()]);
+        $providerFoo->mockMethod('getIdentifier')->set('foo');
         $sendNotificationFooMethod = $providerFoo->mockMethod('sendNotifications')
             ->set(function (array $subscriptionList, Denkmal_Push_Notification_Message $message) use ($subscriptionListFoo) {
                 $this->assertEquals($subscriptionListFoo, $subscriptionList);
             });
 
         $providerBar = $providerClass->newInstance([$this->getServiceManager()]);
+        $providerFoo->mockMethod('getIdentifier')->set('bar');
         $sendNotificationBarMethod = $providerBar->mockMethod('sendNotifications')
             ->set(function (array $subscriptionList, Denkmal_Push_Notification_Message $message) use ($subscriptionListBar) {
                 $this->assertEquals($subscriptionListBar, $subscriptionList);
@@ -36,12 +38,20 @@ class Denkmal_Push_Notification_SenderTest extends CMTest_TestCase {
 
         $senderClass = $this->mockClass('Denkmal_Push_Notification_Sender');
         $senderClass->mockMethod('_getProvider')
-            ->at(0, function ($endpoint) use ($providerFoo) {
-                $this->assertSame('foo', $endpoint);
+            ->at(0, function (Denkmal_Push_Subscription $subscription) use ($providerFoo) {
+                $this->assertSame('foo/foo1', $subscription->getEndpoint());
                 return $providerFoo;
             })
-            ->at(1, function ($endpoint) use ($providerBar) {
-                $this->assertSame('bar', $endpoint);
+            ->at(1, function (Denkmal_Push_Subscription $subscription) use ($providerBar) {
+                $this->assertSame('bar/bar1', $subscription->getEndpoint());
+                return $providerBar;
+            })
+            ->at(2, function (Denkmal_Push_Subscription $subscription) use ($providerFoo) {
+                $this->assertSame('foo/foo2', $subscription->getEndpoint());
+                return $providerFoo;
+            })
+            ->at(3, function (Denkmal_Push_Subscription $subscription) use ($providerBar) {
+                $this->assertSame('bar/bar2', $subscription->getEndpoint());
                 return $providerBar;
             });
 

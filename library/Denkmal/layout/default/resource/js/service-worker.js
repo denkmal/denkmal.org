@@ -9,7 +9,6 @@ self.addEventListener('push', function(event) {
       return;
     }
     return sendRpc('Denkmal_Push_Notification_Message.getListBySubscription', {
-      subscriptionId: subscription.subscriptionId,
       endpoint: subscription.endpoint
     }).then(function(dataList) {
       var promises = [];

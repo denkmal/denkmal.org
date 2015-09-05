@@ -14,7 +14,6 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         $environment = new CM_Frontend_Environment();
         $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'state'          => true,
-            'subscriptionId' => '123321f',
             'endpoint'       => 'foo',
             'user'           => null,
         ], $environment);
@@ -24,8 +23,7 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         $environment = new CM_Frontend_Environment();
         $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'state'          => true,
-            'subscriptionId' => '123321f',
-            'endpoint'       => 'https://android.googleapis.com/gcm/send',
+            'endpoint'       => 'https://android.googleapis.com/gcm/send/123321f',
             'user'           => null,
         ], $environment);
 
@@ -37,25 +35,23 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         $environment = new CM_Frontend_Environment();
         $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'state'          => true,
-            'subscriptionId' => 'foo1',
-            'endpoint'       => 'https://android.googleapis.com/gcm/send',
+            'endpoint'       => 'https://android.googleapis.com/gcm/send/foo1',
             'user'           => null,
         ], $environment);
 
         $this->assertViewResponseSuccess($response);
-        $pushSubscription = Denkmal_Push_Subscription::findBySubscriptionIdAndEndpoint('foo1', 'https://android.googleapis.com/gcm/send');
+        $pushSubscription = Denkmal_Push_Subscription::findByEndpoint('https://android.googleapis.com/gcm/send/foo1');
         $this->assertNull($pushSubscription->getUser());
 
         $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'passwd');
         $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'state'          => true,
-            'subscriptionId' => 'foo1',
-            'endpoint'       => 'https://android.googleapis.com/gcm/send',
+            'endpoint'       => 'https://android.googleapis.com/gcm/send/foo1',
             'user'           => $user,
         ], $environment);
 
         $this->assertViewResponseSuccess($response);
-        $pushSubscription = Denkmal_Push_Subscription::findBySubscriptionIdAndEndpoint('foo1', 'https://android.googleapis.com/gcm/send');
+        $pushSubscription = Denkmal_Push_Subscription::findByEndpoint('https://android.googleapis.com/gcm/send/foo1');
         $this->assertEquals($user, $pushSubscription->getUser());
     }
 
@@ -63,15 +59,13 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
         $environment = new CM_Frontend_Environment();
         $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'state'          => true,
-            'subscriptionId' => '123321f',
-            'endpoint'       => 'https://android.googleapis.com/gcm/send',
+            'endpoint'       => 'https://android.googleapis.com/gcm/send/123321f',
             'user'           => null,
         ], $environment);
 
         $response2 = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'state'          => true,
-            'subscriptionId' => '123321f',
-            'endpoint'       => 'https://android.googleapis.com/gcm/send',
+            'endpoint'       => 'https://android.googleapis.com/gcm/send/123321f',
             'user'           => null,
         ], $environment);
 
@@ -81,14 +75,13 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
     }
 
     public function testAjax_storePushSubscriptionRemoval() {
-        Denkmal_Push_Subscription::create('foo1', 'https://android.googleapis.com/gcm/send');
+        Denkmal_Push_Subscription::create('https://android.googleapis.com/gcm/send/foo1');
         $this->assertCount(1, new Denkmal_Push_SubscriptionList_All());
 
         $environment = new CM_Frontend_Environment();
         $response = $this->getResponseAjax(new Denkmal_Component_PushNotifications(), 'storePushSubscription', [
             'state'          => false,
-            'subscriptionId' => 'foo1',
-            'endpoint'       => 'https://android.googleapis.com/gcm/send',
+            'endpoint'       => 'https://android.googleapis.com/gcm/send/foo1',
         ], $environment);
 
         $this->assertViewResponseSuccess($response);

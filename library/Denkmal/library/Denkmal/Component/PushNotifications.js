@@ -90,7 +90,7 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   _subscribePush: function() {
     var self = this;
     return navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-      return serviceWorkerRegistration.pushManager.subscribe().then(function(subscription) {
+      return serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
         cm.debug.log('Push subscribed:', subscription);
         self._storePushSubscription(subscription, true);
       });
@@ -125,16 +125,15 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
   },
 
   /**
-   * @param {Object} notification
+   * @param {PushSubscription} pushSubscription
    * @param {Boolean} state
-   * @returns Promise
+   * @returns {Promise}
    */
-  _storePushSubscription: function(notification, state) {
+  _storePushSubscription: function(pushSubscription, state) {
     var self = this;
     return this.ajax('storePushSubscription', {
       state: state,
-      subscriptionId: notification.subscriptionId,
-      endpoint: notification.endpoint,
+      endpoint: pushSubscription.endpoint,
       user: cm.viewer
     }).then(function() {
       self._updateInputUI(state);

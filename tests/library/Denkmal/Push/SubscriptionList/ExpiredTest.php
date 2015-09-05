@@ -12,13 +12,13 @@ class Denkmal_Push_SubscriptionList_ExpiredTest extends CMTest_TestCase {
             return clone $nowOriginal;
         };
 
-        $pushSubscription1 = Denkmal_Push_Subscription::create('foo1', 'https://twitter.com/foo');
+        $pushSubscription1 = Denkmal_Push_Subscription::create('https://twitter.com/foo/foo1');
         $pushSubscription1->setUpdated($now()->sub(new DateInterval('PT10S')));
 
-        $pushSubscription2 = Denkmal_Push_Subscription::create('foo2', 'https://google.com/foo');
+        $pushSubscription2 = Denkmal_Push_Subscription::create('https://google.com/foo/foo2');
         $pushSubscription2->setUpdated($now()->sub(new DateInterval('PT10S')));
 
-        $pushSubscription3 = Denkmal_Push_Subscription::create('foo3', 'https://google.com/foo');
+        $pushSubscription3 = Denkmal_Push_Subscription::create('https://google.com/foo/foo3');
         $pushSubscription3->setUpdated($now()->sub(new DateInterval('PT5S')));
 
         $this->assertEquals([$pushSubscription1, $pushSubscription2, $pushSubscription3],

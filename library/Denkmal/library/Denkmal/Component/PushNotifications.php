@@ -10,7 +10,6 @@ class Denkmal_Component_PushNotifications extends \Denkmal_Component_Abstract {
 
     public function ajax_storePushSubscription(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
         $state = $params->getBoolean('state');
-        $subscriptionId = $params->getString('subscriptionId');
         $endpoint = $params->getString('endpoint');
         $user = $params->has('user') ? $params->getUser('user') : null;
 
@@ -18,7 +17,7 @@ class Denkmal_Component_PushNotifications extends \Denkmal_Component_Abstract {
             throw new CM_Exception("Unknown notification endpoint `{$endpoint}`.");
         }
 
-        $pushSubscription = Denkmal_Push_Subscription::findBySubscriptionIdAndEndpoint($subscriptionId, $endpoint);
+        $pushSubscription = Denkmal_Push_Subscription::findByEndpoint($endpoint);
 
         if ($state) {
             if ($pushSubscription) {
@@ -27,7 +26,7 @@ class Denkmal_Component_PushNotifications extends \Denkmal_Component_Abstract {
                     $pushSubscription->setUser($user);
                 }
             } else {
-                Denkmal_Push_Subscription::create($subscriptionId, $endpoint, $user);
+                Denkmal_Push_Subscription::create($endpoint, $user);
             }
         } else {
             if ($pushSubscription) {

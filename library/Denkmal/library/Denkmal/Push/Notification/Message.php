@@ -92,15 +92,14 @@ class Denkmal_Push_Notification_Message extends \CM_Model_Abstract {
     }
 
     /**
-     * @param string $subscriptionId
      * @param string $endpoint
      * @return array
      * @throws CM_Exception_Invalid
      */
-    public static function rpc_getListBySubscription($subscriptionId, $endpoint) {
-        $subscription = Denkmal_Push_Subscription::findBySubscriptionIdAndEndpoint($subscriptionId, $endpoint);
+    public static function rpc_getListBySubscription($endpoint) {
+        $subscription = Denkmal_Push_Subscription::findByEndpoint($endpoint);
         if (null === $subscription) {
-            throw new CM_Exception_Invalid("Cannot find subscription `{$subscriptionId}` for endpoint `{$endpoint}`.");
+            throw new CM_Exception_Invalid("Cannot find subscription with endpoint `{$endpoint}`.");
         }
 
         return Functional\map($subscription->getMessageList()->getItems(), function (Denkmal_Push_Notification_Message $message) {

@@ -12,7 +12,7 @@ class Denkmal_Push_Notification_MessageList_ExpiredTest extends CMTest_TestCase 
             return clone $nowOriginal;
         };
 
-        $subscription = Denkmal_Push_Subscription::create('foo1', 'https://twitter.com/foo');
+        $subscription = Denkmal_Push_Subscription::create('https://twitter.com/foo/foo1');
         $message1 = Denkmal_Push_Notification_Message::create($subscription, $now()->add(new DateInterval('PT30S')), []);
         $message2 = Denkmal_Push_Notification_Message::create($subscription, $now()->add(new DateInterval('PT20S')), []);
         $message3 = Denkmal_Push_Notification_Message::create($subscription, $now()->add(new DateInterval('PT10S')), []);

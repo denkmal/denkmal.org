@@ -4,7 +4,7 @@ class Denkmal_Push_Notification_Provider_AbstractTest extends CMTest_TestCase {
 
     /**
      * @expectedException CM_Exception
-     * @expectedExceptionMessage Unknown notification endpoint
+     * @expectedExceptionMessage No provider for endpoint `foo`
      */
     public function testFactoryByEndpointUnknown() {
         Denkmal_Push_Notification_Provider_Abstract::factoryByEndpoint($this->getServiceManager(), 'foo');

@@ -7,7 +7,7 @@ class Denkmal_Push_Notification_MessageList_SubscriptionTest extends CMTest_Test
     }
 
     public function testGetItems() {
-        $subscription = Denkmal_Push_Subscription::create('foo1', 'https://twitter.com/foo');
+        $subscription = Denkmal_Push_Subscription::create('https://twitter.com/foo/foo1');
         $message1 = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), []);
         $message2 = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), []);
         $this->assertEquals([$message2, $message1],

@@ -1,5 +1,7 @@
 <?php
 
+CM_Db_Db::delete('denkmal_push_subscription');
+
 if (CM_Db_Db::existsIndex('denkmal_push_subscription', 'subscriptionId-endpoint')) {
     CM_Db_Db::exec("DROP INDEX `subscriptionId-endpoint` ON denkmal_push_subscription;");
     CM_Db_Db::exec("CREATE UNIQUE INDEX `endpoint` ON denkmal_push_subscription (endpoint);");

@@ -49,7 +49,7 @@ class Denkmal_Model_User extends CM_Model_User {
     }
 
     protected function _loadData() {
-        $return = CM_Db_Db::exec("SELECT `main`.*, `secondary`.*, `online`.`userId` AS `online`, `online`.`visible`
+        $return = CM_Db_Db::exec("SELECT `main`.*, `secondary`.*, `online`.`userId` AS `online`, `online`.`visible`, `online`.`offlineStamp`
 								  FROM `cm_user` AS `main`
 								  JOIN `denkmal_model_user` AS `secondary` USING (`userId`)
 								  LEFT JOIN `cm_user_online` AS `online` USING(`userId`)

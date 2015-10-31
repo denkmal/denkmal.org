@@ -32,9 +32,8 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
 
         $this->_registerClockworkCallbacks('18:00', array(
             'Daily event tweets' => function () {
-                $serviceManager = CM_Service_Manager::getInstance();
                 /** @var Denkmal_Twitter_Client $twitter */
-                $twitter = $serviceManager->get('twitter', 'Denkmal_Twitter_Client');
+                $twitter = $this->getServiceManager()->get('twitter', 'Denkmal_Twitter_Client');
 
                 $eventTweeter = new Denkmal_Twitter_EventTweeter($twitter, new CM_Frontend_Render());
                 $eventTweeter->tweetStarredEvents(Denkmal_Site::getCurrentDate());

@@ -11,8 +11,8 @@ class Denkmal_Paging_Event_SearchText extends Denkmal_Paging_Event_Abstract {
         $query->queryText($text);
         $query->sortFrom();
 
-        $source = new CM_PagingSource_Elasticsearch(new Denkmal_Elasticsearch_Type_Event(), $query);
-
+        $client = CM_Service_Manager::getInstance()->getElasticsearch()->getClient();
+        $source = new CM_PagingSource_Elasticsearch(new Denkmal_Elasticsearch_Type_Event($client), $query);
         parent::__construct($source);
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3168e5f4878d30215938f5502619d0dc",
+    "hash": "8781f96e612656568180ef2a834996fb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -71,23 +71,24 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.148.1",
+            "version": "1.150.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "c8336e03eb02e8f5be9a9dc2f9602e79e1fff6cb"
+                "reference": "00f49be5e8dfd089cdf0031966ae5f28cae3cc53"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-c8336e03eb02e8f5be9a9dc2f9602e79e1fff6cb-zip-878eeb.zip",
-                "reference": "c8336e03eb02e8f5be9a9dc2f9602e79e1fff6cb",
-                "shasum": "b99fe011374286930d1a2069c31c9355d2410d10"
+                "url": "http://satis.cargomedia.ch/dist/dist/cargomedia-cm-00f49be5e8dfd089cdf0031966ae5f28cae3cc53-zip-cceeee.zip",
+                "reference": "00f49be5e8dfd089cdf0031966ae5f28cae3cc53",
+                "shasum": "68ab94e3031fbfff46f1c7ed0fe8b1080b060726"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
                 "composer/composer": "1.0.0-alpha10",
                 "easybook/geshi": "1.0.8.11",
-                "guzzlehttp/guzzle": "~4.1.7",
+                "elasticsearch/elasticsearch": "~2.0.0",
+                "guzzlehttp/guzzle": "~5.3.0",
                 "kickbox/kickbox": "~1.0.3",
                 "kissmetrics/kissmetrics-php": "~0.1.0",
                 "leafo/lessphp": "~0.5.0",
@@ -95,7 +96,6 @@
                 "michelf/php-markdown": "1.4.0",
                 "nicmart/tree": "~0.2.0",
                 "phpmailer/phpmailer": "5.2.6",
-                "ruflin/elastica": "v1.3.0.0",
                 "smarty/smarty": "3.1.16",
                 "tomaszdurka/codegenerator": "~0.5.0"
             },
@@ -124,7 +124,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2015-09-22 12:25:17"
+            "time": "2015-09-28 16:01:53"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -286,6 +286,60 @@
             "time": "2012-09-28 10:14:18"
         },
         {
+            "name": "elasticsearch/elasticsearch",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elastic/elasticsearch-php.git",
+                "reference": "87858db144649634fb6a11a033642b1b4db888d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/elasticsearch-elasticsearch-87858db144649634fb6a11a033642b1b4db888d3-zip-005505.zip",
+                "reference": "87858db144649634fb6a11a033642b1b4db888d3",
+                "shasum": "d4c4b06870005bcf0e4f4f977b74864a19e54377"
+            },
+            "require": {
+                "guzzlehttp/ringphp": "~1.0",
+                "php": ">=5.4",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1",
+                "cpliakas/git-wrapper": "~1.0",
+                "mockery/mockery": "dev-master@dev",
+                "phpunit/phpunit": "3.7.*",
+                "symfony/yaml": "2.4.3 as 2.4.2",
+                "twig/twig": "1.*"
+            },
+            "suggest": {
+                "ext-curl": "*",
+                "monolog/monolog": "Allows for client-level logging and tracing"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Elasticsearch\\": "src/Elasticsearch/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2"
+            ],
+            "authors": [
+                {
+                    "name": "Zachary Tong"
+                }
+            ],
+            "description": "PHP Client for Elasticsearch",
+            "keywords": [
+                "client",
+                "elasticsearch",
+                "search"
+            ],
+            "time": "2015-09-23 18:47:51"
+        },
+        {
             "name": "guzzle/guzzle",
             "version": "v3.8.1",
             "source": {
@@ -379,44 +433,37 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.1.8",
+            "version": "5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "e196b8f44f9492a11261ea8f7b9724613a198daf"
+                "reference": "f3c8c22471cb55475105c14769644a49c3262b93"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-guzzle-e196b8f44f9492a11261ea8f7b9724613a198daf-zip-3a5237.zip",
-                "reference": "e196b8f44f9492a11261ea8f7b9724613a198daf",
-                "shasum": "15caf8ea3172852218a4f0976b870b1347df74fb"
+                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-guzzle-f3c8c22471cb55475105c14769644a49c3262b93-zip-8e2e15.zip",
+                "reference": "f3c8c22471cb55475105c14769644a49c3262b93",
+                "shasum": "5e3174d36b584f372558b3bdf81571e2499e4668"
             },
             "require": {
-                "ext-json": "*",
-                "guzzlehttp/streams": "~1.4",
+                "guzzlehttp/ringphp": "^1.1",
                 "php": ">=5.4.0"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "~4.0",
-                "psr/log": "~1.0"
-            },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
+                "phpunit/phpunit": "^4.0",
+                "psr/log": "^1.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -440,41 +487,44 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-08-14 20:29:51"
+            "time": "2015-05-20 03:47:55"
         },
         {
-            "name": "guzzlehttp/streams",
-            "version": "1.5.1",
+            "name": "guzzlehttp/ringphp",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "fb0d1ee29987c2bdc59867bffaade6fc88c2675f"
+                "url": "https://github.com/guzzle/RingPHP.git",
+                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-streams-fb0d1ee29987c2bdc59867bffaade6fc88c2675f-zip-88ddd8.zip",
-                "reference": "fb0d1ee29987c2bdc59867bffaade6fc88c2675f",
-                "shasum": "7ece855e280b334874427aa175a51e30f866b305"
+                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-ringphp-dbbb91d7f6c191e5e405e900e3102ac7f261bc0b-zip-6654cd.zip",
+                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b",
+                "shasum": "09706d5cd0673ee596d3ce95c9dc5adf34a9b68b"
             },
             "require": {
-                "php": ">=5.4.0"
+                "guzzlehttp/streams": "~3.0",
+                "php": ">=5.4.0",
+                "react/promise": "~2.0"
             },
             "require-dev": {
+                "ext-curl": "*",
                 "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "ext-curl": "Guzzle will use specific adapters if cURL is present"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                    "GuzzleHttp\\Ring\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -487,13 +537,58 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "description": "Provides a simple abstraction over streams of data (Guzzle 4+)",
+            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+            "time": "2015-05-20 03:37:09"
+        },
+        {
+            "name": "guzzlehttp/streams",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/streams.git",
+                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/guzzlehttp-streams-47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5-zip-c67b5d.zip",
+                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
+                "shasum": "58de8f89a16fb2338bb0a031c82f0518476b62cc"
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Stream\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Provides a simple abstraction over streams of data",
             "homepage": "http://guzzlephp.org/",
             "keywords": [
                 "Guzzle",
                 "stream"
             ],
-            "time": "2014-08-10 23:57:01"
+            "time": "2014-10-12 19:18:40"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -944,6 +1039,88 @@
             "time": "2013-04-11 16:45:39"
         },
         {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/psr-log-fe0936ee26643249e916849d48e3a51d5f5e278b-zip-e71523.zip",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "shasum": "854de0dbae8ee9dd32c831d7016454df45b953a3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "react/promise",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/promise.git",
+                "reference": "3b6fca09c7d56321057fa8867c8dbe1abf648627"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://satis.cargomedia.ch/dist/dist/react-promise-3b6fca09c7d56321057fa8867c8dbe1abf648627-zip-543019.zip",
+                "reference": "3b6fca09c7d56321057fa8867c8dbe1abf648627",
+                "shasum": "aa7e98d8eb9c1c30c57571b410648a83bf8f3df3"
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@gmail.com"
+                }
+            ],
+            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
+            "time": "2015-07-03 13:48:55"
+        },
+        {
             "name": "ricardoper/twitteroauth",
             "version": "v1.1.1",
             "source": {
@@ -987,65 +1164,6 @@
                 "twitter"
             ],
             "time": "2014-09-09 15:44:14"
-        },
-        {
-            "name": "ruflin/elastica",
-            "version": "v1.3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "92155a36c94ebe15b09661ae804acbe4bdd4ad6b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/ruflin-elastica-92155a36c94ebe15b09661ae804acbe4bdd4ad6b-zip-762852.zip",
-                "reference": "92155a36c94ebe15b09661ae804acbe4bdd4ad6b",
-                "shasum": "aaa0de1a98ef45dc0a8f14d44504676ae3508658"
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "munkie/elasticsearch-thrift-php": "1.4.*",
-                "phpunit/phpunit": "4.1.*",
-                "psr/log": "~1.0",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Allow using guzzle 4.x as the http transport (requires php 5.4)",
-                "monolog/monolog": "Logging request",
-                "munkie/elasticsearch-thrift-php": "Allow using thrift transport",
-                "psr/log": "for logging"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Elastica": "lib/",
-                    "Elastica\\Test": "test/lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache 2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Ruflin",
-                    "homepage": "http://ruflin.com/"
-                }
-            ],
-            "description": "Elasticsearch Client",
-            "homepage": "http://elastica.io/",
-            "keywords": [
-                "client",
-                "search"
-            ],
-            "time": "2014-07-27 13:45:09"
         },
         {
             "name": "seld/jsonlint",

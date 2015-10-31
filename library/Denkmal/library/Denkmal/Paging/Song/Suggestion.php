@@ -23,7 +23,8 @@ class Denkmal_Paging_Song_Suggestion extends Denkmal_Paging_Song_Abstract {
         $query = new Denkmal_Elasticsearch_Query_Song();
         $query->queryText(implode(' ', $termList));
 
-        $source = new CM_PagingSource_Elasticsearch(new Denkmal_Elasticsearch_Type_Song(), $query);
+        $client = CM_Service_Manager::getInstance()->getElasticsearch()->getClient();
+        $source = new CM_PagingSource_Elasticsearch(new Denkmal_Elasticsearch_Type_Song($client), $query);
         $source->enableCacheLocal(10);
         parent::__construct($source);
     }

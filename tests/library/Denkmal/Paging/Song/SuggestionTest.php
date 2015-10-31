@@ -9,12 +9,13 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
     protected $_typeEvent;
 
     public function setUp() {
-        $this->getServiceManager()->getElasticsearch()->setEnabled(true);
+        $elasticsearchCluster = $this->getServiceManager()->getElasticsearch();
+        $elasticsearchCluster->setEnabled(true);
 
-        $this->_typeSong = new Denkmal_Elasticsearch_Type_Song();
+        $this->_typeSong = new Denkmal_Elasticsearch_Type_Song($elasticsearchCluster->getClient());
         $this->_typeSong->createIndex();
 
-        $this->_typeEvent = new Denkmal_Elasticsearch_Type_Event();
+        $this->_typeEvent = new Denkmal_Elasticsearch_Type_Event($elasticsearchCluster->getClient());
         $this->_typeEvent->createIndex();
     }
 

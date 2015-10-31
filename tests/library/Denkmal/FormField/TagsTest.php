@@ -29,7 +29,7 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
         $formField = new Denkmal_FormField_Tags();
         $environment = new CM_Frontend_Environment();
 
-        $userInput = CM_Params::jsonEncode([$tag1->getId(), $tag2->getId(), $tag3->getId()]);
+        $userInput = [$tag1->getId(), $tag2->getId(), $tag3->getId()];
         $this->assertEquals([$tag1, $tag2], $formField->validate($environment, $userInput));
     }
 
@@ -44,7 +44,7 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
         $formField = new Denkmal_FormField_Tags(['cardinality' => 2]);
         $environment = new CM_Frontend_Environment();
 
-        $userInput = CM_Params::jsonEncode([$tag1->getId(), $tag2->getId(), $tag3->getId()]);
+        $userInput = [$tag1->getId(), $tag2->getId(), $tag3->getId()];
         $formField->validate($environment, $userInput);
     }
 
@@ -54,7 +54,7 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
         $formField = new Denkmal_FormField_Tags(['cardinality' => 3]);
         $environment = new CM_Frontend_Environment();
 
-        $userInput = CM_Params::jsonEncode([$tag2->getId(), $tag2->getId(), $tag2->getId()]);
+        $userInput = [$tag2->getId(), $tag2->getId(), $tag2->getId()];
         $this->assertEquals([$tag2, $tag2, $tag2], $formField->validate($environment, $userInput));
     }
 
@@ -67,7 +67,7 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
         $formField = new Denkmal_FormField_Tags(['cardinality' => 4, 'itemCardinality' => 3]);
         $environment = new CM_Frontend_Environment();
 
-        $userInput = CM_Params::jsonEncode([$tag2->getId(), $tag2->getId(), $tag2->getId(), $tag2->getId()]);
+        $userInput = [$tag2->getId(), $tag2->getId(), $tag2->getId(), $tag2->getId()];
         $formField->validate($environment, $userInput);
     }
 }

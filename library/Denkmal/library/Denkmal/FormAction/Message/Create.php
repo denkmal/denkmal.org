@@ -17,7 +17,7 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
         if ($params->has('image') && !Denkmal_Form_Message::getImageAllowed($viewer)) {
             $response->addError($response->getRender()->getTranslation('Bildupload nicht erlaubt'));
         }
-        if (0 === count($params->get('tags')) && !$params->has('text') && !$params->has('image')) {
+        if (!$params->has('tags') && !$params->has('text') && !$params->has('image')) {
             $response->addError($response->getRender()->getTranslation('Bitte Nachricht eingeben'), 'tags');
         }
     }
@@ -37,7 +37,7 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
         }
 
         /** @var Denkmal_Model_Tag[] $tagList */
-        $tagList = $params->get('tags');
+        $tagList = $params->get('tags', []);
 
         $action = new Denkmal_Action_Message(Denkmal_Action_Message::CREATE, $response->getRequest()->getIp());
         $action->prepare();

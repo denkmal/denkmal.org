@@ -8,7 +8,7 @@ class Denkmal_FormField_Tags extends \CM_FormField_Abstract {
     }
 
     public function validate(\CM_Frontend_Environment $environment, $userInput) {
-        $userInput = CM_Params::jsonDecode($userInput);
+        $userInput = (array) $userInput;
 
         $tagList = Functional\map($userInput, function ($tagId) {
             return new Denkmal_Model_Tag($tagId);
@@ -42,7 +42,6 @@ class Denkmal_FormField_Tags extends \CM_FormField_Abstract {
         });
 
         $viewResponse->set('tagListAvailable', $this->_getTagListAvailable());
-        $viewResponse->set('tagIdList', $tagIdList);
         $viewResponse->getJs()->setProperty('tagIdList', $tagIdList);
     }
 

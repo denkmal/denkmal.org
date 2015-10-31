@@ -32,9 +32,9 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
 
   ready: function() {
     _.each(_.countBy(this.tagIdList), function(count, tagId) {
+      tagId = Number(tagId);
       this.setTag(tagId, count);
     }, this);
-    this._populateInput();
 
     var self = this;
     this.getForm().$el.on('reset', function() {
@@ -45,6 +45,27 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
         self.setTag(tagId, 0);
       });
     });
+  },
+
+  /**
+   * @returns {Array}
+   */
+  getValue: function() {
+    return this.tagIdList;
+  },
+
+  /**
+   * @param {Array} value
+   */
+  setValue: function(value) {
+    this.tagIdList = value;
+  },
+
+  getEnabled: function() {
+    return true;
+  },
+
+  setFocus: function() {
   },
 
   /**
@@ -84,15 +105,10 @@ var Denkmal_FormField_Tags = CM_FormField_Abstract.extend({
     this.$('.tag[data-id="' + id + '"]')
       .toggleClass('active', count > 0)
       .toggleClass('hasCount', count > 1);
-    this._populateInput();
 
     if (this._hasCardinality()) {
       this.$('.cardinality-left').text(this._getCardinalityLeft());
     }
-  },
-
-  _populateInput: function() {
-    this.getInput().val(JSON.stringify(this.tagIdList));
   },
 
   /**

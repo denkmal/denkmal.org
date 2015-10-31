@@ -26,5 +26,3 @@
 {if null !== $options.cardinality}
   <p class="cardinality-info">{translate '{$count} Sticker verfügbar' count="<span class='cardinality-left'>{$options.cardinality}</span>"}</p>
 {/if}
-
-<input type="hidden" name="{$name}" id="{$inputId}">

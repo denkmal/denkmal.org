@@ -2,17 +2,13 @@
 
 class Denkmal_Elasticsearch_Type_Song extends CM_Elasticsearch_Type_Abstract {
 
-    const INDEX_NAME = 'song';
-
     protected $_mapping = array(
         'label' => array('type' => 'string'),
     );
 
     protected $_indexParams = array(
-        'index' => array(
-            'number_of_shards'   => 1,
-            'number_of_replicas' => 0
-        ),
+        'number_of_shards'   => 1,
+        'number_of_replicas' => 0
     );
 
     protected function _getQuery($ids = null, $limit = null) {
@@ -31,12 +27,16 @@ class Denkmal_Elasticsearch_Type_Song extends CM_Elasticsearch_Type_Abstract {
     }
 
     protected function _getDocument(array $data) {
-        $doc = new Elastica\Document($data['id'],
+        $doc = new CM_Elasticsearch_Document($data['id'],
             array(
                 'label' => (string) $data['label'],
             )
         );
         return $doc;
+    }
+
+    public static function getAliasName() {
+        return 'song';
     }
 
     /**

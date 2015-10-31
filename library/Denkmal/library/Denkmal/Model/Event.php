@@ -167,8 +167,8 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     public function toArrayApi(CM_Frontend_Render $render) {
-        $eventFormatter = new Denkmal_Usertext_EventFormatter($render);
-        $descriptionHtml = $eventFormatter->transform($this->getDescription());
+        $eventFormatter = new Denkmal_Usertext_EventFormatter();
+        $descriptionHtml = $eventFormatter->transform($this->getDescription(), $render);
 
         $array = array();
         $array['id'] = $this->getId();

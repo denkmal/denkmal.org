@@ -6,9 +6,10 @@ class Denkmal_Elasticsearch_Type_EventTest extends CMTest_TestCase {
     protected $_type;
 
     public function setUp() {
-        $this->getServiceManager()->getElasticsearch()->setEnabled(true);
+        $elasticsearchCluster = $this->getServiceManager()->getElasticsearch();
+        $elasticsearchCluster->setEnabled(true);
 
-        $this->_type = new Denkmal_Elasticsearch_Type_Event();
+        $this->_type = new Denkmal_Elasticsearch_Type_Event($elasticsearchCluster->getClient());
         $this->_type->createIndex();
     }
 

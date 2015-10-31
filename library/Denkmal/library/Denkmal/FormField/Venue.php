@@ -3,13 +3,19 @@
 class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 
     public function validate(CM_Frontend_Environment $environment, $userInput) {
-        $userInput = parent::validate($environment, $userInput);
-        if (is_numeric($userInput)) {
-            $userInput = new Denkmal_Model_Venue($userInput);
+        $value = parent::validate($environment, $userInput);
+        if (null === $value) {
+            throw new CM_Exception_FormFieldValidation(new CM_I18n_Phrase('Invalid venue data.'));
         }
-        return $userInput;
+        $value = new Denkmal_Model_Venue($value);
+        return $value;
     }
 
+    /**
+     * @param Denkmal_Model_Venue $item
+     * @param CM_Frontend_Render  $render
+     * @return array
+     */
     public function getSuggestion($item, CM_Frontend_Render $render) {
         return array('id' => $item->getId(), 'name' => $item->getName());
     }

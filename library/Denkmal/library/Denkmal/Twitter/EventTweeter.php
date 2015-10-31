@@ -53,9 +53,9 @@ class Denkmal_Twitter_EventTweeter {
         $prefixLengthMax = $maxLength - $suffixLength;
         $prefixLengthSubtractor = 0;
         while ($this->_client->getTweetLength($prefix) > $prefixLengthMax) {
-            $usertextMaxLength = new CM_Usertext_Usertext($this->_render);
+            $usertextMaxLength = new CM_Usertext_Usertext();
             $usertextMaxLength->addFilter(new CM_Usertext_Filter_MaxLength($prefixLengthMax - $prefixLengthSubtractor));
-            $prefix = $usertextMaxLength->transform($prefix);
+            $prefix = $usertextMaxLength->transform($prefix, $this->_render);
             $prefixLengthSubtractor++;
         }
 
@@ -80,9 +80,9 @@ class Denkmal_Twitter_EventTweeter {
         }
         $html .= ') ';
 
-        $usertextLinks = new CM_Usertext_Usertext($this->_render);
+        $usertextLinks = new CM_Usertext_Usertext();
         $usertextLinks->addFilter(new Denkmal_Usertext_Filter_Links());
-        $html .= $usertextLinks->transform($event->getDescription());
+        $html .= $usertextLinks->transform($event->getDescription(), $this->_render);
 
         return strip_tags($html);
     }

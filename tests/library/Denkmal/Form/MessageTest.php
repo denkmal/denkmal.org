@@ -20,7 +20,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => 'Hello world',
-            'tags'  => CM_Params::jsonEncode([$tag1->getId(), $tag2->getId()]),
+            'tags'  => [$tag1->getId(), $tag2->getId()],
             'image' => [$imageUsercontent->getUniqid()],
         ]);
         $request->mockMethod('getClientId')->set(12);
@@ -51,7 +51,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => '',
-            'tags'  => CM_Params::jsonEncode([$tag1->getId(), $tag2->getId()]),
+            'tags'  => [$tag1->getId(), $tag2->getId()],
         ]);
         $request->mockMethod('getClientId')->set(12);
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
@@ -78,7 +78,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => '',
-            'tags'  => CM_Params::jsonEncode([]),
+            'tags'  => [],
         ]);
         $request->mockMethod('getClientId')->set(12);
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
@@ -98,7 +98,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => 'Hello',
-            'tags'  => CM_Params::jsonEncode([]),
+            'tags'  => [],
         ]);
         $request->mockMethod('getClientId')->set(12);
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
@@ -117,7 +117,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'image' => [$imageUsercontent->getUniqid()],
-            'tags'  => CM_Params::jsonEncode([]),
+            'tags'  => [],
         ]);
         $request->mockMethod('getClientId')->set(12);
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());

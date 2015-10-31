@@ -20,8 +20,7 @@ class Admin_FormAction_Event_Save_Preview extends Admin_FormAction_Event_Save {
         $event->setSong($song);
         $event->setStarred($starred);
 
-        return $response->loadComponent(new Denkmal_Params(array(
-            'className'    => 'Admin_Component_Event',
+        return $response->loadComponent('Admin_Component_Event', new Denkmal_Params(array(
             'event'        => $event,
             'venue'        => $venue,
             'allowEditing' => false,

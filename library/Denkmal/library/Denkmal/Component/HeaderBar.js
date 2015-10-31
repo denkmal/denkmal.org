@@ -60,7 +60,7 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
         $(this).toggleClass('state-weekdayMenu', state);
       });
     } else {
-      this.$el.toggleModalClose();
+      this.$el.toggleModal('close');
     }
   },
 

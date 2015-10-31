@@ -4,7 +4,7 @@
     "bin-dir": "bin/"
   },
   "require": {
-    "cargomedia/cm": "~1.155.0",
+    "cargomedia/cm": "~1.156.0",
     "ricardoper/twitteroauth": "~1.1.1",
     "nojimage/twitter-text-php": "~1.1.1",
     "codemonkeys-ru/gcm-message": "~0.2.0"

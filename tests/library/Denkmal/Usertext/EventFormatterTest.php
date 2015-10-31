@@ -4,7 +4,7 @@ class Denkmal_Usertext_EventFormatterTest extends CMTest_TestCase {
 
     public function testConstruct() {
         $render = new CM_Frontend_Render();
-        $eventFormatter = new Denkmal_Usertext_EventFormatter($render);
+        $eventFormatter = new Denkmal_Usertext_EventFormatter();
         Denkmal_Model_Link::create('foo', 'http://foo.com', true);
 
         $this->assertSame(

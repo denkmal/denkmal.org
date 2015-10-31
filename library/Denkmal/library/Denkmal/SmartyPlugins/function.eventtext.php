@@ -5,6 +5,6 @@ function smarty_function_eventtext($params, Smarty_Internal_Template $template) 
     $render = $template->smarty->getTemplateVars('render');
     $text = (string) $params['text'];
 
-    $eventFormatter = new Denkmal_Usertext_EventFormatter($render);
-    return $eventFormatter->transform($text);
+    $eventFormatter = new Denkmal_Usertext_EventFormatter();
+    return $eventFormatter->transform($text, $render);
 }

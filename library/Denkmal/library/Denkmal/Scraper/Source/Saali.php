@@ -57,20 +57,25 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
                 throw new CM_Exception_Invalid('Unexpected eventTextList: `' . CM_Util::var_line($eventTextList) . '`.');
             }
 
+            // Parse first line
             if (!preg_match('#^\w{2}_(\d+)\.(\d+)\.?\s+(.+)$#', $eventTextList[0], $matches0)) {
                 throw new CM_Exception_Invalid('Cannot parse event line: `' . $eventTextList[0] . '`.');
             }
             $from = new Denkmal_Scraper_Date($matches0[1], $matches0[2], $forceYear);
             $descriptionList = array($matches0[3]);
 
-            if (!preg_match('#^(\d+)\.(\d+)h\s+(.+)?$#', $eventTextList[1], $matches1)) {
-                throw new CM_Exception_Invalid('Cannot parse event line: `' . $eventTextList[1] . '`.');
-            }
-            $from->setTime($matches1[1], $matches1[2]);
-            if (isset($matches1[3])) {
-                $descriptionList[] = $matches1[3];
+            // Parse second line
+            if (preg_match('#^(\d+)\.(\d+)h\s+(.+)?$#', $eventTextList[1], $matches1)) {
+                $from->setTime($matches1[1], $matches1[2]);
+                if (isset($matches1[3])) {
+                    $descriptionList[] = $matches1[3];
+                }
+            } else {
+                $from->setTime(21);
+                $descriptionList[] = $eventTextList[1];
             }
 
+            // Take the rest
             $descriptionList = array_merge($descriptionList, array_splice($eventTextList, 2));
             $description = new Denkmal_Scraper_Description(implode(' ', $descriptionList));
 

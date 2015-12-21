@@ -42,7 +42,6 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
             new Denkmal_Scraper_Source_Programmzeitung(),
             new Denkmal_Scraper_Source_Hinterhof(),
             new Denkmal_Scraper_Source_Fingerzeig(),
-            new Denkmal_Scraper_Source_Lastfm(),
             new Denkmal_Scraper_Source_Saali(),
         );
     }

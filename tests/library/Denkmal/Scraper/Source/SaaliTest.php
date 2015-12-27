@@ -64,4 +64,13 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
             new DateTime('2015-12-19 21:00:00')
         ), $eventDataList[2]);
     }
+
+    public function testProcessVersion3() {
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-3.html');
+        $scraper = new Denkmal_Scraper_Source_Saali();
+
+        $eventDataList = $scraper->processPage($html, 2015);
+
+        $this->assertCount(6, $eventDataList);
+    }
 }

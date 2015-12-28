@@ -33,11 +33,24 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             throw new CM_Exception_Invalid('Cannot detect event tables', ['html' => $html->getHtml()]);
         }
 
-        if (!isset($agendaTableList['Sounds & Floors'])) {
-            return [];
-        }
-        $agendaTable = $agendaTableList['Sounds & Floors'];
+        $categoryList = [
+            'Musik, Konzerte',
+            'Sounds & Floors',
+        ];
 
+        $eventDataList = [];
+        foreach ($categoryList as $category) {
+            $eventDataList = array_merge($eventDataList, $this->_parseCategory($agendaTableList[$category], $date));
+        }
+        return $eventDataList;
+    }
+
+    /**
+     * @param CM_Dom_NodeList $agendaTable
+     * @param DateTime        $date
+     * @return Denkmal_Scraper_EventData[]
+     */
+    private function _parseCategory(CM_Dom_NodeList $agendaTable, $date) {
         return Functional\map($agendaTable->find('tr'), function (CM_Dom_NodeList $agendaTableRow) use ($date) {
             $agendaTableCell = $agendaTableRow->find('td');
             if (3 != count($agendaTableCell)) {

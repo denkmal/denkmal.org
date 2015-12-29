@@ -40,7 +40,9 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 
         $eventDataList = [];
         foreach ($categoryList as $category) {
-            $eventDataList = array_merge($eventDataList, $this->_parseCategory($agendaTableList[$category], $date));
+            if (isset($agendaTableList[$category])) {
+                $eventDataList = array_merge($eventDataList, $this->_parseCategory($agendaTableList[$category], $date));
+            }
         }
         return $eventDataList;
     }

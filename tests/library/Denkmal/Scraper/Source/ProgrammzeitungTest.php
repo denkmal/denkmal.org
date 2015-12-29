@@ -29,4 +29,13 @@ class Denkmal_Scraper_Source_ProgrammzeitungTest extends CMTest_TestCase {
             new DateTime('2016-01-04 22:30:00')
         ), $eventDataList[2]);
     }
+
+    public function testProcessPageDateMissingCategory() {
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/programmzeitung-one-category.html');
+        $scraper = new Denkmal_Scraper_Source_Programmzeitung();
+
+        $eventDataList = $scraper->processPageDate($html, new DateTime('2016-01-04'));
+
+        $this->assertCount(2, $eventDataList);
+    }
 }

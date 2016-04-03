@@ -9,16 +9,16 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
     }
 
     /**
-     * @param string   $html
-     * @param int|null $forceYear
+     * @param string        $html
+     * @param DateTime|null $now
      * @return Denkmal_Scraper_EventData[]
      */
-    public function processPage($html, $forceYear = null) {
+    public function processPage($html, DateTime $now = null) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('#page .events > .entry');
 
         /** @var CM_Dom_NodeList $event */
-        return Functional\map($eventList, function (CM_Dom_NodeList $event) use ($forceYear) {
+        return Functional\map($eventList, function (CM_Dom_NodeList $event) use ($now) {
             $venueName = 'Hinterhof';
             if (false !== stripos($event->getAttribute('class'), 'dachterrasse')) {
                 $venueName = 'Hinterhof Dachterrasse';
@@ -49,7 +49,7 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 
             $description = new Denkmal_Scraper_Description($textTitle, $title, $genres);
 
-            $from = new Denkmal_Scraper_Date($day, $month, $forceYear);
+            $from = new Denkmal_Scraper_Date($day, $month, null, $now);
             if ($from->getWeekday() == 6) {
                 $from->setTime(23); // Sa
             } else {

@@ -6,7 +6,7 @@ class Denkmal_Scraper_Source_HinterhofTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/hinterhof.html');
         $scraper = new Denkmal_Scraper_Source_Hinterhof();
 
-        $eventDataList = $scraper->processPage($html, 2014);
+        $eventDataList = $scraper->processPage($html, new DateTime('2014-04-01'));
 
         $this->assertCount(24, $eventDataList);
 

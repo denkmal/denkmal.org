@@ -6,7 +6,7 @@ class Denkmal_Scraper_Source_KaschemmeTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/kaschemme.html');
         $scraper = new Denkmal_Scraper_Source_Kaschemme();
 
-        $eventDataList = $scraper->processPage($html);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-02-01'));
 
         $this->assertCount(21, $eventDataList);
 

@@ -13,12 +13,13 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
     }
 
     /**
-     * @param string   $html
-     * @param DateTime $date
-     * @throws CM_Exception_Invalid
+     * @param string        $html
+     * @param DateTime      $date
+     * @param DateTime|null $now
      * @return Denkmal_Scraper_EventData[]
+     * @throws CM_Exception_Invalid
      */
-    public function processPageDate($html, DateTime $date) {
+    public function processPageDate($html, DateTime $date, DateTime $now = null) {
         $html = new CM_Dom_NodeList($html, true);
 
         /** @var CM_Dom_NodeList[] $agendaTableList */
@@ -41,7 +42,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
         $eventDataList = [];
         foreach ($categoryList as $category) {
             if (isset($agendaTableList[$category])) {
-                $eventDataList = array_merge($eventDataList, $this->_parseCategory($agendaTableList[$category], $date));
+                $eventDataList = array_merge($eventDataList, $this->_parseCategory($agendaTableList[$category], $date, $now));
             }
         }
         return $eventDataList;
@@ -50,10 +51,11 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
     /**
      * @param CM_Dom_NodeList $agendaTable
      * @param DateTime        $date
+     * @param DateTime|null   $now
      * @return Denkmal_Scraper_EventData[]
      */
-    private function _parseCategory(CM_Dom_NodeList $agendaTable, $date) {
-        return Functional\map($agendaTable->find('tr'), function (CM_Dom_NodeList $agendaTableRow) use ($date) {
+    private function _parseCategory(CM_Dom_NodeList $agendaTable, DateTime $date, DateTime $now = null) {
+        return Functional\map($agendaTable->find('tr'), function (CM_Dom_NodeList $agendaTableRow) use ($date, $now) {
             $agendaTableCell = $agendaTableRow->find('td');
             if (3 != count($agendaTableCell)) {
                 throw new CM_Exception_Invalid('Unexpected row count.', ['html' => $agendaTableRow->getHtml()]);
@@ -64,7 +66,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
 
             $timeTextList = explode('<br>', $timeNode->getChildren()->getHtml());
             $timeText = trim($timeTextList[0]);
-            $from = new Denkmal_Scraper_Date($date);
+            $from = new Denkmal_Scraper_Date($date, null, null, $now);
             if (0 === strlen($timeText)) {
                 $from->setTime(21, 00);
             } elseif (preg_match('#^(\d+):(\d+)(\s+.\s+(\d+):(\d+))?$#u', $timeText, $matches)) {

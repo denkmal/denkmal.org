@@ -22,16 +22,16 @@ class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract 
     }
 
     /**
-     * @param string   $html
-     * @param DateTime $date
+     * @param string        $html
+     * @param DateTime      $date
+     * @param DateTime|null $now
      * @return Denkmal_Scraper_EventData[]
-     * @throws CM_Exception_Invalid
      */
-    public function processPageDate($html, DateTime $date) {
+    public function processPageDate($html, DateTime $date, DateTime $now = null) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('#content .box');
 
-        return Functional\map($eventList, function (CM_Dom_NodeList $event) use ($date) {
+        return Functional\map($eventList, function (CM_Dom_NodeList $event) use ($date, $now) {
             $dateText = $event->find('.right-big')->getText();
             if (!preg_match('#^\w+\s+(\d+)\.(\d+)\.(\d+),\s+(\d{1,2}):(\d{2})$#u', $dateText, $matches)) {
                 throw new CM_Exception_Invalid('Cannot detect date from `' . $dateText . '`.');
@@ -39,7 +39,7 @@ class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract 
             if ($matches[1] != $date->format('d') || $matches[2] != $date->format('m') || $matches[3] != $date->format('Y')) {
                 throw new CM_Exception_Invalid('Date on page `' . $dateText . '` doesnt match expected date `' . $date->format('Y-m-d') . '`.');
             }
-            $from = new Denkmal_Scraper_Date($date);
+            $from = new Denkmal_Scraper_Date($date, null, null, $now);
             $from->setTime($matches[4], $matches[5]);
 
             $venueAndGenresText = $event->find('.left')->getText();

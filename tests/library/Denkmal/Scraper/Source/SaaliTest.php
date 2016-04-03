@@ -6,7 +6,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(9, $eventDataList);
 
@@ -33,7 +33,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-summer.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(0, $eventDataList);
     }
@@ -42,7 +42,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-2.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(3, $eventDataList);
 
@@ -69,7 +69,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-3.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(6, $eventDataList);
     }
@@ -78,7 +78,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-4.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2016);
+        $eventDataList = $scraper->processPage($html, new DateTime('2016-03-01'));
 
         $this->assertCount(5, $eventDataList);
 

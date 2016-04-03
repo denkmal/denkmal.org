@@ -4,6 +4,7 @@ sudo: false
 php:
   - 5.4
   - 5.5
+  - 5.6
 
 services:
   - mysql
@@ -17,15 +18,15 @@ addons:
       - mongodb-upstart
     packages:
       - libgearman-dev
-      - mongodb-org-server
       - libsvm-dev
+      - mongodb-org-server
       - re2c
 
 before_script:
   - tests/travis/install-php-runkit.sh
   - tests/travis/install-php-svm.sh
   - yes '' | travis_retry pecl install imagick
-  - travis_retry pecl install stats
+  - travis_retry pecl install stats-1.0.3
   - travis_retry pecl install gearman-1.0.3
   - if [ `php-config --vernum` -ge 50500 ]; then yes '' | travis_retry pecl install apcu-4.0.10; fi
   - phpenv config-add tests/travis/php.ini

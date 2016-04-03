@@ -16,21 +16,22 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
     }
 
     /**
-     * @param string $html
+     * @param string        $html
+     * @param DateTime|null $now
      * @return Denkmal_Scraper_EventData[]
      */
-    public function processPageDate($html) {
+    public function processPageDate($html, DateTime $now = null) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('events > event');
 
-        return Functional\map($eventList, function (CM_Dom_NodeList $event) {
+        return Functional\map($eventList, function (CM_Dom_NodeList $event) use ($now) {
             $venueName = $event->find('venue > name')->getText();
 
             $dateText = $event->find('startdate')->getText();
             if (!preg_match('#^\w+, (\d+) (\w+) (\d+) (\d+):(\d+):(\d+)$#u', $dateText, $matches)) {
                 throw new CM_Exception_Invalid('Cannot detect date from `' . $dateText . '`.');
             }
-            $from = new Denkmal_Scraper_Date($matches[1], $matches[2], $matches[3]);
+            $from = new Denkmal_Scraper_Date($matches[1], $matches[2], $matches[3], $now);
             $from->setTime(20, 00); // Time from API is messed up
 
             $descriptionText = $event->find('description')->getText();

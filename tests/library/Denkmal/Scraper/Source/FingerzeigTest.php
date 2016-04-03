@@ -6,7 +6,7 @@ class Denkmal_Scraper_Source_FingerzeigTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/fingerzeig.html');
         $scraper = new Denkmal_Scraper_Source_Fingerzeig();
 
-        $eventDataList = $scraper->processPageDate($html, new DateTime('2014-04-23'));
+        $eventDataList = $scraper->processPageDate($html, new DateTime('2014-04-23'), new DateTime('2014-04-01'));
 
         $this->assertCount(3, $eventDataList);
 

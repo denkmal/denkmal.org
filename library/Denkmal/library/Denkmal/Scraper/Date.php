@@ -41,9 +41,14 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
      * @param DateTime|int    $day   Day of month (1..31)
      * @param string|int|null $month Month (1..12 / "Jan", "Feb", ...)
      * @param int|null        $year  Year
+     * @param DateTime|null   $now
      * @throws CM_Exception_Invalid on invalid/strange values
      */
-    public function __construct($day, $month = null, $year = null) {
+    public function __construct($day, $month = null, $year = null, DateTime $now = null) {
+        if (null === $now) {
+            $now = new DateTime();
+        }
+
         if ($day instanceof DateTime) {
             $this->_date = clone $day;
         } else {
@@ -61,7 +66,6 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
                 throw new CM_Exception_Invalid('Unknown month `' . $month . '`');
             }
 
-            $now = new DateTime();
             $yearNow = (int) $now->format('Y');
             $yearGuess = false;
             if (isset($year)) {
@@ -81,7 +85,7 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
             $this->_date = new DateTime($year . '-' . $month . '-' . $day);
 
             if ($yearGuess) {
-                $minDate = new DateTime();
+                $minDate = clone $now;
                 $minDate->sub(new DateInterval('P4M'));
                 if ($this->_date < $minDate) {
                     // Date is more than 4 months in past -> set to next year

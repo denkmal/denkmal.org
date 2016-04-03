@@ -6,7 +6,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(9, $eventDataList);
 
@@ -33,7 +33,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-summer.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(0, $eventDataList);
     }
@@ -42,7 +42,7 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-2.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(3, $eventDataList);
 
@@ -69,8 +69,29 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-3.html');
         $scraper = new Denkmal_Scraper_Source_Saali();
 
-        $eventDataList = $scraper->processPage($html, 2015);
+        $eventDataList = $scraper->processPage($html, new DateTime('2015-04-01'));
 
         $this->assertCount(6, $eventDataList);
+    }
+
+    public function testProcessVersion4() {
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-4.html');
+        $scraper = new Denkmal_Scraper_Source_Saali();
+
+        $eventDataList = $scraper->processPage($html, new DateTime('2016-03-01'));
+
+        $this->assertCount(5, $eventDataList);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            'Sääli',
+            new Denkmal_Scraper_Description('EUROPA (CH) Die neue Leichtigkeit'),
+            new DateTime('2016-03-31 21:00:00')
+        ), $eventDataList[0]);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            'Sääli',
+            new Denkmal_Scraper_Description('Live: Danny & The Two Toms (CH) Rock\'n\'Roll anschliessend DJ by RRC'),
+            new DateTime('2016-04-08 22:00:00')
+        ), $eventDataList[2]);
     }
 }

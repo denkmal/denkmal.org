@@ -22,6 +22,9 @@ class Denkmal_MessagePushNotification_Formatter {
             'body'  => $this->getBody($message),
             'icon'  => $this->getIcon($message),
             'tag'   => 'message',
+            'data'  => [
+                'url' => $this->getUrl(),
+            ],
         ];
     }
 
@@ -64,5 +67,12 @@ class Denkmal_MessagePushNotification_Formatter {
         } else {
             return $this->_render->getUrlResource('layout', 'img/meta/push-notification.png');
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl() {
+        return $this->_render->getUrlPage('Denkmal_Page_Now');
     }
 }

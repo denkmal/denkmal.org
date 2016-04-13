@@ -10,14 +10,15 @@ self.addEventListener('push', function(event) {
     }
     return sendRpc('Denkmal_Push_Notification_Message.getListBySubscription', {
       endpoint: subscription.endpoint
-    }).then(function(dataList) {
+    }).then(function(messageList) {
       var promises = [];
-      for (var i = 0; i < dataList.length; i++) {
-        var data = dataList[i];
-        promises.push(self.registration.showNotification(data['title'], {
-          body: data['body'],
-          icon: data['icon'],
-          tag: data['tag']
+      for (var i = 0; i < messageList.length; i++) {
+        var message = messageList[i];
+        promises.push(self.registration.showNotification(message['title'], {
+          body: message['body'],
+          icon: message['icon'],
+          tag: message['tag'],
+          data: message['data']
         }));
       }
       return Promise.all(promises);
@@ -26,8 +27,9 @@ self.addEventListener('push', function(event) {
 });
 
 self.addEventListener('notificationclick', function(event) {
+  var data = event.notification.data;
   event.notification.close();
-  event.waitUntil(openWindow('/now'));
+  event.waitUntil(openWindow(data['url']));
 });
 
 /**
@@ -48,20 +50,19 @@ function sendRpc(method, params) {
 }
 
 /**
- * @param {String} path
+ * @param {String} url
  * @returns {Promise}
  */
-function openWindow(path) {
+function openWindow(url) {
   return clients.matchAll({type: 'window'}).then(function(clientList) {
     for (var i = 0; i < clientList.length; i++) {
       var client = clientList[i];
-      var url = new URL(client.url);
-      if (url.pathname === path && 'focus' in client) {
+      if (client.url == url && 'focus' in client) {
         return client.focus();
       }
     }
     if (clients.openWindow) {
-      return clients.openWindow(path);
+      return clients.openWindow(url);
     }
   });
 }

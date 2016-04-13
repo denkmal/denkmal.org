@@ -21,6 +21,7 @@ class Denkmal_MessagePushNotification_FormatterTest extends CMTest_TestCase {
 
         $this->assertSame('Example', $formatter->getTitle($message));
         $this->assertSame('Hello World #foo #bar #image', $formatter->getBody($message));
+        $this->assertSame('https://www.denkmal.dev/now', $formatter->getUrl());
     }
 
     public function testUser() {

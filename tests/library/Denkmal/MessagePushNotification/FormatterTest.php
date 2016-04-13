@@ -7,7 +7,9 @@ class Denkmal_MessagePushNotification_FormatterTest extends CMTest_TestCase {
     }
 
     public function testGuest() {
-        $render = new CM_Frontend_Render();
+        $site = $this->getMockSite('Denkmal_Site', null, ['url' => 'https://www.denkmal.org']);
+        $environment = new CM_Frontend_Environment($site);
+        $render = new CM_Frontend_Render($environment);
         $formatter = new Denkmal_MessagePushNotification_Formatter($render);
 
         $venue = Denkmal_Model_Venue::create('Example', false, false);
@@ -21,7 +23,7 @@ class Denkmal_MessagePushNotification_FormatterTest extends CMTest_TestCase {
 
         $this->assertSame('Example', $formatter->getTitle($message));
         $this->assertSame('Hello World #foo #bar #image', $formatter->getBody($message));
-        $this->assertSame('https://www.denkmal.dev/now', $formatter->getUrl());
+        $this->assertSame('https://www.denkmal.org/now', $formatter->getUrl());
     }
 
     public function testUser() {

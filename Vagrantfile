@@ -2,11 +2,13 @@ Vagrant.configure('2') do |config|
   config.ssh.forward_agent = true
   config.vm.box = 'cargomedia/debian-7-amd64-cm'
 
-  config.vm.hostname = 'www.denkmal.dev'
+  config.vm.hostname = 'denkmal.dev.cargomedia.ch'
   if Vagrant.has_plugin? 'landrush'
     config.landrush.enable
-    config.landrush.tld = 'dev'
-    config.landrush.host 'denkmal.dev'
+    config.landrush.tld = 'dev.cargomedia.ch'
+    config.landrush.host 'denkmal.dev.cargomedia.ch'
+    config.landrush.host 'admin-denkmal.dev.cargomedia.ch'
+    config.landrush.host 'origin-denkmal.dev.cargomedia.ch'
   end
 
   if Vagrant.has_plugin? 'vagrant-phpstorm-tunnel'
@@ -24,6 +26,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision :puppet do |puppet|
     puppet.module_path = 'puppet/modules'
     puppet.manifests_path = 'puppet/manifests'
+    puppet.options = ['--templatedir', '/home/vagrant/denkmal/puppet/templates']
   end
 
   config.vm.provision 'shell', run: 'always', inline: [

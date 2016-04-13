@@ -14,7 +14,7 @@ return function (CM_Config_Node $config) {
                 'adapterClass'     => 'CM_MessageStream_Adapter_SocketRedis',
                 'adapterArguments' => [
                     'servers' => [
-                        ['httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => ['https://www.denkmal.dev:8090']],
+                        ['httpHost' => 'localhost', 'httpPort' => 8085, 'sockjsUrls' => ['https://denkmal.dev.cargomedia.ch:8090']],
                     ],
                 ],
             ],
@@ -49,10 +49,10 @@ return function (CM_Config_Node $config) {
 
     $config->Denkmal_Scraper_Source_Lastfm->apiKey = '68dda0be24c60cef36b7f05b70988b74';
 
-    $config->Denkmal_Site->url = 'https://www.denkmal.dev';
-    $config->Denkmal_Site->urlCdn = 'https://origin-www.denkmal.dev';
-    $config->Admin_Site->url = 'https://admin.denkmal.dev';
-    $config->Admin_Site->urlCdn = 'https://origin-www.denkmal.dev';
+    $config->Denkmal_Site->url = 'https://denkmal.dev.cargomedia.ch';
+    $config->Denkmal_Site->urlCdn = 'https://origin-denkmal.dev.cargomedia.ch';
+    $config->Admin_Site->url = 'https://admin-denkmal.dev.cargomedia.ch';
+    $config->Admin_Site->urlCdn = 'https://origin-denkmal.dev.cargomedia.ch';
 
     $config->services['usercontent'] = array(
         'class'     => 'CM_Service_UserContent',
@@ -60,7 +60,7 @@ return function (CM_Config_Node $config) {
             'configList' => array(
                 'default' => array(
                     'filesystem' => 'filesystem-usercontent',
-                    'url'        => 'https://origin-www.denkmal.dev/userfiles',
+                    'url'        => 'https://origin-denkmal.dev.cargomedia.ch/userfiles',
                 )
             ),
         )

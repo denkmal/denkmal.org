@@ -15,10 +15,5 @@ Start and provision the box:
 vagrant up
 ```
 
-Install the SSL certificate on your guest machine:
-```
-sudo security add-trusted-cert -d 'puppet/templates/ssl/denkmal-dev.pem'
-```
-
-The website should now be accessible on your host machine at https://www.denkmal.dev.
-The admin interface runs on https://admin.denkmal.dev (login: `admin@denkmal.org` / `admin`).
+The website should now be accessible on your host machine at https://denkmal.dev.cargomedia.ch.
+The admin interface runs on https://admin-denkmal.dev.cargomedia.ch (login: `admin` / `admin`).

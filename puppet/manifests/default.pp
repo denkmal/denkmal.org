@@ -1,24 +1,27 @@
 node default {
 
-  class {'cm::application':
+  class { 'cm::application':
     development => true,
   }
 
-  class {'cm::services':
-    ssl_key => file('/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.key'),
-    ssl_cert => file('/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.pem'),
+  class { 'cm::services':
+    ssl_key  => template('ssl/*.dev.cargomedia.ch.key'),
+    ssl_cert => template('ssl/*.dev.cargomedia.ch.pem'),
   }
 
-  cm::vhost {'www.denkmal.dev':
-    path => '/home/vagrant/denkmal',
-    debug => true,
-    ssl_key => file("/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.key"),
-    ssl_cert => file("/home/vagrant/denkmal/puppet/templates/ssl/denkmal-dev.pem"),
-    aliases => ['denkmal.dev', 'admin.denkmal.dev'],
-    cdn_origin => 'origin-www.denkmal.dev',
+  Cm::Vhost {
+    path     => '/home/vagrant/denkmal',
+    debug    => true,
+    ssl_key  => template('ssl/*.dev.cargomedia.ch.key'),
+    ssl_cert => template('ssl/*.dev.cargomedia.ch.pem'),
   }
 
-  environment::variable {'PHP_IDE_CONFIG':
+  cm::vhost { 'denkmal.dev.cargomedia.ch':
+    cdn_origin => 'origin-denkmal.dev.cargomedia.ch',
+  }
+  cm::vhost { 'admin-denkmal.dev.cargomedia.ch': }
+
+  environment::variable { 'PHP_IDE_CONFIG':
     value => 'serverName=www.denkmal.dev',
   }
 

@@ -9,8 +9,7 @@ class Denkmal_FormAction_Logout_Process extends CM_FormAction_Abstract {
         /** @var Denkmal_Site $site */
         $site = $response->getSite();
 
-        $response->getRequest()->getSession()->deleteUser();
-        $response->getRequest()->getSession()->setLifetime();
+        $response->getRequest()->getSession()->logoutUser();
 
         $response->redirect($site->getLoginPage(), null, true);
     }

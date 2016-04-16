@@ -107,7 +107,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $this->assertFormResponseError($response, 'Zugriff gesperrt');
     }
 
-    public function testProcessImageNotAllowed() {
+    public function testProcessAnonymousImageNotAllowed() {
         $venue = Denkmal_Model_Venue::create('Foo', false, false);
         $image = new CM_File(DIR_TEST_DATA . '/image.jpg');
         $imageUsercontent = CM_File_UserContent_Temp::create('image.jpg', $image->read());
@@ -123,6 +123,10 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
         $response->process();
 
-        $this->assertFormResponseError($response, 'Bildupload nicht erlaubt');
+        if (Denkmal_Form_Message::getImageAllowed(null)) {
+            $this->assertFormResponseSuccess($response);
+        } else {
+            $this->assertFormResponseError($response, 'Bildupload nicht erlaubt');
+        }
     }
 }

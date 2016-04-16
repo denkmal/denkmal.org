@@ -17,7 +17,7 @@ class Denkmal_Form_Message extends CM_Form_Abstract {
      */
     public static function getImageAllowed(Denkmal_Model_User $user = null) {
         if (null === $user) {
-            return false;
+            return true;
         }
         return $user->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER, Denkmal_Role::HIPSTER);
     }

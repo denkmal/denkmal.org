@@ -144,6 +144,7 @@
 .icon-resize-minimize:before,
 .icon-rotate-ccw:before,
 .icon-rotate-cw:before,
+.icon-sad:before,
 .icon-search:before,
 .icon-select:before,
 .icon-send:before,
@@ -313,6 +314,7 @@
 .icon-resize-minimize:before { content: "\f176"; }
 .icon-rotate-ccw:before { content: "\f177"; }
 .icon-rotate-cw:before { content: "\f178"; }
+.icon-sad:before { content: "\f19b"; }
 .icon-search:before { content: "\f179"; }
 .icon-select:before { content: "\f17a"; }
 .icon-send:before { content: "\f17b"; }

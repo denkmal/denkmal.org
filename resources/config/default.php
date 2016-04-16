@@ -1,6 +1,8 @@
 <?php
 
 return function (CM_Config_Node $config) {
+    $config->installationName = 'denkmal';
+
     $config->CM_Site_Abstract->class = 'Denkmal_Site';
     $config->CM_Model_User->class = 'Denkmal_Model_User';
     $config->CM_Params->class = 'Denkmal_Params';

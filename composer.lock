@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "abd169070690255a31b62f67e92ef2fe",
-    "content-hash": "7f02e141dc7e2779d95b837d136a4eb0",
+    "hash": "261776f3b94fa94b37371e350a9dce18",
+    "content-hash": "3f2aac17d974f8caf20916c32f193192",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,17 +72,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.168.1",
+            "version": "1.172.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "8ede2f2c6267c028d74df9b834b662c5ae3fe99f"
+                "reference": "b6a9c24eca9de963ab0824e8ba3eda6db8e20615"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-8ede2f2c6267c028d74df9b834b662c5ae3fe99f-zip-14be7c.zip",
-                "reference": "8ede2f2c6267c028d74df9b834b662c5ae3fe99f",
-                "shasum": "f000276eadee6588039942014c92cce8d5b9a51e"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-b6a9c24eca9de963ab0824e8ba3eda6db8e20615-zip-5b8bb7.zip",
+                "reference": "b6a9c24eca9de963ab0824e8ba3eda6db8e20615",
+                "shasum": "19db971e57e99d306c0a2b4f7ebb7b4855bfa7e2"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -103,7 +103,7 @@
                 "tomaszdurka/codegenerator": "~0.5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.3.5",
+                "phpunit/phpunit": "~4.8.0",
                 "tomaszdurka/mocka": "~0.11.0"
             },
             "bin": [
@@ -127,7 +127,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-01-30 12:11:55"
+            "time": "2016-04-15 13:31:13"
         },
         {
             "name": "codemonkeys-ru/gcm-message",

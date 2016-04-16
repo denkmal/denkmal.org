@@ -5,7 +5,7 @@
 
   <div class="account">
     {if $viewer}
-      {button_link icon='hipster' theme='transparent' label=$viewer->getDisplayName() page='Denkmal_Page_Account'}
+      {button_link label=$viewer->getDisplayName()|escape icon='hipster' theme='transparent' label=$viewer->getDisplayName() page='Denkmal_Page_Account'}
     {else}
       {button_link icon='hipster' theme='transparent' page='Denkmal_Page_Login'}
     {/if}

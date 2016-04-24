@@ -10,7 +10,7 @@ class Denkmal_Scraper_Genres {
      */
     function __construct($genres) {
         if (!is_array($genres)) {
-            $genres = Functional\map(preg_split('#[,|/]#', $genres), function ($genre) {
+            $genres = Functional\map(preg_split('#(,|/| & |\|)#', $genres), function ($genre) {
                 return strtolower(trim($genre));
             });
         }

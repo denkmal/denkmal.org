@@ -11,6 +11,12 @@ return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->types = [];
     $config->CM_Action_Abstract->types[3] = 'CM_Action_Email';
     $config->CM_Action_Abstract->types[27] = 'Denkmal_Action_Message';
+    $config->CM_Janus_Configuration->types = [];
+    $config->CM_Janus_Configuration->types[67] = 'CM_Janus_Configuration';
+    $config->CM_Janus_Configuration->type = 67;
+    $config->CM_MediaStreams_Service->types = [];
+    $config->CM_MediaStreams_Service->types[68] = 'CM_Janus_Service';
+    $config->CM_MediaStreams_Service->types[69] = 'CM_Wowza_Service';
     $config->CM_Model_Abstract->types = [];
     $config->CM_Model_Abstract->types[5] = 'CM_Model_Language';
     $config->CM_Model_Abstract->types[6] = 'CM_Model_Location';
@@ -23,9 +29,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[13] = 'CM_Model_Stream_Publish';
     $config->CM_Model_Abstract->types[14] = 'CM_Model_Stream_Subscribe';
     $config->CM_Model_Abstract->types[15] = 'CM_Model_StreamChannel_Message';
-    $config->CM_Model_Abstract->types[16] = 'CM_Model_StreamChannel_Video';
     $config->CM_Model_Abstract->types[17] = 'CM_Model_StreamChannel_Message_User';
-    $config->CM_Model_Abstract->types[18] = 'CM_Model_StreamChannelArchive_Video';
     $config->CM_Model_Abstract->types[28] = 'Denkmal_Model_Event';
     $config->CM_Model_Abstract->types[29] = 'Denkmal_Model_Link';
     $config->CM_Model_Abstract->types[30] = 'Denkmal_Model_Message';
@@ -45,6 +49,9 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[63] = 'Denkmal_Push_Subscription';
     $config->CM_Model_Abstract->types[64] = 'Denkmal_Push_Notification_Message';
     $config->CM_Model_Abstract->types[65] = 'CM_Model_Currency';
+    $config->CM_Model_Abstract->types[70] = 'CM_Model_StreamChannel_Media';
+    $config->CM_Model_Abstract->types[71] = 'CM_Model_StreamChannelArchive_Media';
+    $config->CM_Model_Abstract->types[72] = 'CM_StreamChannel_Thumbnail';
     $config->CM_Paging_ContentList_Abstract->types = [];
     $config->CM_Paging_ContentList_Abstract->types[19] = 'CM_Paging_ContentList_Badwords';
     $config->CM_Paging_Log_Abstract->types = [];
@@ -68,7 +75,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
     $config->CM_Stream_Adapter_Abstract->types = [];
     $config->CM_Stream_Adapter_Abstract->types[25] = 'CM_MessageStream_Adapter_SocketRedis';
-    $config->CM_Stream_Adapter_Abstract->types[26] = 'CM_Stream_Adapter_Video_Wowza';
     $config->Denkmal_Scraper_Source_Abstract->types = [];
     $config->Denkmal_Scraper_Source_Abstract->types[45] = 'Denkmal_Scraper_Source_Fingerzeig';
     $config->Denkmal_Scraper_Source_Abstract->types[46] = 'Denkmal_Scraper_Source_Hinterhof';
@@ -76,6 +82,7 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Abstract->types[48] = 'Denkmal_Scraper_Source_Lastfm';
     $config->Denkmal_Scraper_Source_Abstract->types[49] = 'Denkmal_Scraper_Source_Programmzeitung';
     $config->Denkmal_Scraper_Source_Abstract->types[50] = 'Denkmal_Scraper_Source_Saali';
+    $config->Denkmal_Scraper_Source_Abstract->types[73] = 'Denkmal_Scraper_Source_Apawi';
     $config->CM_Mail_Welcome->type = 2;
     $config->CM_Action_Email->type = 3;
     $config->CM_Model_Language->type = 5;
@@ -89,9 +96,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Stream_Publish->type = 13;
     $config->CM_Model_Stream_Subscribe->type = 14;
     $config->CM_Model_StreamChannel_Message->type = 15;
-    $config->CM_Model_StreamChannel_Video->type = 16;
     $config->CM_Model_StreamChannel_Message_User->type = 17;
-    $config->CM_Model_StreamChannelArchive_Video->type = 18;
     $config->CM_Paging_ContentList_Badwords->type = 19;
     $config->CM_Paging_Log_Error->type = 20;
     $config->CM_Paging_Log_Fatal->type = 21;
@@ -99,7 +104,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_Log_Mail->type = 23;
     $config->CM_Paging_Log_Warn->type = 24;
     $config->CM_MessageStream_Adapter_SocketRedis->type = 25;
-    $config->CM_Stream_Adapter_Video_Wowza->type = 26;
     $config->Denkmal_Action_Message->type = 27;
     $config->Denkmal_Model_Event->type = 28;
     $config->Denkmal_Model_Link->type = 29;
@@ -139,7 +143,13 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Push_Notification_Message->type = 64;
     $config->CM_Model_Currency->type = 65;
     $config->CM_App_SetupScript_Currency->type = 66;
-    $config->CM_Class_Abstract->typesMaxValue = 66;
+    $config->CM_Janus_Service->type = 68;
+    $config->CM_Wowza_Service->type = 69;
+    $config->CM_Model_StreamChannel_Media->type = 70;
+    $config->CM_Model_StreamChannelArchive_Media->type = 71;
+    $config->CM_StreamChannel_Thumbnail->type = 72;
+    $config->Denkmal_Scraper_Source_Apawi->type = 73;
+    $config->CM_Class_Abstract->typesMaxValue = 73;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

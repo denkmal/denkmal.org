@@ -5,15 +5,15 @@ node default {
   }
 
   class { 'cm::services':
-    ssl_key  => template('ssl/*.dev.cargomedia.ch.key'),
-    ssl_cert => template('ssl/*.dev.cargomedia.ch.pem'),
+    ssl_key  => template('denkmal/ssl/*.dev.cargomedia.ch.key'),
+    ssl_cert => template('denkmal/ssl/*.dev.cargomedia.ch.pem'),
   }
 
   Cm::Vhost {
     path     => '/home/vagrant/denkmal',
     debug    => true,
-    ssl_key  => template('ssl/*.dev.cargomedia.ch.key'),
-    ssl_cert => template('ssl/*.dev.cargomedia.ch.pem'),
+    ssl_key  => template('denkmal/ssl/*.dev.cargomedia.ch.key'),
+    ssl_cert => template('denkmal/ssl/*.dev.cargomedia.ch.pem'),
   }
 
   cm::vhost { 'denkmal.dev.cargomedia.ch':

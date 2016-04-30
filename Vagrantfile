@@ -24,9 +24,9 @@ Vagrant.configure('2') do |config|
   config.librarian_puppet.placeholder_filename = '.gitkeep'
   config.librarian_puppet.resolve_options = {:force => true}
   config.vm.provision :puppet do |puppet|
-    puppet.module_path = 'puppet/modules'
-    puppet.manifests_path = 'puppet/manifests'
-    puppet.options = ['--templatedir', '/home/vagrant/denkmal/puppet/templates']
+    puppet.environment_path = 'puppet/environments'
+    puppet.environment = 'development'
+    puppet.module_path = ['puppet/modules', 'puppet/environments/development/modules']
   end
 
   config.vm.provision 'shell', run: 'always', inline: [

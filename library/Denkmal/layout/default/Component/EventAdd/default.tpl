@@ -24,7 +24,7 @@
   <h2>{translate 'Event Has Been Added'}</h2>
   {translate 'Thank you. Event will be online within 24 hours.'}
   <div class="actions">
-    {button_link class="addSimilar" label={translate 'Add similar event'}}
-    {button_link page="Denkmal_Page_Index" theme="highlight" label={translate 'What\'s up today'}}
+    {button_link class="addSimilar" label={translate 'Add Similar Event'}}
+    {button_link page="Denkmal_Page_Index" theme="highlight" label={translate 'What\'s Up Today'}}
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="head clearfix">
   {if !$messageList->getCount()}
-    {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Write something'} theme='transparent'}
+    {button_link page='Denkmal_Page_Now' icon='chat-flash' label={translate 'Write Something'} theme='transparent'}
   {/if}
 
   {if $venue->getCoordinates() && !$venue->getSecret()}
@@ -17,6 +17,6 @@
 
 {if $messageList->getCount()}
   <div class="action-chat">
-    {button_link page='Denkmal_Page_Now' venue=$venue->getId() icon='chat-flash' label="{translate 'Read more'}…" theme='transparent'}
+    {button_link page='Denkmal_Page_Now' venue=$venue->getId() icon='chat-flash' label="{translate 'Read More'}…" theme='transparent'}
   </div>
 {/if}

@@ -1,6 +1,6 @@
 <div class="teaser">
   <div class="message-action">
-    {button_link label={translate 'Write something!'} icon='chat-flash' class='showForm' theme='highlight'}
+    {button_link label={translate 'Write Something!'} icon='chat-flash' class='showForm' theme='highlight'}
   </div>
 
   <div class="account">
@@ -37,7 +37,7 @@
             {translate 'You have to be nearby a Denkmal venue. Make sure you have location services activated.'}
           </p>
           <div class="action">
-            {button_link label={translate 'Find venue'} icon='location' class='retryLocation'}
+            {button_link label={translate 'Find Venue'} icon='location' class='retryLocation'}
           </div>
         </div>
       </div>

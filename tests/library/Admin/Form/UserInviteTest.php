@@ -31,8 +31,8 @@ class Admin_Form_UserInviteTest extends CMTest_TestCase {
         $this->assertSame('foo@example.com', $userInvite->getEmail());
         $this->assertEquals($expires, $userInvite->getExpires());
 
-        $logMailEntry = (new CM_Paging_Log_Mail())->getItem(0);
-        $this->assertContains('Einladung', $logMailEntry['msg']);
-        $this->assertContains('foo@example.com', $logMailEntry['metaInfo']['to']);
+        $logMailEntry = (new CM_Paging_Log_Mail([CM_Log_Logger::INFO]))->getItem(0);
+        $this->assertContains('Einladung', $logMailEntry['message']);
+        $this->assertSame('foo@example.com', $logMailEntry['context']['extra']['to'][0]['address']);
     }
 }

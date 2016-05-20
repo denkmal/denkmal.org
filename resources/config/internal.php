@@ -52,15 +52,13 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[70] = 'CM_Model_StreamChannel_Media';
     $config->CM_Model_Abstract->types[71] = 'CM_Model_StreamChannelArchive_Media';
     $config->CM_Model_Abstract->types[72] = 'CM_StreamChannel_Thumbnail';
+    $config->CM_Paging_Log->types = [];
+    $config->CM_Paging_Log->types[74] = 'CM_Paging_Log';
+    $config->CM_Paging_Log->types[75] = 'CM_Paging_Log_Javascript';
+    $config->CM_Paging_Log->types[76] = 'CM_Paging_Log_Mail';
+    $config->CM_Paging_Log->type = 74;
     $config->CM_Paging_ContentList_Abstract->types = [];
     $config->CM_Paging_ContentList_Abstract->types[19] = 'CM_Paging_ContentList_Badwords';
-    $config->CM_Paging_Log_Abstract->types = [];
-    $config->CM_Paging_Log_Abstract->types[20] = 'CM_Paging_Log_Error';
-    $config->CM_Paging_Log_Abstract->types[21] = 'CM_Paging_Log_Fatal';
-    $config->CM_Paging_Log_Abstract->types[22] = 'CM_Paging_Log_JsError';
-    $config->CM_Paging_Log_Abstract->types[23] = 'CM_Paging_Log_Mail';
-    $config->CM_Paging_Log_Abstract->types[24] = 'CM_Paging_Log_Warn';
-    $config->CM_Paging_Log_Abstract->types[57] = 'CM_Paging_Log_NotFound';
     $config->CM_Provision_Script_OptionBased->types = [];
     $config->CM_Provision_Script_OptionBased->types[52] = 'CM_Http_SetupScript';
     $config->CM_Provision_Script_OptionBased->types[53] = 'CM_App_SetupScript_Translations';
@@ -98,11 +96,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_StreamChannel_Message->type = 15;
     $config->CM_Model_StreamChannel_Message_User->type = 17;
     $config->CM_Paging_ContentList_Badwords->type = 19;
-    $config->CM_Paging_Log_Error->type = 20;
-    $config->CM_Paging_Log_Fatal->type = 21;
-    $config->CM_Paging_Log_JsError->type = 22;
-    $config->CM_Paging_Log_Mail->type = 23;
-    $config->CM_Paging_Log_Warn->type = 24;
     $config->CM_MessageStream_Adapter_SocketRedis->type = 25;
     $config->Denkmal_Action_Message->type = 27;
     $config->Denkmal_Model_Event->type = 28;
@@ -133,7 +126,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Elasticsearch_SetupScript->type = 54;
     $config->Denkmal_App_SetupScript_LoadLanguage->type = 55;
     $config->Denkmal_ExampleData_Users->type = 56;
-    $config->CM_Paging_Log_NotFound->type = 57;
     $config->Denkmal_Model_Tag->type = 58;
     $config->Denkmal_App_SetupScript_Tags->type = 59;
     $config->Denkmal_ExampleData_Venues->type = 60;
@@ -149,7 +141,9 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_StreamChannelArchive_Media->type = 71;
     $config->CM_StreamChannel_Thumbnail->type = 72;
     $config->Denkmal_Scraper_Source_Apawi->type = 73;
-    $config->CM_Class_Abstract->typesMaxValue = 73;
+    $config->CM_Paging_Log_Javascript->type = 75;
+    $config->CM_Paging_Log_Mail->type = 76;
+    $config->CM_Class_Abstract->typesMaxValue = 76;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

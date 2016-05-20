@@ -6,6 +6,6 @@
   {component name='Denkmal_Component_Login'}
   <hr />
   <div class="hipster-info">
-    {translate 'Denkmal Hipster haben spezielle Berechtigungen. <a href="{$urlEmail}">Kontaktiere uns</a> bei Interesse.' urlEmail="mailto:{$render->getSite()->getEmailAddress()}"}
+    {translate 'Denkmal Hipster have special access rights. <a href="{$urlEmail}">Contact us</a> if you\'re interested.' urlEmail="mailto:{$render->getSite()->getEmailAddress()}"}
   </div>
 {/block}

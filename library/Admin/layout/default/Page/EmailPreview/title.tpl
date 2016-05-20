@@ -1,1 +1,1 @@
-{translate 'E-Mail Vorschau'}
+{translate 'Email Preview'}

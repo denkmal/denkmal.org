@@ -24,5 +24,5 @@
 {/strip}
 
 {if null !== $options.cardinality}
-  <p class="cardinality-info">{translate '{$count} Sticker verfügbar' count="<span class='cardinality-left'>{$options.cardinality}</span>"}</p>
+  <p class="cardinality-info">{translate '{$count} Stickers available' count="<span class='cardinality-left'>{$options.cardinality}</span>"}</p>
 {/if}

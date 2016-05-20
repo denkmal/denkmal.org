@@ -5,7 +5,7 @@
     <div class="column2">
       {component name='Admin_Component_Filter_Search' searchTerm=$searchTerm urlPage='Admin_Page_Links'}
       <div class="addNew">
-        <div class="toggleNext">{translate 'Hinzufügen'}<span class="icon-plus"></span></div>
+        <div class="toggleNext">{translate 'Add'}<span class="icon-plus"></span></div>
         <div class="toggleNext-content">
           {component name='Admin_Component_LinkAdd'}
         </div>

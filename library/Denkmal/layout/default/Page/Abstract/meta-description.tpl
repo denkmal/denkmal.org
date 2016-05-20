@@ -1,1 +1,1 @@
-{translate '{$siteName} - Basels Eventkalender. WaslOift am Rheinknie und wie hört es sich an?' siteName=$render->getSite()->getName()|escape}
+{translate '{$siteName} - Basel\'s event calendar. What\'s up in Basel and how does it sound?' siteName=$render->getSite()->getName()|escape}

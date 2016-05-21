@@ -55,12 +55,13 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    * @param {Boolean} state
    */
   setWeekdayMenuVisible: function(state) {
+    var callback = function(state) {
+      $(this).toggleClass('state-weekdayMenu', state);
+    };
     if (state) {
-      this.$el.toggleModal(function(state) {
-        $(this).toggleClass('state-weekdayMenu', state);
-      });
+      this.$el.toggleModal('open', callback);
     } else {
-      this.$el.toggleModal('close');
+      this.$el.toggleModal('close', callback);
     }
   },
 

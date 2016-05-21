@@ -73,6 +73,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Site_Abstract->types = [];
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
     $config->CM_Site_Abstract->types[79] = 'Denkmal_Site_Default';
+    $config->CM_Site_Abstract->types[80] = 'Denkmal_Site_Region_Basel';
     $config->CM_Stream_Adapter_Abstract->types = [];
     $config->CM_Stream_Adapter_Abstract->types[25] = 'CM_MessageStream_Adapter_SocketRedis';
     $config->Denkmal_Scraper_Source_Abstract->types = [];
@@ -147,8 +148,9 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Model_Region->type = 77;
     $config->Denkmal_App_SetupScript_Locations->type = 78;
     $config->Denkmal_Site_Default->type = 79;
-    $config->CM_Class_Abstract->typesMaxValue = 79;
-    
+    $config->Denkmal_Site_Region_Basel->type = 80;
+    $config->CM_Class_Abstract->typesMaxValue = 80;
+
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UPDATE] = 2;
@@ -164,5 +166,5 @@ return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UNSUBSCRIBE] = 12;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::SEND] = 13;
     $config->CM_Action_Abstract->verbsMaxValue = 13;
-    
+
 };

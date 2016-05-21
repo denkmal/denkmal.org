@@ -29,7 +29,7 @@ class Denkmal_FormField_Tags extends \CM_FormField_Abstract {
         if (Functional\some($tagListGrouped, function (array $tagGroup) {
             return count($tagGroup) > $this->_options['itemCardinality'];
         } )) {
-            throw new CM_Exception_FormFieldValidation(new CM_I18n_Phrase('Too many tags from the same type.'));
+            throw new CM_Exception_FormFieldValidation(new CM_I18n_Phrase('Too many tags of the same type.'));
         }
 
         return $tagList;

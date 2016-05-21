@@ -69,6 +69,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Provision_Script_OptionBased->types[59] = 'Denkmal_App_SetupScript_Tags';
     $config->CM_Provision_Script_OptionBased->types[60] = 'Denkmal_ExampleData_Venues';
     $config->CM_Provision_Script_OptionBased->types[66] = 'CM_App_SetupScript_Currency';
+    $config->CM_Provision_Script_OptionBased->types[78] = 'Denkmal_App_SetupScript_Locations';
     $config->CM_Site_Abstract->types = [];
     $config->CM_Site_Abstract->types[35] = 'Denkmal_Site';
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
@@ -145,7 +146,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_Log_Javascript->type = 75;
     $config->CM_Paging_Log_Mail->type = 76;
     $config->Denkmal_Model_Region->type = 77;
-    $config->CM_Class_Abstract->typesMaxValue = 77;
+    $config->Denkmal_App_SetupScript_Locations->type = 78;
+    $config->CM_Class_Abstract->typesMaxValue = 78;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

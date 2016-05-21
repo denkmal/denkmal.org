@@ -1,6 +1,7 @@
 <?php
 
 class DenkmalTest_TH extends CMTest_TH {
+
     /**
      * @return CM_Model_Location
      */
@@ -27,9 +28,25 @@ class DenkmalTest_TH extends CMTest_TH {
     }
 
     /**
+     * @param string|null            $name
+     * @param string|null            $slug
+     * @param string|null            $abbreviation
+     * @param CM_Model_Location|null $location
      * @return Denkmal_Model_Region
      */
-    public static function createRegion() {
-        return Denkmal_Model_Region::create('New York', 'NY' , 'JFK', self::createLocationCity());
+    public static function createRegion($name = null, $slug = null, $abbreviation = null, CM_Model_Location $location = null) {
+        if (null === $name) {
+            $name = 'New York';
+        }
+        if (null === $slug) {
+            $slug = 'NY';
+        }
+        if (null === $abbreviation) {
+            $abbreviation = 'JFK';
+        }
+        if (null === $location) {
+            $location = self::createLocationCity();
+        }
+        return Denkmal_Model_Region::create((string) $name, (string) $slug, (string) $abbreviation, $location);
     }
 }

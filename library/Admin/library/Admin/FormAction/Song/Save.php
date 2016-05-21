@@ -13,7 +13,7 @@ class Admin_FormAction_Song_Save extends Admin_FormAction_Abstract {
         /** @var Denkmal_Params $params */
         $songId = $params->getInt('songId');
         if ($songSameName && $songSameName->getId() != $songId) {
-            $response->addError($response->getRender()->getTranslation('Name wird bereits verwendet'), 'label');
+            $response->addError($response->getRender()->getTranslation('Name already in use'), 'label');
         }
     }
 

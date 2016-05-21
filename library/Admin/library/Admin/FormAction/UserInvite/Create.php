@@ -12,7 +12,7 @@ class Admin_FormAction_UserInvite_Create extends Admin_FormAction_Abstract {
         $sendEmail = $params->getBoolean('sendEmail');
 
         if (null === $email && true === $sendEmail) {
-            $response->addError($response->getRender()->getTranslation('Einladung kann nicht verschickt werden weil E-Mail fehlt.'), 'sendEmail');
+            $response->addError($response->getRender()->getTranslation('Can\'t send invitation. Email is missing.'), 'sendEmail');
         }
     }
 

@@ -13,7 +13,7 @@ class Admin_FormAction_Link_Save extends Admin_FormAction_Abstract {
         /** @var Denkmal_Params $params */
         $linkId = $params->getInt('linkId');
         if ($linkSameName && $linkSameName->getId() != $linkId) {
-            $response->addError($response->getRender()->getTranslation('Name wird bereits verwendet'), 'label');
+            $response->addError($response->getRender()->getTranslation('Name already in use'), 'label');
         }
     }
 

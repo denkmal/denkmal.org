@@ -11,6 +11,7 @@ class Admin_Menu_Main extends CM_Menu {
             array('label'   => 'More…', 'page' => 'Admin_Page_Scraper',
                   'submenu' => array(
                       array('label' => 'Scraper', 'page' => 'Admin_Page_Scraper'),
+                      array('label' => 'Translations', 'page' => 'Admin_Page_Translations'),
                       array('label' => 'Users', 'page' => 'Admin_Page_Users'),
                       array('label' => 'Invites', 'page' => 'Admin_Page_UserInvites'),
                       array('label' => 'Critical', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::CRITICAL)),

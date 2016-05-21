@@ -6,8 +6,8 @@
     <h2>{translate 'Events for "{$searchTerm}"' searchTerm="<span class=\"searchTerm\">{$searchTerm|escape}</span>"}</h2>
     {component name='Admin_Component_EventList_Search' text=$searchTerm}
   {else}
-    <h2>{translate 'Events from {$date}' date="<time class=\"currentDate\"><span class=\"weekday\">{date_weekday date=$date}</span>{date time=$date->getTimestamp()}</time>"}</h2>
-    {menu name='weekdays' template='weekdays' class="clearfix"}
+    <h2>{translate 'Events on {$date}' date="<time class=\"currentDate\"><span class=\"weekday\">{date_weekday date=$date}</span>{date time=$date->getTimestamp()}</time>"}</h2>
+    {menu name='weekdays' template='weekdays' class="menu-pills"}
     <div class="columns">
       <div class="column2">
         <h2>{translate 'Events'}</h2>

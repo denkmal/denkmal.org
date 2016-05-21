@@ -59,7 +59,12 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         $this->_set('slug', $slug);
     }
 
-    //TODO timezone
+    /**
+     * @return DateTimeZone|null
+     */
+    public function getTimeZone() {
+        return $this->getLocation()->getTimeZone();
+    }
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition([

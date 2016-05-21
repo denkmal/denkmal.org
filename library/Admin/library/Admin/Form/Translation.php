@@ -14,18 +14,10 @@ class Admin_Form_Translation extends CM_Form_Abstract {
     }
 
     /**
-     * @param SK_User $user
+     * @param Denkmal_Model_User $user
      * @return bool
      */
-    public function canEdit(SK_User $user) {
-        $language = $this->getParams()->getLanguage('language');
-
-        if ($user->getRoles()->contains(SK_Role::ADMIN)) {
-            return true;
-        }
-        if ($user->getRoles()->contains(SK_Role::TRANSLATOR) && !$language->equals(CM_Model_Language::findDefault())) {
-            return true;
-        }
-        return false;
+    public function canEdit(Denkmal_Model_User $user) {
+        return $user->getRoles()->contains(Denkmal_Role::ADMIN);
     }
 }

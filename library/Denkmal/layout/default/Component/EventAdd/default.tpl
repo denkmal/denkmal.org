@@ -15,7 +15,7 @@
     {formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam (optional)'}}
     {formField name='urls' label={translate 'Websites'} placeholder={translate 'www.myspace.com/ich (optional)'} append="<small>({translate 'Will be stored - plesae only provide once.'})</small>"}
     {formAction action='Create' label={translate 'Add'} alternatives=
-    {button_link onclick="window.open('mailto:{$render->getSite()->getEmailAddress()}')" icon='message' label={translate 'Contact'}}
+    {button_link href="mailto:{$render->getSite()->getEmailAddress()}" icon='message' label={translate 'Contact'}}
     }
   </div>
 {/form}

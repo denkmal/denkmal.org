@@ -1,0 +1,83 @@
+.clipSlide {
+  max-height: 160px;
+}
+
+.toolbar {
+  padding: 10px 0;
+
+  .backupWordCount {
+    float: right;
+    display: block;
+    padding: 4px;
+  }
+
+  .CM_FormField_Abstract {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 1px;
+
+    input {
+      width: 300px;
+    }
+  }
+}
+
+.translationList {
+  li {
+    &.header div {
+      font-weight: bold;
+    }
+    .keyWrapper, .valueWrapper {
+      width: 50%;
+      float: left;
+    }
+    .valueWrapper {
+      text-align: right;
+    }
+    .key {
+      margin: 4px 0 6px 0;
+    }
+    .variables {
+      color: lighten(@colorFgSubtle, 20);
+    }
+    .backupValue {
+      margin-top: 12px;
+      padding: 4px;
+      color: darken(@colorFgSubtle, 5);
+    }
+    .wordCount {
+      display: block;
+      color: @colorFgBorderEmphasize3;
+      text-align: right;
+      font-style: italic;
+    }
+    .formField {
+      width: auto;
+      padding: 4px;
+
+      textarea {
+        padding: 0 4px;
+        line-height: 1.2em;
+      }
+    }
+    .button.copy {
+      margin-right: 5px;
+      margin-top: 5px;
+      float: right;
+    }
+    .button {
+      display: none;
+    }
+    form.modified .valueWrapper {
+      background-color: @colorNotice;
+
+      .button {
+        display: inline-block;
+      }
+    }
+    form:not(.modified) .isUnset textarea {
+      color: @colorFgSubtle;
+      font-style: italic;
+    }
+  }
+}

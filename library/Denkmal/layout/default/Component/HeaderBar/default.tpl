@@ -9,14 +9,14 @@
       <p class="slogan">{translate 'What\'s up in Basel?!'}</p>
     </div>
 
-    {menu name='main' depth=0 class='menu-header'}
+    {menu name='main' class='menu-header'}
   </div>
 
   <div class="weekMenu-wrapper">
     <div class="navigate navigate-left">
       <span class="icon-arrow-left"></span>
     </div>
-    {menu name='dates' template='weekdays' class='menu-header'}
+    {menu name='dates' class='menu-header' template='weekdays'}
     <div class="navigate navigate-right">
       <span class="icon-arrow-right"></span>
     </div>

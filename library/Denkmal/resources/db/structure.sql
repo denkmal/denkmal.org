@@ -168,6 +168,19 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_tag_model` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
+CREATE TABLE `denkmal_model_region` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `slug` varchar(64) NOT NULL,
+  `abbreviation` varchar(16) NOT NULL,
+  `locationLevel` int(11) unsigned NOT NULL,
+  `locationId` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`),
+  UNIQUE KEY `abbreviation` (`abbreviation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 CREATE TABLE IF NOT EXISTS `denkmal_push_subscription` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `endpoint` varchar(255) NOT NULL,

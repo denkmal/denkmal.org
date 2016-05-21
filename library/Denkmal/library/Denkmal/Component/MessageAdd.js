@@ -64,7 +64,7 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
    * @param {Boolean} state
    */
   toggleText: function(state) {
-    this.$('.form').toggleClass('state-text', state);
+    this.$('.Denkmal_Form_Message').toggleClass('state-text', state);
     if (state) {
       this._getForm().getField('text').setFocus();
     }
@@ -74,7 +74,7 @@ var Denkmal_Component_MessageAdd = Denkmal_Component_Abstract.extend({
    * @param {Boolean} state
    */
   toggleImage: function(state) {
-    this.$('.form').toggleClass('state-image', state);
+    this.$('.Denkmal_Form_Message').toggleClass('state-image', state);
     if (state) {
       this._getForm().getField('image').getInput().click();
     }

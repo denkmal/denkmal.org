@@ -96,4 +96,20 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         $region->commit();
         return $region;
     }
+
+    /**
+     * @param string $slug
+     * @return Denkmal_Model_Region|null
+     */
+    public static function findBySlug($slug) {
+        $slug = (string) $slug;
+        $cache = CM_Cache_Local::getInstance();
+        $regionId = $cache->get($cache->key(__METHOD__, $slug), function () use ($slug) {
+            return CM_Db_Db::select('denkmal_model_region', 'id', ['slug' => $slug])->fetchColumn();
+        });
+        if (!$regionId) {
+            return null;
+        }
+        return new self($regionId);
+    }
 }

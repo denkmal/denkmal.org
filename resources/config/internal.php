@@ -52,6 +52,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[70] = 'CM_Model_StreamChannel_Media';
     $config->CM_Model_Abstract->types[71] = 'CM_Model_StreamChannelArchive_Media';
     $config->CM_Model_Abstract->types[72] = 'CM_StreamChannel_Thumbnail';
+    $config->CM_Model_Abstract->types[77] = 'Denkmal_Model_Region';
     $config->CM_Paging_Log->types = [];
     $config->CM_Paging_Log->types[74] = 'CM_Paging_Log';
     $config->CM_Paging_Log->types[75] = 'CM_Paging_Log_Javascript';
@@ -143,7 +144,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Apawi->type = 73;
     $config->CM_Paging_Log_Javascript->type = 75;
     $config->CM_Paging_Log_Mail->type = 76;
-    $config->CM_Class_Abstract->typesMaxValue = 76;
+    $config->Denkmal_Model_Region->type = 77;
+    $config->CM_Class_Abstract->typesMaxValue = 77;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

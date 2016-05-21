@@ -8,13 +8,13 @@ class Denkmal_Model_RegionTest extends CMTest_TestCase {
 
     public function testCreate() {
         $country = CM_Model_Location::createCountry('FooCountry', 'FC');
-        $locationCity = CM_Model_Location::createCity($country, 'BarCity' , -1.0 , 2.0 );
-        $region = Denkmal_Model_Region::create('foo', 'bar', 'baz' ,  $locationCity);
+        $locationCity = CM_Model_Location::createCity($country, 'BarCity', -1.0, 2.0);
+        $region = Denkmal_Model_Region::create('foo', 'bar', 'baz', $locationCity);
 
         $this->assertInstanceOf('Denkmal_Model_Region', $region);
         $this->assertSame('foo', $region->getName());
-        $this->assertSame('bar', $region->getAbbreviation());
-        $this->assertSame('baz', $region->getSlug());
+        $this->assertSame('bar', $region->getSlug());
+        $this->assertSame('baz', $region->getAbbreviation());
         $this->assertEquals($locationCity, $region->getLocation());
     }
 }

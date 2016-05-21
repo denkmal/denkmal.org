@@ -20,7 +20,7 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
      * @return CM_Model_Location
      */
     public function getLocation() {
-        return CM_Model_Location::findByAttributes($this->_get('locationLevel'), $this->_get('locationId'));
+        return new CM_Model_Location($this->_get('locationLevel'), $this->_get('locationId'));
     }
 
     /**
@@ -58,14 +58,14 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
     public function setSlug($slug) {
         $this->_set('slug', $slug);
     }
-    
+
     //TODO timezone
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition([
-            'code'          => ['type' => 'string'],
+            'name'          => ['type' => 'string'],
             'slug'          => ['type' => 'string'],
-            'label'         => ['type' => 'string'],
+            'abbreviation'  => ['type' => 'string'],
             'locationLevel' => ['type' => 'int'],
             'locationId'    => ['type' => 'int'],
         ]);

@@ -24,11 +24,11 @@ class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
         }
 
         if (null !== Denkmal_Model_User::findByUsername($username)) {
-            $response->addError($response->getRender()->getTranslation('Username already in use'), 'username');
+            $response->addError($response->getRender()->getTranslation('Username already in use.'), 'username');
         }
 
         if (null !== Denkmal_Model_User::findByEmail($email)) {
-            $response->addError($response->getRender()->getTranslation('Email already in use'), 'email');
+            $response->addError($response->getRender()->getTranslation('Email already in use.'), 'email');
         }
     }
 

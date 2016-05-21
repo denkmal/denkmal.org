@@ -12,13 +12,13 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
         $viewer = $response->getViewer();
 
         if ($site->getAnonymousMessagingDisabled()) {
-            $response->addError($response->getRender()->getTranslation('Access denied'));
+            $response->addError($response->getRender()->getTranslation('Access denied!'));
         }
         if ($params->has('image') && !Denkmal_Form_Message::getImageAllowed($viewer)) {
             $response->addError($response->getRender()->getTranslation('Upload not allowed.'));
         }
         if (!$params->has('tags') && !$params->has('text') && !$params->has('image')) {
-            $response->addError($response->getRender()->getTranslation('Please add message'), 'tags');
+            $response->addError($response->getRender()->getTranslation('Please add a message.'), 'tags');
         }
     }
 

@@ -2,11 +2,6 @@
 
 class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
 
-    protected function setUp() {
-        CM_Config::get()->Denkmal_Site->url = 'http://denkmal.test';
-        CM_Config::get()->Denkmal_Site->urlCdn = 'http://cdn.denkmal.test';
-    }
-
     public function tearDown() {
         CMTest_TH::clearEnv();
     }
@@ -49,6 +44,7 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
         $created = new DateTime();
         $maxMessages = 5;
         $minMessagesVenue = 4;
+        $settings = new Denkmal_App_Settings();
 
         $venueNoEvents = Denkmal_Model_Venue::create('Example 1', true, false);
         $messageListNoEvent = array();
@@ -58,7 +54,7 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
         }
 
         $venueHasEvents = Denkmal_Model_Venue::create('Example 2', true, false);
-        $eventDate = Denkmal_Site::getCurrentDate()->add(new DateInterval('P2D'));
+        $eventDate = $settings->getCurrentDate()->add(new DateInterval('P2D'));
         Denkmal_Model_Event::create($venueHasEvents, 'Foo', true, false, $eventDate);
         $messageListHasEvent = array();
         for ($i = 0; $i < $minMessagesVenue + 7; $i++) {

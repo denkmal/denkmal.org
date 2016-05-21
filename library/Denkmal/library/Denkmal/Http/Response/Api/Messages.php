@@ -45,8 +45,9 @@ class Denkmal_Http_Response_Api_Messages extends Denkmal_Http_Response_Api_Abstr
         if (0 === $this->_minMessagesVenue) {
             return array();
         }
-        $dateStart = Denkmal_Site::getCurrentDate();
-        $dateEnd = Denkmal_Site::getCurrentDate()->add(new DateInterval('P6D'));
+        $settings = new Denkmal_App_Settings();
+        $dateStart = $settings->getCurrentDate();
+        $dateEnd = $settings->getCurrentDate()->add(new DateInterval('P6D'));
         $venueList = new Denkmal_Paging_Venue_HasEventsWithin($dateStart, $dateEnd);
 
         $messageCountByVenue = array();

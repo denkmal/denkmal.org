@@ -6,8 +6,8 @@ abstract class Denkmal_Page_Abstract extends CM_Page_Abstract {
     protected $_params;
 
     public function prepareResponse(CM_Frontend_Environment $environment, CM_Http_Response_Page $response) {
-        $site = new Denkmal_Site();
-        $suspension = $site->getSuspension();
+        $settings = new Denkmal_App_Settings();
+        $suspension = $settings->getSuspension();
         if ($suspension->isActive()) {
             if (!$this instanceof Denkmal_Page_Suspended) {
                 $response->redirect('Denkmal_Page_Suspended');

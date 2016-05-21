@@ -12,8 +12,6 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
         $this->_hashToken = 'abcdef';
         $this->_hashAlgorithm = 'sha1';
 
-        CM_Config::get()->Denkmal_Site->url = 'http://denkmal.test';
-        CM_Config::get()->Denkmal_Site->urlCdn = 'http://cdn.denkmal.test';
         CM_Config::get()->Denkmal_Http_Response_Api_Message->hashToken = $this->_hashToken;
         CM_Config::get()->Denkmal_Http_Response_Api_Message->hashAlgorithm = $this->_hashAlgorithm;
     }

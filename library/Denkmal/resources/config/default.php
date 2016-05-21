@@ -1,8 +1,6 @@
 <?php
 
 return function (CM_Config_Node $config) {
-    $config->dayOffset = 6;
-
     $config->Denkmal_Http_Response_Api_Message->hashToken = 'very-secret';
     $config->Denkmal_Http_Response_Api_Message->hashAlgorithm = 'sha1';
 

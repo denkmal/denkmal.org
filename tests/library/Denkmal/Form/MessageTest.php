@@ -88,8 +88,8 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
     }
 
     public function testProcessAnonymousMessagingDisabled() {
-        $site = new Denkmal_Site();
-        $site->setAnonymousMessagingDisabled(true);
+        $settings = new Denkmal_App_Settings();
+        $settings->setAnonymousMessagingDisabled(true);
 
         $venue = Denkmal_Model_Venue::create('Foo', false, false);
 

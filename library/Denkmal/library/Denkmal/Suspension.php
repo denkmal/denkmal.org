@@ -2,16 +2,6 @@
 
 class Denkmal_Suspension extends CM_Class_Abstract {
 
-    /** @var Denkmal_Site */
-    private $_site;
-
-    /**
-     * @param Denkmal_Site $site
-     */
-    public function __construct(Denkmal_Site $site) {
-        $this->_site = $site;
-    }
-
     /**
      * @return DateTime|null
      */

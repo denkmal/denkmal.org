@@ -7,7 +7,8 @@ class Denkmal_Paging_Event_VenueFuture extends Denkmal_Paging_Event_Abstract {
      * @param bool|null           $showAll
      */
     public function __construct(Denkmal_Model_Venue $venue, $showAll = null) {
-        $now = Denkmal_Site::getCurrentDate();
+        $settings = new Denkmal_App_Settings();
+        $now = $settings->getCurrentDate();
         $fromStampMin = $now->getTimestamp();
 
         $where = '`venue` = ' . $venue->getId();

@@ -71,8 +71,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Provision_Script_OptionBased->types[66] = 'CM_App_SetupScript_Currency';
     $config->CM_Provision_Script_OptionBased->types[78] = 'Denkmal_App_SetupScript_Locations';
     $config->CM_Site_Abstract->types = [];
-    $config->CM_Site_Abstract->types[35] = 'Denkmal_Site';
     $config->CM_Site_Abstract->types[36] = 'Admin_Site';
+    $config->CM_Site_Abstract->types[79] = 'Denkmal_Site_Default';
     $config->CM_Stream_Adapter_Abstract->types = [];
     $config->CM_Stream_Adapter_Abstract->types[25] = 'CM_MessageStream_Adapter_SocketRedis';
     $config->Denkmal_Scraper_Source_Abstract->types = [];
@@ -107,7 +107,6 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Model_User->type = 32;
     $config->Denkmal_Model_Venue->type = 33;
     $config->Denkmal_Model_VenueAlias->type = 34;
-    $config->Denkmal_Site->type = 35;
     $config->Admin_Site->type = 36;
     $config->Denkmal_Model_MessageImage->type = 37;
     $config->Admin_Mail_EventNotification->type = 38;
@@ -147,7 +146,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_Log_Mail->type = 76;
     $config->Denkmal_Model_Region->type = 77;
     $config->Denkmal_App_SetupScript_Locations->type = 78;
-    $config->CM_Class_Abstract->typesMaxValue = 78;
+    $config->Denkmal_Site_Default->type = 79;
+    $config->CM_Class_Abstract->typesMaxValue = 79;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

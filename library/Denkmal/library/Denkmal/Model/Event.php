@@ -56,7 +56,8 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @return DateTime
      */
     public function getUntilEndOfDay() {
-        $dayOffset = Denkmal_Site::getDayOffset();
+        $settings = new Denkmal_App_Settings();
+        $dayOffset = $settings->getDayOffset();
         $untilEndOfDay = clone $this->getFrom();
         $untilEndOfDay->modify('-' . $dayOffset . ' hours');
         $untilEndOfDay->modify('+1 day');

@@ -10,7 +10,7 @@ class Denkmal_FormAction_Login_Process extends CM_FormAction_Abstract {
     }
 
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        /** @var Denkmal_Site $site */
+        /** @var Denkmal_Site_Abstract $site */
         $site = $response->getSite();
 
         try {

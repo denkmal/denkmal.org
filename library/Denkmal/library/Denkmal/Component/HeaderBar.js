@@ -11,7 +11,7 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
   narrow: null,
 
   events: {
-    'click .menu.dates .navButton': function() {
+    'click .menu.dates a': function() {
       if (this.narrow) {
         var state = !this.$el.hasClass('state-weekdayMenu');
         this.setWeekdayMenuVisible(state);

@@ -1,6 +1,6 @@
 {block name='headline'}
   {if $searchTerm}
-    <h2>{translate 'Suchergebnis für `{$searchTerm}`' searchTerm=$searchTerm}</h2>
+    <h2>{translate 'Search results for `{$searchTerm}`' searchTerm=$searchTerm}</h2>
   {/if}
 {/block}
 
@@ -14,6 +14,6 @@
   </ul>
   {paging paging=$linkList}
 {else}
-  <div class="noContent">{block name='noContent'}{translate 'Keine Links vorhanden.'}{/block}</div>
+  <div class="noContent">{block name='noContent'}{translate 'No links.'}{/block}</div>
 {/if}
 

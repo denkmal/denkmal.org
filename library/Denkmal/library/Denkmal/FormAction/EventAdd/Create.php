@@ -12,14 +12,14 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
         $now = new DateTime();
 
         if ($event->getFrom() < $now && !$event->getUntil()) {
-            $response->addError($response->getRender()->getTranslation('Event in der Vergangenheit'), 'date');
+            $response->addError($response->getRender()->getTranslation('Event is in the past.'), 'date');
         }
         if ($event->getUntil() < $now && $event->getUntil()) {
-            $response->addError($response->getRender()->getTranslation('Event in der Vergangenheit'), 'date');
+            $response->addError($response->getRender()->getTranslation('Event is in the past.'), 'date');
         }
 
         if (!$params->has('title') && !$params->has('artists')) {
-            $response->addError($response->getRender()->getTranslation('Bitte Titel oder KünstlerInnen angeben'), 'title');
+            $response->addError($response->getRender()->getTranslation('Please provide title or artist.'), 'title');
         }
     }
 

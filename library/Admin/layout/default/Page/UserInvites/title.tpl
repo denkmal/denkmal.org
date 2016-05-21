@@ -1,1 +1,1 @@
-{translate 'Einladungen'}
+{translate 'Invitations'}

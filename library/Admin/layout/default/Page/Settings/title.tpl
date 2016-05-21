@@ -1,1 +1,1 @@
-{translate 'Einstellungen'}
+{translate 'Settings'}

@@ -6,17 +6,17 @@
         <span class="baslerstab">{resourceFileContent path='img/logo-baslerstab.svg'}</span>
         <span class="denkmal">{resourceFileContent path='img/logo-denkmal.svg'}</span>
       </a>
-      <p class="slogan">{translate 'Was loift in Basel?!'}</p>
+      <p class="slogan">{translate 'What\'s up in Basel?!'}</p>
     </div>
 
-    {menu name='main' depth=0}
+    {menu name='main' depth=0 class='menu-header'}
   </div>
 
   <div class="weekMenu-wrapper">
     <div class="navigate navigate-left">
       <span class="icon-arrow-left"></span>
     </div>
-    {menu name='dates' template='weekdays'}
+    {menu name='dates' template='weekdays' class='menu-header'}
     <div class="navigate navigate-right">
       <span class="icon-arrow-right"></span>
     </div>

@@ -1,1 +1,1 @@
-{translate 'Veranstaltungen'}
+{translate 'Events'}

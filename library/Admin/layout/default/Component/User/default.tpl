@@ -10,9 +10,9 @@
   {component name='Admin_Component_UserRoles' user=$user}
 
   {form name='Denkmal_Form_User' user=$user}
-  {formField name='email' label={translate 'E-Mail'}}
+  {formField name='email' label={translate 'Email'}}
   {formField name='username' label={translate 'Username'}}
-  {formField name='password' label={translate 'Passwort'}}
-  {formAction action='Save' label={translate 'Speichern'}}
+  {formField name='password' label={translate 'Password'}}
+  {formAction action='Save' label={translate 'Save'}}
   {/form}
 </div>

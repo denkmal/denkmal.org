@@ -9,7 +9,7 @@
       <span class="baslerstab">{resourceFileContent path='img/logo-baslerstab.svg'}</span>
       <span class="denkmal">{resourceFileContent path='img/logo-denkmal.svg'}</span>
     </a>
-    {menu name='main'}
+    {menu name='main' class='menu-header'}
   </header>
   <section id="middle">
     {$smarty.capture.pageContent}

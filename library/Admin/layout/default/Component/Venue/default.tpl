@@ -9,15 +9,15 @@
     {form name='Admin_Form_Venue' venue=$venue}
     {formField name='name' label={translate 'Name'}}
     {formField name='url' label={translate 'URL'}}
-    {formField name='address' label={translate 'Adresse'}}
-    {formField name='email' label={translate 'E-Mail'}}
+    {formField name='address' label={translate 'Address'}}
+    {formField name='email' label={translate 'Email'}}
     {formField name='twitterUsername' label={translate 'Twitter'}}
-    {formField name='coordinates' label={translate 'Koordinaten'}}
-    {formField name='ignore' text={translate 'Scraper ignorieren'}}
-    {formField name='suspended' text={translate 'Suspendiert'}}
-    {formField name='secret' text={translate 'Geheim'}}
-    {formAction action='Save' label={translate 'Speichern'} alternatives="
-      	{button action='Delete' label={translate 'Löschen'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+    {formField name='coordinates' label={translate 'Coordinates'}}
+    {formField name='ignore' text={translate 'Ignore scraper'}}
+    {formField name='suspended' text={translate 'Suspended'}}
+    {formField name='secret' text={translate 'Secret'}}
+    {formAction action='Save' label={translate 'Save'} alternatives="
+      	{button action='Delete' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 			"}
     {/form}
     {component name='Admin_Component_VenueAliasList' venue=$venue}

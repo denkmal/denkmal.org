@@ -1,1 +1,1 @@
-{translate 'Benutzer'}
+{translate 'Users'}

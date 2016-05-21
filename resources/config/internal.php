@@ -150,7 +150,7 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Site_Default->type = 79;
     $config->Denkmal_Site_Region_Basel->type = 80;
     $config->CM_Class_Abstract->typesMaxValue = 80;
-
+    
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UPDATE] = 2;
@@ -166,5 +166,5 @@ return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::UNSUBSCRIBE] = 12;
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::SEND] = 13;
     $config->CM_Action_Abstract->verbsMaxValue = 13;
-
+    
 };

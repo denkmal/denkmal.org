@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Site extends Denkmal_Site_Abstract {
+class Admin_Site extends Denkmal_Site_Default {
 
     public function __construct() {
         parent::__construct();

@@ -10,6 +10,6 @@ return function (CM_Config_Node $config) {
     $config->timeZone = 'Europe/Zurich';
     $config->googleApi = 'AIzaSyB85laUBhcLyjf7vff7WE62__6jPxjK8qI';
 
-    $config->Denkmal_Site_Abstract->name = 'Denkmal.org';
-    $config->Denkmal_Site_Abstract->emailAddress = 'kontakt@denkmal.org';
+    $config->Denkmal_Site_Default->name = 'Denkmal.org';
+    $config->Denkmal_Site_Default->emailAddress = 'kontakt@denkmal.org';
 };

@@ -10,7 +10,7 @@
   </ul>
 {else}
   <div class="noContent">
-    <p>{button_link page="Denkmal_Page_Add" theme="highlight" icon="plus" label="{translate 'Add Event'}"}</p>
+    {button_link page="Denkmal_Page_Add" theme="highlight" icon="plus" label="{translate 'Add Event'}"}
   </div>
 {/if}
 <div class="socialFollow">

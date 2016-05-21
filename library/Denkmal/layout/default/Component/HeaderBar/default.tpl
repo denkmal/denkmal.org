@@ -6,7 +6,7 @@
         <span class="baslerstab">{resourceFileContent path='img/logo-baslerstab.svg'}</span>
         <span class="denkmal">{resourceFileContent path='img/logo-denkmal.svg'}</span>
       </a>
-      <p class="slogan">{translate 'What\'s up in Basel?!'}</p>
+      <div class="slogan">{translate 'What\'s up in Basel?!'}</div>
     </div>
 
     {menu name='main' class='menu-header'}

@@ -14,11 +14,12 @@
       {/if}
       <time class="currentDate"><span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}</time>
     </span>
-    <p class="event-details">
+    <div class="event-details">
       {if $eventDuplicates->getCount()}
         <span class="icon icon-error"></span>
       {/if}
-      <span class="description">{eventtext text=$event->getDescription()}</span></p>
+      <span class="description">{eventtext text=$event->getDescription()}</span>
+    </div>
   </div>
 
   {if $allowEditing}

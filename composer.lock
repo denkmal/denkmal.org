@@ -375,9 +375,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/easybook-geshi-2582e8134c8af41d7f367e421ee0b8b111e89f36-zip-f3a77f.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/easybook-geshi-2582e8134c8af41d7f367e421ee0b8b111e89f36-zip-f3a77f.zip",
                 "reference": "2582e8134c8af41d7f367e421ee0b8b111e89f36",
-                "shasum": "58898963f2e942961d71cb664212e57cec07fb3c"
+                "shasum": "a563fd0f4873f5927241e4f791db80da18c6b1eb"
             },
             "require": {
                 "php": ">4.3.0"
@@ -388,13 +388,16 @@
                     "./"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0"
             ],
             "authors": [
                 {
                     "name": "Benny Baumann",
-                    "email": "BenBE@geshi.org"
+                    "email": "BenBE@geshi.org",
+                    "homepage": "http://blog.benny-baumann.de/",
+                    "role": "Developer"
                 },
                 {
                     "name": "Nigel McNie",
@@ -527,9 +530,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/guzzle-guzzle-4de0618a01b34aa1c8c33a3f13f396dcd3882eba-zip-52886a.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/guzzle-guzzle-4de0618a01b34aa1c8c33a3f13f396dcd3882eba-zip-52886a.zip",
                 "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-                "shasum": "8a1150e986acca9b715c25b3997f905b6cfbaa8e"
+                "shasum": "30840c39f8e415b6adc5672f735a1e0d94ac2d24"
             },
             "require": {
                 "ext-curl": "*",
@@ -996,9 +999,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/kickbox-kickbox-719ba1df640465462c083b79fb726cc84eaeb606-zip-94241e.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/kickbox-kickbox-719ba1df640465462c083b79fb726cc84eaeb606-zip-94241e.zip",
                 "reference": "719ba1df640465462c083b79fb726cc84eaeb606",
-                "shasum": "5fdba0348de3c14f47871aeb01ab344cbd1db4f0"
+                "shasum": "c8043c97e941339ffbea107a6a5f182aadf6f981"
             },
             "require": {
                 "ext-json": "*",
@@ -1044,9 +1047,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/kissmetrics-kissmetrics-php-9e4ad11cf9f26222499a6f255b4ce2ce3038be6d-zip-b48779.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/kissmetrics-kissmetrics-php-9e4ad11cf9f26222499a6f255b4ce2ce3038be6d-zip-b48779.zip",
                 "reference": "9e4ad11cf9f26222499a6f255b4ce2ce3038be6d",
-                "shasum": "41b1e0102f31d6979cfa1075239663598c04f6af"
+                "shasum": "c1fb791e3d2b2f78ffa35cc8df384cd6e713ebc0"
             },
             "require": {
                 "php": ">=5.3"
@@ -1089,9 +1092,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/leafo-lessphp-0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283-zip-5f9a38.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/leafo-lessphp-0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283-zip-5f9a38.zip",
                 "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
-                "shasum": "3625ff0ed782cb82cafd6859872d79b456c90a00"
+                "shasum": "36e8b7a03a2ef400b11470620d49a31d911eeea4"
             },
             "type": "library",
             "extra": {
@@ -1130,9 +1133,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/lstrojny-functional-php-a3972246bacb52d9080f89fd56d9ab4df60e874f-zip-bf2880.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/lstrojny-functional-php-a3972246bacb52d9080f89fd56d9ab4df60e874f-zip-bf2880.zip",
                 "reference": "a3972246bacb52d9080f89fd56d9ab4df60e874f",
-                "shasum": "26ece59fadbdcfd1fd6caa91eb516639f70cb228"
+                "shasum": "62b1ebee30bb4f8ad3541577735281356fa99649"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -1143,6 +1146,7 @@
                     "src/Functional/_import.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1173,9 +1177,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/michelf-php-markdown-96d8150406f67e683ef4acc09fef91785fef1266-zip-ca9bc4.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/michelf-php-markdown-96d8150406f67e683ef4acc09fef91785fef1266-zip-ca9bc4.zip",
                 "reference": "96d8150406f67e683ef4acc09fef91785fef1266",
-                "shasum": "61fd5f0deac27f96eb7deea02f8d89a98c475db6"
+                "shasum": "0877203cac8088790ac34a132a03cfc31dc48d8b"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -1338,11 +1342,6 @@
             ],
             "authors": [
                 {
-                    "name": "Takashi Nojima",
-                    "homepage": "http://php-tips.com",
-                    "role": "Developer"
-                },
-                {
                     "name": "Matt Sanford",
                     "email": "matt@mzsanford.com",
                     "homepage": "http://mzsanford.com"
@@ -1356,6 +1355,10 @@
                     "name": "Nick Pope",
                     "email": "git@nickpope.me.uk",
                     "homepage": "http://www.nickpope.me.uk"
+                },
+                {
+                    "name": "Takashi Nojima",
+                    "homepage": "http://php-tips.com"
                 }
             ],
             "description": "A library of PHP classes that provide auto-linking and extraction of usernames, lists, hashtags and URLs from tweets.",
@@ -1378,9 +1381,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-4d9434e394496a5bb7acd9e73046587184b413df-zip-244a31.zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-4d9434e394496a5bb7acd9e73046587184b413df-zip-244a31.zip",
                 "reference": "4d9434e394496a5bb7acd9e73046587184b413df",
-                "shasum": "3c2279e86f4243d35e3aec8cf3e4f2d5910ee9c4"
+                "shasum": "6efcdd4fc41c4dfc73bb6cf5bc434a156d5bc55b"
             },
             "require": {
                 "php": ">=5.0.0"
@@ -1397,6 +1400,7 @@
                     "class.smtp.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-2.1"
             ],
@@ -1653,21 +1657,27 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://satis.cargomedia.ch/dist/dist/smarty-smarty-v3.1.16-2e0f6e.zip",
-                "reference": "/tags/v3.1.16/@4802",
-                "shasum": "b59a38c92ddee5e064db000df6166b4f6b7a820f"
+                "url": "https://satis.cargomedia.ch/dist/dist/smarty-smarty-43be80762e349837182397a4a6e6202af80a22bf-zip-f246dc.zip",
+                "reference": "43be80762e349837182397a4a6e6202af80a22bf",
+                "shasum": "d1eaa4057bbdb5a4a12cbcf5c303b4986b0f7ae7"
             },
             "require": {
                 "php": ">=5.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
-                    "distribution/libs/Smarty.class.php",
-                    "distribution/libs/SmartyBC.class.php",
-                    "distribution/libs/sysplugins/smarty_security.php"
+                    "libs/Smarty.class.php",
+                    "libs/SmartyBC.class.php",
+                    "libs/sysplugins/smarty_security.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0"
             ],
@@ -1690,7 +1700,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-12-17 16:56:58"
+            "time": "2014-10-31 01:05:49"
         },
         {
             "name": "symfony/console",

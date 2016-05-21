@@ -4,10 +4,7 @@
   {/if}
 
   {if $venue->getCoordinates() && !$venue->getSecret()}
-    <a href="https://www.google.com/maps/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" class="location button button-transparent hasLabel hasIcon" target="_blank">
-      <span class="icon icon-location"></span>
-      <span class="label">{translate 'Map'}</span>
-    </a>
+    {button_link class='location' theme='transparent' href="https://www.google.com/maps/?q={$venue->getCoordinates()->getLatitude()},{$venue->getCoordinates()->getLongitude()}" target='_blank' icon='location' label={translate 'Map'}}
   {/if}
 </div>
 

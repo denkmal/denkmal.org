@@ -3,7 +3,7 @@
 </p>
 
 <p>
-  {load file='Mail/helper/button.tpl' label={translate 'Create account'} href={linkUrl page='Denkmal_Page_SignUp' invite=$userInvite->getKey()}}
+  {load file='Mail/helper/button.tpl' label={translate 'Create Account'} href={linkUrl page='Denkmal_Page_SignUp' invite=$userInvite->getKey()}}
 </p>
 
 {if $userInvite->getExpires()}

@@ -33,8 +33,8 @@
       <div class="venueNearby-overlay geo-failure-visible">
         <div class="venueNearby-overlay-content geo-failure-visible">
           <p class="text">
-            {translate 'No venue found.'}<br />
-            {translate 'You have to be nearby a Denkmal venue. Make sure you have location services activated.'}
+            {translate 'No venue at your current location.'}<br />
+            {translate 'You have to be nearby a Denkmal venue to use Denkmal Now. Make sure Location Services are allowed and activated.'}
           </p>
           <div class="action">
             {button_link label={translate 'Find Venue'} icon='location' class='retryLocation'}

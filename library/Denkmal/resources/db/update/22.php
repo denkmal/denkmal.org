@@ -1,6 +1,6 @@
 <?php
 
-CM_Db_Db::truncate("cm_model_languagekey;");
+CM_Db_Db::truncate("cm_model_languagekey");
 
 $serviceManager = CM_Service_Manager::getInstance();
 $loadLang = new Denkmal_App_SetupScript_LoadLanguage($serviceManager);

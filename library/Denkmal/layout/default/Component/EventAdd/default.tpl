@@ -13,7 +13,7 @@
     {formField name='title' label={translate 'Title'} placeholder={translate 'Meet the Rich vol.8 (optional)'} class="required"}
     {formField name='artists' label={translate 'Artists'} placeholder={translate 'Gregor Rellemer, The Savvy Ones, DJ John (optional)'}}
     {formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam (optional)'}}
-    {formField name='urls' label={translate 'Websites'} placeholder={translate 'www.myspace.com/ich (optional)'} append="<small>({translate 'Will be stored - plesae only provide once.'})</small>"}
+    {formField name='urls' label={translate 'Websites'} placeholder={translate 'www.myspace.com/ich (optional)'} append="<small>({translate 'Will be stored - please only provide once.'})</small>"}
     {formAction action='Create' label={translate 'Add'} alternatives=
     {button_link href="mailto:{$render->getSite()->getEmailAddress()}" icon='message' label={translate 'Contact'}}
     }

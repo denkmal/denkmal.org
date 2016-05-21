@@ -13,6 +13,8 @@ return function (CM_Config_Node $config) {
 
     $config->CM_Stream_Video->servers = array();
 
+    $config->CM_Http_Response_Abstract->defaultResponse = 'Denkmal_Http_Response_Page';
+
     $config->services['twitter'] = [
         'class'     => 'Denkmal_Twitter_Client',
         'arguments' => [

@@ -84,7 +84,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
         $response->process();
 
-        $this->assertFormResponseError($response, 'Bitte Nachricht eingeben', 'tags');
+        $this->assertFormResponseError($response, 'Please add message', 'tags');
     }
 
     public function testProcessAnonymousMessagingDisabled() {
@@ -104,7 +104,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
         $response->process();
 
-        $this->assertFormResponseError($response, 'Zugriff gesperrt');
+        $this->assertFormResponseError($response, 'Access denied');
     }
 
     public function testProcessAnonymousImageNotAllowed() {

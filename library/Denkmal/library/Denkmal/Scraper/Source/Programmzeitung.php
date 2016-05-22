@@ -95,6 +95,10 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
         });
     }
 
+    public function getRegion() {
+        return Denkmal_Model_Region::getByAbbreviation('BSL');
+    }
+
     /**
      * @param string $text
      * @return string

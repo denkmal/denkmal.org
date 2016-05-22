@@ -30,4 +30,8 @@ class Denkmal_Scraper_Source_Apawi extends Denkmal_Scraper_Source_Abstract {
             return new Denkmal_Scraper_EventData('Apawi', $description, $from, $until);
         });
     }
+
+    public function getRegion() {
+        return Denkmal_Model_Region::getByAbbreviation('BSL');
+    }
 }

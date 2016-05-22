@@ -98,4 +98,8 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
 
         return array_values($eventDataList);
     }
+
+    public function getRegion() {
+        return Denkmal_Model_Region::getByAbbreviation('BSL');
+    }
 }

@@ -18,8 +18,8 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
     }
 
     public function testProcess() {
-        $venue1 = Denkmal_Model_Venue::create('Venue1', true, false);
-        $venue2 = Denkmal_Model_Venue::create('Venue2', true, false);
+        $venue1 = DenkmalTest_TH::createVenue('Venue1');
+        $venue2 = DenkmalTest_TH::createVenue('Venue2');
 
         $now = new DateTime();
         $now->setTime(12, 0, 0);
@@ -31,7 +31,7 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
         $response->process();
 
         $expected = array(
-            'events'        => array(
+            'events' => array(
                 $event1->toArrayApi($response->getRender()),
             )
         );

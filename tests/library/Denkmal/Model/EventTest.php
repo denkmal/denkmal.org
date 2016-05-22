@@ -6,7 +6,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
     private $_event;
 
     protected function setUp() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue('Example');
         $this->_event = Denkmal_Model_Event::create($venue, 'Foo', true, false, new DateTime());
     }
 
@@ -27,7 +27,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
     }
 
     public function testGetSetVenue() {
-        $venue = Denkmal_Model_Venue::create('Example2', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $this->assertNotEquals($venue, $this->_event->getVenue());
         $this->_event->setVenue($venue);
         $this->assertEquals($venue, $this->_event->getVenue());
@@ -53,7 +53,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
     }
 
     public function testGetUntilEndOfDay() {
-        $venue = Denkmal_Model_Venue::create('My Example', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $event1 = Denkmal_Model_Event::create($venue, 'Foo1', true, false, new DateTime('2014-12-31 2:00'));
         $event2 = Denkmal_Model_Event::create($venue, 'Foo2', true, false, new DateTime('2014-12-31 15:00'));
         $event3 = Denkmal_Model_Event::create($venue, 'Foo3', true, false, new DateTime('2015-01-01 4:00'));
@@ -109,7 +109,7 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
     }
 
     public function testToArrayApi() {
-        $venue = Denkmal_Model_Venue::create('Example 2', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $from = new DateTime();
         $until = (new DateTime())->add(new DateInterval('PT1H'));
         $song = Denkmal_Model_Song::create('My Song', CM_File::createTmp());

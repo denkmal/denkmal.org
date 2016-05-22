@@ -112,4 +112,20 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         }
         return new self($regionId);
     }
+
+    /**
+     * @param string $abbreviation
+     * @return Denkmal_Model_Region|null
+     */
+    public static function findByAbbreviation($abbreviation) {
+        $abbreviation = (string) $abbreviation;
+        $cache = CM_Cache_Local::getInstance();
+        $regionId = $cache->get($cache->key(__METHOD__, $abbreviation), function () use ($abbreviation) {
+            return CM_Db_Db::select('denkmal_model_region', 'id', ['abbreviation' => $abbreviation])->fetchColumn();
+        });
+        if (!$regionId) {
+            return null;
+        }
+        return new self($regionId);
+    }
 }

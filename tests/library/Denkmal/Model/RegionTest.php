@@ -29,4 +29,14 @@ class Denkmal_Model_RegionTest extends CMTest_TestCase {
         $this->assertEquals($region, Denkmal_Model_Region::findBySlug('slug'));
         $this->assertNull(Denkmal_Model_Region::findBySlug('slug3'));
     }
+
+    public function testFindByAbbreviation() {
+        $city = DenkmalTest_TH::createLocationCity();
+        $region = Denkmal_Model_Region::create('foo', 'basel', 'BSL', $city);
+        $region2 = Denkmal_Model_Region::create('fooBar', 'frankfurt', 'FRA', $city);
+
+        $this->assertEquals($region2, Denkmal_Model_Region::findByAbbreviation('FRA'));
+        $this->assertEquals($region, Denkmal_Model_Region::findByAbbreviation('BSL'));
+        $this->assertNull(Denkmal_Model_Region::findBySlug('slug3'));
+    }
 }

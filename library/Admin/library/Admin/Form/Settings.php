@@ -10,8 +10,8 @@ class Admin_Form_Settings extends CM_Form_Abstract {
     }
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
-        $site = new Denkmal_Site();
-        $this->getField('suspensionUntil')->setValue($site->getSuspension()->getUntil());
-        $this->getField('anonymousMessagingDisabled')->setValue($site->getAnonymousMessagingDisabled());
+        $settings = new Denkmal_App_Settings();
+        $this->getField('suspensionUntil')->setValue($settings->getSuspension()->getUntil());
+        $this->getField('anonymousMessagingDisabled')->setValue($settings->getAnonymousMessagingDisabled());
     }
 }

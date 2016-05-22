@@ -1,5 +1,5 @@
 & {
-  .form {
+  .Denkmal_Form_Message {
     display: none;
   }
 
@@ -7,7 +7,8 @@
     .teaser {
       display: none;
     }
-    .form {
+
+    .Denkmal_Form_Message {
       display: block;
     }
   }
@@ -23,11 +24,12 @@
 
   .account {
     flex: 1 1 auto;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end
   }
 }
 
-.form {
+.Denkmal_Form_Message {
   border-bottom: 1px solid @colorFgBorderEmphasize2;
   background-color: @colorBg;
   padding: 8px;
@@ -37,7 +39,7 @@
     margin: 8px;
   }
 
-  .form-fields {
+  .localization {
     position: relative;
 
     .venueNearby-overlay {
@@ -50,16 +52,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
 
       .venueNearby-overlay-content {
-        text-align: center;
+        width: 100%;
         text-shadow: 1px 1px 0 @colorBg;
 
-        .spinner, .text, .action {
-          display: block;
-        }
-        .text {
-          padding: 4px;
+        .info {
+          padding: 5px;
+          width: 80%;
+          max-width: 500px;
+          margin: 0 auto 12px;
+
+          .warning {
+            color: @colorError;
+          }
         }
       }
     }

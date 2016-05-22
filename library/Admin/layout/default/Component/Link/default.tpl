@@ -7,10 +7,10 @@
   {form name='Admin_Form_Link' link=$link}
   {formField name='label' label={translate 'Name'}}
   {formField name='url' label={translate 'URL'}}
-  {formField name='automatic' label={translate 'automatisch'}}
+  {formField name='automatic' label={translate 'automatic'}}
 
-  {formAction action='Save' label={translate 'Speichern'} alternatives="
-			{button action='Delete' label={translate 'Löschen'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+  {formAction action='Save' label={translate 'Save'} alternatives="
+			{button action='Delete' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 
 		"}
   {/form}

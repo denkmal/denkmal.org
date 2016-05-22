@@ -1,1 +1,1 @@
-{translate 'Lieder'}
+{translate 'Songs'}

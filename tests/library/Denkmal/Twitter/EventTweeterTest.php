@@ -132,7 +132,7 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
      * @return CM_Frontend_Render
      */
     private function _getRender() {
-        $site = $this->getMockSite('Denkmal_Site', null, [
+        $site = $this->getMockSite('Denkmal_Site_Default', null, [
             'url' => 'http://www.denkmal.org',
         ]);
         $environment = new CM_Frontend_Environment($site);

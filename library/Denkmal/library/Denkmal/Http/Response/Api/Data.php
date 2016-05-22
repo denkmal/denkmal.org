@@ -7,8 +7,8 @@ class Denkmal_Http_Response_Api_Data extends Denkmal_Http_Response_Api_Abstract 
     }
 
     protected function _process() {
-        $site = new Denkmal_Site();
-        $suspension = $site->getSuspension();
+        $settings = new Denkmal_App_Settings();
+        $suspension = $settings->getSuspension();
 
         $venueListArray = array();
         /** @var Denkmal_Model_Venue $venue */
@@ -27,12 +27,10 @@ class Denkmal_Http_Response_Api_Data extends Denkmal_Http_Response_Api_Abstract 
             }
         }
 
-        $dayOffset = Denkmal_Site::getDayOffset();
-
         $this->_setContent(array(
             'venues'        => $venueListArray,
             'events'        => $eventListArray,
-            'dayOffset'     => $dayOffset,
+            'dayOffset'     => $settings->getDayOffset(),
             'suspendedDays' => $suspension->isActive() ? $suspension->getDaysLeft() : null,
         ));
     }

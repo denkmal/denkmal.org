@@ -1,1 +1,1 @@
-{translate 'Neuer Event - {$venue}' venue=$venue->getName()}
+{translate 'New event - {$venue}' venue=$venue->getName()}

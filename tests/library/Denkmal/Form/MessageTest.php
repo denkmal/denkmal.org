@@ -84,12 +84,12 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
         $response->process();
 
-        $this->assertFormResponseError($response, 'Bitte Nachricht eingeben', 'tags');
+        $this->assertFormResponseError($response, 'Please add a message.', 'tags');
     }
 
     public function testProcessAnonymousMessagingDisabled() {
-        $site = new Denkmal_Site();
-        $site->setAnonymousMessagingDisabled(true);
+        $settings = new Denkmal_App_Settings();
+        $settings->setAnonymousMessagingDisabled(true);
 
         $venue = DenkmalTest_TH::createVenue();
 
@@ -104,7 +104,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
         $response->process();
 
-        $this->assertFormResponseError($response, 'Zugriff gesperrt');
+        $this->assertFormResponseError($response, 'Access denied!');
     }
 
     public function testProcessAnonymousImageNotAllowed() {

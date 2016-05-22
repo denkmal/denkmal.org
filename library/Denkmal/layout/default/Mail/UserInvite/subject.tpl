@@ -1,1 +1,1 @@
-{translate 'Einladung für Denkmal Now'}
+{translate 'Invitation for Denkmal Now'}

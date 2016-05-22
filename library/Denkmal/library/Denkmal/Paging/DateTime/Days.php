@@ -11,7 +11,8 @@ class Denkmal_Paging_DateTime_Days extends Denkmal_Paging_DateTime_Abstract {
             $days = (int) $daysCount;
         }
         $day = new DateInterval('P1D');
-        $date = Denkmal_Site::getCurrentDate();
+        $settings = new Denkmal_App_Settings();
+        $date = $settings->getCurrentDate();
         $dateList = array();
         for ($i = 0; $i < $days; $i++) {
             $dateList[] = clone $date;

@@ -7,7 +7,7 @@ class Denkmal_MessagePushNotification_FormatterTest extends CMTest_TestCase {
     }
 
     public function testGuest() {
-        $site = $this->getMockSite('Denkmal_Site', null, ['url' => 'https://www.denkmal.org']);
+        $site = $this->getMockSite('Denkmal_Site_Default', null, ['url' => 'https://www.denkmal.org']);
         $environment = new CM_Frontend_Environment($site);
         $render = new CM_Frontend_Render($environment);
         $formatter = new Denkmal_MessagePushNotification_Formatter($render);

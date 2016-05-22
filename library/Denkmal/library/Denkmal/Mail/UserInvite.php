@@ -7,7 +7,7 @@ class Denkmal_Mail_UserInvite extends CM_Mail {
      * @throws CM_Exception_Invalid
      */
     public function __construct(Denkmal_Model_UserInvite $userInvite) {
-        $site = new Denkmal_Site();
+        $site = new Denkmal_Site_Default();
         if (null === $userInvite->getEmail()) {
             throw new CM_Exception_Invalid('Invite has no email');
         }

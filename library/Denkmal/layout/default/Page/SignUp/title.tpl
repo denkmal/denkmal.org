@@ -1,1 +1,1 @@
-{translate 'Account Erstellen'}
+{translate 'Create Account'}

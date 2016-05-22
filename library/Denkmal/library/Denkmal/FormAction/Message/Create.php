@@ -7,18 +7,17 @@ class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
     }
 
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        /** @var Denkmal_Site $site */
-        $site = $response->getSite();
+        $settings = new Denkmal_App_Settings();
         $viewer = $response->getViewer();
 
-        if ($site->getAnonymousMessagingDisabled()) {
-            $response->addError($response->getRender()->getTranslation('Zugriff gesperrt'));
+        if ($settings->getAnonymousMessagingDisabled()) {
+            $response->addError($response->getRender()->getTranslation('Access denied!'));
         }
         if ($params->has('image') && !Denkmal_Form_Message::getImageAllowed($viewer)) {
-            $response->addError($response->getRender()->getTranslation('Bildupload nicht erlaubt'));
+            $response->addError($response->getRender()->getTranslation('Upload not allowed.'));
         }
         if (!$params->has('tags') && !$params->has('text') && !$params->has('image')) {
-            $response->addError($response->getRender()->getTranslation('Bitte Nachricht eingeben'), 'tags');
+            $response->addError($response->getRender()->getTranslation('Please add a message.'), 'tags');
         }
     }
 

@@ -1,10 +1,13 @@
 <?php
 
-if (!CM_Db_Db::existsColumn('denkmal_model_venue', 'regionId')) {
-    CM_Db_Db::exec('ALTER TABLE `denkmal_model_venue` ADD COLUMN `regionId` int(11) unsigned NOT NULL');
-
-    CM_Db_Db::exec("UPDATE `denkmal_model_venue` SET regionId=(
-      SELECT `id` from `denkmal_model_region` WHERE abbreviation = 'BSL' LIMIT 1
-    ) 
-    WHERE regionId=0");
+$langList = new CM_Paging_Language_All();
+foreach ($langList as $lang) {
+    $lang->delete();
 }
+
+$serviceManager = CM_Service_Manager::getInstance();
+$loadLang = new Denkmal_App_SetupScript_LoadLanguage($serviceManager);
+$loadLang->load(new CM_OutputStream_Stream_Output());
+
+$setupTranslations = new CM_App_SetupScript_Translations($serviceManager);
+$setupTranslations->load(new CM_OutputStream_Stream_Output());

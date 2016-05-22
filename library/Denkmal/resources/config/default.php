@@ -1,8 +1,6 @@
 <?php
 
 return function (CM_Config_Node $config) {
-    $config->dayOffset = 6;
-
     $config->Denkmal_Http_Response_Api_Message->hashToken = 'very-secret';
     $config->Denkmal_Http_Response_Api_Message->hashAlgorithm = 'sha1';
 
@@ -14,6 +12,8 @@ return function (CM_Config_Node $config) {
     $config->CM_App->setupScriptClasses[] = 'Denkmal_App_SetupScript_Locations';
 
     $config->CM_Stream_Video->servers = array();
+
+    $config->CM_Http_Response_Abstract->defaultResponse = 'Denkmal_Http_Response_Page';
 
     $config->services['twitter'] = [
         'class'     => 'Denkmal_Twitter_Client',

@@ -1,1 +1,1 @@
-{translate 'Orte'}
+{translate 'Venues'}

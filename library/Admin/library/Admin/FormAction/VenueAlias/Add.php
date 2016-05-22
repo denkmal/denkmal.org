@@ -10,7 +10,7 @@ class Admin_FormAction_VenueAlias_Add extends Admin_FormAction_Abstract {
         parent::_checkData($params, $response, $form);
         $name = $params->getString('name');
         if ($venue = Denkmal_Model_Venue::findByNameOrAlias($name)) {
-            $response->addError($response->getRender()->getTranslation('Name wird bereits verwendet'), 'name');
+            $response->addError($response->getRender()->getTranslation('Name already in use.'), 'name');
         }
     }
 

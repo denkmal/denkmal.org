@@ -14,7 +14,7 @@ class Denkmal_Mail_UserInviteTest extends CMTest_TestCase {
         list($subject, $html, $text) = $mail->render();
 
         $this->assertSame([['address' => 'bar@example.com', 'name' => null]], $mail->getTo());
-        $this->assertContains('Einladung', $subject);
-        $this->assertContains('Account Erstellen', $html);
+        $this->assertContains('Invitation', $subject);
+        $this->assertContains('Create Account', $html);
     }
 }

@@ -2,13 +2,13 @@
 
 {block name='content-main'}
   <div class="addNew">
-    <div class="toggleNext">{translate 'Hinzufügen'}<span class="icon-plus"></span></div>
+    <div class="toggleNext">{translate 'Add'}<span class="icon-plus"></span></div>
     <div class="toggleNext-content">
       {form name='Admin_Form_UserInvite'}
-      {formField name='email' label={translate 'E-Mail'}}
-      {formField name='expires' label={translate 'Verfall'}}
-      {formField name='sendEmail' text={translate 'Einladung schicken'}}
-      {formAction action='Create' label={translate 'Hinzufügen'}}
+      {formField name='email' label={translate 'Email'}}
+      {formField name='expires' label={translate 'Expiration'}}
+      {formField name='sendEmail' text={translate 'Send invite'}}
+      {formAction action='Create' label={translate 'Add'}}
       {/form}
     </div>
   </div>

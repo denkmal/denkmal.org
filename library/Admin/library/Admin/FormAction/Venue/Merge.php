@@ -12,7 +12,7 @@ class Admin_FormAction_Venue_Merge extends Admin_FormAction_Abstract {
         $oldVenue = $params->getVenue('oldVenue');
         $newVenue = $params->getVenue('newVenue');
         if ($newVenue->equals($oldVenue)) {
-            $response->addError($response->getRender()->getTranslation('Ort kann nicht mit sich selbst ersetzt werden.'), 'newVenue');
+            $response->addError($response->getRender()->getTranslation('Venue can\'t be replaced by itself.'), 'newVenue');
         }
     }
 

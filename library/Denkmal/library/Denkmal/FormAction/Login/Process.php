@@ -10,7 +10,7 @@ class Denkmal_FormAction_Login_Process extends CM_FormAction_Abstract {
     }
 
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        /** @var Denkmal_Site $site */
+        /** @var Denkmal_Site_Default $site */
         $site = $response->getSite();
 
         try {
@@ -23,7 +23,7 @@ class Denkmal_FormAction_Login_Process extends CM_FormAction_Abstract {
         $response->getRequest()->getSession()->setUser($user);
         $response->getRequest()->getSession()->setLifetime(86400 * 14);
 
-        $response->addMessage($response->getRender()->getTranslation('Erfolgreich angemeldet. Bitte warten...'));
+        $response->addMessage($response->getRender()->getTranslation('Login successful. Please wait…'));
         $response->redirect($site->getLoginPage(), null, true);
     }
 }

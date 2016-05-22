@@ -23,8 +23,9 @@ class Denkmal_Paging_Venue_HasEventsWithinTest extends CMTest_TestCase {
         $venue7 = DenkmalTest_TH::createVenue('Foo 7');
         $event8 = Denkmal_Model_Event::create($venue6, 'Foo 7', true, false, $this->_getDateFromNow(new DateInterval('P8D')));
 
-        $dateStart = Denkmal_Site::getCurrentDate();
-        $dateEnd = Denkmal_Site::getCurrentDate();
+        $settings = new Denkmal_App_Settings();
+        $dateStart = $settings->getCurrentDate();
+        $dateEnd = $settings->getCurrentDate();
         $dateEnd->add(new DateInterval('P6D'));
 
         $paging = new Denkmal_Paging_Venue_HasEventsWithin($dateStart, $dateEnd);
@@ -36,8 +37,9 @@ class Denkmal_Paging_Venue_HasEventsWithinTest extends CMTest_TestCase {
      * @return DateTime
      */
     private function _getDateFromNow(DateInterval $interval) {
-        $date = Denkmal_Site::getCurrentDate();
-        $date->setTime(Denkmal_Site::getDayOffset(), 0, 0);
+        $settings = new Denkmal_App_Settings();
+        $date = $settings->getCurrentDate();
+        $date->setTime($settings->getDayOffset(), 0, 0);
         $date->add($interval);
         return $date;
     }

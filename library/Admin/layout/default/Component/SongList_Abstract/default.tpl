@@ -1,5 +1,5 @@
 {if $searchTerm}
-  <h2>{translate 'Suchergebnis für `{$searchTerm}`' searchTerm=$searchTerm}</h2>
+  <h2>{translate 'Search results for `{$searchTerm}`' searchTerm=$searchTerm}</h2>
 {/if}
 
 {if $songList->getCount()}
@@ -13,6 +13,6 @@
   {paging paging=$songList}
 {else}
   <div class="noContent">
-    {translate 'Keine Lieder gefunden.'}
+    {translate 'No songs found.'}
   </div>
 {/if}

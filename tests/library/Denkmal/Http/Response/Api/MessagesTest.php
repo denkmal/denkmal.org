@@ -2,11 +2,6 @@
 
 class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
 
-    protected function setUp() {
-        CM_Config::get()->Denkmal_Site->url = 'http://denkmal.test';
-        CM_Config::get()->Denkmal_Site->urlCdn = 'http://cdn.denkmal.test';
-    }
-
     public function tearDown() {
         CMTest_TH::clearEnv();
     }
@@ -19,7 +14,7 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
 
     public function testProcess() {
         $created = new DateTime();
-        $venue = DenkmalTest_TH::createVenue();
+        $venue = DenkmalTest_TH::createVenue('Example');
         $maxMessages = 5;
 
         $messageList = array();
@@ -49,16 +44,17 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
         $created = new DateTime();
         $maxMessages = 5;
         $minMessagesVenue = 4;
+        $settings = new Denkmal_App_Settings();
 
-        $venueNoEvents = DenkmalTest_TH::createVenue();
+        $venueNoEvents = DenkmalTest_TH::createVenue('Example 1');
         $messageListNoEvent = array();
         for ($i = 0; $i < $minMessagesVenue + 6; $i++) {
             $messageListNoEvent[] = Denkmal_Model_Message::create($venueNoEvents, 'client', null, 'Foo ' . $i, null, $created);
             $created->add(new DateInterval('PT3S'));
         }
 
-        $venueHasEvents = DenkmalTest_TH::createVenue();
-        $eventDate = Denkmal_Site::getCurrentDate()->add(new DateInterval('P2D'));
+        $venueHasEvents = DenkmalTest_TH::createVenue('Example 2');
+        $eventDate = $settings->getCurrentDate()->add(new DateInterval('P2D'));
         Denkmal_Model_Event::create($venueHasEvents, 'Foo', true, false, $eventDate);
         $messageListHasEvent = array();
         for ($i = 0; $i < $minMessagesVenue + 7; $i++) {
@@ -66,7 +62,7 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
             $created->add(new DateInterval('PT3S'));
         }
 
-        $venue = DenkmalTest_TH::createVenue();
+        $venue = DenkmalTest_TH::createVenue('Example 3');
         $messageList = array();
         for ($i = 0; $i < $maxMessages + 8; $i++) {
             $messageList[] = Denkmal_Model_Message::create($venue, 'client', null, 'Foo ' . $i, null, $created);
@@ -88,7 +84,7 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
 
     public function testProcessStartAfterId() {
         $created = new DateTime();
-        $venue = DenkmalTest_TH::createVenue();
+        $venue = DenkmalTest_TH::createVenue('Example');
 
         /** @var Denkmal_Model_Message[] $messageList */
         $messageList = array();

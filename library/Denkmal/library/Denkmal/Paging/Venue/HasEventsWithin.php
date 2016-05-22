@@ -7,10 +7,11 @@ class Denkmal_Paging_Venue_HasEventsWithin extends Denkmal_Paging_Venue_Abstract
      * @param DateTime $dateEnd
      */
     public function __construct(DateTime $dateStart, DateTime $dateEnd) {
-        $dateStart->setTime(Denkmal_Site::getDayOffset(), 0, 0);
+        $settings = new Denkmal_App_Settings();
+        $dateStart->setTime($settings->getDayOffset(), 0, 0);
         $startStamp = $dateStart->getTimestamp();
 
-        $dateEnd->setTime(Denkmal_Site::getDayOffset(), 0, 0);
+        $dateEnd->setTime($settings->getDayOffset(), 0, 0);
         $dateEnd->add(new DateInterval('P1D'));
         $endStamp = $dateEnd->getTimestamp();
 

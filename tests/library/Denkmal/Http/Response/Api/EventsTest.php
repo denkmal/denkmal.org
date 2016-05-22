@@ -2,11 +2,6 @@
 
 class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
 
-    protected function setUp() {
-        CM_Config::get()->Denkmal_Site->url = 'http://denkmal.test';
-        CM_Config::get()->Denkmal_Site->urlCdn = 'http://cdn.denkmal.test';
-    }
-
     public function tearDown() {
         CMTest_TH::clearEnv();
     }

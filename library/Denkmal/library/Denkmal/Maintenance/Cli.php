@@ -34,9 +34,10 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
             'Daily event tweets' => function () {
                 /** @var Denkmal_Twitter_Client $twitter */
                 $twitter = $this->getServiceManager()->get('twitter', 'Denkmal_Twitter_Client');
+                $settings = new Denkmal_App_Settings();
 
                 $eventTweeter = new Denkmal_Twitter_EventTweeter($twitter, new CM_Frontend_Render());
-                $eventTweeter->tweetStarredEvents(Denkmal_Site::getCurrentDate());
+                $eventTweeter->tweetStarredEvents($settings->getCurrentDate());
             }
         ));
 

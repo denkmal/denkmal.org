@@ -51,7 +51,8 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
      * @return DateTime
      */
     public function getNow() {
-        return Denkmal_Site::getCurrentDate();
+        $settings = new Denkmal_App_Settings();
+        return $settings->getCurrentDate();
     }
 
     /**
@@ -68,7 +69,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         $day = new DateInterval('P1D');
         $dayCount = $this->getDayCount();
         $dateList = array();
-        $date = Denkmal_Site::getCurrentDate();
+        $date = $this->getNow();
         for ($i = 0; $i < $dayCount; $i++) {
             $dateList[] = clone $date;
             $date->add($day);

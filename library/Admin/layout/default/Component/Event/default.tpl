@@ -14,11 +14,12 @@
       {/if}
       <time class="currentDate"><span class="weekday">{date_weekday date=$event->getFrom()}</span>{date time=$event->getFrom()->getTimestamp()}</time>
     </span>
-    <p class="event-details">
+    <div class="event-details">
       {if $eventDuplicates->getCount()}
         <span class="icon icon-error"></span>
       {/if}
-      <span class="description">{eventtext text=$event->getDescription()}</span></p>
+      <span class="description">{eventtext text=$event->getDescription()}</span>
+    </div>
   </div>
 
   {if $allowEditing}
@@ -26,7 +27,7 @@
       {if $eventDuplicates->getCount()}
         <div class="info info-duplicate">
           <span class="icon icon-error"></span>
-          {translate 'Es sind bereits {$count} Event(s) an diesem Tag für {$venue} eingetragen.' count=$eventDuplicates->getCount() venue="<span class=\"venue\">{$venue->getName()|escape}</span>"}
+          {translate 'Selected day already contains {$count} event(s) for {$venue}.' count=$eventDuplicates->getCount() venue="<span class=\"venue\">{$venue->getName()|escape}</span>"}
         </div>
       {/if}
 
@@ -51,19 +52,19 @@
       {/capture}
 
       {form name='Admin_Form_Event' event=$event}
-      {formField name='venue' label={translate 'Ort'}}
-      {formField name='date' label={translate 'Datum'}}
-      {formField name='fromTime' label={translate 'Beginn'}}
-      {formField name='untilTime' label={translate 'Ende'}}
-      {formField name='description' label={translate 'Beschreibung'} append=$smarty.capture.linkSuggestionList}
-      {formField name='song' label={translate 'Lied'} append=$smarty.capture.songSuggestionList}
+      {formField name='venue' label={translate 'Venue'}}
+      {formField name='date' label={translate 'Date'}}
+      {formField name='fromTime' label={translate 'Start'}}
+      {formField name='untilTime' label={translate 'End'}}
+      {formField name='description' label={translate 'Description'} append=$smarty.capture.linkSuggestionList}
+      {formField name='song' label={translate 'Song'} append=$smarty.capture.songSuggestionList}
       {formField name='starred' label={translate 'Starred'}}
-      {formAction action='Save' label={translate 'Speichern'} alternatives="
-				{button action='Delete' label={translate 'Löschen'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+      {formAction action='Save' label={translate 'Save'} alternatives="
+				{button action='Delete' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
 				{if $event->getHidden()}
-					{button action='Show' label={translate 'Anzeigen'}}
+					{button action='Show' label={translate 'Show'}}
 				{else}
-					{button action='Hide' label={translate 'Ausblenden'}}
+					{button action='Hide' label={translate 'Hide'}}
 				{/if}
 			"}
       {/form}

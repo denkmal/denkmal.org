@@ -4,7 +4,7 @@
 
 {block name='content-main'}
   <div class="message">
-    {translate '{$count} Tage bis zum Alltag' count="<span class='days-count'>{$suspension->getDaysLeft()}</span>"}
+    {translate 'We\ll be back in {$count} days.' count="<span class='days-count'>{$suspension->getDaysLeft()}</span>"}
   </div>
   {if $song}
     <div class="song">

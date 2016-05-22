@@ -3,7 +3,8 @@
 class Denkmal_Page_Events extends Denkmal_Page_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
-        $date = $this->_params->getDate('date', Denkmal_Site::getCurrentDate());
+        $settings = new Denkmal_App_Settings();
+        $date = $this->_params->getDate('date', $settings->getCurrentDate());
         $dateList = new Denkmal_Paging_DateTime_Days();
 
         if (in_array($date, $dateList->getItems())) {

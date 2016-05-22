@@ -49,4 +49,39 @@ class DenkmalTest_TH extends CMTest_TH {
         }
         return Denkmal_Model_Region::create((string) $name, (string) $slug, (string) $abbreviation, $location);
     }
+
+    /**
+     * @param string|null               $name
+     * @param boolean|null              $queued
+     * @param boolean|null              $ignore
+     * @param Denkmal_Model_Region|null $region
+     * @param string|null               $url
+     * @param string|null               $address
+     * @param CM_Geo_Point|null         $coordinates
+     * @return Denkmal_Model_Venue
+     */
+    public static function createVenue($name = null, $queued = null, $ignore = null, Denkmal_Model_Region $region = null, $url = null, $address = null, CM_Geo_Point $coordinates = null) {
+        if (null === $name) {
+            $name = 'Foo Venue';
+        }
+        if (null === $queued) {
+            $queued = false;
+        }
+        if (null === $ignore) {
+            $ignore = false;
+        }
+        if (null === $region) {
+            $region = self::createRegion();
+        }
+        if (null === $url) {
+            $url = 'http://bar.baz/?foo=quux';
+        }
+        if (null === $address) {
+            $address = '221B Baker Street, London';
+        }
+        if (null === $coordinates) {
+            $coordinates = new CM_Geo_Point(-21.1234, 12.98786);
+        }
+        return Denkmal_Model_Venue::create((string) $name, (bool) $queued, (bool) $ignore, $region, (string) $url, (string) $address, $coordinates);
+    }
 }

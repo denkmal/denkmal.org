@@ -1,10 +1,10 @@
 <?php
 
-if (!CM_Db_Db::existsColumn('denkmal_model_venue', 'regionId')) {
-    CM_Db_Db::exec('ALTER TABLE `denkmal_model_venue` ADD COLUMN `regionId` int(11) unsigned NOT NULL');
+if (!CM_Db_Db::existsColumn('denkmal_model_venue', 'region')) {
+    CM_Db_Db::exec('ALTER TABLE `denkmal_model_venue` ADD COLUMN `region` int(11) unsigned NOT NULL');
 
-    CM_Db_Db::exec("UPDATE `denkmal_model_venue` SET regionId=(
+    CM_Db_Db::exec("UPDATE `denkmal_model_venue` SET region=(
       SELECT `id` from `denkmal_model_region` WHERE abbreviation = 'BSL' LIMIT 1
     ) 
-    WHERE regionId=0");
+    WHERE region=0");
 }

@@ -175,14 +175,14 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @return Denkmal_Model_Region
      */
     public function getRegion() {
-        return $this->_get('regionId');
+        return $this->_get('region');
     }
 
     /**
      * @param Denkmal_Model_Region $region
      */
     public function setRegion(Denkmal_Model_Region $region) {
-        return $this->_set('regionId', $region);
+        return $this->_set('region', $region);
     }
 
     public function toArrayApi(CM_Frontend_Render $render) {
@@ -199,7 +199,6 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
             $array['latitude'] = $coordinates->getLatitude();
             $array['longitude'] = $coordinates->getLongitude();
         }
-        $array['regionId'] = $this->getRegion()->getId();
         return $array;
     }
 
@@ -298,7 +297,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
             'secret'          => array('type' => 'boolean'),
             'email'           => array('type' => 'string', 'optional' => true),
             'twitterUsername' => array('type' => 'string', 'optional' => true),
-            'regionId'        => array('type' => 'Denkmal_Model_Region'),
+            'region'          => array('type' => 'Denkmal_Model_Region'),
         ));
     }
 

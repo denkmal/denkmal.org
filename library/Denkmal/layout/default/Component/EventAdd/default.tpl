@@ -1,4 +1,4 @@
-{form name='Denkmal_Form_EventAdd'}
+{form name='Denkmal_Form_EventAdd' region=$region}
   <div class="formWrapper">
     {formField name='venue' label={translate 'Venue'} class="required" placeholder={translate 'Agora Bar'}}
     <div class="venueDetails">

@@ -65,4 +65,25 @@ class Denkmal_Model_Tag extends CM_Model_Abstract {
     public static function getPersistenceClass() {
         return 'CM_Model_StorageAdapter_Database';
     }
+
+    /**
+     * @param string $label
+     * @return Denkmal_Model_Tag|null
+     * @throws CM_Class_Exception_TypeNotConfiguredException
+     * @throws CM_Exception_Invalid
+     */
+    public static function findByLabel($label) {
+        $label = (string) $label;
+
+        /** @var CM_Model_StorageAdapter_Database $persistence */
+        $persistence = self::_getStorageAdapter(self::getPersistenceClass());
+        $model = $persistence->findByData(self::getTypeStatic(), [
+            'label' => $label,
+        ]);
+
+        if (null !== $model) {
+            $model = new self($model['id']);
+        }
+        return $model;
+    }
 }

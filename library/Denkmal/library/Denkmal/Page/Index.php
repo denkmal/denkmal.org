@@ -11,8 +11,30 @@ class Denkmal_Page_Index extends Denkmal_Page_Abstract {
         if ($this->_hasRegion()) {
             $response->redirect('Denkmal_Page_Events');
         } else {
-            $response->redirect('Denkmal_Page_Regions');
+            $site = $this->_findSiteByRequest($response->getRequest());
+            if ($site) {
+                $response->redirectUrl($response->getRender()->getUrlPage('Denkmal_Page_Events', null, $site));
+            } else {
+                $response->redirect('Denkmal_Page_Regions');
+            }
         }
+    }
+
+    /**
+     * @param CM_Http_Request_Abstract $request
+     * @return Denkmal_Site_Region_Abstract|null
+     * @throws CM_Exception
+     */
+    private function _findSiteByRequest(CM_Http_Request_Abstract $request) {
+        $location = $request->getLocation();
+        if (!$location) {
+            return null;
+        }
+        $geoPoint = $location->getGeoPoint();
+        if (!$geoPoint) {
+            return null;
+        }
+        return Denkmal_Site_Region_Abstract::findSiteByGeoPoint($geoPoint);
     }
 
 }

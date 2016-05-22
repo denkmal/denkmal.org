@@ -11,7 +11,17 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
         if ($match) {
             $match = isset($data['region']) && $this->getRegion()->equals($data['region']);
         }
+        if ($match) {
+            $match = $this->isEnabled();
+        }
         return $match;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled() {
+        return true;
     }
 
     /**

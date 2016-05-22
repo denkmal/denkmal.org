@@ -50,6 +50,9 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
         return $region;
     }
 
+    /**
+     * @return string
+     */
     abstract protected function _getRegionSlug();
 
 }

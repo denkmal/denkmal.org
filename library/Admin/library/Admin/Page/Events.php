@@ -4,7 +4,8 @@ class Admin_Page_Events extends Admin_Page_Abstract {
 
     public function prepareResponse(CM_Frontend_Environment $environment, CM_Http_Response_Page $response) {
         if (!$this->_params->has('date') && !$this->_params->has('searchTerm')) {
-            $now = Denkmal_Site::getCurrentDate();
+            $settings = new Denkmal_App_Settings();
+            $now = $settings->getCurrentDate();
             $response->redirect('Admin_Page_Events', array('date' => $now->format('Y-n-j')));
         }
     }

@@ -2,11 +2,6 @@
 
 class Denkmal_Http_Response_Api_DataTest extends CMTest_TestCase {
 
-    protected function setUp() {
-        CM_Config::get()->Denkmal_Site->url = 'http://denkmal.test';
-        CM_Config::get()->Denkmal_Site->urlCdn = 'http://cdn.denkmal.test';
-    }
-
     public function tearDown() {
         CMTest_TH::clearEnv();
     }
@@ -33,16 +28,18 @@ class Denkmal_Http_Response_Api_DataTest extends CMTest_TestCase {
         $response = new Denkmal_Http_Response_Api_Data($request, $this->getServiceManager());
         $response->process();
 
+        $settings = new Denkmal_App_Settings();
+
         $expected = array(
-            'venues'         => array(
+            'venues'        => array(
                 $venue1->toArrayApi($response->getRender()),
                 $venue2->toArrayApi($response->getRender()),
             ),
-            'events'         => array(
+            'events'        => array(
                 $event1->toArrayApi($response->getRender()),
                 $event2->toArrayApi($response->getRender()),
             ),
-            'dayOffset'      => Denkmal_Site::getDayOffset(),
+            'dayOffset'     => $settings->getDayOffset(),
             'suspendedDays' => null,
         );
 

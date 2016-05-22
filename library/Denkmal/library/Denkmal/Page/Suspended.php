@@ -4,8 +4,8 @@ class Denkmal_Page_Suspended extends Denkmal_Page_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $autoPlay = $this->_params->getBoolean('autoPlay', true);
-        $site = new Denkmal_Site();
-        $suspension = $site->getSuspension();
+        $settings = new Denkmal_App_Settings();
+        $suspension = $settings->getSuspension();
 
         $songList = new Denkmal_Paging_Song_All();
         $song = $songList->getItemRand();

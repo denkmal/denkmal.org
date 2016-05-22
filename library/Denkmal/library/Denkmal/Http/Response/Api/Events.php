@@ -7,8 +7,8 @@ class Denkmal_Http_Response_Api_Events extends Denkmal_Http_Response_Api_Abstrac
     }
 
     protected function _process() {
-        $site = new Denkmal_Site();
-        $suspension = $site->getSuspension();
+        $settings = new Denkmal_App_Settings();
+        $suspension = $settings->getSuspension();
         $venueName = $this->_params->getString('venue');
         $venue = Denkmal_Model_Venue::findByNameOrAlias($venueName);
         if (null === $venue) {

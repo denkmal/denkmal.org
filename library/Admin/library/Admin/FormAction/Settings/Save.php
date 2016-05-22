@@ -16,9 +16,9 @@ class Admin_FormAction_Settings_Save extends Admin_FormAction_Abstract {
         $suspensionUntil = $params->has('suspensionUntil') ? $params->getDateTime('suspensionUntil') : null;
         $anonymousMessagingDisabled = $params->getBoolean('anonymousMessagingDisabled');
 
-        $site = new Denkmal_Site();
-        $site->getSuspension()->setUntil($suspensionUntil);
-        $site->setAnonymousMessagingDisabled($anonymousMessagingDisabled);
+        $settings = new Denkmal_App_Settings();
+        $settings->getSuspension()->setUntil($suspensionUntil);
+        $settings->setAnonymousMessagingDisabled($anonymousMessagingDisabled);
 
         $response->reloadComponent();
     }

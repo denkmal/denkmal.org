@@ -6,9 +6,10 @@ class Denkmal_Component_EventPreview extends Denkmal_Component_Abstract {
         $event = $this->_params->getEvent('event');
         $venue = $this->_params->has('venue') ? $this->_params->getVenue('venue') : $event->getVenue();
 
+        $settings = new Denkmal_App_Settings();
         $fromDate = $event->getFrom();
         $fromDateDisplay = clone $fromDate;
-        $fromDateDisplay->sub(new DateInterval('PT' . Denkmal_Site::getDayOffset() . 'H'));
+        $fromDateDisplay->sub(new DateInterval('PT' . $settings->getDayOffset() . 'H'));
 
         if ($fromDate->format('d.m.Y') != $fromDateDisplay->format('d.m.Y')) {
             $viewResponse->set('fromDateDisplay', $fromDateDisplay);

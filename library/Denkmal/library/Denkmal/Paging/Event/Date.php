@@ -7,8 +7,9 @@ class Denkmal_Paging_Event_Date extends Denkmal_Paging_Event_Abstract {
      * @param bool|null $showAll
      */
     public function __construct(DateTime $date, $showAll = null) {
+        $settings = new Denkmal_App_Settings();
         $date = clone $date;
-        $date->setTime(Denkmal_Site::getDayOffset(), 0, 0);
+        $date->setTime($settings->getDayOffset(), 0, 0);
         $startStamp = $date->getTimestamp();
         $date->add(new DateInterval('P1D'));
         $endStamp = $date->getTimestamp();

@@ -3,8 +3,9 @@
 class Admin_Paging_Event_Queued extends Denkmal_Paging_Event_Abstract {
 
     public function __construct() {
-        $today = Denkmal_Site::getCurrentDate();
-        $today->setTime(Denkmal_Site::getDayOffset(), 0, 0);
+        $settings = new Denkmal_App_Settings();
+        $today = $settings->getCurrentDate();
+        $today->setTime($settings->getDayOffset(), 0, 0);
 
         $where = '`queued` = 1 AND `hidden` = 0 AND `from` >= ' . $today->getTimestamp();
 

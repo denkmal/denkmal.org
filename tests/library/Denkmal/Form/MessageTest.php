@@ -9,7 +9,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
     public function testProcessAll() {
         $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
         $user->getRoles()->add(Denkmal_Role::HIPSTER);
-        $venue = Denkmal_Model_Venue::create('Foo', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $tag1 = Denkmal_Model_Tag::create('tag1');
         $tag2 = Denkmal_Model_Tag::create('tag2');
         $image = new CM_File(DIR_TEST_DATA . '/image.jpg');
@@ -42,7 +42,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
     }
 
     public function testProcessOnlyTags() {
-        $venue = Denkmal_Model_Venue::create('Foo', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $tag1 = Denkmal_Model_Tag::create('tag1');
         $tag2 = Denkmal_Model_Tag::create('tag2');
 
@@ -71,7 +71,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
     }
 
     public function testProcessNone() {
-        $venue = Denkmal_Model_Venue::create('Foo', false, false);
+        $venue = DenkmalTest_TH::createVenue();
 
         $form = new Denkmal_Form_Message();
         $action = new Denkmal_FormAction_Message_Create($form);
@@ -91,7 +91,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         $site = new Denkmal_Site();
         $site->setAnonymousMessagingDisabled(true);
 
-        $venue = Denkmal_Model_Venue::create('Foo', false, false);
+        $venue = DenkmalTest_TH::createVenue();
 
         $form = new Denkmal_Form_Message();
         $action = new Denkmal_FormAction_Message_Create($form);
@@ -108,7 +108,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
     }
 
     public function testProcessAnonymousImageNotAllowed() {
-        $venue = Denkmal_Model_Venue::create('Foo', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $image = new CM_File(DIR_TEST_DATA . '/image.jpg');
         $imageUsercontent = CM_File_UserContent_Temp::create('image.jpg', $image->read());
 

@@ -3,7 +3,7 @@
 class Denkmal_ParamsTest extends CMTest_TestCase {
 
     public function testGetVenue() {
-        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $venue = DenkmalTest_TH::createVenue();
 
         $params = new Denkmal_Params(array('venue1' => $venue, 'venue2' => $venue->getId()));
 

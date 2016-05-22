@@ -7,8 +7,8 @@ class Denkmal_Paging_Message_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetItems() {
-        $venue1 = Denkmal_Model_Venue::create('Example 1', true, false);
-        $venue2 = Denkmal_Model_Venue::create('Example 2', true, false);
+        $venue1 = DenkmalTest_TH::createVenue('Example 1');
+        $venue2 = DenkmalTest_TH::createVenue('Example 2');
 
         $message1 = Denkmal_Model_Message::create($venue1, 'client', null, 'Foo 1', null, new DateTime('2010-01-01'));
         $message2 = Denkmal_Model_Message::create($venue1, 'client', null, 'Foo 2', null, new DateTime('2010-01-02'));
@@ -27,8 +27,8 @@ class Denkmal_Paging_Message_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetItemsChangeVenue() {
-        $venue1 = Denkmal_Model_Venue::create('Example 1', true, false);
-        $venue2 = Denkmal_Model_Venue::create('Example 2', true, false);
+        $venue1 = DenkmalTest_TH::createVenue('Example 1');
+        $venue2 = DenkmalTest_TH::createVenue('Example 2');
 
         $message1 = Denkmal_Model_Message::create($venue1, 'client', null, 'Foo 1');
 

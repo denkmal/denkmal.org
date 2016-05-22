@@ -2,12 +2,11 @@
 
 abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
 
-    public function __construct() {
-        parent::__construct();
-        $this->_addTheme('region-' . $this->getRegion()->getSlug());
-    }
-
     public function match(CM_Http_Request_Abstract $request, array $data) {
+        if (!$this->_hasRegion()) {
+            return false;   // When the region has not been created (e.g. in tests)
+        }
+
         $match = parent::match($request, $data);
         if ($match) {
             $match = isset($data['region']) && $this->getRegion()->equals($data['region']);
@@ -23,8 +22,34 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
     }
 
     /**
-     * @return Denkmal_Model_Region
+     * @return string[]
      */
-    abstract public function getRegion();
+    public function getThemes() {
+        $themes = parent::getThemes();
+        $regionTheme = 'region-' . $this->getRegion()->getSlug();
+        return array_merge([$regionTheme], $themes);
+    }
+
+    /**
+     * @return Denkmal_Model_Region
+     * @throws CM_Exception
+     */
+    public function getRegion() {
+        $slug = $this->_getRegionSlug();
+        $region = Denkmal_Model_Region::findBySlug($slug);
+        if (null === $region) {
+            throw new CM_Exception('Cannot find region with slug `' . $slug . '`');
+        }
+        return $region;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _hasRegion() {
+        return null !== Denkmal_Model_Region::findBySlug($this->_getRegionSlug());
+    }
+
+    abstract protected function _getRegionSlug();
 
 }

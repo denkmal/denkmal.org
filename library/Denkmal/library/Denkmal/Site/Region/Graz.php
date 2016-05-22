@@ -11,8 +11,8 @@ class Denkmal_Site_Region_Graz extends Denkmal_Site_Region_Abstract {
         return $match;
     }
 
-    public function getRegion() {
-        return Denkmal_Model_Region::findBySlug('graz');
+    public function _getRegionSlug() {
+        return 'graz';
     }
 
 }

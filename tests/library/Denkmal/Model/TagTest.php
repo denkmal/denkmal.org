@@ -44,4 +44,12 @@ class Denkmal_Model_TagTest extends CMTest_TestCase {
         $tag = Denkmal_Model_Tag::create('foo');
         $tag->delete();
     }
+
+    public function testFindByLabel() {
+        $tagFoo = Denkmal_Model_Tag::create('foo');
+        $tagBar = Denkmal_Model_Tag::create('bar');
+
+        $this->assertEquals($tagFoo, Denkmal_Model_Tag::findByLabel('foo'));
+        $this->assertNull(Denkmal_Model_Tag::findByLabel('something'));
+    }
 }

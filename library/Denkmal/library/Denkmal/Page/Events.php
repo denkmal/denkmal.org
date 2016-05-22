@@ -19,4 +19,8 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
         $viewResponse->set('menu', $menu);
         $viewResponse->set('date', $date);
     }
+
+    protected function _requiresRegion() {
+        return true;
+    }
 }

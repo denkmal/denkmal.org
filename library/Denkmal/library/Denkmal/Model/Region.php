@@ -115,7 +115,7 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
 
     /**
      * @param string $slug
-     * @return Denkmal_Model_Region|null
+     * @return Denkmal_Model_Region
      * @throws CM_Exception_Nonexistent
      */
     public static function getBySlug($slug) {

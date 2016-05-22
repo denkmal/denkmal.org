@@ -56,7 +56,7 @@ class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract 
     }
 
     public function getRegion() {
-        return Denkmal_Model_Region::getByAbbreviation('BSL');
+        return Denkmal_Model_Region::getBySlug('basel');
     }
 
 }

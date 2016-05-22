@@ -49,7 +49,7 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
     }
     
     public function getRegion() {
-        return Denkmal_Model_Region::getByAbbreviation('BSL');
+        return Denkmal_Model_Region::getBySlug('basel');
     }
 
     /**

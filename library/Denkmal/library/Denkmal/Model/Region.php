@@ -114,19 +114,16 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
     }
 
     /**
-     * @param string $abbreviation
+     * @param string $slug
      * @return Denkmal_Model_Region|null
      * @throws CM_Exception_Nonexistent
      */
-    public static function getByAbbreviation($abbreviation) {
-        $abbreviation = (string) $abbreviation;
-        $cache = CM_Cache_Local::getInstance();
-        $regionId = $cache->get($cache->key(__METHOD__, $abbreviation), function () use ($abbreviation) {
-            return CM_Db_Db::select('denkmal_model_region', 'id', ['abbreviation' => $abbreviation])->fetchColumn();
-        });
-        if (!$regionId) {
-            throw new CM_Exception_Nonexistent('Region with code `' . $abbreviation . '` does not exist');
+    public static function getBySlug($slug) {
+        $slug = (string) $slug;
+        $region = self::findBySlug($slug);
+        if (null === $region) {
+            throw new CM_Exception_Nonexistent('Region with slug `' . $slug . '` does not exist');
         }
-        return new self($regionId);
+        return $region;
     }
 }

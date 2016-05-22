@@ -30,18 +30,18 @@ class Denkmal_Model_RegionTest extends CMTest_TestCase {
         $this->assertNull(Denkmal_Model_Region::findBySlug('slug3'));
     }
 
-    public function testGetByAbbreviation() {
+    public function testGetBySlug() {
         $city = DenkmalTest_TH::createLocationCity();
         $region = Denkmal_Model_Region::create('foo', 'basel', 'BSL', $city);
         $region2 = Denkmal_Model_Region::create('fooBar', 'frankfurt', 'FRA', $city);
 
-        $this->assertEquals($region2, Denkmal_Model_Region::getByAbbreviation('FRA'));
-        $this->assertEquals($region, Denkmal_Model_Region::getByAbbreviation('BSL'));
+        $this->assertEquals($region, Denkmal_Model_Region::getBySlug('basel'));
+        $this->assertEquals($region2, Denkmal_Model_Region::getBySlug('frankfurt'));
         $exception = $this->catchException(function () {
-            Denkmal_Model_Region::getByAbbreviation('ABC');
+            Denkmal_Model_Region::getBySlug('berlin');
         });
 
         $this->assertInstanceOf('CM_Exception_Nonexistent', $exception);
-        $this->assertSame('Region with code `ABC` does not exist', $exception->getMessage());
+        $this->assertSame('Region with slug `berlin` does not exist', $exception->getMessage());
     }
 }

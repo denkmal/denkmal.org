@@ -96,7 +96,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
     }
 
     public function getRegion() {
-        return Denkmal_Model_Region::getByAbbreviation('BSL');
+        return Denkmal_Model_Region::getBySlug('basel');
     }
 
     /**

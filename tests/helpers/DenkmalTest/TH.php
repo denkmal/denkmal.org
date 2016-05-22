@@ -62,7 +62,7 @@ class DenkmalTest_TH extends CMTest_TH {
      */
     public static function createVenue($name = null, $queued = null, $ignore = null, Denkmal_Model_Region $region = null, $url = null, $address = null, CM_Geo_Point $coordinates = null) {
         if (null === $name) {
-            $name = 'Foo Venue';
+            $name = self::randStr(3) . ' Venue';
         }
         if (null === $queued) {
             $queued = false;

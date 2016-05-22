@@ -71,7 +71,7 @@ class DenkmalTest_TH extends CMTest_TH {
             $ignore = false;
         }
         if (null === $region) {
-            $region = self::createRegion();
+            $region = self::createRegion(self::randStr(6), self::randStr(4), self::randStr(3));
         }
         if (null === $url) {
             $url = 'http://bar.baz/?foo=quux';
@@ -83,5 +83,19 @@ class DenkmalTest_TH extends CMTest_TH {
             $coordinates = new CM_Geo_Point(-21.1234, 12.98786);
         }
         return Denkmal_Model_Venue::create((string) $name, (bool) $queued, (bool) $ignore, $region, (string) $url, (string) $address, $coordinates);
+    }
+
+    /**
+     * @param int    $length
+     * @param string $charset
+     * @return string
+     */
+    public static function randStr($length, $charset = 'abcdefghijklmnopqrstuvwxyz0123456789') {
+        $str = '';
+        $count = strlen($charset);
+        while ($length--) {
+            $str .= $charset[mt_rand(0, $count - 1)];
+        }
+        return $str;
     }
 }

@@ -15,9 +15,7 @@ class Denkmal_App_SetupScript_Tags extends CM_Provision_Script_OptionBased {
             'moustache',
             'party',
             'peace',
-            'rabbit',
             'rock',
-            'sexy',
             'suit',
             'trash',
             'disco',
@@ -26,6 +24,14 @@ class Denkmal_App_SetupScript_Tags extends CM_Provision_Script_OptionBased {
             'coffee',
             'foosball',
             'loud',
+            'cake',
+            'cocktail',
+            'dancing',
+            'football',
+            'icecream',
+            'police',
+            'sun',
+            'sunglasses'
         ];
 
         foreach ($labelList as $label) {

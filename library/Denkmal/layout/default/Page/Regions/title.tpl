@@ -1,1 +1,1 @@
-TODO: Select your region
+{translate 'Select Your Region'}

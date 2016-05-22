@@ -3,8 +3,8 @@
   <div class="mainMenu-wrapper">
     <div class="logoWrapper">
       <a class="logo" href="{linkUrl page='Denkmal_Page_Events'}">
-        <span class="baslerstab">{resourceFileContent path='img/logo-baslerstab.svg'}</span>
-        <span class="denkmal">{resourceFileContent path='img/logo-denkmal.svg'}</span>
+        <span class="logo-city">{resourceFileContent path='img/logo-city.svg'}</span>
+        <span class="logo-denkmal">{resourceFileContent path='img/logo-denkmal.svg'}</span>
       </a>
       <div class="slogan">{translate 'What\'s up in Basel?!'}</div>
     </div>

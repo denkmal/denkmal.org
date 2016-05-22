@@ -48,6 +48,15 @@ class Denkmal_Params extends CM_Params {
     }
 
     /**
+     * @param string $key
+     * @return Denkmal_Model_Region
+     * @throws CM_Exception_InvalidParam
+     */
+    public function getRegion($key) {
+        return $this->getObject($key, 'Denkmal_Model_Region');
+    }
+
+    /**
      * @param string        $key
      * @param DateTime|null $default
      * @return DateTime

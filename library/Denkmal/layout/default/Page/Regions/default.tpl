@@ -5,7 +5,7 @@
     {foreach $siteList as $site}
       <li class="region">
         <div class="region-inner">
-          <a class='circle' href="{$render->getUrlPage('Denkmal_Page_Index', [], $site)}">
+          <a class='circle' href="{$render->getUrlPage('Denkmal_Page_Index', [], $site)}" style="background-image: url({resourceUrl path='img/city-thumb.jpg' type='layout' site=$site})">
             <div>
               <span class="label">{$site->getRegion()->getName()|escape}</span>
               <div class="country">{$site->getRegion()->getLocation()->getAbbreviation(CM_Model_Location::LEVEL_COUNTRY)}</div>

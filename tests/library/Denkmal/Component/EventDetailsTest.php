@@ -7,7 +7,7 @@ class Denkmal_Component_EventDetailsTest extends CMTest_TestCase {
     }
 
     public function testRender() {
-        $venue = Denkmal_Model_Venue::create('My name', false, false, 'http://example.com', 'My address', new CM_Geo_Point(12, 13));
+        $venue = DenkmalTest_TH::createVenue(null, null, null, null, null, null, new CM_Geo_Point(12, 13));
         $component = new Denkmal_Component_EventDetails(['venue' => $venue]);
         $html = $this->_renderComponent($component);
 
@@ -17,7 +17,7 @@ class Denkmal_Component_EventDetailsTest extends CMTest_TestCase {
     }
 
     public function testSecretVenue() {
-        $venue = Denkmal_Model_Venue::create('My name', false, false, 'http://example.com', 'My address', new CM_Geo_Point(12, 13));
+        $venue = DenkmalTest_TH::createVenue();
         $venue->setSecret(true);
         $component = new Denkmal_Component_EventDetails(['venue' => $venue]);
         $html = $this->_renderComponent($component);

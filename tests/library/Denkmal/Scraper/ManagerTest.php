@@ -7,7 +7,7 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
     }
 
     public function testIsValidEvent() {
-        $venue = Denkmal_Model_Venue::create('foo', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $description = new Denkmal_Scraper_Description('foo');
         $from = $this->_getDate()->add(new DateInterval('PT1H'));
         $until = $this->_getDate()->add(new DateInterval('PT2H'));
@@ -19,7 +19,7 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
     }
 
     public function testIsValidEventVenueIgnore() {
-        $venue = Denkmal_Model_Venue::create('foo', false, true);
+        $venue = DenkmalTest_TH::createVenue('foo', false, true);
         $description = new Denkmal_Scraper_Description('foo');
         $from = $this->_getDate()->add(new DateInterval('PT1H'));
         $until = $this->_getDate()->add(new DateInterval('PT2H'));
@@ -31,7 +31,7 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
     }
 
     public function testIsValidEventExistingEvent() {
-        $venue = Denkmal_Model_Venue::create('foo', false, false);
+        $venue = DenkmalTest_TH::createVenue('foo', false, false);
         $description = new Denkmal_Scraper_Description('foo');
         $from = $this->_getDate()->add(new DateInterval('PT1H'));
         $until = $this->_getDate()->add(new DateInterval('PT2H'));
@@ -45,7 +45,7 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
     }
 
     public function testIsValidEventExistingEventBeforeNewEvent() {
-        $venue = Denkmal_Model_Venue::create('foo', false, false);
+        $venue = DenkmalTest_TH::createVenue('foo', false, false);
         $description = new Denkmal_Scraper_Description('foo');
         $date = $this->_getDate();
         $date->setTime(23, 0);

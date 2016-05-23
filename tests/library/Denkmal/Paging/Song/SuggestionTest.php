@@ -36,7 +36,7 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
         Denkmal_Model_Link::create('bar', 'http://bar.com', true);
         Denkmal_Model_Link::create('my zoo', 'http://my-zoo.com', true);
 
-        $venue = Denkmal_Model_Venue::create('my venue', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $event = Denkmal_Model_Event::create($venue, 'my event', true, false, new DateTime());
 
         $paging = new Denkmal_Paging_Song_Suggestion($event);
@@ -57,7 +57,7 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
 
         Denkmal_Model_Link::create('Don\'t Kill the Beast', 'http://foo.com', true);
 
-        $venue = Denkmal_Model_Venue::create('my venue', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $event = Denkmal_Model_Event::create($venue, 'my event: Don\'t Kill the Beast', true, false, new DateTime());
 
         $paging = new Denkmal_Paging_Song_Suggestion($event);

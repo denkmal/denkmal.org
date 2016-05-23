@@ -53,11 +53,46 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
      */
     public function getRegion() {
         $slug = $this->_getRegionSlug();
-        $region = Denkmal_Model_Region::findBySlug($slug);
-        if (null === $region) {
-            throw new CM_Exception('Cannot find region with slug `' . $slug . '`');
+        return Denkmal_Model_Region::getBySlug($slug);
+    }
+
+    /**
+     * @return Denkmal_Site_Region_Abstract[]
+     */
+    public static function getAllSites() {
+        $siteClassList = self::getClassChildren();
+        $siteList = Functional\map($siteClassList, function ($className) {
+            return new $className();
+        });
+        $siteList = Functional\filter($siteList, function (Denkmal_Site_Region_Abstract $site) {
+            return $site->isEnabled();
+        });
+        return $siteList;
+    }
+
+    /**
+     * @param CM_Geo_Point $point
+     * @return Denkmal_Site_Region_Abstract|null
+     * @throws CM_Exception
+     */
+    public static function findSiteByGeoPoint(CM_Geo_Point $point) {
+        $distanceMax = 1000 * 100;
+
+        $resultSite = null;
+        $resultDistance = null;
+        foreach (self::getAllSites() as $site) {
+            $region = $site->getRegion();
+            $pointSite = $region->getLocation()->getGeoPoint();
+            if (null === $pointSite) {
+                throw new CM_Exception('Region location is missing GeoPoint', null, ['region' => $region]);
+            }
+            $distance = $pointSite->calculateDistanceTo($point);
+            if ($distance < $distanceMax && (null === $resultDistance || $distance < $resultDistance)) {
+                $resultSite = $site;
+                $resultDistance = $distance;
+            }
         }
-        return $region;
+        return $resultSite;
     }
 
     /**

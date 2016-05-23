@@ -112,4 +112,18 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         }
         return new self($regionId);
     }
+
+    /**
+     * @param string $slug
+     * @return Denkmal_Model_Region
+     * @throws CM_Exception_Nonexistent
+     */
+    public static function getBySlug($slug) {
+        $slug = (string) $slug;
+        $region = self::findBySlug($slug);
+        if (null === $region) {
+            throw new CM_Exception_Nonexistent('Region with slug `' . $slug . '` does not exist');
+        }
+        return $region;
+    }
 }

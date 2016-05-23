@@ -27,7 +27,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
     }
 
     public function testProcess() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $text = 'hallo test';
         $body = http_build_query(array(
             'venue'    => $venue->getId(),
@@ -53,7 +53,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
     }
 
     public function testProcessImage() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $file = $file = new CM_File(DIR_TEST_DATA . 'image.jpg');
         $body = http_build_query(array(
             'venue'      => $venue->getId(),
@@ -86,7 +86,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
      * @expectedExceptionMessage Either `text` or `image-data` is required.
      */
     public function testProcessMissingTextOrImage() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $body = http_build_query(array(
             'venue'    => $venue->getId(),
             'clientId' => 'client',
@@ -102,7 +102,7 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
      * @expectedExceptionMessage Specifying both `text` and `image-data` is not allowed.
      */
     public function testProcessBothTextAndImage() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $body = http_build_query(array(
             'venue'      => $venue->getId(),
             'clientId'   => 'client',

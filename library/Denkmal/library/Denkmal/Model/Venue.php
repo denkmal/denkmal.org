@@ -171,6 +171,20 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->_set('twitterUsername', $twitterUsername);
     }
 
+    /**
+     * @return Denkmal_Model_Region
+     */
+    public function getRegion() {
+        return $this->_get('region');
+    }
+
+    /**
+     * @param Denkmal_Model_Region $region
+     */
+    public function setRegion(Denkmal_Model_Region $region) {
+        return $this->_set('region', $region);
+    }
+
     public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
@@ -227,15 +241,18 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
-     * @param string            $name
-     * @param boolean           $queued
-     * @param boolean           $ignore
-     * @param string|null       $url
-     * @param string|null       $address
-     * @param CM_Geo_Point|null $coordinates
+     * @param string               $name
+     * @param boolean              $queued
+     * @param boolean              $ignore
+     * @param Denkmal_Model_Region $region
+     * @param string|null          $url
+     * @param string|null          $address
+     * @param CM_Geo_Point|null    $coordinates
      * @return Denkmal_Model_Venue
+     * @throws CM_Exception_Invalid
+     * @throws CM_Exception_NotImplemented
      */
-    public static function create($name, $queued, $ignore, $url = null, $address = null, CM_Geo_Point $coordinates = null) {
+    public static function create($name, $queued, $ignore, Denkmal_Model_Region $region, $url = null, $address = null, CM_Geo_Point $coordinates = null) {
         $venue = new self();
         $venue->setName($name);
         $venue->setUrl($url);
@@ -243,6 +260,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setCoordinates($coordinates);
         $venue->setQueued($queued);
         $venue->setIgnore($ignore);
+        $venue->setRegion($region);
         $venue->setSuspended(false);
         $venue->setSecret(false);
         $venue->setEmail(null);
@@ -279,6 +297,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
             'secret'          => array('type' => 'boolean'),
             'email'           => array('type' => 'string', 'optional' => true),
             'twitterUsername' => array('type' => 'string', 'optional' => true),
+            'region'          => array('type' => 'Denkmal_Model_Region'),
         ));
     }
 

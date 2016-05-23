@@ -1,1 +1,1 @@
-{translate 'Select Your Region'}
+{translate 'Welcome to {$siteName}' siteName=$render->getSiteName()}

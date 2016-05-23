@@ -1,6 +1,8 @@
 {extends file=$render->getLayoutPath('Page/Abstract/default.tpl')}
 
 {block name='content-main'}
+  <p class="responsive-text intro">{translate '{$siteName} is an event calendar by locals. Explore your city\'s nightlife and get event updates and impressions by the crowd in real-time.' siteName=$render->getSiteName()}</p>
+  <h2>{translate 'Select Your City'}</h2>
   <ul class="regions">
     {foreach $siteList as $site}
       <li class="region">
@@ -15,5 +17,8 @@
       </li>
     {/foreach}
   </ul>
-  <p class="contact">{translate 'Do you want to bring Denkmal.org to your city? <a href="{$urlEmail}">Contact us</a>.' urlEmail="mailto:{$render->getSite()->getEmailAddress()}"}</p>
+  <div class="contact">
+    <hr>
+    <p>{translate 'Want to bring {$siteName} to your city? <a href="{$urlEmail}">Contact us</a>.' siteName=$render->getSiteName() urlEmail="mailto:{$render->getSite()->getEmailAddress()}"}</p>
+  </div>
 {/block}

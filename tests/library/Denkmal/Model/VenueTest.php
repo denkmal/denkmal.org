@@ -7,7 +7,8 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testCreate() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $region = DenkmalTest_TH::createRegion();
+        $venue = Denkmal_Model_Venue::create('Example', true, false, $region);
 
         $this->assertSame('Example', $venue->getName());
         $this->assertSame(null, $venue->getAddress());
@@ -16,10 +17,11 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(false, $venue->getIgnore());
         $this->assertSame(false, $venue->getSuspended());
         $this->assertSame(false, $venue->getSecret());
+        $this->assertEquals($region, $venue->getRegion());
     }
 
     public function testGetSetName() {
-        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $venue = Denkmal_Model_Venue::create('Foo', true, false, DenkmalTest_TH::createRegion());
 
         $this->assertSame('Foo', $venue->getName());
 
@@ -28,7 +30,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetSetAddress() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false, null, 'Foo');
+        $venue = Denkmal_Model_Venue::create('Example', true, false, DenkmalTest_TH::createRegion(), null, 'Foo');
 
         $this->assertSame('Foo', $venue->getAddress());
 
@@ -38,7 +40,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
 
     public function testGetSetCoordinates() {
         $coordinates = new CM_Geo_Point(1, 2);
-        $venue = Denkmal_Model_Venue::create('Example', true, false, null, null, $coordinates);
+        $venue = Denkmal_Model_Venue::create('Example', true, false, DenkmalTest_TH::createRegion(), null, null, $coordinates);
         $this->assertEquals($coordinates, $venue->getCoordinates());
 
         $venue->setCoordinates(null);
@@ -50,7 +52,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetSetQueued() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = Denkmal_Model_Venue::create('Example', true, false, DenkmalTest_TH::createRegion());
         $this->assertSame(true, $venue->getQueued());
 
         $venue->setQueued(false);
@@ -58,7 +60,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetSetIgnore() {
-        $venue = Denkmal_Model_Venue::create('Example', true, true);
+        $venue = Denkmal_Model_Venue::create('Example', true, true, DenkmalTest_TH::createRegion());
         $this->assertSame(true, $venue->getIgnore());
 
         $venue->setIgnore(false);
@@ -66,7 +68,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetSetSuspended() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = Denkmal_Model_Venue::create('Example', true, false, DenkmalTest_TH::createRegion());
         $this->assertSame(false, $venue->getSuspended());
 
         $venue->setSuspended(false);
@@ -74,7 +76,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetSetSecret() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = Denkmal_Model_Venue::create('Example', true, false, DenkmalTest_TH::createRegion());
         $this->assertSame(false, $venue->getSecret());
 
         $venue->setSecret(false);
@@ -82,7 +84,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetSetEmail() {
-        $venue = Denkmal_Model_Venue::create('Example', true, true);
+        $venue = Denkmal_Model_Venue::create('Example', true, true, DenkmalTest_TH::createRegion());
         $this->assertSame(null, $venue->getEmail());
 
         $venue->setEmail('foo@example.com');
@@ -93,7 +95,7 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testGetSetTwitterUsername() {
-        $venue = Denkmal_Model_Venue::create('Example', true, true);
+        $venue = Denkmal_Model_Venue::create('Example', true, true, DenkmalTest_TH::createRegion());
         $this->assertSame(null, $venue->getTwitterUsername());
 
         $venue->setTwitterUsername('foo');
@@ -103,18 +105,28 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(null, $venue->getTwitterUsername());
     }
 
+    public function testGetSetRegion() {
+        $regionNY = DenkmalTest_TH::createRegion();
+        $venue = Denkmal_Model_Venue::create('Example', true, true, $regionNY);
+        $this->assertEquals($regionNY, $venue->getRegion());
+
+        $regionNY2 = DenkmalTest_TH::createRegion('West Coast', 'westc', 'WCT');
+        $venue->setRegion($regionNY2);
+        $this->assertEquals($regionNY2, $venue->getRegion());
+    }
+
     /**
      * @expectedException CM_Exception_Nonexistent
      */
     public function testDelete() {
-        $venue = Denkmal_Model_Venue::create('Example', true, true);
+        $venue = Denkmal_Model_Venue::create('Example', true, true, DenkmalTest_TH::createRegion());
         $venue->delete();
 
         new Denkmal_Model_Venue($venue->getId());
     }
 
     public function testFindByName() {
-        $venue = Denkmal_Model_Venue::create('Foo', true, false);
+        $venue = Denkmal_Model_Venue::create('Foo', true, false, DenkmalTest_TH::createRegion());
 
         $this->assertEquals($venue, Denkmal_Model_Venue::findByName('Foo'));
         $this->assertNull(Denkmal_Model_Venue::findByName('Bar'));

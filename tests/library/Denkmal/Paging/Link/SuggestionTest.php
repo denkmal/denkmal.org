@@ -11,7 +11,7 @@ class Denkmal_Paging_Link_SuggestionTest extends CMTest_TestCase {
         $link2 = Denkmal_Model_Link::create('bar', 'http://bar.com', false);
         $link3 = Denkmal_Model_Link::create('my zoo', 'http://my-zoo.com', false);
 
-        $venue = Denkmal_Model_Venue::create('my venue', false, false);
+        $venue = DenkmalTest_TH::createVenue();
         $event = Denkmal_Model_Event::create($venue, 'my event foo my zoo mega', true, false, new DateTime());
 
         $paging = new Denkmal_Paging_Link_Suggestion($event);

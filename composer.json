@@ -30,6 +30,7 @@
   },
   "autoload-dev": {
     "psr-0": {
+      "DenkmalTest_": "tests/helpers/",
       "CMTest_": "vendor/cargomedia/cm/tests/helpers/CMTest/library/"
     }
   },

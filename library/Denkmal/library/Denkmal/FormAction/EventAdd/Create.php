@@ -24,7 +24,12 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
     }
 
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        $venue = Denkmal_Form_EventAdd::getVenueFromData($params);
+        /** @var Denkmal_Params $formParams */
+        $formParams = $form->getParams();
+        $region = $formParams->getRegion('region');
+
+        /** @var Denkmal_Params $params */
+        $venue = Denkmal_Form_EventAdd::getVenueFromData($params, $region);
         $venue->commit();
 
         $event = Denkmal_Form_EventAdd::getEventFromData($params);

@@ -13,7 +13,7 @@ class Denkmal_Paging_Tag_VenueUserLatestTest extends CMTest_TestCase {
         $tag3 = Denkmal_Model_Tag::create('tag3');
         $tag4 = Denkmal_Model_Tag::create('tag4');
 
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
 
         $message1 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 1', null, new DateTime('@1'));
         $message1->getTags()->add($tag1);
@@ -38,7 +38,7 @@ class Denkmal_Paging_Tag_VenueUserLatestTest extends CMTest_TestCase {
 
     public function testTimeLimit() {
         $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
 
         $message1 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 1', null, (new DateTime())->sub(new DateInterval('PT2H')));
         $message2 = Denkmal_Model_Message::create($venue, 'client', $user, 'Message 2', null, (new DateTime())->sub(new DateInterval('PT30M')));

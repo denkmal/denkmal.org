@@ -39,6 +39,7 @@ CREATE TABLE `denkmal_model_venue` (
   `secret` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `email` varchar(100) DEFAULT NULL,
   `twitterUsername` varchar(100) DEFAULT NULL,
+  `region` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `queued` (`queued`),

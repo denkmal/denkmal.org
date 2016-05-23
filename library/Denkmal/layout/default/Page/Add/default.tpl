@@ -1,5 +1,5 @@
 {extends file=$render->getLayoutPath('Page/Abstract/default.tpl')}
 
 {block name='content-main'}
-  {component name='Denkmal_Component_EventAdd'}
+  {component name='Denkmal_Component_EventAdd' region=$region}
 {/block}

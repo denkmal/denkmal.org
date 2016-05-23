@@ -7,7 +7,7 @@ class Denkmal_Model_VenueAliasTest extends CMTest_TestCase {
     }
 
     public function testCreate() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $venueAlias = Denkmal_Model_VenueAlias::create($venue, 'Foo');
 
         $this->assertSame('Foo', $venueAlias->getName());
@@ -18,7 +18,7 @@ class Denkmal_Model_VenueAliasTest extends CMTest_TestCase {
      * @expectedException CM_Exception_Nonexistent
      */
     public function testDelete() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $venueAlias = Denkmal_Model_VenueAlias::create($venue, 'Foo');
         $venueAlias->delete();
 
@@ -26,7 +26,7 @@ class Denkmal_Model_VenueAliasTest extends CMTest_TestCase {
     }
 
     public function testFindByName() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $venueAlias = Denkmal_Model_VenueAlias::create($venue, 'Foo');
 
         $this->assertEquals($venueAlias, Denkmal_Model_VenueAlias::findByName('Foo'));

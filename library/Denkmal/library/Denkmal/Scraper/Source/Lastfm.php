@@ -47,6 +47,10 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
             return new Denkmal_Scraper_EventData($venueName, $description, $from);
         });
     }
+    
+    public function getRegion() {
+        return Denkmal_Model_Region::getBySlug('basel');
+    }
 
     /**
      * @return string

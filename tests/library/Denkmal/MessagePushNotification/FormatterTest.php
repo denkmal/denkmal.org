@@ -12,7 +12,7 @@ class Denkmal_MessagePushNotification_FormatterTest extends CMTest_TestCase {
         $render = new CM_Frontend_Render($environment);
         $formatter = new Denkmal_MessagePushNotification_Formatter($render);
 
-        $venue = Denkmal_Model_Venue::create('Example', false, false);
+        $venue = DenkmalTest_TH::createVenue('Example');
         $tag1 = Denkmal_Model_Tag::create('foo');
         $tag2 = Denkmal_Model_Tag::create('bar');
         $imageFile = new CM_File(DIR_TEST_DATA . 'image.jpg');
@@ -31,7 +31,7 @@ class Denkmal_MessagePushNotification_FormatterTest extends CMTest_TestCase {
         $formatter = new Denkmal_MessagePushNotification_Formatter($render);
 
         $user = Denkmal_Model_User::create('foo@example.com', 'mark', 'passwd');
-        $venue = Denkmal_Model_Venue::create('Example', false, false);
+        $venue = DenkmalTest_TH::createVenue('Example');
         $message = Denkmal_Model_Message::create($venue, 'client', $user, 'Hello World');
 
         $this->assertSame('Example', $formatter->getTitle($message));

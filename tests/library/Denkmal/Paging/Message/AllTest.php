@@ -7,7 +7,7 @@ class Denkmal_Paging_Message_AllTest extends CMTest_TestCase {
     }
 
     public function testGetItems() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue =  DenkmalTest_TH::createVenue();
 
         $message1 = Denkmal_Model_Message::create($venue, 'client', null, 'Foo 1', null, new DateTime('2010-01-01'));
         $message2 = Denkmal_Model_Message::create($venue, 'client', null, 'Foo 2', null, new DateTime('2010-01-02'));

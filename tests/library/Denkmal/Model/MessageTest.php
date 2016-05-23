@@ -8,7 +8,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
 
     public function testCreate() {
         $text = 'foo bar';
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $created = new DateTime();
         $user = Denkmal_Model_User::create('foo@example.com', 'foo', 'pass');
         $imageFile = new CM_File(DIR_TEST_DATA . 'image.jpg');
@@ -26,7 +26,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
      * @expectedException CM_Exception_Nonexistent
      */
     public function testOnDelete() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $imageFile = new CM_File(DIR_TEST_DATA . 'image.jpg');
         $image = Denkmal_Model_MessageImage::create(new CM_Image_Image($imageFile->read()));
         $message = Denkmal_Model_Message::create($venue, 'client', null, 'foo', $image);
@@ -36,7 +36,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
     }
 
     public function testGetSetHasImage() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $message = Denkmal_Model_Message::create($venue, 'client', null, 'foo');
         $this->assertFalse($message->hasImage());
         $this->assertNull($message->getImage());
@@ -49,7 +49,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
     }
 
     public function testGetSetHasText() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $message = Denkmal_Model_Message::create($venue, 'client');
         $this->assertFalse($message->hasText());
         $this->assertNull($message->getText());
@@ -60,7 +60,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
     }
 
     public function testGetSetClientId() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $message = Denkmal_Model_Message::create($venue, 'client');
         $this->assertSame('client', $message->getClientId());
 
@@ -69,7 +69,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
     }
 
     public function testGetSetUser() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $message = Denkmal_Model_Message::create($venue, 'client');
         $this->assertSame(null, $message->getUser());
 
@@ -82,7 +82,7 @@ class Denkmal_Model_MessageTest extends CMTest_TestCase {
     }
 
     public function testGetTags() {
-        $venue = Denkmal_Model_Venue::create('Example', true, false);
+        $venue = DenkmalTest_TH::createVenue();
         $message = Denkmal_Model_Message::create($venue, 'client');
 
         $this->assertInstanceOf('Denkmal_ModelAsset_Tags', $message->getTags());

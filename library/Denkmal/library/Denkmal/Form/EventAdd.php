@@ -28,10 +28,11 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
     }
 
     /**
-     * @param Denkmal_Params $params
+     * @param Denkmal_Params       $params
+     * @param Denkmal_Model_Region $region
      * @return Denkmal_Model_Venue
      */
-    public static function getVenueFromData(Denkmal_Params $params) {
+    public static function getVenueFromData(Denkmal_Params $params, Denkmal_Model_Region $region) {
         /** @var Denkmal_Params $params */
         $venue = $params->get('venue');
         if (!$venue instanceof Denkmal_Model_Venue) {
@@ -46,6 +47,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
                 $venue->setName($name);
                 $venue->setUrl($url);
                 $venue->setAddress($address);
+                $venue->setRegion($region);
                 $venue->setCoordinates(null);
                 $venue->setQueued(true);
                 $venue->setIgnore(false);

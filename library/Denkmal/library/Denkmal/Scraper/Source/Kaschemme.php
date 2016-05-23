@@ -19,7 +19,7 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
         $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s*<br>(?<description>.+?)\.{4,}';
         preg_match_all('#' . $regexp . '#u', $eventHtml, $matches, PREG_SET_ORDER);
 
-        return Functional\map($matches, function (array $match) use($now) {
+        return Functional\map($matches, function (array $match) use ($now) {
             $from = new Denkmal_Scraper_Date($match['day'], $match['month'], $match['year'], $now);
             $from->setTime(22);
 
@@ -47,6 +47,10 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
 
             return new Denkmal_Scraper_EventData('Kaschemme', new Denkmal_Scraper_Description($description, null, $genres), $from);
         });
+    }
+
+    public function getRegion() {
+        return Denkmal_Model_Region::getBySlug('basel');
     }
 
     /**

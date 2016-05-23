@@ -53,11 +53,7 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
      */
     public function getRegion() {
         $slug = $this->_getRegionSlug();
-        $region = Denkmal_Model_Region::findBySlug($slug);
-        if (null === $region) {
-            throw new CM_Exception('Cannot find region with slug `' . $slug . '`');
-        }
-        return $region;
+        return Denkmal_Model_Region::getBySlug($slug);
     }
 
     /**

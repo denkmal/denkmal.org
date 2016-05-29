@@ -65,7 +65,7 @@ class Denkmal_MessagePushNotification_Formatter {
         if ($image = $message->getImage()) {
             return $this->_render->getUrlUserContent($image->getFile('thumb'));
         } else {
-            return $this->_render->getUrlResource('layout', 'img/meta/push-notification.png');
+            return $this->_render->getUrlResource('layout', 'img/push-notification.png');
         }
     }
 

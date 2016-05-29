@@ -182,7 +182,14 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @param Denkmal_Model_Region $region
      */
     public function setRegion(Denkmal_Model_Region $region) {
-        return $this->_set('region', $region);
+        $this->_set('region', $region);
+    }
+
+    /**
+     * @return DateTimeZone
+     */
+    public function getTimeZone() {
+        return $this->getRegion()->getTimeZone();
     }
 
     public function toArrayApi(CM_Frontend_Render $render) {

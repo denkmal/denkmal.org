@@ -34,6 +34,7 @@ Response:
          "venue":123,
          "description":"Foo Bar",
          "descriptionHtml":"Foo <a href='http://bar.com' class='url' target='_blank'>Bar</a>",
+         "timeZone":"Europe/Zurich",
          "from":1371386731,
          "until":1371386731,
          "starred":false,
@@ -47,6 +48,7 @@ Response:
          "venue":123,
          "description":"Foo",
          "descriptionHtml":"Foo",
+         "timeZone":"Europe/Zurich",
          "from":1371386731,
          "starred":false
       }
@@ -82,6 +84,7 @@ Response:
          "venue":123,
          "description":"Foo Bar",
          "descriptionHtml":"Foo <a href='http://bar.com' class='url' target='_blank'>Bar</a>",
+         "timeZone":"Europe/Zurich",
          "from":1371386731,
          "until":1371386731,
          "starred":false,
@@ -95,6 +98,7 @@ Response:
          "venue":123,
          "description":"Foo",
          "descriptionHtml":"Foo",
+         "timeZone":"Europe/Zurich",
          "from":1371386731,
          "starred":false
       }

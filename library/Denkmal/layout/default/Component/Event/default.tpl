@@ -8,7 +8,7 @@
   <div class="eventDescription">
     <time class="time">
       <span class="icon icon-time"></span>
-      {date_time date=$event->getFrom()}
+      {date_time date=$event->getFrom() timeZone=$event->getTimeZone()}
     </time>
     {if isset($tagList) && $tagList->getCount()}
       <ul class="tags">

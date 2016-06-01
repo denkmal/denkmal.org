@@ -22,4 +22,8 @@ class Denkmal_Page_Now extends Denkmal_Page_Abstract {
         $viewResponse->getJs()->setProperty('venue', $venue);
         $viewResponse->set('allowAdd', $allowAdd);
     }
+
+    protected function _requiresRegion() {
+        return true;
+    }
 }

@@ -60,10 +60,15 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
     }
 
     /**
-     * @return DateTimeZone|null
+     * @return DateTimeZone
+     * @throws CM_Exception
      */
     public function getTimeZone() {
-        return $this->getLocation()->getTimeZone();
+        $timeZone = $this->getLocation()->getTimeZone();
+        if (null === $timeZone) {
+            throw new CM_Exception('Region\'s location is missing timezone');
+        }
+        return $timeZone;
     }
 
     protected function _getSchema() {

@@ -3,13 +3,18 @@
 class Denkmal_Form_EventAdd extends CM_Form_Abstract {
 
     protected function _initialize() {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+        $region = $params->getRegion('region');
+        $timeZone = $region->getTimeZone();
+
         $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'enableChoiceCreate' => true]));
         $this->registerField(new CM_FormField_Text(['name' => 'venueAddress']));
         $this->registerField(new CM_FormField_Url(['name' => 'venueUrl']));
 
-        $this->registerField(new CM_FormField_Date(['name' => 'date', 'yearFirst' => date('Y'), 'yearLast' => (int) date('Y') + 1]));
-        $this->registerField(new Denkmal_FormField_Time(['name' => 'fromTime']));
-        $this->registerField(new Denkmal_FormField_Time(['name' => 'untilTime']));
+        $this->registerField(new CM_FormField_Date(['name' => 'date', 'timeZone' => $timeZone, 'yearFirst' => date('Y'), 'yearLast' => (int) date('Y') + 1]));
+        $this->registerField(new CM_FormField_Time(['name' => 'fromTime', 'timeZone' => $timeZone]));
+        $this->registerField(new CM_FormField_Time(['name' => 'untilTime', 'timeZone' => $timeZone]));
 
         $this->registerField(new CM_FormField_Text(['name' => 'title']));
         $this->registerField(new CM_FormField_Text(['name' => 'artists']));

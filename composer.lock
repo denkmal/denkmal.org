@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8f01665b252b92ba56fe5bd69396feaf",
-    "content-hash": "d23d049a854ccfd5740529a48e2e0386",
+    "hash": "5ccb9f8a61b0878b0b240bc839c5350e",
+    "content-hash": "c60f6db8047b6e3e44c86bf8733b8bf1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,17 +72,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.179.6",
+            "version": "1.180.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "32078e5d1ade3d3e3797f6f9f881a9e2080facbd"
+                "reference": "b1a1227c304f2e7778d96283c3b752168119551c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-32078e5d1ade3d3e3797f6f9f881a9e2080facbd-zip-b1d938.zip",
-                "reference": "32078e5d1ade3d3e3797f6f9f881a9e2080facbd",
-                "shasum": "42f7571f35952b7219db4c1c2e1385df1bd7ce84"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-b1a1227c304f2e7778d96283c3b752168119551c-zip-85d9d9.zip",
+                "reference": "b1a1227c304f2e7778d96283c3b752168119551c",
+                "shasum": "08f830fbfaa5a751b2d220f4d113c1aff47e2bbf"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -129,7 +129,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-05-27 14:34:00"
+            "time": "2016-06-01 10:06:46"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -1426,23 +1426,23 @@
         },
         {
             "name": "predis/predis",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "84060b9034d756b4d79641667d7f9efe1aeb8e04"
+                "reference": "9ead747663bb1b1ae017dfa0d152aca87792b42f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/predis-predis-84060b9034d756b4d79641667d7f9efe1aeb8e04-zip-e41e72.zip",
-                "reference": "84060b9034d756b4d79641667d7f9efe1aeb8e04",
-                "shasum": "00c7e7f51292ddb360fac018da55ad6177179873"
+                "url": "https://satis.cargomedia.ch/dist/dist/predis-predis-9ead747663bb1b1ae017dfa0d152aca87792b42f-zip-378cc3.zip",
+                "reference": "9ead747663bb1b1ae017dfa0d152aca87792b42f",
+                "shasum": "cbbe414e709187e9f89cbf8b56a203f5442e4298"
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~4.8"
             },
             "suggest": {
                 "ext-curl": "Allows access to Webdis when paired with phpiredis",
@@ -1465,14 +1465,14 @@
                     "homepage": "http://clorophilla.net"
                 }
             ],
-            "description": "Flexible and feature-complete PHP client library for Redis",
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
             "homepage": "http://github.com/nrk/predis",
             "keywords": [
                 "nosql",
                 "predis",
                 "redis"
             ],
-            "time": "2015-07-30 18:34:15"
+            "time": "2016-05-30 15:25:52"
         },
         {
             "name": "psr/log",

@@ -7,7 +7,8 @@ class Denkmal_Push_Notification_MessageTest extends CMTest_TestCase {
     }
 
     public function testCreate() {
-        $subscription = Denkmal_Push_Subscription::create('http://example.com/foo1');
+        $site = $this->getMockSite();
+        $subscription = Denkmal_Push_Subscription::create('http://example.com/foo1', $site);
         $expires = new DateTime('2015-01-01');
         $data = ['foo' => 12, 'bar' => 13];
         $message = Denkmal_Push_Notification_Message::create($subscription, $expires, $data);
@@ -19,7 +20,8 @@ class Denkmal_Push_Notification_MessageTest extends CMTest_TestCase {
     }
 
     public function testRpcGetListBySubscription() {
-        $subscription = Denkmal_Push_Subscription::create('http://example.com/foo1');
+        $site = $this->getMockSite();
+        $subscription = Denkmal_Push_Subscription::create('http://example.com/foo1', $site);
         $message1 = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), ['foo' => 12]);
         $message2 = Denkmal_Push_Notification_Message::create($subscription, new DateTime('2015-01-01'), ['foo' => 13]);
 
@@ -34,7 +36,8 @@ class Denkmal_Push_Notification_MessageTest extends CMTest_TestCase {
      * @expectedException CM_Exception_Invalid
      */
     public function testRpcGetListBySubscriptionInvalidParams() {
-        Denkmal_Push_Subscription::create('http://example.com/foo1');
+        $site = $this->getMockSite();
+        Denkmal_Push_Subscription::create('http://example.com/foo1', $site);
 
         Denkmal_Push_Notification_Message::rpc_getListBySubscription('http://example.com/foo2');
     }

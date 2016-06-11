@@ -2,6 +2,11 @@
 
 class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
+    protected function setUp() {
+        $setupLocations = new Denkmal_App_SetupScript_Locations($this->getServiceManager());
+        $setupLocations->load(new CM_OutputStream_Null());
+    }
+
     protected function tearDown() {
         CMTest_TH::clearEnv();
     }

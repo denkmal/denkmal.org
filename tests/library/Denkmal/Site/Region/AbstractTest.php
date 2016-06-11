@@ -59,9 +59,11 @@ class Denkmal_Site_Region_AbstractTest extends CMTest_TestCase {
         $regionGraz = Denkmal_Model_Region::findBySlug('graz');
         $siteBasel = new Denkmal_Site_Region_Basel();
         $regionBasel = Denkmal_Model_Region::findBySlug('basel');
+        $regionOther = DenkmalTest_TH::createRegion('Other', 'other', 'oth');
 
-        $this->assertEquals($siteGraz, Denkmal_Site_Region_Abstract::getSiteByRegion($regionGraz));
-        $this->assertEquals($siteBasel, Denkmal_Site_Region_Abstract::getSiteByRegion($regionBasel));
+        $this->assertEquals($siteGraz, Denkmal_Site_Region_Abstract::findSiteByRegion($regionGraz));
+        $this->assertEquals($siteBasel, Denkmal_Site_Region_Abstract::findSiteByRegion($regionBasel));
+        $this->assertNull(Denkmal_Site_Region_Abstract::findSiteByRegion($regionOther));
     }
 
 }

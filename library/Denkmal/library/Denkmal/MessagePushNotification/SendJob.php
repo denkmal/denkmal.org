@@ -6,7 +6,11 @@ class Denkmal_MessagePushNotification_SendJob extends CM_Jobdistribution_Job_Abs
         /** @var Denkmal_Params $params */
         $message = $params->getMessage('message');
         $region = $message->getVenue()->getRegion();
-        $site = Denkmal_Site_Region_Abstract::getSiteByRegion($region);
+        $site = Denkmal_Site_Region_Abstract::findSiteByRegion($region);
+        if (!$site) {
+            return;
+        }
+        $subscriptionList = new Denkmal_Push_SubscriptionList_Site($site);
 
         $serviceManager = CM_Service_Manager::getInstance();
         /** @var Denkmal_Push_Notification_Sender $sender */
@@ -20,7 +24,6 @@ class Denkmal_MessagePushNotification_SendJob extends CM_Jobdistribution_Job_Abs
         $pushNotificationMessage->setExpires((new DateTime())->add(new DateInterval('PT6H')));
         $pushNotificationMessage->setData($formatter->getPushData($message));
 
-        $subscriptionList = new Denkmal_Push_SubscriptionList_Site($site);
         $sender->sendNotifications($subscriptionList->getItems(), $pushNotificationMessage);
     }
 }

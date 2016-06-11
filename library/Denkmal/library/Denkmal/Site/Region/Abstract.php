@@ -97,16 +97,12 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
 
     /**
      * @param Denkmal_Model_Region $region
-     * @return Denkmal_Site_Region_Abstract
-     * @throws CM_Exception
+     * @return Denkmal_Site_Region_Abstract|null
      */
-    public static function getSiteByRegion(Denkmal_Model_Region $region) {
+    public static function findSiteByRegion(Denkmal_Model_Region $region) {
         $site = Functional\first(self::getAllSites(), function (Denkmal_Site_Region_Abstract $site) use ($region) {
             return $site->getRegion()->equals($region);
         });
-        if (null === $site) {
-            throw new CM_Exception('Cannot find site for region', null, ['region' => $region]);
-        }
         return $site;
     }
 

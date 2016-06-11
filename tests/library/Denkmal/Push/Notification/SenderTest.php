@@ -11,12 +11,13 @@ class Denkmal_Push_Notification_SenderTest extends CMTest_TestCase {
         $message->setExpires(new DateTime('2015-01-01'));
         $message->setData(['foo' => 'bar']);
 
+        $site = $this->getMockSite();
         /** @var Denkmal_Push_Subscription[] $subscriptionList */
         $subscriptionList = [
-            $subscriptionFoo1 = Denkmal_Push_Subscription::create('foo/foo1'),
-            $subscriptionBar1 = Denkmal_Push_Subscription::create('bar/bar1'),
-            $subscriptionFoo2 = Denkmal_Push_Subscription::create('foo/foo2'),
-            $subscriptionBar2 = Denkmal_Push_Subscription::create('bar/bar2'),
+            $subscriptionFoo1 = Denkmal_Push_Subscription::create('foo/foo1', $site),
+            $subscriptionBar1 = Denkmal_Push_Subscription::create('bar/bar1', $site),
+            $subscriptionFoo2 = Denkmal_Push_Subscription::create('foo/foo2', $site),
+            $subscriptionBar2 = Denkmal_Push_Subscription::create('bar/bar2', $site),
         ];
         $subscriptionListFoo = [$subscriptionFoo1, $subscriptionFoo2];
         $subscriptionListBar = [$subscriptionBar1, $subscriptionBar2];

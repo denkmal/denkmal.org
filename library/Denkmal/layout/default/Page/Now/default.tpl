@@ -23,6 +23,6 @@
   {if $venue}
     {component name='Denkmal_Component_MessageList_Venue' venue=$venue}
   {else}
-    {component name='Denkmal_Component_MessageList_All'}
+    {component name='Denkmal_Component_MessageList_Site'}
   {/if}
 {/block}

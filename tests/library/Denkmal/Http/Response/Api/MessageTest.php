@@ -14,6 +14,9 @@ class Denkmal_Http_Response_Api_MessageTest extends CMTest_TestCase {
 
         CM_Config::get()->Denkmal_Http_Response_Api_Message->hashToken = $this->_hashToken;
         CM_Config::get()->Denkmal_Http_Response_Api_Message->hashAlgorithm = $this->_hashAlgorithm;
+
+        $setupLocations = new Denkmal_App_SetupScript_Locations($this->getServiceManager());
+        $setupLocations->load(new CM_OutputStream_Null());
     }
 
     public function tearDown() {

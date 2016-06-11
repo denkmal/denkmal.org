@@ -96,6 +96,17 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
     }
 
     /**
+     * @param Denkmal_Model_Region $region
+     * @return Denkmal_Site_Region_Abstract|null
+     */
+    public static function findSiteByRegion(Denkmal_Model_Region $region) {
+        $site = Functional\first(self::getAllSites(), function (Denkmal_Site_Region_Abstract $site) use ($region) {
+            return $site->getRegion()->equals($region);
+        });
+        return $site;
+    }
+
+    /**
      * @return string
      */
     abstract protected function _getRegionSlug();

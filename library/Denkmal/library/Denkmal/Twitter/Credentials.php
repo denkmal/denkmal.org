@@ -1,8 +1,5 @@
 <?php
 
-/**
- * @see https://apps.twitter.com/
- */
 class Denkmal_Twitter_Credentials implements CM_ArrayConvertible, CM_Comparable {
 
     /** @var string */

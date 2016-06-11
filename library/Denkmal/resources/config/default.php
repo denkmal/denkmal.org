@@ -12,18 +12,6 @@ return function (CM_Config_Node $config) {
     $config->CM_App->setupScriptClasses[] = 'Denkmal_App_SetupScript_Locations';
 
     $config->CM_Stream_Video->servers = array();
-    
-    $config->services['twitter'] = [
-        'class'     => 'Denkmal_Twitter_Client',
-        'arguments' => [
-            'config' => [
-                'consumer_key'       => '<consumer-key>',
-                'consumer_secret'    => '<consumer-secret>',
-                'oauth_token'        => '<oauth-token>',
-                'oauth_token_secret' => '<oauth-token-secret>',
-            ],
-        ]
-    ];
 
     $config->services['push-notification-sender'] = [
         'class'     => 'Denkmal_Push_Notification_Sender',

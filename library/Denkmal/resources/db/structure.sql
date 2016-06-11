@@ -177,6 +177,10 @@ CREATE TABLE `denkmal_model_region` (
   `abbreviation` varchar(16) NOT NULL,
   `locationLevel` int(11) unsigned NOT NULL,
   `locationId` int(11) unsigned NOT NULL,
+  `twitterCredentials` varchar(1000) NULL,
+  `twitterAccount` varchar(1000) NULL,
+  `facebookAccount` varchar(1000) NULL,
+  `emailAddress` varchar(1000),
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   UNIQUE KEY `abbreviation` (`abbreviation`)

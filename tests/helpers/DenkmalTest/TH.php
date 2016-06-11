@@ -47,7 +47,8 @@ class DenkmalTest_TH extends CMTest_TH {
         if (null === $location) {
             $location = self::createLocationCity();
         }
-        return Denkmal_Model_Region::create((string) $name, (string) $slug, (string) $abbreviation, $location);
+        $emailAddress = $slug . '@denkmal.org';
+        return Denkmal_Model_Region::create((string) $name, (string) $slug, (string) $abbreviation, $emailAddress, $location);
     }
 
     /**

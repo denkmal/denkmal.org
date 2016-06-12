@@ -13,6 +13,13 @@ class Denkmal_Elasticsearch_Query_Event extends CM_Elasticsearch_Query {
     }
 
     /**
+     * @param Denkmal_Model_Region $region
+     */
+    public function filterRegion(Denkmal_Model_Region $region) {
+        $this->filterTerm('region', $region->getId());
+    }
+
+    /**
      * @param string $terms
      */
     public function queryText($terms) {

@@ -43,7 +43,8 @@ CREATE TABLE `denkmal_model_venue` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `queued` (`queued`),
-  KEY `ignore` (`ignore`)
+  KEY `ignore` (`ignore`),
+  KEY `region` (`region`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

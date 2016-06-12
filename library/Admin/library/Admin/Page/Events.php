@@ -13,7 +13,11 @@ class Admin_Page_Events extends Admin_Page_Abstract {
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
         $date = $this->_params->has('date') ? $this->_params->getDate('date') : null;
         $searchTerm = $this->_params->has('searchTerm') ? $this->_params->getString('searchTerm') : null;
+        /** @var Admin_Site $site */
+        $site = $environment->getSite();
+        $region = $site->hasRegion() ? $site->getRegion() : null;
 
+        $viewResponse->set('region', $region);
         $viewResponse->set('date', $date);
         $viewResponse->set('searchTerm', $searchTerm);
     }

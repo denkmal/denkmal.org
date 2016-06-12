@@ -21,7 +21,12 @@ class Denkmal_Twitter_EventTweeter {
      * @param DateTime $date
      */
     public function tweetStarredEvents(DateTime $date) {
-        $eventList = (new Denkmal_Paging_Event_Date($date))->getItems();
+        /**
+         * @todo Pass region, see https://github.com/denkmal/denkmal.org/pull/557
+         */
+        $region = Denkmal_Model_Region::getBySlug('basel');
+
+        $eventList = (new Denkmal_Paging_Event_Date($region, $date))->getItems();
         $eventList = Functional\filter($eventList, function (Denkmal_Model_Event $event) {
             return $event->getStarred();
         });

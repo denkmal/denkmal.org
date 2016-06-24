@@ -11,13 +11,12 @@ class Denkmal_Http_Response_Api_Messages extends Denkmal_Http_Response_Api_Abstr
     /** @var int|null */
     private $_startAfterId;
 
-    public function __construct(CM_Http_Request_Get $request, CM_Service_Manager $serviceManager) {
-        parent::__construct($request, $serviceManager);
+    public function __construct(CM_Http_Request_Abstract $request, CM_Site_Abstract $site, CM_Service_Manager $serviceManager) {
+        parent::__construct($request, $site, $serviceManager);
 
-        $params = new Denkmal_Params($request->getQuery());
-        $this->_maxMessages = min(max($params->getInt('maxMessages', 500), 1), 5000);
-        $this->_minMessagesVenue = min(max($params->getInt('minMessagesVenue', 0), 0), 100);
-        $this->_startAfterId = $params->has('startAfterId') ? $params->getInt('startAfterId') : null;
+        $this->_maxMessages = min(max($this->_params->getInt('maxMessages', 500), 1), 5000);
+        $this->_minMessagesVenue = min(max($this->_params->getInt('minMessagesVenue', 0), 0), 100);
+        $this->_startAfterId = $this->_params->has('startAfterId') ? $this->_params->getInt('startAfterId') : null;
     }
 
     protected function _process() {
@@ -89,10 +88,12 @@ class Denkmal_Http_Response_Api_Messages extends Denkmal_Http_Response_Api_Abstr
         return array_values($messageList);
     }
 
-    public static function match(CM_Http_Request_Abstract $request) {
-        if (!parent::match($request)) {
-            return false;
+    public static function createFromRequest(CM_Http_Request_Abstract $request, CM_Site_Abstract $site, CM_Service_Manager $serviceManager) {
+        if ($request->getPath() === '/api/messages') {
+            $request = clone $request;
+            return new self($request, $site, $serviceManager);
         }
-        return $request->getPathPart(1) === 'messages';
+        return null;
     }
+
 }

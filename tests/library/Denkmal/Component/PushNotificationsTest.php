@@ -38,8 +38,8 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
             'endpoint' => 'https://android.googleapis.com/gcm/send/foo1',
             'user'     => null,
         ], null, null, $site1);
-        /** @var CM_Http_Response_View_Abstract $response */
-        $response = $this->processRequest($request);
+        $response = CM_Http_Response_View_Ajax::createFromRequest($request, $site1, $this->getServiceManager());
+        $response->process();
 
         $this->assertViewResponseSuccess($response);
         $pushSubscription = Denkmal_Push_Subscription::findByEndpoint('https://android.googleapis.com/gcm/send/foo1');
@@ -53,8 +53,8 @@ class Denkmal_Component_PushNotificationsTest extends CMTest_TestCase {
             'endpoint' => 'https://android.googleapis.com/gcm/send/foo1',
             'user'     => $user,
         ], null, null, $site2);
-        /** @var CM_Http_Response_View_Abstract $response */
-        $response = $this->processRequest($request);
+        $response = CM_Http_Response_View_Ajax::createFromRequest($request, $site2, $this->getServiceManager());
+        $response->process();
 
         $this->assertViewResponseSuccess($response);
         $pushSubscription = Denkmal_Push_Subscription::findByEndpoint('https://android.googleapis.com/gcm/send/foo1');

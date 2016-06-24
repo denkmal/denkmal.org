@@ -2,11 +2,6 @@
 
 class Denkmal_Http_Response_Api_Message extends Denkmal_Http_Response_Api_Abstract {
 
-    public function __construct(CM_Http_Request_Post $request, CM_Service_Manager $serviceManager) {
-        $request->setBodyEncoding(CM_Http_Request_Post::ENCODING_FORM);
-        parent::__construct($request, $serviceManager);
-    }
-
     protected function _process() {
         $hashToken = self::_getConfig()->hashToken;
         $hashAlgorithm = self::_getConfig()->hashAlgorithm;
@@ -54,10 +49,13 @@ class Denkmal_Http_Response_Api_Message extends Denkmal_Http_Response_Api_Abstra
         return array($text, $imageData);
     }
 
-    public static function match(CM_Http_Request_Abstract $request) {
-        if (!parent::match($request)) {
-            return false;
+    public static function createFromRequest(CM_Http_Request_Abstract $request, CM_Site_Abstract $site, CM_Service_Manager $serviceManager) {
+        if ($request->getPath() === '/api/message' && $request instanceof CM_Http_Request_Post) {
+            $request = clone $request;
+            $request->setBodyEncoding(CM_Http_Request_Post::ENCODING_FORM);
+            return new self($request, $site, $serviceManager);
         }
-        return $request->getPathPart(1) === 'message';
+        return null;
     }
+
 }

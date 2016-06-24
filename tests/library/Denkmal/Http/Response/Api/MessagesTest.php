@@ -8,7 +8,8 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
 
     public function testMatch() {
         $request = new CM_Http_Request_Get('/api/messages', array('host' => 'denkmal.test'));
-        $response = CM_Http_Response_Abstract::factory($request, $this->getServiceManager());
+        $responseFactory = new CM_Http_ResponseFactory($this->getServiceManager());
+        $response = $responseFactory->getResponse($request);
         $this->assertInstanceOf('Denkmal_Http_Response_Api_Messages', $response);
     }
 
@@ -29,8 +30,9 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
         }
 
         $query = http_build_query(array('maxMessages' => $maxMessages));
-        $request = new CM_Http_Request_Get('/api/messages?' . $query, array('host' => 'denkmal.test'));
-        $response = new Denkmal_Http_Response_Api_Messages($request, $this->getServiceManager());
+        $site = $this->getMockSite('Denkmal_Site_Default');
+        $request = new CM_Http_Request_Get('/api/messages?' . $query);
+        $response = Denkmal_Http_Response_Api_Messages::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $expected = Functional\map(array_slice($messageList, 3), function (Denkmal_Model_Message $message) use ($response) {
@@ -70,8 +72,9 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
         }
 
         $query = http_build_query(array('maxMessages' => $maxMessages, 'minMessagesVenue' => $minMessagesVenue));
-        $request = new CM_Http_Request_Get('/api/messages?' . $query, array('host' => 'denkmal.test'));
-        $response = new Denkmal_Http_Response_Api_Messages($request, $this->getServiceManager());
+        $site = $this->getMockSite('Denkmal_Site_Default');
+        $request = new CM_Http_Request_Get('/api/messages?' . $query);
+        $response = Denkmal_Http_Response_Api_Messages::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $expectedMessageList = array_merge(array_slice($messageListHasEvent, 7), array_slice($messageList, 8));
@@ -94,8 +97,9 @@ class Denkmal_Http_Response_Api_MessagesTest extends CMTest_TestCase {
         }
 
         $query = http_build_query(array('startAfterId' => $messageList[7]->getId()));
-        $request = new CM_Http_Request_Get('/api/messages?' . $query, array('host' => 'denkmal.test'));
-        $response = new Denkmal_Http_Response_Api_Messages($request, $this->getServiceManager());
+        $site = $this->getMockSite('Denkmal_Site_Default', null, ['url' => 'http://denkmal.test']);
+        $request = new CM_Http_Request_Get('/api/messages?' . $query);
+        $response = Denkmal_Http_Response_Api_Messages::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $expected = Functional\map(array_slice($messageList, 8), function (Denkmal_Model_Message $message) use ($response) {

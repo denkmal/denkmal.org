@@ -8,7 +8,8 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
 
     public function testMatch() {
         $request = new CM_Http_Request_Get('/api/events', array('host' => 'denkmal.test'));
-        $response = CM_Http_Response_Abstract::factory($request, $this->getServiceManager());
+        $responseFactory = new CM_Http_ResponseFactory($this->getServiceManager());
+        $response = $responseFactory->getResponse($request);
         $this->assertInstanceOf('Denkmal_Http_Response_Api_Events', $response);
     }
 
@@ -21,8 +22,9 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
         $event1 = Denkmal_Model_Event::create($venue1, 'Foo', true, false, $now);
         $event2 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now);
 
-        $request = new CM_Http_Request_Get('/api/events?venue=Venue1', array('host' => 'denkmal.test'));
-        $response = new Denkmal_Http_Response_Api_Events($request, $this->getServiceManager());
+        $site = $this->getMockSite('Denkmal_Site_Default');
+        $request = new CM_Http_Request_Get('/api/events?venue=Venue1');
+        $response = Denkmal_Http_Response_Api_Events::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $expected = array(
@@ -39,8 +41,9 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
      * @expectedExceptionMessage Cannot find venue
      */
     public function testProcessInvalidVenue() {
-        $request = new CM_Http_Request_Get('/api/events?venue=VenueNonexistent', array('host' => 'denkmal.test'));
-        $response = new Denkmal_Http_Response_Api_Events($request, $this->getServiceManager());
+        $site = $this->getMockSite('Denkmal_Site_Default');
+        $request = new CM_Http_Request_Get('/api/events?venue=VenueNonexistent');
+        $response = Denkmal_Http_Response_Api_Events::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
     }
 }

@@ -4,7 +4,6 @@
   <header id="header">
     {if $viewer}
       <aside>
-        {component name='Admin_Component_SelectRegion'}
         {component name='Denkmal_Component_Logout'}
       </aside>
     {/if}
@@ -17,5 +16,8 @@
   <section id="middle">
     {$smarty.capture.pageContent}
   </section>
+  <footer>
+    {component name='Admin_Component_SelectRegion'}
+  </footer>
   {component name='Denkmal_Component_SongPlayer'}
 {/block}

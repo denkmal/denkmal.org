@@ -6,10 +6,11 @@ class Admin_Form_Event extends CM_Form_Abstract {
         /** @var Denkmal_Params $params */
         $params = $this->getParams();
         $event = $params->getEvent('event');
+        $region = $event->getVenue()->getRegion();
         $timeZone = $event->getTimeZone();
 
         $this->registerField(new CM_FormField_Hidden(['name' => 'eventId']));
-        $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'enableChoiceCreate' => false]));
+        $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'region' => $region, 'enableChoiceCreate' => false]));
         $this->registerField(new CM_FormField_Date(['name' => 'date', 'timeZone' => $timeZone, 'yearFirst' => date('Y') - 1, 'yearLast' => (int) date('Y') + 1]));
         $this->registerField(new CM_FormField_Time(['name' => 'fromTime', 'timeZone' => $timeZone]));
         $this->registerField(new CM_FormField_Time(['name' => 'untilTime', 'timeZone' => $timeZone]));

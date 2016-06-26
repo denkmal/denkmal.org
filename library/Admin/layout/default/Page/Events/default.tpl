@@ -16,7 +16,7 @@
         </div>
         <div class="column2">
           {component name='Admin_Component_EventList_Queued' region=$region}
-          {component name='Admin_Component_VenueList_Queued' date=$date}
+          {component name='Admin_Component_VenueList_Queued' region=$region}
         </div>
       </div>
     {/if}

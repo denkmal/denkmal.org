@@ -4,7 +4,7 @@
   {component name='Admin_Component_Filter_Search' searchTerm=$searchTerm urlPage='Admin_Page_Events'}
   {if isset($searchTerm)}
     <h2>{translate 'Events for "{$searchTerm}"' searchTerm="<span class=\"searchTerm\">{$searchTerm|escape}</span>"}</h2>
-    {component name='Admin_Component_EventList_Search' text=$searchTerm}
+    {component name='Admin_Component_EventList_Search' region=$region text=$searchTerm}
   {else}
     {if $region}
       <h2>{translate 'Events on {$date}' date="<time class=\"currentDate\">{date_full date=$date timeZone=$date->getTimeZone()}</time>"}</h2>

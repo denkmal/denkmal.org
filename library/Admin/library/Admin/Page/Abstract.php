@@ -9,9 +9,9 @@ class Admin_Page_Abstract extends CM_Page_Abstract {
     protected $_region;
 
     public function prepareResponse(CM_Frontend_Environment $environment, CM_Http_Response_Page $response) {
-        $session = $response->getRequest()->getSession();
-        if ($session->has('region')) {
-            $this->_region = new Denkmal_Model_Region($session->get('region'));
+        $site = $response->getSite();
+        if ($site instanceof Denkmal_Site_Default && $site->hasRegion()) {
+            $this->_region = $site->getRegion();
         }
     }
 

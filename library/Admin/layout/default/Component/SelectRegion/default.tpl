@@ -1,6 +1,7 @@
 <div class="openerDropdown languageSelector">
   <a href="javascript:;" class="openerDropdown-panel">
-    {if $region}{$region->getName()|escape}{else}{translate 'Select your region'}{/if}
+    <span class="icon icon-target"></span>
+    {if $region}{$region->getName()|escape}{else}{translate 'No region'}{/if}
   </a>
   <div class="openerDropdown-window flyout triangle-bottom">
     <ul class="menu-sub">

@@ -28,4 +28,7 @@ class Admin_Component_SelectRegion extends Admin_Component_Abstract {
         $viewResponse->set('itemList', $itemList);
     }
 
+    public function checkAccessible(CM_Frontend_Environment $environment) {
+    }
+
 }

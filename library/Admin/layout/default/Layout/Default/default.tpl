@@ -16,8 +16,5 @@
   <section id="middle">
     {$smarty.capture.pageContent}
   </section>
-  <footer>
-    {component name='Admin_Component_SelectRegion'}
-  </footer>
   {component name='Denkmal_Component_SongPlayer'}
 {/block}

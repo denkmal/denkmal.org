@@ -7,7 +7,7 @@ class Admin_Component_VenueList_All extends Admin_Component_VenueList_Abstract {
         $searchTerm = $this->getParams()->has('searchTerm') ? $this->getParams()->getString('searchTerm') : null;
 
         if (null !== $searchTerm) {
-            $venueList = new Denkmal_Paging_Venue_Search($searchTerm);
+            $venueList = new Denkmal_Paging_Venue_Search($searchTerm, $region);
         } else {
             $venueList = new Denkmal_Paging_Venue_All($region);
         }

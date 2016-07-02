@@ -44,7 +44,7 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
             });
             $description = new Denkmal_Scraper_Description(implode(', ', $artists), $descriptionText, new Denkmal_Scraper_Genres($genres));
 
-            return new Denkmal_Scraper_EventData($venueName, $description, $from);
+            return new Denkmal_Scraper_EventData($this->getRegion(), $venueName, $description, $from);
         });
     }
     

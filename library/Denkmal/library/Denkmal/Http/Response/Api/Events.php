@@ -6,7 +6,7 @@ class Denkmal_Http_Response_Api_Events extends Denkmal_Http_Response_Api_Abstrac
         $settings = new Denkmal_App_Settings();
         $suspension = $settings->getSuspension();
         $venueName = $this->_params->getString('venue');
-        $venue = Denkmal_Model_Venue::findByNameOrAlias($venueName);
+        $venue = Denkmal_Model_Venue::findByNameOrAlias($this->_getRegion(), $venueName);
         if (null === $venue) {
             throw new CM_Exception('Cannot find venue with name `' . $venueName . '`');
         }

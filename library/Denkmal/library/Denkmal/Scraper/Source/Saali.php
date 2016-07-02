@@ -93,7 +93,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             $descriptionList = array_merge($descriptionList, array_splice($eventTextList, 2));
             $description = new Denkmal_Scraper_Description(implode(' ', $descriptionList));
 
-            return new Denkmal_Scraper_EventData('Sääli', $description, $from);
+            return new Denkmal_Scraper_EventData($this->getRegion(), 'Sääli', $description, $from);
         });
 
         return array_values($eventDataList);

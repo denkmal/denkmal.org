@@ -45,7 +45,7 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
 
             $description = implode(', ', $descriptionList);
 
-            return new Denkmal_Scraper_EventData('Kaschemme', new Denkmal_Scraper_Description($description, null, $genres), $from);
+            return new Denkmal_Scraper_EventData($this->getRegion(), 'Kaschemme', new Denkmal_Scraper_Description($description, null, $genres), $from);
         });
     }
 

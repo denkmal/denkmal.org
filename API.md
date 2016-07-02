@@ -1,6 +1,12 @@
 API
 ===
 
+The base URL for all API requests is:
+```
+https://www.denkmal.org/<region>/api
+```
+Where `<region>` is the slug of the desired region (e.g. "basel").
+
 Get events
 ----------
 Retrieve future events for a venue.
@@ -11,7 +17,7 @@ Parameters:
 
 Request:
 ```
-GET /api/events?venue=Hirscheneck HTTP/1.1
+GET /<region>/api/events?venue=Hirscheneck HTTP/1.1
 Host: www.denkmal.org
 ```
 
@@ -58,7 +64,7 @@ Parameters:
 
 Request:
 ```
-GET /api/messages HTTP/1.1
+GET /<region>/api/messages HTTP/1.1
 Host: www.denkmal.org
 ```
 

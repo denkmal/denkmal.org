@@ -96,7 +96,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
 
             foreach ($eventDataListValid as $eventData) {
                 if (!$venue = $eventData->findVenue()) {
-                    $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false, $source->getRegion());
+                    $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false, $eventData->getRegion());
                 }
                 Denkmal_Model_Event::create($venue, $eventData->getDescription()->getAll(), true, true, $eventData->getFrom(), $eventData->getUntil());
             }

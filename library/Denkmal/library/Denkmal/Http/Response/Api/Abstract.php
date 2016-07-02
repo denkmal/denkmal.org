@@ -17,4 +17,16 @@ abstract class Denkmal_Http_Response_Api_Abstract extends CM_Http_Response_Abstr
         $this->setHeader('Access-Control-Allow-Origin', '*');
         parent::_setContent($content);
     }
+
+    /**
+     * @return Denkmal_Model_Region
+     * @throws CM_Exception
+     */
+    protected function _getRegion() {
+        $site = $this->getSite();
+        if (!$site instanceof Denkmal_Site_Default) {
+            throw new CM_Exception('API requested on unexpected site', null, ['site' => $site->getId()]);
+        }
+        return $site->getRegion();
+    }
 }

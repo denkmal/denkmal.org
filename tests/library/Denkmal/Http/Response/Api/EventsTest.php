@@ -19,15 +19,16 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
     }
 
     public function testProcess() {
-        $venue1 = DenkmalTest_TH::createVenue('Venue1');
-        $venue2 = DenkmalTest_TH::createVenue('Venue2');
+        $region = Denkmal_Model_Region::findBySlug('basel');
+        $venue1 = DenkmalTest_TH::createVenue('Venue1', null, null, $region);
+        $venue2 = DenkmalTest_TH::createVenue('Venue2', null, null, $region);
 
         $now = new DateTime();
         $now->setTime(12, 0, 0);
         $event1 = Denkmal_Model_Event::create($venue1, 'Foo', true, false, $now);
         $event2 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now);
 
-        $site = $this->getMockSite('Denkmal_Site_Default');
+        $site = new Denkmal_Site_Region_Basel();
         $request = new CM_Http_Request_Get('/api/events?venue=Venue1');
         $response = Denkmal_Http_Response_Api_Events::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
@@ -46,7 +47,7 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
      * @expectedExceptionMessage Cannot find venue
      */
     public function testProcessInvalidVenue() {
-        $site = $this->getMockSite('Denkmal_Site_Default');
+        $site = new Denkmal_Site_Region_Basel();
         $request = new CM_Http_Request_Get('/api/events?venue=VenueNonexistent');
         $response = Denkmal_Http_Response_Api_Events::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();

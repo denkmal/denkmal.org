@@ -18,8 +18,10 @@ class Admin_Form_UserInviteTest extends CMTest_TestCase {
             'expires'   => ['year' => $expires->format('Y'), 'month' => $expires->format('n'), 'day' => $expires->format('j')],
             'sendEmail' => 1,
         ]);
+
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request->mockMethod('getViewer')->set($admin);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseSuccess($response);

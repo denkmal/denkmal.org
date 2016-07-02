@@ -8,11 +8,12 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $region = $params->getRegion('region');
         $timeZone = $region->getTimeZone();
 
-        $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'enableChoiceCreate' => true]));
+        $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'region' => $region, 'enableChoiceCreate' => true]));
         $this->registerField(new CM_FormField_Text(['name' => 'venueAddress']));
         $this->registerField(new CM_FormField_Url(['name' => 'venueUrl']));
 
-        $this->registerField(new CM_FormField_Date(['name' => 'date', 'timeZone' => $timeZone, 'yearFirst' => date('Y'), 'yearLast' => (int) date('Y') + 1]));
+        $this->registerField(new CM_FormField_Date(['name'      => 'date', 'timeZone' => $timeZone,
+                                                    'yearFirst' => date('Y'), 'yearLast' => (int) date('Y') + 1]));
         $this->registerField(new CM_FormField_Time(['name' => 'fromTime', 'timeZone' => $timeZone]));
         $this->registerField(new CM_FormField_Time(['name' => 'untilTime', 'timeZone' => $timeZone]));
 
@@ -42,7 +43,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $venue = $params->get('venue');
         if (!$venue instanceof Denkmal_Model_Venue) {
             $name = (string) $venue;
-            $venue = Denkmal_Model_Venue::findByNameOrAlias($name);
+            $venue = Denkmal_Model_Venue::findByNameOrAlias($region, $name);
 
             if (null === $venue) {
                 $address = $params->has('venueAddress') ? $params->getString('venueAddress') : null;

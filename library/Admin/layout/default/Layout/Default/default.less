@@ -8,9 +8,13 @@
   }
 }
 
-.Denkmal_Component_Logout {
+aside {
   float: right;
   padding: 5px;
+
+  > * {
+    display: inline-block;
+  }
 }
 
 #middle {
@@ -18,4 +22,11 @@
   max-width: @siteMaxWidth;
   min-height: 300px;
   padding: 12px;
+}
+
+footer {
+  margin-top: 40px;
+  a {
+    color: @colorFg;
+  }
 }

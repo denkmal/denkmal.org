@@ -10,9 +10,10 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         parent::_checkData($params, $response, $form);
         /** @var Denkmal_Params $params */
         $venue = $params->getVenue('venueId');
+        $region = $venue->getRegion();
         $name = $params->getString('name');
         if ($name !== $venue->getName()) {
-            if ($venue = Denkmal_Model_Venue::findByNameOrAlias($name)) {
+            if ($venue = Denkmal_Model_Venue::findByNameOrAlias($region, $name)) {
                 $response->addError($response->getRender()->getTranslation('Name already in use.'), 'name');
             }
         }

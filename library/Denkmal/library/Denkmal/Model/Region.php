@@ -88,6 +88,12 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         ]);
     }
 
+    protected function _getContainingCacheables() {
+        $cacheables = parent::_getContainingCacheables();
+        $cacheables[] = new Denkmal_Paging_Region_All();
+        return $cacheables;
+    }
+
     public static function getPersistenceClass() {
         return 'CM_Model_StorageAdapter_Database';
     }

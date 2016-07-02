@@ -12,13 +12,14 @@ class Denkmal_Form_UserTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_User();
         $action = new Denkmal_FormAction_User_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'email'    => 'foo@example.com',
             'username' => 'foo',
             'password' => 'pass'
         ]);
         $request->mockMethod('getViewer')->set($admin);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseSuccess($response);
@@ -38,13 +39,14 @@ class Denkmal_Form_UserTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_User();
         $action = new Denkmal_FormAction_User_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'email'    => 'foo@example.com',
             'username' => 'foo',
             'password' => 'pass'
         ]);
         $request->mockMethod('getViewer')->set($publisher);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseError($response);
@@ -56,12 +58,13 @@ class Denkmal_Form_UserTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_User(['inviteKey' => $userInvite->getKey()]);
         $action = new Denkmal_FormAction_User_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'email'    => 'foo@example.com',
             'username' => 'foo',
             'password' => 'pass'
         ]);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseSuccess($response);

@@ -56,7 +56,7 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
                 $from->setTime(20);
             }
 
-            return new Denkmal_Scraper_EventData($venueName, $description, $from);
+            return new Denkmal_Scraper_EventData($this->getRegion(), $venueName, $description, $from);
         });
     }
 

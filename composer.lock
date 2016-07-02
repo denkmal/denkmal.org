@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c7daf3afa488d29d729bfcf90ef350fc",
-    "content-hash": "6912eef6d9b0dd8f29db1f6e57db3c90",
+    "hash": "cffab133404f3f98ed5dda58f0b4e32c",
+    "content-hash": "71d5c3baa28d94c657575b194f7d1a01",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,21 +72,22 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.187.0",
+            "version": "1.190.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "1466939dbe209b916bb79495aad7b0246597f74c"
+                "reference": "2c7d2d3ea52bfe8b16f5ed676d20882844ad9e58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-1466939dbe209b916bb79495aad7b0246597f74c-zip-38abde.zip",
-                "reference": "1466939dbe209b916bb79495aad7b0246597f74c",
-                "shasum": "9dcab75c13c5f4d31f69886b449e86e150e87603"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-2c7d2d3ea52bfe8b16f5ed676d20882844ad9e58-zip-1d8b79.zip",
+                "reference": "2c7d2d3ea52bfe8b16f5ed676d20882844ad9e58",
+                "shasum": "f86394fa76211e2361f5ea27da850503573f970b"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
                 "composer/composer": "~1.1.0",
+                "danielstjules/stringy": "~2.3",
                 "easybook/geshi": "1.0.8.11",
                 "elasticsearch/elasticsearch": "~2.0.0",
                 "fluent/logger": "~1.0.0",
@@ -129,7 +130,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-06-17 14:08:20"
+            "time": "2016-07-02 12:38:02"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -231,17 +232,17 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "b2cf67b1a575d7e648c742be2454339232ef32b2"
+                "reference": "30ab6f1c1753267d181839142fafe022313c3c9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/composer-composer-b2cf67b1a575d7e648c742be2454339232ef32b2-zip-fd06c6.zip",
-                "reference": "b2cf67b1a575d7e648c742be2454339232ef32b2",
-                "shasum": "f5abe0c1b9d2178e0bf2690291622047f45a5443"
+                "url": "https://satis.cargomedia.ch/dist/dist/composer-composer-30ab6f1c1753267d181839142fafe022313c3c9a-zip-65c34b.zip",
+                "reference": "30ab6f1c1753267d181839142fafe022313c3c9a",
+                "shasum": "e97a8f11eb9c4764bec6077e6b09caf27ef7f9d8"
             },
             "require": {
                 "composer/ca-bundle": "^1.0",
@@ -304,7 +305,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2016-05-31 18:48:12"
+            "time": "2016-06-26 14:42:08"
         },
         {
             "name": "composer/semver",
@@ -431,21 +432,21 @@
         },
         {
             "name": "danielstjules/stringy",
-            "version": "1.10.0",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b"
+                "reference": "4e214a5195fae3fb558e81b1c6010678f7600643"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/danielstjules-stringy-4749c205db47ee5b32e8d1adf6d9aff8db6caf3b-zip-b11753.zip",
-                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
-                "shasum": "df63d3ab6d6388f4d72e62cb8fed9eb38b3abbea"
+                "url": "https://satis.cargomedia.ch/dist/dist/danielstjules-stringy-4e214a5195fae3fb558e81b1c6010678f7600643-zip-bbb247.zip",
+                "reference": "4e214a5195fae3fb558e81b1c6010678f7600643",
+                "shasum": "5a204b1c22a2b785f84feff4f1814d1c0cd11764"
             },
             "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3.0"
+                "php": ">=5.3.0",
+                "symfony/polyfill-mbstring": "~1.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0"
@@ -483,74 +484,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-07-23 00:54:12"
-        },
-        {
-            "name": "doctrine/inflector",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/inflector.git",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/doctrine-inflector-90b2128806bfde671b6952ab8bea493942c1fdae-zip-a91357.zip",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
-                "shasum": "9e8302a5bf0cf00b1128f8b19ddff977e4be186f"
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Inflector\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "inflection",
-                "pluralize",
-                "singularize",
-                "string"
-            ],
-            "time": "2015-11-06 14:35:42"
+            "time": "2016-05-02 15:18:10"
         },
         {
             "name": "easybook/geshi",
@@ -797,6 +731,7 @@
                 "rest",
                 "web service"
             ],
+            "abandoned": "guzzlehttp/guzzle",
             "time": "2014-01-28 22:29:15"
         },
         {
@@ -959,84 +894,39 @@
             "time": "2014-10-12 19:18:40"
         },
         {
-            "name": "illuminate/contracts",
-            "version": "v5.0.33",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/contracts.git",
-                "reference": "b8b11d78724a6f8a62be3b1dfa20fa372f861398"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-contracts-b8b11d78724a6f8a62be3b1dfa20fa372f861398-zip-026b1c.zip",
-                "reference": "b8b11d78724a6f8a62be3b1dfa20fa372f861398",
-                "shasum": "3e936594fb06126d296f279b7d9800fa520754a7"
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Contracts package.",
-            "homepage": "http://laravel.com",
-            "time": "2015-05-15 07:22:28"
-        },
-        {
             "name": "illuminate/support",
-            "version": "v5.0.33",
+            "version": "v4.2.17",
+            "target-dir": "Illuminate/Support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "32a12f97029b624fc0f9454e7ca69eaafef49c5d"
+                "reference": "db61f3f6d507ce417ca993e1f93585db7efd8b12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-32a12f97029b624fc0f9454e7ca69eaafef49c5d-zip-dd9ef6.zip",
-                "reference": "32a12f97029b624fc0f9454e7ca69eaafef49c5d",
-                "shasum": "464b1eebc37e271dcda9d258ed34a22c8413a6e6"
+                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-db61f3f6d507ce417ca993e1f93585db7efd8b12-zip-12162a.zip",
+                "reference": "db61f3f6d507ce417ca993e1f93585db7efd8b12",
+                "shasum": "c3a993bab2b01c5b0e7df9406d775365fb9fd351"
             },
             "require": {
-                "danielstjules/stringy": "~1.8",
-                "doctrine/inflector": "~1.0",
-                "ext-mbstring": "*",
-                "illuminate/contracts": "5.0.*",
                 "php": ">=5.4.0"
             },
-            "suggest": {
-                "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
-                "symfony/var-dumper": "Required to use the dd function (2.6.*)."
+            "require-dev": {
+                "jeremeamia/superclosure": "~1.0.1",
+                "patchwork/utf8": "~1.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Illuminate\\Support\\": ""
+                "psr-0": {
+                    "Illuminate\\Support": ""
                 },
                 "files": [
-                    "helpers.php"
+                    "Illuminate/Support/helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1049,9 +939,7 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "description": "The Illuminate Support package.",
-            "homepage": "http://laravel.com",
-            "time": "2015-06-04 12:15:51"
+            "time": "2015-01-27 20:51:43"
         },
         {
             "name": "jenssegers/agent",
@@ -1983,17 +1871,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.7",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "5ac8bc9aa77bb2edf06af3a1bb6bc1020d23acd3"
+                "reference": "c392a6ec72f2122748032c2ad6870420561ffcfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-5ac8bc9aa77bb2edf06af3a1bb6bc1020d23acd3-zip-77ffaf.zip",
-                "reference": "5ac8bc9aa77bb2edf06af3a1bb6bc1020d23acd3",
-                "shasum": "ee5466ad9b3315cc3a223bebf74c4d956ee7296b"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-c392a6ec72f2122748032c2ad6870420561ffcfa-zip-03217d.zip",
+                "reference": "c392a6ec72f2122748032c2ad6870420561ffcfa",
+                "shasum": "f6c962d1c077fa9192d282b3bd6e336e8312ae16"
             },
             "require": {
                 "php": ">=5.3.9",
@@ -2039,21 +1927,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 15:06:25"
+            "time": "2016-06-29 07:02:14"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.7",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "2a6b8713f8bdb582058cfda463527f195b066110"
+                "reference": "b180b70439dca70049b6b9b7e21d75e6e5d7aca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-2a6b8713f8bdb582058cfda463527f195b066110-zip-96e132.zip",
-                "reference": "2a6b8713f8bdb582058cfda463527f195b066110",
-                "shasum": "a119c394c6b58c7724088ece0e337d96e43e5e0f"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-b180b70439dca70049b6b9b7e21d75e6e5d7aca9-zip-c4413a.zip",
+                "reference": "b180b70439dca70049b6b9b7e21d75e6e5d7aca9",
+                "shasum": "e7c9e3daf0fada2fc363e36360733f4faa936579"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -2099,21 +1987,21 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 11:11:27"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.8.7",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "dee379131dceed90a429e951546b33edfe7dccbb"
+                "reference": "7258ddd6f987053f21fa43d03430580ba54e6096"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-filesystem-dee379131dceed90a429e951546b33edfe7dccbb-zip-146c6d.zip",
-                "reference": "dee379131dceed90a429e951546b33edfe7dccbb",
-                "shasum": "ffff16d1c0c8660b5a60710fdd96ebfbce5fdec8"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-filesystem-7258ddd6f987053f21fa43d03430580ba54e6096-zip-5bea58.zip",
+                "reference": "7258ddd6f987053f21fa43d03430580ba54e6096",
+                "shasum": "e34742169a65d402485093de1faa7158a0bd6217"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -2148,21 +2036,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-12 18:01:21"
+            "time": "2016-06-29 05:31:50"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.8.7",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "3ec095fab1800222732ca522a95dce8fa124007b"
+                "reference": "bf0506ef4e7778fd3f0f1f141ab5e8c1ef35dd7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-3ec095fab1800222732ca522a95dce8fa124007b-zip-95c510.zip",
-                "reference": "3ec095fab1800222732ca522a95dce8fa124007b",
-                "shasum": "cca5f059de4828639669dd38b183f8a77a953308"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-bf0506ef4e7778fd3f0f1f141ab5e8c1ef35dd7d-zip-02379f.zip",
+                "reference": "bf0506ef4e7778fd3f0f1f141ab5e8c1ef35dd7d",
+                "shasum": "e8b569ffa460249d55307565d2a1e93cafb3a797"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -2197,7 +2085,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 11:11:27"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2260,17 +2148,17 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.7",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "115347d00c342198cdc52a7bd8bc15b5ab43500c"
+                "reference": "89f33c16796415ccfd8bb3cf8d520cbb79899bfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-115347d00c342198cdc52a7bd8bc15b5ab43500c-zip-f815aa.zip",
-                "reference": "115347d00c342198cdc52a7bd8bc15b5ab43500c",
-                "shasum": "0519e34673865de14603ef40231b862af4b81d71"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-89f33c16796415ccfd8bb3cf8d520cbb79899bfe-zip-ac0c89.zip",
+                "reference": "89f33c16796415ccfd8bb3cf8d520cbb79899bfe",
+                "shasum": "3dbd6f44bbb978cdc62cfb7f9db471d02610a5fa"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -2305,7 +2193,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 11:11:27"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "tomaszdurka/codegenerator",
@@ -3304,17 +3192,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.7",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "815fabf3f48c7d1df345a69d1ad1a88f59757b34"
+                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-815fabf3f48c7d1df345a69d1ad1a88f59757b34-zip-80f4fb.zip",
-                "reference": "815fabf3f48c7d1df345a69d1ad1a88f59757b34",
-                "shasum": "342a94ddeb1a41b2cfd03954f070002a53950fa5"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-dba4bb5846798cd12f32e2d8f3f35d77045773c8-zip-b1f6b8.zip",
+                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8",
+                "shasum": "96400f4a6a727cefa2296d3bbbf3c50b2c35e9df"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -3349,7 +3237,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 11:11:27"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "tomaszdurka/mocka",

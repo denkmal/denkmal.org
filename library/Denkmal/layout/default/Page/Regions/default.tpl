@@ -5,8 +5,9 @@
   <ul>
     {foreach $siteList as $site}
       <li>
-        Name: {$site->getRegion()->getName()|escape}
-        Link: {$render->getUrlPage('Denkmal_Page_Index', [], $site)}
+        <a href="{$render->getUrlPage('Denkmal_Page_Index', [], $site)}">
+          {$site->getRegion()->getName()|escape}
+        </a>
       </li>
     {/foreach}
   </ul>

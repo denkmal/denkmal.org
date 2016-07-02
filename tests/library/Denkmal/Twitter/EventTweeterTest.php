@@ -7,7 +7,8 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
     }
 
     public function testTweetStarredEvents() {
-        $venue = DenkmalTest_TH::createVenue();
+        $region = DenkmalTest_TH::createRegion('basel', 'basel');
+        $venue = DenkmalTest_TH::createVenue(null, null, null, $region);
         $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, new DateTime('2014-11-01 11:00'), null, null, null, true);
         $event2 = Denkmal_Model_Event::create($venue, 'Foo 2', true, false, new DateTime('2014-11-01 12:00'), null, null, null, false);
         $event3 = Denkmal_Model_Event::create($venue, 'Foo 3', true, false, new DateTime('2014-11-01 13:00'), null, null, null, true);

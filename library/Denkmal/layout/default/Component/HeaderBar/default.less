@@ -96,14 +96,6 @@
         display: inline-block;
       }
     }
-
-    @media (min-width: 640px) {
-      width: auto;
-
-      > li {
-        display: inline-block;
-      }
-    }
   }
 
   .navigate {
@@ -113,16 +105,29 @@
     font-size: 5px;
     color: fadeout(@colorFgTheme, 20);
 
-    @media (min-width: 640px) {
-      display: none;
-    }
-
     &.navigate-left {
       right: -7px;
     }
 
     &.navigate-right {
       left: -7px;
+    }
+  }
+}
+
+&.state-weekdayWide {
+  .weekMenu-wrapper {
+
+    .menu.dates {
+      width: auto;
+
+      > li {
+        display: inline-block;
+      }
+    }
+
+    .navigate {
+      display: none;
     }
   }
 }

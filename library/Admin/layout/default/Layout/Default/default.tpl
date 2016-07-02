@@ -3,7 +3,9 @@
 {block name='body'}
   <header id="header">
     {if $viewer}
-      {component name='Denkmal_Component_Logout'}
+      <aside>
+        {component name='Denkmal_Component_Logout'}
+      </aside>
     {/if}
     <a class="logo" href="{linkUrl page='Denkmal_Page_Index'}">
       <span class="logo-city">{resourceFileContent path='img/logo-city.svg'}</span>

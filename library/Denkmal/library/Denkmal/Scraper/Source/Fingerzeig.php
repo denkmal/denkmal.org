@@ -51,7 +51,7 @@ class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract 
             $titleText = $event->find('.title')->getText();
             $description = new Denkmal_Scraper_Description($titleText, null, $genres);
 
-            return new Denkmal_Scraper_EventData($venueName, $description, $from);
+            return new Denkmal_Scraper_EventData($this->getRegion(), $venueName, $description, $from);
         });
     }
 

@@ -12,9 +12,10 @@ class Denkmal_Form_ChangePasswordTest extends CMTest_TestCase {
         $user = Denkmal_Model_User::create('foo@foo', 'foo', 'pass');
         $user->setPassword('blabla');
 
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($formAction, $data);
         $request->mockMethod('getViewer')->set($user);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseSuccess($response, 'Password has been changed.');
@@ -32,9 +33,10 @@ class Denkmal_Form_ChangePasswordTest extends CMTest_TestCase {
         $user->setPassword('blabla');
         $wrongUser = Denkmal_Model_User::create('wrong@bar', 'wrong', 'pass');
 
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($formAction, $data);
         $request->mockMethod('getViewer')->set($wrongUser);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseError($response, 'Wrong password.', 'old_password');

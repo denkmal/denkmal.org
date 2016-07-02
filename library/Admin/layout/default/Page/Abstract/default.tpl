@@ -6,4 +6,7 @@
   </div>
   {block name='content-title'}{/block}
   {block name='content-main'}{/block}
+  <footer>
+    {component name='Admin_Component_SelectRegion'}
+  </footer>
 {/block}

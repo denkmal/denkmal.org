@@ -16,6 +16,8 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
                 'params' => array('date' => $date->format('Y-n-j')),
             )));
         }
+
+        $viewResponse->set('region', $this->_getRegion());
         $viewResponse->set('menu', $menu);
         $viewResponse->set('date', $date);
     }

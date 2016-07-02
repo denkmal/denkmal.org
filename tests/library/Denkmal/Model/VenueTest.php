@@ -126,9 +126,12 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
     }
 
     public function testFindByName() {
-        $venue = Denkmal_Model_Venue::create('Foo', true, false, DenkmalTest_TH::createRegion());
+        $region1 = DenkmalTest_TH::createRegion();
+        $region2 = DenkmalTest_TH::createRegion();
+        $venue = Denkmal_Model_Venue::create('Foo', true, false, $region1);
 
-        $this->assertEquals($venue, Denkmal_Model_Venue::findByName('Foo'));
-        $this->assertNull(Denkmal_Model_Venue::findByName('Bar'));
+        $this->assertEquals($venue, Denkmal_Model_Venue::findByName($region1, 'Foo'));
+        $this->assertNull(Denkmal_Model_Venue::findByName($region2, 'Foo'));
+        $this->assertNull(Denkmal_Model_Venue::findByName($region1, 'Bar'));
     }
 }

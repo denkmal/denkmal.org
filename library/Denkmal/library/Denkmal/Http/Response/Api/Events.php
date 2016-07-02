@@ -27,8 +27,9 @@ class Denkmal_Http_Response_Api_Events extends Denkmal_Http_Response_Api_Abstrac
     }
 
     public static function createFromRequest(CM_Http_Request_Abstract $request, CM_Site_Abstract $site, CM_Service_Manager $serviceManager) {
-        if ($request->getPath() === '/api/events') {
+        if ($request->hasPathPrefix('/api/events')) {
             $request = clone $request;
+            $request->popPathPrefix('/api/events');
             return new self($request, $site, $serviceManager);
         }
         return null;

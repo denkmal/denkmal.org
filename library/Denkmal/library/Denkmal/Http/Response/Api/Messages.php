@@ -89,8 +89,9 @@ class Denkmal_Http_Response_Api_Messages extends Denkmal_Http_Response_Api_Abstr
     }
 
     public static function createFromRequest(CM_Http_Request_Abstract $request, CM_Site_Abstract $site, CM_Service_Manager $serviceManager) {
-        if ($request->getPath() === '/api/messages') {
+        if ($request->hasPathPrefix('/api/messages')) {
             $request = clone $request;
+            $request->popPathPrefix('/api/messages');
             return new self($request, $site, $serviceManager);
         }
         return null;

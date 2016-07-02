@@ -50,8 +50,9 @@ class Denkmal_Http_Response_Api_Message extends Denkmal_Http_Response_Api_Abstra
     }
 
     public static function createFromRequest(CM_Http_Request_Abstract $request, CM_Site_Abstract $site, CM_Service_Manager $serviceManager) {
-        if ($request->getPath() === '/api/message' && $request instanceof CM_Http_Request_Post) {
+        if ($request->hasPathPrefix('/api/message') && $request instanceof CM_Http_Request_Post) {
             $request = clone $request;
+            $request->popPathPrefix('/api/message');
             $request->setBodyEncoding(CM_Http_Request_Post::ENCODING_FORM);
             return new self($request, $site, $serviceManager);
         }

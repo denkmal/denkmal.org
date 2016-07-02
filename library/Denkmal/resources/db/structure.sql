@@ -41,7 +41,7 @@ CREATE TABLE `denkmal_model_venue` (
   `twitterUsername` varchar(100) DEFAULT NULL,
   `region` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
+  KEY `name` (`name`),
   KEY `queued` (`queued`),
   KEY `ignore` (`ignore`),
   KEY `region` (`region`)
@@ -53,7 +53,7 @@ CREATE TABLE `denkmal_model_venuealias` (
   `name` varchar(100) NOT NULL,
   `venue` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
+  KEY `name` (`name`),
   KEY `venue` (`venue`),
   CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

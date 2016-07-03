@@ -13,11 +13,11 @@ class Admin_FormAction_Settings_Save extends Admin_FormAction_Abstract {
     }
 
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        $suspensionUntil = $params->has('suspensionUntil') ? $params->getDateTime('suspensionUntil') : null;
         $anonymousMessagingDisabled = $params->getBoolean('anonymousMessagingDisabled');
 
         $settings = new Denkmal_App_Settings();
-        $settings->getSuspension()->setUntil($suspensionUntil);
         $settings->setAnonymousMessagingDisabled($anonymousMessagingDisabled);
+
+        $response->reloadComponent();
     }
 }

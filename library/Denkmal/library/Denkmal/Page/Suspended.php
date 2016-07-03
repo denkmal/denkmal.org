@@ -3,19 +3,23 @@
 class Denkmal_Page_Suspended extends Denkmal_Page_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
-        $autoPlay = $this->_params->getBoolean('autoPlay', true);
-        $settings = new Denkmal_App_Settings();
-        $suspension = $settings->getSuspension();
+        /** @var Denkmal_Site_Default $site */
+        $site = $environment->getSite();
+
+        $suspension = $site->getRegion()->getSuspension();
 
         $songList = new Denkmal_Paging_Song_All();
         $song = $songList->getItemRand();
 
         $viewResponse->set('suspension', $suspension);
         $viewResponse->set('song', $song);
-        $viewResponse->set('autoPlay', $autoPlay);
     }
 
     public function getLayout(CM_Frontend_Environment $environment, $layoutName = null) {
         return new Denkmal_Layout_Suspended();
+    }
+
+    protected function _requiresRegion() {
+        return true;
     }
 }

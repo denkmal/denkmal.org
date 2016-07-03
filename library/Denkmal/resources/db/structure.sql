@@ -181,6 +181,7 @@ CREATE TABLE `denkmal_model_region` (
   `twitterAccount` varchar(1000) NULL,
   `facebookAccount` varchar(1000) NULL,
   `emailAddress` varchar(1000),
+  `suspensionUntil` int(11) unsigned NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   UNIQUE KEY `abbreviation` (`abbreviation`)

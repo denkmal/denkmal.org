@@ -10,9 +10,9 @@ class Denkmal_App_SetupScript_Locations extends CM_Provision_Script_OptionBased 
         $austria = CM_Model_Location::createCountry('Austria', 'AT');
         $steiermark = CM_Model_Location::createState($austria, 'Steiermark', null, 'AT06');
         $graz = CM_Model_Location::createCity($steiermark, 'Graz', 47.0667, 15.45, '16516');
-        
-        Denkmal_Model_Region::create('Basel', 'basel', 'BSL', $basel);
-        Denkmal_Model_Region::create('Graz', 'graz', 'GRZ', $graz);
+
+        Denkmal_Model_Region::create('Basel', 'basel', 'BSL', 'basel@denkmal.org', $basel);
+        Denkmal_Model_Region::create('Graz', 'graz', 'GRZ', 'graz@denkmal.org', $graz);
 
         $this->_setLoaded(true);
     }

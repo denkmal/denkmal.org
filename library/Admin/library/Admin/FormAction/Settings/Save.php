@@ -19,7 +19,5 @@ class Admin_FormAction_Settings_Save extends Admin_FormAction_Abstract {
         $settings = new Denkmal_App_Settings();
         $settings->getSuspension()->setUntil($suspensionUntil);
         $settings->setAnonymousMessagingDisabled($anonymousMessagingDisabled);
-
-        $response->reloadComponent();
     }
 }

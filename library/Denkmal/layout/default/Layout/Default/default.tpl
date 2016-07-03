@@ -3,15 +3,15 @@
 {block name="before-html"}
   <!--
 
-  WASLOIFT IN BASEL?
-  ==================
+  Denkmal.org Event Calendar
+  ==========================
   Denkmal.org is an Oi!-project and aims to serve as an alternative event
-  calendar for the city of Basel.
+  calendar for your city.
 
 
   Open source
   -----------
-  Fork, contribute, open issues! Denkmal.org is on Github and licensed under MIT.
+  Fork, contribute, open issues! Denkmal.org is on GitHub and licensed under MIT.
   https://github.com/denkmal/denkmal.org
 
 

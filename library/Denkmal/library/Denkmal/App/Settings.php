@@ -9,13 +9,6 @@ class Denkmal_App_Settings implements CM_Service_ManagerAwareInterface {
     }
 
     /**
-     * @return Denkmal_Suspension
-     */
-    public function getSuspension() {
-        return new Denkmal_Suspension();
-    }
-
-    /**
      * @return boolean
      */
     public function getAnonymousMessagingDisabled() {

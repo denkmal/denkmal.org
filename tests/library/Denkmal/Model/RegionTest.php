@@ -58,4 +58,17 @@ class Denkmal_Model_RegionTest extends CMTest_TestCase {
         $this->assertEquals(null, $region->getTwitterCredentials());
     }
 
+    public function testGetSetSuspension() {
+        $city = DenkmalTest_TH::createLocationCity();
+        $region = Denkmal_Model_Region::create('Basel', 'basel', 'BSL', 'bsl@example.com', $city);
+
+        $this->assertInstanceOf('Denkmal_Suspension', $region->getSuspension());
+        $this->assertNull($region->getSuspension()->getUntil());
+
+        $until = new DateTime('2016-01-01');
+        $region->setSuspension($until);
+        $this->assertInstanceOf('Denkmal_Suspension', $region->getSuspension());
+        $this->assertEquals($until, $region->getSuspension()->getUntil());
+    }
+
 }

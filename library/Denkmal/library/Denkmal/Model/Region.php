@@ -116,6 +116,22 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
     }
 
     /**
+     * @return Denkmal_Suspension
+     */
+    public function getSuspension() {
+        /** @var DateTime|null $suspensionUntil */
+        $suspensionUntil = $this->_get('suspensionUntil');
+        return new Denkmal_Suspension($suspensionUntil);
+    }
+
+    /**
+     * @param DateTime|null $until
+     */
+    public function setSuspension(DateTime $until = null) {
+        $this->_set('suspensionUntil', $until);
+    }
+
+    /**
      * @return DateTimeZone
      * @throws CM_Exception
      */
@@ -145,6 +161,7 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
             'twitterCredentials' => ['type' => 'Denkmal_Twitter_Credentials', 'optional' => true],
             'twitterAccount'     => ['type' => 'string', 'optional' => true],
             'facebookAccount'    => ['type' => 'string', 'optional' => true],
+            'suspensionUntil'    => ['type' => 'DateTime', 'optional' => true],
         ]);
     }
 
@@ -173,8 +190,12 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         $region->setName((string) $name);
         $region->setSlug((string) $slug);
         $region->setAbbreviation((string) $abbreviation);
-        $region->setEmailAddress((string) $emailAddress);
         $region->setLocation($location);
+        $region->setEmailAddress((string) $emailAddress);
+        $region->setTwitterCredentials(null);
+        $region->setTwitterAccount(null);
+        $region->setFacebookAccount(null);
+        $region->setSuspension(null);
         $region->commit();
         return $region;
     }

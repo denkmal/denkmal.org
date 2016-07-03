@@ -3,6 +3,8 @@
 class Denkmal_Page_Events extends Denkmal_Page_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
+        /** @var Denkmal_Site_Default $site */
+        $site = $environment->getSite();
         $settings = new Denkmal_App_Settings();
         $date = $this->_params->getDate('date', $settings->getCurrentDate());
         $dateList = new Denkmal_Paging_DateTime_Days();
@@ -17,7 +19,7 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
             )));
         }
 
-        $viewResponse->set('region', $this->_getRegion());
+        $viewResponse->set('region', $site->getRegion());
         $viewResponse->set('menu', $menu);
         $viewResponse->set('date', $date);
     }

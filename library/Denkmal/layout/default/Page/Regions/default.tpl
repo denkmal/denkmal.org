@@ -1,5 +1,7 @@
 {extends file=$render->getLayoutPath('Page/Abstract/default.tpl')}
 
+{block name='content-title'}{/block}
+
 {block name='content-main'}
   <p class="responsive-text intro">{translate '{$siteName} is an event calendar by locals. Explore your city\'s nightlife and get event updates and impressions by the crowd in real-time.' siteName=$render->getSiteName()}</p>
   <h2>{translate 'Select Your City'}</h2>

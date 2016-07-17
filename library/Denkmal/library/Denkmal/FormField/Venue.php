@@ -2,6 +2,13 @@
 
 class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
 
+    protected function _initialize() {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+        $this->_options['region'] = $params->has('region') ? $params->getRegion('region') : null;
+        parent::_initialize();
+    }
+
     /**
      * @param CM_Frontend_Environment $environment
      * @param array                   $userInput
@@ -33,8 +40,9 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
     protected function _getSuggestions($term, array $options, CM_Frontend_Render $render) {
         $term = (string) $term;
         $suggestions = array();
+        $venueList = new Denkmal_Paging_Venue_All($this->_options['region']);
         /** @var $item Denkmal_Model_Venue */
-        foreach (new Denkmal_Paging_Venue_All() as $item) {
+        foreach ($venueList as $item) {
             if (0 === stripos($item->getName(), $term)) {
                 $suggestions[] = $this->getSuggestion($item, $render);
             }

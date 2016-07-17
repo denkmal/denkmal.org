@@ -12,9 +12,9 @@ var Denkmal_App = CM_App.extend({
 
   _registerServiceWorker: function() {
     if ('serviceWorker' in navigator) {
-      var path = cm.getUrlResource('layout', 'js/service-worker.js', {sameOrigin: true, root: true});
+      var url = cm.getUrlServiceWorker();
 
-      navigator.serviceWorker.register(path, {scope: '/'}).then(function(registration) {
+      navigator.serviceWorker.register(url, {scope: cm.getUrl()}).then(function(registration) {
         cm.debug.log('ServiceWorker registration succeeded.');
       }).catch(function(error) {
         cm.debug.log('ServiceWorker registration failed.', error);

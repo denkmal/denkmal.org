@@ -1,63 +1,11 @@
 API
 ===
 
-Get data
---------
-Retrieve list of all venues plus upcoming events.
-
-Request:
+The base URL for all API requests is:
 ```
-GET /api/data HTTP/1.1
-Host: www.denkmal.org
+https://www.denkmal.org/<region>/api
 ```
-
-Response:
-```json
-{
-   "venues":[
-      {
-         "id":78,
-         "name":"Foo 1",
-         "url":"http:\/\/www.example.com",
-         "address":"Address 1",
-         "latitude":12.1,
-         "longitude":13.3
-      },
-      {
-         "id":79,
-         "name":"Foo 2"
-      }
-   ],
-   "events":[
-      {
-         "id":934,
-         "venue":123,
-         "description":"Foo Bar",
-         "descriptionHtml":"Foo <a href='http://bar.com' class='url' target='_blank'>Bar</a>",
-         "from":1371386731,
-         "until":1371386731,
-         "starred":false,
-         "song":{
-            "label":"Song 1",
-            "url":"http:\/\/denkmal.test\/userfiles\/songs\/64.mp3"
-         }
-      },
-      {
-         "id":935,
-         "venue":123,
-         "description":"Foo",
-         "descriptionHtml":"Foo",
-         "from":1371386731,
-         "starred":false
-      }
-   ],
-   "dayOffset" : 6,
-   "suspendedDays": null
-}
-```
-
-When the site is suspended temporarily `suspendedDays` will contain the number of days left until we're back.
-
+Where `<region>` is the slug of the desired region (e.g. "basel").
 
 Get events
 ----------
@@ -69,7 +17,7 @@ Parameters:
 
 Request:
 ```
-GET /api/events?venue=Hirscheneck HTTP/1.1
+GET /<region>/api/events?venue=Hirscheneck HTTP/1.1
 Host: www.denkmal.org
 ```
 
@@ -82,6 +30,7 @@ Response:
          "venue":123,
          "description":"Foo Bar",
          "descriptionHtml":"Foo <a href='http://bar.com' class='url' target='_blank'>Bar</a>",
+         "timeZone":"Europe/Zurich",
          "from":1371386731,
          "until":1371386731,
          "starred":false,
@@ -95,6 +44,7 @@ Response:
          "venue":123,
          "description":"Foo",
          "descriptionHtml":"Foo",
+         "timeZone":"Europe/Zurich",
          "from":1371386731,
          "starred":false
       }
@@ -114,7 +64,7 @@ Parameters:
 
 Request:
 ```
-GET /api/messages HTTP/1.1
+GET /<region>/api/messages HTTP/1.1
 Host: www.denkmal.org
 ```
 

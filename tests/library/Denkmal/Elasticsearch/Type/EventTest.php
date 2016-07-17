@@ -64,4 +64,21 @@ class Denkmal_Elasticsearch_Type_EventTest extends CMTest_TestCase {
         $this->assertEquals(array($event2->getId(), $event3->getId()), $pagingSource->getItems());
     }
 
+    public function testFilterRegion() {
+        $region1 = DenkmalTest_TH::createRegion('Regio 1', 'regio1', 'r1');
+        $region2 = DenkmalTest_TH::createRegion('Regio 2', 'regio2', 'r2');
+
+        $venue1 = DenkmalTest_TH::createVenue(null, null, null, $region1);
+        $venue2 = DenkmalTest_TH::createVenue(null, null, null, $region2);
+
+        $event1 = Denkmal_Model_Event::create($venue1, 'event 1', false, false, new DateTime('2008-08-01 18:11:31'));
+        $event2 = Denkmal_Model_Event::create($venue2, 'event 2', false, false, new DateTime('2008-08-01 18:11:31'));
+
+        $searchQuery = new Denkmal_Elasticsearch_Query_Event();
+        $searchQuery->filterRegion($region2);
+
+        $pagingSource = new CM_PagingSource_Elasticsearch($this->_type, $searchQuery);
+        $this->assertEquals(array($event2->getId()), $pagingSource->getItems());
+    }
+
 }

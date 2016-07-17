@@ -182,7 +182,14 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
      * @param Denkmal_Model_Region $region
      */
     public function setRegion(Denkmal_Model_Region $region) {
-        return $this->_set('region', $region);
+        $this->_set('region', $region);
+    }
+
+    /**
+     * @return DateTimeZone
+     */
+    public function getTimeZone() {
+        return $this->getRegion()->getTimeZone();
     }
 
     public function toArrayApi(CM_Frontend_Render $render) {
@@ -205,21 +212,23 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     protected function _getContainingCacheables() {
         $cacheables = parent::_getContainingCacheables();
         $cacheables[] = new Denkmal_Paging_Venue_All();
+        $cacheables[] = new Denkmal_Paging_Venue_All($this->getRegion());
         return $cacheables;
     }
 
     protected function _onChange() {
-        $list = new Denkmal_Paging_Venue_All();
-        $list->_change();
+        $this->_changeContainingCacheables();
     }
 
     /**
-     * @param string $name
+     * @param Denkmal_Model_Region $region
+     * @param string               $name
      * @return Denkmal_Model_Venue|null
      */
-    public static function findByName($name) {
+    public static function findByName(Denkmal_Model_Region $region, $name) {
         $name = (string) $name;
-        $venueId = CM_Db_Db::select('denkmal_model_venue', 'id', array('name' => $name))->fetchColumn();
+        $where = ['region' => $region->getId(), 'name' => $name];
+        $venueId = CM_Db_Db::select('denkmal_model_venue', 'id', $where)->fetchColumn();
         if (!$venueId) {
             return null;
         }
@@ -227,14 +236,15 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
-     * @param string $name
+     * @param Denkmal_Model_Region $region
+     * @param string               $name
      * @return Denkmal_Model_Venue|null
      */
-    public static function findByNameOrAlias($name) {
-        if ($venue = self::findByName($name)) {
+    public static function findByNameOrAlias(Denkmal_Model_Region $region, $name) {
+        if ($venue = self::findByName($region, $name)) {
             return $venue;
         }
-        if ($venueAlias = Denkmal_Model_VenueAlias::findByName($name)) {
+        if ($venueAlias = Denkmal_Model_VenueAlias::findByName($region, $name)) {
             return $venueAlias->getVenue();
         }
         return null;

@@ -1,6 +1,6 @@
 {form name='Denkmal_Form_EventAdd' region=$region}
   <div class="formWrapper">
-    {formField name='venue' label={translate 'Venue'} class="required" placeholder={translate 'Agora Bar'}}
+    {formField name='venue' label={translate 'Venue'} class="required" placeholder=$venuePlaceholder}
     <div class="venueDetails">
       {formField name='venueAddress' label={translate 'Address'}}
       {formField name='venueUrl' label={translate 'Website'}}
@@ -15,7 +15,7 @@
     {formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam (optional)'}}
     {formField name='urls' label={translate 'Websites'} placeholder={translate 'www.myspace.com/ich (optional)'} append="<small>({translate 'Will be stored - please only provide once.'})</small>"}
     {formAction action='Create' label={translate 'Add'} alternatives=
-    {button_link href="mailto:{$render->getSite()->getEmailAddress()}" icon='message' label={translate 'Contact'}}
+    {button_link href="mailto:{$region->getEmailAddress()}" icon='message' label={translate 'Contact'}}
     }
   </div>
 {/form}

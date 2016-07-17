@@ -8,11 +8,11 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
   _class: 'Denkmal_Component_HeaderBar',
 
   /** @type Boolean */
-  narrow: null,
+  _weekdayWide: null,
 
   events: {
     'click .menu.dates a': function() {
-      if (this.narrow) {
+      if (!this._weekdayWide) {
         var state = !this.$el.hasClass('state-weekdayMenu');
         this.setWeekdayMenuVisible(state);
       }
@@ -23,17 +23,16 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
     var self = this;
     var handlers = {
       match: function() {
-        self.narrow = true;
+        self.setWeekdayWide(true);
       },
       unmatch: function() {
-        self.narrow = false;
-        self.setWeekdayMenuVisible(false);
+        self.setWeekdayWide(false);
       }
     };
 
-    enquire.register('(max-width: 580px)', handlers);
+    enquire.register('(min-width: 640px)', handlers);
     this.on('destruct', function() {
-      enquire.unregister('(max-width: 580px)', handlers);
+      enquire.unregister('(min-width: 640px)', handlers);
     });
   },
 
@@ -62,6 +61,17 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
       this.$el.toggleModal('open', callback);
     } else {
       this.$el.toggleModal('close', callback);
+    }
+  },
+
+  /**
+   * @param {Boolean} state
+   */
+  setWeekdayWide: function(state) {
+    this._weekdayWide = state;
+    this.$el.toggleClass('state-weekdayWide', state);
+    if (false == state) {
+      this.setWeekdayMenuVisible(false);
     }
   },
 

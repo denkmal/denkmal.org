@@ -2,6 +2,11 @@
 
 class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
+    protected function setUp() {
+        $setupLocations = new Denkmal_App_SetupScript_Locations($this->getServiceManager());
+        $setupLocations->load(new CM_OutputStream_Null());
+    }
+
     protected function tearDown() {
         CMTest_TH::clearEnv();
     }
@@ -17,6 +22,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_Message();
         $action = new Denkmal_FormAction_Message_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => 'Hello world',
@@ -25,7 +31,7 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
         ]);
         $request->mockMethod('getClientId')->set(12);
         $request->mockMethod('getViewer')->set($user);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseSuccess($response);
@@ -48,13 +54,14 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_Message();
         $action = new Denkmal_FormAction_Message_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => '',
             'tags'  => [$tag1->getId(), $tag2->getId()],
         ]);
         $request->mockMethod('getClientId')->set(12);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseSuccess($response);
@@ -75,13 +82,14 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_Message();
         $action = new Denkmal_FormAction_Message_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => '',
             'tags'  => [],
         ]);
         $request->mockMethod('getClientId')->set(12);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseError($response, 'Please add a message.', 'tags');
@@ -95,13 +103,14 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_Message();
         $action = new Denkmal_FormAction_Message_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'text'  => 'Hello',
             'tags'  => [],
         ]);
         $request->mockMethod('getClientId')->set(12);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         $this->assertFormResponseError($response, 'Access denied!');
@@ -114,13 +123,14 @@ class Denkmal_Form_MessageTest extends CMTest_TestCase {
 
         $form = new Denkmal_Form_Message();
         $action = new Denkmal_FormAction_Message_Create($form);
+        $site = $this->getMockSite('Denkmal_Site_Default');
         $request = $this->createRequestFormAction($action, [
             'venue' => $venue->getId(),
             'image' => [$imageUsercontent->getUniqid()],
             'tags'  => [],
         ]);
         $request->mockMethod('getClientId')->set(12);
-        $response = new CM_Http_Response_View_Form($request, $this->getServiceManager());
+        $response = CM_Http_Response_View_Form::createFromRequest($request, $site, $this->getServiceManager());
         $response->process();
 
         if (Denkmal_Form_Message::getImageAllowed(null)) {

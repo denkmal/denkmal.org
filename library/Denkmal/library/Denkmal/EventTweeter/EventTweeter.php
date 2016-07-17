@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Twitter_EventTweeter {
+class Denkmal_EventTweeter_EventTweeter {
 
     /** @var Denkmal_Twitter_Client */
     private $_client;
@@ -18,19 +18,11 @@ class Denkmal_Twitter_EventTweeter {
     }
 
     /**
-     * @param DateTime $date
+     * @param Denkmal_Model_Event $event
      */
-    public function tweetStarredEvents(DateTime $date) {
-        $eventList = (new Denkmal_Paging_Event_Date($date))->getItems();
-        $eventList = Functional\filter($eventList, function (Denkmal_Model_Event $event) {
-            return $event->getStarred();
-        });
-        $eventList = array_slice($eventList, 0, 3);
-
-        foreach ($eventList as $event) {
-            $text = $this->getEventText($event, 140);
-            $this->_client->createTweet($text);
-        }
+    public function sendTweet(Denkmal_Model_Event $event) {
+        $text = $this->getEventText($event, 140);
+        $this->_client->createTweet($text);
     }
 
     /**

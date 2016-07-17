@@ -2,15 +2,12 @@
 
 abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
 
-    public function match(CM_Http_Request_Abstract $request, array $data) {
+    public function match(CM_Http_Request_Abstract $request) {
         if (!$this->hasRegion()) {
             return false;   // When the region has not been created (e.g. in tests)
         }
 
-        $match = parent::match($request, $data);
-        if ($match) {
-            $match = isset($data['region']) && $this->getRegion()->equals($data['region']);
-        }
+        $match = parent::match($request);
         if ($match) {
             $match = $this->isEnabled();
         }
@@ -93,6 +90,17 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
             }
         }
         return $resultSite;
+    }
+
+    /**
+     * @param Denkmal_Model_Region $region
+     * @return Denkmal_Site_Region_Abstract|null
+     */
+    public static function findSiteByRegion(Denkmal_Model_Region $region) {
+        $site = Functional\first(self::getAllSites(), function (Denkmal_Site_Region_Abstract $site) use ($region) {
+            return $site->getRegion()->equals($region);
+        });
+        return $site;
     }
 
     /**

@@ -13,20 +13,6 @@ return function (CM_Config_Node $config) {
 
     $config->CM_Stream_Video->servers = array();
 
-    $config->CM_Http_Response_Page->class = 'Denkmal_Http_Response_Page';
-
-    $config->services['twitter'] = [
-        'class'     => 'Denkmal_Twitter_Client',
-        'arguments' => [
-            'config' => [
-                'consumer_key'       => '<consumer-key>',
-                'consumer_secret'    => '<consumer-secret>',
-                'oauth_token'        => '<oauth-token>',
-                'oauth_token_secret' => '<oauth-token-secret>',
-            ],
-        ]
-    ];
-
     $config->services['push-notification-sender'] = [
         'class'     => 'Denkmal_Push_Notification_Sender',
         'arguments' => [

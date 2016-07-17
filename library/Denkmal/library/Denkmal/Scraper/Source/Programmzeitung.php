@@ -91,7 +91,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             $venueText = preg_replace('#♦.*$#u', '', $venueText);
             $venueText = trim($venueText);
 
-            return new Denkmal_Scraper_EventData($venueText, $description, $from, $until);
+            return new Denkmal_Scraper_EventData($this->getRegion(), $venueText, $description, $from, $until);
         });
     }
 

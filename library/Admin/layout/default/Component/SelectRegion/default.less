@@ -1,0 +1,36 @@
+.openerDropdown-window {
+  bottom: 100%;
+  margin-bottom: 6px;
+
+  &.flyout.triangle-bottom {
+    &::after, &::before {
+      left: 12%;
+    }
+  }
+}
+
+.menu-sub li {
+  a {
+    .icon-check {
+      color: inherit;
+    }
+    .abbreviation {
+      display: inline-block;
+      margin-right: 6px;
+      min-width: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: @fontSizeSmall;
+      text-transform: uppercase;
+      background-color: darken(@colorBg, 2);
+      color: lighten(@colorFg, 10);
+    }
+
+    .label {
+      margin-right: 30px;
+    }
+  }
+  &.current a .label {
+    font-weight: bold;
+  }
+}

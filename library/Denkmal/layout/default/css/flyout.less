@@ -1,0 +1,26 @@
+.flyout {
+  position: absolute;
+  background-color: @colorBg;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid @colorFgBorderEmphasize3;
+  border-radius: 4px;
+  padding: 3px;
+  z-index: 1;
+
+  &.triangle-top {
+    .triangleBorder(top, @colorFgBorderEmphasize3, @colorBg, 7px);
+  }
+
+  &.triangle-bottom {
+    .triangleBorder(bottom, @colorFgBorderEmphasize3, @colorBg, 7px);
+  }
+
+  &.triangle-left {
+    .triangleBorder(left, @colorFgBorderEmphasize3, @colorBg, 7px);
+  }
+
+  &.triangle-right {
+    .triangleBorder(right, @colorFgBorderEmphasize3, @colorBg, 7px);
+  }
+
+}

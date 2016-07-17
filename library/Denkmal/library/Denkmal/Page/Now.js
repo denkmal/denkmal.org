@@ -12,20 +12,14 @@ var Denkmal_Page_Now = Denkmal_Page_Abstract.extend({
 
   childrenEvents: {
     'Denkmal_Form_Message success': function(view, messageData) {
-      this._addMessage(messageData);
+      this.addMessage(messageData);
     }
-  },
-
-  ready: function() {
-    this.bindStream('global-internal', cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(messageData) {
-      this._addMessage(messageData);
-    });
   },
 
   /**
    * @param {Object} messageData
    */
-  _addMessage: function(messageData) {
+  addMessage: function(messageData) {
     if (this.venue && this.venue.id != messageData.venue.id) {
       return;
     }

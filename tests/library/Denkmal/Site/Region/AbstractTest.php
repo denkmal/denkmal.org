@@ -16,7 +16,7 @@ class Denkmal_Site_Region_AbstractTest extends CMTest_TestCase {
         $setupLocations->load(new CM_OutputStream_Null());
 
         $location = CMTest_TH::createLocation();
-        $this->_region = Denkmal_Model_Region::create('My Region', 'my-reg', 'MRG', $location);
+        $this->_region = Denkmal_Model_Region::create('My Region', 'my-reg', 'MRG', 'me@example.com', $location);
 
         $this->_site = $this->getMockSite('Denkmal_Site_Region_Abstract', null, null, ['_getRegionSlug']);
         $this->_site->expects($this->any())->method('_getRegionSlug')->will($this->returnValue('my-reg'));
@@ -52,6 +52,18 @@ class Denkmal_Site_Region_AbstractTest extends CMTest_TestCase {
         $this->assertEquals($siteGraz, Denkmal_Site_Region_Abstract::findSiteByGeoPoint(new CM_Geo_Point(47.0735683, 15.3717501)));
 
         $this->assertNull(Denkmal_Site_Region_Abstract::findSiteByGeoPoint(new CM_Geo_Point(41.589600, -1.208298)));
+    }
+
+    public function testGetSiteByRegion() {
+        $siteGraz = new Denkmal_Site_Region_Graz();
+        $regionGraz = Denkmal_Model_Region::findBySlug('graz');
+        $siteBasel = new Denkmal_Site_Region_Basel();
+        $regionBasel = Denkmal_Model_Region::findBySlug('basel');
+        $regionOther = DenkmalTest_TH::createRegion('Other', 'other', 'oth');
+
+        $this->assertEquals($siteGraz, Denkmal_Site_Region_Abstract::findSiteByRegion($regionGraz));
+        $this->assertEquals($siteBasel, Denkmal_Site_Region_Abstract::findSiteByRegion($regionBasel));
+        $this->assertNull(Denkmal_Site_Region_Abstract::findSiteByRegion($regionOther));
     }
 
 }

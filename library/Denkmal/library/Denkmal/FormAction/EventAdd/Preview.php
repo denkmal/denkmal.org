@@ -12,8 +12,9 @@ class Denkmal_FormAction_EventAdd_Preview extends CM_FormAction_Abstract {
         $region = $formParams->getRegion('region');
 
         /** @var Denkmal_Params $params */
-        $event = Denkmal_Form_EventAdd::getEventFromData($params);
         $venue = Denkmal_Form_EventAdd::getVenueFromData($params, $region);
+        $event = Denkmal_Form_EventAdd::getEventFromData($params);
+        $event->setVenueOverride($venue);
 
         return $response->loadComponent('Denkmal_Component_EventPreview', new Denkmal_Params(array(
             'event' => $event,

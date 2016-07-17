@@ -28,8 +28,8 @@ class Denkmal_Model_Song extends CM_Model_Abstract implements Denkmal_ArrayConve
         Denkmal_Elasticsearch_Type_Song::updateItemWithJob($this);
     }
 
-    public function toArray() {
-        $array = parent::toArray();
+    public function jsonSerialize() {
+        $array = parent::jsonSerialize();
         $array['path'] = $this->getFile()->getPathRelative();
         $array['label'] = $this->getLabel();
         return $array;

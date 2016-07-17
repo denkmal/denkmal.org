@@ -51,12 +51,18 @@ class Denkmal_Model_VenueAlias extends CM_Model_Abstract {
     }
 
     /**
-     * @param string $name
+     * @param Denkmal_Model_Region $region
+     * @param string               $name
      * @return Denkmal_Model_VenueAlias|null
      */
-    public static function findByName($name) {
+    public static function findByName(Denkmal_Model_Region $region, $name) {
         $name = (string) $name;
-        $venueAliasId = CM_Db_Db::select('denkmal_model_venuealias', 'id', array('name' => $name))->fetchColumn();
+        $query = '
+            SELECT alias.id FROM denkmal_model_venuealias alias
+            JOIN denkmal_model_venue venue ON(venue.id = alias.venue)
+            WHERE venue.region = ? AND alias.name = ?
+        ';
+        $venueAliasId = CM_Db_Db::exec($query, [$region->getId(), $name])->fetchColumn();
         if (!$venueAliasId) {
             return null;
         }

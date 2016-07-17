@@ -10,6 +10,7 @@ class Denkmal_Elasticsearch_Type_Event extends CM_Elasticsearch_Type_Abstract {
         'enabled'     => array('type' => 'boolean'),
         'hidden'      => array('type' => 'boolean'),
         'starred'     => array('type' => 'boolean'),
+        'region'      => array('type' => 'integer'),
     );
 
     protected $_indexParams = array(
@@ -19,8 +20,10 @@ class Denkmal_Elasticsearch_Type_Event extends CM_Elasticsearch_Type_Abstract {
 
     protected function _getQuery($ids = null, $limit = null) {
         $query = '
-            SELECT `event`.*
+            SELECT `event`.*,
+              `venue`.region AS region
             FROM `denkmal_model_event` `event`
+            JOIN `denkmal_model_venue` AS `venue` ON(`event`.`venue` = `venue`.`id`)
         ';
 
         if (is_array($ids)) {
@@ -41,6 +44,7 @@ class Denkmal_Elasticsearch_Type_Event extends CM_Elasticsearch_Type_Abstract {
                 'enabled'     => (bool) $data['enabled'],
                 'hidden'      => (bool) $data['hidden'],
                 'starred'     => (bool) $data['starred'],
+                'region'      => (int) $data['region'],
             )
         );
         if (null !== $data['until']) {

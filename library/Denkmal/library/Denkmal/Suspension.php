@@ -1,19 +1,22 @@
 <?php
 
 class Denkmal_Suspension extends CM_Class_Abstract {
+    
+    /** @var DateTime|null */
+    private $_until;
+
+    /**
+     * @param DateTime|null $until
+     */
+    public function __construct(DateTime $until = null) {
+        $this->_until = $until;
+    }
 
     /**
      * @return DateTime|null
      */
     public function getUntil() {
-        return CM_Option::getInstance()->get('denkmal.suspension.until');
-    }
-
-    /**
-     * @param DateTime|null $until
-     */
-    public function setUntil(DateTime $until = null) {
-        CM_Option::getInstance()->set('denkmal.suspension.until', $until);
+        return $this->_until;
     }
 
     /**

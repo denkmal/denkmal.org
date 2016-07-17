@@ -1,7 +1,5 @@
 <?php
-
 class Admin_Menu_Main extends CM_Menu {
-
     public function __construct() {
         parent::__construct(array(
             array('label' => 'Events', 'page' => 'Admin_Page_Events'),
@@ -14,10 +12,14 @@ class Admin_Menu_Main extends CM_Menu {
                       array('label' => 'Translations', 'page' => 'Admin_Page_Translations'),
                       array('label' => 'Users', 'page' => 'Admin_Page_Users'),
                       array('label' => 'Invites', 'page' => 'Admin_Page_UserInvites'),
-                      array('label' => 'Critical', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::CRITICAL)),
-                      array('label' => 'Errors', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::ERROR)),
-                      array('label' => 'Warnings', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::WARNING)),
-                      array('label' => 'Info', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::INFO)),
+                      array('label'   => 'Logs', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::CRITICAL),
+                            'submenu' => array(
+                                array('label' => 'Critical', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::CRITICAL)),
+                                array('label' => 'Errors', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::ERROR)),
+                                array('label' => 'Warnings', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::WARNING)),
+                                array('label' => 'Info', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::INFO)),
+                            ),
+                      ),
                       array('label' => 'Settings', 'page' => 'Admin_Page_Settings'),
                       array('label' => 'Email Preview', 'page' => 'Admin_Page_EmailPreview'),
                   )),

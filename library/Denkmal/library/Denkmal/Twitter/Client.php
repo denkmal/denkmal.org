@@ -2,17 +2,19 @@
 
 class Denkmal_Twitter_Client extends CM_Service_ManagerAware {
 
-    /** @var TwitterOAuth\TwitterOAuth */
+    /** @var TwitterOAuth\Auth\SingleUserAuth */
     private $_twitterOauth;
 
     /**
-     * @param array $config
+     * @param Denkmal_Twitter_Credentials $credentials
      */
-    public function __construct(array $config) {
-        $config = array_merge($config, array(
-            'output_format' => 'array',
-        ));
-        $this->_twitterOauth = new TwitterOAuth\TwitterOAuth($config);
+    public function __construct(Denkmal_Twitter_Credentials $credentials) {
+        $this->_twitterOauth = new TwitterOAuth\Auth\SingleUserAuth([
+            'consumer_key'       => $credentials->getConsumerKey(),
+            'consumer_secret'    => $credentials->getConsumerSecret(),
+            'oauth_token'        => $credentials->getAccessToken(),
+            'oauth_token_secret' => $credentials->getAccessTokenSecret(),
+        ], new TwitterOAuth\Serializer\ArraySerializer());
     }
 
     /**

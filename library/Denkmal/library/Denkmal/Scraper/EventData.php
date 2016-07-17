@@ -2,6 +2,9 @@
 
 class Denkmal_Scraper_EventData {
 
+    /** @var Denkmal_Model_Region */
+    private $_region;
+
     /** @var string */
     private $_venueName;
 
@@ -15,13 +18,16 @@ class Denkmal_Scraper_EventData {
     private $_until;
 
     /**
+     * @param Denkmal_Model_Region               $region
      * @param Denkmal_Model_Venue|string         $venue
      * @param Denkmal_Scraper_Description        $description
      * @param DateTime|Denkmal_Scraper_Date      $from
      * @param DateTime|Denkmal_Scraper_Date|null $until
      * @throws CM_Exception_Invalid
      */
-    public function __construct($venue, Denkmal_Scraper_Description $description, $from, $until = null) {
+    public function __construct(Denkmal_Model_Region $region, $venue, Denkmal_Scraper_Description $description, $from, $until = null) {
+        $this->_region = $region;
+
         if ($venue instanceof Denkmal_Model_Venue) {
             $this->_venueName = $venue->getName();
         } else {
@@ -52,6 +58,13 @@ class Denkmal_Scraper_EventData {
     }
 
     /**
+     * @return Denkmal_Model_Region
+     */
+    public function getRegion() {
+        return $this->_region;
+    }
+
+    /**
      * @return string
      */
     public function getVenueName() {
@@ -62,7 +75,7 @@ class Denkmal_Scraper_EventData {
      * @return Denkmal_Model_Venue|null
      */
     public function findVenue() {
-        return Denkmal_Model_Venue::findByNameOrAlias($this->getVenueName());
+        return Denkmal_Model_Venue::findByNameOrAlias($this->getRegion(), $this->getVenueName());
     }
 
     /**

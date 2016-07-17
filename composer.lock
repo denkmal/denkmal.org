@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8f01665b252b92ba56fe5bd69396feaf",
-    "content-hash": "d23d049a854ccfd5740529a48e2e0386",
+    "hash": "0b4ea44eba386b7bc52ba050cc729365",
+    "content-hash": "d1241125814c60ec5657536eba5234b9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,21 +72,22 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.179.1",
+            "version": "1.192.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "a4294672bb142a8a3f95bdcb66382a459eff5f50"
+                "reference": "0c80a4370c19438d443e6b1d36eaaaf317c8ce29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-a4294672bb142a8a3f95bdcb66382a459eff5f50-zip-05169b.zip",
-                "reference": "a4294672bb142a8a3f95bdcb66382a459eff5f50",
-                "shasum": "c743ebede18ab8d8612c6c51bdb17eb62ae83165"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-0c80a4370c19438d443e6b1d36eaaaf317c8ce29-zip-98a7c2.zip",
+                "reference": "0c80a4370c19438d443e6b1d36eaaaf317c8ce29",
+                "shasum": "7de41af221096530b8b54bbbfe5f411aaff9856a"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
-                "composer/composer": "1.0.0-alpha10",
+                "composer/composer": "~1.1.0",
+                "danielstjules/stringy": "~2.3",
                 "easybook/geshi": "1.0.8.11",
                 "elasticsearch/elasticsearch": "~2.0.0",
                 "fluent/logger": "~1.0.0",
@@ -129,7 +130,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-05-23 09:12:47"
+            "time": "2016-07-05 09:08:50"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -175,33 +176,97 @@
             "time": "2015-08-04 15:33:47"
         },
         {
-            "name": "composer/composer",
-            "version": "1.0.0-alpha10",
+            "name": "composer/ca-bundle",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/composer/composer.git",
-                "reference": "775f6cd5c633facf2e7b99611fdcaa900b58ddb7"
+                "url": "https://github.com/composer/ca-bundle.git",
+                "reference": "a2995e5fe351055f2c7630166af12ce8fd03edfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/composer-composer-775f6cd5c633facf2e7b99611fdcaa900b58ddb7-zip-8cbc58.zip",
-                "reference": "775f6cd5c633facf2e7b99611fdcaa900b58ddb7",
-                "shasum": "c2baecd54f23abc140be41ee5a3a6f400931b56c"
+                "url": "https://satis.cargomedia.ch/dist/dist/composer-ca-bundle-a2995e5fe351055f2c7630166af12ce8fd03edfc-zip-478562.zip",
+                "reference": "a2995e5fe351055f2c7630166af12ce8fd03edfc",
+                "shasum": "b17dd548b428a369e0fba7138415ee4d027273ff"
             },
             "require": {
-                "justinrainbow/json-schema": "~1.4",
-                "php": ">=5.3.2",
-                "seld/jsonlint": "~1.0",
-                "symfony/console": "~2.5",
-                "symfony/finder": "~2.2",
-                "symfony/process": "~2.1"
+                "php": "^5.3.2 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.5"
+                "symfony/process": "^2.5 || ^3.0"
+            },
+            "suggest": {
+                "symfony/process": "This is necessary to reliably check whether openssl_x509_parse is vulnerable on older php versions, but can be ignored on PHP 5.5.6+"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\CaBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.",
+            "keywords": [
+                "cabundle",
+                "cacert",
+                "certificate",
+                "ssl",
+                "tls"
+            ],
+            "time": "2016-04-13 10:13:24"
+        },
+        {
+            "name": "composer/composer",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/composer.git",
+                "reference": "30ab6f1c1753267d181839142fafe022313c3c9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/composer-composer-30ab6f1c1753267d181839142fafe022313c3c9a-zip-65c34b.zip",
+                "reference": "30ab6f1c1753267d181839142fafe022313c3c9a",
+                "shasum": "e97a8f11eb9c4764bec6077e6b09caf27ef7f9d8"
+            },
+            "require": {
+                "composer/ca-bundle": "^1.0",
+                "composer/semver": "^1.0",
+                "composer/spdx-licenses": "^1.0",
+                "justinrainbow/json-schema": "^1.6",
+                "php": "^5.3.2 || ^7.0",
+                "psr/log": "^1.0",
+                "seld/cli-prompt": "^1.0",
+                "seld/jsonlint": "^1.4",
+                "seld/phar-utils": "^1.0",
+                "symfony/console": "^2.5 || ^3.0",
+                "symfony/filesystem": "^2.5 || ^3.0",
+                "symfony/finder": "^2.2 || ^3.0",
+                "symfony/process": "^2.1 || ^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5 || ^5.0.5",
+                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
             },
             "suggest": {
                 "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages",
-                "ext-zip": "Enabling the zip extension allows you to unzip archives, and allows gzip compression of all internet traffic"
+                "ext-zip": "Enabling the zip extension allows you to unzip archives",
+                "ext-zlib": "Allow gzip compression of HTTP requests"
             },
             "bin": [
                 "bin/composer"
@@ -209,12 +274,12 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer": "src/"
+                "psr-4": {
+                    "Composer\\": "src/Composer"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -234,31 +299,154 @@
                 }
             ],
             "description": "Composer helps you declare, manage and install dependencies of PHP projects, ensuring you have the right stack everywhere.",
-            "homepage": "http://getcomposer.org/",
+            "homepage": "https://getcomposer.org/",
             "keywords": [
                 "autoload",
                 "dependency",
                 "package"
             ],
-            "time": "2015-04-14 21:18:51"
+            "time": "2016-06-26 14:42:08"
         },
         {
-            "name": "danielstjules/stringy",
-            "version": "1.10.0",
+            "name": "composer/semver",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b"
+                "url": "https://github.com/composer/semver.git",
+                "reference": "03c9de5aa25e7672c4ad251eeaba0c47a06c8b98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/danielstjules-stringy-4749c205db47ee5b32e8d1adf6d9aff8db6caf3b-zip-b11753.zip",
-                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
-                "shasum": "df63d3ab6d6388f4d72e62cb8fed9eb38b3abbea"
+                "url": "https://satis.cargomedia.ch/dist/dist/composer-semver-03c9de5aa25e7672c4ad251eeaba0c47a06c8b98-zip-77904a.zip",
+                "reference": "03c9de5aa25e7672c4ad251eeaba0c47a06c8b98",
+                "shasum": "116de5e750827723a0f898bc58c05ad1f2d6ded0"
             },
             "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3.0"
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5 || ^5.0.5",
+                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Semver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Adermann",
+                    "email": "naderman@naderman.de",
+                    "homepage": "http://www.naderman.de"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                },
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com",
+                    "homepage": "http://robbast.nl"
+                }
+            ],
+            "description": "Semver library that offers utilities, version constraint parsing and validation.",
+            "keywords": [
+                "semantic",
+                "semver",
+                "validation",
+                "versioning"
+            ],
+            "time": "2016-06-02 09:04:51"
+        },
+        {
+            "name": "composer/spdx-licenses",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/spdx-licenses.git",
+                "reference": "88c26372b1afac36d8db601cdf04ad8716f53d88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/composer-spdx-licenses-88c26372b1afac36d8db601cdf04ad8716f53d88-zip-7cc321.zip",
+                "reference": "88c26372b1afac36d8db601cdf04ad8716f53d88",
+                "shasum": "e8604f9b6eb6acafed8c5cc1f55fa6ad07b22587"
+            },
+            "require": {
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5 || ^5.0.5",
+                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Spdx\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Adermann",
+                    "email": "naderman@naderman.de",
+                    "homepage": "http://www.naderman.de"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                },
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com",
+                    "homepage": "http://robbast.nl"
+                }
+            ],
+            "description": "SPDX licenses list and validation library.",
+            "keywords": [
+                "license",
+                "spdx",
+                "validator"
+            ],
+            "time": "2016-05-04 12:27:30"
+        },
+        {
+            "name": "danielstjules/stringy",
+            "version": "2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/danielstjules/Stringy.git",
+                "reference": "4e214a5195fae3fb558e81b1c6010678f7600643"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/danielstjules-stringy-4e214a5195fae3fb558e81b1c6010678f7600643-zip-bbb247.zip",
+                "reference": "4e214a5195fae3fb558e81b1c6010678f7600643",
+                "shasum": "5a204b1c22a2b785f84feff4f1814d1c0cd11764"
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/polyfill-mbstring": "~1.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0"
@@ -296,74 +484,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-07-23 00:54:12"
-        },
-        {
-            "name": "doctrine/inflector",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/inflector.git",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/doctrine-inflector-90b2128806bfde671b6952ab8bea493942c1fdae-zip-a91357.zip",
-                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
-                "shasum": "9e8302a5bf0cf00b1128f8b19ddff977e4be186f"
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Inflector\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "inflection",
-                "pluralize",
-                "singularize",
-                "string"
-            ],
-            "time": "2015-11-06 14:35:42"
+            "time": "2016-05-02 15:18:10"
         },
         {
             "name": "easybook/geshi",
@@ -610,6 +731,7 @@
                 "rest",
                 "web service"
             ],
+            "abandoned": "guzzlehttp/guzzle",
             "time": "2014-01-28 22:29:15"
         },
         {
@@ -772,84 +894,39 @@
             "time": "2014-10-12 19:18:40"
         },
         {
-            "name": "illuminate/contracts",
-            "version": "v5.0.33",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/contracts.git",
-                "reference": "b8b11d78724a6f8a62be3b1dfa20fa372f861398"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-contracts-b8b11d78724a6f8a62be3b1dfa20fa372f861398-zip-026b1c.zip",
-                "reference": "b8b11d78724a6f8a62be3b1dfa20fa372f861398",
-                "shasum": "3e936594fb06126d296f279b7d9800fa520754a7"
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Contracts package.",
-            "homepage": "http://laravel.com",
-            "time": "2015-05-15 07:22:28"
-        },
-        {
             "name": "illuminate/support",
-            "version": "v5.0.33",
+            "version": "v4.2.17",
+            "target-dir": "Illuminate/Support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "32a12f97029b624fc0f9454e7ca69eaafef49c5d"
+                "reference": "db61f3f6d507ce417ca993e1f93585db7efd8b12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-32a12f97029b624fc0f9454e7ca69eaafef49c5d-zip-dd9ef6.zip",
-                "reference": "32a12f97029b624fc0f9454e7ca69eaafef49c5d",
-                "shasum": "464b1eebc37e271dcda9d258ed34a22c8413a6e6"
+                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-db61f3f6d507ce417ca993e1f93585db7efd8b12-zip-12162a.zip",
+                "reference": "db61f3f6d507ce417ca993e1f93585db7efd8b12",
+                "shasum": "c3a993bab2b01c5b0e7df9406d775365fb9fd351"
             },
             "require": {
-                "danielstjules/stringy": "~1.8",
-                "doctrine/inflector": "~1.0",
-                "ext-mbstring": "*",
-                "illuminate/contracts": "5.0.*",
                 "php": ">=5.4.0"
             },
-            "suggest": {
-                "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
-                "symfony/var-dumper": "Required to use the dd function (2.6.*)."
+            "require-dev": {
+                "jeremeamia/superclosure": "~1.0.1",
+                "patchwork/utf8": "~1.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Illuminate\\Support\\": ""
+                "psr-0": {
+                    "Illuminate\\Support": ""
                 },
                 "files": [
-                    "helpers.php"
+                    "Illuminate/Support/helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -862,9 +939,7 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "description": "The Illuminate Support package.",
-            "homepage": "http://laravel.com",
-            "time": "2015-06-04 12:15:51"
+            "time": "2015-01-27 20:51:43"
         },
         {
             "name": "jenssegers/agent",
@@ -1426,23 +1501,23 @@
         },
         {
             "name": "predis/predis",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "84060b9034d756b4d79641667d7f9efe1aeb8e04"
+                "reference": "9ead747663bb1b1ae017dfa0d152aca87792b42f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/predis-predis-84060b9034d756b4d79641667d7f9efe1aeb8e04-zip-e41e72.zip",
-                "reference": "84060b9034d756b4d79641667d7f9efe1aeb8e04",
-                "shasum": "00c7e7f51292ddb360fac018da55ad6177179873"
+                "url": "https://satis.cargomedia.ch/dist/dist/predis-predis-9ead747663bb1b1ae017dfa0d152aca87792b42f-zip-378cc3.zip",
+                "reference": "9ead747663bb1b1ae017dfa0d152aca87792b42f",
+                "shasum": "cbbe414e709187e9f89cbf8b56a203f5442e4298"
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~4.8"
             },
             "suggest": {
                 "ext-curl": "Allows access to Webdis when paired with phpiredis",
@@ -1465,14 +1540,14 @@
                     "homepage": "http://clorophilla.net"
                 }
             ],
-            "description": "Flexible and feature-complete PHP client library for Redis",
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
             "homepage": "http://github.com/nrk/predis",
             "keywords": [
                 "nosql",
                 "predis",
                 "redis"
             ],
-            "time": "2015-07-30 18:34:15"
+            "time": "2016-05-30 15:25:52"
         },
         {
             "name": "psr/log",
@@ -1558,26 +1633,29 @@
         },
         {
             "name": "ricardoper/twitteroauth",
-            "version": "v1.1.1",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ricardoper/TwitterOAuth.git",
-                "reference": "c9fd4755efa9a2394f7a35c1ceed315fc24c6446"
+                "reference": "cbdd43db781f30a4f291b15b90ab08a30108d5d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ricardoper/TwitterOAuth/zipball/c9fd4755efa9a2394f7a35c1ceed315fc24c6446",
-                "reference": "c9fd4755efa9a2394f7a35c1ceed315fc24c6446",
+                "url": "https://api.github.com/repos/ricardoper/TwitterOAuth/zipball/cbdd43db781f30a4f291b15b90ab08a30108d5d6",
+                "reference": "cbdd43db781f30a4f291b15b90ab08a30108d5d6",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
+                "ext-json": "*",
+                "lib-curl": "*",
+                "lib-openssl": "*",
                 "php": ">=5.3"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "TwitterOAuth\\": ""
+                "psr-4": {
+                    "TwitterOAuth\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1599,7 +1677,55 @@
                 "php",
                 "twitter"
             ],
-            "time": "2014-09-09 15:44:14"
+            "time": "2016-05-27 19:06:33"
+        },
+        {
+            "name": "seld/cli-prompt",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/cli-prompt.git",
+                "reference": "8cbe10923cae5bcd7c5a713f6703fc4727c8c1b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/seld-cli-prompt-8cbe10923cae5bcd7c5a713f6703fc4727c8c1b4-zip-489423.zip",
+                "reference": "8cbe10923cae5bcd7c5a713f6703fc4727c8c1b4",
+                "shasum": "b4d8be5ff55055ae90b0835bd142bb5de8f64d45"
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Seld\\CliPrompt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be"
+                }
+            ],
+            "description": "Allows you to prompt for user input on the command line, and optionally hide the characters they type",
+            "keywords": [
+                "cli",
+                "console",
+                "hidden",
+                "input",
+                "prompt"
+            ],
+            "time": "2016-04-18 09:31:41"
         },
         {
             "name": "seld/jsonlint",
@@ -1646,6 +1772,50 @@
                 "validator"
             ],
             "time": "2015-11-21 02:21:41"
+        },
+        {
+            "name": "seld/phar-utils",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/phar-utils.git",
+                "reference": "7009b5139491975ef6486545a39f3e6dad5ac30a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/seld-phar-utils-7009b5139491975ef6486545a39f3e6dad5ac30a-zip-8f0162.zip",
+                "reference": "7009b5139491975ef6486545a39f3e6dad5ac30a",
+                "shasum": "47db6f571ff9c893af1de5326db712e25cdd2dae"
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Seld\\PharUtils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be"
+                }
+            ],
+            "description": "PHAR file format utilities, for when PHP phars you up",
+            "keywords": [
+                "phra"
+            ],
+            "time": "2015-10-13 18:44:15"
         },
         {
             "name": "smarty/smarty",
@@ -1704,17 +1874,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.6",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "48221d3de4dc22d2cd57c97e8b9361821da86609"
+                "reference": "c392a6ec72f2122748032c2ad6870420561ffcfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-48221d3de4dc22d2cd57c97e8b9361821da86609-zip-0e430b.zip",
-                "reference": "48221d3de4dc22d2cd57c97e8b9361821da86609",
-                "shasum": "e62f9d57c21b8c0886c87e965a753db32a85cb59"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-c392a6ec72f2122748032c2ad6870420561ffcfa-zip-03217d.zip",
+                "reference": "c392a6ec72f2122748032c2ad6870420561ffcfa",
+                "shasum": "f6c962d1c077fa9192d282b3bd6e336e8312ae16"
             },
             "require": {
                 "php": ">=5.3.9",
@@ -1760,21 +1930,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-26 12:00:47"
+            "time": "2016-06-29 07:02:14"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.6",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8"
+                "reference": "b180b70439dca70049b6b9b7e21d75e6e5d7aca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-a158f13992a3147d466af7a23b564ac719a4ddd8-zip-f70938.zip",
-                "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8",
-                "shasum": "ec3cbcf74a282d0ab053a38c32512b2bb210f9f1"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-b180b70439dca70049b6b9b7e21d75e6e5d7aca9-zip-c4413a.zip",
+                "reference": "b180b70439dca70049b6b9b7e21d75e6e5d7aca9",
+                "shasum": "e7c9e3daf0fada2fc363e36360733f4faa936579"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1820,21 +1990,70 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-03 18:59:18"
+            "time": "2016-06-29 05:29:29"
         },
         {
-            "name": "symfony/finder",
-            "version": "v2.8.6",
+            "name": "symfony/filesystem",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/finder.git",
-                "reference": "ca24cf2cd4e3826f571e0067e535758e73807aa1"
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "7258ddd6f987053f21fa43d03430580ba54e6096"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-ca24cf2cd4e3826f571e0067e535758e73807aa1-zip-d6ca02.zip",
-                "reference": "ca24cf2cd4e3826f571e0067e535758e73807aa1",
-                "shasum": "2cf602c07d793bc6748d9a8b6647a6ffc08a4057"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-filesystem-7258ddd6f987053f21fa43d03430580ba54e6096-zip-5bea58.zip",
+                "reference": "7258ddd6f987053f21fa43d03430580ba54e6096",
+                "shasum": "e34742169a65d402485093de1faa7158a0bd6217"
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:31:50"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v2.8.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "bf0506ef4e7778fd3f0f1f141ab5e8c1ef35dd7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-bf0506ef4e7778fd3f0f1f141ab5e8c1ef35dd7d-zip-02379f.zip",
+                "reference": "bf0506ef4e7778fd3f0f1f141ab5e8c1ef35dd7d",
+                "shasum": "e8b569ffa460249d55307565d2a1e93cafb3a797"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1869,7 +2088,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-10 10:53:53"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1932,17 +2151,17 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.6",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "1276bd9be89be039748cf753a2137f4ef149cd74"
+                "reference": "89f33c16796415ccfd8bb3cf8d520cbb79899bfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-1276bd9be89be039748cf753a2137f4ef149cd74-zip-536c05.zip",
-                "reference": "1276bd9be89be039748cf753a2137f4ef149cd74",
-                "shasum": "fa13fc5b07bb8d8713dc30aff3185863ae78cc24"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-89f33c16796415ccfd8bb3cf8d520cbb79899bfe-zip-ac0c89.zip",
+                "reference": "89f33c16796415ccfd8bb3cf8d520cbb79899bfe",
+                "shasum": "3dbd6f44bbb978cdc62cfb7f9db471d02610a5fa"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1977,7 +2196,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-14 15:22:22"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "tomaszdurka/codegenerator",
@@ -2171,32 +2390,32 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "3c91bdf81797d725b14cb62906f9a4ce44235972"
+                "reference": "58a8137754bc24b25740d4281399a4a3596058e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpspec-prophecy-3c91bdf81797d725b14cb62906f9a4ce44235972-zip-bc5dd8.zip",
-                "reference": "3c91bdf81797d725b14cb62906f9a4ce44235972",
-                "shasum": "c76e73d4e177f4e4151604362b62c2ed3cd0fe96"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpspec-prophecy-58a8137754bc24b25740d4281399a4a3596058e0-zip-b71cdf.zip",
+                "reference": "58a8137754bc24b25740d4281399a4a3596058e0",
+                "shasum": "e78df66f0b4404ed422140eeedd756dec9d21980"
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "~2.0",
-                "sebastian/comparator": "~1.1",
-                "sebastian/recursion-context": "~1.0"
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
+                "sebastian/comparator": "^1.1",
+                "sebastian/recursion-context": "^1.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "~2.0"
+                "phpspec/phpspec": "^2.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -2229,7 +2448,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-02-15 07:46:21"
+            "time": "2016-06-07 08:13:47"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2770,29 +2989,30 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "7ae5513327cb536431847bcc0c10edba2701064e"
+                "reference": "42c4c2eec485ee3e159ec9884f95b431287edde4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-exporter-7ae5513327cb536431847bcc0c10edba2701064e-zip-5e64a9.zip",
-                "reference": "7ae5513327cb536431847bcc0c10edba2701064e",
-                "shasum": "734ca57f22a9d3ed586fbc22d79e86d7401d5f34"
+                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-exporter-42c4c2eec485ee3e159ec9884f95b431287edde4-zip-3c7575.zip",
+                "reference": "42c4c2eec485ee3e159ec9884f95b431287edde4",
+                "shasum": "e47ce3af23803f71a0e06ff5155a0d8dd85e7b48"
             },
             "require": {
                 "php": ">=5.3.3",
                 "sebastian/recursion-context": "~1.0"
             },
             "require-dev": {
+                "ext-mbstring": "*",
                 "phpunit/phpunit": "~4.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -2832,7 +3052,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2015-06-21 07:55:53"
+            "time": "2016-06-17 09:04:28"
         },
         {
             "name": "sebastian/global-state",
@@ -2975,17 +3195,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.6",
+            "version": "v2.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940"
+                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-e4fbcc65f90909c999ac3b4dfa699ee6563a9940-zip-822171.zip",
-                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
-                "shasum": "3aa581094fc681033eef5fa5f13db549a24fa844"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-dba4bb5846798cd12f32e2d8f3f35d77045773c8-zip-b1f6b8.zip",
+                "reference": "dba4bb5846798cd12f32e2d8f3f35d77045773c8",
+                "shasum": "96400f4a6a727cefa2296d3bbbf3c50b2c35e9df"
             },
             "require": {
                 "php": ">=5.3.9"
@@ -3020,7 +3240,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-29 19:00:15"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "tomaszdurka/mocka",

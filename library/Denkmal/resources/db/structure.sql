@@ -41,9 +41,10 @@ CREATE TABLE `denkmal_model_venue` (
   `twitterUsername` varchar(100) DEFAULT NULL,
   `region` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
+  KEY `name` (`name`),
   KEY `queued` (`queued`),
-  KEY `ignore` (`ignore`)
+  KEY `ignore` (`ignore`),
+  KEY `region` (`region`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
@@ -52,7 +53,7 @@ CREATE TABLE `denkmal_model_venuealias` (
   `name` varchar(100) NOT NULL,
   `venue` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
+  KEY `name` (`name`),
   KEY `venue` (`venue`),
   CONSTRAINT `denkmal_model_venuealias__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -176,6 +177,11 @@ CREATE TABLE `denkmal_model_region` (
   `abbreviation` varchar(16) NOT NULL,
   `locationLevel` int(11) unsigned NOT NULL,
   `locationId` int(11) unsigned NOT NULL,
+  `twitterCredentials` varchar(1000) NULL,
+  `twitterAccount` varchar(1000) NULL,
+  `facebookAccount` varchar(1000) NULL,
+  `emailAddress` varchar(1000),
+  `suspensionUntil` int(11) unsigned NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   UNIQUE KEY `abbreviation` (`abbreviation`)
@@ -185,10 +191,12 @@ CREATE TABLE `denkmal_model_region` (
 CREATE TABLE IF NOT EXISTS `denkmal_push_subscription` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `endpoint` varchar(255) NOT NULL,
+  `site` int(10) unsigned NOT NULL,
   `updated` int(11) unsigned NOT NULL,
   `user` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`),
+  KEY `site` (`site`),
   UNIQUE KEY `endpoint` (`endpoint`),
   CONSTRAINT `denkmal_push_subscription__user` FOREIGN KEY (`user`) REFERENCES `denkmal_model_user` (`userId`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

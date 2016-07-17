@@ -1,34 +1,9 @@
 <?php
 
-class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
+class Denkmal_EventTweeter_EventTweeterTest extends CMTest_TestCase {
 
     protected function tearDown() {
         CMTest_TH::clearEnv();
-    }
-
-    public function testTweetStarredEvents() {
-        $venue = DenkmalTest_TH::createVenue();
-        $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, new DateTime('2014-11-01 11:00'), null, null, null, true);
-        $event2 = Denkmal_Model_Event::create($venue, 'Foo 2', true, false, new DateTime('2014-11-01 12:00'), null, null, null, false);
-        $event3 = Denkmal_Model_Event::create($venue, 'Foo 3', true, false, new DateTime('2014-11-01 13:00'), null, null, null, true);
-        $event4 = Denkmal_Model_Event::create($venue, 'Foo 4', true, false, new DateTime('2014-11-01 14:00'), null, null, null, true);
-        $event5 = Denkmal_Model_Event::create($venue, 'Foo 5', true, false, new DateTime('2014-11-01 15:00'), null, null, null, true);
-        $event6 = Denkmal_Model_Event::create($venue, 'Foo 5', true, false, new DateTime('2014-11-02 20:00'), null, null, null, true);
-
-        $client = $this->_getTwitterClientMock();
-        $eventTweeter = new Denkmal_Twitter_EventTweeter($client, $this->_getRender());
-        $client->mockMethod('createTweet')->at(0, function ($text) use ($eventTweeter, $event1) {
-            $this->assertSame($eventTweeter->getEventText($event1, 140), $text);
-        });
-        $client->mockMethod('createTweet')->at(1, function ($text) use ($eventTweeter, $event3) {
-            $this->assertSame($eventTweeter->getEventText($event3, 140), $text);
-        });
-        $client->mockMethod('createTweet')->at(2, function ($text) use ($eventTweeter, $event4) {
-            $this->assertSame($eventTweeter->getEventText($event4, 140), $text);
-        });
-        /** @var Denkmal_Twitter_Client $client */
-
-        $eventTweeter->tweetStarredEvents(new DateTime('2014-11-01'));
     }
 
     public function testGetEventText() {
@@ -92,7 +67,7 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
     }
 
     public function testGetEventTextWithTwitterUsername() {
-        $eventTweeter = new Denkmal_Twitter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
         $venue = DenkmalTest_TH::createVenue();
         $venue->setTwitterUsername('ExampleTwitter');
         $event = Denkmal_Model_Event::create($venue, 'Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'));
@@ -110,7 +85,7 @@ class Denkmal_Twitter_EventTweeterTest extends CMTest_TestCase {
      * @param int           $maxLength
      */
     private function _assertGetEventText($expected, $description, DateTime $from, DateTime $until = null, $maxLength) {
-        $eventTweeter = new Denkmal_Twitter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
         $venue = DenkmalTest_TH::createVenue('Example');
         $event = Denkmal_Model_Event::create($venue, $description, true, false, $from, $until);
         $this->assertSame($expected, $eventTweeter->getEventText($event, $maxLength));

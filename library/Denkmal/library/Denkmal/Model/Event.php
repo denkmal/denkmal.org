@@ -2,10 +2,16 @@
 
 class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConvertibleApi {
 
+    /** @var Denkmal_Model_Venue|null */
+    private $_venueOverride;
+
     /**
      * @return Denkmal_Model_Venue
      */
     public function getVenue() {
+        if ($this->_venueOverride) {
+            return $this->_venueOverride;
+        }
         return $this->_get('venue');
     }
 
@@ -14,6 +20,15 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
      */
     public function setVenue(Denkmal_Model_Venue $venue) {
         $this->_set('venue', $venue);
+    }
+
+    /**
+     * This is necessary because we cannot call `setVenue()` on a non-persistent event.
+     *
+     * @param Denkmal_Model_Venue $venue
+     */
+    public function setVenueOverride(Denkmal_Model_Venue $venue) {
+        $this->_venueOverride = $venue;
     }
 
     /**
@@ -176,6 +191,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $array['venue'] = $this->getVenue()->getId();
         $array['description'] = html_entity_decode(strip_tags($descriptionHtml), ENT_QUOTES, 'UTF-8');
         $array['descriptionHtml'] = $descriptionHtml;
+        $array['timeZone'] = $this->getTimeZone()->getName();
         $array['from'] = $this->getFrom()->getTimestamp();
         if ($until = $this->getUntil()) {
             $array['until'] = $until->getTimestamp();

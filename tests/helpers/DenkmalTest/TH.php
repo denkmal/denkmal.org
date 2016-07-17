@@ -36,18 +36,19 @@ class DenkmalTest_TH extends CMTest_TH {
      */
     public static function createRegion($name = null, $slug = null, $abbreviation = null, CM_Model_Location $location = null) {
         if (null === $name) {
-            $name = 'New York';
+            $name = self::randStr(6);
         }
         if (null === $slug) {
-            $slug = 'NY';
+            $slug = self::randStr(6);
         }
         if (null === $abbreviation) {
-            $abbreviation = 'JFK';
+            $abbreviation = self::randStr(3);
         }
         if (null === $location) {
             $location = self::createLocationCity();
         }
-        return Denkmal_Model_Region::create((string) $name, (string) $slug, (string) $abbreviation, $location);
+        $emailAddress = $slug . '@denkmal.org';
+        return Denkmal_Model_Region::create((string) $name, (string) $slug, (string) $abbreviation, $emailAddress, $location);
     }
 
     /**
@@ -71,7 +72,7 @@ class DenkmalTest_TH extends CMTest_TH {
             $ignore = false;
         }
         if (null === $region) {
-            $region = self::createRegion(self::randStr(6), self::randStr(4), self::randStr(3));
+            $region = self::createRegion();
         }
         if (null === $url) {
             $url = 'http://bar.baz/?foo=quux';

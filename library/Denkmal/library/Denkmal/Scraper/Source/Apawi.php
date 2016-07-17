@@ -27,7 +27,7 @@ class Denkmal_Scraper_Source_Apawi extends Denkmal_Scraper_Source_Abstract {
             $category = $item->find('category')->getText();
             $description = new Denkmal_Scraper_Description($title, null, new Denkmal_Scraper_Genres($category));
 
-            return new Denkmal_Scraper_EventData('Apawi', $description, $from, $until);
+            return new Denkmal_Scraper_EventData($this->getRegion(), 'Apawi', $description, $from, $until);
         });
     }
 

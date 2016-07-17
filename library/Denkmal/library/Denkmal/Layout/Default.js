@@ -7,7 +7,10 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
   /** @type String */
   _class: 'Denkmal_Layout_Default',
 
-  /** @type Number */
+  /** @type Object|Null */
+  region: null,
+
+  /** @type Number|Null */
   chatActivityStamp: null,
 
   appEvents: {
@@ -46,17 +49,23 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
   },
 
   ready: function() {
-    this.bindStream('global-internal', cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(message) {
-      var page = this.findPage();
-      var isChat = page && page.hasClass('Denkmal_Page_Now');
-      if (isChat) {
-        this._updateChatRead();
-      } else {
-        this._setChatIndication(true);
-      }
-    });
+    if (this.region) {
+      var channelKey = 'region-' + this.region.id;
+      this.bindStream(channelKey, cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(message) {
+        var page = this.findPage();
+        var isChat = page && page.hasClass('Denkmal_Page_Now');
+        if (isChat) {
+          page.addMessage(message);
+          this._updateChatRead();
+        } else {
+          this._setChatIndication(true);
+        }
+      });
+    }
 
-    this._setChatIndicationFromLastActivity(this.chatActivityStamp);
+    if (this.chatActivityStamp) {
+      this._setChatIndicationFromLastActivity(this.chatActivityStamp);
+    }
   },
 
   /**

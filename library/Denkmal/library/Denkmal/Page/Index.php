@@ -8,7 +8,9 @@ class Denkmal_Page_Index extends Denkmal_Page_Abstract {
             return;
         }
 
-        if ($this->_hasRegion()) {
+        /** @var Denkmal_Site_Default $site */
+        $site = $response->getSite();
+        if ($site->hasRegion()) {
             $response->redirect('Denkmal_Page_Events');
         } else {
             $site = $this->_findSiteByRequest($response->getRequest());

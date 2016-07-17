@@ -10,4 +10,5 @@ class Admin_Page_Abstract extends CM_Page_Abstract {
             throw new CM_Exception_AuthRequired();
         }
     }
+
 }

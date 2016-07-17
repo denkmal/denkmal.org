@@ -7,9 +7,10 @@ class Denkmal_Http_Response_Api_AbstractTest extends CMTest_TestCase {
     }
 
     public function testSetContent() {
-        $request = new CM_Http_Request_Get('/api/data', array('host' => 'denkmal.test'));
+        $site = $this->getMockSite('Denkmal_Site_Default');
+        $request = new CM_Http_Request_Get('/api/data');
         /** @var Denkmal_Http_Response_Api_Abstract|\Mocka\AbstractClassTrait $apiResponse */
-        $apiResponse = $this->mockObject('Denkmal_Http_Response_Api_Abstract', [$request, $this->getServiceManager()]);
+        $apiResponse = $this->mockObject('Denkmal_Http_Response_Api_Abstract', [$request, $site, $this->getServiceManager()]);
 
         $content = ['foo' => 12];
         CMTest_TH::callProtectedMethod($apiResponse, '_setContent', [$content]);

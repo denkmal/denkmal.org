@@ -1,1 +1,1 @@
-{translate 'Hipster Login'}
+{translate 'Login'}

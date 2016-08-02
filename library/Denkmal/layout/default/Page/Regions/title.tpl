@@ -1,1 +1,1 @@
-TODO: Select your region
+{translate 'Welcome to {$siteName}' siteName=$render->getSiteName()}

@@ -1,1 +1,1 @@
-{translate 'Sign Up'}
+{translate 'Login'}

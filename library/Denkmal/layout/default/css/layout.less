@@ -4,7 +4,9 @@ html, body {
 }
 
 h1 {
-  margin-bottom: 3px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
 }
 
 h2 {
@@ -18,12 +20,31 @@ p {
 }
 
 hr {
-  margin: 15px 0;
-  border-color: @colorFgBorderEmphasize3;
+  border-color: @colorFgBorderEmphasize2;
 }
 
 .noContent {
   margin: 10px;
   padding: 15px;
   text-align: center;
+}
+
+.responsive-text {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 90%;
+
+  @media (min-width: @breakpointSmall) {
+    width: 80%;
+  }
+
+  @media (min-width: @breakpointMedium) {
+    width: 60%;
+  }
+}
+
+.intro {
+  margin-bottom: 2em;
+  font-size: 1.2em;
 }

@@ -128,4 +128,18 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
         $this->assertSame('hello foo bar', $data['description']);
         $this->assertSame('hello <a href="http://foo.com" class="url" target="_blank">foo</a> bar', $data['descriptionHtml']);
     }
+
+    public function testGetDuplicates() {
+        $venue = DenkmalTest_TH::createVenue();
+        $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, new DateTime('2016-08-18 22:00'));
+        $event2 = Denkmal_Model_Event::create($venue, 'Foo 2', true, false, new DateTime('2016-08-19 00:00'));
+        $event3 = Denkmal_Model_Event::create($venue, 'Foo 3', true, false, new DateTime('2016-08-20 01:00'));
+
+        DenkmalTest_TH::reinstantiateModel($event2);
+        DenkmalTest_TH::reinstantiateModel($event3);
+
+        $this->assertEquals([$event2], $event1->getDuplicates());
+        $this->assertEquals([$event1], $event2->getDuplicates());
+        $this->assertEquals([], $event3->getDuplicates());
+    }
 }

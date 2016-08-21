@@ -1,5 +1,5 @@
-var sendRpc = require('cm/sendRpc');
-var openWindow = require('cm/openWindow');
+var sendRpc = require('worker/sendRpc');
+var openWindow = require('worker/openWindow');
 
 self.addEventListener('push', function(event) {
   event.waitUntil(self.registration.pushManager.getSubscription().then(function(subscription) {

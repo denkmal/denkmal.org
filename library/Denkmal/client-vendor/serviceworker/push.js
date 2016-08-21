@@ -15,6 +15,7 @@ self.addEventListener('push', function(event) {
         promises.push(self.registration.showNotification(message['title'], {
           body: message['body'],
           icon: message['icon'],
+          badge: message['badge'],
           tag: message['tag'],
           data: message['data']
         }));

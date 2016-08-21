@@ -10,7 +10,10 @@ class Denkmal_Push_Notification_Provider_WebPush extends Denkmal_Push_Notificati
             $headers = [
                 'TTL' => $ttl,
             ];
-            return $messageFactory->createRequest('POST', $subscription->getEndpoint(), ['headers' => $headers]);
+            return $messageFactory->createRequest('POST', $subscription->getEndpoint(), [
+                'headers'    => $headers,
+                'exceptions' => true,
+            ]);
         });
         $this->_sendRequests($requests);
     }

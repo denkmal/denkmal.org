@@ -19,6 +19,8 @@ var Denkmal_Component_PushNotifications = Denkmal_Component_Abstract.extend({
 
   ready: function() {
     if (this._checkSupport()) {
+      cm.registerServiceWorker();
+
       this.$el.addClass('state-enabled');
       this._updateInputUI();
 

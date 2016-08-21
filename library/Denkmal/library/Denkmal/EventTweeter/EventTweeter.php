@@ -38,7 +38,7 @@ class Denkmal_EventTweeter_EventTweeter {
         $suffix = ' ' . $url;
         $suffixLength = $this->_client->getTweetLength($suffix);
         if ($suffixLength > $maxLength) {
-            throw new CM_Exception_Invalid('Suffix length exceeds max-length `' . $maxLength . '`.');
+            throw new CM_Exception_Invalid('Suffix length exceeds max-length.', null, ['suffix' => $suffix, 'maxLength' => $maxLength]);
         }
 
         $prefix = $this->_formatEvent($event);

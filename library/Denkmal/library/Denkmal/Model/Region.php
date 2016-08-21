@@ -225,7 +225,7 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         $slug = (string) $slug;
         $region = self::findBySlug($slug);
         if (null === $region) {
-            throw new CM_Exception_Nonexistent('Region with slug `' . $slug . '` does not exist');
+            throw new CM_Exception_Nonexistent('Cannot find region by slug.', null, ['slug' => $slug]);
         }
         return $region;
     }

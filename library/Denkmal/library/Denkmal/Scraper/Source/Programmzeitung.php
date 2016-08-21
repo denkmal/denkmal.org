@@ -72,7 +72,7 @@ class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abst
             } elseif (preg_match('#^(\d+):(\d+)(\s+.\s+(\d+):(\d+))?$#u', $timeText, $matches)) {
                 $from->setTime($matches[1], $matches[2]);
             } else {
-                throw new CM_Exception_Invalid('Cannot detect time from `' . $timeText . '`.');
+                throw new CM_Exception_Invalid('Cannot parse time', null, ['string' => $timeText]);
             }
             $until = null;
             if (isset($matches[4]) && isset($matches[5])) {

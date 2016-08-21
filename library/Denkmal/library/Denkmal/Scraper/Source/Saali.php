@@ -64,7 +64,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
 
             // Parse first line
             if (!preg_match('#^\w{2}[_\s]+(\d+)\.(\d+)\.?\s+(.+)$#', $eventTextList[0], $matches0)) {
-                throw new CM_Exception_Invalid('Cannot parse event line: `' . $eventTextList[0] . '`.');
+                throw new CM_Exception_Invalid('Cannot parse event line.', null, ['string' => $eventTextList[0]]);
             }
             $from = new Denkmal_Scraper_Date($matches0[1], $matches0[2], null, $now);
             $from->setTime(21);

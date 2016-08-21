@@ -26,7 +26,7 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
 
             $textWeekday = $event->find('.summary .weekday')->getText();
             if (!preg_match('#^\w+ (?<day>\d+)\.(?<month>\d+) -\s*?(?<titleAndGenres>.+?)?$#u', $textWeekday, $matches)) {
-                throw new CM_Exception_Invalid('Cannot parse `weekday` from `' . $textWeekday . '`.');
+                throw new CM_Exception_Invalid('Cannot parse weekday.', null, ['string' => $textWeekday]);
             }
             $title = null;
             $genres = null;
@@ -35,7 +35,7 @@ class Denkmal_Scraper_Source_Hinterhof extends Denkmal_Scraper_Source_Abstract {
             $titleAndGenres = trim($matches['titleAndGenres']);
             if (!empty($titleAndGenres)) {
                 if (!preg_match('#(?<title>.*?)?( - )?((?<genres>[^-]+))?$#u', $titleAndGenres, $titleAndGenresMatch)) {
-                    throw new CM_Exception_Invalid('Cannot parse `titleAndGenres` from `' . $titleAndGenres . '`.');
+                    throw new CM_Exception_Invalid('Cannot parse titleAndGenres.', null, ['string' => $titleAndGenres]);
                 }
                 if (!empty($titleAndGenresMatch['title'])) {
                     $title = $titleAndGenresMatch['title'];

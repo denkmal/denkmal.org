@@ -29,7 +29,7 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
 
             $dateText = $event->find('startdate')->getText();
             if (!preg_match('#^\w+, (\d+) (\w+) (\d+) (\d+):(\d+):(\d+)$#u', $dateText, $matches)) {
-                throw new CM_Exception_Invalid('Cannot detect date from `' . $dateText . '`.');
+                throw new CM_Exception_Invalid('Cannot parse date.', null, ['string' => $dateText]);
             }
             $from = new Denkmal_Scraper_Date($matches[1], $matches[2], $matches[3], $now);
             $from->setTime(20, 00); // Time from API is messed up
@@ -47,7 +47,7 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
             return new Denkmal_Scraper_EventData($this->getRegion(), $venueName, $description, $from);
         });
     }
-    
+
     public function getRegion() {
         return Denkmal_Model_Region::getBySlug('basel');
     }

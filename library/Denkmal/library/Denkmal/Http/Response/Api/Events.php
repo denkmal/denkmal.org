@@ -8,7 +8,7 @@ class Denkmal_Http_Response_Api_Events extends Denkmal_Http_Response_Api_Abstrac
         $venueName = $this->_params->getString('venue');
         $venue = Denkmal_Model_Venue::findByNameOrAlias($region, $venueName);
         if (null === $venue) {
-            throw new CM_Exception('Cannot find venue with name `' . $venueName . '`');
+            throw new CM_Exception('Cannot find venue by name.', null, ['name' => $venueName]);
         }
         $maxEvents = min(max($this->_params->getInt('maxEvents', 100), 1), 1000);
 

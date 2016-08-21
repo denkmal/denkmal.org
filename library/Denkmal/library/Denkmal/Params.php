@@ -64,10 +64,10 @@ class Denkmal_Params extends CM_Params {
     public function getDate($key, $default = null) {
         return $this->getObject($key, 'DateTime', $default, function ($className, $param) {
             if (!preg_match('#^(\d{4})-(\d{1,2})-(\d{1,2})$#', $param, $matches)) {
-                throw new CM_Exception_InvalidParam('Cannot parse date `' . $param . '`');
+                throw new CM_Exception_InvalidParam('Cannot parse date.', null, ['date' => $param]);
             }
             if (!checkdate($matches[2], $matches[3], $matches[1])) {
-                throw new CM_Exception_InvalidParam('Not a valid date: `' . $param . '`');
+                throw new CM_Exception_InvalidParam('Not a valid date.', null, ['date' => $param]);
             }
             return new $className($matches[3] . '-' . $matches[2] . '-' . $matches[1]);
         });

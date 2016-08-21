@@ -67,7 +67,7 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
     public static function factoryByType($type) {
         $className = self::_getClassName($type);
         if (!is_a($className, get_called_class(), true)) {
-            throw new CM_Exception_Invalid('Unexpected className `' . $className . '`.');
+            throw new CM_Exception_Invalid('Unexpected class name.', null, ['className' => $className]);
         }
         return new $className();
     }

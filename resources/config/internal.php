@@ -11,12 +11,11 @@ return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->types = [];
     $config->CM_Action_Abstract->types[3] = 'CM_Action_Email';
     $config->CM_Action_Abstract->types[27] = 'Denkmal_Action_Message';
-    $config->CM_Janus_Configuration->types = [];
-    $config->CM_Janus_Configuration->types[67] = 'CM_Janus_Configuration';
-    $config->CM_Janus_Configuration->type = 67;
+    $config->CM_Janus_ServerList->types = [];
+    $config->CM_Janus_ServerList->types[82] = 'CM_Janus_ServerList';
+    $config->CM_Janus_ServerList->type = 82;
     $config->CM_MediaStreams_Service->types = [];
     $config->CM_MediaStreams_Service->types[68] = 'CM_Janus_Service';
-    $config->CM_MediaStreams_Service->types[69] = 'CM_Wowza_Service';
     $config->CM_Model_Abstract->types = [];
     $config->CM_Model_Abstract->types[5] = 'CM_Model_Language';
     $config->CM_Model_Abstract->types[6] = 'CM_Model_Location';
@@ -53,6 +52,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[71] = 'CM_Model_StreamChannelArchive_Media';
     $config->CM_Model_Abstract->types[72] = 'CM_StreamChannel_Thumbnail';
     $config->CM_Model_Abstract->types[77] = 'Denkmal_Model_Region';
+    $config->CM_Model_Abstract->types[83] = 'CM_Janus_StreamChannel';
     $config->CM_Paging_Log->types = [];
     $config->CM_Paging_Log->types[74] = 'CM_Paging_Log';
     $config->CM_Paging_Log->types[75] = 'CM_Paging_Log_Javascript';
@@ -139,7 +139,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Currency->type = 65;
     $config->CM_App_SetupScript_Currency->type = 66;
     $config->CM_Janus_Service->type = 68;
-    $config->CM_Wowza_Service->type = 69;
     $config->CM_Model_StreamChannel_Media->type = 70;
     $config->CM_Model_StreamChannelArchive_Media->type = 71;
     $config->CM_StreamChannel_Thumbnail->type = 72;
@@ -151,7 +150,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Site_Default->type = 79;
     $config->Denkmal_Site_Region_Basel->type = 80;
     $config->Denkmal_Site_Region_Graz->type = 81;
-    $config->CM_Class_Abstract->typesMaxValue = 81;
+    $config->CM_Janus_StreamChannel->type = 83;
+    $config->CM_Class_Abstract->typesMaxValue = 83;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

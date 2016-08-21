@@ -43,7 +43,7 @@ class Denkmal_Model_RegionTest extends CMTest_TestCase {
         });
 
         $this->assertInstanceOf('CM_Exception_Nonexistent', $exception);
-        $this->assertSame('Region with slug `berlin` does not exist', $exception->getMessage());
+        $this->assertSame('Cannot find region by slug.', $exception->getMessage());
     }
 
     public function testGetSetTwitterCredentials() {

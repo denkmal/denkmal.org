@@ -38,7 +38,7 @@ class Denkmal_Twitter_Client extends CM_Service_ManagerAware {
     public function getUrlLength($url) {
         $scheme = parse_url($url, PHP_URL_SCHEME);
         if (false === $scheme) {
-            throw new CM_Exception_Invalid('Cannot detect URL scheme for `' . $url . '`.');
+            throw new CM_Exception_Invalid('Cannot detect URL scheme.', null, ['url' => $url]);
         }
         if (null === $scheme) {
             $scheme = 'http';
@@ -48,7 +48,7 @@ class Denkmal_Twitter_Client extends CM_Service_ManagerAware {
             'https' => 'short_url_length_https',
         ];
         if (!array_key_exists($scheme, $schemeConfigMap)) {
-            throw new CM_Exception_Invalid('Unexpected URL scheme `' . $scheme . '`.');
+            throw new CM_Exception_Invalid('Unexpected URL scheme.', null, ['url' => $url, 'scheme' => $scheme]);
         }
         $configKey = $schemeConfigMap[$scheme];
         return (int) $this->getTwitterConfiguration()[$configKey];

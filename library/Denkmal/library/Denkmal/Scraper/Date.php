@@ -55,7 +55,7 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
             $day = (int) $day;
 
             if ($day < 1 || $day > 31) {
-                throw new CM_Exception_Invalid('Unknown day `' . $day . '`');
+                throw new CM_Exception_Invalid('Invalid day.', null, ['day' => $day]);
             }
 
             if ($month >= 1 && $month <= 12) {
@@ -63,7 +63,7 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
             } elseif (array_key_exists($month, self::$_months)) {
                 $month = self::$_months[$month];
             } else {
-                throw new CM_Exception_Invalid('Unknown month `' . $month . '`');
+                throw new CM_Exception_Invalid('Invalid month.', null, ['month' => $month]);
             }
 
             $yearNow = (int) $now->format('Y');
@@ -75,7 +75,7 @@ class Denkmal_Scraper_Date extends CM_Class_Abstract {
                 if ($year >= $yearNow - 1 && $year <= $yearNow + 2) {
                     $year = (int) $year;
                 } else {
-                    throw new CM_Exception_Invalid('Unknown year `' . $year . '`');
+                    throw new CM_Exception_Invalid('Invalid year.', null, ['year' => $year]);
                 }
             } else {
                 $year = $yearNow;

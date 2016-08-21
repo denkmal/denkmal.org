@@ -14,7 +14,7 @@ class Denkmal_Model_MessageImage extends CM_Model_Abstract implements Denkmal_Ar
      */
     public function getFile($type) {
         if (!in_array($type, $this->_fileTypeList, true)) {
-            throw new CM_Exception_Invalid('Unknown file type `' . $type . '`.');
+            throw new CM_Exception_Invalid('Unknown file type.', null, ['type' => $type]);
         }
         $filename = $this->getId() . '-' . $type . '.jpg';
         return new CM_File_UserContent('message-image', $filename);

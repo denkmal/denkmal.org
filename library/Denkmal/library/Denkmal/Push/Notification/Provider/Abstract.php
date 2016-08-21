@@ -40,7 +40,7 @@ abstract class Denkmal_Push_Notification_Provider_Abstract implements CM_Service
         if (0 === strpos($endpoint, 'https://android.googleapis.com/gcm/send')) {
             return new Denkmal_Push_Notification_Provider_GoogleCloudMessaging($serviceManager);
         }
-        if (0 === strpos($endpoint, 'https://updates.push.services.mozilla.com/push')) {
+        if (0 === strpos($endpoint, 'https://updates.push.services.mozilla.com')) {
             return new Denkmal_Push_Notification_Provider_WebPush($serviceManager);
         }
         return null;

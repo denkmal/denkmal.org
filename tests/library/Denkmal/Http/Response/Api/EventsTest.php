@@ -25,8 +25,12 @@ class Denkmal_Http_Response_Api_EventsTest extends CMTest_TestCase {
 
         $now = new DateTime();
         $now->setTime(12, 0, 0);
-        $event1 = Denkmal_Model_Event::create($venue1, 'Foo', true, false, $now);
-        $event2 = Denkmal_Model_Event::create($venue2, 'Foo', true, false, $now);
+        $event1 = Denkmal_Model_Event::create($venue1, 'My event 1', true, false, $now);
+        $event2 = Denkmal_Model_Event::create($venue2, 'My event 2', true, false, $now);
+
+        $early = clone $now;
+        $early->setTime(2, 0, 0);
+        $event3 = Denkmal_Model_Event::create($venue1, 'My event 3', true, false, $early);
 
         $site = new Denkmal_Site_Region_Basel();
         $request = new CM_Http_Request_Get('/api/events?venue=Venue1');

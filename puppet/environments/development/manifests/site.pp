@@ -21,7 +21,7 @@ node default {
   }
   cm::vhost { 'admin-denkmal.dev.cargomedia.ch': }
 
-  environment::variable { 'PHP_IDE_CONFIG':
+  env::variable { 'PHP_IDE_CONFIG':
     value => 'serverName=www.denkmal.dev',
   }
 

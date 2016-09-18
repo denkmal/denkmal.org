@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c867d819f59ed6b7c02a441b20edf887",
-    "content-hash": "8554a15c2f199f549983e3aefdef7270",
+    "hash": "4806fcf4e6bb07c84f488a3879b620fe",
+    "content-hash": "a797793817068095c376119d5c45e827",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,17 +72,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.196.1",
+            "version": "1.197.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "11515e6d67d2f1e299c964f2b8e8f5159f3979c3"
+                "reference": "c94ab6f48efa8604753b0e30cda2b97627ff296a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-11515e6d67d2f1e299c964f2b8e8f5159f3979c3-zip-2ca568.zip",
-                "reference": "11515e6d67d2f1e299c964f2b8e8f5159f3979c3",
-                "shasum": "949d1e33b7d6f8252cb766aaa7ecd13c25061db2"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-c94ab6f48efa8604753b0e30cda2b97627ff296a-zip-22b8e0.zip",
+                "reference": "c94ab6f48efa8604753b0e30cda2b97627ff296a",
+                "shasum": "89682a320fd03cf4810df7092e160029cb0f6d96"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -99,9 +99,9 @@
                 "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.4.0",
                 "nicmart/tree": "~0.2.0",
-                "phpmailer/phpmailer": "5.2.6",
                 "predis/predis": "~1.0.3",
                 "smarty/smarty": "3.1.16",
+                "swiftmailer/swiftmailer": "~5.4.3",
                 "tomaszdurka/codegenerator": "~0.5.0"
             },
             "require-dev": {
@@ -130,7 +130,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-09-02 12:48:06"
+            "time": "2016-09-06 13:54:37"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -1610,59 +1610,6 @@
             "time": "2016-04-03 06:00:07"
         },
         {
-            "name": "phpmailer/phpmailer",
-            "version": "v5.2.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "4d9434e394496a5bb7acd9e73046587184b413df"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpmailer-phpmailer-4d9434e394496a5bb7acd9e73046587184b413df-zip-244a31.zip",
-                "reference": "4d9434e394496a5bb7acd9e73046587184b413df",
-                "shasum": "3c2279e86f4243d35e3aec8cf3e4f2d5910ee9c4"
-            },
-            "require": {
-                "php": ">=5.0.0"
-            },
-            "require-dev": {
-                "phpdocumentor/phpdocumentor": "*",
-                "phpunit/phpunit": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "class.phpmailer.php",
-                    "class.pop3.php",
-                    "class.smtp.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
-                    "name": "Marcus Bointon",
-                    "email": "phpmailer@synchromedia.co.uk"
-                },
-                {
-                    "name": "Andy Prevost",
-                    "email": "codeworxtech@users.sourceforge.net"
-                },
-                {
-                    "name": "Brent R. Matzelle"
-                }
-            ],
-            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2013-04-11 16:45:39"
-        },
-        {
             "name": "predis/predis",
             "version": "v1.0.4",
             "source": {
@@ -2034,6 +1981,59 @@
                 "templating"
             ],
             "time": "2014-10-31 01:05:49"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/swiftmailer-swiftmailer-4cc92842069c2bbc1f28daaaf1d2576ec4dfe153-zip-9e9b13.zip",
+                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+                "shasum": "2263f76eebfa90889e1cc425b03b36c258a94d44"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
+            "time": "2016-07-08 11:51:25"
         },
         {
             "name": "symfony/console",

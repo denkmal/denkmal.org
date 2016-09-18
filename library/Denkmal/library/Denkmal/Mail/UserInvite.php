@@ -1,6 +1,6 @@
 <?php
 
-class Denkmal_Mail_UserInvite extends CM_Mail {
+class Denkmal_Mail_UserInvite extends CM_Mail_Mailable {
 
     /**
      * @param Denkmal_Model_UserInvite $userInvite

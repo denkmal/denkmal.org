@@ -35,6 +35,6 @@ class Admin_Form_UserInviteTest extends CMTest_TestCase {
 
         $logMailEntry = (new CM_Paging_Log_Mail([CM_Log_Logger::INFO]))->getItem(0);
         $this->assertContains('Invitation', $logMailEntry['message']);
-        $this->assertSame('foo@example.com', $logMailEntry['context']['extra']['to'][0]['address']);
+        $this->assertArrayHasKey('foo@example.com', $logMailEntry['context']['extra']['to']);
     }
 }

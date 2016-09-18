@@ -15,7 +15,7 @@
     {foreach $tagListAvailable as $tag}
       <li class="tag" data-id="{$tag->getId()|escape}">
         <a href="javascript:;" class="toggleTag">
-          {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
+          <span class="tag-image">{resourceFileContent path="img/tag/{$tag->getLabel()}.svg"}</span>
         </a>
         <div class="count"></div>
       </li>

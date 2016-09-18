@@ -3,7 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-	<path id="volume_loudspeaker_speaker_up" fill="#010101" d="M10.93,22.857H4.982
+	<path id="volume_loudspeaker_speaker_up" class="tag-color" d="M10.93,22.857H4.982
 		C2,22.857,2,25.904,2,25.904v12.191c0,0,0,3.043,2.982,3.043h5.948l22.501,13.719V9.143L10.93,22.857L10.93,22.857z M36.281,46.289
 		c0,0,8.576-3.561,8.576-14.287c0-10.73-8.576-14.291-8.576-14.291v3.172c0,0,5.717,2.434,5.717,11.119
 		c0,8.68-5.717,11.115-5.717,11.115V46.289z M44.857,49.127c0,0,8.566-4.701,8.566-17.125c0-12.428-8.566-17.154-8.566-17.154v3.504

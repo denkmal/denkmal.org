@@ -4,10 +4,10 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
-	<polygon fill="#010101" points="32.029,13.289 28.547,54.958 35.465,62 42.326,54.792 39.145,13.289 	"/>
-	<polygon fill="#010101" points="42.066,2 29.145,2 32.049,12.593 39.162,12.593 	"/>
+	<polygon class="tag-color" points="32.029,13.289 28.547,54.958 35.465,62 42.326,54.792 39.145,13.289 	"/>
+	<polygon class="tag-color" points="42.066,2 29.145,2 32.049,12.593 39.162,12.593 	"/>
 	<g>
-		<polygon fill="#010101" points="21.674,34.929 23.326,38.268 26.846,37.052 29.613,31.11 31.316,15.384 		"/>
+		<polygon class="tag-color" points="21.674,34.929 23.326,38.268 26.846,37.052 29.613,31.11 31.316,15.384 		"/>
 	</g>
 </g>
 </svg>

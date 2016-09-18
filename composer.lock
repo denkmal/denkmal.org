@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4806fcf4e6bb07c84f488a3879b620fe",
-    "content-hash": "a797793817068095c376119d5c45e827",
+    "hash": "8a9e89e8d2344d62d0df83379046427b",
+    "content-hash": "dd6bd2503c68e4944470a3d65113710c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,17 +72,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.197.1",
+            "version": "1.200.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "c94ab6f48efa8604753b0e30cda2b97627ff296a"
+                "reference": "7471ab5bd17f8d3e1f7ea96e8453baaffe0a6790"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-c94ab6f48efa8604753b0e30cda2b97627ff296a-zip-22b8e0.zip",
-                "reference": "c94ab6f48efa8604753b0e30cda2b97627ff296a",
-                "shasum": "89682a320fd03cf4810df7092e160029cb0f6d96"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-7471ab5bd17f8d3e1f7ea96e8453baaffe0a6790-zip-1db8a1.zip",
+                "reference": "7471ab5bd17f8d3e1f7ea96e8453baaffe0a6790",
+                "shasum": "d4cd4472ae0b1d267f53b75273d9418f00d739a4"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -99,6 +99,7 @@
                 "lstrojny/functional-php": "1.0.0-alpha2",
                 "michelf/php-markdown": "1.4.0",
                 "nicmart/tree": "~0.2.0",
+                "php": ">=5.6.0",
                 "predis/predis": "~1.0.3",
                 "smarty/smarty": "3.1.16",
                 "swiftmailer/swiftmailer": "~5.4.3",
@@ -130,7 +131,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-09-06 13:54:37"
+            "time": "2016-09-16 14:25:54"
         },
         {
             "name": "codemonkeys-ru/gcm-message",

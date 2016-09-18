@@ -111,4 +111,27 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
             new DateTime('2016-04-08 22:00:00')
         ), $eventDataList[2]);
     }
+
+    public function testProcessVersion5() {
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-5.html');
+        $scraper = new Denkmal_Scraper_Source_Saali();
+
+        $eventDataList = $scraper->processPage($html, new DateTime('2016-09-18'));
+
+        $this->assertCount(6, $eventDataList);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            $scraper->getRegion(),
+            'Sääli',
+            new Denkmal_Scraper_Description('Jallimann & Rootspro Calypso, Mento, Cumbia, Ska, Latin and Afro from 1930 to present', 'Rumba Boxx'),
+            new DateTime('2016-09-16 22:00:00')
+        ), $eventDataList[0]);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            $scraper->getRegion(),
+            'Sääli',
+            new Denkmal_Scraper_Description('John Eastwood Dark 80\'s'),
+            new DateTime('2016-09-17 22:00:00')
+        ), $eventDataList[1]);
+    }
 }

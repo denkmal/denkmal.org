@@ -30,9 +30,9 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
       }
     };
 
-    enquire.register('(min-width: 640px)', handlers);
+    enquire.register('(min-width: 750px)', handlers);
     this.on('destruct', function() {
-      enquire.unregister('(min-width: 640px)', handlers);
+      enquire.unregister('(min-width: 750px)', handlers);
     });
   },
 

@@ -4,58 +4,9 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#8BA9A3;}
-	.st1{fill:#6A7774;}
 	.st2{opacity:0.2;fill:#FFFACE;}
-	.st3{opacity:0.5;}
-	.st4{fill:#88B196;}
-	.st5{opacity:0.6;}
-	.st6{opacity:0.2;}
-	.st7{fill:#FF82AB;}
-	.st8{opacity:0.5;fill:#B2496C;}
-	.st9{opacity:0.3;fill:#FFFC7F;}
-	.st10{fill:#FF97C3;}
-	.st11{fill:#8BC4A3;}
 	.st12{fill:#1A1A1A;}
-	.st13{fill:#FFFFFF;}
-	.st14{fill:#1A1A1A;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st15{fill:#A2BAB5;}
-	.st16{fill:#B10000;}
-	.st17{fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
-	.st18{opacity:0.6;fill:#1A1A1A;}
-	.st19{fill:#FF9DAB;}
-	.st20{fill:#00A6ED;}
-	.st21{fill:#75CFD6;}
-	.st22{fill:#004448;}
-	.st23{opacity:0.6;fill:#FFFFFF;}
-	.st24{fill:#1B002C;}
-	.st25{stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st26{fill:#F4CC0D;}
-	.st27{fill:#F4BC0D;}
-	.st28{fill:#A8004E;}
-	.st29{fill:#7E003B;}
-	.st30{opacity:0.6;fill:#A2BAB5;}
-	.st31{opacity:0.2;fill:#1A1A1A;}
-	.st32{fill:#FFFFFF;stroke:#1A1A1A;stroke-width:6;stroke-miterlimit:10;}
-	.st33{fill:none;}
-	.st34{fill:#FF4391;}
-	.st35{fill:#B21D5B;}
-	.st36{fill:#2E0048;}
-	.st37{fill:#FF1B91;}
-	.st38{fill:#FF69A7;}
-	.st39{opacity:0.6;fill:#FFB4D3;}
-	.st40{fill:#9266A8;}
-	.st41{fill:#002433;}
-	.st42{fill:#C14A7C;}
-	.st43{fill:#33505C;}
-	.st44{fill:#DC0054;}
-	.st45{fill:#212433;}
-	.st46{fill:#384047;}
-	.st47{opacity:0.29;}
-	.st48{opacity:0.5;fill:url(#SVGID_1_);}
 </style>
-<g id="bg">
-</g>
 <g id="Layer_1">
 	<path class="st2" d="M79.2,32.1c4.9,0,9.4-2.7,11.8-7c-8-0.5-14.4-7.1-14.4-15.3c0-1.5,0.2-3,0.7-4.4c-6.5,1-11.4,6.5-11.4,13.2
 		C65.8,26.1,71.8,32.1,79.2,32.1z"/>
@@ -80,7 +31,5 @@
 			<circle class="st12" cx="59.3" cy="37.1" r="3.5"/>
 		</g>
 	</g>
-</g>
-<g id="overlay">
 </g>
 </svg>

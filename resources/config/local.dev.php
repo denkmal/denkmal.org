@@ -4,8 +4,6 @@ return function (CM_Config_Node $config) {
     $config->CM_App->setupScriptClasses[] = 'Denkmal_ExampleData_Users';
     $config->CM_App->setupScriptClasses[] = 'Denkmal_ExampleData_Venues';
 
-    $config->CM_Mail->send = false;
-
     $config->services['stream-message'] = array(
         'class'  => 'CM_MessageStream_Factory',
         'method' => [

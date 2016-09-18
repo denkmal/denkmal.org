@@ -1,4 +1,4 @@
-<time class="currentDate">{date_full date=$date timeZone=$date->getTimeZone()}</time>
+<div class="eventListMeta">{$render->getSite()->getRegion()->getName()|escape} - <time>{date_full date=$date timeZone=$date->getTimeZone()}</time></div>
 
 {if $events->getCount()}
   <ul class="eventList">

@@ -22,18 +22,22 @@
   }
 
   .logo-symbol {
-    width: 40px;
+    width: 30px;
 
     .logo-color-stars {
       fill: @colorLogoStars;
     }
+
+    @media (min-width: @breakpointMini) {
+      width: 40px;
+    }
   }
 
   .logo-denkmal {
-    width: 110px;
+    width: 90px;
 
     @media (min-width: @breakpointMini) {
-      width: 140px;
+      width: 110px;
     }
   }
 }

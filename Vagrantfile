@@ -1,6 +1,6 @@
 Vagrant.configure('2') do |config|
   config.ssh.forward_agent = true
-  config.vm.box = 'cargomedia/debian-7-amd64-cm'
+  config.vm.box = 'cargomedia/debian-8-amd64-cm'
 
   config.vm.hostname = 'denkmal.dev.cargomedia.ch'
   if Vagrant.has_plugin? 'landrush'
@@ -9,10 +9,6 @@ Vagrant.configure('2') do |config|
     config.landrush.host 'denkmal.dev.cargomedia.ch'
     config.landrush.host 'admin-denkmal.dev.cargomedia.ch'
     config.landrush.host 'origin-denkmal.dev.cargomedia.ch'
-  end
-
-  if Vagrant.has_plugin? 'vagrant-phpstorm-tunnel'
-    config.phpstorm_tunnel.project_home = '/home/vagrant/denkmal'
   end
 
   config.vm.network :private_network, ip: '10.10.10.12'
@@ -49,8 +45,6 @@ Vagrant.configure('2') do |config|
     'bin/cm app set-deploy-version',
     'bin/cm app setup',
     'bin/cm db run-updates',
-    'sudo foreman-debian stop --app denkmal',
-    'sudo foreman-debian install --app denkmal --user root',
-    'sudo foreman-debian start --app denkmal',
+    'sudo foreman-systemd reload -w cm-applications.target denkmal .',
   ].join(' && ')
 end

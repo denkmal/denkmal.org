@@ -24,10 +24,6 @@
   .logo-symbol {
     width: 24px;
 
-    .logo-color-stars {
-      fill: @colorLogoStars;
-    }
-
     @media (min-width: 360px) {
       width: 30px;
     }
@@ -38,6 +34,17 @@
 
     @media (min-width: 360px) {
       width: 130px;
+    }
+  }
+}
+
+.night-mode & .logo {
+  .logo-symbol {
+    .logo-color-eyes {
+      fill: white;
+      opacity: .1;
+      animation: blink 1s linear 5s 1;
+      animation-fill-mode: forwards;
     }
   }
 }

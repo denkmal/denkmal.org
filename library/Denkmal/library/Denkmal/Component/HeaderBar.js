@@ -47,7 +47,7 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    * @param {Boolean} state
    */
   setWeekdayVisible: function(state) {
-    this.$el.toggleClass('state-weekday', state);
+    this.$el.attr('data-weekday', state);
   },
 
   /**
@@ -55,7 +55,8 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    */
   setWeekdayMenuVisible: function(state) {
     var callback = function(state) {
-      $(this).toggleClass('state-weekdayMenu', state);
+      $(this).attr('data-weekdayMenu', state);
+
     };
     if (state) {
       this.$el.toggleModal('open', callback);
@@ -69,7 +70,8 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    */
   setWeekdayWide: function(state) {
     this._weekdayWide = state;
-    this.$el.toggleClass('state-weekdayWide', state);
+    this.$el.attr('data-weekdayWide', state);
+
     if (false == state) {
       this.setWeekdayMenuVisible(false);
     }
@@ -79,6 +81,6 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    * @param {Boolean} state
    */
   setNavigationIndicationVisible: function(state) {
-    this.$el.toggleClass('state-navigationIndication', state);
+    this.$el.attr('data-navigationIndication', state);
   }
 });

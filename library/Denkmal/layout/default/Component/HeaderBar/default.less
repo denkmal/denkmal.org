@@ -138,12 +138,22 @@
   }
 
   .weekMenu-wrapper {
+    justify-content: center;
+
     .menu.dates {
-      width: 7*@barSize;
-      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      max-width: 7*@barSize;
+      margin-left: auto;
+      margin-right: auto;
 
       > li {
         display: inline-block;
+        flex: 1 1 auto;
+
+        > a {
+          min-width: 0;
+        }
       }
     }
 
@@ -161,7 +171,7 @@
   }
 
   .weekMenu-wrapper {
-    display: block;
+    display: flex;
   }
 }
 

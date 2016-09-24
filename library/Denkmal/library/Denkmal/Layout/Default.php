@@ -32,7 +32,7 @@ class Denkmal_Layout_Default extends CM_Layout_Abstract {
         $hour = (int) $date->format('H');
 
         if ($hour >= 1 && $hour <= 6) {
-            return 'night-mode-late';
+            return 'late-night-mode';
         }
         if ($hour >= 22 || $hour <= 6) {
             return 'night-mode';

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <title>logo-symbol-night</title>
+    <g id="logo-symbol-night">
+        <path class="logo-eyes"
+              d="M70.78,69.45a19.37,19.37,0,0,1-10.7-3.21,11.41,11.41,0,0,0,.29-2.51c0-7.07-3.5-11.81-9-12.45,0-.43,0-.87,0-1.31A19.49,19.49,0,1,1,70.78,69.45Z"/>
+        <path class="logo-eyes"
+              d="M29.22,69.45A19.49,19.49,0,1,1,48.71,50c0,.44,0,.88,0,1.31-5.53.63-9,5.38-9,12.45a11.41,11.41,0,0,0,.29,2.51A19.37,19.37,0,0,1,29.22,69.45Z"/>
+        <g id="eyes">
+            <circle class="logo-color" cx="29.22" cy="49.96" r="7.91"/>
+            <circle class="logo-color" cx="70.78" cy="49.96" r="7.91"/>
+        </g>
+        <g id="eyelids">
+            <polygon id="eyelid-right" class="logo-color" points="82 70.87 57.98 70.87 57.98 57.3 90.75 57.3 82 70.87"/>
+            <polygon id="eyelid-left" class="logo-color" points="42.02 70.87 18.9 70.87 9.25 57.3 42.02 57.3 42.02 70.87"/>
+        </g>
+        <g id="eyebrows">
+            <polygon id="eyebrow-left" class="logo-color" points="5 26 5 41.6 50 46.96 50 26 5 26"/>
+            <polygon id="eyebrow-right" class="logo-color" points="50 26 50 46.96 95 41.6 95 26 50 26"/>
+        </g>
+        <path class="logo-nose" d="M50,75.85c-2-1.3-7.84-5.68-7.83-12.13,0-10.39,7.86-10,7.86-10s7.81-.39,7.81,10C57.84,70.17,52,74.56,50,75.85Z"/>
+    </g>
+</svg>

@@ -38,13 +38,12 @@
   }
 }
 
-.night-mode & .logo {
-  .logo-symbol {
-    .logo-color-eyes {
-      fill: white;
-      opacity: .1;
-      animation: blink 1s linear 5s 1;
-      animation-fill-mode: forwards;
-    }
+#logo-symbol-night {
+  .logo-eyes, .logo-nose {
+    fill: @colorFgNightMode;
+  }
+
+  .logo-color {
+    fill: @colorBgNightMode;
   }
 }

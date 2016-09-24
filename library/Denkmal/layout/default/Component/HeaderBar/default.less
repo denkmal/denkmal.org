@@ -6,6 +6,30 @@
   }
 }
 
+.logo {
+
+  .logo-symbol.night {
+    display: none;
+  }
+}
+
+.night-mode & .logo {
+  .logo-symbol {
+    display: none;
+
+    &.night {
+      display: inline-block;
+      width: @barSize;
+    }
+  }
+
+  .logo-type {
+    .logo-color {
+      fill: mix(@colorBgNightMode, @colorFgNightMode, 90);
+    };
+  }
+}
+
 .menu.main {
   flex: 1 1 auto;
   display: flex;

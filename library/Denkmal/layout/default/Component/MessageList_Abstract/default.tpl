@@ -19,7 +19,7 @@
             <ul class="message-tags">
               {foreach $message->getTags()->getAll() as $tag}
                 <li class="tag">
-                  {img class='tag-image' path="tag/{$tag->getLabel()}.svg"}
+                  <span class="tag-image">{resourceFileContent path="img/tag/{$tag->getLabel()}.svg"}</span>
                 </li>
               {/foreach}
               {if $message->hasImage()}

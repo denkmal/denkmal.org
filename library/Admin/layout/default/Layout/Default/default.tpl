@@ -8,8 +8,8 @@
       </aside>
     {/if}
     <a class="logo" href="{linkUrl page='Denkmal_Page_Index'}">
-      <span class="logo-city">{resourceFileContent path='img/logo-city.svg'}</span>
-      <span class="logo-denkmal">{resourceFileContent path='img/logo-denkmal.svg'}</span>
+      <span class="logo-icon">{resourceFileContent path='img/logo-icon.svg'}</span>
+      <span class="logo-font">{resourceFileContent path='img/logo-font.svg'}</span>
     </a>
     {menu name='main' class='menu-header'}
   </header>

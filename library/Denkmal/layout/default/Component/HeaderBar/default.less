@@ -1,94 +1,60 @@
 & {
+  display: flex;
+  justify-content: flex-end;
+
   @media (min-width: @breakpointSmall) {
-    padding: 0 12px;
+    padding: 0 20px;
   }
 }
 
-.logoWrapper {
-  float: left;
-  height: @barSize; // Required for IE11
+.menu.main {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: flex-end;
 
-  .slogan {
-    display: none;
-    line-height: @barSize;
-    vertical-align: top;
-    opacity: .4;
+  @media (min-width: 360px) {
+    flex-grow: 1;
+  }
 
-    @media (min-width: 950px) {
-      display: inline-block;
+  > li {
+    .icon {
+      font-size: 1.1em;
     }
-  }
-}
 
-.mainMenu-wrapper {
-  .menu.main {
-    > li {
-      height: @barSize;
+    &.showWeek {
+      margin-right: auto;
+    }
 
+    &.nowButton {
       .icon {
-        font-size: 1.1em;
-      }
+        position: relative;
 
-      &.addButton, &.nowButton {
-        float: right;
-      }
-
-      &.addButton {
-        @media (min-width: @breakpointMedium) {
-          padding: 0 12px;
-        }
-
-        &.hasIcon.hasLabel > .label {
-          margin-left: 10px;
-          font-size: @fontSize;
-          vertical-align: top;
+        .indication {
+          .indication(6px);
           display: none;
+          position: absolute;
+          right: -2px;
+          top: 3px;
 
-          @media (min-width: @breakpointMedium) {
-            display: inline;
+          &.active {
+            display: block;
           }
-        }
-
-        .icon {
-          font-size: 1.3em;
         }
       }
+    }
 
-      &.nowButton {
-        .icon {
-          position: relative;
-
-          .indication {
-            .indication(6px);
-            display: none;
-            position: absolute;
-            right: -2px;
-            top: 3px;
-
-            &.active {
-              display: block;
-            }
-          }
-        }
+    &.addButton {
+      .icon {
+        font-size: 1.3em;
       }
     }
   }
 }
 
-.weekMenu-wrapper {
+.weekMenu {
   display: none;
 
-  .showWeek {
-    float: left;
-
-    @media (min-width: @breakpointMini) {
-      margin-left: 12px;
-    }
-  }
-
   .menu.dates {
-    float: left;
-
     > li {
       display: none;
 
@@ -115,9 +81,8 @@
   }
 }
 
-&.state-weekdayWide {
-  .weekMenu-wrapper {
-
+&[data-weekdayWide=true] {
+  .weekMenu {
     .menu.dates {
       width: auto;
 
@@ -132,18 +97,29 @@
   }
 }
 
-&.state-weekdayMenu {
-  .mainMenu-wrapper {
+&[data-weekdayMenu=true] {
+  .logo, .menu.main {
     display: none;
   }
 
-  .weekMenu-wrapper {
+  .weekMenu {
+    width: 100%;
+    justify-content: center;
+
     .menu.dates {
-      width: 7*@barSize;
-      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      max-width: 7*@barSize;
+      margin-left: auto;
+      margin-right: auto;
 
       > li {
         display: inline-block;
+        flex: 1 1 auto;
+
+        > a {
+          min-width: 0;
+        }
       }
     }
 
@@ -153,20 +129,110 @@
   }
 }
 
-&.state-weekday {
-  .mainMenu-wrapper {
-    .showWeek {
-      display: none;
-    }
+&[data-weekday=true] {
+  .showWeek {
+    display: none;
   }
 
-  .weekMenu-wrapper {
-    display: block;
+  .weekMenu {
+    display: flex;
   }
 }
 
-&:not(.state-navigationIndication) {
+&[data-navigationIndication=false] {
   .menu > li.active::after {
     display: none;
+  }
+}
+
+.logo {
+  margin-right: auto;
+
+  .logo-icon.night {
+    display: none;
+  }
+}
+
+.night-mode &, .late-night-mode & {
+  .logo-icon {
+    display: none;
+
+    &.night {
+      display: inline-block;
+      width: 40px;
+
+      @media (min-width: @breakpointSmall) {
+        width: 50px;
+      }
+    }
+  }
+
+  .logo-font {
+    display: none;
+
+    @media (min-width: 360px) {
+      display: inline-block;
+    }
+
+    .logo-color {
+      fill: mix(@colorBgNightMode, @colorFgNightMode, 60);
+    }
+  }
+
+  #logo-icon-night {
+    .logo-eyes {
+      fill: @colorFgNightMode;
+    }
+
+    .logo-nose {
+      fill: mix(@colorBgNightMode, @colorFgNightMode, 60);
+    }
+
+    .logo-color {
+      fill: @colorBgNightMode;
+    }
+
+    #eyebrow-left,
+    #eyebrow-right {
+      transform: translateY(-30%);
+    }
+
+    #eyelid-left,
+    #eyelid-right {
+      transform: translateY(100%);
+    }
+  }
+}
+
+.night-mode & .logo {
+  #logo-icon-night {
+    #eyes {
+      animation: eyes 60s linear 2s infinite;
+    }
+
+    #eyebrow-left {
+      animation: eyebrow-left 60s linear 2s infinite;
+    }
+
+    #eyebrow-right {
+      animation: eyebrow-right 60s linear 2s infinite;
+    }
+
+    #eyelid-left,
+    #eyelid-right {
+      animation: eyelids 60s linear 2s infinite;
+    }
+  }
+}
+
+.late-night-mode & .logo {
+  #logo-icon-night {
+    #eyebrow-left {
+      transform: translateY(0) scale(1, 1.1);
+    }
+
+    #eye-right {
+      transform: translate(36%, 30%);
+    }
   }
 }

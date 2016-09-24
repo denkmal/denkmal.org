@@ -31,7 +31,7 @@ class Denkmal_Layout_Default extends CM_Layout_Abstract {
         $date->setTimezone($timeZone);
         $hour = (int) $date->format('H');
 
-        if ($hour >= 1 && $hour <= 6) {
+        if ($hour >= 2 && $hour <= 6) {
             return 'late-night-mode';
         }
         if ($hour >= 22 || $hour <= 6) {

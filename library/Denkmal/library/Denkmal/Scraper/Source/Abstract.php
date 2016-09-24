@@ -9,11 +9,6 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
     abstract public function run(Denkmal_Scraper_Manager $manager);
 
     /**
-     * @return Denkmal_Model_Region
-     */
-    abstract public function getRegion();
-
-    /**
      * @return string
      */
     public function getName() {

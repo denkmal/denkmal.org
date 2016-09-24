@@ -13,12 +13,11 @@ class Denkmal_FormField_FacebookPage extends CM_FormField_Text {
         $userInput = parent::validate($environment, $userInput);
 
         $region = $this->_getRegion();
-        $facebookAccessToken = $region->getFacebookAccessToken();
+        $facebookAppCredentials = $region->getFacebookAppCredentials();
 
-        if (preg_match('#^http#', $userInput) && $facebookAccessToken) {
-            $client = new \Facebook\FacebookClient();
-            $request = new Denkmal_Facebook_RequestWithoutApp(null, $facebookAccessToken, 'GET', '/' . $userInput);
-            $response = $client->sendRequest($request);
+        if (preg_match('#^http#', $userInput) && $facebookAppCredentials) {
+            $facebook = (new Denkmal_Facebook_ClientFactory())->createClient($facebookAppCredentials);
+            $response = $facebook->get('/' . $userInput);
             if ($pageId = $response->getGraphPage()->getId()) {
                 $userInput = $pageId;
             }

@@ -148,13 +148,13 @@
 .logo {
   margin-right: auto;
 
-  .logo-symbol.night {
+  .logo-icon.night {
     display: none;
   }
 }
 
 .night-mode &, .late-night-mode & {
-  .logo-symbol {
+  .logo-icon {
     display: none;
 
     &.night {
@@ -167,7 +167,7 @@
     }
   }
 
-  .logo-type {
+  .logo-font {
     display: none;
 
     @media (min-width: 360px) {
@@ -179,7 +179,7 @@
     }
   }
 
-  #logo-symbol-night {
+  #logo-icon-night {
     .logo-eyes {
       fill: @colorFgNightMode;
     }
@@ -205,7 +205,7 @@
 }
 
 .night-mode & .logo {
-  #logo-symbol-night {
+  #logo-icon-night {
     #eyes {
       animation: eyes 60s linear 2s infinite;
     }
@@ -226,7 +226,7 @@
 }
 
 .late-night-mode & .logo {
-  #logo-symbol-night {
+  #logo-icon-night {
     #eyebrow-left {
       transform: translateY(0) scale(1, 1.1);
     }

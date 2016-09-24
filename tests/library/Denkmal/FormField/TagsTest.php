@@ -7,9 +7,9 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
     }
 
     public function testRender() {
-        $tag1 = Denkmal_Model_Tag::create('tag1');
-        $tag2 = Denkmal_Model_Tag::create('tag2');
-        $tag3 = Denkmal_Model_Tag::create('tag3');
+        $tag1 = Denkmal_Model_Tag::create('beer');
+        $tag2 = Denkmal_Model_Tag::create('cake');
+        $tag3 = Denkmal_Model_Tag::create('cat');
         $tag3->setActive(false);
 
         $field = new Denkmal_FormField_Tags(['name' => 'tags']);
@@ -21,9 +21,9 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
     }
 
     public function testValidate() {
-        $tag1 = Denkmal_Model_Tag::create('tag1');
-        $tag2 = Denkmal_Model_Tag::create('tag2');
-        $tag3 = Denkmal_Model_Tag::create('tag3');
+        $tag1 = Denkmal_Model_Tag::create('beer');
+        $tag2 = Denkmal_Model_Tag::create('cake');
+        $tag3 = Denkmal_Model_Tag::create('cat');
         $tag3->setActive(false);
 
         $formField = new Denkmal_FormField_Tags();
@@ -37,9 +37,9 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
      * @expectedException CM_Exception_FormFieldValidation
      */
     public function testValidateWithCardinality() {
-        $tag1 = Denkmal_Model_Tag::create('tag1');
-        $tag2 = Denkmal_Model_Tag::create('tag2');
-        $tag3 = Denkmal_Model_Tag::create('tag3');
+        $tag1 = Denkmal_Model_Tag::create('beer');
+        $tag2 = Denkmal_Model_Tag::create('cake');
+        $tag3 = Denkmal_Model_Tag::create('cat');
 
         $formField = new Denkmal_FormField_Tags(['cardinality' => 2]);
         $environment = new CM_Frontend_Environment();
@@ -49,7 +49,7 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
     }
 
     public function testValidateWithSendingSameTagThreeTimes() {
-        $tag2 = Denkmal_Model_Tag::create('tag2');
+        $tag2 = Denkmal_Model_Tag::create('beer');
 
         $formField = new Denkmal_FormField_Tags(['cardinality' => 3]);
         $environment = new CM_Frontend_Environment();
@@ -62,7 +62,7 @@ class Denkmal_FormField_TagsTest extends CMTest_TestCase {
      * @expectedException CM_Exception_FormFieldValidation
      */
     public function testValidateWithSendingSameTag4Times() {
-        $tag2 = Denkmal_Model_Tag::create('tag2');
+        $tag2 = Denkmal_Model_Tag::create('beer');
 
         $formField = new Denkmal_FormField_Tags(['cardinality' => 4, 'itemCardinality' => 3]);
         $environment = new CM_Frontend_Environment();

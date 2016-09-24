@@ -11,8 +11,10 @@
   background-color: @colorBgTheme;
 }
 
-&.night-mode #header {
-  background-color: @colorBgNightMode;
+&.night-mode, &.late-night-mode {
+  #header {
+    background-color: @colorBgNightMode;
+  }
 }
 
 #middle {

@@ -1,39 +1,20 @@
 & {
   display: flex;
+  justify-content: flex-end;
 
   @media (min-width: @breakpointSmall) {
-    padding: 0 12px;
-  }
-}
-
-.logo {
-
-  .logo-symbol.night {
-    display: none;
-  }
-}
-
-.night-mode & .logo {
-  .logo-symbol {
-    display: none;
-
-    &.night {
-      display: inline-block;
-      width: @barSize;
-    }
-  }
-
-  .logo-type {
-    .logo-color {
-      fill: mix(@colorBgNightMode, @colorFgNightMode, 90);
-    };
+    padding: 0 20px;
   }
 }
 
 .menu.main {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   display: flex;
   justify-content: flex-end;
+
+  @media (min-width: 360px) {
+    flex-grow: 1;
+  }
 
   > li {
     .icon {
@@ -161,5 +142,101 @@
 &[data-navigationIndication=false] {
   .menu > li.active::after {
     display: none;
+  }
+}
+
+.logo {
+  margin-right: auto;
+
+  .logo-symbol.night {
+    display: none;
+  }
+}
+
+.night-mode &, .late-night-mode & {
+  .logo-symbol {
+    display: none;
+
+    &.night {
+      display: inline-block;
+      width: 40px;
+
+      @media (min-width: @breakpointSmall) {
+        width: 50px;
+      }
+    }
+  }
+
+  .logo-type {
+    display: none;
+
+    @media (min-width: 360px) {
+      display: inline-block;
+    }
+
+    .logo-color {
+      fill: mix(@colorBgNightMode, @colorFgNightMode, 60);
+    }
+  }
+
+  #logo-symbol-night {
+    .logo-eyes {
+      fill: @colorFgNightMode;
+    }
+
+    .logo-nose {
+      fill: mix(@colorBgNightMode, @colorFgNightMode, 60);
+    }
+
+    .logo-color {
+      fill: @colorBgNightMode;
+    }
+
+    #eyebrow-left,
+    #eyebrow-right {
+      transform: translateY(-30%);
+    }
+
+    #eyelid-left,
+    #eyelid-right {
+      transform: translateY(100%);
+    }
+  }
+}
+
+.night-mode & .logo {
+  #logo-symbol-night {
+    #eyes {
+      animation: eyes 60s linear 2s infinite;
+    }
+
+    #eyebrow-left {
+      animation: eyebrow-left 60s linear 2s infinite;
+    }
+
+    #eyebrow-right {
+      animation: eyebrow-right 60s linear 2s infinite;
+    }
+
+    #eyelid-left,
+    #eyelid-right {
+      animation: eyelids 60s linear 2s infinite;
+    }
+  }
+}
+
+.late-night-mode & .logo {
+  #logo-symbol-night {
+    #eyebrow-left {
+      transform: translateY(0) scale(1, 1.1);
+    }
+
+    #eye-right {
+      transform: translate(36%, 30%);
+    }
+
+    .logo-eyes {
+      fill: #f2d4d2;
+    }
   }
 }

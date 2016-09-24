@@ -12,8 +12,8 @@ class Denkmal_Layout_Default extends CM_Layout_Abstract {
             $viewResponse->getJs()->setProperty('chatActivityStamp', $messageList->getLastActivityStamp());
 
             $timeZone = $region->getTimeZone();
-            if ($this->isNightMode($timeZone)) {
-                $viewResponse->addCssClass('night-mode');
+            if (null !== $cssNightMode = $this->isNightMode($timeZone)) {
+                $viewResponse->addCssClass($cssNightMode);
             }
         }
 
@@ -23,13 +23,22 @@ class Denkmal_Layout_Default extends CM_Layout_Abstract {
 
     /**
      * @param DateTimeZone $timeZone
-     * @return bool
+     * @return string|null
      */
     public function isNightMode($timeZone) {
         $date = new DateTime();
         $date->setTimezone($timeZone);
         $currentHour = date('H', $date->getTimestamp());
 
-        return $currentHour >= 22 || $currentHour <= 6;
+        $cssClass = null;
+        if ($currentHour >= 22 || $currentHour <= 6) {
+            $cssClass = 'night-mode';
+
+            if ($currentHour >= 1) {
+                $cssClass = 'night-mode-late';
+            }
+        }
+
+        return $cssClass;
     }
 }

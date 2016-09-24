@@ -6,8 +6,8 @@
         <path class="logo-eyes"
               d="M29.22,69.45A19.49,19.49,0,1,1,48.71,50c0,.44,0,.88,0,1.31-5.53.63-9,5.38-9,12.45a11.41,11.41,0,0,0,.29,2.51A19.37,19.37,0,0,1,29.22,69.45Z"/>
         <g id="eyes">
-            <circle class="logo-color" cx="29.22" cy="49.96" r="7.91"/>
-            <circle class="logo-color" cx="70.78" cy="49.96" r="7.91"/>
+            <circle id="eye-left" class="logo-color" cx="29.22" cy="49.96" r="7.91"/>
+            <circle id="eye-right" class="logo-color" cx="70.78" cy="49.96" r="7.91"/>
         </g>
         <g id="eyelids">
             <polygon id="eyelid-right" class="logo-color" points="82 70.87 57.98 70.87 57.98 57.3 90.75 57.3 82 70.87"/>

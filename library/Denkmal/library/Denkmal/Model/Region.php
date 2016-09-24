@@ -102,6 +102,20 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
     }
 
     /**
+     * @return string|null
+     */
+    public function getFacebookAccessToken() {
+        return $this->_get('facebookAccessToken');
+    }
+
+    /**
+     * @param string|null $facebookAccessToken
+     */
+    public function setFacebookAccessToken($facebookAccessToken = null) {
+        $this->_set('facebookAccessToken', $facebookAccessToken);
+    }
+
+    /**
      * @return string
      */
     public function getEmailAddress() {
@@ -152,16 +166,17 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
 
     protected function _getSchema() {
         return new CM_Model_Schema_Definition([
-            'name'               => ['type' => 'string'],
-            'slug'               => ['type' => 'string'],
-            'abbreviation'       => ['type' => 'string'],
-            'locationLevel'      => ['type' => 'int'],
-            'locationId'         => ['type' => 'int'],
-            'emailAddress'       => ['type' => 'string'],
-            'twitterCredentials' => ['type' => 'Denkmal_Twitter_Credentials', 'optional' => true],
-            'twitterAccount'     => ['type' => 'string', 'optional' => true],
-            'facebookAccount'    => ['type' => 'string', 'optional' => true],
-            'suspensionUntil'    => ['type' => 'DateTime', 'optional' => true],
+            'name'                => ['type' => 'string'],
+            'slug'                => ['type' => 'string'],
+            'abbreviation'        => ['type' => 'string'],
+            'locationLevel'       => ['type' => 'int'],
+            'locationId'          => ['type' => 'int'],
+            'emailAddress'        => ['type' => 'string'],
+            'twitterCredentials'  => ['type' => 'Denkmal_Twitter_Credentials', 'optional' => true],
+            'twitterAccount'      => ['type' => 'string', 'optional' => true],
+            'facebookAccount'     => ['type' => 'string', 'optional' => true],
+            'facebookAccessToken' => ['type' => 'string', 'optional' => true],
+            'suspensionUntil'     => ['type' => 'DateTime', 'optional' => true],
         ]);
     }
 
@@ -195,6 +210,7 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         $region->setTwitterCredentials(null);
         $region->setTwitterAccount(null);
         $region->setFacebookAccount(null);
+        $region->setFacebookAccessToken(null);
         $region->setSuspension(null);
         $region->commit();
         return $region;

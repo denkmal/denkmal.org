@@ -181,6 +181,7 @@ CREATE TABLE `denkmal_model_region` (
   `twitterCredentials` varchar(1000) NULL,
   `twitterAccount` varchar(1000) NULL,
   `facebookAccount` varchar(1000) NULL,
+  `facebookAccessToken` varchar(1000) NULL,
   `emailAddress` varchar(1000),
   `suspensionUntil` int(11) unsigned NULL,
   PRIMARY KEY (`id`),

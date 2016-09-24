@@ -27,11 +27,16 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             return [];
         }
 
-        $textList = Functional\reject($textList, function ($text) {
-            return preg_match('#\w+ \(?pdf\)?#i', $text);
-        });
-        $textList = Functional\reject($textList, function ($text) {
-            return preg_match('#FÜR MEHR INFOS AUF DIE TEXTE KLICKEN#i', $text);
+        $textIgnoreList = [
+            '#\w+ \(?pdf\)?#i',
+            '#FÜR MEHR INFOS#i',
+            '#Saisonstart#i',
+
+        ];
+        $textList = Functional\reject($textList, function ($text) use($textIgnoreList) {
+            return Functional\some($textIgnoreList, function($textIgnorePattern) use($text) {
+                return 1 === preg_match($textIgnorePattern, $text);
+            });
         });
 
         $textList = Functional\reject(array_values($textList), function ($text, $index, $textList) {
@@ -60,20 +65,24 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             if (count($eventTextList) < 2) {
                 throw new CM_Exception_Invalid('Unexpected eventTextList: `' . CM_Util::var_line($eventTextList) . '`.');
             }
+            $title = null;
             $descriptionList = [];
 
             // Parse first line
-            if (!preg_match('#^\w{2}[_\s]+(\d+)\.(\d+)\.?\s+(.+)$#', $eventTextList[0], $matches0)) {
+            if (!preg_match('#^\w{2}[_\s]+(\d+)\.(\d+)\.?[_\s]+(.+)$#', $eventTextList[0], $matches0)) {
                 throw new CM_Exception_Invalid('Cannot parse event line.', null, ['string' => $eventTextList[0]]);
             }
             $from = new Denkmal_Scraper_Date($matches0[1], $matches0[2], null, $now);
             $from->setTime(21);
             // Parse first line extra
-            if (preg_match('#^(\d+)(?:\.(\d+))?h$#', $matches0[3], $matches0extra)) {
-                if (isset($matches0extra[2])) {
-                    $from->setTime($matches0extra[1], $matches0extra[2]);
+            if (preg_match('#^(?<hour>\d+)(?:\.(?<minute>\d+))?h(?:[_\s]+(?<title>.+)?)?$#', $matches0[3], $matches0extra)) {
+                if (!empty($matches0extra['title'])) {
+                    $title = $matches0extra['title'];
+                }
+                if (!empty($matches0extra['minute'])) {
+                    $from->setTime($matches0extra['hour'], $matches0extra['minute']);
                 } else {
-                    $from->setTime($matches0extra[1]);
+                    $from->setTime($matches0extra['hour']);
                 }
             } else {
                 $descriptionList[] = $matches0[3];
@@ -91,7 +100,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
 
             // Take the rest
             $descriptionList = array_merge($descriptionList, array_splice($eventTextList, 2));
-            $description = new Denkmal_Scraper_Description(implode(' ', $descriptionList));
+            $description = new Denkmal_Scraper_Description(implode(' ', $descriptionList), $title);
 
             return new Denkmal_Scraper_EventData($this->getRegion(), 'Sääli', $description, $from);
         });

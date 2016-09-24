@@ -6,6 +6,7 @@
     {form name='Admin_Form_Region' region=$region}
     {formField name='emailAddress' label={translate 'Email Address'}}
     {formField name='facebookAccount' label={translate 'Facebook Account'}}
+    {formField name='facebookAppCredentials' label={translate 'Facebook App Credentials'}}
     {formField name='twitterAccount' label={translate 'Twitter Account'}}
     {formField name='twitterCredentials' label={translate 'Twitter API Credentials'}}
     {formField name='suspensionUntil' label={translate 'Suspension until'}}

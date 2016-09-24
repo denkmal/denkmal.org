@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Mail_EventNotification extends CM_Mail {
+class Admin_Mail_EventNotification extends CM_Mail_Mailable {
 
     /**
      * @param Denkmal_Model_Event $event

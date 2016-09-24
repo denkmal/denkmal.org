@@ -18,6 +18,7 @@ class Admin_Menu_Main extends CM_Menu {
                                 array('label' => 'Errors', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::ERROR)),
                                 array('label' => 'Warnings', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::WARNING)),
                                 array('label' => 'Info', 'page' => 'Admin_Page_Log', 'params' => array('level' => CM_Log_Logger::INFO)),
+                                array('label' => 'Mail', 'page' => 'Admin_Page_Log', 'params' => array('type' => CM_Paging_Log_Mail::getTypeStatic())),
                             ),
                       ),
                       array('label' => 'Settings', 'page' => 'Admin_Page_Settings'),

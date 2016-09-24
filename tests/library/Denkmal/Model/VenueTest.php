@@ -105,6 +105,17 @@ class Denkmal_Model_VenueTest extends CMTest_TestCase {
         $this->assertSame(null, $venue->getTwitterUsername());
     }
 
+    public function testGetSetFacebookPageId() {
+        $venue = Denkmal_Model_Venue::create('Example', true, true, DenkmalTest_TH::createRegion());
+        $this->assertSame(null, $venue->getFacebookPageId());
+
+        $venue->setFacebookPageId('12345');
+        $this->assertSame('12345', $venue->getFacebookPageId());
+
+        $venue->setFacebookPageId(null);
+        $this->assertSame(null, $venue->getFacebookPageId());
+    }
+
     public function testGetSetRegion() {
         $regionNY = DenkmalTest_TH::createRegion();
         $venue = Denkmal_Model_Venue::create('Example', true, true, $regionNY);

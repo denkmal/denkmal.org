@@ -9,6 +9,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_Text(['name' => 'address']));
         $this->registerField(new CM_FormField_Email(['name' => 'email']));
         $this->registerField(new Denkmal_FormField_TwitterUsername(['name' => 'twitterUsername']));
+        $this->registerField(new Denkmal_FormField_FacebookPage(['name' => 'facebookPage']));
         $this->registerField(new CM_FormField_GeoPoint(['name' => 'coordinates']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'ignore']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'suspended']));
@@ -29,6 +30,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->getField('address')->setValue($venue->getAddress());
         $this->getField('email')->setValue($venue->getEmail());
         $this->getField('twitterUsername')->setValue($venue->getTwitterUsername());
+        $this->getField('facebookPage')->setValue($venue->getFacebookPageId());
         $this->getField('coordinates')->setValue($venue->getCoordinates());
         $this->getField('ignore')->setValue($venue->getIgnore());
         $this->getField('suspended')->setValue($venue->getSuspended());

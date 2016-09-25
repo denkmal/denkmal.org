@@ -13,14 +13,9 @@ class Denkmal_FormField_FacebookPage extends CM_FormField_Text {
         $userInput = parent::validate($environment, $userInput);
 
         $region = $this->_getRegion();
-        $facebookAppCredentials = $region->getFacebookAppCredentials();
-
-        if (preg_match('#^http#', $userInput) && $facebookAppCredentials) {
-            $facebook = (new Denkmal_Facebook_ClientFactory())->createClient($facebookAppCredentials);
-            $response = $facebook->get('/' . $userInput);
-            if ($pageId = $response->getGraphPage()->getId()) {
-                $userInput = $pageId;
-            }
+        if ($facebookAppCredentials = $region->getFacebookAppCredentials()) {
+            $facebookClient = (new Denkmal_Facebook_ClientFactory())->createClient($facebookAppCredentials);
+            $userInput = $this->_getPageId($userInput, $facebookClient);
         }
 
         if (preg_match('#[^\d]#', $userInput)) {
@@ -35,5 +30,24 @@ class Denkmal_FormField_FacebookPage extends CM_FormField_Text {
      */
     private function _getRegion() {
         return $this->_options['region'];
+    }
+
+    /**
+     * @param string             $pageUrl
+     * @param \Facebook\Facebook $facebookClient
+     * @return string
+     * @throws CM_Exception_FormFieldValidation
+     */
+    private function _getPageId($pageUrl, \Facebook\Facebook $facebookClient) {
+        try {
+            $response = $facebookClient->get('/' . $pageUrl);
+        } catch (\Facebook\Exceptions\FacebookSDKException $e) {
+            throw new CM_Exception_FormFieldValidation(new CM_I18n_Phrase('Failed to retrieve page ID: ' . $e->getMessage()));
+        }
+        $pageId = $response->getGraphPage()->getId();
+        if (!$pageId) {
+            throw new CM_Exception_FormFieldValidation(new CM_I18n_Phrase('Failed to retrieve page ID.'));
+        }
+        return (string) $pageId;
     }
 }

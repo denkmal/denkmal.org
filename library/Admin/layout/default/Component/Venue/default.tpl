@@ -12,7 +12,7 @@
     {formField name='address' label={translate 'Address'}}
     {formField name='email' label={translate 'Email'}}
     {formField name='twitterUsername' label={translate 'Twitter'}}
-    {formField name='facebookPage' label={translate 'Facebook Page ID or URL'}}
+    {formField name='facebookPage' label={translate 'Facebook Page'}}
     {formField name='coordinates' label={translate 'Coordinates'}}
     {formField name='ignore' text={translate 'Ignore scraper'}}
     {formField name='suspended' text={translate 'Suspended'}}

@@ -87,6 +87,7 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Abstract->types[73] = 'Denkmal_Scraper_Source_Apawi';
     $config->Denkmal_Scraper_Source_Abstract->types[84] = 'Denkmal_Scraper_Source_Facebook';
     $config->Denkmal_Scraper_Source_Abstract->types[85] = 'Denkmal_Scraper_Source_Graz_Postgarage';
+    $config->Denkmal_Scraper_Source_Abstract->types[86] = 'Denkmal_Scraper_Source_Graz_Sub';
     $config->CM_Mail_ExampleMailable->type = 2;
     $config->CM_Action_Email->type = 3;
     $config->CM_Model_Language->type = 5;
@@ -155,7 +156,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Janus_StreamChannel->type = 83;
     $config->Denkmal_Scraper_Source_Facebook->type = 84;
     $config->Denkmal_Scraper_Source_Graz_Postgarage->type = 85;
-    $config->CM_Class_Abstract->typesMaxValue = 85;
+    $config->Denkmal_Scraper_Source_Graz_Sub->type = 86;
+    $config->CM_Class_Abstract->typesMaxValue = 86;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

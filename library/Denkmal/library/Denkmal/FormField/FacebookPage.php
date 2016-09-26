@@ -2,13 +2,6 @@
 
 class Denkmal_FormField_FacebookPage extends CM_FormField_SuggestOne {
 
-    protected function _initialize() {
-        /** @var Denkmal_Params $params */
-        $params = $this->getParams();
-        $this->_options['region'] = $params->getRegion('region');
-        parent::_initialize();
-    }
-
     /**
      * @param CM_Frontend_Environment $environment
      * @param array                   $userInput
@@ -58,25 +51,6 @@ class Denkmal_FormField_FacebookPage extends CM_FormField_SuggestOne {
     }
 
     /**
-     * @return Denkmal_Model_Region
-     */
-    private function _getRegion() {
-        return $this->_options['region'];
-    }
-
-    /**
-     * @return \Facebook\Facebook
-     */
-    private function _getFacebookClient() {
-        $region = $this->_getRegion();
-        $facebookAppCredentials = $region->getFacebookAppCredentials();
-        if (!$facebookAppCredentials) {
-            throw new CM_Exception('No facebook app credentials available');
-        }
-        return (new Denkmal_Facebook_ClientFactory())->createClient($facebookAppCredentials);
-    }
-
-    /**
      * @param string $searchTerm
      * @return \Facebook\GraphNodes\GraphPage
      * @throws CM_Exception_FormFieldValidation
@@ -86,7 +60,11 @@ class Denkmal_FormField_FacebookPage extends CM_FormField_SuggestOne {
         if (0 === strlen($searchTerm)) {
             throw new CM_Exception_FormFieldValidation(new CM_I18n_Phrase('Empty search term.'));
         }
-        $facebookClient = $this->_getFacebookClient();
+
+        $serviceManager = CM_Service_Manager::getInstance();
+        /** @var \Facebook\Facebook $facebookClient */
+        $facebookClient = $serviceManager->get('facebook', '\Facebook\Facebook');
+
         try {
             $response = $facebookClient->get('/' . $searchTerm);
         } catch (\Facebook\Exceptions\FacebookSDKException $e) {

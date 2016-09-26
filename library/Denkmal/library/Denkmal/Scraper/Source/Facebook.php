@@ -3,16 +3,19 @@
 class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
 
     public function run(Denkmal_Scraper_Manager $manager) {
+        $serviceManager = CM_Service_Manager::getInstance();
+        /** @var \Facebook\Facebook $facebookClient */
+        $facebookClient = $serviceManager->get('facebook', '\Facebook\Facebook');
+
         /** @var Denkmal_Model_Region[] $regionList */
         $regionList = (new Denkmal_Paging_Region_All())->getItems();
 
-        return Functional\flatten(Functional\map($regionList, function (Denkmal_Model_Region $region) {
+        return Functional\flatten(Functional\map($regionList, function (Denkmal_Model_Region $region) use ($facebookClient) {
             $facebookAppCredentials = $region->getFacebookAppCredentials();
             if (!$facebookAppCredentials) {
                 return [];
             }
 
-            $facebookClient = (new Denkmal_Facebook_ClientFactory())->createClient($facebookAppCredentials);
             $venueList = (new Denkmal_Paging_Venue_All($region))->getItems();
             return $this->processVenueList($venueList, $facebookClient);
         }));

@@ -3,14 +3,15 @@
 class Denkmal_Facebook_ClientFactory {
 
     /**
-     * @param Denkmal_Facebook_AppCredentials $appCredentials
+     * @param string $appId
+     * @param string $appSecret
      * @return \Facebook\Facebook
      */
-    public function createClient(Denkmal_Facebook_AppCredentials $appCredentials) {
-        $accessToken = $appCredentials->getId() . '|' . $appCredentials->getSecret();
+    public function createClient($appId, $appSecret) {
+        $accessToken = $appId . '|' . $appSecret;
         $client = new \Facebook\Facebook([
-            'app_id'                => $appCredentials->getId(),
-            'app_secret'            => $appCredentials->getSecret(),
+            'app_id'                => $appId,
+            'app_secret'            => $appSecret,
             'default_graph_version' => 'v2.7',
             'default_access_token'  => $accessToken,
         ]);

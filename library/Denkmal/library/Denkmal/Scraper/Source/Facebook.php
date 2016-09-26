@@ -11,11 +11,6 @@ class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
         $regionList = (new Denkmal_Paging_Region_All())->getItems();
 
         return Functional\flatten(Functional\map($regionList, function (Denkmal_Model_Region $region) use ($facebookClient) {
-            $facebookAppCredentials = $region->getFacebookAppCredentials();
-            if (!$facebookAppCredentials) {
-                return [];
-            }
-
             $venueList = (new Denkmal_Paging_Venue_All($region))->getItems();
             return $this->processVenueList($venueList, $facebookClient);
         }));

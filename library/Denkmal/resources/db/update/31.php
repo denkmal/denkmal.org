@@ -21,3 +21,7 @@ if (CM_Db_Db::existsColumn('denkmal_model_venue', 'facebookPageId')) {
       DROP COLUMN `facebookPageId`
     ');
 }
+
+if (CM_Db_Db::existsColumn('denkmal_model_region', 'facebookAppCredentials')) {
+    CM_Db_Db::exec('ALTER TABLE `denkmal_model_region` DROP COLUMN `facebookAppCredentials`');
+}

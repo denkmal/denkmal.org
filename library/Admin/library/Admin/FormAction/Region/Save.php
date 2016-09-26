@@ -19,7 +19,6 @@ class Admin_FormAction_Region_Save extends Admin_FormAction_Abstract {
         /** @var Denkmal_Twitter_Credentials|null $twitterCredentials */
         $emailAddress = $params->getString('emailAddress');
         $facebookAccount = $params->has('facebookAccount') ? $params->getString('facebookAccount') : null;
-        $facebookAppCredentials = $params->has('facebookAppCredentials') ? $params->getObject('facebookAppCredentials', 'Denkmal_Facebook_AppCredentials') : null;
         $twitterAccount = $params->has('twitterAccount') ? $params->getString('twitterAccount') : null;
         $twitterCredentials = $params->has('twitterCredentials') ? $params->getObject('twitterCredentials', 'Denkmal_Twitter_Credentials') : null;
         $suspensionUntil = $params->has('suspensionUntil') ? $params->getDateTime('suspensionUntil') : null;
@@ -29,7 +28,6 @@ class Admin_FormAction_Region_Save extends Admin_FormAction_Abstract {
         $region = $formParams->getRegion('region');
         $region->setEmailAddress($emailAddress);
         $region->setFacebookAccount($facebookAccount);
-        $region->setFacebookAppCredentials($facebookAppCredentials);
         $region->setTwitterAccount($twitterAccount);
         $region->setTwitterCredentials($twitterCredentials);
         $region->setSuspension($suspensionUntil);

@@ -102,20 +102,6 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
     }
 
     /**
-     * @return Denkmal_Facebook_AppCredentials|null
-     */
-    public function getFacebookAppCredentials() {
-        return $this->_get('facebookAppCredentials');
-    }
-
-    /**
-     * @param Denkmal_Facebook_AppCredentials|null $facebookAppCredentials
-     */
-    public function setFacebookAppCredentials(Denkmal_Facebook_AppCredentials $facebookAppCredentials = null) {
-        $this->_set('facebookAppCredentials', $facebookAppCredentials);
-    }
-
-    /**
      * @return string
      */
     public function getEmailAddress() {
@@ -175,7 +161,6 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
             'twitterCredentials'     => ['type' => 'Denkmal_Twitter_Credentials', 'optional' => true],
             'twitterAccount'         => ['type' => 'string', 'optional' => true],
             'facebookAccount'        => ['type' => 'string', 'optional' => true],
-            'facebookAppCredentials' => ['type' => 'Denkmal_Facebook_AppCredentials', 'optional' => true],
             'suspensionUntil'        => ['type' => 'DateTime', 'optional' => true],
         ]);
     }
@@ -210,7 +195,6 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         $region->setTwitterCredentials(null);
         $region->setTwitterAccount(null);
         $region->setFacebookAccount(null);
-        $region->setFacebookAppCredentials(null);
         $region->setSuspension(null);
         $region->commit();
         return $region;

@@ -6,9 +6,9 @@ DROP TABLE IF EXISTS `denkmal_model_messageimage`;
 DROP TABLE IF EXISTS `denkmal_model_event`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_model_venue`;
+DROP TABLE IF EXISTS `denkmal_model_facebookpage`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_model_link`;
-DROP TABLE IF EXISTS `denkmal_model_facebookpage`;
 DROP TABLE IF EXISTS `denkmal_model_user`;
 DROP TABLE IF EXISTS `denkmal_model_userinvite`;
 DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
@@ -27,6 +27,16 @@ CREATE TABLE `denkmal_model_song` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
+CREATE TABLE IF NOT EXISTS `denkmal_model_facebookpage` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `facebookId` varchar(100) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `failedCount` tinyint(4) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `facebookId` (`facebookId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 CREATE TABLE `denkmal_model_venue` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -40,13 +50,14 @@ CREATE TABLE `denkmal_model_venue` (
   `secret` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `email` varchar(100) DEFAULT NULL,
   `twitterUsername` varchar(100) DEFAULT NULL,
-  `facebookPageId` varchar(100) DEFAULT NULL,
+  `facebookPage` int(11) unsigned DEFAULT NULL,
   `region` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `queued` (`queued`),
   KEY `ignore` (`ignore`),
-  KEY `region` (`region`)
+  KEY `region` (`region`),
+  CONSTRAINT `denkmal_model_venue__facebookpage` FOREIGN KEY (`facebookpage`) REFERENCES `denkmal_model_facebookpage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
@@ -114,16 +125,6 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `failedCount` tinyint(4) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE IF NOT EXISTS `denkmal_model_facebookpage` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `facebookId` varchar(100) NOT NULL,
-  `name` varchar(500) NOT NULL,
-  `failedCount` tinyint(4) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `facebookId` (`facebookId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

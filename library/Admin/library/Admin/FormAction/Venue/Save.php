@@ -38,7 +38,7 @@ class Admin_FormAction_Venue_Save extends Admin_FormAction_Abstract {
         $venue->setAddress($address);
         $venue->setEmail($email);
         $venue->setTwitterUsername($twitterUsername);
-        $venue->setFacebookPageId($facebookPageId);
+        $venue->setFacebookPage($facebookPageId);
         $venue->setCoordinates($coordinates);
         $venue->setIgnore($ignore);
         $venue->setSuspended($suspended);

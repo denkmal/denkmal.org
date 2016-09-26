@@ -14,7 +14,8 @@ class Denkmal_Scraper_Source_FacebookTest extends CMTest_TestCase {
     public function testProcessPageDate() {
         $region = Denkmal_Model_Region::findBySlug('graz');
         $venue1 = DenkmalTest_TH::createVenue('My Venue 1', null, null, $region);
-        $venue1->setFacebookPageId('my-page-1');
+        $facebookPage1 = Denkmal_Model_FacebookPage::create('my-page-1', 'My page 1');
+        $venue1->setFacebookPage($facebookPage1);
         $venue2 = DenkmalTest_TH::createVenue('My Venue 2', null, null, $region);
         $venueList = [$venue1, $venue2];
 

@@ -61,7 +61,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
                 $venue->setSecret(false);
                 $venue->setEmail(null);
                 $venue->setTwitterUsername(null);
-                $venue->setFacebookPageId(null);
+                $venue->setFacebookPage(null);
             }
         }
         return $venue;

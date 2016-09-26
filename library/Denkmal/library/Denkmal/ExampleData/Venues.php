@@ -11,7 +11,7 @@ class Denkmal_ExampleData_Venues extends CM_Provision_Script_OptionBased {
 
         $grazRegion = Denkmal_Model_Region::getBySlug('graz');
         $ppc = Denkmal_Model_Venue::create('p.p.c.', false, false, $grazRegion, 'http://www.popculture.at/', null, new CM_Geo_Point(47.0758748, 15.4293715));
-        $ppc->setFacebookPageId('107999242559061');
+        $ppc->setFacebookPage(Denkmal_Model_FacebookPage::create('107999242559061', 'ppcgraz'));
         Denkmal_Model_Venue::create('Postgarage', false, false, $grazRegion, 'http://www.postgarage.at', null, new CM_Geo_Point(47.066073, 15.4281812));
         Denkmal_Model_Venue::create('Forum Stadtpark', false, false, $grazRegion, 'http://www.forumstadtpark.at', null, new CM_Geo_Point(47.0746787, 15.4413251));
 

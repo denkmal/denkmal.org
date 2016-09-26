@@ -35,7 +35,7 @@ class Admin_Form_Venue extends CM_Form_Abstract {
         $this->getField('address')->setValue($venue->getAddress());
         $this->getField('email')->setValue($venue->getEmail());
         $this->getField('twitterUsername')->setValue($venue->getTwitterUsername());
-        $this->getField('facebookPage')->setValue($venue->getFacebookPageId());
+        $this->getField('facebookPage')->setValue($venue->getFacebookPage());
         $this->getField('coordinates')->setValue($venue->getCoordinates());
         $this->getField('ignore')->setValue($venue->getIgnore());
         $this->getField('suspended')->setValue($venue->getSuspended());

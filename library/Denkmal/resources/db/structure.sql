@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_model_venue`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
 DROP TABLE IF EXISTS `denkmal_model_link`;
+DROP TABLE IF EXISTS `denkmal_model_facebookpage`;
 DROP TABLE IF EXISTS `denkmal_model_user`;
 DROP TABLE IF EXISTS `denkmal_model_userinvite`;
 DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
@@ -113,6 +114,16 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `failedCount` tinyint(4) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_facebookpage` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `facebookId` varchar(100) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `failedCount` tinyint(4) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `facebookId` (`facebookId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

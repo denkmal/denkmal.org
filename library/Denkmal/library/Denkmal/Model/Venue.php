@@ -172,17 +172,17 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
-     * @return string|null
+     * @return Denkmal_Model_FacebookPage|null
      */
-    public function getFacebookPageId() {
-        return $this->_get('facebookPageId');
+    public function getFacebookPage() {
+        return $this->_get('facebookPage');
     }
 
     /**
-     * @param string|null $facebookPageId
+     * @param Denkmal_Model_FacebookPage|null $facebookPage
      */
-    public function setFacebookPageId($facebookPageId) {
-        $this->_set('facebookPageId', $facebookPageId);
+    public function setFacebookPage(Denkmal_Model_FacebookPage $facebookPage = null) {
+        $this->_set('facebookPage', $facebookPage);
     }
 
     /**
@@ -289,7 +289,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         $venue->setSecret(false);
         $venue->setEmail(null);
         $venue->setTwitterUsername(null);
-        $venue->setFacebookPageId(null);
+        $venue->setFacebookPage(null);
         $venue->commit();
         return $venue;
     }
@@ -322,7 +322,7 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
             'secret'          => array('type' => 'boolean'),
             'email'           => array('type' => 'string', 'optional' => true),
             'twitterUsername' => array('type' => 'string', 'optional' => true),
-            'facebookPageId'  => array('type' => 'string', 'optional' => true),
+            'facebookPage'    => array('type' => 'Denkmal_Model_FacebookPage', 'optional' => true),
             'region'          => array('type' => 'Denkmal_Model_Region'),
         ));
     }

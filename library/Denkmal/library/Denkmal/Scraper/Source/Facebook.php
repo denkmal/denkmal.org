@@ -3,16 +3,14 @@
 class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
 
     public function run(Denkmal_Scraper_Manager $manager) {
+        $serviceManager = CM_Service_Manager::getInstance();
+        /** @var \Facebook\Facebook $facebookClient */
+        $facebookClient = $serviceManager->get('facebook', '\Facebook\Facebook');
+
         /** @var Denkmal_Model_Region[] $regionList */
         $regionList = (new Denkmal_Paging_Region_All())->getItems();
 
-        return Functional\flatten(Functional\map($regionList, function (Denkmal_Model_Region $region) {
-            $facebookAppCredentials = $region->getFacebookAppCredentials();
-            if (!$facebookAppCredentials) {
-                return [];
-            }
-
-            $facebookClient = (new Denkmal_Facebook_ClientFactory())->createClient($facebookAppCredentials);
+        return Functional\flatten(Functional\map($regionList, function (Denkmal_Model_Region $region) use ($facebookClient) {
             $venueList = (new Denkmal_Paging_Venue_All($region))->getItems();
             return $this->processVenueList($venueList, $facebookClient);
         }));
@@ -25,12 +23,12 @@ class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
      */
     public function processVenueList(array $venueList, \Facebook\Facebook $facebookClient) {
         $eventDataList = Functional\flatten(Functional\map($venueList, function (Denkmal_Model_Venue $venue) use ($facebookClient) {
-            $facebookPageId = $venue->getFacebookPageId();
-            if (!$facebookPageId) {
+            $facebookPage = $venue->getFacebookPage();
+            if (!$facebookPage) {
                 return null;
             }
 
-            $response = $facebookClient->get('/' . $facebookPageId . '/events?limit=9999');
+            $response = $facebookClient->get('/' . $facebookPage->getFacebookId() . '/events?limit=9999');
             $graphEdge = $response->getGraphEdge('GraphEvent');
             return Functional\map($graphEdge, function (\Facebook\GraphNodes\GraphEvent $graphNode) use ($venue) {
                 return $this->_processFacebookEvent($venue->getRegion(), $venue, $graphNode);

@@ -53,6 +53,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[72] = 'CM_StreamChannel_Thumbnail';
     $config->CM_Model_Abstract->types[77] = 'Denkmal_Model_Region';
     $config->CM_Model_Abstract->types[83] = 'CM_Janus_StreamChannel';
+    $config->CM_Model_Abstract->types[87] = 'Denkmal_Model_FacebookPage';
     $config->CM_Paging_Log->types = [];
     $config->CM_Paging_Log->types[74] = 'CM_Paging_Log';
     $config->CM_Paging_Log->types[75] = 'CM_Paging_Log_Javascript';
@@ -157,7 +158,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Facebook->type = 84;
     $config->Denkmal_Scraper_Source_Graz_Postgarage->type = 85;
     $config->Denkmal_Scraper_Source_Graz_Sub->type = 86;
-    $config->CM_Class_Abstract->typesMaxValue = 86;
+    $config->Denkmal_Model_FacebookPage->type = 87;
+    $config->CM_Class_Abstract->typesMaxValue = 87;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

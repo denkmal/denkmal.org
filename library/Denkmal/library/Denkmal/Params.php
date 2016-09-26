@@ -40,6 +40,15 @@ class Denkmal_Params extends CM_Params {
 
     /**
      * @param string $key
+     * @return Denkmal_Model_FacebookPage
+     * @throws CM_Exception_InvalidParam
+     */
+    public function getFacebookPage($key) {
+        return $this->getObject($key, 'Denkmal_Model_FacebookPage');
+    }
+
+    /**
+     * @param string $key
      * @return Denkmal_Model_Song
      * @throws CM_Exception_InvalidParam
      */

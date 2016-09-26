@@ -28,4 +28,16 @@ return function (CM_Config_Node $config) {
             'serverApiKey' => '<api-key>',
         ]
     ];
+
+    $config->services['facebook'] = [
+        'class'  => 'Denkmal_Facebook_ClientFactory',
+        'method' => [
+            'name'      => 'createClient',
+            'arguments' => [
+                'appId'     => '<app-id>',
+                'appSecret' => '<app-secret>',
+            ],
+        ],
+    ];
+
 };

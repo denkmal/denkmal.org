@@ -81,7 +81,7 @@
   }
 }
 
-&[data-weekdayWide=true] {
+&[data-weekday-wide] {
   .weekMenu {
     .menu.dates {
       width: auto;
@@ -97,7 +97,7 @@
   }
 }
 
-&[data-weekdayMenu=true] {
+&[data-weekday-menu] {
   .logo, .menu.main {
     display: none;
   }
@@ -139,7 +139,7 @@
   }
 }
 
-&[data-navigationIndication=false] {
+&:not([data-navigation-indication]) {
   .menu > li.active::after {
     display: none;
   }

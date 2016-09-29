@@ -29,7 +29,16 @@
 
   -->
 {/block}
-{block name='tileColor'}#3CC94D{/block}
+
+{block name='head'}
+  <meta property="og:url" content="{$renderDefault->getUrlPage($page, $page->getParams()->getParamsEncoded())|escape}" />
+  <meta property="og:title" content="{$pageTitle|escape}" />
+  <meta property="og:type" content="website" />
+{strip}{if isset($pageDescription)}
+  <meta property="og:description" content="{$pageDescription|escape}" />
+{/if}{/strip}
+  <meta property="og:image" content="{resourceUrl path='img/meta/og-large.png' type='layout'}" />
+{/block}
 
 {block name='body'}
   {component name='Denkmal_Component_SongPlayer'}

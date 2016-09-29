@@ -1,1 +1,1 @@
-denkmal, basel, bs, denkmal.org, eventkalender, events, party, parties, ausgang, kultur, wasloift
+denkmal, denkmal.org, eventkalender, events, party, parties, ausgang, kultur, musik

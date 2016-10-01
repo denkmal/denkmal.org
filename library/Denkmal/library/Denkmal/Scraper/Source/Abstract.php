@@ -3,17 +3,17 @@
 abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract implements CM_Typed {
 
     /**
-     * @param Denkmal_Scraper_Manager $manager
+     * @param DateTime[] $dateList
      * @return Denkmal_Scraper_EventData[]
      */
-    abstract public function run(Denkmal_Scraper_Manager $manager);
+    abstract public function run(array $dateList);
 
     /**
      * @return string
      */
     public function getName() {
         $className = get_class($this);
-        $base = preg_replace('#_Abstract$#', '', __CLASS__);
+        $base = preg_replace('#Abstract$#', '', __CLASS__);
         $name = preg_replace('#^' . $base . '#', '', $className);
         return CM_Util::titleize($name);
     }

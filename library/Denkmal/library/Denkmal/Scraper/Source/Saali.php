@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(Denkmal_Scraper_Manager $manager) {
+    public function run(array $dateList) {
         $html = self::loadUrl('http://www.goldenes-fass.ch/saali/');
 
         return $this->processPage($html);
@@ -33,8 +33,8 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             '#Saisonstart#i',
 
         ];
-        $textList = Functional\reject($textList, function ($text) use($textIgnoreList) {
-            return Functional\some($textIgnoreList, function($textIgnorePattern) use($text) {
+        $textList = Functional\reject($textList, function ($text) use ($textIgnoreList) {
+            return Functional\some($textIgnoreList, function ($textIgnorePattern) use ($text) {
                 return 1 === preg_match($textIgnorePattern, $text);
             });
         });

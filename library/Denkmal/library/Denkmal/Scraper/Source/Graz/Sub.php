@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Graz_Sub extends Denkmal_Scraper_Source_Graz_Abstract {
 
-    public function run(Denkmal_Scraper_Manager $manager) {
+    public function run(array $dateList) {
         $url = 'http://www.subsubsub.at/daten.txt';
         $html = self::loadUrl($url);
 

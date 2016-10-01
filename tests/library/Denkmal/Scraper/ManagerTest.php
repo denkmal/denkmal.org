@@ -32,7 +32,19 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $this->assertSame(false, $method->invoke($manager, $eventData));
     }
 
-    public function testIsValidEventExistingEvent() {
+    public function testIsValidEventVenueNameEmpty() {
+        $region = DenkmalTest_TH::createRegion();
+        $description = new Denkmal_Scraper_Description('foo');
+        $from = $this->_getDate()->add(new DateInterval('PT1H'));
+        $until = $this->_getDate()->add(new DateInterval('PT2H'));
+        $eventData = new Denkmal_Scraper_EventData($region, '', $description, $from, $until);
+
+        $manager = new Denkmal_Scraper_Manager();
+        $method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Manager', '_isValidEvent');
+        $this->assertSame(false, $method->invoke($manager, $eventData));
+    }
+
+    public function testIsExistingEvent() {
         $region = DenkmalTest_TH::createRegion();
         $venue = DenkmalTest_TH::createVenue('foo', false, false, $region);
         $description = new Denkmal_Scraper_Description('foo');
@@ -40,14 +52,14 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $until = $this->_getDate()->add(new DateInterval('PT2H'));
         $eventData = new Denkmal_Scraper_EventData($region, $venue, $description, $from, $until);
 
-        $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $from);
-
         $manager = new Denkmal_Scraper_Manager();
-        $method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Manager', '_isValidEvent');
-        $this->assertSame(false, $method->invoke($manager, $eventData));
+        $this->assertSame(false, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
+
+        $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $from);
+        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
     }
 
-    public function testIsValidEventExistingEventBeforeNewEvent() {
+    public function testIsExistingEventBeforeNewEvent() {
         $region = DenkmalTest_TH::createRegion();
         $venue = DenkmalTest_TH::createVenue('foo', false, false, $region);
         $description = new Denkmal_Scraper_Description('foo');
@@ -60,20 +72,7 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $dateExisting);
 
         $manager = new Denkmal_Scraper_Manager();
-        $method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Manager', '_isValidEvent');
-        $this->assertSame(false, $method->invoke($manager, $eventData));
-    }
-
-    public function testIsValidEventVenueNameEmpty() {
-        $region = DenkmalTest_TH::createRegion();
-        $description = new Denkmal_Scraper_Description('foo');
-        $from = $this->_getDate()->add(new DateInterval('PT1H'));
-        $until = $this->_getDate()->add(new DateInterval('PT2H'));
-        $eventData = new Denkmal_Scraper_EventData($region, '', $description, $from, $until);
-
-        $manager = new Denkmal_Scraper_Manager();
-        $method = CMTest_TH::getProtectedMethod('Denkmal_Scraper_Manager', '_isValidEvent');
-        $this->assertSame(false, $method->invoke($manager, $eventData));
+        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
     }
 
     /**

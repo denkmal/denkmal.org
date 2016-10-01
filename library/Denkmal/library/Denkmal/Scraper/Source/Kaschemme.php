@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(Denkmal_Scraper_Manager $manager) {
+    public function run(array $dateList) {
         $html = self::loadUrl('http://www.kaschemme.ch/Programm-1');
 
         return $this->processPage($html);

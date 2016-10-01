@@ -3,7 +3,9 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
-  <p class="responsive-text intro">{translate '{$siteName} is an event calendar by locals. Explore your city\'s nightlife and get event updates and impressions by the crowd in real-time.' siteName=$render->getSiteName()}</p>
+  <p class="responsive-text intro">
+    {translate '.meta.description' siteName=$render->getSite()->getName()|escape}
+  </p>
   <ul class="regions">
     {foreach $siteList as $site}
       <li class="region">

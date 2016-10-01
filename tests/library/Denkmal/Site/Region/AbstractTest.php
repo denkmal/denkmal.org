@@ -54,6 +54,36 @@ class Denkmal_Site_Region_AbstractTest extends CMTest_TestCase {
         $this->assertNull(Denkmal_Site_Region_Abstract::findSiteByGeoPoint(new CM_Geo_Point(41.589600, -1.208298)));
     }
 
+    public function testFindSiteByCountry() {
+        $siteGraz = new Denkmal_Site_Region_Graz();
+        $siteBasel = new Denkmal_Site_Region_Basel();
+
+        $locationSwitzerland = CM_Model_Location::findByAttributes(CM_Model_Location::LEVEL_COUNTRY, ['name' => 'Switzerland']);
+        $locationBasel = CM_Model_Location::findByAttributes(CM_Model_Location::LEVEL_CITY, ['name' => 'Basel']);
+        $locationAustria = CM_Model_Location::findByAttributes(CM_Model_Location::LEVEL_COUNTRY, ['name' => 'Austria']);
+
+        $this->assertEquals($siteBasel, Denkmal_Site_Region_Abstract::findSiteByCountry($locationSwitzerland));
+        $this->assertEquals($siteBasel, Denkmal_Site_Region_Abstract::findSiteByCountry($locationBasel));
+        $this->assertEquals($siteGraz, Denkmal_Site_Region_Abstract::findSiteByCountry($locationAustria));
+    }
+
+    public function testFindSiteByLocation() {
+        $siteGraz = new Denkmal_Site_Region_Graz();
+        $siteBasel = new Denkmal_Site_Region_Basel();
+
+        $locationSwitzerland = CM_Model_Location::findByAttributes(CM_Model_Location::LEVEL_COUNTRY, ['name' => 'Switzerland']);
+        $locationAustria = CM_Model_Location::findByAttributes(CM_Model_Location::LEVEL_COUNTRY, ['name' => 'Austria']);
+        /** @var CM_Model_Location|\Mocka\AbstractClassTrait $locationBaselGeoPoint */
+        $locationBaselGeoPoint = $this->mockClass('CM_Model_Location')->newInstanceWithoutConstructor();
+        $locationBaselGeoPoint->mockMethod('getGeoPoint')->set(function () {
+            return new CM_Geo_Point(47.5572162, 7.5725677);
+        });
+
+        $this->assertEquals($siteBasel, Denkmal_Site_Region_Abstract::findSiteByLocation($locationBaselGeoPoint));
+        $this->assertEquals($siteBasel, Denkmal_Site_Region_Abstract::findSiteByLocation($locationSwitzerland));
+        $this->assertEquals($siteGraz, Denkmal_Site_Region_Abstract::findSiteByLocation($locationAustria));
+    }
+
     public function testGetSiteByRegion() {
         $siteGraz = new Denkmal_Site_Region_Graz();
         $regionGraz = Denkmal_Model_Region::findBySlug('graz');

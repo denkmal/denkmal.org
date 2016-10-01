@@ -32,11 +32,7 @@ class Denkmal_Page_Index extends Denkmal_Page_Abstract {
         if (!$location) {
             return null;
         }
-        $geoPoint = $location->getGeoPoint();
-        if (!$geoPoint) {
-            return null;
-        }
-        return Denkmal_Site_Region_Abstract::findSiteByGeoPoint($geoPoint);
+        return Denkmal_Site_Region_Abstract::findSiteByLocation($location);
     }
 
 }

@@ -68,6 +68,18 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
     }
 
     /**
+     * @param CM_Model_Location $location
+     * @return Denkmal_Site_Region_Abstract|null
+     */
+    public static function findSiteByLocation(CM_Model_Location $location) {
+        $geoPoint = $location->getGeoPoint();
+        if ($geoPoint && $site = self::findSiteByGeoPoint($geoPoint)) {
+            return $site;
+        }
+        return self::findSiteByCountry($location);
+    }
+
+    /**
      * @param CM_Geo_Point $point
      * @return Denkmal_Site_Region_Abstract|null
      * @throws CM_Exception
@@ -90,6 +102,19 @@ abstract class Denkmal_Site_Region_Abstract extends Denkmal_Site_Default {
             }
         }
         return $resultSite;
+    }
+
+    /**
+     * @param CM_Model_Location $location
+     * @return Denkmal_Site_Region_Abstract|null
+     */
+    public static function findSiteByCountry(CM_Model_Location $location) {
+        $siteList = self::getAllSites();
+
+        return Functional\first($siteList, function (Denkmal_Site_Region_Abstract $site) use ($location) {
+            $locationSite = $site->getRegion()->getLocation();
+            return $location->getId(CM_Model_Location::LEVEL_COUNTRY) === $locationSite->getId(CM_Model_Location::LEVEL_COUNTRY);
+        });
     }
 
     /**

@@ -26,8 +26,9 @@ class Denkmal_Scraper_Source_FacebookTest extends CMTest_TestCase {
             $body = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/ppc.json');
             return new \Facebook\FacebookResponse($request, $body);
         });
+        $this->getServiceManager()->replaceInstance('facebook', $facebookClient);
 
-        $eventDataList = $scraper->processVenue($venue, $facebookClient);
+        $eventDataList = $scraper->processVenue($venue);
 
         $this->assertCount(99, $eventDataList);
 

@@ -7,48 +7,54 @@ use function Functional\reject;
 class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
 
     public function run(array $dateList) {
-        $serviceManager = CM_Service_Manager::getInstance();
-        /** @var \Facebook\Facebook $facebookClient */
-        $facebookClient = $serviceManager->get('facebook', '\Facebook\Facebook');
-
         /** @var Denkmal_Model_Venue[] $venueList */
         $venueList = (new Denkmal_Paging_Venue_All())->getItems();
         $venueList = reject($venueList, function (Denkmal_Model_Venue $venue) {
             return null === $venue->getFacebookPage();
         });
 
-        return flatten(map($venueList, function (Denkmal_Model_Venue $venue) use ($facebookClient) {
-            return $this->processVenue($venue, $facebookClient);
+        return flatten(map($venueList, function (Denkmal_Model_Venue $venue) {
+            return $this->processVenue($venue);
         }));
     }
 
     /**
      * @param Denkmal_Model_Venue $venue
-     * @param \Facebook\Facebook  $facebookClient
      * @return Denkmal_Scraper_EventData[]
      * @throws CM_Exception
      */
-    public function processVenue(Denkmal_Model_Venue $venue, \Facebook\Facebook $facebookClient) {
+    public function processVenue(Denkmal_Model_Venue $venue) {
         $facebookPage = $venue->getFacebookPage();
         if (!$facebookPage) {
             throw new CM_Exception('Venue has no facebook page');
         }
 
+        return $this->_processFacebookPage($facebookPage, $venue->getRegion(), $venue);
+    }
+
+    /**
+     * @param Denkmal_Model_FacebookPage $facebookPage
+     * @param Denkmal_Model_Region       $region
+     * @param Denkmal_Model_Venue|null   $defaultVenue
+     * @return Denkmal_Scraper_EventData[]
+     */
+    protected function _processFacebookPage(Denkmal_Model_FacebookPage $facebookPage, Denkmal_Model_Region $region, Denkmal_Model_Venue $defaultVenue = null) {
+        $facebookClient = $this->_getFacebookClient();
         $response = $facebookClient->get('/' . $facebookPage->getFacebookId() . '/events?limit=9999');
         $graphEdge = $response->getGraphEdge('GraphEvent');
-        return map($graphEdge, function (\Facebook\GraphNodes\GraphEvent $graphNode) use ($venue) {
-            return $this->_processFacebookEvent($venue->getRegion(), $venue, $graphNode);
+        return map($graphEdge, function (\Facebook\GraphNodes\GraphEvent $graphNode) use ($region, $defaultVenue) {
+            return $this->_processFacebookEvent($graphNode, $region, $defaultVenue);
         });
     }
 
     /**
+     * @param \Facebook\GraphNodes\GraphEvent $graphEvent
      * @param Denkmal_Model_Region            $region
      * @param Denkmal_Model_Venue|null        $defaultVenue
-     * @param \Facebook\GraphNodes\GraphEvent $graphEvent
      * @return Denkmal_Scraper_EventData|null
      * @throws CM_Exception
      */
-    protected function _processFacebookEvent(Denkmal_Model_Region $region, Denkmal_Model_Venue $defaultVenue = null, \Facebook\GraphNodes\GraphEvent $graphEvent) {
+    protected function _processFacebookEvent(\Facebook\GraphNodes\GraphEvent $graphEvent, Denkmal_Model_Region $region, Denkmal_Model_Venue $defaultVenue = null) {
         $description = new Denkmal_Scraper_Description($graphEvent->getField('name'));
         $from = $graphEvent->getField('start_time');
         $until = $graphEvent->getField('end_time');
@@ -75,4 +81,13 @@ class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
 
         return new Denkmal_Scraper_EventData($region, $venue, $description, $from, $until);
     }
+
+    /**
+     * @return \Facebook\Facebook
+     */
+    protected function _getFacebookClient() {
+        $serviceManager = CM_Service_Manager::getInstance();
+        return $serviceManager->get('facebook', '\Facebook\Facebook');
+    }
+
 }

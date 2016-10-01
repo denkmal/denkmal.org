@@ -17,7 +17,7 @@ class Denkmal_Page_Index extends Denkmal_Page_Abstract {
             if ($site) {
                 $response->redirectUrl($response->getRender()->getUrlPage('Denkmal_Page_Events', null, $site));
             } else {
-                $response->redirect('Denkmal_Page_Regions');
+                $response->redirect('Denkmal_Page_City');
             }
         }
     }

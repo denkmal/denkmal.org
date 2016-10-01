@@ -1,5 +1,10 @@
-denkmal.org [![Build Status](https://travis-ci.org/denkmal/denkmal.org.png)](https://travis-ci.org/denkmal/denkmal.org)
+denkmal.org
 ===========
+
+Denkmal.org is an Oi!-project and aims to serve as an alternative event calendar for your city.
+
+[![Build Status](https://img.shields.io/travis/denkmal/denkmal.org/master.svg)](https://travis-ci.org/denkmal/denkmal.org)
+[![Gitter Chat](https://img.shields.io/gitter/room/denkmal/denkmal.org.svg)](https://gitter.im/denkmal/denkmal.org)
 
 Development
 -----------

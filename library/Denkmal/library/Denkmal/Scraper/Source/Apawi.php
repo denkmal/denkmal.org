@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Apawi extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(Denkmal_Scraper_Manager $manager) {
+    public function run(array $dateList) {
         $url = 'http://apawi.ch/events/feed';
         $content = self::loadUrl($url);
 

@@ -1,40 +1,44 @@
 <?php
 
+use function Functional\flatten;
+use function Functional\map;
+use function Functional\reject;
+
 class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(Denkmal_Scraper_Manager $manager) {
+    public function run(array $dateList) {
         $serviceManager = CM_Service_Manager::getInstance();
         /** @var \Facebook\Facebook $facebookClient */
         $facebookClient = $serviceManager->get('facebook', '\Facebook\Facebook');
 
-        /** @var Denkmal_Model_Region[] $regionList */
-        $regionList = (new Denkmal_Paging_Region_All())->getItems();
+        /** @var Denkmal_Model_Venue[] $venueList */
+        $venueList = (new Denkmal_Paging_Venue_All())->getItems();
+        $venueList = reject($venueList, function (Denkmal_Model_Venue $venue) {
+            return null === $venue->getFacebookPage();
+        });
 
-        return Functional\flatten(Functional\map($regionList, function (Denkmal_Model_Region $region) use ($facebookClient) {
-            $venueList = (new Denkmal_Paging_Venue_All($region))->getItems();
-            return $this->processVenueList($venueList, $facebookClient);
+        return flatten(map($venueList, function (Denkmal_Model_Venue $venue) use ($facebookClient) {
+            return $this->processVenue($venue, $facebookClient);
         }));
     }
 
     /**
-     * @param array              $venueList
-     * @param \Facebook\Facebook $facebookClient
+     * @param Denkmal_Model_Venue $venue
+     * @param \Facebook\Facebook  $facebookClient
      * @return Denkmal_Scraper_EventData[]
+     * @throws CM_Exception
      */
-    public function processVenueList(array $venueList, \Facebook\Facebook $facebookClient) {
-        $eventDataList = Functional\flatten(Functional\map($venueList, function (Denkmal_Model_Venue $venue) use ($facebookClient) {
-            $facebookPage = $venue->getFacebookPage();
-            if (!$facebookPage) {
-                return null;
-            }
+    public function processVenue(Denkmal_Model_Venue $venue, \Facebook\Facebook $facebookClient) {
+        $facebookPage = $venue->getFacebookPage();
+        if (!$facebookPage) {
+            throw new CM_Exception('Venue has no facebook page');
+        }
 
-            $response = $facebookClient->get('/' . $facebookPage->getFacebookId() . '/events?limit=9999');
-            $graphEdge = $response->getGraphEdge('GraphEvent');
-            return Functional\map($graphEdge, function (\Facebook\GraphNodes\GraphEvent $graphNode) use ($venue) {
-                return $this->_processFacebookEvent($venue->getRegion(), $venue, $graphNode);
-            });
-        }));
-        return array_filter($eventDataList);
+        $response = $facebookClient->get('/' . $facebookPage->getFacebookId() . '/events?limit=9999');
+        $graphEdge = $response->getGraphEdge('GraphEvent');
+        return map($graphEdge, function (\Facebook\GraphNodes\GraphEvent $graphNode) use ($venue) {
+            return $this->_processFacebookEvent($venue->getRegion(), $venue, $graphNode);
+        });
     }
 
     /**

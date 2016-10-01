@@ -13,11 +13,9 @@ class Denkmal_Scraper_Source_FacebookTest extends CMTest_TestCase {
 
     public function testProcessPageDate() {
         $region = Denkmal_Model_Region::findBySlug('graz');
-        $venue1 = DenkmalTest_TH::createVenue('My Venue 1', null, null, $region);
-        $facebookPage1 = Denkmal_Model_FacebookPage::create('my-page-1', 'My page 1');
-        $venue1->setFacebookPage($facebookPage1);
-        $venue2 = DenkmalTest_TH::createVenue('My Venue 2', null, null, $region);
-        $venueList = [$venue1, $venue2];
+        $venue = DenkmalTest_TH::createVenue('My Venue 1', null, null, $region);
+        $facebookPage = Denkmal_Model_FacebookPage::create('my-page-1', 'My page 1');
+        $venue->setFacebookPage($facebookPage);
 
         $scraper = new Denkmal_Scraper_Source_Facebook();
         /** @var \Facebook\Facebook|\Mocka\AbstractClassTrait $facebookClient */
@@ -29,7 +27,7 @@ class Denkmal_Scraper_Source_FacebookTest extends CMTest_TestCase {
             return new \Facebook\FacebookResponse($request, $body);
         });
 
-        $eventDataList = $scraper->processVenueList($venueList, $facebookClient);
+        $eventDataList = $scraper->processVenue($venue, $facebookClient);
 
         $this->assertCount(99, $eventDataList);
 

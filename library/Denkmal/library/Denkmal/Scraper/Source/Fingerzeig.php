@@ -2,10 +2,10 @@
 
 class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(Denkmal_Scraper_Manager $manager) {
+    public function run(array $dateList) {
         $calendarPage = new CM_Dom_NodeList(self::loadUrl('http://fingerzeig.ch/parties/'), true);
 
-        $dateListExisting = Functional\filter($manager->getDateList(), function (DateTime $date) use ($calendarPage) {
+        $dateListExisting = Functional\filter($dateList, function (DateTime $date) use ($calendarPage) {
             return $calendarPage->has('a[href="/parties/' . $date->format('Y/m/d') . '"]');
         });
         if (0 === count($dateListExisting)) {

@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Graz_Postgarage extends Denkmal_Scraper_Source_Graz_Abstract {
 
-    public function run(Denkmal_Scraper_Manager $manager) {
+    public function run(array $dateList) {
         $url = 'http://www.postgarage.at/?id=27&type=100';
         $content = self::loadUrl($url);
 

@@ -92,18 +92,26 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         try {
             $eventList = $source->run($this->getDateList());
 
-            /** @var Denkmal_Scraper_EventData[] $eventListValid */
-            $eventListValid = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {
+            /** @var Denkmal_Scraper_EventData[] $eventList */
+            $eventList = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {
                 return $this->_isValidEvent($eventData);
             });
 
-            foreach ($eventListValid as $eventData) {
-                if (!$this->_isExistingEvent($eventData)) {
+            $eventListGrouped = Functional\group($eventList, function (Denkmal_Scraper_EventData $eventData) {
+                return $eventData->getSourceIdentifier();
+            });
+
+            foreach ($eventListGrouped as $sourceIdentifier => $eventListSource) {
+                $eventListCreate = Functional\reject($eventListSource, function (Denkmal_Scraper_EventData $eventData) {
+                    return $this->_isExistingEvent($eventData);
+                });
+
+                foreach ($eventListCreate as $eventData) {
                     $this->_createEvent($eventData);
                 }
             }
 
-            $result->setEventDataCount(count($eventListValid));
+            $result->setEventDataCount(count($eventList));
             $result->setError(null);
         } catch (Exception $e) {
             $result->setEventDataCount(0);
@@ -137,11 +145,6 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         if ($venue = $eventData->findVenue()) {
             if ($venue->getIgnore()) {
                 return false; // Venue ignored
-            }
-
-            $eventListVenueDate = new Denkmal_Paging_Event_EventDuplicates($eventData->getFrom(), $venue);
-            if ($eventListVenueDate->getCount()) {
-                return false; // Venue has event on same day
             }
         } else {
             if ('' === trim($eventData->getVenueName())) {

@@ -40,10 +40,13 @@ class Denkmal_Scraper_Source_Facebook extends Denkmal_Scraper_Source_Abstract {
      */
     protected function _processFacebookPage(Denkmal_Model_FacebookPage $facebookPage, Denkmal_Model_Region $region, Denkmal_Model_Venue $defaultVenue = null) {
         $facebookClient = $this->_getFacebookClient();
-        $response = $facebookClient->get('/' . $facebookPage->getFacebookId() . '/events?limit=9999');
+        $facebookPageId = $facebookPage->getFacebookId();
+        $response = $facebookClient->get('/' . $facebookPageId . '/events?limit=9999');
         $graphEdge = $response->getGraphEdge('GraphEvent');
-        return map($graphEdge, function (\Facebook\GraphNodes\GraphEvent $graphNode) use ($region, $defaultVenue) {
-            return $this->_processFacebookEvent($graphNode, $region, $defaultVenue);
+        return map($graphEdge, function (\Facebook\GraphNodes\GraphEvent $graphNode) use ($region, $defaultVenue, $facebookPageId) {
+            $eventData = $this->_processFacebookEvent($graphNode, $region, $defaultVenue);
+            $eventData->setSourceIdentifier('facebook-page:' . $facebookPageId);
+            return $eventData;
         });
     }
 

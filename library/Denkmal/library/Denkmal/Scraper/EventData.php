@@ -17,15 +17,19 @@ class Denkmal_Scraper_EventData {
     /** @var DateTime|null */
     private $_until;
 
+    /** @var string|null */
+    private $_sourceIdentifier;
+
     /**
      * @param Denkmal_Model_Region               $region
      * @param Denkmal_Model_Venue|string         $venue
      * @param Denkmal_Scraper_Description        $description
      * @param DateTime|Denkmal_Scraper_Date      $from
      * @param DateTime|Denkmal_Scraper_Date|null $until
+     * @param string|null                        $sourceIdentifier
      * @throws CM_Exception_Invalid
      */
-    public function __construct(Denkmal_Model_Region $region, $venue, Denkmal_Scraper_Description $description, $from, $until = null) {
+    public function __construct(Denkmal_Model_Region $region, $venue, Denkmal_Scraper_Description $description, $from, $until = null, $sourceIdentifier = null) {
         $this->_region = $region;
 
         if ($venue instanceof Denkmal_Model_Venue) {
@@ -55,6 +59,7 @@ class Denkmal_Scraper_EventData {
             }
         }
         $this->_until = $until;
+        $this->setSourceIdentifier($sourceIdentifier);
     }
 
     /**
@@ -97,6 +102,23 @@ class Denkmal_Scraper_EventData {
      */
     public function getUntil() {
         return $this->_until;
+    }
+
+    /**
+     * @param string|null $sourceIdentifier
+     */
+    public function setSourceIdentifier($sourceIdentifier) {
+        if (null !== $sourceIdentifier) {
+            $sourceIdentifier = (string) $sourceIdentifier;
+        }
+        $this->_sourceIdentifier = $sourceIdentifier;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getSourceIdentifier() {
+        return $this->_sourceIdentifier;
     }
 
     /**

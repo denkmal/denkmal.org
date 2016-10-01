@@ -90,21 +90,20 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         $result->setCreated(new DateTime());
 
         try {
-            $eventDataList = $source->run($this);
+            $eventList = $source->run($this);
 
-            /** @var Denkmal_Scraper_EventData[] $eventDataListValid */
-            $eventDataListValid = Functional\select($eventDataList, function (Denkmal_Scraper_EventData $eventData) {
+            /** @var Denkmal_Scraper_EventData[] $eventListValid */
+            $eventListValid = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {
                 return $this->_isValidEvent($eventData);
             });
 
-            foreach ($eventDataListValid as $eventData) {
-                if (!$venue = $eventData->findVenue()) {
-                    $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false, $eventData->getRegion());
+            foreach ($eventListValid as $eventData) {
+                if (!$this->_isExistingEvent($eventData)) {
+                    $this->_createEvent($eventData);
                 }
-                Denkmal_Model_Event::create($venue, $eventData->getDescription()->getAll(), true, true, $eventData->getFrom(), $eventData->getUntil());
             }
 
-            $result->setEventDataCount(count($eventDataList));
+            $result->setEventDataCount(count($eventListValid));
             $result->setError(null);
         } catch (Exception $e) {
             $result->setEventDataCount(0);
@@ -152,4 +151,29 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
 
         return true;
     }
+
+    /**
+     * @param Denkmal_Scraper_EventData $eventData
+     * @return bool
+     */
+    protected function _isExistingEvent(Denkmal_Scraper_EventData $eventData) {
+        if ($venue = $eventData->findVenue()) {
+            $eventListVenueDate = new Denkmal_Paging_Event_EventDuplicates($eventData->getFrom(), $venue);
+            if ($eventListVenueDate->getCount()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @param Denkmal_Scraper_EventData $eventData
+     */
+    protected function _createEvent(Denkmal_Scraper_EventData $eventData) {
+        if (!$venue = $eventData->findVenue()) {
+            $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false, $eventData->getRegion());
+        }
+        Denkmal_Model_Event::create($venue, $eventData->getDescription()->getAll(), true, true, $eventData->getFrom(), $eventData->getUntil());
+    }
+
 }

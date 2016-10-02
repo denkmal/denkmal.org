@@ -46,7 +46,8 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
             new Denkmal_Scraper_Source_Apawi(),
             new Denkmal_Scraper_Source_Graz_Postgarage(),
             new Denkmal_Scraper_Source_Graz_Sub(),
-            new Denkmal_Scraper_Source_Facebook(),
+            new Denkmal_Scraper_Source_Facebook_Venues(),
+            new Denkmal_Scraper_Source_Facebook_PageList(),
         );
     }
 

@@ -44,6 +44,13 @@ class Denkmal_Model_FacebookPage extends CM_Model_Abstract {
         $this->_set('failedCount', $failedCount);
     }
 
+    /**
+     * @return string
+     */
+    public function getUrl() {
+        return 'https://www.facebook.com/' . $this->getFacebookId();
+    }
+
     protected function _getSchema() {
         return new CM_Model_Schema_Definition(array(
             'name'        => ['type' => 'string'],

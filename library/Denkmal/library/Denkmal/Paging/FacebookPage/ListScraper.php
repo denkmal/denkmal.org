@@ -15,7 +15,7 @@ class Denkmal_Paging_FacebookPage_ListScraper extends Denkmal_Paging_FacebookPag
         if ($region) {
             $where = 'region = ' . $region->getId();
         }
-        $source = new CM_PagingSource_Sql('facebookPage', 'denkmal_scraper_facebookpage', $where, 'id');
+        $source = new CM_PagingSource_Sql('facebookPage', 'denkmal_scraper_facebookpage', $where, 'id DESC');
 
         parent::__construct($source);
     }

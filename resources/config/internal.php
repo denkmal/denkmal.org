@@ -86,9 +86,10 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Abstract->types[49] = 'Denkmal_Scraper_Source_Programmzeitung';
     $config->Denkmal_Scraper_Source_Abstract->types[50] = 'Denkmal_Scraper_Source_Saali';
     $config->Denkmal_Scraper_Source_Abstract->types[73] = 'Denkmal_Scraper_Source_Apawi';
-    $config->Denkmal_Scraper_Source_Abstract->types[84] = 'Denkmal_Scraper_Source_Facebook';
+    $config->Denkmal_Scraper_Source_Abstract->types[84] = 'Denkmal_Scraper_Source_Facebook_Venues';
     $config->Denkmal_Scraper_Source_Abstract->types[85] = 'Denkmal_Scraper_Source_Graz_Postgarage';
     $config->Denkmal_Scraper_Source_Abstract->types[86] = 'Denkmal_Scraper_Source_Graz_Sub';
+    $config->Denkmal_Scraper_Source_Abstract->types[88] = 'Denkmal_Scraper_Source_Facebook_PageList';
     $config->CM_Mail_ExampleMailable->type = 2;
     $config->CM_Action_Email->type = 3;
     $config->CM_Model_Language->type = 5;
@@ -155,11 +156,12 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Site_Region_Basel->type = 80;
     $config->Denkmal_Site_Region_Graz->type = 81;
     $config->CM_Janus_StreamChannel->type = 83;
-    $config->Denkmal_Scraper_Source_Facebook->type = 84;
+    $config->Denkmal_Scraper_Source_Facebook_Venues->type = 84;
     $config->Denkmal_Scraper_Source_Graz_Postgarage->type = 85;
     $config->Denkmal_Scraper_Source_Graz_Sub->type = 86;
     $config->Denkmal_Model_FacebookPage->type = 87;
-    $config->CM_Class_Abstract->typesMaxValue = 87;
+    $config->Denkmal_Scraper_Source_Facebook_PageList->type = 88;
+    $config->CM_Class_Abstract->typesMaxValue = 88;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

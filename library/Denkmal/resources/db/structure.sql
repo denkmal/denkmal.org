@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `denkmal_scraper_facebookpage` (
   `region` int(11) unsigned NOT NULL,
   `created` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `facebookPage` (`facebookPage`),
+  KEY `facebookPage` (`facebookPage`),
   KEY `created` (`created`),
   KEY `region` (`region`),
   CONSTRAINT `denkmal_scraper_facebookpage__facebookpage` FOREIGN KEY (`facebookPage`) REFERENCES `denkmal_model_facebookpage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,

@@ -16,10 +16,11 @@ class Denkmal_Paging_FacebookPage_ListScraperTest extends CMTest_TestCase {
 
         (new Denkmal_Paging_FacebookPage_ListScraper($region1))->add($facebookPage1);
         (new Denkmal_Paging_FacebookPage_ListScraper($region1))->add($facebookPage2);
+        (new Denkmal_Paging_FacebookPage_ListScraper($region2))->add($facebookPage1);
         (new Denkmal_Paging_FacebookPage_ListScraper($region2))->add($facebookPage3);
 
         $this->assertEquals([$facebookPage2, $facebookPage1], new Denkmal_Paging_FacebookPage_ListScraper($region1));
-        $this->assertEquals([$facebookPage3], new Denkmal_Paging_FacebookPage_ListScraper($region2));
+        $this->assertEquals([$facebookPage3, $facebookPage1], new Denkmal_Paging_FacebookPage_ListScraper($region2));
         $this->assertEquals([$facebookPage3, $facebookPage2, $facebookPage1], new Denkmal_Paging_FacebookPage_ListScraper(null));
 
         (new Denkmal_Paging_FacebookPage_ListScraper($region1))->remove($facebookPage1);

@@ -24,7 +24,7 @@
           <a class="toggleNext-excluded" href="{$facebookPage->getUrl()|escape}"><span class="icon icon-pop-out"></span></a>
         </div>
         <div class="toggleNext-content">
-          {button_link class='removeFacebookPage warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+          {button_link class='removeFacebookPage warning' label={translate 'Remove'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
         </div>
       </li>
     {/foreach}

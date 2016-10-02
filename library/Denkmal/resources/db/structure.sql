@@ -12,11 +12,31 @@ DROP TABLE IF EXISTS `denkmal_model_link`;
 DROP TABLE IF EXISTS `denkmal_model_user`;
 DROP TABLE IF EXISTS `denkmal_model_userinvite`;
 DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
+DROP TABLE IF EXISTS `denkmal_scraper_facebookpage`;
 DROP TABLE IF EXISTS `denkmal_model_tag`;
 DROP TABLE IF EXISTS `denkmal_model_tag_model`;
 DROP TABLE IF EXISTS `denkmal_push_notification_message`;
 DROP TABLE IF EXISTS `denkmal_push_subscription`;
+DROP TABLE IF EXISTS `denkmal_model_region`;
 
+
+
+CREATE TABLE `denkmal_model_region` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `slug` varchar(64) NOT NULL,
+  `abbreviation` varchar(16) NOT NULL,
+  `locationLevel` int(11) unsigned NOT NULL,
+  `locationId` int(11) unsigned NOT NULL,
+  `twitterCredentials` varchar(1000) NULL,
+  `twitterAccount` varchar(1000) NULL,
+  `facebookAccount` varchar(1000) NULL,
+  `emailAddress` varchar(1000),
+  `suspensionUntil` int(11) unsigned NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`),
+  UNIQUE KEY `abbreviation` (`abbreviation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 CREATE TABLE `denkmal_model_song` (
@@ -163,6 +183,20 @@ CREATE TABLE IF NOT EXISTS `denkmal_scraper_sourceresult` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
+CREATE TABLE IF NOT EXISTS `denkmal_scraper_facebookpage` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `facebookPage` int(11) unsigned NOT NULL,
+  `region` int(11) unsigned NOT NULL,
+  `created` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `facebookPage` (`facebookPage`),
+  KEY `created` (`created`),
+  KEY `region` (`region`),
+  CONSTRAINT `denkmal_scraper_facebookpage__facebookpage` FOREIGN KEY (`facebookPage`) REFERENCES `denkmal_model_facebookpage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `denkmal_scraper_facebookpage__region` FOREIGN KEY (`region`) REFERENCES `denkmal_model_region` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 CREATE TABLE IF NOT EXISTS `denkmal_model_tag` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `label` varchar(20) NOT NULL,
@@ -180,24 +214,6 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_tag_model` (
   `modelId` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `modelType-modelId-tagId` (`modelType`, `modelId`, `tagId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE `denkmal_model_region` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL,
-  `slug` varchar(64) NOT NULL,
-  `abbreviation` varchar(16) NOT NULL,
-  `locationLevel` int(11) unsigned NOT NULL,
-  `locationId` int(11) unsigned NOT NULL,
-  `twitterCredentials` varchar(1000) NULL,
-  `twitterAccount` varchar(1000) NULL,
-  `facebookAccount` varchar(1000) NULL,
-  `emailAddress` varchar(1000),
-  `suspensionUntil` int(11) unsigned NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `slug` (`slug`),
-  UNIQUE KEY `abbreviation` (`abbreviation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

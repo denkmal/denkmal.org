@@ -9,6 +9,7 @@ class Denkmal_Component_EventList extends Denkmal_Component_Abstract {
 
         $viewResponse->set('date', $date);
         $viewResponse->set('events', $events);
+        $viewResponse->set('region', $region);
         $viewResponse->set('twitterAccount', $region->getTwitterAccount());
         $viewResponse->set('facebookAccount', $region->getFacebookAccount());
     }

@@ -1,4 +1,6 @@
-<div class="eventListMeta">{$render->getSite()->getRegion()->getName()|escape} - <time>{date_full date=$date timeZone=$date->getTimeZone()}</time></div>
+<div class="eventListMeta">{$region->getName()|escape} -
+  <time>{date_full date=$date timeZone=$date->getTimeZone()}</time>
+</div>
 
 {if $events->getCount()}
   <ul class="eventList">
@@ -14,17 +16,12 @@
   </div>
 {/if}
 
-{if $twitterAccount || $facebookAccount}
-  <div class="socialFollow">
-    {if $twitterAccount}
-      <a class="link hasIcon" href="https://twitter.com/{$twitterAccount}" target="_blank" title="{translate 'Follow us on Twitter'}">
-        <span class="icon icon-twitter"></span>
-      </a>
-    {/if}
-    {if $facebookAccount}
-      <a class="link hasIcon" href="https://www.facebook.com/{$facebookAccount}" target="_blank" title="{translate 'Find us on Facebook'}">
-        <span class="icon icon-facebook"></span>
-      </a>
-    {/if}
-  </div>
-{/if}
+<footer class="footer">
+  {button_link theme='transparent' icon='location' label={$region->getName()|escape} page='Denkmal_Page_City'}
+  {if $twitterAccount}
+    {button_link theme='transparent' label='Twitter' href="https://twitter.com/{$twitterAccount}" target="_blank"}
+  {/if}
+  {if $facebookAccount}
+    {button_link theme='transparent' label='Facebook' href="https://www.facebook.com/{$facebookAccount}" target="_blank"}
+  {/if}
+</footer>

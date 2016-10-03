@@ -194,12 +194,15 @@
 
     #eyebrow-left,
     #eyebrow-right {
+      transform-origin: center;
       transform: translateY(-30%);
+      transform-box: fill-box;
     }
 
     #eyelid-left,
     #eyelid-right {
       transform: translateY(100%);
+      transform-box: fill-box;
     }
   }
 }
@@ -208,14 +211,17 @@
   #logo-icon-night {
     #eyes {
       animation: eyes 60s linear 2s infinite;
+      transform-box: fill-box;
     }
 
     #eyebrow-left {
       animation: eyebrow-left 60s linear 2s infinite;
+      transform-box: fill-box;
     }
 
     #eyebrow-right {
       animation: eyebrow-right 60s linear 2s infinite;
+      transform-box: fill-box;
     }
 
     #eyelid-left,

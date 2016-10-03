@@ -22,19 +22,12 @@
   }
 }
 
-@socialFollowSize: 44px;
-
-.socialFollow {
-  padding: 10px;
+.footer {
+  margin-top: .7em;
   text-align: center;
 
-  .link {
-    display: inline-block;
-    width: @socialFollowSize;
-    line-height: @socialFollowSize;
-    border-radius: 50%;
-    font-size: @socialFollowSize - 12px;
-    color: fadeout(darken(@colorBgBody, 4), 10);
-    text-shadow: 1px 1px 2px @colorBgBody, 0 0 0 @colorFg, 1px 1px 2px @colorBgBody;
+  .button {
+    padding: 0 0.6em;
+    color: mix(@colorBgBody, @colorFg, 60);
   }
 }

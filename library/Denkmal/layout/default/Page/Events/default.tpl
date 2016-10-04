@@ -5,8 +5,10 @@
 {block name='content-main'}
   <div class="banner">
     <div class="banner-inner">
+      {contentPlaceholder width=4 height=1 stretch=true}
       {img path='banner-graz.svg'}
       {button_link class='dismissBanner' theme='transparent' icon='close'}
+      {/contentPlaceholder}
     </div>
   </div>
   <div class="swipeCarousel">

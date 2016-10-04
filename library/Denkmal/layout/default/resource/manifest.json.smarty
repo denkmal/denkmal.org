@@ -1,5 +1,6 @@
 {
-	"name": "{$render->getSite()->getName()}",
+	"name": "{$render->getSite()->getName()}{if $render->getSite()->hasRegion()} {$render->getSite()->getRegion()->getName()}{/if}",
+	"short_name": "{$render->getSite()->getName()}",
 	"display": "standalone",
 	"start_url": "{$render->getUrl('/')}",
 	"gcm_sender_id": "{$render->getSite()->getPushClientConfiguration()->getGcmSenderId()}",

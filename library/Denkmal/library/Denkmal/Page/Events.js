@@ -16,6 +16,10 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     'swipeCarousel-change .swipeCarousel': function(event, data) {
       var delaySetUrl = !data.immediateSetUrl;
       this._onShowPane($(data.element), delaySetUrl);
+    },
+
+    'click .dismissBanner': function(event) {
+      $(event.currentTarget).closest('.banner').slideUp();
     }
   },
 

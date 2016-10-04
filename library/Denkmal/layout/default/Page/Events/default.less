@@ -4,6 +4,26 @@
   overflow: hidden;
 }
 
+.banner {
+  padding: 8px;
+
+  @media (min-width: @breakpointSmall) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .banner-inner {
+    position: relative;
+
+    .button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: @colorFgTheme;
+    }
+  }
+}
+
 .swipeCarousel {
   position: relative;
   height: 100%;

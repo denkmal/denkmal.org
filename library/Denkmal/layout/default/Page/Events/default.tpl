@@ -3,6 +3,12 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
+  <div class="banner">
+    <div class="banner-inner">
+      {img path='banner-graz.svg'}
+      {button_link class='dismissBanner' theme='transparent' icon='close'}
+    </div>
+  </div>
   <div class="swipeCarousel">
     <ul class="dateList">
       {foreach $menu->getEntries($render->getEnvironment()) as $entry}

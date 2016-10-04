@@ -95,6 +95,9 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     }
   },
 
+  /**
+   * @param {Boolean} state
+   */
   _changeState: function(state) {
     var date = state['date'];
     if (!date) {

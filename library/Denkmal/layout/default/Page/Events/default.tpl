@@ -6,7 +6,9 @@
   <div class="banner">
     <div class="banner-inner">
       {contentPlaceholder width=4 height=1 stretch=true}
-      {img path='banner-graz.svg'}
+        <a href="{linkUrl page='Denkmal_Page_Events' date='2016-10-14'}">
+          {img path='banner-graz.svg'}
+        </a>
       {button_link class='dismissBanner' theme='transparent' icon='close'}
       {/contentPlaceholder}
     </div>

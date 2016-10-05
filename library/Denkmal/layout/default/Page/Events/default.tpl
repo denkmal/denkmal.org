@@ -10,8 +10,8 @@
           <a href="{linkUrl page='Denkmal_Page_Events' date='2016-10-14'}">
             {img path='banner-graz.svg'}
           </a>
-        {button_link class='dismissBanner' theme='transparent' icon='close'}
         {/contentPlaceholder}
+        {button_link class='dismissBanner' theme='transparent' icon='close'}
       </div>
     </div>
   {/if}

@@ -3,6 +3,18 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
+  {if $showBannerGrazLaunch}
+    <div class="banner">
+      <div class="banner-inner">
+        {contentPlaceholder width=4 height=1 stretch=true}
+          <a href="{linkUrl page='Denkmal_Page_Events' date='2016-10-14'}">
+            {img path='banner-graz.svg'}
+          </a>
+        {/contentPlaceholder}
+        {button_link class='dismissBanner' theme='transparent' icon='close'}
+      </div>
+    </div>
+  {/if}
   <div class="swipeCarousel">
     <ul class="dateList">
       {foreach $menu->getEntries($render->getEnvironment()) as $entry}

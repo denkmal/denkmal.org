@@ -47,7 +47,7 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
    * @param {Boolean} state
    */
   setWeekdayVisible: function(state) {
-    this.$el.attr('data-weekday', state);
+    this.$el.attr('data-weekday', state ? '' : null);
   },
 
   /**

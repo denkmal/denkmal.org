@@ -1,7 +1,40 @@
 & {
-  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  padding: 0 !important;
   overflow: hidden;
+}
+
+.banner {
+  display: none;
+  padding: 8px;
+
+  @media (min-width: @breakpointSmall) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .banner-inner {
+    position: relative;
+    background-color: #1a1a1a;
+
+    .contentPlaceholder {
+      max-width: 560px;
+      margin: auto;
+    }
+
+    a {
+      display: block;
+    }
+
+    .button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: @colorFgTheme;
+    }
+  }
 }
 
 .swipeCarousel {

@@ -19,6 +19,10 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
             )));
         }
 
+        $today = $settings->getCurrentDate();
+        $showBannerGrazLaunch = ($today > new DateTime('2016-10-08') && $today < new DateTime('2016-10-15'));
+
+        $viewResponse->set('showBannerGrazLaunch', $showBannerGrazLaunch);
         $viewResponse->set('region', $site->getRegion());
         $viewResponse->set('menu', $menu);
         $viewResponse->set('date', $date);

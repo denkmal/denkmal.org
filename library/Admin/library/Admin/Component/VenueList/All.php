@@ -9,7 +9,7 @@ class Admin_Component_VenueList_All extends Admin_Component_VenueList_Abstract {
         if (null !== $searchTerm) {
             $venueList = new Denkmal_Paging_Venue_Search($searchTerm, $region);
         } else {
-            $venueList = new Denkmal_Paging_Venue_All($region);
+            $venueList = new Denkmal_Paging_Venue_All($region, true);
         }
 
         $venueList->setPage($this->_params->getPage(), $this->_params->getInt('count', 20));

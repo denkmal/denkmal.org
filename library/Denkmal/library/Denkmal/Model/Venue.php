@@ -225,8 +225,10 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
 
     protected function _getContainingCacheables() {
         $cacheables = parent::_getContainingCacheables();
-        $cacheables[] = new Denkmal_Paging_Venue_All();
-        $cacheables[] = new Denkmal_Paging_Venue_All($this->getRegion());
+        $cacheables[] = new Denkmal_Paging_Venue_All(null, true);
+        $cacheables[] = new Denkmal_Paging_Venue_All(null, false);
+        $cacheables[] = new Denkmal_Paging_Venue_All($this->getRegion(), true);
+        $cacheables[] = new Denkmal_Paging_Venue_All($this->getRegion(), false);
         return $cacheables;
     }
 

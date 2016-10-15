@@ -134,4 +134,27 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
             new DateTime('2016-09-17 22:00:00')
         ), $eventDataList[1]);
     }
+
+    public function testProcessVersion6() {
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-6.html');
+        $scraper = new Denkmal_Scraper_Source_Saali();
+
+        $eventDataList = $scraper->processPage($html, new DateTime('2016-10-15'));
+
+        $this->assertCount(10, $eventDataList);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            $scraper->getRegion(),
+            'Sääli',
+            new Denkmal_Scraper_Description('DJ John Easdtwood Dark 80\'s'),
+            new DateTime('2016-10-07 22:00:00')
+        ), $eventDataList[0]);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            $scraper->getRegion(),
+            'Sääli',
+            new Denkmal_Scraper_Description('DJ Curtis, Mick & Ziggi Stardust Psychedelic, 60\'s, Beat, Garage', 'Shabbytunes'),
+            new DateTime('2016-10-08 22:00:00')
+        ), $eventDataList[1]);
+    }
 }

@@ -7,6 +7,10 @@ class Denkmal_Site_Default extends CM_Site_Abstract {
         $this->_setModule('Denkmal');
     }
 
+    public function getDocument() {
+        return Denkmal_View_Document::class;
+    }
+
     /**
      * @return CM_Menu[]
      */

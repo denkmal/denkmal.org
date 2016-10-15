@@ -15,8 +15,8 @@ class Denkmal_Page_Suspended extends Denkmal_Page_Abstract {
         $viewResponse->set('song', $song);
     }
 
-    public function getLayout(CM_Frontend_Environment $environment, $layoutName = null) {
-        return new Denkmal_Layout_Suspended();
+    public function getLayout(CM_Frontend_Environment $environment) {
+        return Denkmal_Layout_Suspended::class;
     }
 
     protected function _requiresRegion() {

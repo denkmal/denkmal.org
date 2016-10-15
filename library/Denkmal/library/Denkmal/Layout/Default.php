@@ -3,6 +3,8 @@
 class Denkmal_Layout_Default extends CM_Layout_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
+        parent::prepare($environment, $viewResponse);
+
         $site = $environment->getSite();
         $region = null;
 

@@ -4,7 +4,7 @@
     "bin-dir": "bin/"
   },
   "require": {
-    "cargomedia/cm": "~1.200.0",
+    "cargomedia/cm": "~1.201.0",
     "ricardoper/twitteroauth": "~2.1.6",
     "nojimage/twitter-text-php": "~1.1.1",
     "codemonkeys-ru/gcm-message": "~0.2.0",
@@ -12,8 +12,8 @@
     "facebook/graph-sdk": "~5.3.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.8.6",
-    "tomaszdurka/mocka": "~0.11.1",
+    "phpunit/phpunit": "~5.5.0",
+    "tomaszdurka/mocka": "~0.12.0",
     "fzaninotto/faker": "~1.5.0"
   },
   "minimum-stability": "alpha",

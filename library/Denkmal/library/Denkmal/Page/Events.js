@@ -75,7 +75,8 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     var date = $element.data('date');
     var menuEntryHash = $element.data('menu-hash');
 
-    cm.getLayout()._onPageSetup(title, [menuEntryHash]);
+    cm.getDocument()._updateTitle(title);
+    cm.getDocument()._activateMenuEntries([menuEntryHash]);
 
     if (delaySetUrl) {
       this._onShowPaneSetUrlDelayed(url, date);

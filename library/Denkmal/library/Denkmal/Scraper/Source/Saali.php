@@ -31,7 +31,7 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             '#\w+ \(?pdf\)?#i',
             '#FÜR MEHR INFOS#i',
             '#Saisonstart#i',
-
+            '#PROGRAMM (\w+) 20\d{2}#i',
         ];
         $textList = Functional\reject($textList, function ($text) use ($textIgnoreList) {
             return Functional\some($textIgnoreList, function ($textIgnorePattern) use ($text) {

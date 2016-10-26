@@ -16,7 +16,7 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
     public function processPage($html, DateTime $now = null) {
         $html = new CM_Dom_NodeList($html, true);
         $eventHtml = $html->find('projectcontent')->getHtml();
-        $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s*<br>(?<description>.+?)\.{4,}';
+        $regexp = '(?<weekday>\w+)\s+(?<day>\d+)\.(?<month>\d+)\.(?<year>\d+)\s*<br>(?<description>.+?)\+{4,}';
         preg_match_all('#' . $regexp . '#u', $eventHtml, $matches, PREG_SET_ORDER);
 
         return Functional\map($matches, function (array $match) use ($now) {
@@ -31,18 +31,26 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
 
             $genres = null;
             foreach ($descriptionList as $i => $descriptionItem) {
-                if (preg_match('#^Sounds Like\s*: \(?(?<genres>.+?)\)?$#ui', $descriptionItem, $matchesGenres)) {
+                if (preg_match('#^Sound Policy\s*: \(?(?<genres>.+?)\)?$#ui', $descriptionItem, $matchesGenres)) {
                     $genres = new Denkmal_Scraper_Genres($matchesGenres['genres']);
                     unset($descriptionList[$i]);
                 }
                 if (preg_match('#Eintritt frei#ui', $descriptionItem, $matchesGenres)) {
                     unset($descriptionList[$i]);
                 }
-                if (preg_match('#(\b|^)\d{1,2}h(\b|$)#ui', $descriptionItem, $matchesGenres)) {
+                if (preg_match('#^(\d{1,2})h$#ui', $descriptionItem, $matchesTime)) {
+                    $from->setTime($matchesTime[1]);
+                    unset($descriptionList[$i]);
+                }
+                if (preg_match('#^(\d{1,2}):(\d{2})$#ui', $descriptionItem, $matchesTime)) {
+                    $from->setTime($matchesTime[1], $matchesTime[2]);
                     unset($descriptionList[$i]);
                 }
             }
 
+            $descriptionList = Functional\map($descriptionList, function ($descriptionItem) {
+                return trim($descriptionItem, ',');
+            });
             $description = implode(', ', $descriptionList);
 
             return new Denkmal_Scraper_EventData($this->getRegion(), 'Kaschemme', new Denkmal_Scraper_Description($description, null, $genres), $from);
@@ -59,6 +67,7 @@ class Denkmal_Scraper_Source_Kaschemme extends Denkmal_Scraper_Source_Abstract {
      */
     private function _parseText($text) {
         $text = html_entity_decode($text);
+        $text = strip_tags($text);
         $text = preg_replace('#^///\s*#', '', $text);
         $text = preg_replace('#\s*///$#', '', $text);
         $text = trim($text);

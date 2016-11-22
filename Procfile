@@ -1,4 +1,4 @@
-jobs: ./bin/cm job-distribution start-worker
-stream: ./bin/cm message-stream start-synchronization
-maintenance: ./bin/cm maintenance start
-search: ./bin/cm search-index start-maintenance
+jobs: ./bin/cm --quiet job-distribution start-worker
+stream: ./bin/cm --quiet message-stream start-synchronization
+maintenance: ./bin/cm --quiet maintenance start
+search: ./bin/cm --quiet search-index start-maintenance

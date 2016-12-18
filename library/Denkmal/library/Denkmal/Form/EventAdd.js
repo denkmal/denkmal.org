@@ -36,7 +36,7 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
 
   renderPreview: function() {
     var form = this;
-    this.submit('Preview', {handleErrors: false, disableUI: false})
+    this._submitOnly('Preview', false)
       .then(function(response) {
         var preview = form._injectView(response);
         if (form._preview) {

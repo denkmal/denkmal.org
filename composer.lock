@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93a9c308fe0643149788b7316e910e0b",
-    "content-hash": "0f927af6c803016f9a43c5fbc229ed0e",
+    "hash": "25779f472218177ab691901e688599a0",
+    "content-hash": "b35da539c87ca7b7d24c20f522287ede",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,17 +72,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.216.1",
+            "version": "1.217.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "b942d513021408928a3879dfc6f690a3bb9df6c8"
+                "reference": "51583ddae06139bc37e5a8e083728dcb8524da41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-b942d513021408928a3879dfc6f690a3bb9df6c8-zip-848ba6.zip",
-                "reference": "b942d513021408928a3879dfc6f690a3bb9df6c8",
-                "shasum": "c994ff0b356c5093abbc8bca0891b63465a2c680"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-51583ddae06139bc37e5a8e083728dcb8524da41-zip-398efa.zip",
+                "reference": "51583ddae06139bc37e5a8e083728dcb8524da41",
+                "shasum": "7d5cba66d4f4d93f27ef89fff3f53bbdb85ce282"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -133,7 +133,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-12-09 13:38:19"
+            "time": "2016-12-12 15:08:25"
         },
         {
             "name": "codemonkeys-ru/gcm-message",

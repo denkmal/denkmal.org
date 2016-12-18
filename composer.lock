@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "48432078c0a8a83a9c545dc958141597",
-    "content-hash": "528a21d03b672faa72066828ac973ee8",
+    "hash": "c48e0d5c65d4396c62e70713baa2e7e3",
+    "content-hash": "617411038bd1bae934c726109a1b9d2b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,17 +72,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.211.0",
+            "version": "1.212.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "a2bab537d318b9b910200abc1fe10e5557653cb3"
+                "reference": "84383b91ef593027519ebcd756a302162243ce73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-a2bab537d318b9b910200abc1fe10e5557653cb3-zip-a53740.zip",
-                "reference": "a2bab537d318b9b910200abc1fe10e5557653cb3",
-                "shasum": "e01c0cb1ea886da44cb551a735d03a8bef3e67b1"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-84383b91ef593027519ebcd756a302162243ce73-zip-959b21.zip",
+                "reference": "84383b91ef593027519ebcd756a302162243ce73",
+                "shasum": "a19d525c829bb988f771203ad76110e24a6ddffd"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -98,6 +98,7 @@
                 "leafo/lessphp": "~0.5.0",
                 "lstrojny/functional-php": "~1.2.4",
                 "michelf/php-markdown": "1.4.0",
+                "mischiefcollective/colorjizz": "dev-master#361b8a8727d13b67cb593a936a715ad2204ececb",
                 "nicmart/tree": "~0.2.0",
                 "php": ">=5.6.0",
                 "predis/predis": "~1.0.3",
@@ -132,7 +133,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-12-01 11:13:28"
+            "time": "2016-12-02 14:30:03"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -1538,6 +1539,37 @@
                 "markdown"
             ],
             "time": "2013-11-29 17:09:24"
+        },
+        {
+            "name": "mischiefcollective/colorjizz",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikeemoo/ColorJizz-PHP.git",
+                "reference": "361b8a8727d13b67cb593a936a715ad2204ececb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/mischiefcollective-colorjizz-361b8a8727d13b67cb593a936a715ad2204ececb-zip-a56e24.zip",
+                "reference": "361b8a8727d13b67cb593a936a715ad2204ececb",
+                "shasum": "f9d5c065185c63125cf0cab550514cf68ec249ae"
+            },
+            "require": {
+                "php": ">=5.3.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MischiefCollective": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Classes for manipulating colors, converting to different formats and finding color harmonies",
+            "homepage": "http://mikeefranklin.co.uk:8080/job/ColorJizz-PHP/",
+            "time": "2016-11-14 16:58:48"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -4074,9 +4106,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "alpha",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []

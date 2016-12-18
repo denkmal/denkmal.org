@@ -64,9 +64,11 @@ class Denkmal_Model_Link extends CM_Model_Abstract {
 
     protected function _onChange() {
         Denkmal_Usertext_Filter_Links::clearCache();
-        foreach ($this->_getContainingCacheables() as $cacheable) {
-            $cacheable->_change();
-        }
+        $this->_changeContainingCacheables();
+    }
+
+    protected function _onCreate() {
+        Denkmal_Usertext_Filter_Links::clearCache();
     }
 
     protected function _getSchema() {

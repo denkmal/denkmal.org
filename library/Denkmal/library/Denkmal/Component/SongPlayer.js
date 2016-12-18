@@ -4,48 +4,51 @@
  */
 var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
 
-  /** @type String */
+  /** @type {String} */
   _class: 'Denkmal_Component_SongPlayer',
 
-  /** @type mejs.MediaElement */
-  _player: null,
+  /** @type {Audio|Null} */
+  _audio: null,
 
   /** @type {Object|Null} */
   _song: null,
-
-  ready: function() {
-    var self = this;
-    this._player = new mejs.MediaElement(this.$('audio').get(0), {
-      type: 'audio/mp3',
-      success: function(mediaElement, domObject) {
-        mediaElement.addEventListener('ended', function() {
-          self.pauseSong();
-        });
-      }
-    });
-  },
 
   /**
    * @param {Object} song
    */
   playSong: function(song) {
-    this._song = song;
-    var url = cm.getUrlUserContent(this._song.path);
-    this._player.setSrc(url);
-    this._player.play();
-    _.invoke(cm.getViewList('Denkmal_Component_SongPlayerButton'), 'onPlay', this._song);
+    this.stopSong();
+    if (!this._song || this._song.id != song.id) {
+      this._song = song;
+      this._audio = new cm.lib.Media.Audio(null, {'crossOrigin': null});
+      this._audio.setSource(cm.getUrlUserContent(this._song.path));
+    }
+    this._audio.play();
+    cm.event.trigger('song:play', song);
   },
 
-  pauseSong: function() {
-    this._song = null;
-    this._player.pause();
-    _.invoke(cm.getViewList('Denkmal_Component_SongPlayerButton'), 'onPause');
+  stopSong: function() {
+    if (!this._audio) {
+      return;
+    }
+    this._audio.stop();
+    cm.event.trigger('song:pause');
   },
 
   /**
-   * @returns {Object}
+   * @returns {Boolean}
    */
-  getSong: function() {
+  isPlaying: function() {
+    return this._audio && this._audio.isPlaying();
+  },
+
+  /**
+   * @returns {Object|Null}
+   */
+  getCurrentlyPlayingSong: function() {
+    if (!this.isPlaying()) {
+      return null;
+    }
     return this._song;
   }
 });

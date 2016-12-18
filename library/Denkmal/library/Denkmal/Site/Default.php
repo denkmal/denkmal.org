@@ -11,10 +11,7 @@ class Denkmal_Site_Default extends CM_Site_Abstract {
         return Denkmal_View_Document::class;
     }
 
-    /**
-     * @return CM_Menu[]
-     */
-    public function getMenus() {
+    public function getMenus(CM_Frontend_Environment $environment) {
         return array(
             'main'  => new Denkmal_Menu_Main(),
             'dates' => new Denkmal_Menu_Weekdays(),

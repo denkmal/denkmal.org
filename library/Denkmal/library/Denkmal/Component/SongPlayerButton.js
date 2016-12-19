@@ -30,11 +30,19 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
     }
   },
 
+  appEvents: {
+    'song:play': function(song) {
+      this._onPlay(song);
+    },
+    'song:pause': function() {
+      this._onPause();
+    }
+  },
+
   ready: function() {
-    this._player = cm.findView('Denkmal_Component_SongPlayer');
-    var playerSong = this._player.getSong();
-    if (playerSong && playerSong.id == this.song.id) {
-      this.onPlay(this.song);
+    var playingSong = this._getPlayer().getCurrentlyPlayingSong();
+    if (playingSong && playingSong.id == this.song.id) {
+      this._onPlay(playingSong);
     }
     if (this.autoPlay) {
       this.playSong();
@@ -42,44 +50,53 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
   },
 
   playSong: function() {
-    this._player.playSong(this.song);
+    this._getPlayer().playSong(this.song);
   },
 
   pauseSong: function() {
-    this._player.pauseSong();
+    this._getPlayer().stopSong();
   },
 
-  onPause: function() {
+  /**
+   * @returns {Denkmal_Component_SongPlayer}
+   * @private
+   */
+  _getPlayer: function() {
+    var player = cm.findView('Denkmal_Component_SongPlayer');
+    if (!player) {
+      throw new Error('No player found');
+    }
+    return player;
+  },
+
+  /**
+   * @param {Object} song
+   * @private
+   */
+  _onPlay: function(song) {
+    if (song.id == this.song.id) {
+      this._showPauseIcon(true);
+      this._playing = true;
+    } else {
+      this._onPause();
+    }
+  },
+
+  /**
+   * @private
+   */
+  _onPause: function() {
     if (this._playing) {
-      this.trigger('pause');
-      this.showPauseIcon(false);
+      this._showPauseIcon(false);
       this._playing = false;
     }
   },
 
   /**
-   * @param {Object} song
-   */
-  onPlay: function(song) {
-    if (song.id == this.song.id) {
-
-      var self = this;
-      _.defer(function() {
-        self.trigger('play', song);
-      }, self);
-
-      this.showPauseIcon(true);
-      this._playing = true;
-    } else {
-      this.onPause();
-    }
-  },
-
-  /**
-   *
    * @param {Boolean} state
+   * @private
    */
-  showPauseIcon: function(state) {
+  _showPauseIcon: function(state) {
     this.$('.playSong').toggleClass('disabled', state);
     this.$('.pauseSong').toggleClass('disabled', !state);
   }

@@ -25,10 +25,10 @@ var Denkmal_Component_MessageList_Abstract = Denkmal_Component_Abstract.extend({
    * @param {jQuery} $image
    */
   showImage: function($image) {
-    $image.floatOut();
+    $image.floatbox();
 
     $image.on('click.closeImage', function() {
-      $image.floatIn();
+      $image.floatbox('close');
     });
     $image.on('floatbox-close', function() {
       $image.off('click.closeImage');

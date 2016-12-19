@@ -30,7 +30,7 @@ class Admin_Site extends Denkmal_Site_Default {
         return $match;
     }
 
-    public function getMenus() {
+    public function getMenus(CM_Frontend_Environment $environment) {
         return array(
             'main'     => new Admin_Menu_Main(),
             'weekdays' => new Admin_Menu_Weekdays(),

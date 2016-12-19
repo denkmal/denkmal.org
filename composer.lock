@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e1df8457563ea4b9c48ac89ad5a374ff",
-    "content-hash": "0ca3c9b61070bb5c1002e0105d46b1bd",
+    "hash": "d2deb20be7dd61a18d7fe243b4d1cd0c",
+    "content-hash": "8d687330f37aafe30f71bd468427ccb3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -72,17 +72,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.207.1",
+            "version": "1.219.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "d3d70204e422f82bc3a53f77125474a80ff020e4"
+                "reference": "ed11b5bbb14e7cc3f7ac2adb275a5678e93c2ebf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-d3d70204e422f82bc3a53f77125474a80ff020e4-zip-bd5260.zip",
-                "reference": "d3d70204e422f82bc3a53f77125474a80ff020e4",
-                "shasum": "7419bb5bbaea7afb034fa278d71ba5543b443e04"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-ed11b5bbb14e7cc3f7ac2adb275a5678e93c2ebf-zip-870388.zip",
+                "reference": "ed11b5bbb14e7cc3f7ac2adb275a5678e93c2ebf",
+                "shasum": "aa70def6d568e0cf188e284dc5a4a93b079b3ca1"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -96,8 +96,9 @@
                 "kickbox/kickbox": "~1.0.3",
                 "kissmetrics/kissmetrics-php": "~0.1.0",
                 "leafo/lessphp": "~0.5.0",
-                "lstrojny/functional-php": "1.0.0-alpha2",
+                "lstrojny/functional-php": "~1.2.4",
                 "michelf/php-markdown": "1.4.0",
+                "mischiefcollective/colorjizz": "dev-master#361b8a8727d13b67cb593a936a715ad2204ececb",
                 "nicmart/tree": "~0.2.0",
                 "php": ">=5.6.0",
                 "predis/predis": "~1.0.3",
@@ -132,7 +133,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-10-15 18:52:18"
+            "time": "2016-12-15 17:03:03"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -179,17 +180,17 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.0.4",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "ec21a59414b99501e723b63fd664aa8ead9c5680"
+                "reference": "a795611394b3c05164fd0eb291b492b39339cba4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/composer-ca-bundle-ec21a59414b99501e723b63fd664aa8ead9c5680-zip-8c7bcf.zip",
-                "reference": "ec21a59414b99501e723b63fd664aa8ead9c5680",
-                "shasum": "9576a3cc565723241d0f8e83ed16b24458ed9d54"
+                "url": "https://satis.cargomedia.ch/dist/dist/composer-ca-bundle-a795611394b3c05164fd0eb291b492b39339cba4-zip-6ef032.zip",
+                "reference": "a795611394b3c05164fd0eb291b492b39339cba4",
+                "shasum": "f01461b5af2d061be877d81afb66c4db7ab87a39"
             },
             "require": {
                 "ext-openssl": "*",
@@ -233,21 +234,21 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2016-09-04 19:00:06"
+            "time": "2016-11-02 18:11:27"
         },
         {
             "name": "composer/composer",
-            "version": "1.2.1",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "16422c4b1ac4286f7caecf5211136dc073191672"
+                "reference": "7895e4a7e0e05b06e0ebfae96fc154c6a2ba75f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/composer-composer-16422c4b1ac4286f7caecf5211136dc073191672-zip-0f7a47.zip",
-                "reference": "16422c4b1ac4286f7caecf5211136dc073191672",
-                "shasum": "6cf737c17a6cfec102216d15036f1de9fa511b10"
+                "url": "https://satis.cargomedia.ch/dist/dist/composer-composer-7895e4a7e0e05b06e0ebfae96fc154c6a2ba75f0-zip-44cab3.zip",
+                "reference": "7895e4a7e0e05b06e0ebfae96fc154c6a2ba75f0",
+                "shasum": "5f65352f64c0b3f48d50d14a87902b41c05afe90"
             },
             "require": {
                 "composer/ca-bundle": "^1.0",
@@ -310,7 +311,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2016-09-12 09:27:20"
+            "time": "2016-12-06 21:00:51"
         },
         {
             "name": "composer/semver",
@@ -1018,7 +1019,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.3.16",
+            "version": "v5.3.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1060,17 +1061,17 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.3.16",
+            "version": "v5.3.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "aa685c61c88a69b2e0e86310e65ef5ad2ebf2448"
+                "reference": "050d0ed3e1c0e1d129d73b2eaa14044e46a66f77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-aa685c61c88a69b2e0e86310e65ef5ad2ebf2448-zip-4de41a.zip",
-                "reference": "aa685c61c88a69b2e0e86310e65ef5ad2ebf2448",
-                "shasum": "53cef80f11402c641ecfdd4db074f1ea1753a254"
+                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-050d0ed3e1c0e1d129d73b2eaa14044e46a66f77-zip-f1017d.zip",
+                "reference": "050d0ed3e1c0e1d129d73b2eaa14044e46a66f77",
+                "shasum": "d548846531c15ab54247d2b8a4645f25adbf0eea"
             },
             "require": {
                 "doctrine/inflector": "~1.0",
@@ -1113,7 +1114,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2016-10-02 01:14:47"
+            "time": "2016-11-03 15:25:28"
         },
         {
             "name": "jenssegers/agent",
@@ -1374,25 +1375,97 @@
         },
         {
             "name": "lstrojny/functional-php",
-            "version": "1.0.0-alpha2",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lstrojny/functional-php.git",
-                "reference": "a3972246bacb52d9080f89fd56d9ab4df60e874f"
+                "reference": "cc97ae1bad385ace917af9727cf4f03e1a415b54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/lstrojny-functional-php-a3972246bacb52d9080f89fd56d9ab4df60e874f-zip-bf2880.zip",
-                "reference": "a3972246bacb52d9080f89fd56d9ab4df60e874f",
-                "shasum": "62b1ebee30bb4f8ad3541577735281356fa99649"
+                "url": "https://satis.cargomedia.ch/dist/dist/lstrojny-functional-php-cc97ae1bad385ace917af9727cf4f03e1a415b54-zip-dcf66c.zip",
+                "reference": "cc97ae1bad385ace917af9727cf4f03e1a415b54",
+                "shasum": "16a6fb2e8410409524dcaa2eee74344266f20068"
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
             "autoload": {
+                "psr-4": {
+                    "Functional\\": "src/Functional"
+                },
                 "files": [
-                    "src/Functional/_import.php"
+                    "src/Functional/Average.php",
+                    "src/Functional/Capture.php",
+                    "src/Functional/ConstFunction.php",
+                    "src/Functional/CompareOn.php",
+                    "src/Functional/CompareObjectHashOn.php",
+                    "src/Functional/Compose.php",
+                    "src/Functional/Contains.php",
+                    "src/Functional/Difference.php",
+                    "src/Functional/DropFirst.php",
+                    "src/Functional/DropLast.php",
+                    "src/Functional/Each.php",
+                    "src/Functional/Every.php",
+                    "src/Functional/False.php",
+                    "src/Functional/Falsy.php",
+                    "src/Functional/Filter.php",
+                    "src/Functional/First.php",
+                    "src/Functional/FirstIndexOf.php",
+                    "src/Functional/FlatMap.php",
+                    "src/Functional/Flatten.php",
+                    "src/Functional/Group.php",
+                    "src/Functional/Head.php",
+                    "src/Functional/Id.php",
+                    "src/Functional/IndexesOf.php",
+                    "src/Functional/Invoke.php",
+                    "src/Functional/InvokeFirst.php",
+                    "src/Functional/InvokeIf.php",
+                    "src/Functional/InvokeLast.php",
+                    "src/Functional/Invoker.php",
+                    "src/Functional/Last.php",
+                    "src/Functional/LastIndexOf.php",
+                    "src/Functional/Map.php",
+                    "src/Functional/Maximum.php",
+                    "src/Functional/Memoize.php",
+                    "src/Functional/Minimum.php",
+                    "src/Functional/None.php",
+                    "src/Functional/PartialAny.php",
+                    "src/Functional/PartialLeft.php",
+                    "src/Functional/PartialMethod.php",
+                    "src/Functional/PartialRight.php",
+                    "src/Functional/Partition.php",
+                    "src/Functional/Pick.php",
+                    "src/Functional/Pluck.php",
+                    "src/Functional/Poll.php",
+                    "src/Functional/Product.php",
+                    "src/Functional/Ratio.php",
+                    "src/Functional/ReduceLeft.php",
+                    "src/Functional/ReduceRight.php",
+                    "src/Functional/Reject.php",
+                    "src/Functional/Retry.php",
+                    "src/Functional/Select.php",
+                    "src/Functional/SequenceConstant.php",
+                    "src/Functional/SequenceExponential.php",
+                    "src/Functional/SequenceLinear.php",
+                    "src/Functional/Some.php",
+                    "src/Functional/Sort.php",
+                    "src/Functional/Sum.php",
+                    "src/Functional/Tail.php",
+                    "src/Functional/True.php",
+                    "src/Functional/Truthy.php",
+                    "src/Functional/Unique.php",
+                    "src/Functional/With.php",
+                    "src/Functional/Zip.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1414,7 +1487,7 @@
             "keywords": [
                 "functional"
             ],
-            "time": "2013-03-24 00:30:09"
+            "time": "2016-08-16 10:16:31"
         },
         {
             "name": "michelf/php-markdown",
@@ -1468,18 +1541,49 @@
             "time": "2013-11-29 17:09:24"
         },
         {
-            "name": "mobiledetect/mobiledetectlib",
-            "version": "2.8.22",
+            "name": "mischiefcollective/colorjizz",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "53cddae0c272a478b24a4b5fb60d0f838caf70b6"
+                "url": "https://github.com/mikeemoo/ColorJizz-PHP.git",
+                "reference": "361b8a8727d13b67cb593a936a715ad2204ececb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/mobiledetect-mobiledetectlib-53cddae0c272a478b24a4b5fb60d0f838caf70b6-zip-41476d.zip",
-                "reference": "53cddae0c272a478b24a4b5fb60d0f838caf70b6",
-                "shasum": "689f2f319366340e358fc4f6aac3fc88a796a090"
+                "url": "https://satis.cargomedia.ch/dist/dist/mischiefcollective-colorjizz-361b8a8727d13b67cb593a936a715ad2204ececb-zip-a56e24.zip",
+                "reference": "361b8a8727d13b67cb593a936a715ad2204ececb",
+                "shasum": "f9d5c065185c63125cf0cab550514cf68ec249ae"
+            },
+            "require": {
+                "php": ">=5.3.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MischiefCollective": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Classes for manipulating colors, converting to different formats and finding color harmonies",
+            "homepage": "http://mikeefranklin.co.uk:8080/job/ColorJizz-PHP/",
+            "time": "2016-11-14 16:58:48"
+        },
+        {
+            "name": "mobiledetect/mobiledetectlib",
+            "version": "2.8.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/serbanghita/Mobile-Detect.git",
+                "reference": "cdf8f8efaf993bc687e78e4622f5eebd0b8b3bf3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.cargomedia.ch/dist/dist/mobiledetect-mobiledetectlib-cdf8f8efaf993bc687e78e4622f5eebd0b8b3bf3-zip-d11ec0.zip",
+                "reference": "cdf8f8efaf993bc687e78e4622f5eebd0b8b3bf3",
+                "shasum": "7086cd0b4e334d20e2b769fe668e9cf5e9f4596a"
             },
             "require": {
                 "php": ">=5.0.0"
@@ -1519,7 +1623,7 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2016-04-24 09:47:16"
+            "time": "2016-11-11 14:56:25"
         },
         {
             "name": "nicmart/tree",
@@ -1622,17 +1726,17 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.2",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/paragonie-random_compat-088c04e2f261c33bed6ca5245491cfca69195ccf-zip-31ee9f.zip",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf",
-                "shasum": "ea4085f9a40d9e2f0047296e0cde2777fa5c27f0"
+                "url": "https://satis.cargomedia.ch/dist/dist/paragonie-random_compat-a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e-zip-270862.zip",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "shasum": "a64cb31f5210e76f950a73c65b5ef610dfe8cac3"
             },
             "require": {
                 "php": ">=5.2.0"
@@ -1666,7 +1770,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-04-03 06:00:07"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "predis/predis",
@@ -1767,17 +1871,17 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "a07797b986671b0dc823885a81d5e3516b931599"
+                "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/ramsey-uuid-a07797b986671b0dc823885a81d5e3516b931599-zip-5de299.zip",
-                "reference": "a07797b986671b0dc823885a81d5e3516b931599",
-                "shasum": "78ec473e028e884a2c5b2f728baceba5499f3278"
+                "url": "https://satis.cargomedia.ch/dist/dist/ramsey-uuid-5677cfe02397dd6b58c861870dfaa5d9007d3954-zip-8bbdbf.zip",
+                "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954",
+                "shasum": "315ee52305cefe3b299a5cc17e9015d2a257e707"
             },
             "require": {
                 "paragonie/random_compat": "^1.0|^2.0",
@@ -1789,11 +1893,13 @@
             "require-dev": {
                 "apigen/apigen": "^4.1",
                 "codeception/aspect-mock": "1.0.0",
+                "doctrine/annotations": "~1.2.0",
                 "goaop/framework": "1.0.0-alpha.2",
                 "ircmaxell/random-lib": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
                 "mockery/mockery": "^0.9.4",
                 "moontoast/math": "^1.1",
+                "php-mock/php-mock-phpunit": "^0.3|^1.1",
                 "phpunit/phpunit": "^4.7|>=5.0 <5.4",
                 "satooshi/php-coveralls": "^0.6.1",
                 "squizlabs/php_codesniffer": "^2.3"
@@ -1843,7 +1949,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2016-10-02 15:51:17"
+            "time": "2016-11-22 19:21:44"
         },
         {
             "name": "react/promise",
@@ -1987,17 +2093,17 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "e827b5254d3e58c736ea2c5616710983d80b0b70"
+                "reference": "19495c181d6d53a0a13414154e52817e3b504189"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/seld-jsonlint-e827b5254d3e58c736ea2c5616710983d80b0b70-zip-46a90d.zip",
-                "reference": "e827b5254d3e58c736ea2c5616710983d80b0b70",
-                "shasum": "d1678a576ddcb6090ebe8375544c42363c07d468"
+                "url": "https://satis.cargomedia.ch/dist/dist/seld-jsonlint-19495c181d6d53a0a13414154e52817e3b504189-zip-519208.zip",
+                "reference": "19495c181d6d53a0a13414154e52817e3b504189",
+                "shasum": "c2d5d15cb53274a2884d7a75d9c5434796861eb0"
             },
             "require": {
                 "php": "^5.3 || ^7.0"
@@ -2029,7 +2135,7 @@
                 "parser",
                 "validator"
             ],
-            "time": "2016-09-14 15:17:56"
+            "time": "2016-11-14 17:59:58"
         },
         {
             "name": "seld/phar-utils",
@@ -2132,17 +2238,17 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.3",
+            "version": "v5.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
+                "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/swiftmailer-swiftmailer-4cc92842069c2bbc1f28daaaf1d2576ec4dfe153-zip-9e9b13.zip",
-                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
-                "shasum": "2263f76eebfa90889e1cc425b03b36c258a94d44"
+                "url": "https://satis.cargomedia.ch/dist/dist/swiftmailer-swiftmailer-545ce9136690cea74f98f86fbb9c92dd9ab1a756-zip-b93b4b.zip",
+                "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756",
+                "shasum": "eb2a113821d278a27ddc72d1f58f6708a1f288ca"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -2181,21 +2287,21 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-07-08 11:51:25"
+            "time": "2016-11-24 01:01:23"
         },
         {
             "name": "symfony/console",
-            "version": "v3.1.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "6cb0872fb57b38b3b09ff213c21ed693956b9eb0"
+                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-6cb0872fb57b38b3b09ff213c21ed693956b9eb0-zip-cf45fb.zip",
-                "reference": "6cb0872fb57b38b3b09ff213c21ed693956b9eb0",
-                "shasum": "1310e899b877f8a0fd4a91e10f00f238feb17969"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-d12aa9ca20f4db83ec58410978dab6afcb9d6aaa-zip-c1c940.zip",
+                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
+                "shasum": "fdc6332fd38fefe14e267c1989a978388e8ae1ab"
             },
             "require": {
                 "php": ">=5.5.9",
@@ -2205,17 +2311,19 @@
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/event-dispatcher": "~2.8|~3.0",
+                "symfony/filesystem": "~2.8|~3.0",
                 "symfony/process": "~2.8|~3.0"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
                 "symfony/event-dispatcher": "",
+                "symfony/filesystem": "",
                 "symfony/process": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2242,21 +2350,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-28 00:11:12"
+            "time": "2016-12-11 14:34:22"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.1.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "e2b3f74a67fc928adc3c1b9027f73e1bc01190a8"
+                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-debug-e2b3f74a67fc928adc3c1b9027f73e1bc01190a8-zip-ef8c4e.zip",
-                "reference": "e2b3f74a67fc928adc3c1b9027f73e1bc01190a8",
-                "shasum": "0ef29db5098add483878bae29d029c10a844c73c"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-debug-9f923e68d524a3095c5a2ae5fc7220c7cbc12231-zip-0a202d.zip",
+                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231",
+                "shasum": "30fa8a780f9405cf325421703f41c9dbb17b2f2b"
             },
             "require": {
                 "php": ">=5.5.9",
@@ -2272,7 +2380,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2299,21 +2407,21 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-06 11:02:40"
+            "time": "2016-11-16 22:18:16"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.1.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "c0c00c80b3a69132c4e55c3e7db32b4a387615e5"
+                "reference": "e8f47a327c2f0fd5aa04fa60af2b693006ed7283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-c0c00c80b3a69132c4e55c3e7db32b4a387615e5-zip-f96986.zip",
-                "reference": "c0c00c80b3a69132c4e55c3e7db32b4a387615e5",
-                "shasum": "123dd99dd5ebc0c16582423855c8cdffca6894c1"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-e8f47a327c2f0fd5aa04fa60af2b693006ed7283-zip-c17b9a.zip",
+                "reference": "e8f47a327c2f0fd5aa04fa60af2b693006ed7283",
+                "shasum": "7ca179746184bb3e1a7a62553798256388289314"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2332,7 +2440,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2359,21 +2467,21 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-19 10:45:57"
+            "time": "2016-10-13 06:29:04"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.1.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "682fd8fdb3135fdf05fc496a01579ccf6c85c0e5"
+                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-filesystem-682fd8fdb3135fdf05fc496a01579ccf6c85c0e5-zip-dd7425.zip",
-                "reference": "682fd8fdb3135fdf05fc496a01579ccf6c85c0e5",
-                "shasum": "e711af3817296320d2e07191e1cd60d609683cdc"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-filesystem-8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4-zip-bd378f.zip",
+                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
+                "shasum": "9b4c21c31ead57ef9b2f23c27cb14acdf424463b"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2381,7 +2489,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2408,21 +2516,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-14 00:18:46"
+            "time": "2016-11-24 00:46:43"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.1.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "205b5ffbb518a98ba2ae60a52656c4a31ab00c6f"
+                "reference": "a69cb5d455b4885ca376dc5bb3e1155cc8c08c4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-205b5ffbb518a98ba2ae60a52656c4a31ab00c6f-zip-0223cd.zip",
-                "reference": "205b5ffbb518a98ba2ae60a52656c4a31ab00c6f",
-                "shasum": "600153ccae6c30585ae91b6260f9260c6b6d31ad"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-a69cb5d455b4885ca376dc5bb3e1155cc8c08c4b-zip-7f4342.zip",
+                "reference": "a69cb5d455b4885ca376dc5bb3e1155cc8c08c4b",
+                "shasum": "346aad985196652facac184649294879e6e4f8ca"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2430,7 +2538,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2457,21 +2565,21 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-28 00:11:12"
+            "time": "2016-12-13 09:39:43"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594"
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-polyfill-mbstring-dff51f72b0706335131b00a7f49606168c582594-zip-aa7928.zip",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594",
-                "shasum": "d443455b4e041fa5b3fcfd271e1bf5a721a1a570"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-polyfill-mbstring-e79d363049d1c2128f133a2667e4f4190904f7f4-zip-34592d.zip",
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
+                "shasum": "9c26932fcec3558bfc2677444b17c283bb05a21e"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -2482,7 +2590,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -2516,21 +2624,21 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/process",
-            "version": "v3.1.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "66de154ae86b1a07001da9fbffd620206e4faf94"
+                "reference": "02ea84847aad71be7e32056408bb19f3a616cdd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-66de154ae86b1a07001da9fbffd620206e4faf94-zip-f0830c.zip",
-                "reference": "66de154ae86b1a07001da9fbffd620206e4faf94",
-                "shasum": "2c847fe01ee349bfe534e82045b26cf1927de1b5"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-02ea84847aad71be7e32056408bb19f3a616cdd3-zip-73d951.zip",
+                "reference": "02ea84847aad71be7e32056408bb19f3a616cdd3",
+                "shasum": "780bfe1ca8d1e18fd2bd075878cc4d6a606f80cf"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2538,7 +2646,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2565,7 +2673,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-29 14:13:09"
+            "time": "2016-11-24 10:40:28"
         },
         {
             "name": "tomaszdurka/codegenerator",
@@ -2710,17 +2818,17 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.4",
+            "version": "1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f"
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/myclabs-deep-copy-ea74994a3dc7f8d2f65a06009348f2d63c81e61f-zip-9394a6.zip",
-                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
-                "shasum": "3b03e4a0feccaad82c2f3e358a05b7842c0b54e4"
+                "url": "https://satis.cargomedia.ch/dist/dist/myclabs-deep-copy-399c1f9781e222f6eb6cc238796f5200d1b7f108-zip-7c48b9.zip",
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
+                "shasum": "fa6ed1298f1ced4db7632ca0a33666600f653234"
             },
             "require": {
                 "php": ">=5.4.0"
@@ -2748,7 +2856,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-09-16 13:37:59"
+            "time": "2016-10-31 17:19:45"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2851,17 +2959,17 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "0.2",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "b39c7a5b194f9ed7bd0dd345c751007a41862443"
+                "reference": "e224fb2ea2fba6d3ad6fdaef91cd09a172155ccb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpdocumentor-type-resolver-b39c7a5b194f9ed7bd0dd345c751007a41862443-zip-e34c86.zip",
-                "reference": "b39c7a5b194f9ed7bd0dd345c751007a41862443",
-                "shasum": "b0d9fe6be8d342fd26946e976c005699588ee35f"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpdocumentor-type-resolver-e224fb2ea2fba6d3ad6fdaef91cd09a172155ccb-zip-e5468a.zip",
+                "reference": "e224fb2ea2fba6d3ad6fdaef91cd09a172155ccb",
+                "shasum": "7f872c84cdbc31038a2b7e78a69b37f84aba7ac0"
             },
             "require": {
                 "php": ">=5.5",
@@ -2894,31 +3002,32 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2016-06-10 07:14:17"
+            "time": "2016-11-25 06:54:22"
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.6.1",
+            "version": "v1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "58a8137754bc24b25740d4281399a4a3596058e0"
+                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpspec-prophecy-58a8137754bc24b25740d4281399a4a3596058e0-zip-b71cdf.zip",
-                "reference": "58a8137754bc24b25740d4281399a4a3596058e0",
-                "shasum": "e78df66f0b4404ed422140eeedd756dec9d21980"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpspec-prophecy-6c52c2722f8460122f96f86346600e1077ce22cb-zip-573078.zip",
+                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb",
+                "shasum": "9774cba5a9c4f05dc7f459931fb0c8ebfe8e9b54"
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
                 "sebastian/comparator": "^1.1",
-                "sebastian/recursion-context": "^1.0"
+                "sebastian/recursion-context": "^1.0|^2.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^2.0"
+                "phpspec/phpspec": "^2.0",
+                "phpunit/phpunit": "^4.8 || ^5.6.5"
             },
             "type": "library",
             "extra": {
@@ -2956,21 +3065,21 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-06-07 08:13:47"
+            "time": "2016-11-21 14:58:47"
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.1",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "5f3f7e736d6319d5f1fc402aff8b026da26709a3"
+                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-5f3f7e736d6319d5f1fc402aff8b026da26709a3-zip-53898c.zip",
-                "reference": "5f3f7e736d6319d5f1fc402aff8b026da26709a3",
-                "shasum": "8f2af1c37c2b5197794b1c37dde62472a8dd87eb"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-903fd6318d0a90b4770a009ff73e4a4e9c437929-zip-096537.zip",
+                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929",
+                "shasum": "fd81fd571d3ead6a23a71712a1d6602cd91da12e"
             },
             "require": {
                 "php": "^5.6 || ^7.0",
@@ -3019,21 +3128,21 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-07-26 14:39:29"
+            "time": "2016-11-28 16:00:31"
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "6150bf2c35d3fc379e50c7602b75caceaa39dbf0"
+                "reference": "3cc8f69b3028d0f96a9078e6295d86e9bf019be5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-file-iterator-6150bf2c35d3fc379e50c7602b75caceaa39dbf0-zip-a7b18d.zip",
-                "reference": "6150bf2c35d3fc379e50c7602b75caceaa39dbf0",
-                "shasum": "980e085ed48f7e7863eb975f8e540c579ce117b1"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-file-iterator-3cc8f69b3028d0f96a9078e6295d86e9bf019be5-zip-184bc9.zip",
+                "reference": "3cc8f69b3028d0f96a9078e6295d86e9bf019be5",
+                "shasum": "27264b11b1bb8cdc72b8c50568af0a784fcb7394"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -3066,7 +3175,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2015-06-21 13:08:43"
+            "time": "2016-10-03 07:40:28"
         },
         {
             "name": "phpunit/php-text-template",
@@ -3155,17 +3264,17 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.8",
+            "version": "1.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da"
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-token-stream-3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da-zip-cd5a07.zip",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
-                "shasum": "0bdc9b0596f3e238acd7e185d8af40002a4252f9"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-token-stream-3b402f65a4cc90abf6e1104e388b896ce209631b-zip-6915ed.zip",
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "shasum": "d35b5f5c102612fa925552fa240ff07f2b7ea188"
             },
             "require": {
                 "ext-tokenizer": "*",
@@ -3200,7 +3309,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-09-15 10:49:45"
+            "time": "2016-11-15 14:06:22"
         },
         {
             "name": "phpunit/phpunit",
@@ -3287,23 +3396,23 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.4.0",
+            "version": "3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2"
+                "reference": "3ab72b65b39b491e0c011e2e09bb2206c2aa8e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-phpunit-mock-objects-238d7a2723bce689c79eeac9c7d5e1d623bb9dc2-zip-d45e80.zip",
-                "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2",
-                "shasum": "3c5c6c7d3c6b4750a9648cbf5392dbaf6b6a6292"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-phpunit-mock-objects-3ab72b65b39b491e0c011e2e09bb2206c2aa8e24-zip-3b7026.zip",
+                "reference": "3ab72b65b39b491e0c011e2e09bb2206c2aa8e24",
+                "shasum": "7aa1b4879b36f363d065f4b7217c69142f7b0a81"
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.6 || ^7.0",
                 "phpunit/php-text-template": "^1.2",
-                "sebastian/exporter": "^1.2"
+                "sebastian/exporter": "^1.2 || ^2.0"
             },
             "conflict": {
                 "phpunit/phpunit": "<5.4.0"
@@ -3342,7 +3451,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-10-09 07:01:45"
+            "time": "2016-12-08 20:27:08"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -3391,22 +3500,22 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "1.2.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "937efb279bd37a375bcadf584dec0726f84dbf22"
+                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-comparator-937efb279bd37a375bcadf584dec0726f84dbf22-zip-275d2d.zip",
-                "reference": "937efb279bd37a375bcadf584dec0726f84dbf22",
-                "shasum": "b0e911370140fad3f25ccb4a05bb0bf8a8c9a567"
+                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-comparator-6a1ed12e8b2409076ab22e3897126211ff8b1f7f-zip-60a9ca.zip",
+                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
+                "shasum": "f00acdbaf90209ae6eec234714998899852ad025"
             },
             "require": {
                 "php": ">=5.3.3",
                 "sebastian/diff": "~1.2",
-                "sebastian/exporter": "~1.2"
+                "sebastian/exporter": "~1.2 || ~2.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.4"
@@ -3451,7 +3560,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2015-07-26 15:48:44"
+            "time": "2016-11-19 09:18:40"
         },
         {
             "name": "sebastian/diff",
@@ -3507,28 +3616,28 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.3.8",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea"
+                "reference": "5795ffe5dc5b02460c3e34222fee8cbe245d8fac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-environment-be2c607e43ce4c89ecd60e75c6a85c126e754aea-zip-edab34.zip",
-                "reference": "be2c607e43ce4c89ecd60e75c6a85c126e754aea",
-                "shasum": "0d78e6abcba9bb8cd2fcf253e563b11207b9ffa5"
+                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-environment-5795ffe5dc5b02460c3e34222fee8cbe245d8fac-zip-f320b8.zip",
+                "reference": "5795ffe5dc5b02460c3e34222fee8cbe245d8fac",
+                "shasum": "1ae985b72aefe1d3bc8e2fc23d63ebcd14da2e98"
             },
             "require": {
-                "php": "^5.3.3 || ^7.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.0"
+                "phpunit/phpunit": "^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -3553,7 +3662,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-08-18 05:49:44"
+            "time": "2016-11-26 07:53:53"
         },
         {
             "name": "sebastian/exporter",
@@ -3816,17 +3925,17 @@
         },
         {
             "name": "sebastian/version",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "c829badbd8fdf16a0bad8aa7fa7971c029f1b9c5"
+                "reference": "99732be0ddb3361e16ad77b68ba41efc8e979019"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-version-c829badbd8fdf16a0bad8aa7fa7971c029f1b9c5-zip-56c2bf.zip",
-                "reference": "c829badbd8fdf16a0bad8aa7fa7971c029f1b9c5",
-                "shasum": "9871a9af34fc4ef820aabaa8978441b62ab9b474"
+                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-version-99732be0ddb3361e16ad77b68ba41efc8e979019-zip-0eee83.zip",
+                "reference": "99732be0ddb3361e16ad77b68ba41efc8e979019",
+                "shasum": "b8e7d126119ee8c7e9d7be541f598049c7d84b04"
             },
             "require": {
                 "php": ">=5.6"
@@ -3855,29 +3964,35 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2016-02-04 12:56:52"
+            "time": "2016-10-03 07:35:21"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.1.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "368b9738d4033c8b93454cb0dbd45d305135a6d3"
+                "reference": "a7095af4b97a0955f85c8989106c249fa649011f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-368b9738d4033c8b93454cb0dbd45d305135a6d3-zip-04aa57.zip",
-                "reference": "368b9738d4033c8b93454cb0dbd45d305135a6d3",
-                "shasum": "e1b6272bf912ed34be9c96475d8ba0cfe5200084"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-a7095af4b97a0955f85c8989106c249fa649011f-zip-e73217.zip",
+                "reference": "a7095af4b97a0955f85c8989106c249fa649011f",
+                "shasum": "05e5f277c33f5cff1c8456fdc5e1bed5ac25f331"
             },
             "require": {
                 "php": ">=5.5.9"
             },
+            "require-dev": {
+                "symfony/console": "~2.8|~3.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -3904,7 +4019,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-25 08:27:07"
+            "time": "2016-12-10 10:07:06"
         },
         {
             "name": "tomaszdurka/mocka",
@@ -3941,20 +4056,20 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308"
+                "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/webmozart-assert-bb2d123231c095735130cc8f6d31385a44c7b308-zip-d562b0.zip",
-                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308",
-                "shasum": "513eb4e7d49b1b4019deda432914859a7df63fd0"
+                "url": "https://satis.cargomedia.ch/dist/dist/webmozart-assert-2db61e59ff05fe5126d152bd0655c9ea113e550f-zip-36e9ad.zip",
+                "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f",
+                "shasum": "d979fb11551b9ae7e1a55789a4b31cc874432a19"
             },
             "require": {
-                "php": "^5.3.3|^7.0"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.6",
@@ -3963,7 +4078,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -3987,13 +4102,13 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-08-09 15:02:57"
+            "time": "2016-11-23 20:04:58"
         }
     ],
     "aliases": [],
-    "minimum-stability": "alpha",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []

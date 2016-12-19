@@ -41,8 +41,8 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision 'shell', run: 'always', inline: [
     'cd /home/vagrant/denkmal',
-    'cp resources/config/local.dev.php resources/config/local.php',
-    'bin/cm app set-deploy-version',
+    'cp resources/config/_local.dev.php resources/config/local.php',
+    "bin/cm app set-config deploy '#{{:deployVersion => Time.now.to_i}.to_json}'",
     'bin/cm app setup',
     'bin/cm db run-updates',
     'sudo foreman-systemd reload -w cm-applications.target denkmal .',

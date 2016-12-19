@@ -4,7 +4,7 @@
     "bin-dir": "bin/"
   },
   "require": {
-    "cargomedia/cm": "~1.207.0",
+    "cargomedia/cm": "~1.219.0",
     "ricardoper/twitteroauth": "~2.1.6",
     "nojimage/twitter-text-php": "~1.1.1",
     "codemonkeys-ru/gcm-message": "~0.2.0",
@@ -16,7 +16,8 @@
     "tomaszdurka/mocka": "~0.12.0",
     "fzaninotto/faker": "~1.5.0"
   },
-  "minimum-stability": "alpha",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "repositories": [
     {
       "type": "composer",

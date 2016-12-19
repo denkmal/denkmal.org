@@ -252,6 +252,10 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->updateSearchIndex();
     }
 
+    protected function _onCreate() {
+        $this->updateSearchIndex();
+    }
+
     protected function _onDeleteAfter() {
         $this->updateSearchIndex();
     }

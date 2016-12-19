@@ -28,7 +28,7 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
 
   renderPreview: function() {
     var form = this;
-    this.submit('Save_Preview', {handleErrors: false, disableUI: false})
+    this._submitOnly('Save_Preview', false)
       .then(function(response) {
         var preview = form._injectView(response);
         if (form._preview) {

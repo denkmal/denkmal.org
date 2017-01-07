@@ -8,4 +8,9 @@ class Denkmal_Form_Login extends CM_Form_Abstract {
 
         $this->registerAction(new Denkmal_FormAction_Login_Process($this));
     }
+
+    protected function _getRequiredFields() {
+        return array('login', 'password');
+    }
+
 }

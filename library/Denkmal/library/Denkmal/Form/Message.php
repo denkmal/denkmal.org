@@ -11,6 +11,10 @@ class Denkmal_Form_Message extends CM_Form_Abstract {
         $this->registerAction(new Denkmal_FormAction_Message_Create($this));
     }
 
+    protected function _getRequiredFields() {
+        return array('venue');
+    }
+
     /**
      * @param Denkmal_Model_User $user
      * @return bool

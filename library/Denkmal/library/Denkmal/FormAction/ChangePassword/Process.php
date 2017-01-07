@@ -2,10 +2,6 @@
 
 class Denkmal_FormAction_ChangePassword_Process extends CM_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return array('old_password', 'new_password', 'new_password_confirm');
-    }
-
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Model_User $user */
         $user = $response->getViewer(true);

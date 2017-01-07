@@ -2,10 +2,6 @@
 
 class Admin_FormAction_UserInvite_Create extends Admin_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return [];
-    }
-
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         parent::_checkData($params, $response, $form);
         $email = $params->has('email') ? $params->getString('email') : null;

@@ -9,4 +9,8 @@ class Denkmal_Form_ChangePassword extends CM_Form_Abstract {
 
         $this->registerAction(new Denkmal_FormAction_ChangePassword_Process($this));
     }
+
+    protected function _getRequiredFields() {
+        return array('old_password', 'new_password', 'new_password_confirm');
+    }
 }

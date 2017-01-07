@@ -2,12 +2,8 @@
 
 class Admin_FormAction_Translation_Unset extends CM_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return array('language', 'key');
-    }
-
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
-        /** @var SK_User $user */
+        /** @var Denkmal_Model_User $user */
         $user = $response->getViewer(true);
 
         /** @var Admin_Form_Translation $form */

@@ -2,12 +2,13 @@
 
 class Admin_FormAction_Song_Add extends Admin_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return array('label', 'file');
-    }
-
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         parent::_checkData($params, $response, $form);
+
+        if (!$params->has('files')) {
+            $response->addError('File required', 'files');
+        }
+
         $label = $params->getString('label');
         if (Denkmal_Model_Song::findByLabel($label)) {
             $response->addError($response->getRender()->getTranslation('Name already in use.'), 'label');

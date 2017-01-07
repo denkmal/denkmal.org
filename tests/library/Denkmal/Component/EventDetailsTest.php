@@ -13,7 +13,7 @@ class Denkmal_Component_EventDetailsTest extends CMTest_TestCase {
 
         $this->assertComponentAccessible($component);
         $this->assertTrue($html->has('a.location'));
-        $this->assertSame('https://www.google.com/maps?ll=12%2C13&q=My+Venue', $html->find('a.location')->getAttribute('href'));
+        $this->assertSame('https://www.google.com/maps?q=My+Venue%4012%2C13', $html->find('a.location')->getAttribute('href'));
     }
 
     public function testSecretVenue() {

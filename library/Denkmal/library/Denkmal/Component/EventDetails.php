@@ -8,8 +8,7 @@ class Denkmal_Component_EventDetails extends Denkmal_Component_Abstract {
         $mapLink = null;
         if ($venue->getCoordinates() && !$venue->getSecret()) {
             $mapLink = CM_Util::link('https://www.google.com/maps', [
-                'll' => $venue->getCoordinates()->getLatitude() . ',' . $venue->getCoordinates()->getLongitude(),
-                'q'  => $venue->getName(),
+                'q' => $venue->getName() . '@' . $venue->getCoordinates()->getLatitude() . ',' . $venue->getCoordinates()->getLongitude(),
             ]);
         }
 

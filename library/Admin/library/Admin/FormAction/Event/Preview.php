@@ -1,10 +1,13 @@
 <?php
 
-class Admin_FormAction_Event_Save_Preview extends Admin_FormAction_Event_Save {
+class Admin_FormAction_Event_Preview extends Admin_FormAction_Event_Save {
 
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Params $params */
-        $event = $params->getEvent('eventId');
+        /** @var Denkmal_Params $formParams */
+        $formParams = $form->getParams();
+        $event = $formParams->getEvent('event');
+
         $venue = $params->getVenue('venue');
         list($from, $until) = $this->_processDate($params);
         $description = $params->getString('description');

@@ -2,10 +2,6 @@
 
 class Denkmal_FormAction_EventAdd_Preview extends CM_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return array('venue', 'date', 'fromTime');
-    }
-
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Params $formParams */
         $formParams = $form->getParams();

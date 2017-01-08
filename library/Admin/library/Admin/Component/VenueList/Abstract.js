@@ -8,7 +8,7 @@ var Admin_Component_VenueList_Abstract = Admin_Component_Abstract.extend({
   _class: 'Admin_Component_VenueList_Abstract',
 
   childrenEvents: {
-    'Admin_Form_Venue success.Delete': function() {
+    'Admin_Form_Venue venue:deleted': function() {
       this.reload();
     }
   }

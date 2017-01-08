@@ -15,7 +15,10 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
       if (event.which == cm.keyCode.ENTER) {
         this.submit('Save');
       }
-    }
+    },
+    'click .showEvent': 'showEvent',
+    'click .hideEvent': 'hideEvent',
+    'click .deleteEvent': 'deleteEvent'
   },
 
   ready: function() {
@@ -28,7 +31,7 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
 
   renderPreview: function() {
     var form = this;
-    this._submitOnly('Save_Preview', false)
+    this._submitOnly('Preview', false)
       .then(function(response) {
         var preview = form._injectView(response);
         if (form._preview) {
@@ -44,6 +47,39 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
           form._preview.remove();
           form._preview = null;
         }
+      });
+  },
+
+  /**
+   * @returns {Promise}
+   */
+  showEvent: function() {
+    var self = this;
+    return this.ajax('showEvent')
+      .then(function() {
+        self.trigger('event:updated');
+      });
+  },
+
+  /**
+   * @returns {Promise}
+   */
+  hideEvent: function() {
+    var self = this;
+    return this.ajax('hideEvent')
+      .then(function() {
+        self.trigger('event:updated');
+      });
+  },
+
+  /**
+   * @returns {Promise}
+   */
+  deleteEvent: function() {
+    var self = this;
+    return this.ajax('deleteEvent')
+      .then(function() {
+        self.trigger('event:deleted');
       });
   }
 });

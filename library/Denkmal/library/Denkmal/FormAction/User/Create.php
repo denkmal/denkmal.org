@@ -2,10 +2,6 @@
 
 class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return array('email', 'username', 'password');
-    }
-
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Params $params */
         /** @var Denkmal_Params $paramsForm */
@@ -29,6 +25,10 @@ class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
 
         if (null !== Denkmal_Model_User::findByEmail($email)) {
             $response->addError($response->getRender()->getTranslation('Email already in use.'), 'email');
+        }
+
+        if (!$params->has('password')) {
+            $response->addError('Password required', 'password');
         }
     }
 

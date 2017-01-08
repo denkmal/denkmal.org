@@ -2,13 +2,12 @@
 
 class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return array('eventId', 'venue', 'date', 'fromTime', 'description');
-    }
-
     protected function _process(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         /** @var Denkmal_Params $params */
-        $event = $params->getEvent('eventId');
+        /** @var Denkmal_Params $formParams */
+        $formParams = $form->getParams();
+        $event = $formParams->getEvent('event');
+
         $venue = $params->getVenue('venue');
         list($from, $until) = $this->_processDate($params);
         $description = $params->getString('description');

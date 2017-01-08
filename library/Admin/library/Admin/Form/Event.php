@@ -9,9 +9,9 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $region = $event->getVenue()->getRegion();
         $timeZone = $event->getTimeZone();
 
-        $this->registerField(new CM_FormField_Hidden(['name' => 'eventId']));
         $this->registerField(new Denkmal_FormField_Venue(['name' => 'venue', 'region' => $region, 'enableChoiceCreate' => false]));
-        $this->registerField(new CM_FormField_Date(['name' => 'date', 'timeZone' => $timeZone, 'yearFirst' => date('Y') - 1, 'yearLast' => (int) date('Y') + 1]));
+        $this->registerField(new CM_FormField_Date(['name'      => 'date', 'timeZone' => $timeZone,
+                                                    'yearFirst' => date('Y') - 1, 'yearLast' => (int) date('Y') + 1]));
         $this->registerField(new CM_FormField_Time(['name' => 'fromTime', 'timeZone' => $timeZone]));
         $this->registerField(new CM_FormField_Time(['name' => 'untilTime', 'timeZone' => $timeZone]));
         $this->registerField(new CM_FormField_Textarea(['name' => 'description']));
@@ -19,18 +19,20 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_Boolean(['name' => 'starred']));
 
         $this->registerAction(new Admin_FormAction_Event_Save($this));
-        $this->registerAction(new Admin_FormAction_Event_Save_Preview($this));
-        $this->registerAction(new Admin_FormAction_Event_Delete($this));
-        $this->registerAction(new Admin_FormAction_Event_Show($this));
-        $this->registerAction(new Admin_FormAction_Event_Hide($this));
+        $this->registerAction(new Admin_FormAction_Event_Preview($this));
+    }
+
+    protected function _getRequiredFields() {
+        return array('venue', 'date', 'fromTime', 'description');
     }
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
+        parent::prepare($environment, $viewResponse);
+
         /** @var Denkmal_Params $params */
         $params = $this->getParams();
         $event = $params->getEvent('event');
 
-        $this->getField('eventId')->setValue($event->getId());
         $this->getField('venue')->setValue($event->getVenue());
         $this->getField('date')->setValue($event->getFrom());
         $this->getField('fromTime')->setValue($event->getFrom());
@@ -39,4 +41,44 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->getField('song')->setValue($event->getSong());
         $this->getField('starred')->setValue($event->getStarred());
     }
+
+    public function ajax_deleteEvent(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+        if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER)) {
+            throw new CM_Exception_NotAllowed();
+        }
+
+        $event = $params->getEvent('event');
+        $event->delete();
+    }
+
+    public function ajax_showEvent(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+        if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER)) {
+            throw new CM_Exception_NotAllowed();
+        }
+
+        $event = $params->getEvent('event');
+        $event->setHidden(false);
+        $event->setEnabled(true);
+
+        $response->reloadComponent();
+    }
+
+    public function ajax_hideEvent(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+        if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER)) {
+            throw new CM_Exception_NotAllowed();
+        }
+
+        $event = $params->getEvent('event');
+        $event->setHidden(true);
+        $event->setEnabled(false);
+
+        $response->reloadComponent();
+    }
+
 }

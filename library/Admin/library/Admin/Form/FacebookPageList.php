@@ -7,4 +7,8 @@ class Admin_Form_FacebookPageList extends CM_Form_Abstract {
 
         $this->registerAction(new Admin_FormAction_FacebookPageList_Add($this));
     }
+
+    protected function _getRequiredFields() {
+        return array('facebookPage');
+    }
 }

@@ -12,7 +12,13 @@ class Admin_Form_Region extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Region_Save($this));
     }
 
+    protected function _getRequiredFields() {
+        return ['emailAddress'];
+    }
+
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
+        parent::prepare($environment, $viewResponse);
+
         /** @var Denkmal_Params $formParams */
         $formParams = $this->getParams();
         $region = $formParams->getRegion('region');

@@ -10,8 +10,7 @@
   {formField name='automatic' label={translate 'automatic'}}
 
   {formAction action='Save' label={translate 'Save'} alternatives="
-			{button action='Delete' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
-
-		"}
+    {button_link label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteLink' data=['click-confirmed' => true]}
+  "}
   {/form}
 </div>

@@ -60,11 +60,11 @@
       {formField name='song' label={translate 'Song'} append=$smarty.capture.songSuggestionList}
       {formField name='starred' label={translate 'Starred'}}
       {formAction action='Save' label={translate 'Save'} alternatives="
-				{button action='Delete' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
+				{button_link class='deleteEvent warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
 				{if $event->getHidden()}
-					{button action='Show' label={translate 'Show'}}
+					{button_link class='showEvent' label={translate 'Show'}}
 				{else}
-					{button action='Hide' label={translate 'Hide'}}
+					{button_link class='hideEvent' label={translate 'Hide'}}
 				{/if}
 			"}
       {/form}

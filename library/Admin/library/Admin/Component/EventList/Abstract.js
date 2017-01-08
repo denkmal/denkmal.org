@@ -8,7 +8,7 @@ var Admin_Component_EventList_Abstract = Admin_Component_Abstract.extend({
   _class: 'Admin_Component_EventList_Abstract',
 
   childrenEvents: {
-    'Admin_Form_Event success.Delete': function() {
+    'Admin_Form_Event event:deleted': function() {
       this.reload();
     }
   }

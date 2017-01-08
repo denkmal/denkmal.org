@@ -9,7 +9,7 @@
 <div class="toggleNext-content">
   {component name='Admin_Component_UserRoles' user=$user}
 
-  {form name='Denkmal_Form_User' user=$user}
+  {form name='Admin_Form_UserEdit' user=$user}
   {formField name='email' label={translate 'Email'}}
   {formField name='username' label={translate 'Username'}}
   {formField name='password' label={translate 'Password'}}

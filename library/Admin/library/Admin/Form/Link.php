@@ -10,10 +10,15 @@ class Admin_Form_Link extends CM_Form_Abstract {
 
         $this->registerAction(new Admin_FormAction_Link_Add($this));
         $this->registerAction(new Admin_FormAction_Link_Save($this));
-        $this->registerAction(new Admin_FormAction_Link_Delete($this));
+    }
+
+    protected function _getRequiredFields() {
+        return array('label', 'url');
     }
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
+        parent::prepare($environment, $viewResponse);
+
         /** @var Denkmal_Params $params */
         $params = $this->getParams();
 
@@ -27,4 +32,18 @@ class Admin_Form_Link extends CM_Form_Abstract {
             $this->getField('automatic')->setValue(true);
         }
     }
+
+    public function ajax_deleteLink(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
+        /** @var Denkmal_Params $params */
+        $params = $this->getParams();
+        $link = $params->getLink('link');
+
+        if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER)) {
+            throw new CM_Exception_NotAllowed();
+        }
+
+        $link->delete();
+        Denkmal_Model_Link::deleteEventtextCaches();
+    }
+
 }

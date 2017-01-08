@@ -18,8 +18,8 @@
     {formField name='suspended' text={translate 'Suspended'}}
     {formField name='secret' text={translate 'Secret'}}
     {formAction action='Save' label={translate 'Save'} alternatives="
-      	{button action='Delete' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
-			"}
+      {button_link class='deleteVenue warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+    "}
     {/form}
     {component name='Admin_Component_VenueAliasList' venue=$venue}
     {component name='Admin_Component_VenueMerge' venue=$venue}

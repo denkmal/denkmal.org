@@ -8,7 +8,13 @@ class Admin_Form_Translation extends CM_Form_Abstract {
         $this->registerAction(new Admin_FormAction_Translation_Unset($this));
     }
 
+    protected function _getRequiredFields() {
+        return array('language', 'key');
+    }
+
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
+        parent::prepare($environment, $viewResponse);
+
         $params = $this->getParams();
         $this->getField('value')->setValue($params->getString('value', ''));
     }

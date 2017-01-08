@@ -2,10 +2,6 @@
 
 class Denkmal_FormAction_Message_Create extends CM_FormAction_Abstract {
 
-    protected function _getRequiredFields() {
-        return array('venue');
-    }
-
     protected function _checkData(CM_Params $params, CM_Http_Response_View_Form $response, CM_Form_Abstract $form) {
         $settings = new Denkmal_App_Settings();
         $viewer = $response->getViewer();

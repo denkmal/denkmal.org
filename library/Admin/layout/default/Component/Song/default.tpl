@@ -7,8 +7,7 @@
   {formField name='label' label={translate 'Name'}}
 
   {formAction action='Save' label={translate 'Save'} alternatives="
-			{button action='Delete' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' class='warning deleteAffiliate' data=['click-confirmed' => true]}
-
-		"}
+    {button_link class='deleteSong warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+  "}
   {/form}
 </div>

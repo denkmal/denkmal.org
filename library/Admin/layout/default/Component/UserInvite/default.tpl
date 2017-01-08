@@ -4,7 +4,7 @@
   {formField name='email' label={translate 'Email'}}
   {formField name='expires' label={translate 'Expiration'}}
   {formAction action='Save' label={translate 'Save'} alternatives="
-    <a href='{$render->getUrlPage('Denkmal_Page_SignUp', ['invite' => $userInvite->getKey()], $linkSite)|escape}'>{translate 'Invitate'}</a>
+    <a href='{$render->getUrlPage('Denkmal_Page_SignUp', ['invite' => $userInvite->getKey()], $linkSite)|escape}'>{translate 'Invitation Link'}</a>
   "}
   {/form}
 </div>

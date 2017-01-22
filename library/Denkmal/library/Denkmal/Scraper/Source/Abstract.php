@@ -3,10 +3,11 @@
 abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract implements CM_Typed {
 
     /**
+     * @param DateTime   $now
      * @param DateTime[] $dateList
      * @return Denkmal_Scraper_EventData[]
      */
-    abstract public function run(array $dateList);
+    abstract public function run(DateTime $now, array $dateList);
 
     /**
      * @return string

@@ -91,7 +91,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         $result->setCreated(new DateTime());
 
         try {
-            $eventList = $source->run($this->getDateList());
+            $eventList = $source->run($this->getNow(), $this->getDateList());
 
             /** @var Denkmal_Scraper_EventData[] $eventList */
             $eventList = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {

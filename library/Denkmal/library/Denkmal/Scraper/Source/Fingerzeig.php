@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(array $dateList) {
+    public function run(DateTime $now, array $dateList) {
         $calendarPage = new CM_Dom_NodeList(self::loadUrl('http://fingerzeig.ch/parties/'), true);
 
         $dateListExisting = Functional\filter($dateList, function (DateTime $date) use ($calendarPage) {
@@ -12,22 +12,22 @@ class Denkmal_Scraper_Source_Fingerzeig extends Denkmal_Scraper_Source_Abstract 
             throw new CM_Exception_Invalid('Cannot find any calendar days with events');
         }
 
-        return Functional\flatten(Functional\map($dateListExisting, function (DateTime $date) {
+        return Functional\flatten(Functional\map($dateListExisting, function (DateTime $date) use ($now) {
             $dateStr = $date->format('Y/m/d');
             $url = 'http://fingerzeig.ch/parties/' . $dateStr . '/';
             $content = self::loadUrl($url);
 
-            return $this->processPageDate($content, $date);
+            return $this->processPageDate($content, $date, $now);
         }));
     }
 
     /**
-     * @param string        $html
-     * @param DateTime      $date
-     * @param DateTime|null $now
+     * @param string   $html
+     * @param DateTime $date
+     * @param DateTime $now
      * @return Denkmal_Scraper_EventData[]
      */
-    public function processPageDate($html, DateTime $date, DateTime $now = null) {
+    public function processPageDate($html, DateTime $date, DateTime $now) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('#content .box');
 

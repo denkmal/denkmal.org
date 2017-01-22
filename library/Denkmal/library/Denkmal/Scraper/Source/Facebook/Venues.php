@@ -6,7 +6,7 @@ use function Functional\reject;
 
 class Denkmal_Scraper_Source_Facebook_Venues extends Denkmal_Scraper_Source_Facebook_Abstract {
 
-    public function run(array $dateList) {
+    public function run(DateTime $now, array $dateList) {
         /** @var Denkmal_Model_Venue[] $venueList */
         $venueList = (new Denkmal_Paging_Venue_All())->getItems();
         $venueList = reject($venueList, function (Denkmal_Model_Venue $venue) {

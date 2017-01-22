@@ -2,19 +2,19 @@
 
 class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(array $dateList) {
+    public function run(DateTime $now, array $dateList) {
         $html = self::loadUrl('http://www.goldenes-fass.ch/saali/');
 
-        return $this->processPage($html);
+        return $this->processPage($html, $now);
     }
 
     /**
-     * @param string        $html
-     * @param DateTime|null $now
+     * @param string   $html
+     * @param DateTime $now
      * @return Denkmal_Scraper_EventData[]
      * @throws CM_Exception
      */
-    public function processPage($html, DateTime $now = null) {
+    public function processPage($html, DateTime $now) {
         $html = new CM_Dom_NodeList($html, true);
 
         $textList = Functional\map($html->find('.content > *'), function (CM_Dom_NodeList $contentChild) {

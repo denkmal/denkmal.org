@@ -2,7 +2,7 @@
 
 class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(array $dateList) {
+    public function run(DateTime $now, array $dateList) {
         $params = array(
             'method'   => 'geo.getevents',
             'location' => 'basel,switzerland',
@@ -12,15 +12,15 @@ class Denkmal_Scraper_Source_Lastfm extends Denkmal_Scraper_Source_Abstract {
         $url = 'http://ws.audioscrobbler.com/2.0/?' . http_build_query($params);
         $content = self::loadUrl($url);
 
-        return $this->processPageDate($content);
+        return $this->processPageDate($content, $now);
     }
 
     /**
-     * @param string        $html
-     * @param DateTime|null $now
+     * @param string   $html
+     * @param DateTime $now
      * @return Denkmal_Scraper_EventData[]
      */
-    public function processPageDate($html, DateTime $now = null) {
+    public function processPageDate($html, DateTime $now) {
         $html = new CM_Dom_NodeList($html, true);
         $eventList = $html->find('events > event');
 

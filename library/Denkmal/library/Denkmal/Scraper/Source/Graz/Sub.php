@@ -2,19 +2,19 @@
 
 class Denkmal_Scraper_Source_Graz_Sub extends Denkmal_Scraper_Source_Graz_Abstract {
 
-    public function run(array $dateList) {
+    public function run(DateTime $now, array $dateList) {
         $url = 'http://www.subsubsub.at/daten.txt';
         $html = self::loadUrl($url);
 
-        return $this->processPageDate($html);
+        return $this->processPageDate($html, $now);
     }
 
     /**
-     * @param string        $html
-     * @param DateTime|null $now
+     * @param string   $html
+     * @param DateTime $now
      * @return Denkmal_Scraper_EventData[]
      */
-    public function processPageDate($html, DateTime $now = null) {
+    public function processPageDate($html, DateTime $now) {
         $document = new CM_Dom_NodeList($html, true);
 
         $itemList = $document->find('table.reihe');

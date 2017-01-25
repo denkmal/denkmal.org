@@ -157,4 +157,34 @@ class Denkmal_Scraper_Source_SaaliTest extends CMTest_TestCase {
             new DateTime('2016-10-08 22:00:00')
         ), $eventDataList[1]);
     }
+
+    public function testProcessVersion7() {
+        $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/saali-7.html');
+        $scraper = new Denkmal_Scraper_Source_Saali();
+
+        $eventDataList = $scraper->processPage($html, new DateTime('2017-01-01'));
+
+        $this->assertCount(14, $eventDataList);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            $scraper->getRegion(),
+            'Sääli',
+            new Denkmal_Scraper_Description('Shatafa, Phil Battiekh Arab 60s 70s, sha3byton', 'Sharmuta Shake'),
+            new DateTime('2017-01-06 22:00:00')
+        ), $eventDataList[0]);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            $scraper->getRegion(),
+            'Sääli',
+            new Denkmal_Scraper_Description('Isn\'t Friday?'),
+            new DateTime('2017-01-12 20:00:00')
+        ), $eventDataList[2]);
+
+        $this->assertEquals(new Denkmal_Scraper_EventData(
+            $scraper->getRegion(),
+            'Sääli',
+            new Denkmal_Scraper_Description('John Eastwood Dark 80\'', 'Easy Dust'),
+            new DateTime('2017-01-13 20:00:00')
+        ), $eventDataList[3]);
+    }
 }

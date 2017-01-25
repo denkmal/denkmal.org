@@ -39,37 +39,30 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             });
         });
 
-        $textList = Functional\reject(array_values($textList), function ($text, $index, $textList) {
-            if (0 === $index || count($textList) - 1 === $index) {
-                return false;
-            }
-            $textPrevious = $textList[$index - 1];
-            $textNext = $textList[$index + 1];
-            $previousAndNextEmpty = preg_match('#^\s*$#', $textPrevious) && preg_match('#^\s*$#', $textNext);
-            return $previousAndNextEmpty;
-        });
-
-        $eventListTextList = array();
-        $eventIndex = 0;
+        $textBlockList = array();
+        $blockIndex = 0;
         foreach ($textList as $text) {
             $text = trim($text);
             if ('' === $text) {
-                $eventIndex++;
+                $blockIndex++;
             } else {
-                $eventListTextList[$eventIndex][] = $text;
+                $textBlockList[$blockIndex][] = $text;
             }
         }
-        $eventListTextList = array_filter($eventListTextList);
 
-        $eventDataList = Functional\map($eventListTextList, function ($eventTextList) use ($now) {
-            if (count($eventTextList) < 2) {
-                throw new CM_Exception_Invalid('Unexpected eventTextList: `' . CM_Util::var_line($eventTextList) . '`.');
-            }
+        $eventFirstLinePattern = '#^\w{2}[_\s]+(\d+)[\._](\d+)\.?[_\s]+(.+)$#';
+        // Select only text blocks with a first line matching the event pattern
+        $textBlockList = Functional\select($textBlockList, function ($textBlock) use ($eventFirstLinePattern) {
+            return preg_match($eventFirstLinePattern, Functional\first($textBlock));
+        });
+
+        $textBlockList = array_filter($textBlockList);
+        $eventDataList = Functional\map($textBlockList, function ($eventTextList) use ($now, $eventFirstLinePattern) {
             $title = null;
             $descriptionList = [];
 
             // Parse first line
-            if (!preg_match('#^\w{2}[_\s]+(\d+)\.(\d+)\.?[_\s]+(.+)$#', $eventTextList[0], $matches0)) {
+            if (!preg_match($eventFirstLinePattern, $eventTextList[0], $matches0)) {
                 throw new CM_Exception_Invalid('Cannot parse event line.', null, ['string' => $eventTextList[0]]);
             }
             $from = new Denkmal_Scraper_Date($matches0[1], $matches0[2], null, $now);
@@ -89,18 +82,21 @@ class Denkmal_Scraper_Source_Saali extends Denkmal_Scraper_Source_Abstract {
             }
 
             // Parse second line
-            if (preg_match('#^(\d+)\.(\d+)h\s+(.+)?$#', $eventTextList[1], $matches1)) {
-                $from->setTime($matches1[1], $matches1[2]);
-                if (isset($matches1[3])) {
-                    $descriptionList[] = $matches1[3];
+            if (isset($eventTextList[1])) {
+                if (preg_match('#^(\d+)\.(\d+)h\s+(.+)?$#', $eventTextList[1], $matches1)) {
+                    $from->setTime($matches1[1], $matches1[2]);
+                    if (isset($matches1[3])) {
+                        $descriptionList[] = $matches1[3];
+                    }
+                } else {
+                    $descriptionList[] = $eventTextList[1];
                 }
-            } else {
-                $descriptionList[] = $eventTextList[1];
             }
 
             // Take the rest
             $descriptionList = array_merge($descriptionList, array_splice($eventTextList, 2));
-            $description = new Denkmal_Scraper_Description(implode(' ', $descriptionList), $title);
+            $descriptionText = !empty($descriptionList) ? implode(' ', $descriptionList) : null;
+            $description = new Denkmal_Scraper_Description($descriptionText, $title);
 
             return new Denkmal_Scraper_EventData($this->getRegion(), 'Sääli', $description, $from);
         });

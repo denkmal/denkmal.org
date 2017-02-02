@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "499be3fcc12960e553a13bfaa1a9a11c",
+    "content-hash": "10e397c179837e690811b7594d9cbc85",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -71,17 +71,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.221.4",
+            "version": "1.222.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "dc2ad3c68f507c40114c138a85cf48a147f30a71"
+                "reference": "0f260638e2ef32099c95bee0039de91b6ac9ba6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-dc2ad3c68f507c40114c138a85cf48a147f30a71-zip-419a41.zip",
-                "reference": "dc2ad3c68f507c40114c138a85cf48a147f30a71",
-                "shasum": "0f96020b6ea8f0f294789c7e3d2c68d0778fcc0d"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-0f260638e2ef32099c95bee0039de91b6ac9ba6e-zip-81d885.zip",
+                "reference": "0f260638e2ef32099c95bee0039de91b6ac9ba6e",
+                "shasum": "9e820a5f867ca0c14227fbb711a0e2a28154f72f"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -132,7 +132,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2017-01-06T11:51:55+00:00"
+            "time": "2017-01-13T12:41:38+00:00"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -1018,17 +1018,17 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.3.23",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "ce5d73c6015b2054d32f3f8530767847b358ae4e"
+                "reference": "4ec919d294aca396d172e644b243b49885cd2cc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-contracts-ce5d73c6015b2054d32f3f8530767847b358ae4e-zip-6d1832.zip",
-                "reference": "ce5d73c6015b2054d32f3f8530767847b358ae4e",
-                "shasum": "1118cc8669af406b0a2a9445d0a24e4d79e5056d"
+                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-contracts-4ec919d294aca396d172e644b243b49885cd2cc7-zip-9b6ec4.zip",
+                "reference": "4ec919d294aca396d172e644b243b49885cd2cc7",
+                "shasum": "d6f1e311bb91874d6ed497273a0cc8a4d83d3b59"
             },
             "require": {
                 "php": ">=5.6.4"
@@ -1036,7 +1036,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.3-dev"
+                    "dev-master": "5.4-dev"
                 }
             },
             "autoload": {
@@ -1056,26 +1056,26 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2016-09-26T20:36:27+00:00"
+            "time": "2017-01-18T20:23:54+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.3.23",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "050d0ed3e1c0e1d129d73b2eaa14044e46a66f77"
+                "reference": "7abd69eb3f83004664ab40f8e9c6914935c30752"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-050d0ed3e1c0e1d129d73b2eaa14044e46a66f77-zip-f1017d.zip",
-                "reference": "050d0ed3e1c0e1d129d73b2eaa14044e46a66f77",
-                "shasum": "d548846531c15ab54247d2b8a4645f25adbf0eea"
+                "url": "https://satis.cargomedia.ch/dist/dist/illuminate-support-7abd69eb3f83004664ab40f8e9c6914935c30752-zip-eff941.zip",
+                "reference": "7abd69eb3f83004664ab40f8e9c6914935c30752",
+                "shasum": "a4e060a36df7c984bfe0295d603e438e4618bb54"
             },
             "require": {
                 "doctrine/inflector": "~1.0",
                 "ext-mbstring": "*",
-                "illuminate/contracts": "5.3.*",
+                "illuminate/contracts": "5.4.*",
                 "paragonie/random_compat": "~1.4|~2.0",
                 "php": ">=5.6.4"
             },
@@ -1084,13 +1084,13 @@
             },
             "suggest": {
                 "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-                "symfony/process": "Required to use the composer class (3.1.*).",
-                "symfony/var-dumper": "Required to use the dd function (3.1.*)."
+                "symfony/process": "Required to use the composer class (~3.2).",
+                "symfony/var-dumper": "Required to use the dd function (~3.2)."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.3-dev"
+                    "dev-master": "5.4-dev"
                 }
             },
             "autoload": {
@@ -1113,7 +1113,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2016-11-03T15:25:28+00:00"
+            "time": "2017-01-24T13:12:44+00:00"
         },
         {
             "name": "jenssegers/agent",
@@ -2290,17 +2290,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa"
+                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-d12aa9ca20f4db83ec58410978dab6afcb9d6aaa-zip-c1c940.zip",
-                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
-                "shasum": "fdc6332fd38fefe14e267c1989a978388e8ae1ab"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-console-4f9e449e76996adf310498a8ca955c6deebe29dd-zip-f31693.zip",
+                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd",
+                "shasum": "5a2e50907b470422f828ca8e901a088f54f3da31"
             },
             "require": {
                 "php": ">=5.5.9",
@@ -2349,21 +2349,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-11T14:34:22+00:00"
+            "time": "2017-01-08T20:47:33+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231"
+                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-debug-9f923e68d524a3095c5a2ae5fc7220c7cbc12231-zip-0a202d.zip",
-                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231",
-                "shasum": "30fa8a780f9405cf325421703f41c9dbb17b2f2b"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-debug-810ba5c1c5352a4ddb15d4719e8936751dff0b05-zip-d40065.zip",
+                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05",
+                "shasum": "7c90b8a98abc384694ac3a6ea503a4ba13d32c96"
             },
             "require": {
                 "php": ">=5.5.9",
@@ -2406,21 +2406,21 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-16T22:18:16+00:00"
+            "time": "2017-01-02T20:32:22+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "e8f47a327c2f0fd5aa04fa60af2b693006ed7283"
+                "reference": "9137eb3a3328e413212826d63eeeb0217836e2b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-e8f47a327c2f0fd5aa04fa60af2b693006ed7283-zip-c17b9a.zip",
-                "reference": "e8f47a327c2f0fd5aa04fa60af2b693006ed7283",
-                "shasum": "7ca179746184bb3e1a7a62553798256388289314"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-event-dispatcher-9137eb3a3328e413212826d63eeeb0217836e2b6-zip-0a07b6.zip",
+                "reference": "9137eb3a3328e413212826d63eeeb0217836e2b6",
+                "shasum": "b9f590c796bad9fa7d6119ce1bff8e2ab223d161"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2466,21 +2466,21 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-10-13T06:29:04+00:00"
+            "time": "2017-01-02T20:32:22+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4"
+                "reference": "a0c6ef2dc78d33b58d91d3a49f49797a184d06f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-filesystem-8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4-zip-bd378f.zip",
-                "reference": "8d4cf7561a5b17e5eb7a02b80d0b8f014a3796d4",
-                "shasum": "9b4c21c31ead57ef9b2f23c27cb14acdf424463b"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-filesystem-a0c6ef2dc78d33b58d91d3a49f49797a184d06f4-zip-0edd03.zip",
+                "reference": "a0c6ef2dc78d33b58d91d3a49f49797a184d06f4",
+                "shasum": "8f1ffe4496617308dcb820e7ae08abfb788e2f24"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2515,21 +2515,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-24T00:46:43+00:00"
+            "time": "2017-01-08T20:47:33+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "a69cb5d455b4885ca376dc5bb3e1155cc8c08c4b"
+                "reference": "8c71141cae8e2957946b403cc71a67213c0380d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-a69cb5d455b4885ca376dc5bb3e1155cc8c08c4b-zip-7f4342.zip",
-                "reference": "a69cb5d455b4885ca376dc5bb3e1155cc8c08c4b",
-                "shasum": "346aad985196652facac184649294879e6e4f8ca"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-finder-8c71141cae8e2957946b403cc71a67213c0380d6-zip-96d89f.zip",
+                "reference": "8c71141cae8e2957946b403cc71a67213c0380d6",
+                "shasum": "ce7635111fb4d21e05c03222311c541455db9f39"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2564,7 +2564,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-13T09:39:43+00:00"
+            "time": "2017-01-02T20:32:22+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2627,17 +2627,17 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "02ea84847aad71be7e32056408bb19f3a616cdd3"
+                "reference": "350e810019fc52dd06ae844b6a6d382f8a0e8893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-02ea84847aad71be7e32056408bb19f3a616cdd3-zip-73d951.zip",
-                "reference": "02ea84847aad71be7e32056408bb19f3a616cdd3",
-                "shasum": "780bfe1ca8d1e18fd2bd075878cc4d6a606f80cf"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-process-350e810019fc52dd06ae844b6a6d382f8a0e8893-zip-f0255b.zip",
+                "reference": "350e810019fc52dd06ae844b6a6d382f8a0e8893",
+                "shasum": "24af063402b831f382b0169edc0478b2c6a77292"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -2672,7 +2672,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-24T10:40:28+00:00"
+            "time": "2017-01-02T20:32:22+00:00"
         },
         {
             "name": "tomaszdurka/codegenerator",
@@ -2817,17 +2817,17 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.5",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108"
+                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/myclabs-deep-copy-399c1f9781e222f6eb6cc238796f5200d1b7f108-zip-7c48b9.zip",
-                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
-                "shasum": "fa6ed1298f1ced4db7632ca0a33666600f653234"
+                "url": "https://satis.cargomedia.ch/dist/dist/myclabs-deep-copy-5a5a9fc8025a08d8919be87d6884d5a92520cefe-zip-c650ed.zip",
+                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "shasum": "c4d2a3bbb53e9a99da14ab8bf5e8c3ee87df0784"
             },
             "require": {
                 "php": ">=5.4.0"
@@ -2855,7 +2855,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-10-31T17:19:45+00:00"
+            "time": "2017-01-26T22:05:40+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3068,17 +3068,17 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.4",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a"
+                "reference": "c19cfc7cbb0e9338d8c469c7eedecc2a428b0971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-c14196e64a78570034afd0b7a9f3757ba71c2a0a-zip-36cc45.zip",
-                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a",
-                "shasum": "533620300472a340941c7852a1a3be9e0c41c182"
+                "url": "https://satis.cargomedia.ch/dist/dist/phpunit-php-code-coverage-c19cfc7cbb0e9338d8c469c7eedecc2a428b0971-zip-7197b1.zip",
+                "reference": "c19cfc7cbb0e9338d8c469c7eedecc2a428b0971",
+                "shasum": "97edb31dff4e5e2f7a84521eb4a4cff8fa82ef89"
             },
             "require": {
                 "php": "^5.6 || ^7.0",
@@ -3127,7 +3127,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-20T15:22:42+00:00"
+            "time": "2017-01-20T15:06:43+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3499,17 +3499,17 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "1.2.2",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f"
+                "reference": "2b7424b55f5047b47ac6e5ccb20b2aea4011d9be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-comparator-6a1ed12e8b2409076ab22e3897126211ff8b1f7f-zip-60a9ca.zip",
-                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
-                "shasum": "f00acdbaf90209ae6eec234714998899852ad025"
+                "url": "https://satis.cargomedia.ch/dist/dist/sebastian-comparator-2b7424b55f5047b47ac6e5ccb20b2aea4011d9be-zip-5c4a53.zip",
+                "reference": "2b7424b55f5047b47ac6e5ccb20b2aea4011d9be",
+                "shasum": "81dafbbe7f435f40c99d872a19a1f3f3b9fa1d87"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -3559,7 +3559,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2016-11-19T09:18:40+00:00"
+            "time": "2017-01-29T09:50:25+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -3967,17 +3967,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a7095af4b97a0955f85c8989106c249fa649011f"
+                "reference": "50eadbd7926e31842893c957eca362b21592a97d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-a7095af4b97a0955f85c8989106c249fa649011f-zip-e73217.zip",
-                "reference": "a7095af4b97a0955f85c8989106c249fa649011f",
-                "shasum": "05e5f277c33f5cff1c8456fdc5e1bed5ac25f331"
+                "url": "https://satis.cargomedia.ch/dist/dist/symfony-yaml-50eadbd7926e31842893c957eca362b21592a97d-zip-6c80f3.zip",
+                "reference": "50eadbd7926e31842893c957eca362b21592a97d",
+                "shasum": "1dffabbb033bce7be09e2472ae06c322af9f8987"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -4018,7 +4018,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-10T10:07:06+00:00"
+            "time": "2017-01-03T13:51:32+00:00"
         },
         {
             "name": "tomaszdurka/mocka",

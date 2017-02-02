@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe46eb4c8eb4b510b0255546e935b5e5",
+    "content-hash": "d107edabcf1f2f4279b506c18dcea3ac",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -71,17 +71,17 @@
         },
         {
             "name": "cargomedia/cm",
-            "version": "1.226.2",
+            "version": "1.229.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cargomedia/cm.git",
-                "reference": "251b03b4c4988795ca5422a490498fcb1d91330c"
+                "reference": "6f69de73c43e86116784f91cccd4eefa64e13b9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-251b03b4c4988795ca5422a490498fcb1d91330c-zip-38305f.zip",
-                "reference": "251b03b4c4988795ca5422a490498fcb1d91330c",
-                "shasum": "3c98ead3b283a64f91c02f03284f19da9cf3e738"
+                "url": "https://satis.cargomedia.ch/dist/dist/cargomedia-cm-6f69de73c43e86116784f91cccd4eefa64e13b9d-zip-713658.zip",
+                "reference": "6f69de73c43e86116784f91cccd4eefa64e13b9d",
+                "shasum": "9d2ad078ae0972ce100736d650d13894c113aa02"
             },
             "require": {
                 "aws/aws-sdk-php": "~2.7",
@@ -98,7 +98,6 @@
                 "lstrojny/functional-php": "~1.2.4",
                 "michelf/php-markdown": "1.4.0",
                 "mischiefcollective/colorjizz": "dev-master#361b8a8727d13b67cb593a936a715ad2204ececb",
-                "mongodb/mongodb": "~1.0.0",
                 "nicmart/tree": "~0.2.0",
                 "php": ">=5.6.0",
                 "predis/predis": "~1.0.3",
@@ -133,7 +132,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2017-01-23T15:38:17+00:00"
+            "time": "2017-01-30T14:19:13+00:00"
         },
         {
             "name": "codemonkeys-ru/gcm-message",
@@ -1624,61 +1623,6 @@
                 "php mobile detect"
             ],
             "time": "2016-11-11T14:56:25+00:00"
-        },
-        {
-            "name": "mongodb/mongodb",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mongodb/mongo-php-library.git",
-                "reference": "302de20d8302183e1c70b335d81798cec5bcebd4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://satis.cargomedia.ch/dist/dist/mongodb-mongodb-302de20d8302183e1c70b335d81798cec5bcebd4-zip-486715.zip",
-                "reference": "302de20d8302183e1c70b335d81798cec5bcebd4",
-                "shasum": "bb96182e5595c106ec3fed68b47d56cb4616da8f"
-            },
-            "require": {
-                "ext-mongodb": "^1.1.0",
-                "php": ">=5.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MongoDB\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Jeremy Mikola",
-                    "email": "jmikola@gmail.com"
-                },
-                {
-                    "name": "Hannes Magnusson",
-                    "email": "bjori@mongodb.com"
-                },
-                {
-                    "name": "Derick Rethans",
-                    "email": "github@derickrethans.nl"
-                }
-            ],
-            "description": "MongoDB driver library",
-            "homepage": "https://jira.mongodb.org/browse/PHPLIB",
-            "keywords": [
-                "database",
-                "driver",
-                "mongodb",
-                "persistence"
-            ],
-            "time": "2016-12-05T20:02:14+00:00"
         },
         {
             "name": "nicmart/tree",

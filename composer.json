@@ -4,11 +4,11 @@
     "bin-dir": "bin/"
   },
   "require": {
-    "cargomedia/cm": "~1.229.0",
+    "cargomedia/cm": "~1.230.0",
     "ricardoper/twitteroauth": "~2.1.6",
     "nojimage/twitter-text-php": "~1.1.1",
     "codemonkeys-ru/gcm-message": "~0.2.0",
-    "guzzlehttp/guzzle": "~5.3.0",
+    "guzzlehttp/guzzle": "~6.0",
     "facebook/graph-sdk": "~5.3.1"
   },
   "require-dev": {

@@ -89,11 +89,12 @@ abstract class Denkmal_Scraper_Source_Abstract extends CM_Class_Abstract impleme
      */
     private static function _requestUrl($url) {
         $guzzle = new \GuzzleHttp\Client();
-        return $guzzle->get($url, [
+        $response = $guzzle->get($url, [
             'headers' => [
                 'User-Agent'   => 'Mozilla/5.0 AppleWebKit',
                 'Content-Type' => 'text/xml; charset=utf-8',
             ]
         ]);
+        return $response->getBody()->getContents();
     }
 }

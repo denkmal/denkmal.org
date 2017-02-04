@@ -44,6 +44,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
             new Denkmal_Scraper_Source_Fingerzeig(),
             new Denkmal_Scraper_Source_Saali(),
             new Denkmal_Scraper_Source_Apawi(),
+            new Denkmal_Scraper_Source_Basel_Renee(),
             new Denkmal_Scraper_Source_Graz_Postgarage(),
             new Denkmal_Scraper_Source_Graz_Sub(),
             new Denkmal_Scraper_Source_Facebook_Venues(),
@@ -91,7 +92,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         $result->setCreated(new DateTime());
 
         try {
-            $eventList = $source->run($this->getDateList());
+            $eventList = $source->run($this->getNow(), $this->getDateList());
 
             /** @var Denkmal_Scraper_EventData[] $eventList */
             $eventList = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {

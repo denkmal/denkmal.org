@@ -15,7 +15,7 @@ class Denkmal_Scraper_Source_ProgrammzeitungTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/programmzeitung.html');
         $scraper = new Denkmal_Scraper_Source_Programmzeitung();
 
-        $eventDataList = $scraper->processPageDate($html, new DateTime('2016-01-04'));
+        $eventDataList = $scraper->processPageDate($html, new DateTime('2016-01-04'), new DateTime('2016-01-04'));
 
         $this->assertCount(3, $eventDataList);
 
@@ -46,7 +46,7 @@ class Denkmal_Scraper_Source_ProgrammzeitungTest extends CMTest_TestCase {
         $html = Denkmal_Scraper_Source_Abstract::loadFile(DIR_TEST_DATA . 'scraper/programmzeitung-one-category.html');
         $scraper = new Denkmal_Scraper_Source_Programmzeitung();
 
-        $eventDataList = $scraper->processPageDate($html, new DateTime('2016-01-04'));
+        $eventDataList = $scraper->processPageDate($html, new DateTime('2016-01-04'), new DateTime('2016-01-04'));
 
         $this->assertCount(2, $eventDataList);
     }

@@ -2,24 +2,24 @@
 
 class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abstract {
 
-    public function run(array $dateList) {
+    public function run(DateTime $now, array $dateList) {
         return Functional\flatten(Functional\map($dateList, function (DateTime $date) {
             $dateStr = $date->format('d.m.Y');
             $url = 'http://programmzeitung.programmonline.ch/Content/Tagesagenda?startDate=' . $dateStr;
             $content = self::loadUrl($url, 5);
 
-            return $this->processPageDate($content, $date);
+            return $this->processPageDate($content, $date, $now);
         }));
     }
 
     /**
-     * @param string        $html
-     * @param DateTime      $date
-     * @param DateTime|null $now
+     * @param string   $html
+     * @param DateTime $date
+     * @param DateTime $now
      * @return Denkmal_Scraper_EventData[]
      * @throws CM_Exception_Invalid
      */
-    public function processPageDate($html, DateTime $date, DateTime $now = null) {
+    public function processPageDate($html, DateTime $date, DateTime $now) {
         $html = new CM_Dom_NodeList($html, true);
 
         /** @var CM_Dom_NodeList[] $agendaTableList */

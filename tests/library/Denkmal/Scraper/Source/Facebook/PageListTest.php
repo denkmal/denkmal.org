@@ -27,7 +27,7 @@ class Denkmal_Scraper_Source_Facebook_PageListTest extends CMTest_TestCase {
         });
         $this->getServiceManager()->replaceInstance('facebook', $facebookClient);
 
-        $eventDataList = $scraper->run([]);
+        $eventDataList = $scraper->run(new DateTime(), []);
 
         $this->assertCount(95, $eventDataList);
 

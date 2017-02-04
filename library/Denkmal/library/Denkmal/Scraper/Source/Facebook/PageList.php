@@ -6,7 +6,7 @@ use function Functional\reject;
 
 class Denkmal_Scraper_Source_Facebook_PageList extends Denkmal_Scraper_Source_Facebook_Abstract {
 
-    public function run(array $dateList) {
+    public function run(DateTime $now, array $dateList) {
         /** @var Denkmal_Model_Region[] $regionList */
         $regionList = (new Denkmal_Paging_Region_All())->getItems();
 

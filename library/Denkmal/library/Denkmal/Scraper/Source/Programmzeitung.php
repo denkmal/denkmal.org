@@ -3,7 +3,7 @@
 class Denkmal_Scraper_Source_Programmzeitung extends Denkmal_Scraper_Source_Abstract {
 
     public function run(DateTime $now, array $dateList) {
-        return Functional\flatten(Functional\map($dateList, function (DateTime $date) {
+        return Functional\flatten(Functional\map($dateList, function (DateTime $date) use($now) {
             $dateStr = $date->format('d.m.Y');
             $url = 'http://programmzeitung.programmonline.ch/Content/Tagesagenda?startDate=' . $dateStr;
             $content = self::loadUrl($url, 5);

@@ -43,8 +43,11 @@ class Denkmal_FormField_Venue extends CM_FormField_SuggestOne {
         $venueList = new Denkmal_Paging_Venue_All($this->_options['region'], true);
         /** @var $item Denkmal_Model_Venue */
         foreach ($venueList as $item) {
-            if (0 === stripos($item->getName(), $term)) {
+            if (0 === strlen($term) || false !== stripos($item->getName(), $term)) {
                 $suggestions[] = $this->getSuggestion($item, $render);
+            }
+            if (count($suggestions) > 30) {
+                break;
             }
         }
         return $suggestions;

@@ -23,6 +23,7 @@ class Denkmal_FormField_VenueTest extends CMTest_TestCase {
         $this->assertEquals($suggestionList, [
             $formField->getSuggestion($venue1, $render),
             $formField->getSuggestion($venue3, $render),
+            $formField->getSuggestion($venue2, $render),
         ]);
     }
 }

@@ -5,7 +5,6 @@ class Denkmal_App_SetupScript_LoadLanguage extends CM_Provision_Script_OptionBas
     public function load(CM_OutputStream_Interface $output) {
         $en = CM_Model_Language::create('English', 'en', true);
         $de = CM_Model_Language::create('Deutsch', 'de', true, $en);
-        $fr = CM_Model_Language::create('Français', 'fr', true, $en);
 
         $this->_setLoaded(true);
     }

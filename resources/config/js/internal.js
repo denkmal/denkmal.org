@@ -35,7 +35,8 @@ cm.model.types = {
     "CM_StreamChannel_Thumbnail": 72,
     "Denkmal_Model_Region": 77,
     "CM_Janus_StreamChannel": 83,
-    "Denkmal_Model_FacebookPage": 87
+    "Denkmal_Model_FacebookPage": 87,
+    "CM_Migration_Model": 90
 };
 cm.action.types = {
     "CM_Action_Email": 3,

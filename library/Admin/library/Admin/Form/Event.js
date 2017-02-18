@@ -16,8 +16,6 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
         this.submit('Save');
       }
     },
-    'click .showEvent': 'showEvent',
-    'click .hideEvent': 'hideEvent',
     'click .deleteEvent': 'deleteEvent'
   },
 
@@ -47,28 +45,6 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
           form._preview.remove();
           form._preview = null;
         }
-      });
-  },
-
-  /**
-   * @returns {Promise}
-   */
-  showEvent: function() {
-    var self = this;
-    return this.ajax('showEvent')
-      .then(function() {
-        self.trigger('event:updated');
-      });
-  },
-
-  /**
-   * @returns {Promise}
-   */
-  hideEvent: function() {
-    var self = this;
-    return this.ajax('hideEvent')
-      .then(function() {
-        self.trigger('event:updated');
       });
   },
 

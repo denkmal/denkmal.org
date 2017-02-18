@@ -59,14 +59,10 @@
       {formField name='description' label={translate 'Description'} append=$smarty.capture.linkSuggestionList}
       {formField name='song' label={translate 'Song'} append=$smarty.capture.songSuggestionList}
       {formField name='starred' label={translate 'Starred'}}
+      {formField name='hidden' label={translate 'Hidden'}}
       {formAction action='Save' label={translate 'Save'} alternatives="
-				{button_link class='deleteEvent warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-				{if $event->getHidden()}
-					{button_link class='showEvent' label={translate 'Show'}}
-				{else}
-					{button_link class='hideEvent' label={translate 'Hide'}}
-				{/if}
-			"}
+              {button_link class='deleteEvent warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
+          "}
       {/form}
     </div>
   {/if}

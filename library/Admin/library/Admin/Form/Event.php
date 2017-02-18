@@ -17,6 +17,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_Textarea(['name' => 'description']));
         $this->registerField(new Denkmal_FormField_Song(['name' => 'song']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'starred']));
+        $this->registerField(new CM_FormField_Boolean(['name' => 'hidden']));
 
         $this->registerAction(new Admin_FormAction_Event_Save($this));
         $this->registerAction(new Admin_FormAction_Event_Preview($this));
@@ -40,6 +41,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->getField('description')->setValue($event->getDescription());
         $this->getField('song')->setValue($event->getSong());
         $this->getField('starred')->setValue($event->getStarred());
+        $this->getField('hidden')->setValue($event->getHidden());
     }
 
     public function ajax_deleteEvent(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
@@ -51,34 +53,6 @@ class Admin_Form_Event extends CM_Form_Abstract {
 
         $event = $params->getEvent('event');
         $event->delete();
-    }
-
-    public function ajax_showEvent(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
-        /** @var Denkmal_Params $params */
-        $params = $this->getParams();
-        if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER)) {
-            throw new CM_Exception_NotAllowed();
-        }
-
-        $event = $params->getEvent('event');
-        $event->setHidden(false);
-        $event->setEnabled(true);
-
-        $response->reloadComponent();
-    }
-
-    public function ajax_hideEvent(CM_Params $params, CM_Frontend_JavascriptContainer_View $handler, CM_Http_Response_View_Ajax $response) {
-        /** @var Denkmal_Params $params */
-        $params = $this->getParams();
-        if (!$response->getViewer(true)->getRoles()->contains(Denkmal_Role::ADMIN, Denkmal_Role::PUBLISHER)) {
-            throw new CM_Exception_NotAllowed();
-        }
-
-        $event = $params->getEvent('event');
-        $event->setHidden(true);
-        $event->setEnabled(false);
-
-        $response->reloadComponent();
     }
 
 }

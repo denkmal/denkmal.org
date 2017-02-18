@@ -14,9 +14,6 @@ var Admin_Page_Events = Admin_Page_Abstract.extend({
     'Admin_Form_Event event:deleted': function(form) {
       this.reload();
     },
-    'Admin_Form_Event event:updated': function(form) {
-      this.reload();
-    },
     'Admin_Form_Venue success.Save': function(form) {
       this.reload();
     },

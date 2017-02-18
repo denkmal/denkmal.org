@@ -13,6 +13,7 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         $description = $params->getString('description');
         $song = $params->has('song') ? $params->getSong('song') : null;
         $starred = $params->getBoolean('starred');
+        $hidden = $params->getBoolean('hidden');
 
         $event->setVenue($venue);
         $event->setDescription($description);
@@ -22,6 +23,7 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         $event->setUntil($until);
         $event->setSong($song);
         $event->setStarred($starred);
+        $event->setHidden($hidden);
 
         $response->reloadComponent();
     }

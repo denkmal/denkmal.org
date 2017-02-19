@@ -142,4 +142,21 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
         $this->assertEquals([$event1], $event2->getDuplicates());
         $this->assertEquals([], $event3->getDuplicates());
     }
+
+    public function testAddLinkIfNotExists() {
+        $venue = DenkmalTest_TH::createVenue();
+        $event = Denkmal_Model_Event::create($venue, 'hello foo bar', true, false, new DateTime('2017-01-01 22:00'));
+
+        $link1 = $event->addLinkIfNotExists('Foo', 'http://foo/1');
+        $this->assertInstanceOf(Denkmal_Model_EventLink::class, $link1);
+        $this->assertEquals([$link1], new Denkmal_Paging_EventLink_Event($event));
+
+        $link1again = $event->addLinkIfNotExists('Foo', 'http://foo/2');
+        $this->assertEquals($link1, $link1again);
+        $this->assertEquals([$link1], new Denkmal_Paging_EventLink_Event($event));
+
+        $link2 = $event->addLinkIfNotExists('Bar', 'http://bar');
+        $this->assertInstanceOf(Denkmal_Model_EventLink::class, $link2);
+        $this->assertEquals([$link2, $link1], new Denkmal_Paging_EventLink_Event($event));
+    }
 }

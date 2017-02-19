@@ -53,10 +53,10 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $eventData = new Denkmal_Scraper_EventData($region, $venue, $description, $from, $until);
 
         $manager = new Denkmal_Scraper_Manager();
-        $this->assertSame(false, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
+        $this->assertSame(false, CMTest_TH::callProtectedMethod($manager, '_hasExistingEvent', [$eventData]));
 
         $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $from);
-        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
+        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_hasExistingEvent', [$eventData]));
     }
 
     public function testIsExistingEventBeforeNewEvent() {
@@ -72,7 +72,69 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $dateExisting);
 
         $manager = new Denkmal_Scraper_Manager();
-        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
+        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_hasExistingEvent', [$eventData]));
+    }
+
+    public function testProcessEventDataList() {
+        $manager = new Denkmal_Scraper_Manager();
+        $region = DenkmalTest_TH::createRegion();
+        $venue = DenkmalTest_TH::createVenue('foo', false, false, $region);
+
+        $manager->processEventDataList([
+            new Denkmal_Scraper_EventData($region, $venue,
+                new Denkmal_Scraper_Description('my event 1'),
+                new DateTime('2017-02-19 19:00'), null,
+                'source-1'
+            ),
+            new Denkmal_Scraper_EventData($region, $venue,
+                new Denkmal_Scraper_Description('my event 2'),
+                new DateTime('2017-02-19 19:00'), null,
+                'source-1'
+            ),
+            new Denkmal_Scraper_EventData($region, $venue,
+                new Denkmal_Scraper_Description('my event 3'),
+                new DateTime('2017-02-20 19:00'), null,
+                'source-2'
+            ),
+            new Denkmal_Scraper_EventData($region, $venue,
+                new Denkmal_Scraper_Description('my event 3 copy'),
+                new DateTime('2017-02-20 19:00'), null,
+                'source-3'
+            )
+        ]);
+
+        $this->assertCount(3, $venue->getEventList());
+
+        $manager->processEventDataList([
+            new Denkmal_Scraper_EventData($region, $venue,
+                new Denkmal_Scraper_Description('my event 1'),
+                new DateTime('2017-02-19 19:00'), null,
+                'source-4',
+                ['Facebook' => 'http://facebook.com/event-1']
+            ),
+            new Denkmal_Scraper_EventData($region, $venue,
+                new Denkmal_Scraper_Description('my event 3'),
+                new DateTime('2017-02-20 19:00'), null,
+                'source-4',
+                ['Facebook' => 'http://facebook.com/event-3']
+            ),
+        ]);
+
+        $this->assertCount(3, $venue->getEventList());
+
+        /** @var Denkmal_Model_Event[] $eventList1 */
+        $eventList1 = (new Denkmal_Paging_Event_VenueDate(new DateTime('2017-02-19'), $venue))->getItems();
+        $this->assertCount(2, $eventList1);
+        foreach ($eventList1 as $event) {
+            $this->assertSame(0, $event->getLinks()->getCount(), 'Links should not be set, because multiple events exist on this day');
+        }
+
+        /** @var Denkmal_Model_Event[] $eventList2 */
+        $eventList2 = (new Denkmal_Paging_Event_VenueDate(new DateTime('2017-02-20'), $venue))->getItems();
+        $this->assertCount(1, $eventList2);
+        foreach ($eventList2 as $event) {
+            $this->assertSame(1, $event->getLinks()->getCount());
+        }
     }
 
     /**

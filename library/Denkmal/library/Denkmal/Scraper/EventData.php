@@ -18,7 +18,7 @@ class Denkmal_Scraper_EventData {
     private $_until;
 
     /** @var string[] */
-    private $_links;
+    private $_links = [];
 
     /** @var string|null */
     private $_sourceIdentifier;

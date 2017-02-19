@@ -37,7 +37,8 @@ class Denkmal_Scraper_Source_Facebook_PageListTest extends CMTest_TestCase {
             new Denkmal_Scraper_Description('KC Rebell Tour 2017 · 24.03. Ppc, Graz'),
             new DateTime('2017-03-24 20:00:00'),
             null,
-            'facebook-page:my-page-1'
+            'facebook-page:my-page-1',
+            ['Facebook' => 'https://www.facebook.com/events/160016644392913/']
         ), $eventDataList[0]);
 
         $this->assertEquals(new Denkmal_Scraper_EventData(
@@ -46,7 +47,8 @@ class Denkmal_Scraper_Source_Facebook_PageListTest extends CMTest_TestCase {
             new Denkmal_Scraper_Description('Django 3000 - Im Sturm Tour 2017 - PPC'),
             new DateTime('2017-03-18 19:00:00'),
             new DateTime('2017-03-18 23:00:00'),
-            'facebook-page:my-page-1'
+            'facebook-page:my-page-1',
+            ['Facebook' => 'https://www.facebook.com/events/105826623207269/']
         ), $eventDataList[1]);
     }
 }

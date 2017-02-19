@@ -58,7 +58,13 @@ abstract class Denkmal_Scraper_Source_Facebook_Abstract extends Denkmal_Scraper_
             return null;
         }
 
-        return new Denkmal_Scraper_EventData($region, $venue, $description, $from, $until);
+        $eventData = new Denkmal_Scraper_EventData($region, $venue, $description, $from, $until);
+
+        $facebookEventId = $graphEvent->getField('id');
+        $facebookLink = "https://www.facebook.com/events/${facebookEventId}/";
+        $eventData->addLink('Facebook', $facebookLink);
+
+        return $eventData;
     }
 
     /**

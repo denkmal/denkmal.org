@@ -64,6 +64,9 @@
               {button_link class='deleteEvent warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
           "}
       {/form}
+
+      <h2>Links</h2>
+      {component name='Admin_Component_EventLinkList' event=$event}
     </div>
   {/if}
 </div>

@@ -93,33 +93,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
 
         try {
             $eventList = $source->run($this->getNow(), $this->getDateList());
-
-            /** @var Denkmal_Scraper_EventData[] $eventList */
-            $eventList = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {
-                return $this->_isValidEvent($eventData);
-            });
-
-            $eventListGrouped = Functional\group($eventList, function (Denkmal_Scraper_EventData $eventData) {
-                return $eventData->getSourceIdentifier();
-            });
-
-            // Create events
-            foreach ($eventListGrouped as $sourceIdentifier => $eventListSource) {
-                $eventListCreate = Functional\reject($eventListSource, function (Denkmal_Scraper_EventData $eventData) {
-                    return $this->_hasExistingEvent($eventData);
-                });
-
-                foreach ($eventListCreate as $eventData) {
-                    $this->_createEvent($eventData);
-                }
-            }
-
-            // Update existing events using data from other scrapers
-            foreach ($eventList as $eventData) {
-                if ($existingEvent = $this->_findExistingEvent($eventData)) {
-                    $this->_updateExistingEvent($existingEvent, $eventData);
-                }
-            }
+            $this->processEventDataList($eventList);
 
             $result->setEventDataCount(count($eventList));
             $result->setError(null);
@@ -129,6 +103,38 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         }
 
         return $result;
+    }
+
+    /**
+     * @param Denkmal_Scraper_EventData[] $eventList
+     */
+    public function processEventDataList(array $eventList) {
+        /** @var Denkmal_Scraper_EventData[] $eventList */
+        $eventList = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {
+            return $this->_isValidEvent($eventData);
+        });
+
+        $eventListGrouped = Functional\group($eventList, function (Denkmal_Scraper_EventData $eventData) {
+            return $eventData->getSourceIdentifier();
+        });
+
+        // Create events
+        foreach ($eventListGrouped as $sourceIdentifier => $eventListSource) {
+            $eventListCreate = Functional\reject($eventListSource, function (Denkmal_Scraper_EventData $eventData) {
+                return $this->_hasExistingEvent($eventData);
+            });
+
+            foreach ($eventListCreate as $eventData) {
+                $this->_createEvent($eventData);
+            }
+        }
+
+        // Update existing events using data from other scrapers
+        foreach ($eventList as $eventData) {
+            if ($existingEvent = $this->_findExistingEvent($eventData)) {
+                $this->_updateExistingEvent($existingEvent, $eventData);
+            }
+        }
     }
 
     /**

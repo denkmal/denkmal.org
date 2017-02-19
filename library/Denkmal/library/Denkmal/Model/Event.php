@@ -179,13 +179,20 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
+     * @return Denkmal_Paging_EventLink_Event
+     */
+    public function getLinks() {
+        return new Denkmal_Paging_EventLink_Event($this);
+    }
+
+    /**
      * @param string $label
      * @param string $url
      * @return Denkmal_Model_EventLink
      */
     public function addLinkIfNotExists($label, $url) {
         /** @var Denkmal_Model_EventLink[] $linkList */
-        $linkList = (new Denkmal_Paging_EventLink_Event($this))->getItems();
+        $linkList = $this->getLinks()->getItems();
         $link = \Functional\first($linkList, function (Denkmal_Model_EventLink $link) use ($label) {
             return $label === $link->getLabel();
         });

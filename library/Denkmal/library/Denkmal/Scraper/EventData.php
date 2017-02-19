@@ -17,6 +17,9 @@ class Denkmal_Scraper_EventData {
     /** @var DateTime|null */
     private $_until;
 
+    /** @var string[] */
+    private $_links;
+
     /** @var string|null */
     private $_sourceIdentifier;
 
@@ -27,9 +30,10 @@ class Denkmal_Scraper_EventData {
      * @param DateTime|Denkmal_Scraper_Date      $from
      * @param DateTime|Denkmal_Scraper_Date|null $until
      * @param string|null                        $sourceIdentifier
+     * @param string[]|null                      $links
      * @throws CM_Exception_Invalid
      */
-    public function __construct(Denkmal_Model_Region $region, $venue, Denkmal_Scraper_Description $description, $from, $until = null, $sourceIdentifier = null) {
+    public function __construct(Denkmal_Model_Region $region, $venue, Denkmal_Scraper_Description $description, $from, $until = null, $sourceIdentifier = null, $links = null) {
         $this->_region = $region;
 
         if ($venue instanceof Denkmal_Model_Venue) {
@@ -60,6 +64,9 @@ class Denkmal_Scraper_EventData {
         }
         $this->_until = $until;
         $this->setSourceIdentifier($sourceIdentifier);
+        foreach ((array) $links as $label => $url) {
+            $this->addLink($label, $url);
+        }
     }
 
     /**
@@ -102,6 +109,23 @@ class Denkmal_Scraper_EventData {
      */
     public function getUntil() {
         return $this->_until;
+    }
+
+    /**
+     * @param string $label
+     * @param string $url
+     */
+    public function addLink($label, $url) {
+        $label = (string) $label;
+        $url = (string) $url;
+        $this->_links[$label] = $url;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getLinks() {
+        return $this->_links;
     }
 
     /**

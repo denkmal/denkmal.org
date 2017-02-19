@@ -21,7 +21,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
     public function process($storeResults = null) {
         foreach ($this->getScraperList() as $scraper) {
             $this->_output->write('Running scraper `' . get_class($scraper) . '`… ');
-            $result = $this->_processScraper($scraper);
+            $result = $this->processScraper($scraper);
             if ($result->getError()) {
                 $this->_output->writeln('Error: `' . $result->getError()->getMessage() . '`.');
             } else {
@@ -37,7 +37,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
      * @return Denkmal_Scraper_Source_Abstract[]
      */
     public function getScraperList() {
-        return array(
+        return [
             new Denkmal_Scraper_Source_Kaschemme(),
             new Denkmal_Scraper_Source_Programmzeitung(),
             new Denkmal_Scraper_Source_Hinterhof(),
@@ -49,7 +49,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
             new Denkmal_Scraper_Source_Graz_Sub(),
             new Denkmal_Scraper_Source_Facebook_Venues(),
             new Denkmal_Scraper_Source_Facebook_PageList(),
-        );
+        ];
     }
 
     /**
@@ -86,7 +86,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
      * @param Denkmal_Scraper_Source_Abstract $source
      * @return Denkmal_Scraper_SourceResult
      */
-    protected function _processScraper(Denkmal_Scraper_Source_Abstract $source) {
+    public function processScraper(Denkmal_Scraper_Source_Abstract $source) {
         $result = new Denkmal_Scraper_SourceResult();
         $result->setScraperSource($source);
         $result->setCreated(new DateTime());
@@ -178,7 +178,10 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         if (!$venue = $eventData->findVenue()) {
             $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false, $eventData->getRegion());
         }
-        Denkmal_Model_Event::create($venue, $eventData->getDescription()->getAll(), true, true, $eventData->getFrom(), $eventData->getUntil());
+        $event = Denkmal_Model_Event::create($venue, $eventData->getDescription()->getAll(), true, true, $eventData->getFrom(), $eventData->getUntil());
+        foreach ($eventData->getLinks() as $label => $url) {
+            Denkmal_Model_EventLink::create($event, $label, $url);
+        }
     }
 
 }

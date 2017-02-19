@@ -31,6 +31,15 @@ class Denkmal_Params extends CM_Params {
 
     /**
      * @param string $key
+     * @return Denkmal_Model_EventLink
+     * @throws CM_Exception_InvalidParam
+     */
+    public function getEventLink($key) {
+        return $this->getObject($key, 'Denkmal_Model_EventLink');
+    }
+
+    /**
+     * @param string $key
      * @return Denkmal_Model_Link
      * @throws CM_Exception_InvalidParam
      */

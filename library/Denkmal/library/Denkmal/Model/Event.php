@@ -256,6 +256,16 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->updateSearchIndex();
     }
 
+    protected function _onDeleteBefore() {
+        parent::_onDeleteBefore();
+
+        /** @var Denkmal_Model_EventLink[] $linkList */
+        $linkList = new Denkmal_Paging_EventLink_Event($this);
+        foreach ($linkList as $link) {
+            $link->delete();
+        }
+    }
+
     protected function _onDeleteAfter() {
         $this->updateSearchIndex();
     }

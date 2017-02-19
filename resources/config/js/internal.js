@@ -36,7 +36,8 @@ cm.model.types = {
     "Denkmal_Model_Region": 77,
     "CM_Janus_StreamChannel": 83,
     "Denkmal_Model_FacebookPage": 87,
-    "CM_Migration_Model": 90
+    "CM_Migration_Model": 90,
+    "Denkmal_Model_EventLink": 91
 };
 cm.action.types = {
     "CM_Action_Email": 3,

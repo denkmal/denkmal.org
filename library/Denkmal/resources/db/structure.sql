@@ -4,6 +4,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 DROP TABLE IF EXISTS `denkmal_model_message`;
 DROP TABLE IF EXISTS `denkmal_model_messageimage`;
 DROP TABLE IF EXISTS `denkmal_model_event`;
+DROP TABLE IF EXISTS `denkmal_model_eventlink`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_model_venue`;
 DROP TABLE IF EXISTS `denkmal_model_facebookpage`;
@@ -112,6 +113,16 @@ CREATE TABLE `denkmal_model_event` (
   KEY `song` (`song`),
   CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`song`) REFERENCES `denkmal_model_song` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_eventlink` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `event` int(11) unsigned NOT NULL,
+  `label` varchar(100) NOT NULL,
+  `url` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `denkmal_model_eventlink__event` FOREIGN KEY (`event`) REFERENCES `denkmal_model_event` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

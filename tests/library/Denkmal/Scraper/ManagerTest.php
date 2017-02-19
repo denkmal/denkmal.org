@@ -53,10 +53,10 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $eventData = new Denkmal_Scraper_EventData($region, $venue, $description, $from, $until);
 
         $manager = new Denkmal_Scraper_Manager();
-        $this->assertSame(false, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
+        $this->assertSame(false, CMTest_TH::callProtectedMethod($manager, '_hasExistingEvent', [$eventData]));
 
         $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $from);
-        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
+        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_hasExistingEvent', [$eventData]));
     }
 
     public function testIsExistingEventBeforeNewEvent() {
@@ -72,7 +72,7 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $eventExisting = Denkmal_Model_Event::create($venue, 'bar', false, false, $dateExisting);
 
         $manager = new Denkmal_Scraper_Manager();
-        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_isExistingEvent', [$eventData]));
+        $this->assertSame(true, CMTest_TH::callProtectedMethod($manager, '_hasExistingEvent', [$eventData]));
     }
 
     /**

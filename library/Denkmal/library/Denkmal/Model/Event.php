@@ -178,6 +178,23 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $this->_set('starred', $starred);
     }
 
+    /**
+     * @param string $label
+     * @param string $url
+     * @return Denkmal_Model_EventLink
+     */
+    public function addLinkIfNotExists($label, $url) {
+        /** @var Denkmal_Model_EventLink[] $linkList */
+        $linkList = (new Denkmal_Paging_EventLink_Event($this))->getItems();
+        $link = \Functional\first($linkList, function (Denkmal_Model_EventLink $link) use ($label) {
+            return $label === $link->getLabel();
+        });
+        if (null === $link) {
+            $link = Denkmal_Model_EventLink::create($this, $label, $url);
+        }
+        return $link;
+    }
+
     public function updateSearchIndex() {
         Denkmal_Elasticsearch_Type_Event::updateItemWithJob($this);
     }

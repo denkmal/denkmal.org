@@ -13,6 +13,7 @@ class Admin_Menu_Main extends CM_Menu {
                     ['label' => 'Stats', 'page' => 'Admin_Page_Scraper'],
                     ['label' => 'Facebook', 'page' => 'Admin_Page_Scraper_Facebook'],
                 ]],
+                ['label' => 'Event Categories', 'page' => 'Admin_Page_EventCategories'],
                 ['label' => 'Translations', 'page' => 'Admin_Page_Translations'],
                 ['label' => 'Users', 'page' => 'Admin_Page_Users'],
                 ['label' => 'Invites', 'page' => 'Admin_Page_UserInvites'],

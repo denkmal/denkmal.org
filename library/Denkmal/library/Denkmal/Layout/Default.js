@@ -35,36 +35,9 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
       this._setWeekMenuVisible(false);
     },
 
-    'Denkmal_Page_Now ready': function(view) {
-      this._bindContentScroll(view, $(document));
-      this._onContentScroll($(document));
-      this._setChatIndication(false);
-      this._updateChatRead();
-    },
-
     'Denkmal_Page_Add ready': function(view) {
       this._bindContentScroll(view, $(document));
       this._onContentScroll($(document));
-    }
-  },
-
-  ready: function() {
-    if (this.region) {
-      var channelKey = 'region-' + this.region.id;
-      this.bindStream(channelKey, cm.model.types.CM_Model_StreamChannel_Message, 'message-create', function(message) {
-        var page = this.findPage();
-        var isChat = page && page.hasClass('Denkmal_Page_Now');
-        if (isChat) {
-          page.addMessage(message);
-          this._updateChatRead();
-        } else {
-          this._setChatIndication(true);
-        }
-      });
-    }
-
-    if (this.chatActivityStamp) {
-      this._setChatIndicationFromLastActivity(this.chatActivityStamp);
     }
   },
 

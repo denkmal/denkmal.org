@@ -11,13 +11,6 @@ class Denkmal_Menu_Main extends CM_Menu {
                 'icon'  => 'calendar',
             ],
             [
-                'label'      => 'Now',
-                'page'       => 'Denkmal_Page_Now',
-                'class'      => 'nowButton',
-                'icon'       => 'chat-flash',
-                'indication' => 'chat',
-            ],
-            [
                 'label' => 'Add event',
                 'page'  => 'Denkmal_Page_Add',
                 'class' => 'addButton',

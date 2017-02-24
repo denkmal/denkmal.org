@@ -69,6 +69,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Provision_Script_OptionBased->types[60] = Denkmal_ExampleData_Venues::class;
     $config->CM_Provision_Script_OptionBased->types[66] = CM_App_SetupScript_Currency::class;
     $config->CM_Provision_Script_OptionBased->types[78] = Denkmal_App_SetupScript_Locations::class;
+    $config->CM_Provision_Script_OptionBased->types[93] = Denkmal_App_SetupScript_EventCategories::class;
     $config->CM_Site_Abstract->types = [];
     $config->CM_Site_Abstract->types[36] = Admin_Site::class;
     $config->CM_Site_Abstract->types[79] = Denkmal_Site_Default::class;
@@ -159,7 +160,8 @@ return function (CM_Config_Node $config) {
     $config->CM_Migration_Model->type = 90;
     $config->Denkmal_Model_EventLink->type = 91;
     $config->Denkmal_Model_EventCategory->type = 92;
-    $config->CM_Class_Abstract->typesMaxValue = 92;
+    $config->Denkmal_App_SetupScript_EventCategories->type = 93;
+    $config->CM_Class_Abstract->typesMaxValue = 93;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

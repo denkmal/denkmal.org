@@ -2,50 +2,53 @@
 
 class Denkmal_Scraper_DescriptionTest extends CMTest_TestCase {
 
-    public function testGetDescriptionAndGenres() {
-        $description = new Denkmal_Scraper_Description('foo bar');
-
-        $this->assertSame('Foo bar', $description->getDescriptionAndGenres());
-        $this->assertSame(null, $description->getTitle());
-    }
-
-    public function testGetDescriptionAndGenresWithGenres() {
-        $genres = new Denkmal_Scraper_Genres('rock, rap');
-        $description = new Denkmal_Scraper_Description('foo bar', null, $genres);
-
-        $this->assertSame('Foo bar. Rock, rap', $description->getDescriptionAndGenres());
-        $this->assertSame(null, $description->getTitle());
-    }
-
-    public function testWithTitle() {
+    public function testGetTitleAndDescriptionWithBoth() {
         $description = new Denkmal_Scraper_Description('Meine Beschreibung', 'Mein Titel');
 
-        $this->assertSame('Meine Beschreibung', $description->getDescriptionAndGenres());
-        $this->assertSame('Mein Titel', $description->getTitle());
+        $this->assertSame('Mein Titel: Meine Beschreibung', $description->getTitleAndDescription());
     }
 
-    public function testTitleOnly() {
-        $description = new Denkmal_Scraper_Description(null, 'foo bar');
+    public function testGetTitleAndDescriptionWithTitle() {
+        $description = new Denkmal_Scraper_Description(null, 'Mein Titel');
 
-        $this->assertSame('Foo bar', $description->getDescriptionAndGenres());
-        $this->assertSame(null, $description->getTitle());
+        $this->assertSame('Mein Titel', $description->getTitleAndDescription());
     }
 
-    public function testGetAll() {
-        $description = new Denkmal_Scraper_Description('foo', 'bar');
+    public function testGetTitleAndDescriptionWithDescription() {
+        $description = new Denkmal_Scraper_Description('Meine Beschreibung');
 
-        $this->assertSame('Bar: Foo', $description->getAll());
+        $this->assertSame('Meine Beschreibung', $description->getTitleAndDescription());
     }
 
-    public function testGetAllDescriptionOnly() {
-        $description = new Denkmal_Scraper_Description('foo');
+    public function testGetTitleAndDescriptionWithNothing() {
+        $description = new Denkmal_Scraper_Description();
 
-        $this->assertSame('Foo', $description->getAll());
+        $this->assertSame('', $description->getTitleAndDescription());
     }
 
-    public function testCapsLock() {
-        $description = new Denkmal_Scraper_Description('MY FOOD');
+    public function testGetTitleAndDescriptionCapsLock() {
+        $description = new Denkmal_Scraper_Description('MEINE BESCHREIBUNG YO');
 
-        $this->assertSame('MY Food', $description->getAll());
+        $this->assertSame('Meine Beschreibung YO', $description->getTitleAndDescription());
+    }
+
+    public function testGetGenres() {
+        $genres = new Denkmal_Scraper_Genres('pop, rock');
+        $description = new Denkmal_Scraper_Description('Meine Beschreibung', null, $genres);
+
+        $this->assertSame('Pop, rock', $description->getGenres());
+    }
+
+    public function testGetGenresEmpty() {
+        $genres = new Denkmal_Scraper_Genres('');
+        $description = new Denkmal_Scraper_Description('Meine Beschreibung', null, $genres);
+
+        $this->assertSame(null, $description->getGenres());
+    }
+
+    public function testGetGenresNone() {
+        $description = new Denkmal_Scraper_Description('Meine Beschreibung');
+
+        $this->assertSame(null, $description->getGenres());
     }
 }

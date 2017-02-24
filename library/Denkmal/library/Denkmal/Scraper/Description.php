@@ -57,16 +57,40 @@ class Denkmal_Scraper_Description {
     }
 
     /**
+     * @return string|null
+     */
+    public function getDescription() {
+        if (!$this->_description) {
+            return null;
+        }
+        return ucfirst(substr($this->_description, 0, 500));
+    }
+
+    /**
      * @return string
      */
-    public function getAll() {
-        $result = '';
+    public function getTitleAndDescription() {
         $title = $this->getTitle();
-        if (null !== $title) {
-            $result .= $title . ': ';
+        $description = $this->getDescription();
+
+        $result = '';
+        $result .= $title;
+        if ($title && $description) {
+            $result .= ': ';
         }
-        $result .= $this->getDescriptionAndGenres();
+        $result .= $description;
+
         return $result;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGenres() {
+        if (!$this->_genres || $this->_genres->count() === 0) {
+            return null;
+        }
+        return substr($this->_genres->getString(), 0, 100);
     }
 
     /**

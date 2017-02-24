@@ -6,3 +6,8 @@
     </li>
   {/foreach}
 </ul>
+
+{form name='Admin_Form_EventCategoryGenre' eventCategory=$eventCategory}
+{formField name='genre' label={translate 'Genre'}}
+{formAction action='Add' label={translate 'Add'}}
+{/form}

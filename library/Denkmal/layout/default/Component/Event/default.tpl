@@ -18,7 +18,13 @@
       {/if}
     </span>
     <span class="event-details">
-      <span class="description">{eventtext text=$event->getDescription()}</span>
+      <span class="description">
+        {if $event->getGenres()}
+          {{eventtext text=$event->getDescription()}|add_punctuation} {$event->getGenres()|escape}
+        {else}
+          {eventtext text=$event->getDescription()}
+        {/if}
+      </span>
     </span>
   </div>
 </div>

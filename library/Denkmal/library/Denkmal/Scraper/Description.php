@@ -31,22 +31,6 @@ class Denkmal_Scraper_Description {
     }
 
     /**
-     * @return string
-     */
-    public function getDescriptionAndGenres() {
-        $description = '';
-        if ($this->_description) {
-            $description .= ucfirst(substr($this->_description, 0, 500));
-        }
-        if ($this->_genres && $this->_genres->count() > 0) {
-            $description = $this->_endOnPunctuation($description);
-            $description .= ' ';
-            $description .= substr($this->_genres->getString(), 0, 100);
-        }
-        return $description;
-    }
-
-    /**
      * @return string|null
      */
     public function getTitle() {
@@ -110,25 +94,6 @@ class Denkmal_Scraper_Description {
         $str = preg_replace('#\s+#u', ' ', $str);
         $str = preg_replace('#\bDJ[\'`‛’‘]?(s?)\b#i', 'DJ$1', $str);
         $str = trim($str);
-        return $str;
-    }
-
-    /**
-     * @param string      $str
-     * @param string|null $character
-     * @return string
-     */
-    private function _endOnPunctuation($str, $character = null) {
-        if (empty($str)) {
-            return '';
-        }
-        if (null === $character) {
-            $character = '.';
-        }
-        $end = substr($str, -1);
-        if (strrpos('.!?:', $end) === false) {
-            $str .= $character;
-        }
         return $str;
     }
 }

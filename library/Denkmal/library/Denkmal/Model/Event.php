@@ -257,6 +257,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $event = new self();
         $event->setVenue($venue);
         $event->setDescription($description);
+        $event->setGenres(null);
         $event->setEnabled($enabled);
         $event->setQueued($queued);
         $event->setFrom($from);

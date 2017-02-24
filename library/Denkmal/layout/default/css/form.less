@@ -3,6 +3,22 @@
 
   > label {
     font-weight: normal;
+
+    &::after {
+      content: "";
+    }
+  }
+
+  &.required {
+    > label {
+      font-weight: bold;
+
+      &::after {
+        content: "*";
+        padding-left: 1px;
+        font-weight: bold;
+      }
+    }
   }
 }
 

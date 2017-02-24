@@ -7,6 +7,15 @@ h2 {
   }
 }
 
-.weekdays.menu > li:nth-child(7) {
-  border-right: 1px solid currentColor;
+.weekdays.menu.menu-pills {
+  > li {
+    &.active a {
+      background-color: @colorBgTheme;
+      color: @colorFgTheme;
+    }
+
+    &:nth-child(7) {
+      border-right: 1px solid currentColor;
+    }
+  }
 }

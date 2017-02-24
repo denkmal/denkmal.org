@@ -92,10 +92,10 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         $result->setCreated(new DateTime());
 
         try {
-            $eventList = $source->run($this->getNow(), $this->getDateList());
-            $this->processEventDataList($eventList);
+            $eventDataList = $source->run($this->getNow(), $this->getDateList());
+            $eventDataListValid = $this->processEventDataList($eventDataList);
 
-            $result->setEventDataCount(count($eventList));
+            $result->setEventDataCount(count($eventDataListValid));
             $result->setError(null);
         } catch (Exception $e) {
             $result->setEventDataCount(0);
@@ -106,15 +106,16 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
     }
 
     /**
-     * @param Denkmal_Scraper_EventData[] $eventList
+     * @param Denkmal_Scraper_EventData[] $eventDataList
+     * @return Denkmal_Scraper_EventData[]
      */
-    public function processEventDataList(array $eventList) {
-        /** @var Denkmal_Scraper_EventData[] $eventList */
-        $eventList = Functional\select($eventList, function (Denkmal_Scraper_EventData $eventData) {
+    public function processEventDataList(array $eventDataList) {
+        /** @var Denkmal_Scraper_EventData[] $eventDataList */
+        $eventDataList = Functional\select($eventDataList, function (Denkmal_Scraper_EventData $eventData) {
             return $this->_isValidEvent($eventData);
         });
 
-        $eventListGrouped = Functional\group($eventList, function (Denkmal_Scraper_EventData $eventData) {
+        $eventListGrouped = Functional\group($eventDataList, function (Denkmal_Scraper_EventData $eventData) {
             return $eventData->getSourceIdentifier();
         });
 
@@ -130,11 +131,13 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         }
 
         // Update existing events using data from other scrapers
-        foreach ($eventList as $eventData) {
+        foreach ($eventDataList as $eventData) {
             if ($existingEvent = $this->_findExistingEvent($eventData)) {
                 $this->_updateExistingEvent($existingEvent, $eventData);
             }
         }
+
+        return $eventDataList;
     }
 
     /**
@@ -205,6 +208,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
 
     /**
      * @param Denkmal_Scraper_EventData $eventData
+     * @return Denkmal_Model_Event
      */
     protected function _createEvent(Denkmal_Scraper_EventData $eventData) {
         if (!$venue = $eventData->findVenue()) {
@@ -214,6 +218,7 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         foreach ($eventData->getLinks() as $label => $url) {
             Denkmal_Model_EventLink::create($event, $label, $url);
         }
+        return $event;
     }
 
     /**

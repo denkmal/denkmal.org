@@ -48,12 +48,12 @@ class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
         $password = $params->getString('password');
 
         $user = Denkmal_Model_User::create($email, $username, $password);
-        $user->getRoles()->add(Denkmal_Role::HIPSTER);
 
         if (null !== $userInvite) {
             $userInvite->delete();
-            $response->getRequest()->getSession()->setUser($user);
-            $response->redirect($site->getLoginPage());
         }
+
+        $response->getRequest()->getSession()->setUser($user);
+        $response->redirect($site->getLoginPage());
     }
 }

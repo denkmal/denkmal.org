@@ -14,5 +14,7 @@ class Migration_1487943445_RemoveNow implements \CM_Migration_UpgradableInterfac
         if (CM_Db_Db::existsTable('denkmal_model_messageimage')) {
             CM_Db_Db::exec('DROP TABLE denkmal_model_messageimage');
         }
+
+        CM_Db_Db::exec('DELETE FROM cm_role WHERE role=3');
     }
 }

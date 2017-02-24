@@ -8,9 +8,8 @@ class Denkmal_Component_ChangePasswordTest extends CMTest_TestCase {
         $this->assertComponentNotAccessible($cmp);
     }
 
-    public function testHipster() {
+    public function testUser() {
         $viewer = Denkmal_Model_User::create('foo@bar', 'foo', 'pass');
-        $viewer->getRoles()->add(Denkmal_Role::HIPSTER);
         $cmp = new Denkmal_Component_ChangePassword(null);
         $page = $this->_renderComponent($cmp, $viewer);
 

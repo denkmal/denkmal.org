@@ -18,15 +18,6 @@ var Admin_Component_EventEdit = Admin_Component_Abstract.extend({
     }
   },
 
-  childrenEvents: {
-    'Admin_Form_Event success.Save': function(form) {
-      this.$el.floatbox('close');
-    },
-    'Admin_Form_Event event:deleted': function(form) {
-      this.$el.floatbox('close');
-    }
-  },
-
   /**
    * @param {String} label
    */

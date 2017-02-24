@@ -1,4 +1,4 @@
-<div class="event{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if} {if $allowEditing}editEvent{/if}">
+<div class="event editEvent{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if}">
   <div class="eventDescription">
     {if $event->getSong()}
       {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
@@ -22,3 +22,4 @@
     </div>
   </div>
 </div>
+{component name='Admin_Component_EventEdit' event=$event}

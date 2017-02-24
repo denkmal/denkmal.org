@@ -24,6 +24,8 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
       field.enableTriggerChangeOnInput();
     });
 
+    this._preview = this.getChild('Denkmal_Component_Event');
+
     this.on('change', _.debounce(this.renderPreview, 100));
   },
 
@@ -32,19 +34,13 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
     this._submitOnly('Preview', false)
       .then(function(response) {
         var preview = form._injectView(response);
-        if (form._preview) {
-          form._preview.replaceWithHtml(preview.$el);
-        } else {
-          form.$el.prepend(preview.$el);
-        }
+        form._preview.replaceWithHtml(preview.$el);
         form._preview = preview;
         preview._ready();
+        form.$('.preview').removeClass('error');
       })
       .catch(function(error) {
-        if (form._preview) {
-          form._preview.remove();
-          form._preview = null;
-        }
+        form.$('.preview').addClass('error');
       });
   },
 

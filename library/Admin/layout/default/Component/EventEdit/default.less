@@ -1,0 +1,71 @@
+.floatbox & {
+  background-color: @colorBg;
+  border-radius: 5px;
+  padding: 15px;
+  width: 900px;
+}
+
+.info {
+  font-style: italic;
+}
+
+.songSuggestionList, .linkSuggestionList {
+  font-size: @fontSizeSmall;
+
+  .songSuggestion, .linkSuggestion {
+    display: inline-block;
+    margin: 2px;
+    padding: 0 5px;
+    border-radius: 3px;
+    background-color: fadeout(@colorFgLink, 90);
+
+    &:hover {
+      background-color: fadeout(@colorFgLink, 85);
+    }
+  }
+}
+
+.Admin_Form_Event {
+  margin-bottom: 1em;
+
+  .preview {
+    border: 1px solid @colorError;
+  }
+
+  .form-bundle {
+    display: flex;
+    flex-wrap: wrap;
+
+    .formField:first-child > label {
+      margin-top: 5px;
+
+    }
+  }
+  .form-bundle-1 {
+    .formField.venue {
+      flex: 1 1 auto;
+    }
+  }
+
+  .form-bundle-2 {
+    > .formField {
+      flex: 1 1 auto;
+    }
+  }
+
+}
+
+.Admin_Component_Event {
+  border: 2px dashed @colorFgBorderEmphasize3;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  position: relative;
+
+  &::before {
+    bottom: 100%;
+    color: @colorFgSubtle;
+    content: "Preview:";
+    line-height: 1.8;
+    position: absolute;
+  }
+}

@@ -19,6 +19,14 @@
     }
   }
 
+  &.editEvent {
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
   .event-location {
     &.ignored {
       text-decoration: line-through;
@@ -56,26 +64,6 @@
   }
 }
 
-.event-edit {
+.Admin_Component_EventEdit {
   display: none;
-
-  .info {
-    font-style: italic;
-  }
-
-  .songSuggestionList, .linkSuggestionList {
-    font-size: @fontSizeSmall;
-
-    .songSuggestion, .linkSuggestion {
-      display: inline-block;
-      margin: 2px;
-      padding: 0px 5px;
-      border-radius: 3px;
-      background-color: fadeout(@colorFgLink, 90);
-
-      &:hover {
-        background-color: fadeout(@colorFgLink, 85);
-      }
-    }
-  }
 }

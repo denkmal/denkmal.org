@@ -26,8 +26,6 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         $event->setSong($song);
         $event->setStarred($starred);
         $event->setHidden($hidden);
-
-        $response->reloadComponent();
     }
 
     /**

@@ -9,16 +9,10 @@ class Denkmal_Paging_Song_Suggestion extends Denkmal_Paging_Song_Abstract {
         $text = $event->getDescription();
         $text = CM_Util::htmlspecialchars($text, ENT_QUOTES);
 
-        $termList = array();
-
-        foreach (Denkmal_Usertext_Filter_Links::getReplacements() as $replacement) {
-            if (false === stripos($text, $replacement['label'])) {
-                continue;
-            }
-            if (preg_match($replacement['search'], $text)) {
-                $termList[] = $replacement['label'];
-            }
-        }
+        $termList = preg_split('#\s+#', $event->getDescription());
+        $termList = Functional\reject($termList, function ($term) {
+            return mb_strlen($term) < 3;
+        });
 
         $query = new Denkmal_Elasticsearch_Query_Song();
         $query->queryText(implode(' ', $termList));

@@ -9,12 +9,9 @@ class Admin_Component_EventEdit extends \Admin_Component_Abstract {
         $songListSuggested = new Denkmal_Paging_Song_Suggestion($event);
         $songListSuggested->setPage(1, 3);
 
-        $linkListSuggested = new Denkmal_Paging_Link_Suggestion($event);
-
         $viewResponse->set('event', $event);
         $viewResponse->set('venue', $venue);
         $viewResponse->set('songListSuggested', $songListSuggested);
-        $viewResponse->set('linkListSuggested', $linkListSuggested);
         $viewResponse->set('eventDuplicates', $event->getDuplicates());
     }
 }

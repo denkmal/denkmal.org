@@ -135,7 +135,6 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
         $this->assertSame(true, $data['starred']);
         $this->assertSame($song->toArrayApi($render), $data['song']);
         $this->assertSame('hello foo bar', $data['description']);
-        $this->assertSame('hello <a href="http://foo.com" class="url" target="_blank">foo</a> bar', $data['descriptionHtml']);
     }
 
     public function testGetDuplicates() {

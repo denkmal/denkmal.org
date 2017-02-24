@@ -9,13 +9,13 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
     protected $_typeEvent;
 
     public function setUp() {
-        $elasticsearchCluster = $this->getServiceManager()->getElasticsearch();
-        $elasticsearchCluster->setEnabled(true);
+        $elasticsearch = $this->getServiceManager()->getElasticsearch();
+        $elasticsearch->setEnabled(true);
 
-        $this->_typeSong = new Denkmal_Elasticsearch_Type_Song($elasticsearchCluster->getClient());
+        $this->_typeSong = new Denkmal_Elasticsearch_Type_Song($elasticsearch->getClient());
         $this->_typeSong->createIndex();
 
-        $this->_typeEvent = new Denkmal_Elasticsearch_Type_Event($elasticsearchCluster->getClient());
+        $this->_typeEvent = new Denkmal_Elasticsearch_Type_Event($elasticsearch->getClient());
         $this->_typeEvent->createIndex();
     }
 
@@ -32,23 +32,19 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
         $song3 = Denkmal_Model_Song::create('bar foo', $file);
         $song4 = Denkmal_Model_Song::create('zoo', $file);
 
-        Denkmal_Model_Link::create('foo', 'http://foo.com', true);
-        Denkmal_Model_Link::create('bar', 'http://bar.com', true);
-        Denkmal_Model_Link::create('my zoo', 'http://my-zoo.com', true);
-
         $venue = DenkmalTest_TH::createVenue();
         $event = Denkmal_Model_Event::create($venue, 'my event', true, false, new DateTime());
 
         $paging = new Denkmal_Paging_Song_Suggestion($event);
-        $this->assertEquals(array(), $paging->getItems());
+        $this->assertEquals([], $paging->getItems());
 
         $event->setDescription('mega foo test');
         $paging = new Denkmal_Paging_Song_Suggestion($event);
-        $this->assertEquals(array($song1, $song3), $paging->getItems());
+        $this->assertEquals([$song1, $song3], $paging->getItems());
 
         $event->setDescription('mega foo bar test');
         $paging = new Denkmal_Paging_Song_Suggestion($event);
-        $this->assertEquals(array($song3, $song1, $song2), $paging->getItems());
+        $this->assertEquals([$song3, $song1, $song2], $paging->getItems());
     }
 
     public function testGetItemsApostrophe() {
@@ -61,6 +57,6 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
         $event = Denkmal_Model_Event::create($venue, 'my event: Don\'t Kill the Beast', true, false, new DateTime());
 
         $paging = new Denkmal_Paging_Song_Suggestion($event);
-        $this->assertEquals(array($song1), $paging->getItems());
+        $this->assertEquals([$song1], $paging->getItems());
     }
 }

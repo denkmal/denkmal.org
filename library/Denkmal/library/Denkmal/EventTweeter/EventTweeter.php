@@ -59,24 +59,23 @@ class Denkmal_EventTweeter_EventTweeter {
      * @return string
      */
     private function _formatEvent(Denkmal_Model_Event $event) {
-        $html = 'Denkmal recommends: ';
+        $text = 'Denkmal recommends: ';
         if ($event->getVenue()->getTwitterUsername()) {
-            $html .= '@' . $event->getVenue()->getTwitterUsername();
+            $text .= '@' . $event->getVenue()->getTwitterUsername();
         } else {
-            $html .= $event->getVenue()->getName();
+            $text .= $event->getVenue()->getName();
         }
-        $html .= ' (';
-        $html .= $this->_formatTime($event->getFrom());
+        $text .= ' (';
+        $text .= $this->_formatTime($event->getFrom());
         if ($event->getUntil()) {
-            $html .= '-' . $this->_formatTime($event->getUntil());
+            $text .= '-' . $this->_formatTime($event->getUntil());
         }
-        $html .= ') ';
+        $text .= ') ';
 
-        $usertextLinks = new CM_Usertext_Usertext();
-        $usertextLinks->addFilter(new Denkmal_Usertext_Filter_Links());
-        $html .= $usertextLinks->transform($event->getDescription(), $this->_render);
+        $eventFormatter = new Denkmal_EventFormatter_EventFormatter($this->_render);
+        $text .= $eventFormatter->getText($event);
 
-        return strip_tags($html);
+        return $text;
     }
 
     /**

@@ -42,7 +42,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[42] = CM_Model_Location_Zip::class;
     $config->CM_Model_Abstract->types[43] = CM_Model_LanguageKey::class;
     $config->CM_Model_Abstract->types[51] = Denkmal_Scraper_SourceResult::class;
-    $config->CM_Model_Abstract->types[58] = Denkmal_Model_Tag::class;
     $config->CM_Model_Abstract->types[61] = Denkmal_Model_UserInvite::class;
     $config->CM_Model_Abstract->types[63] = Denkmal_Push_Subscription::class;
     $config->CM_Model_Abstract->types[64] = Denkmal_Push_Notification_Message::class;
@@ -68,7 +67,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Provision_Script_OptionBased->types[54] = CM_Elasticsearch_SetupScript::class;
     $config->CM_Provision_Script_OptionBased->types[55] = Denkmal_App_SetupScript_LoadLanguage::class;
     $config->CM_Provision_Script_OptionBased->types[56] = Denkmal_ExampleData_Users::class;
-    $config->CM_Provision_Script_OptionBased->types[59] = Denkmal_App_SetupScript_Tags::class;
     $config->CM_Provision_Script_OptionBased->types[60] = Denkmal_ExampleData_Venues::class;
     $config->CM_Provision_Script_OptionBased->types[66] = CM_App_SetupScript_Currency::class;
     $config->CM_Provision_Script_OptionBased->types[78] = Denkmal_App_SetupScript_Locations::class;
@@ -136,8 +134,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Elasticsearch_SetupScript->type = 54;
     $config->Denkmal_App_SetupScript_LoadLanguage->type = 55;
     $config->Denkmal_ExampleData_Users->type = 56;
-    $config->Denkmal_Model_Tag->type = 58;
-    $config->Denkmal_App_SetupScript_Tags->type = 59;
     $config->Denkmal_ExampleData_Venues->type = 60;
     $config->Denkmal_Model_UserInvite->type = 61;
     $config->Denkmal_Mail_UserInvite->type = 62;

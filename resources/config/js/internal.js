@@ -25,7 +25,6 @@ cm.model.types = {
     "CM_Model_Location_Zip": 42,
     "CM_Model_LanguageKey": 43,
     "Denkmal_Scraper_SourceResult": 51,
-    "Denkmal_Model_Tag": 58,
     "Denkmal_Model_UserInvite": 61,
     "Denkmal_Push_Subscription": 63,
     "Denkmal_Push_Notification_Message": 64,

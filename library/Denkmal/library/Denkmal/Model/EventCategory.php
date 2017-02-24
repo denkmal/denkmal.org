@@ -57,6 +57,7 @@ class Denkmal_Model_EventCategory extends CM_Model_Abstract {
 
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
+        $containingCacheables[] = new Denkmal_Paging_EventCategory_All();
         return $containingCacheables;
     }
 

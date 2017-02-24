@@ -52,6 +52,7 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[87] = Denkmal_Model_FacebookPage::class;
     $config->CM_Model_Abstract->types[90] = CM_Migration_Model::class;
     $config->CM_Model_Abstract->types[91] = Denkmal_Model_EventLink::class;
+    $config->CM_Model_Abstract->types[92] = Denkmal_Model_EventCategory::class;
     $config->CM_Paging_Log->types = [];
     $config->CM_Paging_Log->types[74] = CM_Paging_Log::class;
     $config->CM_Paging_Log->types[75] = CM_Paging_Log_Javascript::class;
@@ -157,7 +158,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Basel_Renee->type = 89;
     $config->CM_Migration_Model->type = 90;
     $config->Denkmal_Model_EventLink->type = 91;
-    $config->CM_Class_Abstract->typesMaxValue = 91;
+    $config->Denkmal_Model_EventCategory->type = 92;
+    $config->CM_Class_Abstract->typesMaxValue = 92;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

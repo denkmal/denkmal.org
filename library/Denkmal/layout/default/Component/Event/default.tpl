@@ -18,7 +18,9 @@
       {/if}
     </span>
     <span class="event-details">
-      <span class="description">{eventtext text=$event->getDescription()}</span>
+      <span class="description">
+        {eventtext event=$event}
+      </span>
     </span>
   </div>
 </div>

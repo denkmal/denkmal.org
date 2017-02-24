@@ -214,7 +214,20 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
         if (!$venue = $eventData->findVenue()) {
             $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false, $eventData->getRegion());
         }
-        $event = Denkmal_Model_Event::create($venue, $eventData->getDescription()->getAll(), true, true, $eventData->getFrom(), $eventData->getUntil());
+
+        $event = new Denkmal_Model_Event();
+        $event->setVenue($venue);
+        $event->setDescription($eventData->getDescription()->getTitleAndDescription());
+        $event->setGenres($eventData->getDescription()->getGenres());
+        $event->setEnabled(true);
+        $event->setQueued(true);
+        $event->setFrom($eventData->getFrom());
+        $event->setUntil($eventData->getUntil());
+        $event->setSong(null);
+        $event->setHidden(false);
+        $event->setStarred(false);
+        $event->commit();
+
         foreach ($eventData->getLinks() as $label => $url) {
             Denkmal_Model_EventLink::create($event, $label, $url);
         }

@@ -95,6 +95,20 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
+     * @return string|null
+     */
+    public function getGenres() {
+        return $this->_get('genres');
+    }
+
+    /**
+     * @param string|null $genres
+     */
+    public function setGenres($genres = null) {
+        $this->_set('genres', $genres);
+    }
+
+    /**
      * @return Denkmal_Model_Song|null
      */
     public function getSong() {
@@ -243,6 +257,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
         $event = new self();
         $event->setVenue($venue);
         $event->setDescription($description);
+        $event->setGenres(null);
         $event->setEnabled($enabled);
         $event->setQueued($queued);
         $event->setFrom($from);
@@ -264,6 +279,7 @@ class Denkmal_Model_Event extends CM_Model_Abstract implements Denkmal_ArrayConv
             'from'        => array('type' => 'DateTime'),
             'until'       => array('type' => 'DateTime', 'optional' => true),
             'description' => array('type' => 'string'),
+            'genres'      => array('type' => 'string', 'optional' => true),
             'song'        => array('type' => 'Denkmal_Model_Song', 'optional' => true),
             'queued'      => array('type' => 'boolean'),
             'enabled'     => array('type' => 'boolean'),

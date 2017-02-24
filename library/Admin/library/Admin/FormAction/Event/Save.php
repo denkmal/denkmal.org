@@ -11,12 +11,14 @@ class Admin_FormAction_Event_Save extends Admin_FormAction_Abstract {
         $venue = $params->getVenue('venue');
         list($from, $until) = $this->_processDate($params);
         $description = $params->getString('description');
+        $genres = $params->has('genres') ? $params->getString('genres') : null;
         $song = $params->has('song') ? $params->getSong('song') : null;
         $starred = $params->getBoolean('starred');
         $hidden = $params->getBoolean('hidden');
 
         $event->setVenue($venue);
         $event->setDescription($description);
+        $event->setGenres($genres);
         $event->setEnabled(true);
         $event->setQueued(false);
         $event->setFrom($from);

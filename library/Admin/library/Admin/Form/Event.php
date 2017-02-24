@@ -15,6 +15,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_Time(['name' => 'fromTime', 'timeZone' => $timeZone]));
         $this->registerField(new CM_FormField_Time(['name' => 'untilTime', 'timeZone' => $timeZone]));
         $this->registerField(new CM_FormField_Textarea(['name' => 'description']));
+        $this->registerField(new CM_FormField_Text(['name' => 'genres']));
         $this->registerField(new Denkmal_FormField_Song(['name' => 'song']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'starred']));
         $this->registerField(new CM_FormField_Boolean(['name' => 'hidden']));
@@ -39,6 +40,7 @@ class Admin_Form_Event extends CM_Form_Abstract {
         $this->getField('fromTime')->setValue($event->getFrom());
         $this->getField('untilTime')->setValue($event->getUntil());
         $this->getField('description')->setValue($event->getDescription());
+        $this->getField('genres')->setValue($event->getGenres());
         $this->getField('song')->setValue($event->getSong());
         $this->getField('starred')->setValue($event->getStarred());
         $this->getField('hidden')->setValue($event->getHidden());

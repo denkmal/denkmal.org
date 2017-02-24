@@ -12,9 +12,4 @@
     {formAction action='Save' label={translate 'Save'}}
     {/form}
   {/if}
-  <h2>{translate 'Global Settings'}</h2>
-  {form name='Admin_Form_Settings'}
-  {formField name='anonymousMessagingDisabled' label={translate 'Disallow anonymous messages'}}
-  {formAction action='Save' label={translate 'Save'}}
-  {/form}
 {/block}

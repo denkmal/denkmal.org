@@ -9,21 +9,6 @@ class Denkmal_App_Settings implements CM_Service_ManagerAwareInterface {
     }
 
     /**
-     * @return boolean
-     */
-    public function getAnonymousMessagingDisabled() {
-        return (bool) $this->_getOptions()->get('denkmal.anonymousMessagingDisabled');
-    }
-
-    /**
-     * @param bool $state
-     */
-    public function setAnonymousMessagingDisabled($state) {
-        $state = (int) $state;
-        $this->_getOptions()->set('denkmal.anonymousMessagingDisabled', $state);
-    }
-
-    /**
      * @return int
      */
     public function getDayOffset() {
@@ -40,11 +25,5 @@ class Denkmal_App_Settings implements CM_Service_ManagerAwareInterface {
         return $date;
     }
 
-    /**
-     * @return CM_Options
-     */
-    private function _getOptions() {
-        return CM_Service_Manager::getInstance()->getOptions();
-    }
 }
 

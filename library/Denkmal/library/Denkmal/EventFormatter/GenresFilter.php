@@ -3,6 +3,11 @@
 class Denkmal_EventFormatter_GenresFilter extends CM_Usertext_Filter_Abstract {
 
     public function transform($text, CM_Frontend_Render $render) {
+        if (!CM_Bootloader::getInstance()->isDebug()) {
+            // @todo remove to enable once frontend is ready
+            return $text;
+        }
+
         $text = (string) $text;
         foreach (self::getReplacements() as $replacement) {
             if (false === stripos($text, $replacement['genre'])) {

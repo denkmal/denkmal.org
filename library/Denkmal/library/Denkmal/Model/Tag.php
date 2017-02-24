@@ -28,7 +28,6 @@ class Denkmal_Model_Tag extends CM_Model_Abstract {
      */
     public function setActive($active) {
         $this->_set('active', $active);
-        (new Denkmal_Paging_Tag_Active())->_change();
     }
 
     protected function _getSchema() {
@@ -40,8 +39,6 @@ class Denkmal_Model_Tag extends CM_Model_Abstract {
 
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
-        $containingCacheables[] = new Denkmal_Paging_Tag_All();
-        $containingCacheables[] = new Denkmal_Paging_Tag_Active();
         return $containingCacheables;
     }
 

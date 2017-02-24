@@ -100,13 +100,6 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         return $this->_get('user');
     }
 
-    /**
-     * @return Denkmal_ModelAsset_Tags
-     */
-    public function getTags() {
-        return $this->_getAsset('Denkmal_ModelAsset_Tags');
-    }
-
     public function toArrayApi(CM_Frontend_Render $render) {
         $array = array();
         $array['id'] = $this->getId();
@@ -128,9 +121,6 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
         $array['created'] = $this->getCreated()->getTimestamp();
         $array['text'] = $this->getText();
         $array['image'] = $this->hasImage() ? $this->getImage()->toArrayApi($render) : null;
-        $array['tagList'] = Functional\map($this->getTags()->getAll(), function (Denkmal_Model_Tag $tag) {
-            return $tag->getLabel();
-        });
         $array['user'] = $this->getUser() ? $this->getUser()->toArray() : null;
         return $array;
     }
@@ -156,12 +146,6 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
         return $containingCacheables;
-    }
-
-    protected function _getAssets() {
-        return [
-            new Denkmal_ModelAsset_Tags($this),
-        ];
     }
 
     /**

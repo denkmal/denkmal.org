@@ -28,7 +28,7 @@ class Denkmal_Scraper_Source_Facebook_VenuesTest extends CMTest_TestCase {
         });
         $this->getServiceManager()->replaceInstance('facebook', $facebookClient);
 
-        $eventDataList = $scraper->run(new DateTime(), []);
+        $eventDataList = $scraper->run(new DateTime('2016-10-20'), []);
 
         $this->assertCount(99, $eventDataList);
 
@@ -39,7 +39,7 @@ class Denkmal_Scraper_Source_Facebook_VenuesTest extends CMTest_TestCase {
             new DateTime('2017-03-24 20:00:00'),
             null,
             'facebook-page:my-page-1',
-            ['Facebook' => 'https://www.facebook.com/events/160016644392913/']
+            ['Facebook Event' => 'https://www.facebook.com/events/160016644392913/']
         ), $eventDataList[0]);
 
         $this->assertEquals(new Denkmal_Scraper_EventData(
@@ -49,7 +49,7 @@ class Denkmal_Scraper_Source_Facebook_VenuesTest extends CMTest_TestCase {
             new DateTime('2017-03-18 19:00:00'),
             new DateTime('2017-03-18 23:00:00'),
             'facebook-page:my-page-1',
-            ['Facebook' => 'https://www.facebook.com/events/105826623207269/']
+            ['Facebook Event' => 'https://www.facebook.com/events/105826623207269/']
         ), $eventDataList[1]);
     }
 }

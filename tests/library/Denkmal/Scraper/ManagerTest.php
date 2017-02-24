@@ -76,7 +76,10 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
     }
 
     public function testProcessEventDataList() {
-        $manager = new Denkmal_Scraper_Manager();
+        /** @var Denkmal_Scraper_Manager|Mocka\ClassMock $manager */
+        $manager = $this->mockObject('Denkmal_Scraper_Manager');
+        $manager->mockMethod('getNow')->set(new DateTime('2017-02-18'));
+
         $region = DenkmalTest_TH::createRegion();
         $venue = DenkmalTest_TH::createVenue('foo', false, false, $region);
 
@@ -110,13 +113,13 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
                 new Denkmal_Scraper_Description('my event 1'),
                 new DateTime('2017-02-19 19:00'), null,
                 'source-4',
-                ['Facebook' => 'http://facebook.com/event-1']
+                ['Facebook Event' => 'http://facebook.com/event-1']
             ),
             new Denkmal_Scraper_EventData($region, $venue,
                 new Denkmal_Scraper_Description('my event 3'),
                 new DateTime('2017-02-20 19:00'), null,
                 'source-4',
-                ['Facebook' => 'http://facebook.com/event-3']
+                ['Facebook Event' => 'http://facebook.com/event-3']
             ),
         ]);
 

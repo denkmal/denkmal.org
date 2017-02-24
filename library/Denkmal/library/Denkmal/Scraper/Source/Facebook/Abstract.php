@@ -62,7 +62,7 @@ abstract class Denkmal_Scraper_Source_Facebook_Abstract extends Denkmal_Scraper_
 
         $facebookEventId = $graphEvent->getField('id');
         $facebookLink = "https://www.facebook.com/events/${facebookEventId}/";
-        $eventData->addLink('Facebook', $facebookLink);
+        $eventData->addLink('Facebook Event', $facebookLink);
 
         return $eventData;
     }

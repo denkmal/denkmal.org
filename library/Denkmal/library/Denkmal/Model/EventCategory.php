@@ -84,6 +84,21 @@ class Denkmal_Model_EventCategory extends CM_Model_Abstract {
         return $containingCacheables;
     }
 
+    protected function _onChange() {
+        parent::_onChange();
+        Denkmal_EventFormatter_GenresFilter::clearCache();
+    }
+
+    protected function _onCreate() {
+        parent::_onCreate();
+        Denkmal_EventFormatter_GenresFilter::clearCache();
+    }
+
+    protected function _onDelete() {
+        parent::_onDelete();
+        Denkmal_EventFormatter_GenresFilter::clearCache();
+    }
+
     /**
      * @param string       $label
      * @param CM_Color_RGB $color

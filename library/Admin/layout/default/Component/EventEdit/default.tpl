@@ -15,16 +15,6 @@
   {/if}
 {/capture}
 
-{capture name="linkSuggestionList"}
-  {if $linkListSuggested->getCount() > 0}
-    <div class="linkSuggestionList">
-      {foreach $linkListSuggested as $link}
-        {link label={$link->getLabel()} class="linkSuggestion selectLink" data=[label => $link->getLabel()]}
-      {/foreach}
-    </div>
-  {/if}
-{/capture}
-
 <h2>{translate 'Edit Event'}</h2>
 {form name='Admin_Form_Event' event=$event}
   <div class="preview">
@@ -36,7 +26,7 @@
     {formField name='fromTime' label={translate 'Start'}}
     {formField name='untilTime' label={translate 'End'}}
   </div>
-{formField name='description' label={translate 'Description'} append=$smarty.capture.linkSuggestionList}
+{formField name='description' label={translate 'Description'}}
   <div class="form-bundle form-bundle-2">
     {formField name='genres' label={translate 'Genres'}}
     {formField name='song' label={translate 'Song'} append=$smarty.capture.songSuggestionList}

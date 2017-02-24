@@ -116,15 +116,6 @@ class Denkmal_Params extends CM_Params {
 
     /**
      * @param string $key
-     * @return Denkmal_Model_Message
-     * @throws CM_Exception_InvalidParam
-     */
-    public function getMessage($key) {
-        return $this->getObject($key, 'Denkmal_Model_Message');
-    }
-
-    /**
-     * @param string $key
      * @return Denkmal_Model_UserInvite
      * @throws CM_Exception_InvalidParam
      */

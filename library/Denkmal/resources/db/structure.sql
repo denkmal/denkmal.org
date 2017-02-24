@@ -1,8 +1,6 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
-DROP TABLE IF EXISTS `denkmal_model_message`;
-DROP TABLE IF EXISTS `denkmal_model_messageimage`;
 DROP TABLE IF EXISTS `denkmal_model_event`;
 DROP TABLE IF EXISTS `denkmal_model_eventlink`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
@@ -121,28 +119,6 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_eventlink` (
   `url` varchar(500) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `denkmal_model_eventlink__event` FOREIGN KEY (`event`) REFERENCES `denkmal_model_event` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE `denkmal_model_messageimage` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE `denkmal_model_message` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `venue` int(11) unsigned NOT NULL,
-  `clientId` varchar(100) NOT NULL,
-  `user` int(11) unsigned NULL,
-  `created` int(11) unsigned NOT NULL,
-  `text` varchar(1000) DEFAULT NULL,
-  `image` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `venue` (`venue`),
-  KEY `created` (`created`),
-  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `denkmal_model_message__image` FOREIGN KEY (`image`) REFERENCES `denkmal_model_messageimage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

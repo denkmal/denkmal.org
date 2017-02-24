@@ -9,6 +9,7 @@ return function (CM_Config_Node $config) {
 
     $config->CM_App->setupScriptClasses[] = 'Denkmal_App_SetupScript_LoadLanguage';
     $config->CM_App->setupScriptClasses[] = 'Denkmal_App_SetupScript_Locations';
+    $config->CM_App->setupScriptClasses[] = 'Denkmal_App_SetupScript_EventCategories';
 
     $config->CM_Stream_Video->servers = array();
 

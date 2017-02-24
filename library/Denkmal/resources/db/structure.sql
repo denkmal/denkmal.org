@@ -2,6 +2,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 DROP TABLE IF EXISTS `denkmal_model_event`;
+DROP TABLE IF EXISTS `denkmal_model_eventcategory`;
 DROP TABLE IF EXISTS `denkmal_model_eventlink`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_model_venue`;
@@ -110,6 +111,17 @@ CREATE TABLE `denkmal_model_event` (
   KEY `song` (`song`),
   CONSTRAINT `denkmal_model_event__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `denkmal_model_event__song` FOREIGN KEY (`song`) REFERENCES `denkmal_model_song` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE IF NOT EXISTS `denkmal_model_eventcategory` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(100) NOT NULL,
+  `color` varchar(6) NOT NULL,
+  `genreList` varchar(10000) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `label` (`label`),
+  UNIQUE KEY `color` (`color`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

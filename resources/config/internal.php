@@ -4,7 +4,6 @@
 return function (CM_Config_Node $config) {
     $config->CM_Action_Abstract->types = [];
     $config->CM_Action_Abstract->types[3] = CM_Action_Email::class;
-    $config->CM_Action_Abstract->types[27] = Denkmal_Action_Message::class;
     $config->CM_Janus_ServerList->types = [];
     $config->CM_Janus_ServerList->types[82] = CM_Janus_ServerList::class;
     $config->CM_Janus_ServerList->type = 82;

@@ -39,13 +39,6 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
   /**
    * @param {Boolean} state
    */
-  setChatIndication: function(state) {
-    this.$('.nowButton .indication-chat').toggleClass('active', state);
-  },
-
-  /**
-   * @param {Boolean} state
-   */
   setWeekdayVisible: function(state) {
     this.$el.attr('data-weekday', state ? '' : null);
   },

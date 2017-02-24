@@ -143,13 +143,6 @@ class Denkmal_Model_Region extends CM_Model_Abstract {
         return $timeZone;
     }
 
-    /**
-     * @return Denkmal_Paging_Message_Region
-     */
-    public function getMessageList() {
-        return new Denkmal_Paging_Message_Region($this);
-    }
-
     protected function _getSchema() {
         return new CM_Model_Schema_Definition([
             'name'                   => ['type' => 'string'],

@@ -1,8 +1,6 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
-DROP TABLE IF EXISTS `denkmal_model_message`;
-DROP TABLE IF EXISTS `denkmal_model_messageimage`;
 DROP TABLE IF EXISTS `denkmal_model_event`;
 DROP TABLE IF EXISTS `denkmal_model_eventlink`;
 DROP TABLE IF EXISTS `denkmal_model_venuealias`;
@@ -14,8 +12,6 @@ DROP TABLE IF EXISTS `denkmal_model_user`;
 DROP TABLE IF EXISTS `denkmal_model_userinvite`;
 DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
 DROP TABLE IF EXISTS `denkmal_scraper_facebookpage`;
-DROP TABLE IF EXISTS `denkmal_model_tag`;
-DROP TABLE IF EXISTS `denkmal_model_tag_model`;
 DROP TABLE IF EXISTS `denkmal_push_notification_message`;
 DROP TABLE IF EXISTS `denkmal_push_subscription`;
 DROP TABLE IF EXISTS `denkmal_model_region`;
@@ -126,28 +122,6 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_eventlink` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-CREATE TABLE `denkmal_model_messageimage` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE `denkmal_model_message` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `venue` int(11) unsigned NOT NULL,
-  `clientId` varchar(100) NOT NULL,
-  `user` int(11) unsigned NULL,
-  `created` int(11) unsigned NOT NULL,
-  `text` varchar(1000) DEFAULT NULL,
-  `image` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `venue` (`venue`),
-  KEY `created` (`created`),
-  CONSTRAINT `denkmal_model_message__venue` FOREIGN KEY (`venue`) REFERENCES `denkmal_model_venue` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `denkmal_model_message__image` FOREIGN KEY (`image`) REFERENCES `denkmal_model_messageimage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
 CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `label` varchar(100) NOT NULL,
@@ -205,26 +179,6 @@ CREATE TABLE IF NOT EXISTS `denkmal_scraper_facebookpage` (
   KEY `region` (`region`),
   CONSTRAINT `denkmal_scraper_facebookpage__facebookpage` FOREIGN KEY (`facebookPage`) REFERENCES `denkmal_model_facebookpage` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `denkmal_scraper_facebookpage__region` FOREIGN KEY (`region`) REFERENCES `denkmal_model_region` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE IF NOT EXISTS `denkmal_model_tag` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `label` varchar(20) NOT NULL,
-  `active` tinyint(4) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `label` (`label`),
-  KEY `active` (`active`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE IF NOT EXISTS `denkmal_model_tag_model` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `tagId` int(11) unsigned NOT NULL,
-  `modelType` int(11) unsigned NOT NULL,
-  `modelId` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `modelType-modelId-tagId` (`modelType`, `modelId`, `tagId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

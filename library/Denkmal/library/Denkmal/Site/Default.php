@@ -22,7 +22,7 @@ class Denkmal_Site_Default extends CM_Site_Abstract {
      * @return string
      */
     public function getLoginPage() {
-        return 'Denkmal_Page_Now';
+        return 'Denkmal_Page_Account';
     }
 
     /**

@@ -13,19 +13,16 @@ cm.model.types = {
     "CM_Model_StreamChannel_Message_User": 17,
     "Denkmal_Model_Event": 28,
     "Denkmal_Model_Link": 29,
-    "Denkmal_Model_Message": 30,
     "Denkmal_Model_Song": 31,
     "Denkmal_Model_User": 32,
     "Denkmal_Model_Venue": 33,
     "Denkmal_Model_VenueAlias": 34,
-    "Denkmal_Model_MessageImage": 37,
     "CM_Model_Location_City": 39,
     "CM_Model_Location_Country": 40,
     "CM_Model_Location_State": 41,
     "CM_Model_Location_Zip": 42,
     "CM_Model_LanguageKey": 43,
     "Denkmal_Scraper_SourceResult": 51,
-    "Denkmal_Model_Tag": 58,
     "Denkmal_Model_UserInvite": 61,
     "Denkmal_Push_Subscription": 63,
     "Denkmal_Push_Notification_Message": 64,
@@ -40,6 +37,5 @@ cm.model.types = {
     "Denkmal_Model_EventLink": 91
 };
 cm.action.types = {
-    "CM_Action_Email": 3,
-    "Denkmal_Action_Message": 27
+    "CM_Action_Email": 3
 };

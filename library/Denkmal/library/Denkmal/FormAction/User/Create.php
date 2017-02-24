@@ -36,6 +36,8 @@ class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
         /** @var Denkmal_Params $params */
         /** @var Denkmal_Params $paramsForm */
         $paramsForm = $form->getParams();
+        /** @var Denkmal_Site_Default $site */
+        $site = $response->getSite();
 
         $userInvite = null;
         if ($paramsForm->has('inviteKey')) {
@@ -46,12 +48,12 @@ class Denkmal_FormAction_User_Create extends CM_FormAction_Abstract {
         $password = $params->getString('password');
 
         $user = Denkmal_Model_User::create($email, $username, $password);
-        $user->getRoles()->add(Denkmal_Role::HIPSTER);
 
         if (null !== $userInvite) {
             $userInvite->delete();
-            $response->getRequest()->getSession()->setUser($user);
-            $response->redirect('Denkmal_Page_Now');
         }
+
+        $response->getRequest()->getSession()->setUser($user);
+        $response->redirect($site->getLoginPage());
     }
 }

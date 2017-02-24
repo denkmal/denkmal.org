@@ -17,7 +17,7 @@ class Admin_Component_UserRolesTest extends CMTest_TestCase {
         $html = $this->_renderComponent($cmp, $viewer);
 
         $this->assertComponentAccessible($cmp, $viewer);
-        $this->assertSame(3, $html->find('.roleList-item')->count());
+        $this->assertSame(2, $html->find('.roleList-item')->count());
     }
 
     public function testAjax_setRole() {

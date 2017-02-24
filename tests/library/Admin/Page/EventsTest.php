@@ -24,9 +24,8 @@ class Admin_Page_EventsTest extends CMTest_TestCase {
         $this->assertComponentAccessible($page, $viewer);
     }
 
-    public function testHipster() {
+    public function testOtherUser() {
         $viewer = Denkmal_Model_User::create('foo@denkmal.org', 'foo', 'pass');
-        $viewer->getRoles()->add(Denkmal_Role::HIPSTER);
 
         $page = new Admin_Page_Events(['date' => (new DateTime())->format('Y-n-j')]);
         $this->assertPageNotRenderable($page, 'CM_Exception_AuthRequired', $viewer);

@@ -2,12 +2,6 @@
 
 {block name='content-main'}
   {foreach $eventCategoryList as $eventCategory}
-    <div class="toggleNext">
-      <span class="eventCategory-color" style="background-color:#{$eventCategory->getColor()->getHexString()};"></span>
-      {$eventCategory->getLabel()|escape}
-    </div>
-    <div class="toggleNext-content">
-      {component name='Admin_Component_EventCategory' eventCategory=$eventCategory}
-    </div>
+    {component name='Admin_Component_EventCategory' eventCategory=$eventCategory}
   {/foreach}
 {/block}

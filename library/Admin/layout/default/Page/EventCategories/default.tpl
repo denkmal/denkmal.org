@@ -7,7 +7,7 @@
       {$eventCategory->getLabel()|escape}
     </div>
     <div class="toggleNext-content">
-
+      {component name='Admin_Component_EventCategory' eventCategory=$eventCategory}
     </div>
   {/foreach}
 {/block}

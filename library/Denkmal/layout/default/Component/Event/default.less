@@ -1,61 +1,48 @@
-.Denkmal_Component_SongPlayerButton {
-  position: absolute;
-  top: 50%;
-  margin-top: -(@navButtonSize/2);
-}
-
 .event {
-  min-height: @navButtonSize;
-  position: relative;
-  padding: 7px 0;
-  background-color: @colorBg;
-  border-radius: 0;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-  transition: 200ms;
+  display: flex;
+  padding-top: 8px;
+  padding-bottom: 8px;
 
-  &.starred {
-    &::before {
-      position: absolute;
-      content: "";
-      top: -1px;
-      left: -1px;
-      bottom: -1px;
-      width: 4px;
-      background-color: @colorFeatured;
-      border-radius: 3px 0 0 3px;
+  .event-star {
+    flex-shrink: 0;
+    padding: 0 10px;
+    cursor: pointer;
+
+    .icon {
+      color: @colorIconSubtle;
+      font-size: 22px;
+      position: relative;
+      top: -5px;
     }
   }
 
-  &.past {
-    opacity: .7;
+  .event-description {
+    flex-grow: 1;
+
+    .venue {
+      font-weight: bold;
+    }
+
+    .icon-music {
+      color: @colorFgSubtle;
+      font-size: .8em;
+      margin-left: 4px;
+    }
   }
 
-  .eventDescription {
-    margin-left: @navButtonSize;
-    margin-right: @navButtonSize;
-    padding-left: 8px;
-    border-left: 1px solid @colorFgBorderEmphasize2;
-  }
-}
+  .event-context {
+    flex-shrink: 0;
+    padding: 6px 10px 0;
+    text-align: right;
 
-.contextButton {
-  position: absolute;
-  right: 0;
-  top: 0;
-  color: @colorFgSubtle;
-  transition: 200ms;
-  opacity: .4;
+    .time {
+      display: block;
+      font-size: @fontSizeSmall;
+    }
 
-  &:hover {
-    color: @colorFg;
-    opacity: 1;
-  }
-}
-
-.event-details-open {
-  .contextButton {
-    color: @colorBrand;
-    opacity: 1;
-    transform: rotate(-90deg);
+    .share {
+      color: @colorIconSubtle;
+      font-size: 1.2em;
+    }
   }
 }

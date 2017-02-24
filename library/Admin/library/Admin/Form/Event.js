@@ -35,7 +35,7 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
         if (form._preview) {
           form._preview.replaceWithHtml(preview.$el);
         } else {
-          form.$el.append(preview.$el);
+          form.$el.prepend(preview.$el);
         }
         form._preview = preview;
         preview._ready();

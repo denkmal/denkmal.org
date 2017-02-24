@@ -1,5 +1,5 @@
-<div class="event{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if}">
-  <div class="eventDescription {if $allowEditing}toggleNext{/if}">
+<div class="event{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if} {if $allowEditing}editEvent{/if}">
+  <div class="eventDescription">
     {if $event->getSong()}
       {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
     {/if}
@@ -21,53 +21,4 @@
       <span class="description">{eventtext event=$event}</span>
     </div>
   </div>
-
-  {if $allowEditing}
-    <div class="event-edit toggleNext-content">
-      {if $eventDuplicates->getCount()}
-        <div class="info info-duplicate">
-          <span class="icon icon-error"></span>
-          {translate 'Selected day already contains {$count} event(s) for {$venue}.' count=$eventDuplicates->getCount() venue="<span class=\"venue\">{$venue->getName()|escape}</span>"}
-        </div>
-      {/if}
-
-      {capture name="songSuggestionList"}
-        {if $songListSuggested->getCount() > 0}
-          <div class="songSuggestionList">
-            {foreach $songListSuggested as $song}
-              {link label={$song->getLabel()} class="songSuggestion selectSong" data=[id => $song->getId(), label => $song->getLabel()]}
-            {/foreach}
-          </div>
-        {/if}
-      {/capture}
-
-      {capture name="linkSuggestionList"}
-        {if $linkListSuggested->getCount() > 0}
-          <div class="linkSuggestionList">
-            {foreach $linkListSuggested as $link}
-              {link label={$link->getLabel()} class="linkSuggestion selectLink" data=[label => $link->getLabel()]}
-            {/foreach}
-          </div>
-        {/if}
-      {/capture}
-
-      {form name='Admin_Form_Event' event=$event}
-      {formField name='venue' label={translate 'Venue'}}
-      {formField name='date' label={translate 'Date'}}
-      {formField name='fromTime' label={translate 'Start'}}
-      {formField name='untilTime' label={translate 'End'}}
-      {formField name='description' label={translate 'Description'} append=$smarty.capture.linkSuggestionList}
-      {formField name='genres' label={translate 'Genres'}}
-      {formField name='song' label={translate 'Song'} append=$smarty.capture.songSuggestionList}
-      {formField name='starred' label={translate 'Starred'}}
-      {formField name='hidden' label={translate 'Hidden'}}
-      {formAction action='Save' label={translate 'Save'} alternatives="
-              {button_link class='deleteEvent warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
-          "}
-      {/form}
-
-      <h2>Links</h2>
-      {component name='Admin_Component_EventLinkList' event=$event}
-    </div>
-  {/if}
 </div>

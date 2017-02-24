@@ -39,7 +39,7 @@
     {formField name='song' label={translate 'Song'} append=$smarty.capture.songSuggestionList}
   </div>
   <div class="form-bundle">
-    {formField name='starred' text={translate 'Starred'} inlineLabel=true}
+    {formField name='starred' text={translate 'Promote'} inlineLabel=true}
     {formField name='hidden' text={translate 'Hidden'}}
   </div>
   <h3>Links</h3>

@@ -10,9 +10,6 @@ class Denkmal_Layout_Default extends CM_Layout_Abstract {
 
         if ($site instanceof Denkmal_Site_Default && $site->hasRegion()) {
             $region = $site->getRegion();
-            $messageList = $site->getRegion()->getMessageList();
-            $viewResponse->getJs()->setProperty('chatActivityStamp', $messageList->getLastActivityStamp());
-
             $timeZone = $region->getTimeZone();
             $nightmodeClass = $this->_getNightmodeClass($timeZone);
             if (null !== $nightmodeClass) {

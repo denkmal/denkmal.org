@@ -17,13 +17,6 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
     }
 
     /**
-     * @return Denkmal_Paging_Message_Venue
-     */
-    public function getMessageList() {
-        return new Denkmal_Paging_Message_Venue($this);
-    }
-
-    /**
      * @return string
      */
     public function getName() {
@@ -304,10 +297,6 @@ class Denkmal_Model_Venue extends CM_Model_Abstract implements Denkmal_ArrayConv
         /** @var Denkmal_Model_VenueAlias $alias */
         foreach ($this->getAliasList() as $alias) {
             $alias->delete();
-        }
-        /** @var Denkmal_Model_Message $message */
-        foreach ($this->getMessageList() as $message) {
-            $message->delete();
         }
     }
 

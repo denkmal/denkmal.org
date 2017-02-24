@@ -12,7 +12,6 @@ class Denkmal_Component_EventDetails extends Denkmal_Component_Abstract {
             ]);
         }
 
-        $viewResponse->set('messageList', new Denkmal_Paging_Message_Venue($venue));
         $viewResponse->set('venue', $venue);
         $viewResponse->set('mapLink', $mapLink);
 

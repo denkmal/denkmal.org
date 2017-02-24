@@ -62,17 +62,7 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
      * @param Denkmal_Model_Venue $venue
      */
     public function setVenue($venue) {
-        if ($this->hasIdRaw()) {
-            $messageListOld = new Denkmal_Paging_Message_Venue($this->getVenue());
-            $messageListOld->_change();
-        }
-
         $this->_set('venue', $venue);
-
-        if ($this->hasIdRaw()) {
-            $messageListNew = new Denkmal_Paging_Message_Venue($this->getVenue());
-            $messageListNew->_change();
-        }
     }
 
     /**
@@ -165,9 +155,6 @@ class Denkmal_Model_Message extends CM_Model_Abstract implements Denkmal_ArrayCo
 
     protected function _getContainingCacheables() {
         $containingCacheables = parent::_getContainingCacheables();
-        $containingCacheables[] = new Denkmal_Paging_Message_All();
-        $containingCacheables[] = new Denkmal_Paging_Message_Venue($this->getVenue());
-        $containingCacheables[] = new Denkmal_Paging_Message_Region($this->getVenue()->getRegion());
         return $containingCacheables;
     }
 

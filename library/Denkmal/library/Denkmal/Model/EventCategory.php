@@ -42,9 +42,32 @@ class Denkmal_Model_EventCategory extends CM_Model_Abstract {
      */
     public function setGenreList(array $genreList) {
         $genreList = Functional\map($genreList, function ($genre) {
-            return (string) $genre;
+            return (string) mb_strtolower($genre);
         });
+        $genreList = array_unique($genreList);
         $this->_set('genreList', CM_Util::jsonEncode($genreList));
+    }
+
+    /**
+     * @param string $genre
+     */
+    public function addGenre($genre) {
+        $genre = (string) $genre;
+        $genreList = $this->getGenreList();
+        $genreList[] = $genre;
+        $this->setGenreList($genreList);
+    }
+
+    /**
+     * @param string $genre
+     */
+    public function removeGenre($genre) {
+        $genre = (string) strtolower($genre);
+        $genreList = $this->getGenreList();
+        $genreList = Functional\reject($genreList, function ($genreItem) use ($genre) {
+            return $genreItem === $genre;
+        });
+        $this->setGenreList($genreList);
     }
 
     protected function _getSchema() {

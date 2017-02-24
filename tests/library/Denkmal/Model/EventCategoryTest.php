@@ -21,4 +21,24 @@ class Denkmal_Model_EventCategoryTest extends CMTest_TestCase {
         $this->assertSame(['foo', 'bar'], $category->getGenreList());
     }
 
+    public function testAddGenre() {
+        $category = Denkmal_Model_EventCategory::create('cat-1', new CM_Color_RGB(255, 0, 0), ['foo']);
+
+        $category->addGenre('BAR');
+        $this->assertSame(['foo', 'bar'], $category->getGenreList());
+
+        $category->addGenre('bar');
+        $this->assertSame(['foo', 'bar'], $category->getGenreList());
+    }
+
+    public function testRemoveGenre() {
+        $category = Denkmal_Model_EventCategory::create('cat-1', new CM_Color_RGB(255, 0, 0), ['foo']);
+
+        $category->removeGenre('BAR');
+        $this->assertSame(['foo'], $category->getGenreList());
+
+        $category->removeGenre('FOO');
+        $this->assertSame([], $category->getGenreList());
+    }
+
 }

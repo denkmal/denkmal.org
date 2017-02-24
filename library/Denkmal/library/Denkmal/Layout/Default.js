@@ -10,9 +10,6 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
   /** @type Object|Null */
   region: null,
 
-  /** @type Number|Null */
-  chatActivityStamp: null,
-
   appEvents: {
     'navigate': function() {
       this._setNavigationIndicationVisible(false);
@@ -71,29 +68,5 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
    */
   _setNavigationIndicationVisible: function(state) {
     this.findChild('Denkmal_Component_HeaderBar').setNavigationIndicationVisible(state);
-  },
-
-  /**
-   * @param {Boolean} state
-   */
-  _setChatIndication: function(state) {
-    this.findChild('Denkmal_Component_HeaderBar').setChatIndication(state);
-  },
-
-  /**
-   * @param {Number} lastActivityStamp
-   */
-  _setChatIndicationFromLastActivity: function(lastActivityStamp) {
-    var readStamp = cm.storage.get('chatReadStamp');
-    if (null == readStamp) {
-      readStamp = 0;
-    }
-    var activityAge = (Math.floor(Date.now() / 1000) - lastActivityStamp);
-    this._setChatIndication(lastActivityStamp > readStamp && activityAge < (3600 * 12));
-  },
-
-  _updateChatRead: function() {
-    var readStamp = Math.floor(Date.now() / 1000);
-    cm.storage.set('chatReadStamp', readStamp);
   }
 });

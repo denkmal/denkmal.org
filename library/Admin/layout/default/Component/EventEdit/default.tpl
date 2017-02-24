@@ -42,11 +42,10 @@
     {formField name='starred' text={translate 'Promote'} inlineLabel=true}
     {formField name='hidden' text={translate 'Hidden'}}
   </div>
-  <h3>Links</h3>
-{component name='Admin_Component_EventLinkList' event=$event}
 {formAction action='Save' label={translate 'Save'} alternatives="
               {button_link class='deleteEvent warning' label={translate 'Delete'} icon='trash' iconConfirm='trash-open' data=['click-confirmed' => true]}
           "}
 {/form}
-
+<h3>Links</h3>
+{component name='Admin_Component_EventLinkList' event=$event}
 

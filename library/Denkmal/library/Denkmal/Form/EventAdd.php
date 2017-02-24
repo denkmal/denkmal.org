@@ -20,7 +20,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_Text(['name' => 'title']));
         $this->registerField(new CM_FormField_Text(['name' => 'artists']));
         $this->registerField(new CM_FormField_Text(['name' => 'genres']));
-        $this->registerField(new CM_FormField_Text(['name' => 'urls']));
+        $this->registerField(new CM_FormField_Url(['name' => 'link']));
 
         $this->registerAction(new Denkmal_FormAction_EventAdd_Create($this));
         $this->registerAction(new Denkmal_FormAction_EventAdd_Preview($this));
@@ -94,14 +94,8 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $title = $params->has('title') ? $params->getString('title') : null;
         $genres = $params->has('genres') ? new Denkmal_Scraper_Genres($params->getString('genres')) : null;
         $description = new Denkmal_Scraper_Description($artists, $title, $genres);
-
-        $eventDescription = $description->getAll();
-        if ($params->has('urls')) {
-            $eventDescription .= ' // ' . $params->get('urls');
-        }
-
         $event = new Denkmal_Model_Event();
-        $event->setDescription($eventDescription);
+        $event->setDescription($description->getAll());
         $event->setEnabled(false);
         $event->setQueued(true);
         $event->setFrom($from);

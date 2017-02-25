@@ -1,5 +1,5 @@
 <div class="event" {if $event->getStarred()}data-promoted{/if}>
-  <div class="venue-bookmark">
+  <div class="venue-bookmark toggleVenueBookmark" {if $venue->hasIdRaw()}data-venue-id="{$venue->getId()}"{/if} {if $isBookmarked}data-bookmarked{/if}>
     {resourceFileContent path='img/star.svg'}
   </div>
   <div class="event-description">

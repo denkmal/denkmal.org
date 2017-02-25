@@ -33,8 +33,7 @@ abstract class Denkmal_Page_Abstract extends CM_Page_Abstract {
             return;
         }
 
-        $cookies = $response->getCookies();
-        $cookieVenueBookmarks = isset($cookies['venue-bookmarks']) ? $cookies['venue-bookmarks'] : null;
+        $cookieVenueBookmarks = $response->getRequest()->getCookie('venue-bookmarks');
         $this->_venueBookmarks = new Denkmal_Paging_Venue_Bookmarks($cookieVenueBookmarks);
     }
 

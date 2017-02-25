@@ -9,21 +9,6 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
         parent::_registerCallbacks();
 
         $this->_registerClockworkCallbacks('12 hours', array(
-            'Check links' => function () {
-                $linkList = new Denkmal_Paging_Link_All();
-                foreach ($linkList as $link) {
-                    /** @var Denkmal_Model_Link $link */
-                    try {
-                        CM_Util::getContents($link->getUrl());
-                        $link->setFailedCount(0);
-                    } catch (CM_Exception_Invalid $ex) {
-                        $link->setFailedCount($link->getFailedCount() + 1);
-                    }
-                }
-            }
-        ));
-
-        $this->_registerClockworkCallbacks('12 hours', array(
             'Scraper' => function () {
                 $scraperManager = new Denkmal_Scraper_Manager($this->_getStreamOutput());
                 $scraperManager->process(true);

@@ -114,6 +114,37 @@ class Denkmal_Model_EventCategory extends CM_Model_Abstract {
         return $eventCategory;
     }
 
+    /**
+     * @param string $label
+     * @return static|null
+     */
+    public static function findByLabel($label) {
+        /** @var CM_Model_StorageAdapter_FindableInterface $persistence */
+        $persistence = self::_getStorageAdapter(self:: getPersistenceClass());
+        $type = self::getTypeStatic();
+        $result = $persistence->findByData($type, ['label' => $label]);
+        $id = $result['id'];
+        if (!$id) {
+            return null;
+        }
+        return new static($id);
+    }
+
+    /**
+     * @param string $label
+     * @return Denkmal_Model_EventCategory
+     * @throws CM_Exception_Invalid
+     */
+    public static function getByLabel($label) {
+        $category = self::findByLabel($label);
+        if (null === $category) {
+            throw new CM_Exception_Invalid('Cannot find event-category by label', null, [
+                'label' => $label,
+            ]);
+        }
+        return $category;
+    }
+
     public static function getPersistenceClass() {
         return 'CM_Model_StorageAdapter_Database';
     }

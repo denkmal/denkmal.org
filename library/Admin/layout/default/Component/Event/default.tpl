@@ -1,7 +1,4 @@
 <div class="event editEvent{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if} ">
-  {if $eventDuplicates->getCount()}
-    <span class="icon icon-error"></span>
-  {/if}
   <div class="event-description">
     <div class="venue nowrap">
       <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue-link nowrap {if $venue->getIgnore()}ignored{/if} {if $venue->getSuspended()}suspended{/if} nowrap">{$venue->getName()|escape}</a>
@@ -17,6 +14,9 @@
   <div class="event-context">
     {if $event->getSong()}
       {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
+    {/if}
+    {if $eventDuplicates->getCount()}
+      <span class="icon icon-error"></span>
     {/if}
   </div>
 </div>

@@ -51,8 +51,6 @@ class Denkmal_Paging_Song_SuggestionTest extends CMTest_TestCase {
         $file = new CM_File(DIR_TEST_DATA . 'music.mp3');
         $song1 = Denkmal_Model_Song::create('don\'t kill the beast - so alone', $file);
 
-        Denkmal_Model_Link::create('Don\'t Kill the Beast', 'http://foo.com', true);
-
         $venue = DenkmalTest_TH::createVenue();
         $event = Denkmal_Model_Event::create($venue, 'my event: Don\'t Kill the Beast', true, false, new DateTime());
 

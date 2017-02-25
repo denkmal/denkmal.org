@@ -17,7 +17,7 @@ class Denkmal_EventFormatter_EventFormatterTest extends CMTest_TestCase {
         Denkmal_Model_EventCategory::create('pop', new CM_Color_RGB(0, 255, 0), ['pop', 'funk']);
 
         $this->assertRegExp(
-            '|My &lt;&gt; description. Rock &lt;&gt; <span class="genre" style="([^"]*)#00FF00([^"]*)">pop</span>|',
+            '|^My &lt;&gt; description. Rock &lt;&gt; <span class="genre" style="([^"]*)#00FF00([^"]*)">pop</span>$|',
             $eventFormatter->getHtml($event)
         );
 

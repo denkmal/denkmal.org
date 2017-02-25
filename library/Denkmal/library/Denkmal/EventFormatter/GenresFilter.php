@@ -28,7 +28,7 @@ class Denkmal_EventFormatter_GenresFilter extends CM_Usertext_Filter_Abstract {
             foreach ($categoryList as $category) {
                 foreach ($category->getGenreList() as $genre) {
                     $search = '#' . $wordBoundary . '(' . preg_quote($genre, '#') . ')' . $wordBoundary . '#ui';
-                    $replace = '$1<span class="genre" style="background-color:#' . $category->getColor()->getHexString() . ';">$2</span>$3';
+                    $replace = '$1<span class="genre" style="background-image: linear-gradient(to top, #' . $category->getColor()->getHexString() . ' 25%, transparent 25%);">$2</span>$3';
                     $replacements[] = array(
                         'genre'   => $genre,
                         'search'  => $search,

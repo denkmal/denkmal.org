@@ -12,7 +12,6 @@ cm.model.types = {
     "CM_Model_StreamChannel_Message": 15,
     "CM_Model_StreamChannel_Message_User": 17,
     "Denkmal_Model_Event": 28,
-    "Denkmal_Model_Link": 29,
     "Denkmal_Model_Song": 31,
     "Denkmal_Model_User": 32,
     "Denkmal_Model_Venue": 33,

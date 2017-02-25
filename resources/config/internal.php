@@ -29,7 +29,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Model_Abstract->types[15] = CM_Model_StreamChannel_Message::class;
     $config->CM_Model_Abstract->types[17] = CM_Model_StreamChannel_Message_User::class;
     $config->CM_Model_Abstract->types[28] = Denkmal_Model_Event::class;
-    $config->CM_Model_Abstract->types[29] = Denkmal_Model_Link::class;
     $config->CM_Model_Abstract->types[31] = Denkmal_Model_Song::class;
     $config->CM_Model_Abstract->types[32] = Denkmal_Model_User::class;
     $config->CM_Model_Abstract->types[33] = Denkmal_Model_Venue::class;
@@ -107,7 +106,6 @@ return function (CM_Config_Node $config) {
     $config->CM_Paging_ContentList_Badwords->type = 19;
     $config->CM_MessageStream_Adapter_SocketRedis->type = 25;
     $config->Denkmal_Model_Event->type = 28;
-    $config->Denkmal_Model_Link->type = 29;
     $config->Denkmal_Model_Song->type = 31;
     $config->Denkmal_Model_User->type = 32;
     $config->Denkmal_Model_Venue->type = 33;

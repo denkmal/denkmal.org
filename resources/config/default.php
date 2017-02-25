@@ -12,4 +12,7 @@ return function (CM_Config_Node $config) {
 
     $config->Denkmal_Site_Default->name = 'Denkmal.org';
     $config->Denkmal_Site_Default->emailAddress = 'kontakt@denkmal.org';
+    $config->Denkmal_Site_Default->webFontLoaderConfig = [
+        'google' => ['families' => ['Open Sans']]
+    ];
 };

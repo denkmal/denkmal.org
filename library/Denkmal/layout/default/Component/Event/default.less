@@ -3,16 +3,28 @@
   padding-top: 8px;
   padding-bottom: 8px;
 
+  &.starred {
+    .event-star #star .star-shape {
+      fill: #fbb03b;
+      stroke: #f7931e;
+    }
+  }
+
   .event-star {
     flex-shrink: 0;
-    padding: 0 10px;
+    padding: 0 11px;
     cursor: pointer;
+    width: 50px;
 
-    .icon {
-      color: @colorIconSubtle;
-      font-size: 24px;
+    #star {
       position: relative;
-      top: -5px;
+      top: -1px;
+
+      .star-shape {
+        fill: none;
+        stroke: @colorIconSubtle;
+        stroke-miterlimit: 10
+      }
     }
   }
 

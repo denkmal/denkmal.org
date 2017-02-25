@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+    <defs>
+        <style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;}</style>
+    </defs>
+    <title>star</title>
+    <polygon class="star-shape"
+             points="20 4.25 25.12 14.62 36.56 16.28 28.28 24.35 30.23 35.75 20 30.37 9.77 35.75 11.72 24.35 3.44 16.28 14.88 14.62 20 4.25"/>
+</svg>

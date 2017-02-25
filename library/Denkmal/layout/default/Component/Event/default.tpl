@@ -1,6 +1,6 @@
 <div class="event {if $event->getStarred()} starred{/if}">
   <div class="event-star">
-    <span class="icon icon-star"></span>
+    {resourceFileContent path='img/star.svg'}
   </div>
   <div class="event-description">
     <div class="venue nowrap">

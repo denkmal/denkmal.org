@@ -5,6 +5,12 @@
 var Denkmal_Component_EventList = Denkmal_Component_Abstract.extend({
 
   /** @type String */
-  _class: 'Denkmal_Component_EventList'
+  _class: 'Denkmal_Component_EventList',
+
+  events: {
+    'click .Denkmal_Component_Event': function(event){
+      this.$(event.currentTarget).siblings('.Denkmal_Component_EventDetails').floatbox();
+    }
+  }
 
 });

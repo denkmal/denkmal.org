@@ -7,6 +7,7 @@
     {foreach $events as $event}
       <li>
         {component name='Denkmal_Component_Event' event=$event}
+        {component name='Denkmal_Component_EventDetails' event=$event}
       </li>
     {/foreach}
   </ul>

@@ -33,7 +33,7 @@ function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template 
     $linkParams['size'] = $width . 'x' . $height;
     $linkParams['zoom'] = $zoom;
     $linkParams['scale'] = $scale;
-    $linkParams['markers'] = 'color:0x99cc6b|' . $coordinates->getLatitude() . ',' . $coordinates->getLongitude();
+    $linkParams['markers'] = 'color:0xff0000|' . $coordinates->getLatitude() . ',' . $coordinates->getLongitude();
     $linkParams['sensor'] = 'false';
     $linkParams['key'] = CM_Config::get()->googleApi;
 

@@ -1,29 +1,27 @@
 & {
-  overflow: hidden;
-  margin: 0 3px 12px;
-  padding: 8px;
-  border: 1px solid @colorFgBorderEmphasize2;
-  border-top: 0;
-  border-radius: 0 0 3px 3px;
-  background-color: @colorBgEmphasize1;
-  color: @colorFgSubtle;
+  background-color: @colorBg;
+  max-width: 100%;
+  width: 800px;
 }
 
-.head {
-  .location {
-    display: inline-block;
-    float: right;
+.header {
+  position: relative;
 
-    &, &:visited {
-      color: @colorFgButton;
-    }
+  .button-location{
+    bottom: 30px;
+    right: 10px;
+    position: absolute;
   }
 }
 
-.action-chat {
-  text-align: center;
+.Denkmal_Component_Event {
+  background-image: linear-gradient(to top, @colorBg 80%, fadeout(@colorBg, 100));
+  padding-bottom: 20px;
+  padding-top: 20px;
+  position: relative;
+  margin-top: -30px;
 }
 
-.noContent {
-  margin: 0;
+.more {
+
 }

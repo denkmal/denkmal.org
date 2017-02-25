@@ -13,9 +13,13 @@
     }
 
     &[data-bookmarked] {
-      #star .star-shape {
-        fill: #fbb03b;
-        stroke: #f7931e;
+      #star {
+        animation: bookmark 200ms;
+
+        .star-shape {
+          fill: #fbb03b;
+          stroke: #f7931e;
+        }
       }
     }
 
@@ -26,7 +30,7 @@
       .star-shape {
         fill: none;
         stroke: @colorIconSubtle;
-        stroke-miterlimit: 10
+        stroke-miterlimit: 10;
       }
     }
   }

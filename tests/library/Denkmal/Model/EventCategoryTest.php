@@ -41,4 +41,11 @@ class Denkmal_Model_EventCategoryTest extends CMTest_TestCase {
         $this->assertSame([], $category->getGenreList());
     }
 
+    public function testFindByLabel() {
+        $category = Denkmal_Model_EventCategory::create('cat-1', new CM_Color_RGB(255, 0, 0), ['foo']);
+
+        $this->assertEquals($category, Denkmal_Model_EventCategory::findByLabel('cat-1'));
+        $this->assertNull(Denkmal_Model_EventCategory::findByLabel('something-else'));
+    }
+
 }

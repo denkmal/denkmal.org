@@ -2,6 +2,10 @@
 
 class Denkmal_EventFormatter_EventFormatterTest extends CMTest_TestCase {
 
+    protected function tearDown() {
+        CMTest_TH::clearEnv();
+    }
+
     public function testGetHtmlGetText() {
         $render = new CM_Frontend_Render();
         $eventFormatter = new Denkmal_EventFormatter_EventFormatter($render);

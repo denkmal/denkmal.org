@@ -2,6 +2,10 @@
 
 class Denkmal_EventFormatter_GenresFilterTest extends CMTest_TestCase {
 
+    protected function tearDown() {
+        CMTest_TH::clearEnv();
+    }
+
     public function testTransform() {
         $render = new CM_Frontend_Render();
         $filter = new Denkmal_EventFormatter_GenresFilter();

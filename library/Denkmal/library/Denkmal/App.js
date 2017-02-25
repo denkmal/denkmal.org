@@ -28,7 +28,7 @@ var Denkmal_App = CM_App.extend({
       venueList.push(venueId);
       venueList = _.uniq(venueList);
       this._setVenues(venueList);
-      cm.event.trigger('venue-bookmarks:add', {venueId: venueId});
+      cm.event.trigger('venue-bookmarks:changed', {venueId: venueId, state: true});
     },
 
     /**
@@ -41,7 +41,7 @@ var Denkmal_App = CM_App.extend({
         return venue === venueId;
       });
       this._setVenues(venueList);
-      cm.event.trigger('venue-bookmarks:remove', {venueId: venueId});
+      cm.event.trigger('venue-bookmarks:changed', {venueId: venueId, state: false});
     },
 
     /**

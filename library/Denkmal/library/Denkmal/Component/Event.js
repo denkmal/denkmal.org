@@ -13,8 +13,16 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
   events: {
     'click .toggleVenueBookmark': function(event) {
       var $element = $(event.currentTarget);
-      var state = ('' === $element.data('bookmarked'));
+      var state = ('' === $element.attr('data-bookmarked'));
       this.setVenueBookmark(!state);
+    }
+  },
+
+  appEvents: {
+    'venue-bookmarks:changed': function(data) {
+      if (this._venue && ('' + this._venue.id) == data['venueId']) {
+        this._updateVenueBookmark(data['state']);
+      }
     }
   },
 
@@ -26,6 +34,15 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
       return;
     }
     cm.venueBookmarks.setVenue(this._venue.id, state);
+  },
+
+  /**
+   * @param {Boolean} state
+   * @private
+   */
+  _updateVenueBookmark: function(state) {
+    var $el = this.$('.venue-bookmark');
+    state ? $el.attr('data-bookmarked', '') : $el.removeAttr('data-bookmarked');
   }
 
 });

@@ -7,7 +7,7 @@
       {$venue->getName()|escape}
     </div>
     <div class="details">
-      {eventtext event=$event}{if $event->getSong()}<span class="icon icon-music"></span>{/if}
+      {eventtext event=$event}{if $event->getSong()}<span class="music">♫</span>{/if}
     </div>
   </div>
   <div class="event-context">
@@ -15,7 +15,7 @@
       {event_time event=$event}
     </time>
     {*<div class="share">*}
-      {*<span class="icon icon-share"></span>*}
+    {*<span class="icon icon-share"></span>*}
     {*</div>*}
   </div>
 </div>

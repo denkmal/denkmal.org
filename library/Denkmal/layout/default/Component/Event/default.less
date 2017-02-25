@@ -6,8 +6,11 @@
   .venue-bookmark {
     flex-shrink: 0;
     padding: 0 11px;
-    cursor: pointer;
     width: 50px;
+
+    &.toggleVenueBookmark {
+      cursor: pointer;
+    }
 
     &[data-bookmarked] {
       #star .star-shape {

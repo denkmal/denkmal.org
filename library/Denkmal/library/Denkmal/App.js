@@ -77,7 +77,7 @@ var Denkmal_App = CM_App.extend({
      * @private
      */
     _setVenues: function(venueIdList) {
-      $.cookie('venue-bookmarks', JSON.stringify(venueIdList));
+      $.cookie('venue-bookmarks', JSON.stringify(venueIdList), {path: '/', expires: 9999});
     }
   }
 

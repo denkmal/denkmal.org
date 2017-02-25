@@ -2,8 +2,11 @@
 
 abstract class Denkmal_Page_Abstract extends CM_Page_Abstract {
 
-    /** @var  Denkmal_Params */
+    /** @var Denkmal_Params */
     protected $_params;
+
+    /** @var Denkmal_Paging_Venue_Abstract */
+    protected $_venueBookmarks;
 
     public function prepareResponse(CM_Frontend_Environment $environment, CM_Http_Response_Page $response) {
         /** @var Denkmal_Site_Default $site */
@@ -29,6 +32,10 @@ abstract class Denkmal_Page_Abstract extends CM_Page_Abstract {
             $response->redirectUrl($url);
             return;
         }
+
+        $cookies = $response->getCookies();
+        $cookieVenueBookmarks = isset($cookies['venue-bookmarks']) ? $cookies['venue-bookmarks'] : null;
+        $this->_venueBookmarks = new Denkmal_Paging_Venue_Bookmarks($cookieVenueBookmarks);
     }
 
     /**
@@ -36,5 +43,15 @@ abstract class Denkmal_Page_Abstract extends CM_Page_Abstract {
      */
     protected function _requiresRegion() {
         return false;
+    }
+
+    /**
+     * @return Denkmal_Paging_Venue_Abstract
+     */
+    protected function _getVenueBookmarks() {
+        if (null === $this->_venueBookmarks) {
+            $this->_venueBookmarks = new Denkmal_Paging_Venue_Bookmarks(null);
+        }
+        return $this->_venueBookmarks;
     }
 }

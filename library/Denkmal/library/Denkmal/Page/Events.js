@@ -23,13 +23,17 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   },
 
   ready: function() {
-    var $carousel = this.$('.swipeCarousel');
-    this._carousel = new SwipeCarousel($carousel);
-    this._carousel.init();
+    var $dateList = this.$('.dateList');
+    $dateList.slick({
+      dots: false,
+      arrows: false,
+      accessibility: true,
+      infinite: false,
+      slidesToShow: 1
+    });
 
-    var self = this;
     this.on('destruct', function() {
-      self._carousel.destroy();
+      $dateList.slick('unslick');
     });
 
     this._initFloatboxMediaQuery();
@@ -151,6 +155,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
    * @param {Boolean} state
    */
   _changeState: function(state) {
+    return;
     var date = state['date'];
     if (!date) {
       date = this.$('.dateList > .dateList-item:first').data('date');

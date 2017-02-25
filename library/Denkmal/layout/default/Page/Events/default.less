@@ -19,15 +19,22 @@
   transform: translate3d(0, 0, 0);
   box-shadow: 0 0 30px rgba(0, 0, 0, .3);
 
+  .slick-list {
+    position: relative;
+    height: 100%;
+
+    .slick-track {
+      position: relative;
+      height: 100%;
+    }
+  }
+
   .dateList-item {
     position: relative;
     display: block;
-    float: left;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    transform: translate3d(0, 0, 0);
-    -webkit-overflow-scrolling: touch;
 
     .scrollable.hideScrollBar {
       position: absolute;

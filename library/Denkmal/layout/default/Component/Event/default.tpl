@@ -1,26 +1,21 @@
-<div class="event{if $event->getStarred()} starred{/if}">
-  {if $event->getSong()}
-    {component name="Denkmal_Component_SongPlayerButton" song=$event->getSong()}
-  {/if}
-  {if $allowDetails}
-    {link icon="more" class="contextButton navButton showDetails"}
-  {/if}
-  <div class="eventDescription">
+<div class="event" {if $event->getStarred()}data-promoted{/if}>
+  <div class="venue-bookmark">
+    {resourceFileContent path='img/star.svg'}
+  </div>
+  <div class="event-description">
+    <div class="venue nowrap">
+      {$venue->getName()|escape}
+    </div>
+    <div class="details">
+      {eventtext event=$event}{if $event->getSong()}<span class="music">♫</span>{/if}
+    </div>
+  </div>
+  <div class="event-context">
     <time class="time">
-      <span class="icon icon-time"></span>
-      {date_time date=$event->getFrom() timeZone=$event->getTimeZone()}
+      {event_time event=$event}
     </time>
-    <span class="event-header nowrap">
-      {if $venue->getUrl()}
-        <a href="{$venue->getUrl()|escape}" target="_blank" class="event-location">{$venue->getName()|escape}</a>
-      {else}
-        <span class="event-location">{$venue->getName()|escape}</span>
-      {/if}
-    </span>
-    <span class="event-details">
-      <span class="description">
-        {eventtext event=$event}
-      </span>
-    </span>
+    {*<div class="share">*}
+    {*<span class="icon icon-share"></span>*}
+    {*</div>*}
   </div>
 </div>

@@ -9,3 +9,6 @@
 <section id="middle" class="sheet">
   {page view=$page}
 </section>
+<div id="loading">
+  {resourceFileContent path='img/logo-icon.svg'}
+</div>

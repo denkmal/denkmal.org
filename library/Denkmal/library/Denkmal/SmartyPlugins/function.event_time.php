@@ -8,11 +8,15 @@ function smarty_function_event_time(array $params, Smarty_Internal_Template $tem
     /** @var $event Denkmal_Model_Event */
     $event = $params['event'];
 
-    $html = smarty_function_date_time(['date' => $event->getFrom(), 'timeZone' => $event->getTimeZone()], $template);
-    if ($event->getUntil()) {
-        $html .= ' - ';
-        $html .= smarty_function_date_time(['date' => $event->getUntil(), 'timeZone' => $event->getTimeZone()], $template);
+    $date = $event->getFrom();
+    $timeZone = $event->getTimeZone();
+
+    $formatter = $render->getFormatterDate(IntlDateFormatter::NONE, IntlDateFormatter::NONE, 'H:mm', $timeZone);
+    list($hours, $minutes) = explode(':', $formatter->format($date->getTimestamp()));
+    $result = $hours . 'h';
+    if ($minutes !== '00') {
+        $result .= $minutes;
     }
 
-    return $html;
+    return $result;
 }

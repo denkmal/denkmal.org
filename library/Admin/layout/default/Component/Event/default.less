@@ -1,21 +1,21 @@
 .event {
+  display: flex;
+  padding: 10px 12px;
+  position: relative;
+
   &.hidden {
-    .eventDescription {
-      opacity: 0.3;
-    }
+    opacity: 0.3;
   }
 
   &.starred {
-    .eventDescription {
-      &::before {
-        position: absolute;
-        content: "";
-        top: 0%;
-        left: 0;
-        height: 100%;
-        width: 4px;
-        background-color: @colorFeatured;
-      }
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: -4px;
+      height: 100%;
+      width: 4px;
+      background-color: @colorFeatured;
     }
   }
 
@@ -27,40 +27,39 @@
     }
   }
 
-  .event-location {
-    &.ignored {
-      text-decoration: line-through;
+  .event-description {
+    flex-grow: 1;
+
+    .venue {
+      .venue-link {
+        font-weight: bold;
+
+        &.ignored {
+          text-decoration: line-through;
+        }
+
+        &.suspended {
+          opacity: 0.3;
+        }
+      }
+
+      .date {
+        color: @colorFgSubtle;
+        font-size: @fontSizeSmall;
+      }
     }
 
-    &.suspended {
-      opacity: 0.3;
+    .details {
+      .music {
+        font-size: .8em;
+        margin-left: 4px;
+      }
     }
   }
-}
 
-.eventDescription.toggleNext .icon-arrow-right {
-  .navButton;
-  color: @colorFgSubtle;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  margin-top: -@navButtonSize/2;
-  font-size: 15px;
-}
-
-.eventDescription {
-  padding: 5px @navButtonSize;
-  min-height: @navButtonSize;
-
-  .icon-error {
-    color: @colorError;
-  }
-
-  .Denkmal_Component_SongPlayerButton {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    margin-top: -@navButtonSize/2;
+  .event-context {
+    display: flex;
+    align-items: center;
   }
 }
 

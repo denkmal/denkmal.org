@@ -23,12 +23,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     }
   },
 
-  childrenEvents: {
-    'Denkmal_Component_Event toggleDetails-open': function(view) {
-      view.$el.closest('.scrollable').scrollTo(view.$el);
-    }
-  },
-
   ready: function() {
     this._onShowPaneSetUrlDelayed = _.debounce(this._onShowPaneSetUrl, 2000);
 
@@ -39,12 +33,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     var self = this;
     this.on('destruct', function() {
       self._carousel.destroy();
-    });
-
-    this.on('swipe', function() {
-      _.each(this.getChildren('Denkmal_Component_EventList'), function(eventListView) {
-        eventListView.closeAllEvents();
-      });
     });
 
     this._showBanner();

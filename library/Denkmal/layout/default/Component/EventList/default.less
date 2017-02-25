@@ -1,15 +1,13 @@
 & {
-  padding: 8px;
-
-  @media (min-width: @breakpointSmall) {
-    padding: 8px 20px;
-  }
+  padding: 10px;
 }
 
 .eventListMeta {
-  display: block;
-  padding: 2px 5px;
   color: @colorFgSubtle;
+  display: block;
+  font-size: .8rem;
+  margin-bottom: 10px;
+  padding: 1px 5px;
 }
 
 .weekday {
@@ -18,16 +16,20 @@
 
 .eventList {
   > li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+
+    @media (min-width: @breakpointMedium) {
+      border-bottom: 1px solid @colorFgBorder;
+    }
   }
 }
 
 .footer {
-  margin-top: .7em;
+  margin-top: 1em;
   text-align: center;
 
   .button {
     padding: 0 0.6em;
-    color: mix(@colorBgBody, @colorFg, 60);
+    color: @colorFgSubtle;
   }
 }

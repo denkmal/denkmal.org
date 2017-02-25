@@ -28,8 +28,22 @@
 .Admin_Form_Event {
   margin-bottom: 1em;
 
-  .preview.error {
-    border: 1px solid @colorError;
+  .preview {
+    padding-bottom: 1em;
+    padding-top: 1em;
+
+    > h3 {
+      color: @colorFgSubtle;
+      font-size: @fontSizeSmall;
+    }
+
+    .Denkmal_Component_Event {
+      border: 2px dashed @colorFgBorderEmphasize3;
+    }
+
+    &.error .Denkmal_Component_Event {
+      border-color: @colorError;
+    }
   }
 
   .form-bundle {

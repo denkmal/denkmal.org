@@ -18,6 +18,7 @@
 <h2>{translate 'Edit Event'}</h2>
 {form name='Admin_Form_Event' event=$event}
   <div class="preview">
+    <h3>{translate 'Preview'}:</h3>
     {component name='Denkmal_Component_Event' event=$event}
   </div>
   <div class="form-bundle form-bundle-1">

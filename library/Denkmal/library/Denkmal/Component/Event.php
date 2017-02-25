@@ -17,6 +17,8 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
 
         if (!$isPersistent) {
             $this->_params = CM_Params::factory(); // Empty params to not send them to client
+        } else {
+            $viewResponse->getJs()->setProperty('_venue', $venue);
         }
     }
 }

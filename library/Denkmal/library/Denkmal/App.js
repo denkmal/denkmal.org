@@ -45,6 +45,14 @@ var Denkmal_App = CM_App.extend({
     },
 
     /**
+     * @param {String} venueId
+     * @param {Boolean} state
+     */
+    setVenue: function(venueId, state) {
+      state ? this.addVenue(venueId) : this.removeVenue(venueId);
+    },
+
+    /**
      * @returns {Array<String>}
      */
     getVenues: function() {

@@ -14,7 +14,8 @@ class Denkmal_EventFormatter_GenresFilter extends CM_Usertext_Filter_Abstract {
                     $placeholder = '{{{PLACEHOLDER-' . count($placeholders) . '}}}';
                     $placeholders[] = [
                         'search'  => $placeholder,
-                        'replace' => '<span class="genre" style="background-color:' . $color . ';">' . $matches[2] . '</span>',
+                        'replace' => '<span class="genre" style="background-image: linear-gradient(to top, ' . $color . ' 25%, transparent 25%);">' .
+                            $matches[2] . '</span>',
                     ];
                     return $matches[1] . $placeholder . $matches[3];
                 }, $text);

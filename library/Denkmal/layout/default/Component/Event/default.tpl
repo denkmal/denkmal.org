@@ -12,10 +12,10 @@
   </div>
   <div class="event-context">
     <time class="time">
-      {date_time date=$event->getFrom() timeZone=$event->getTimeZone()}
+      {event_time event=$event}
     </time>
-    <div class="share">
-      <span class="icon icon-share"></span>
-    </div>
+    {*<div class="share">*}
+      {*<span class="icon icon-share"></span>*}
+    {*</div>*}
   </div>
 </div>

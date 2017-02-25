@@ -6,13 +6,26 @@
   .venue-bookmark {
     flex-shrink: 0;
     padding: 0 11px;
-    cursor: pointer;
     width: 50px;
 
+    &.toggleVenueBookmark {
+      cursor: pointer;
+    }
+
     &[data-bookmarked] {
-      #star .star-shape {
-        fill: #fbb03b;
-        stroke: #f7931e;
+      #star {
+        animation: bookmark 200ms;
+
+        .star-shape {
+          fill: #fbb03b;
+          stroke: #f7931e;
+        }
+      }
+    }
+
+    &.bookmark-animation {
+      #star {
+        animation: bookmark 200ms;
       }
     }
 
@@ -23,7 +36,7 @@
       .star-shape {
         fill: none;
         stroke: @colorIconSubtle;
-        stroke-miterlimit: 10
+        stroke-miterlimit: 10;
       }
     }
   }

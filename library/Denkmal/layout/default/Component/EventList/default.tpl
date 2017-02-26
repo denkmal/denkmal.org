@@ -6,7 +6,9 @@
   <ul class="eventList">
     {foreach $events as $event}
       <li>
-        {component name='Denkmal_Component_Event' event=$event venueBookmarks=$venueBookmarks}
+        <a href="javascript:;" class="clickFeedback showEventDetails">
+          {component name='Denkmal_Component_Event' event=$event venueBookmarks=$venueBookmarks}
+        </a>
         {component name='Denkmal_Component_EventDetails' event=$event}
       </li>
     {/foreach}

@@ -15,6 +15,7 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
       var $element = $(event.currentTarget);
       var state = ('' === $element.attr('data-bookmarked'));
       this.setVenueBookmark(!state);
+      event.stopPropagation();
     }
   },
 

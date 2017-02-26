@@ -43,7 +43,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
    * @returns Boolean
    */
   showPane: function(date) {
-    var $element = this.$('.dateList > .date[data-date="' + date + '"]');
+    var $element = this.$('.dateList > .dateList-item[data-date="' + date + '"]');
     if ($element.length) {
       this._carousel.showPane($element.index(), {immediateSetUrl: true}, !Modernizr.touchevents);
       this._onShowPane($element);
@@ -96,7 +96,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   _changeState: function(state) {
     var date = state['date'];
     if (!date) {
-      date = this.$('.dateList > .date:first').data('date');
+      date = this.$('.dateList > .dateList-item:first').data('date');
       this.setState({date: date});
     }
     return this.showPane(date);

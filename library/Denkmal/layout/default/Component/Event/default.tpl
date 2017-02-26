@@ -11,6 +11,7 @@
     </div>
   </div>
   <div class="event-context">
+    <time class="date">{date_full date=$event->getFrom() timeZone=$event->getTimeZone()}</time>
     <time class="time">
       {event_time event=$event}
     </time>

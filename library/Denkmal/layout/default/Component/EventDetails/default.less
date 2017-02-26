@@ -1,29 +1,47 @@
 & {
-  overflow: hidden;
-  margin: 0 3px 12px;
-  padding: 8px;
-  border: 1px solid @colorFgBorderEmphasize2;
-  border-top: 0;
-  border-radius: 0 0 3px 3px;
-  background-color: @colorBgEmphasize1;
-  color: @colorFgSubtle;
+  background-color: @colorBg;
+  max-width: 100%;
+  width: 600px;
 }
 
-.head {
-  .location {
-    display: inline-block;
-    float: right;
+.header {
+  position: relative;
 
-    &, &:visited {
-      color: @colorFgButton;
-    }
+  .header-map {
+    filter: grayscale(50%);
+  }
+
+  .button-location {
+    bottom: 40px;
+    right: 10px;
+    position: absolute;
   }
 }
 
-.action-chat {
-  text-align: center;
+.Denkmal_Component_Event {
+  background-image: linear-gradient(to top, @colorBg 90%, fadeout(@colorBg, 100));
+  padding-bottom: 10px;
+  padding-top: 20px;
+  position: relative;
+  margin-top: -40px;
 }
 
-.noContent {
-  margin: 0;
+.more {
+  text-align: center;
+
+  .more-links {
+    padding-bottom: 10px;
+  }
+
+  .more-song {
+    border-top: 1px solid @colorFgBorderEmphasize2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    h4 {
+      font-size: .9em;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
 }

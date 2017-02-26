@@ -3,7 +3,9 @@
 class Denkmal_Component_EventDetails extends Denkmal_Component_Abstract {
 
     public function prepare(CM_Frontend_Environment $environment, CM_Frontend_ViewResponse $viewResponse) {
-        $venue = $this->_params->getVenue('venue');
+        $event = $this->_params->getEvent('event');
+
+        $venue = $event->getVenue();
 
         $mapLink = null;
         if ($venue->getCoordinates() && !$venue->getSecret()) {
@@ -12,6 +14,7 @@ class Denkmal_Component_EventDetails extends Denkmal_Component_Abstract {
             ]);
         }
 
+        $viewResponse->set('event', $event);
         $viewResponse->set('venue', $venue);
         $viewResponse->set('mapLink', $mapLink);
 

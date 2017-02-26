@@ -10,16 +10,24 @@
 </div>
 {component name='Denkmal_Component_Event' event=$event}
 <div class="more">
-  {if $venue->getUrl()}
-    <div>
-      {button_link theme='transparent' href=$venue->getUrl() target='_blank' icon='pop-out' label=$venue->getName()}
+  <div class="more-links">
+    {if $venue->getUrl()}
+      <div>
+        {button_link theme='transparent' href=$venue->getUrl() target='_blank' icon='pop-out' iconPosition="right" label=$venue->getName()}
+      </div>
+    {/if}
+    {foreach $event->getLinks() as $link}
+      <div>
+        {button_link theme='transparent' href=$link->getUrl() target='_blank' icon='pop-out' iconPosition="right" label=$link->getLabel()}
+      </div>
+    {/foreach}
+  </div>
+  {if $song = $event->getSong()}
+    <div class="more-song">
+      <h4><span class="music">♫</span> {$song->getLabel()}</h4>
+      {component name="Denkmal_Component_SongPlayerButton" song=$song}
     </div>
   {/if}
-  {foreach $event->getLinks() as $link}
-    <div>
-      {button_link theme='transparent' href=$link->getUrl() target='_blank' icon='pop-out' label=$link->getLabel()}
-    </div>
-  {/foreach}
 </div>
 
 

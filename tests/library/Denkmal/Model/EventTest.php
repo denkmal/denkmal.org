@@ -122,7 +122,6 @@ class Denkmal_Model_EventTest extends CMTest_TestCase {
         $from = new DateTime();
         $until = (new DateTime())->add(new DateInterval('PT1H'));
         $song = Denkmal_Model_Song::create('My Song', CM_File::createTmp());
-        $link = Denkmal_Model_Link::create('foo', 'http://foo.com', true);
         $event = Denkmal_Model_Event::create($venue, 'hello foo bar', true, false, $from, $until, $song, false, true);
 
         $render = new CM_Frontend_Render();

@@ -2,11 +2,11 @@
   <time>{date_full date=$date timeZone=$date->getTimeZone()}</time>
 </div>
 
-{if $events->getCount()}
+{if count($events)}
   <ul class="eventList">
     {foreach $events as $event}
       <li>
-        {component name='Denkmal_Component_Event' event=$event}
+        {component name='Denkmal_Component_Event' event=$event venueBookmarks=$venueBookmarks}
         {component name='Denkmal_Component_EventDetails' event=$event}
       </li>
     {/foreach}

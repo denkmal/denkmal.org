@@ -26,6 +26,7 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
         $viewResponse->set('region', $site->getRegion());
         $viewResponse->set('menu', $menu);
         $viewResponse->set('date', $date);
+        $viewResponse->set('venueBookmarks', $this->_getVenueBookmarks());
     }
 
     protected function _requiresRegion() {

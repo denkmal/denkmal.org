@@ -8,7 +8,6 @@ DROP TABLE IF EXISTS `denkmal_model_venuealias`;
 DROP TABLE IF EXISTS `denkmal_model_venue`;
 DROP TABLE IF EXISTS `denkmal_model_facebookpage`;
 DROP TABLE IF EXISTS `denkmal_model_song`;
-DROP TABLE IF EXISTS `denkmal_model_link`;
 DROP TABLE IF EXISTS `denkmal_model_user`;
 DROP TABLE IF EXISTS `denkmal_model_userinvite`;
 DROP TABLE IF EXISTS `denkmal_scraper_sourceresult`;
@@ -132,17 +131,6 @@ CREATE TABLE IF NOT EXISTS `denkmal_model_eventlink` (
   `url` varchar(500) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `denkmal_model_eventlink__event` FOREIGN KEY (`event`) REFERENCES `denkmal_model_event` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE IF NOT EXISTS `denkmal_model_link` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `label` varchar(100) NOT NULL,
-  `url` varchar(500) NOT NULL,
-  `automatic` tinyint(4) unsigned NOT NULL,
-  `failedCount` tinyint(4) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `label` (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 

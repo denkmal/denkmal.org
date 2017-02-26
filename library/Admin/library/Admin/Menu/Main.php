@@ -6,7 +6,6 @@ class Admin_Menu_Main extends CM_Menu {
         parent::__construct([
             ['label' => 'Events', 'page' => 'Admin_Page_Events'],
             ['label' => 'Venues', 'page' => 'Admin_Page_Venues'],
-            ['label' => 'Links', 'page' => 'Admin_Page_Links'],
             ['label' => 'Songs', 'page' => 'Admin_Page_Songs'],
             ['label' => 'More…', 'page' => 'Admin_Page_Scraper', 'submenu' => [
                 ['label' => 'Scraper', 'page' => 'Admin_Page_Scraper', 'submenu' => [

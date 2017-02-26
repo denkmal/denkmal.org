@@ -41,7 +41,7 @@
       display: none;
 
       &.active {
-        display: inline-block;
+        display: block;
       }
     }
   }
@@ -66,10 +66,11 @@
 &[data-weekday-wide] {
   .weekMenu {
     .menu.dates {
+      display: flex;
       width: auto;
 
       > li {
-        display: inline-block;
+        display: block;
       }
     }
 
@@ -96,7 +97,7 @@
       margin-right: auto;
 
       > li {
-        display: inline-block;
+        display: block;
         flex: 1 1 auto;
 
         > a {

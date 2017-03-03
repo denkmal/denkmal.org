@@ -1,7 +1,24 @@
-& {
+.floatbox & {
   background-color: @colorBg;
   max-width: 100%;
   width: 600px;
+
+  .event {
+    background-image: linear-gradient(to top, @colorBg 90%, fadeout(@colorBg, 100));
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-top: -40px;
+  }
+
+  .header,
+  .more {
+    display: block;
+  }
+}
+
+.header,
+.more {
+  display: none;
 }
 
 .header {
@@ -16,14 +33,6 @@
     right: 10px;
     position: absolute;
   }
-}
-
-.Denkmal_Component_Event {
-  background-image: linear-gradient(to top, @colorBg 90%, fadeout(@colorBg, 100));
-  padding-bottom: 10px;
-  padding-top: 20px;
-  position: relative;
-  margin-top: -40px;
 }
 
 .more {

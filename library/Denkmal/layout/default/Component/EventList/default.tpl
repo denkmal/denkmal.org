@@ -5,11 +5,8 @@
 {if count($events)}
   <ul class="eventList">
     {foreach $events as $event}
-      <li>
-        <a href="javascript:;" class="clickFeedback showEventDetails">
-          {component name='Denkmal_Component_Event' event=$event venueBookmarks=$venueBookmarks}
-        </a>
-        {component name='Denkmal_Component_EventDetails' event=$event}
+      <li class="clickFeedback showEventDetails">
+        {component name='Denkmal_Component_Event' template='details' event=$event venueBookmarks=$venueBookmarks}
       </li>
     {/foreach}
   </ul>

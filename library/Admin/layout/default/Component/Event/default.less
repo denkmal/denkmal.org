@@ -7,18 +7,6 @@
     opacity: 0.3;
   }
 
-  &.starred {
-    &::before {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: -4px;
-      height: 100%;
-      width: 4px;
-      background-color: @colorFeatured;
-    }
-  }
-
   &.editEvent {
     cursor: pointer;
 
@@ -50,9 +38,15 @@
     }
 
     .details {
+      .promoted,
       .music {
-        font-size: .8em;
+        color: mix(@colorFg, @colorFgSubtle);
+        font-size: .9em;
         margin-left: 4px;
+      }
+
+      .promoted {
+        font-size: .8em;
       }
     }
   }

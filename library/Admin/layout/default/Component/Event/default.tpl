@@ -1,4 +1,4 @@
-<div class="event editEvent{if $event->getHidden()} hidden{/if}{if $event->getStarred()} starred{/if} ">
+<div class="event editEvent{if $event->getHidden()} hidden{/if}">
   <div class="event-description">
     <div class="venue nowrap">
       <a href="{linkUrl page="Admin_Page_Venue" venue=$venue->getId()}" class="venue-link nowrap {if $venue->getIgnore()}ignored{/if} {if $venue->getSuspended()}suspended{/if} nowrap">{$venue->getName()|escape}</a>
@@ -8,7 +8,7 @@
       <time class="date">{date_full date=$event->getFrom() timeZone=$event->getTimeZone()}</time>
     </div>
     <div class="details">
-      {eventtext event=$event}{if $event->getSong()}<span class="music">♫</span>{/if}
+      {eventtext event=$event}{if $event->getStarred()}<span class="promoted" title="{translate 'Promoted by {$siteName}' siteName=$render->getSiteName()}">♡</span>{/if}{if $event->getSong()}<span class="music">♫</span>{/if}
     </div>
   </div>
   <div class="event-context">

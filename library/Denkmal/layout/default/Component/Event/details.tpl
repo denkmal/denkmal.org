@@ -4,7 +4,7 @@
   <div class="header">
     {contentPlaceholder width=8 height=5 stretch=true}
     {if $venue->getCoordinates()}
-      <img class="header-map" data-src="{googlemaps_img coordinates=$venue->getCoordinates() width=640 height=400}">
+      <img data-src="{googlemaps_img coordinates=$venue->getCoordinates() jsonStyles={resourceFileContent path='google-maps-styles.json'}}">
     {else}
       {img path='map-placeholder.svg'}
     {/if}

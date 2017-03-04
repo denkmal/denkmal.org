@@ -2,14 +2,13 @@
 // Docu: https://developers.google.com/maps/documentation/staticmaps/
 
 function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template $template) {
-
     if (empty($params['coordinates'])) {
         throw new CM_Exception('Param coordinates are required');
     }
     /** @var CM_Geo_Point $coordinates */
     $coordinates = $params['coordinates'];
 
-    $width = 400;
+    $width = 640;
     if (isset($params['width'])) {
         $width = (int) $params['width'];
     }
@@ -19,23 +18,22 @@ function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template 
         $height = (int) $params['height'];
     }
 
-    $zoom = 14;
+    $zoom = 15;
     if (isset($params['zoom'])) {
         $zoom = $params['zoom'];
     }
 
-    $scale = 1;
-    if (isset($params['scale'])) {
-        $scale = $params['scale'];
+    $mapStyles = '';
+    if (isset($params['jsonStyles'])) {
+        $styles = Denkmal_GoogleMaps_JsonToStaticParams::create($params['jsonStyles']);
+        $mapStyles = '&style=' . join('&style=', $styles);
     }
 
-    $linkParams['center'] = $coordinates->getLatitude() . ',' . $coordinates->getLongitude();
-    $linkParams['size'] = $width . 'x' . $height;
-    $linkParams['zoom'] = $zoom;
-    $linkParams['scale'] = $scale;
-    $linkParams['markers'] = 'color:0xff0000|' . $coordinates->getLatitude() . ',' . $coordinates->getLongitude();
-    $linkParams['sensor'] = 'false';
     $linkParams['key'] = CM_Config::get()->googleApi;
+    $linkParams['zoom'] = $zoom;
+    $linkParams['format'] = 'jpg';
+    $linkParams['size'] = $width . 'x' . $height;
+    $linkParams['markers'] = 'color:0xD60725|' . $coordinates->getLatitude() . ',' . $coordinates->getLongitude();
 
-    return CM_Util::link('https://maps.googleapis.com/maps/api/staticmap', $linkParams);
+    return CM_Util::link('https://maps.googleapis.com/maps/api/staticmap', $linkParams) . CM_Params::encode($mapStyles);
 }

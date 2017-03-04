@@ -1,3 +1,4 @@
+{block name='event-before'}{/block}
 <div class="event" {if $event->getStarred()}data-promoted{/if}>
   <div class="venue-bookmark {if $isPersistent}toggleVenueBookmark{/if}" {if $isPersistent}data-venue-id="{$venue->getId()}"{/if} {if $isBookmarked}data-bookmarked{/if}>
     {resourceFileContent path='img/star.svg'}
@@ -20,3 +21,4 @@
     {*</div>*}
   </div>
 </div>
+{block name='event-after'}{/block}

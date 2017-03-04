@@ -3,18 +3,6 @@
   padding: 10px 8px;
   position: relative;
 
-  &[data-promoted] {
-    &::before {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 4px;
-      background-color: @colorFeatured;
-    }
-  }
-
   .venue-bookmark {
     flex-shrink: 0;
     padding: 0 11px;
@@ -55,15 +43,21 @@
 
   .event-description {
     flex-grow: 1;
+    overflow: hidden;
 
     .venue {
       font-weight: bold;
     }
 
+    .promoted,
     .music {
       color: mix(@colorFg, @colorFgSubtle);
       font-size: .9em;
       margin-left: 4px;
+    }
+
+    .promoted {
+      font-size: .8em;
     }
   }
 

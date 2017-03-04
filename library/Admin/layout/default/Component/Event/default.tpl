@@ -8,7 +8,7 @@
       <time class="date">{date_full date=$event->getFrom() timeZone=$event->getTimeZone()}</time>
     </div>
     <div class="details">
-      {eventtext event=$event}{if $event->getStarred()}<span class="promoted" title="{translate 'Promoted by {$siteName}' siteName=$render->getSiteName()}">♡</span>{/if}{if $event->getSong()}<span class="music">♫</span>{/if}
+      {eventtext event=$event}{if $event->getStarred()}<span class="promoted" title="{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}">♡</span>{/if}{if $event->getSong()}<span class="music">♫</span>{/if}
     </div>
   </div>
   <div class="event-context">

@@ -12,4 +12,3 @@
     <span class="icon-arrow-right"></span>
   </div>
 </div>
-{menu name='main' class='menu-header'}

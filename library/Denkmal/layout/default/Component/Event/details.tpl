@@ -34,8 +34,10 @@
         {component name="Denkmal_Component_SongPlayerButton" song=$song}
       </div>
     {/if}
-    <div class="more-promoted">
-      <span class="icon">♡</span>{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}
-    </div>
+    {if $event->getStarred()}
+      <div class="more-promoted">
+        <span class="icon">♡</span>{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}
+      </div>
+    {/if}
   </div>
 {/block}

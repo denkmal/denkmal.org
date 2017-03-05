@@ -16,9 +16,9 @@
   {button_link theme='transparent' icon='location' label={$region->getName()|escape} page='Denkmal_Page_City'}
   {button_link theme='transparent' page='Denkmal_Page_Add' label="{translate 'Add Event'}"}
   {if $twitterAccount}
-    {button_link theme='transparent' label='Twitter' href="https://twitter.com/{$twitterAccount}" target="_blank"}
+    {button_link theme='transparent' icon='twitter' title='Twitter' href="https://twitter.com/{$twitterAccount}" target="_blank"}
   {/if}
   {if $facebookAccount}
-    {button_link theme='transparent' label='Facebook' href="https://www.facebook.com/{$facebookAccount}" target="_blank"}
+    {button_link theme='transparent' icon='facebook' title='Facebook' href="https://www.facebook.com/{$facebookAccount}" target="_blank"}
   {/if}
 </footer>

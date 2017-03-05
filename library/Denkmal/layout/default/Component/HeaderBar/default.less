@@ -7,9 +7,20 @@
 }
 
 .weekMenu {
-  display: none;
+  display: flex;
+  flex-grow: 1;
+  margin-left: auto;
+  margin-right: 12px;
+
+  .date-eeeeee {
+    display: none;
+  }
 
   .menu.dates {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+
     > li {
       display: none;
 
@@ -18,80 +29,47 @@
       }
     }
   }
-
-  .navigate {
-    position: relative;
-    float: left;
-    line-height: @barSize;
-    font-size: 5px;
-    color: fadeout(@colorFgTheme, 20);
-
-    &.navigate-left {
-      right: -7px;
-    }
-
-    &.navigate-right {
-      left: -7px;
-    }
-  }
-}
-
-&[data-weekday-wide] {
-  .weekMenu {
-    .menu.dates {
-      display: flex;
-      width: auto;
-
-      > li {
-        display: block;
-      }
-    }
-
-    .navigate {
-      display: none;
-    }
-  }
 }
 
 &[data-weekday-menu] {
-  .logo {
+  .logo-font {
     display: none;
+
+    @media (min-width: @breakpointSmall) {
+      display: block;
+    }
   }
 
   .weekMenu {
-    width: 100%;
-    justify-content: center;
+    .date-eeeeee {
+      display: inherit;
+    }
+
+    .date-eeee,
+    .date-dd {
+      display: none;
+    }
 
     .menu.dates {
       display: flex;
-      width: 100%;
-      max-width: 7*@barSize;
-      margin-left: auto;
-      margin-right: auto;
 
       > li {
         display: block;
-        flex: 1 1 auto;
+        flex-grow: 1;
+
+        @media (min-width: 680px) {
+          flex-grow: 0;
+        }
 
         > a {
           min-width: 0;
+
+          @media (min-width: 680px) {
+            min-width: @barSize;
+          }
         }
       }
     }
-
-    .navigate {
-      display: none;
-    }
-  }
-}
-
-&[data-weekday] {
-  .showWeek {
-    display: none;
-  }
-
-  .weekMenu {
-    display: flex;
   }
 }
 
@@ -114,22 +92,12 @@
     display: none;
 
     &.night {
-      display: inline-block;
-      width: 40px;
-
-      @media (min-width: @breakpointSmall) {
-        width: 50px;
-      }
+      display: block;
+      width: 50px;
     }
   }
 
   .logo-font {
-    display: none;
-
-    @media (min-width: 360px) {
-      display: inline-block;
-    }
-
     .logo-color {
       fill: mix(@colorBgNightMode, @colorFgNightMode, 60);
     }

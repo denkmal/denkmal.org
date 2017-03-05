@@ -4,11 +4,5 @@
   <span class="logo-font">{resourceFileContent path='img/logo-font.svg'}</span>
 </a>
 <div class="weekMenu">
-  <div class="navigate navigate-left">
-    <span class="icon-arrow-left"></span>
-  </div>
-  {menu name='dates' class='menu-header' template='weekdays'}
-  <div class="navigate navigate-right">
-    <span class="icon-arrow-right"></span>
-  </div>
+  {menu name='dates' class='menu-header menu-weekdays' template='weekdays'}
 </div>

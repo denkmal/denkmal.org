@@ -7,8 +7,13 @@
 
     > a {
       .navButton;
+      font-size: 1em;
       min-width: @barSize * .9;
       opacity: .7;
+
+      @media(min-width: @breakpointMini) {
+        font-size: 1.1em;
+      }
     }
 
     &:hover, &.active {
@@ -27,6 +32,13 @@
         transition: 200ms ease;
       }
     }
+  }
+}
+
+.menu-weekdays {
+  .date-dd {
+    font-weight: bold;
+    margin-left: 4px;
   }
 }
 

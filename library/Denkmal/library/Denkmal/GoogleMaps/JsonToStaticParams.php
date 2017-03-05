@@ -11,8 +11,7 @@ class Denkmal_GoogleMaps_JsonToStaticParams {
         $items = [];
         $separator = '|';
 
-        for ($i = 0; $i < count($jsonArray); $i++) {
-            $item = $jsonArray[$i];
+        foreach ($jsonArray as $item) {
             $hasFeature = array_key_exists('featureType', $item);
             $hasElement = array_key_exists('elementType', $item);
             $hasStylers = array_key_exists('stylers', $item);
@@ -34,8 +33,7 @@ class Denkmal_GoogleMaps_JsonToStaticParams {
             if ($hasStylers) {
                 $stylers = $item['stylers'];
 
-                for ($s = 0; $s < count($stylers); $s++) {
-                    $styleItem = $stylers[$s];
+                foreach ($stylers as $styleItem) {
                     $key = key($styleItem);
                     $style = $style ? $style . $separator : '';
                     $style .= $key . ':' . self::_handleStylerValue($styleItem[$key]);

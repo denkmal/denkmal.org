@@ -16,9 +16,6 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
   /** @type {Boolean} */
   _playing: false,
 
-  /** @type {Object} */
-  _player: null,
-
   events: {
     'click .playSong': function() {
       this.playSong();

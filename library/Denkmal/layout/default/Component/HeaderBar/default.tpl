@@ -6,3 +6,4 @@
 <div class="weekMenu smooth-loading">
   {menu name='dates' class='menu-header menu-weekdays' template='weekdays'}
 </div>
+{component name='Denkmal_Component_SongPlayerControls'}

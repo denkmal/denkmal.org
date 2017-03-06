@@ -12,8 +12,18 @@
   margin-left: auto;
   margin-right: 12px;
 
-  .date-eeeeee {
+  .date-eeee {
     display: none;
+  }
+
+  @media (min-width: @breakpointMini) {
+    .date-eeee {
+      display: inherit;
+    }
+
+    .date-eee {
+      display: none;
+    }
   }
 
   .menu.dates {
@@ -41,11 +51,12 @@
   }
 
   .weekMenu {
-    .date-eeeeee {
+    .date-eee {
       display: inherit;
     }
 
     .date-eeee,
+    .date-d,
     .date-dd {
       display: none;
     }

@@ -14,7 +14,7 @@
 
 <footer class="footer">
   {button_link theme='transparent' icon='location' label={$region->getName()|escape} page='Denkmal_Page_City'}
-  {button_link theme='transparent' page='Denkmal_Page_Add' label="{translate 'Add Event'}"}
+  {button_link theme='transparent' page='Denkmal_Page_Add' label="+{translate 'Event'}"}
   {if $twitterAccount}
     {button_link theme='transparent' icon='twitter' title='Twitter' href="https://twitter.com/{$twitterAccount}" target="_blank"}
   {/if}

@@ -1,14 +1,7 @@
-.control-playPause {
-  font-size: 20px;
-  color: @colorFgSubtle;
+.control {
+  font-size: 30px;
 
-  &:hover {
-    color: @colorFg;
-  }
-
-  &.pause {
-    color: @colorFgSubtle;
-    font-size: 16px;
-    .animation(blink, 1500ms, ease, 0, infinite);
+  &.control-pause {
+    .animation(blink, 1500ms, ease, 0s, infinite);
   }
 }

@@ -17,8 +17,8 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
-      var delaySetUrl = !data.immediateSetUrl;
-      this._onShowPane($(data.element), delaySetUrl);
+      var pushHistoryState = !data.skipPushHistoryState;
+      this._onShowPane($(data.element), pushHistoryState);
     },
 
     'click .dismissBanner': function() {
@@ -27,8 +27,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   },
 
   ready: function() {
-    this._onShowPaneSetUrlDelayed = _.debounce(this._onShowPaneSetUrl, 2000);
-
     var $carousel = this.$('.swipeCarousel');
     this._carousel = new SwipeCarousel($carousel);
     this._carousel.init();
@@ -76,7 +74,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     if (!$element.length) {
       throw new Error('Cannot find date list pane for date `' + date + '`');
     }
-    this._carousel.showPane($element.index(), {immediateSetUrl: true}, !Modernizr.touchevents);
+    this._carousel.showPane($element.index(), {skipPushHistoryState: true}, !Modernizr.touchevents);
     this._onShowPane($element);
   },
 
@@ -92,9 +90,9 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   /**
    * @param {jQuery} $element
-   * @param {Boolean} [delaySetUrl]
+   * @param {Boolean} [pushHistoryState]
    */
-  _onShowPane: function($element, delaySetUrl) {
+  _onShowPane: function($element, pushHistoryState) {
     var title = $element.data('title');
     var url = $element.data('url');
     var date = $element.data('date');
@@ -103,9 +101,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     cm.getDocument()._updateTitle(title);
     cm.getDocument()._activateMenuEntries([menuEntryHash]);
 
-    if (delaySetUrl) {
-      this._onShowPaneSetUrlDelayed(url, date);
-    } else {
+    if (pushHistoryState) {
       this._onShowPaneSetUrl(url, date);
     }
 
@@ -117,9 +113,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
    * @param {String} date
    */
   _onShowPaneSetUrl: function(url, date) {
-    if (!$.contains(document, this.el)) {
-      return; // View has been destroyed in the meantime
-    }
     var nextState = {date: date};
     if (!_.isEqual(nextState, this.getState())) {
       cm.router.pushState(url);

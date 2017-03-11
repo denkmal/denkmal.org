@@ -10,7 +10,7 @@
       </div>
       <div class="details">
         {eventtext event=$event}{if $event->getStarred()}
-          <span class="promoted" title="{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}">♡</span>{/if}{if $event->getSong()}
+          <span class="promoted" title="{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}">♥</span>{/if}{if $event->getSong()}
           <span class="music">♫</span>
         {/if}
       </div>

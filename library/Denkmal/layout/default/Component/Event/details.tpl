@@ -36,7 +36,7 @@
     {/if}
     {if $event->getStarred()}
       <div class="more-promoted">
-        <span class="icon">♡</span>{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}
+        <span class="icon">♥</span>{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}
       </div>
     {/if}
   </div>

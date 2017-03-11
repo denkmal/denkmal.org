@@ -31,8 +31,8 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
     'song:play': function(song) {
       this._onPlay(song);
     },
-    'song:pause': function() {
-      this._onPause();
+    'song:stop': function() {
+      this._onStop();
     }
   },
 
@@ -75,14 +75,14 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
       this._showPauseIcon(true);
       this._playing = true;
     } else {
-      this._onPause();
+      this._onStop();
     }
   },
 
   /**
    * @private
    */
-  _onPause: function() {
+  _onStop: function() {
     if (this._playing) {
       this._showPauseIcon(false);
       this._playing = false;

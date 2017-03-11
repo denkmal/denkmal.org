@@ -19,8 +19,9 @@ var Denkmal_Component_SongPlayerControls = Denkmal_Component_Abstract.extend({
   appEvents: {
     'song:play': function() {
       this._setPlaying(true);
+
     },
-    'song:pause': function() {
+    'song:stop': function() {
       this._setPlaying(false);
     }
   },

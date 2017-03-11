@@ -40,4 +40,5 @@
       </div>
     {/if}
   </div>
+  {button_link theme='highlight' class='button-close closeFloatbox' icon='close' title='Close'}
 {/block}

@@ -38,27 +38,9 @@
     }
 
     .Denkmal_Component_Event {
-      border: 2px dashed @colorFgBorderEmphasize3;
 
-      .event {
-        .venue-bookmark {
-          opacity: .2;
-          pointer-events: none;
-        }
-
-        &[data-promoted] {
-          position: relative;
-
-          &::before {
-            position: absolute;
-            content: "";
-            top: 0;
-            left: -4px;
-            height: 100%;
-            width: 4px;
-            background-color: @colorFeatured;
-          }
-        }
+      .venue-bookmark {
+        opacity: .2;
       }
     }
 

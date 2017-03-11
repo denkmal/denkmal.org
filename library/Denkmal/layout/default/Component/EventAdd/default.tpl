@@ -1,4 +1,8 @@
 {form name='Denkmal_Form_EventAdd' region=$region}
+  <div class="previewWrapper">
+    <h3>{translate 'Preview'}:</h3>
+    <div class="previewComponent"></div>
+  </div>
   <div class="formWrapper">
     {formField name='venue' label={translate 'Venue'} placeholder=$venuePlaceholder}
     <div class="venueDetails">
@@ -13,9 +17,7 @@
     {formField name='artists' label={translate 'Artists'} placeholder={translate 'Gregor Rellemer, The Savvy Ones, DJ John'}}
     {formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam'}}
     {formField name='link' label={translate 'Event Link'} placeholder={translate 'https://myspace.com/meet-the-rich-vol8'}}
-    {formAction action='Create' label={translate 'Add'} alternatives=
-    {button_link href="mailto:{$region->getEmailAddress()}" icon='message' label={translate 'Contact'}}
-    }
+    {formAction action='Create' label={translate 'Add Event'}}
   </div>
 {/form}
 
@@ -23,7 +25,12 @@
   <h2>{translate 'Event Has Been Added'}</h2>
   {translate 'Thank you. Event will be online within 24 hours.'}
   <div class="actions">
-    {button_link class="addSimilar" label={translate 'Add Similar Event'}}
-    {button_link page="Denkmal_Page_Index" theme="highlight" label={translate 'What\'s Up Today'}}
+    {button_link class="addSimilar" label={translate 'Add Another Event'}}
+    {button_link page="Denkmal_Page_Index" label={translate 'Back to Homepage'}}
   </div>
+</div>
+
+<div class="contact responsive-text">
+  {translate 'Any questions or comments? Please contact us by e‑mail: {$emailAddress}'
+  emailAddress={link href="mailto:{$region->getEmailAddress()}" label=$region->getEmailAddress()}}
 </div>

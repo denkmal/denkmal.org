@@ -1,10 +1,3 @@
-{if $eventDuplicates->getCount()}
-  <div class="info info-duplicate">
-    <span class="icon icon-error"></span>
-    {translate 'Selected day already contains {$count} event(s) for {$venue}.' count=$eventDuplicates->getCount() venue="<span class=\"venue\">{$venue->getName()|escape}</span>"}
-  </div>
-{/if}
-
 {capture name="songSuggestionList"}
   {if $songListSuggested->getCount() > 0}
     <div class="songSuggestionList">
@@ -19,7 +12,7 @@
 {form name='Admin_Form_Event' event=$event}
   <div class="preview">
     <h3>{translate 'Preview'}:</h3>
-    {component name='Denkmal_Component_Event' event=$event}
+    {component name='Denkmal_Component_EventPreview' event=$event}
   </div>
   <div class="form-bundle form-bundle-1">
     {formField name='venue' label={translate 'Venue'}}

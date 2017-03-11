@@ -13,16 +13,22 @@ var Denkmal_Component_EventAdd = Denkmal_Component_Abstract.extend({
 
   childrenEvents: {
     'Denkmal_Form_EventAdd success.Create': function() {
-      this.$('.Denkmal_Form_EventAdd .preview').hide();
+      this.$('.Denkmal_Form_EventAdd .infoWrapper').hide();
       this.$('.Denkmal_Form_EventAdd .formWrapper').slideUp();
       this.$('.formSuccess').slideDown();
     }
   },
 
   addSimilar: function() {
-    this.findChild('Denkmal_Form_EventAdd').getField('urls').setValue('');
+    var fieldsToEmpty = ['title', 'artists', 'genres', 'link'];
+    var form = this.findChild('Denkmal_Form_EventAdd');
+    _.each(fieldsToEmpty, function(fieldToEmpty) {
+      form.getField(fieldToEmpty).setValue('');
+    });
 
-    this.$('.Denkmal_Form_EventAdd .preview').show();
+    form.removePreview();
+
+    this.$('.Denkmal_Form_EventAdd .infoWrapper').show();
     this.$('.Denkmal_Form_EventAdd .formWrapper').slideDown();
     this.$('.formSuccess').slideUp();
   }

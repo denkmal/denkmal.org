@@ -16,7 +16,7 @@
     {formField name='title' label={translate 'Title'} placeholder={translate 'Meet the Rich vol.8'}}
     {formField name='artists' label={translate 'Artists'} placeholder={translate 'Gregor Rellemer, The Savvy Ones, DJ John'}}
     {formField name='genres' label={translate 'Genres'} placeholder={translate 'Metal, Blues, Glam'}}
-    {formField name='link' label={translate 'Event Link'} placeholder={translate 'https://myspace.com/meet-the-rich-vol8'}}
+    {formField name='link' label={translate 'Event Link'} placeholder={translate 'https://facebook.com/event/12345'}}
     {formAction action='Create' label={translate 'Add Event'}}
   </div>
 {/form}

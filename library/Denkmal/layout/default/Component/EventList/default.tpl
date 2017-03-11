@@ -1,7 +1,3 @@
-<div class="eventListMeta">{$region->getName()|escape} -
-  <time>{date_full date=$date timeZone=$date->getTimeZone()}</time>
-</div>
-
 {if count($events)}
   <ul class="eventList">
     {foreach $events as $event}
@@ -18,10 +14,11 @@
 
 <footer class="footer">
   {button_link theme='transparent' icon='location' label={$region->getName()|escape} page='Denkmal_Page_City'}
+  {button_link theme='transparent' page='Denkmal_Page_Add' label="+{translate 'Event'}"}
   {if $twitterAccount}
-    {button_link theme='transparent' label='Twitter' href="https://twitter.com/{$twitterAccount}" target="_blank"}
+    {button_link theme='transparent' icon='twitter' title='Twitter' href="https://twitter.com/{$twitterAccount}" target="_blank"}
   {/if}
   {if $facebookAccount}
-    {button_link theme='transparent' label='Facebook' href="https://www.facebook.com/{$facebookAccount}" target="_blank"}
+    {button_link theme='transparent' icon='facebook' title='Facebook' href="https://www.facebook.com/{$facebookAccount}" target="_blank"}
   {/if}
 </footer>

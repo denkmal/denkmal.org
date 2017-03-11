@@ -4,7 +4,7 @@
   <div class="header">
     {contentPlaceholder width=8 height=5 stretch=true}
     {if $venue->getCoordinates()}
-      <img class="header-map" data-src="{googlemaps_img coordinates=$venue->getCoordinates() width=640 height=400}">
+      <img data-src="{googlemaps_img coordinates=$venue->getCoordinates() styleFile='google-maps-styles.json'}">
     {else}
       {img path='map-placeholder.svg'}
     {/if}
@@ -34,8 +34,10 @@
         {component name="Denkmal_Component_SongPlayerButton" song=$song}
       </div>
     {/if}
-    <div class="more-promoted">
-      <span class="icon">♡</span>{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}
-    </div>
+    {if $event->getStarred()}
+      <div class="more-promoted">
+        <span class="icon">♡</span>{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}
+      </div>
+    {/if}
   </div>
 {/block}

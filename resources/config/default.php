@@ -8,7 +8,13 @@ return function (CM_Config_Node $config) {
     $config->CM_Params->class = 'Denkmal_Params';
 
     $config->timeZone = 'Europe/Zurich';
-    $config->googleApi = 'AIzaSyB85laUBhcLyjf7vff7WE62__6jPxjK8qI';
+
+    $config->services['google-static-maps'] = [
+        'class'     => 'Denkmal_GoogleMaps_StaticMaps',
+        'arguments' => [
+            'apiKey' => 'AIzaSyB85laUBhcLyjf7vff7WE62__6jPxjK8qI',
+        ]
+    ];
 
     $config->Denkmal_Site_Default->name = 'Denkmal.org';
     $config->Denkmal_Site_Default->emailAddress = 'kontakt@denkmal.org';

@@ -4,10 +4,10 @@
   width: 600px;
 
   .event {
-    background-image: linear-gradient(to top, @colorBg 90%, fadeout(@colorBg, 100));
-    padding-bottom: 10px;
-    padding-top: 20px;
-    margin-top: -40px;
+    background-color: @colorBg;
+    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.05);
+    margin-top: -30px;
+    padding-top: 12px;
   }
 
   .header,
@@ -24,10 +24,6 @@
 .header {
   position: relative;
 
-  .header-map {
-    filter: grayscale(50%);
-  }
-
   .button-location {
     bottom: 40px;
     right: 10px;
@@ -39,26 +35,31 @@
   text-align: center;
 
   .more-links {
+    padding-top: 10px;
     padding-bottom: 10px;
   }
 
   .more-song {
-    border-top: 1px solid @colorFgBorderEmphasize2;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-color: @colorBgEmphasize1;
+    border-top: 1px solid @colorFgBorder;
+    padding-top: 4px;
+    padding-bottom: 8px;
 
     h4 {
       font-size: .9em;
       padding-left: 10px;
       padding-right: 10px;
     }
+
+    .Denkmal_Component_SongPlayerButton .navButton {
+      color: @colorBgTheme;
+    }
   }
 
   .more-promoted {
-    background-color: mix(@colorBg, @colorFg, 10);
-    color: @colorBg;
+    background-color: mix(@colorBg, @colorFg, 20);
+    color: mix(@colorBg, @colorFg, 90);
     font-size: @fontSizeTiny;
-    margin-top: 12px;
     padding: 4px;
 
     .icon {

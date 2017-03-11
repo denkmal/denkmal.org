@@ -12,18 +12,23 @@
   margin-left: auto;
   margin-right: 12px;
 
-  .date-eeee {
+  .weekday-long {
     display: none;
   }
 
   @media (min-width: @breakpointMini) {
-    .date-eeee {
+    .weekday-long {
       display: inherit;
     }
 
-    .date-eee {
+    .weekday-short {
       display: none;
     }
+  }
+
+  .dayOfMonth {
+    font-weight: bold;
+    margin-left: 4px;
   }
 
   .menu.dates {
@@ -51,13 +56,12 @@
   }
 
   .weekMenu {
-    .date-eee {
+    .weekday-short {
       display: inherit;
     }
 
-    .date-eeee,
-    .date-d,
-    .date-dd {
+    .weekday-long,
+    .dayOfMonth {
       display: none;
     }
 

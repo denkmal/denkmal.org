@@ -35,31 +35,6 @@
   }
 }
 
-.menu-weekdays {
-  .date-d,
-  .date-dd {
-    display: none;
-    font-weight: bold;
-    margin-left: 4px;
-  }
-
-  [lang=de] & {
-    .date-d {
-      display: inherit;
-
-      &::after {
-        content: '.';
-      }
-    }
-  }
-
-  [lang=en] & {
-    .date-dd {
-      display: inherit;
-    }
-  }
-}
-
 .menu-pills {
   > li.active a {
     background-color: @colorBgTheme;

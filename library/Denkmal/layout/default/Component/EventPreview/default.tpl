@@ -1,5 +1,4 @@
-<div class="preview">
-  <h2>{translate 'Preview'}:</h2>
+<div class="infoWrapper">
   {if isset($fromDateDisplay)}
     <div class="info info-time">
 			<span class="icon icon-error"></span>

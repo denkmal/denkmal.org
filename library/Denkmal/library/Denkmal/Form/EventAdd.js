@@ -39,19 +39,33 @@ var Denkmal_Form_EventAdd = CM_Form_Abstract.extend({
     this._submitOnly('Preview', false)
       .then(function(response) {
         var preview = form._injectView(response);
-        if (form._preview) {
-          form._preview.replaceWithHtml(preview.$el);
-        } else {
-          form.$el.append(preview.$el);
-        }
-        form._preview = preview;
+        form.showPreview(preview);
         preview._ready();
       })
       .catch(function(error) {
-        if (form._preview) {
-          form._preview.remove();
-          form._preview = null;
-        }
+        form.removePreview();
       });
+  },
+
+  removePreview: function() {
+    if (this._preview) {
+      this._preview.remove();
+      this._preview = null;
+      this.$el.attr('data-has-preview', null);
+    }
+  },
+
+  /**
+   *
+   * @param {Denkmal_Component_EventPreview} previewComponent
+   */
+  showPreview: function(previewComponent) {
+    if (this._preview) {
+      this._preview.replaceWithHtml(previewComponent.$el);
+    } else {
+      this.$('.previewComponent').html(previewComponent.$el);
+    }
+    this._preview = previewComponent;
+    this.$el.attr('data-has-preview', '');
   }
 });

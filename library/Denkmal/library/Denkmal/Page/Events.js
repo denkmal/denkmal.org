@@ -10,6 +10,9 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   /** @type SwipeCarousel */
   _carousel: null,
 
+  /** @type Boolean */
+  _floatboxFullscreen: false,
+
   _stateParams: ['date', 'event'],
 
   events: {
@@ -36,6 +39,33 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     });
 
     this._showBanner();
+
+    this._initFloatboxMediaQuery();
+  },
+
+  _initFloatboxMediaQuery: function() {
+    var self = this;
+    var mediaQueryLarge = {
+      match: function() {
+        self._changeFloatboxFullscreen(false);
+      }
+    };
+    var mediaQuerySmall = {
+      match: function() {
+        self._changeFloatboxFullscreen(true);
+      }
+    };
+    enquire.register('(min-width: 600px)', mediaQueryLarge);
+    enquire.register('(max-width: 599px)', mediaQuerySmall);
+    this.on('destruct', function() {
+      enquire.unregister('(min-width: 600px)', mediaQueryLarge);
+      enquire.unregister('(max-width: 599px)', mediaQuerySmall);
+    });
+  },
+
+  _changeFloatboxFullscreen: function(state) {
+    this._floatboxFullscreen = state;
+    $('.floatbox').toggleClass('fullscreen', state);
   },
 
   /**
@@ -126,7 +156,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
    */
   showEventDetails: function(eventId, date) {
     var eventComponent = this._getEventComponent(eventId);
-    eventComponent.popOut({'fullscreen': true});
+    eventComponent.popOut({'fullscreen': this._floatboxFullscreen});
   },
 
   hideEventDetails: function() {

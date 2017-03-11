@@ -2,7 +2,7 @@
   <ul class="eventList">
     {foreach $events as $event}
       <li class="clickFeedback showEventDetails" data-href="{linkUrl page='Denkmal_Page_Events' date=$date->format('Y-n-j') event=$event->getId()}">
-        {component name='Denkmal_Component_Event' template='details' event=$event venueBookmarks=$venueBookmarks}
+        {component name='Denkmal_Component_Event' event=$event venueBookmarks=$venueBookmarks includeDetails=true}
       </li>
     {/foreach}
   </ul>

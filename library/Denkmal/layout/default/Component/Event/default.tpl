@@ -27,3 +27,9 @@
   </div>
   {block name='event-after'}{/block}
 </div>
+
+{if $includeDetails}
+  <div class="event-details">
+    {component name='Denkmal_Component_EventDetails' event=$event venueBookmarks=$venueBookmarks}
+  </div>
+{/if}

@@ -17,18 +17,6 @@ class Denkmal_Component_EventTest extends CMTest_TestCase {
         $this->assertContains('My Event', $html->find('.event-description .details')->getText());
     }
 
-    public function testMapLink() {
-        $venue = DenkmalTest_TH::createVenue('My Venue', null, null, null, null, null, new CM_Geo_Point(12, 13));
-        $event = Denkmal_Model_Event::create($venue, 'foo', true, false, new DateTime('2008-08-01 18:11:31'));
-
-        $component = new Denkmal_Component_Event(['event' => $event, 'template' => 'details']);
-        $html = $this->_renderComponent($component);
-
-        $this->assertComponentAccessible($component);
-        $this->assertTrue($html->has('.button-location'));
-        $this->assertSame('https://www.google.com/maps?q=My+Venue%4012%2C13', $html->find('.button-location')->getAttribute('href'));
-    }
-
     public function testSecretVenue() {
         $venue = DenkmalTest_TH::createVenue();
         $event = Denkmal_Model_Event::create($venue, 'foo', true, false, new DateTime('2008-08-01 18:11:31'));

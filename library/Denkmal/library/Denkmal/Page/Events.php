@@ -3,6 +3,8 @@
 class Denkmal_Page_Events extends Denkmal_Page_Abstract {
 
     public function prepareResponse(CM_Frontend_Environment $environment, CM_Http_Response_Page $response) {
+        parent::prepareResponse($environment, $response);
+
         if ($this->_params->has('event')) {
             $event = $this->_params->getEvent('event');
             $date = $this->_params->has('date') ? $this->_params->getDate('date') : null;

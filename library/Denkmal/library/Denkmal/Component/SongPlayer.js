@@ -18,12 +18,15 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
    */
   playSong: function(song) {
     this.stopSong();
-    if (!this._song || this._song.id != song.id) {
-      this._song = song;
-      this._audio = new cm.lib.Media.Audio();
-      this._audio.setSource(cm.getUrlUserContent(this._song.path));
-    }
+
+    this._song = song;
+    this._audio = new cm.lib.Media.Audio();
+    this._audio.setSource(cm.getUrlUserContent(this._song.path));
+    this._audio.on('stop', function() {
+      cm.event.trigger('song:stop');
+    });
     this._audio.play();
+
     cm.event.trigger('song:play', song);
   },
 
@@ -31,8 +34,10 @@ var Denkmal_Component_SongPlayer = Denkmal_Component_Abstract.extend({
     if (!this._audio) {
       return;
     }
+    this._audio.off();
     this._audio.stop();
-    cm.event.trigger('song:pause');
+    this._audio = null;
+    cm.event.trigger('song:stop');
   },
 
   /**

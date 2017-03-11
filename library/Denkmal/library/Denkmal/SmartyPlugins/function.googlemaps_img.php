@@ -20,7 +20,7 @@ function smarty_function_googlemaps_img(array $params, Smarty_Internal_Template 
         $height = (int) $params['height'];
     }
 
-    $zoom = 15;
+    $zoom = 14;
     if (isset($params['zoom'])) {
         $zoom = (int) $params['zoom'];
     }

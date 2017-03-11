@@ -10,12 +10,15 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   /** @type SwipeCarousel */
   _carousel: null,
 
-  _stateParams: ['date'],
+  /** @type Boolean */
+  _floatboxFullscreen: false,
+
+  _stateParams: ['date', 'event'],
 
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
-      var delaySetUrl = !data.immediateSetUrl;
-      this._onShowPane($(data.element), delaySetUrl);
+      var pushHistoryState = !data.skipPushHistoryState;
+      this._onShowPane($(data.element), pushHistoryState);
     },
 
     'click .dismissBanner': function() {
@@ -24,8 +27,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   },
 
   ready: function() {
-    this._onShowPaneSetUrlDelayed = _.debounce(this._onShowPaneSetUrl, 2000);
-
     var $carousel = this.$('.swipeCarousel');
     this._carousel = new SwipeCarousel($carousel);
     this._carousel.init();
@@ -36,28 +37,62 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     });
 
     this._showBanner();
+
+    this._initFloatboxMediaQuery();
+  },
+
+  _initFloatboxMediaQuery: function() {
+    var self = this;
+    var mediaQueryLarge = {
+      match: function() {
+        self._changeFloatboxFullscreen(false);
+      }
+    };
+    var mediaQuerySmall = {
+      match: function() {
+        self._changeFloatboxFullscreen(true);
+      }
+    };
+    enquire.register('(min-width: 600px)', mediaQueryLarge);
+    enquire.register('(max-width: 599px)', mediaQuerySmall);
+    this.on('destruct', function() {
+      enquire.unregister('(min-width: 600px)', mediaQueryLarge);
+      enquire.unregister('(max-width: 599px)', mediaQuerySmall);
+    });
+  },
+
+  _changeFloatboxFullscreen: function(state) {
+    this._floatboxFullscreen = state;
+    $('.floatbox').toggleClass('fullscreen', state);
   },
 
   /**
    * @param {String} date
-   * @returns Boolean
    */
   showPane: function(date) {
     var $element = this.$('.dateList > .dateList-item[data-date="' + date + '"]');
-    if ($element.length) {
-      this._carousel.showPane($element.index(), {immediateSetUrl: true}, !Modernizr.touchevents);
-      this._onShowPane($element);
-      return true;
-    } else {
-      return false;
+    if (!$element.length) {
+      throw new Error('Cannot find date list pane for date `' + date + '`');
     }
+    this._carousel.showPane($element.index(), {skipPushHistoryState: true}, !Modernizr.touchevents);
+    this._onShowPane($element);
+  },
+
+  /**
+   * @param {String } date
+   * @returns {boolean}
+   * @private
+   */
+  _hasPane: function(date) {
+    var $element = this.$('.dateList > .dateList-item[data-date="' + date + '"]');
+    return $element.length > 0;
   },
 
   /**
    * @param {jQuery} $element
-   * @param {Boolean} [delaySetUrl]
+   * @param {Boolean} [pushHistoryState]
    */
-  _onShowPane: function($element, delaySetUrl) {
+  _onShowPane: function($element, pushHistoryState) {
     var title = $element.data('title');
     var url = $element.data('url');
     var date = $element.data('date');
@@ -66,9 +101,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     cm.getDocument()._updateTitle(title);
     cm.getDocument()._activateMenuEntries([menuEntryHash]);
 
-    if (delaySetUrl) {
-      this._onShowPaneSetUrlDelayed(url, date);
-    } else {
+    if (pushHistoryState) {
       this._onShowPaneSetUrl(url, date);
     }
 
@@ -80,14 +113,44 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
    * @param {String} date
    */
   _onShowPaneSetUrl: function(url, date) {
-    if (!$.contains(document, this.el)) {
-      return; // View has been destroyed in the meantime
-    }
     var nextState = {date: date};
     if (!_.isEqual(nextState, this.getState())) {
       cm.router.pushState(url);
       this.setState(nextState);
     }
+  },
+
+  /**
+   * @param {String} eventId
+   * @returns {Denkmal_Component_Event}
+   * @private
+   */
+  _getEventComponent: function(eventId) {
+    eventId = '' + eventId;
+    var eventComponentList = {};
+    _.each(this.getChildren('Denkmal_Component_EventList'), function(eventListCmp) {
+      _.each(eventListCmp.getChildren('Denkmal_Component_Event'), function(eventCmp) {
+        eventComponentList['' + eventCmp.getEvent().id] = eventCmp;
+      });
+    });
+    var eventComponent = eventComponentList[eventId];
+    if (!eventComponent) {
+      throw new Error('Cannot find event component for id `' + eventId + '`');
+    }
+    return eventComponent;
+  },
+
+  /**
+   * @param {String} eventId
+   * @param {String} date
+   */
+  showEventDetails: function(eventId, date) {
+    var eventComponent = this._getEventComponent(eventId);
+    eventComponent.popOut({'fullscreen': this._floatboxFullscreen});
+  },
+
+  hideEventDetails: function() {
+    $('.floatbox').floatbox('close')
   },
 
   /**
@@ -99,7 +162,18 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
       date = this.$('.dateList > .dateList-item:first').data('date');
       this.setState({date: date});
     }
-    return this.showPane(date);
+    if (!this._hasPane(date)) {
+      return false;
+    }
+
+    this.showPane(date);
+
+    var event = state['event'];
+    if (event) {
+      this.showEventDetails(event, date);
+    } else {
+      this.hideEventDetails();
+    }
   },
 
   /**

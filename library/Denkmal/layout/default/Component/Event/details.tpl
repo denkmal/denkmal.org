@@ -40,5 +40,6 @@
       </div>
     {/if}
   </div>
-  {button_link theme='highlight' class='button-close closeFloatbox' icon='close' title='Close'}
+
+  <a href="{linkUrl page='Denkmal_Page_Events' date=$event->getFrom()->format('Y-n-j')}" class="showEventList" style="display:none;"></a>
 {/block}

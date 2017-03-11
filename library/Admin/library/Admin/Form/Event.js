@@ -24,7 +24,7 @@ var Admin_Form_Event = CM_Form_Abstract.extend({
       field.enableTriggerChangeOnInput();
     });
 
-    this._preview = this.getChild('Denkmal_Component_Event');
+    this._preview = this.getChild('Denkmal_Component_EventPreview');
 
     this.on('change', _.debounce(this.renderPreview, 100));
   },

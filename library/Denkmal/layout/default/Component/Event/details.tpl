@@ -10,7 +10,7 @@
     {/if}
     {/contentPlaceholder}
     {if $venue->getCoordinates()}
-      {button_link class='button-location' href=$mapLink target='_blank' icon='location' label={translate 'Google Maps'}}
+      {button_link class='button-location' href=$mapLink target='_blank' icon='pop-out' iconPosition='right' label={translate 'Google Maps'}}
     {/if}
   </div>
 {/block}

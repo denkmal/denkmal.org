@@ -10,7 +10,7 @@
     {/if}
     {/contentPlaceholder}
     {if $venue->getCoordinates()}
-      {button_link class='button-location' href=$mapLink target='_blank' icon='location' label={translate 'Google Maps'}}
+      {button_link class='button-location' href=$mapLink target='_blank' icon='pop-out' iconPosition='right' label={translate 'Google Maps'}}
     {/if}
   </div>
 {/block}
@@ -36,8 +36,9 @@
     {/if}
     {if $event->getStarred()}
       <div class="more-promoted">
-        <span class="icon">♡</span>{translate 'Event promoted by {$siteName}' siteName=$render->getSiteName()}
+        <span class="icon">♥</span>{translate 'Event recommended by {$siteName}' siteName=$render->getSiteName()}
       </div>
     {/if}
   </div>
+  {button_link theme='highlight' class='button-close closeFloatbox' icon='close' title='Close'}
 {/block}

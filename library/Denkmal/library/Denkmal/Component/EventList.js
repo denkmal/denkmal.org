@@ -24,7 +24,7 @@ var Denkmal_Component_EventList = Denkmal_Component_Abstract.extend({
 
   _showEventDetails: function($wrapper) {
     $wrapper.height($wrapper.height());
-    var $event = $wrapper.find('.Denkmal_Component_Event').floatbox();
+    var $event = $wrapper.find('.Denkmal_Component_Event').floatbox({'fullscreen': true});
 
     $event.on('floatbox-close', function() {
       $wrapper.height('auto');

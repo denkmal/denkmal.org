@@ -3,6 +3,13 @@ html, body {
   background-color: @colorBgBody;
 }
 
+.smooth-loading {
+  opacity: 0;
+  pointer-events: none;
+  transition: 300ms;
+  visibility: hidden;
+}
+
 #loading {
   align-items: center;
   background-color: white;
@@ -23,11 +30,18 @@ html, body {
   }
 }
 
-html.wf-active &, html.wf-inactive & {
+html.wf-active &,
+html.wf-inactive & {
   #loading {
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
+  }
+
+  .smooth-loading {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
   }
 }
 

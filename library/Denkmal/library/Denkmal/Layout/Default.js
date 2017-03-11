@@ -20,29 +20,16 @@ var Denkmal_Layout_Default = CM_Layout_Abstract.extend({
     'Denkmal_Page_Events ready': function(view) {
       this._bindContentScroll(view, view.$('.scrollable'));
       this._onContentScroll(view.$('.active .scrollable'));
-      this._setWeekMenuVisible(true);
     },
 
     'Denkmal_Page_Events swipe': function(view) {
       this._onContentScroll(view.$('.active .scrollable'));
     },
 
-    'Denkmal_Page_Events destruct': function(view) {
-      this.findChild('Denkmal_Component_HeaderBar').setWeekdayMenuVisible(false);
-      this._setWeekMenuVisible(false);
-    },
-
     'Denkmal_Page_Add ready': function(view) {
       this._bindContentScroll(view, $(document));
       this._onContentScroll($(document));
     }
-  },
-
-  /**
-   * @param {Boolean} state
-   */
-  _setWeekMenuVisible: function(state) {
-    this.findChild('Denkmal_Component_HeaderBar').setWeekdayVisible(state);
   },
 
   /**

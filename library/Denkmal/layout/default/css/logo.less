@@ -1,6 +1,8 @@
 .logo {
-  display: inline-block;
+  align-items: center;
+  display: flex;
   height: @barSize;
+  line-height: 1;
   padding: 0 8px;
 
   svg {
@@ -9,32 +11,18 @@
   }
 
   .logo-icon, .logo-font {
-    display: inline-block;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    vertical-align: top;
-    line-height: 1;
-
     .logo-color {
       fill: @colorLogo;
     }
   }
 
   .logo-icon {
-    width: 24px;
-
-    @media (min-width: 360px) {
-      width: 30px;
-    }
+    margin-right: 4px;
+    width: 30px;
   }
 
   .logo-font {
-    width: 104px;
-
-    @media (min-width: 360px) {
-      width: 130px;
-    }
+    width: 130px;
   }
 }
 

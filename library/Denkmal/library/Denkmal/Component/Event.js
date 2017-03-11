@@ -31,6 +31,15 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     }
   },
 
+  ready: function() {
+    this.bindJquery(this.$el, 'floatbox-open', function() {
+      this._loadImages();
+    });
+    this.bindJquery(this.$el, 'floatbox-close', function() {
+      this._showEventList();
+    });
+  },
+
   /**
    * @param {Boolean} state
    */
@@ -39,6 +48,29 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
       return;
     }
     cm.venueBookmarks.setVenue(this._venue.id, state);
+  },
+
+  /**
+   * @returns {Object}
+   */
+  getEvent: function() {
+    return this.getParams()['event'];
+  },
+
+  _loadImages: function() {
+    [].forEach.call(this.el.querySelectorAll('img[data-src]'), function(img) {
+      img.setAttribute('src', img.getAttribute('data-src'));
+      img.onload = function() {
+        img.removeAttribute('data-src');
+      };
+    });
+  },
+
+  _showEventList: function() {
+    var href = this.$('.showEventList').attr('href');
+    if (location.href !== href) {
+      cm.router.route(href);
+    }
   },
 
   /**

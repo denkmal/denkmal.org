@@ -1,7 +1,7 @@
 {if count($events)}
   <ul class="eventList">
     {foreach $events as $event}
-      <li class="clickFeedback showEventDetails">
+      <li class="clickFeedback showEventDetails" data-href="{linkUrl page='Denkmal_Page_Events' date=$date->format('Y-n-j') event=$event->getId()}">
         {component name='Denkmal_Component_Event' template='details' event=$event venueBookmarks=$venueBookmarks}
       </li>
     {/foreach}

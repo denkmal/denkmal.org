@@ -10,7 +10,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   /** @type SwipeCarousel */
   _carousel: null,
 
-  _stateParams: ['date'],
+  _stateParams: ['date', 'event'],
 
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
@@ -40,17 +40,27 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   /**
    * @param {String} date
-   * @returns Boolean
    */
   showPane: function(date) {
     var $element = this.$('.dateList > .dateList-item[data-date="' + date + '"]');
-    if ($element.length) {
-      this._carousel.showPane($element.index(), {immediateSetUrl: true}, !Modernizr.touchevents);
-      this._onShowPane($element);
-      return true;
-    } else {
-      return false;
+    if (!$element.length) {
+      throw new Error('Cannot find date list pane for date `' + date + '`');
     }
+    if ($element.hasClass('active')) {
+      return;
+    }
+    this._carousel.showPane($element.index(), {immediateSetUrl: true}, !Modernizr.touchevents);
+    this._onShowPane($element);
+  },
+
+  /**
+   * @param {String } date
+   * @returns {boolean}
+   * @private
+   */
+  _hasPane: function(date) {
+    var $element = this.$('.dateList > .dateList-item[data-date="' + date + '"]');
+    return $element.length > 0;
   },
 
   /**
@@ -91,6 +101,39 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   },
 
   /**
+   * @param {String} eventId
+   * @returns {Denkmal_Component_Event}
+   * @private
+   */
+  _getEventComponent: function(eventId) {
+    eventId = '' + eventId;
+    var eventComponentList = {};
+    _.each(this.getChildren('Denkmal_Component_EventList'), function(eventListCmp) {
+      _.each(eventListCmp.getChildren('Denkmal_Component_Event'), function(eventCmp) {
+        eventComponentList['' + eventCmp.getEvent().id] = eventCmp;
+      });
+    });
+    var eventComponent = eventComponentList[eventId];
+    if (!eventComponent) {
+      throw new Error('Cannot find event component for id `' + eventId + '`');
+    }
+    return eventComponent;
+  },
+
+  /**
+   * @param {String} eventId
+   * @param {String} date
+   */
+  showEventDetails: function(eventId, date) {
+    var eventComponent = this._getEventComponent(eventId);
+    eventComponent.popOut({'fullscreen': true});
+  },
+
+  hideEventDetails: function() {
+    $('.floatbox').floatbox('close')
+  },
+
+  /**
    * @param {Boolean} state
    */
   _changeState: function(state) {
@@ -99,7 +142,18 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
       date = this.$('.dateList > .dateList-item:first').data('date');
       this.setState({date: date});
     }
-    return this.showPane(date);
+    if (!this._hasPane(date)) {
+      return false;
+    }
+
+    this.showPane(date);
+
+    var event = state['event'];
+    if (event) {
+      this.showEventDetails(event, date);
+    } else {
+      this.hideEventDetails();
+    }
   },
 
   /**

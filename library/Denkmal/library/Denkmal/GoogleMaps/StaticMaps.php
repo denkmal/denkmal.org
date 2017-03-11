@@ -1,17 +1,57 @@
 <?php
 
-class Denkmal_GoogleMaps_JsonToStaticParams {
+/**
+ * See https://developers.google.com/maps/documentation/staticmaps/
+ */
+class Denkmal_GoogleMaps_StaticMaps {
+
+    /** @var string */
+    private $_apikey;
 
     /**
-     * @param string $json
+     * @param string $apiKey
+     */
+    public function __construct($apiKey) {
+        $this->_apikey = $apiKey;
+    }
+
+    /**
+     * @param CM_Geo_Point $coordinates
+     * @param int          $width
+     * @param int          $height
+     * @param int          $zoom
+     * @param array|null   $styles
+     * @return string
+     */
+    public function getUrl(CM_Geo_Point $coordinates, $width, $height, $zoom, array $styles = null) {
+        $linkParams['key'] = $this->_apikey;
+        $linkParams['zoom'] = $zoom;
+        $linkParams['format'] = 'jpg';
+        $linkParams['size'] = $width . 'x' . $height;
+        $linkParams['markers'] = 'color:0xD60725|' . $coordinates->getLatitude() . ',' . $coordinates->getLongitude();
+
+        $stylesParams = '';
+        if ($styles) {
+            $styles = self::_convertStyles($styles);
+            foreach ($styles as $style) {
+                $stylesParams .= '&style=' . urlencode($style);
+            }
+        }
+
+        return CM_Util::link('https://maps.googleapis.com/maps/api/staticmap', $linkParams) . $stylesParams;
+    }
+
+    /**
+     * @see https://developers.google.com/maps/documentation/static-maps/styling
+     *
+     * @param array $styles
      * @return array
      */
-    public static function create($json) {
-        $jsonArray = json_decode($json, true);
+    protected function _convertStyles(array $styles) {
         $items = [];
         $separator = '|';
 
-        foreach ($jsonArray as $item) {
+        foreach ($styles as $item) {
             $hasFeature = array_key_exists('featureType', $item);
             $hasElement = array_key_exists('elementType', $item);
             $hasStylers = array_key_exists('stylers', $item);
@@ -49,7 +89,7 @@ class Denkmal_GoogleMaps_JsonToStaticParams {
      * @param mixed $value
      * @return string
      */
-    private static function _handleStylerValue($value) {
+    protected function _handleStylerValue($value) {
         if (is_bool($value)) {
             return $value ? 'true' : 'false';
         }

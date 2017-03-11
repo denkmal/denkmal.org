@@ -76,9 +76,6 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     if (!$element.length) {
       throw new Error('Cannot find date list pane for date `' + date + '`');
     }
-    if ($element.hasClass('active')) {
-      return;
-    }
     this._carousel.showPane($element.index(), {immediateSetUrl: true}, !Modernizr.touchevents);
     this._onShowPane($element);
   },

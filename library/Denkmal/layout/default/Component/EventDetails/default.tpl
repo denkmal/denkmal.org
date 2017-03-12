@@ -3,13 +3,13 @@
 {block name='event-before'}
   <div class="header">
     {contentPlaceholder width=8 height=5 stretch=true}
-    {if $venue->getCoordinates()}
+    {if $mapLink && $venue->getCoordinates()}
       <img data-src="{googlemaps_img coordinates=$venue->getCoordinates() styleFile='google-maps-styles.json'}">
     {else}
       {img path='map-placeholder.svg'}
     {/if}
     {/contentPlaceholder}
-    {if $venue->getCoordinates()}
+    {if $mapLink}
       {button_link class='button-location' href=$mapLink target='_blank' icon='pop-out' iconPosition='right' label={translate 'Google Maps'}}
     {/if}
   </div>

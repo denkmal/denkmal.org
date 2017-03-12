@@ -14,6 +14,7 @@
     {/if}
   </div>
 {/block}
+
 {block name='event-after'}
   <div class="more">
     <div class="more-links">
@@ -40,6 +41,5 @@
       </div>
     {/if}
   </div>
-
   <a href="{linkUrl page='Denkmal_Page_Events' date=$event->getFrom()->format('Y-n-j')}" class="showEventList" style="display:none;"></a>
 {/block}

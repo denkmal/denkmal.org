@@ -122,15 +122,15 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
 
   /**
    * @param {String} eventId
-   * @returns {Denkmal_Component_Event}
+   * @returns {Denkmal_Component_EventDetails}
    * @private
    */
-  _getEventComponent: function(eventId) {
+  _getEventDetailsComponent: function(eventId) {
     eventId = '' + eventId;
     var eventComponentList = {};
     _.each(this.getChildren('Denkmal_Component_EventList'), function(eventListCmp) {
       _.each(eventListCmp.getChildren('Denkmal_Component_Event'), function(eventCmp) {
-        eventComponentList['' + eventCmp.getEvent().id] = eventCmp;
+        eventComponentList['' + eventCmp.getEvent().id] = eventCmp.getChild('Denkmal_Component_EventDetails');
       });
     });
     var eventComponent = eventComponentList[eventId];
@@ -145,7 +145,7 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
    * @param {String} date
    */
   showEventDetails: function(eventId, date) {
-    var eventComponent = this._getEventComponent(eventId);
+    var eventComponent = this._getEventDetailsComponent(eventId);
     eventComponent.popOut({'fullscreen': this._floatboxFullscreen});
   },
 

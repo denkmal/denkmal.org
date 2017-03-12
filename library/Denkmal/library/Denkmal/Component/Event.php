@@ -7,6 +7,7 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
         $venue = $this->_params->has('venue') ? $this->_params->getVenue('venue') : $event->getVenue();
         /** @var Denkmal_Paging_Venue_Abstract|null $venueBookmarks */
         $venueBookmarks = $this->_params->has('venueBookmarks') ? $this->_params->getObject('venueBookmarks', 'Denkmal_Paging_Venue_Abstract') : null;
+        $includeDetails = $this->_params->getBoolean('includeDetails', false);
 
         $mapLink = null;
         if ($venue->getCoordinates() && !$venue->getSecret()) {
@@ -20,9 +21,11 @@ class Denkmal_Component_Event extends Denkmal_Component_Abstract {
 
         $viewResponse->set('event', $event);
         $viewResponse->set('venue', $venue);
+        $viewResponse->set('venueBookmarks', $venueBookmarks);
         $viewResponse->set('mapLink', $mapLink);
         $viewResponse->set('isBookmarked', $isBookmarked);
         $viewResponse->set('isPersistent', $isPersistent);
+        $viewResponse->set('includeDetails', $includeDetails);
 
         if (!$isPersistent) {
             $this->_params = CM_Params::factory(); // Empty params to not send them to client

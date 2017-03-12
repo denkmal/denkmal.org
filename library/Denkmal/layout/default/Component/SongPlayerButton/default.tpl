@@ -1,2 +1,7 @@
-{link icon="audio-play" class="navButton playSong"}
-{link icon="audio-pause" class="navButton pauseSong disabled"}
+<span class="control playSong">
+  <span class="icon icon-music"></span>
+</span>
+
+<span class="control pauseSong disabled">
+  <span class="icon icon-audio-pause"></span>
+</span>

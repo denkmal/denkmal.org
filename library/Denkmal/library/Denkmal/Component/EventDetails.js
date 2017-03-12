@@ -7,6 +7,13 @@ var Denkmal_Component_EventDetails = Denkmal_Component_Event.extend({
   /** @type {String} */
   _class: 'Denkmal_Component_EventDetails',
 
+  events: {
+    'click .playSong': function() {
+      var songPlayerButton = this.getChild('Denkmal_Component_SongPlayerButton');
+      songPlayerButton.toggleSong();
+    }
+  },
+
   ready: function() {
     this.bindJquery(this.$el, 'floatbox-open', function() {
       this._loadImages();
@@ -15,7 +22,6 @@ var Denkmal_Component_EventDetails = Denkmal_Component_Event.extend({
       this._showEventList();
     });
   },
-
 
   /**
    * @private

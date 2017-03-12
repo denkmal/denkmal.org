@@ -16,28 +16,43 @@
 {/block}
 
 {block name='event-after'}
-  <div class="more">
-    <div class="more-links">
-      {if $venue->getUrl()}
-        <div>
-          {button_link theme='transparent' href=$venue->getUrl() target='_blank' icon='pop-out' iconPosition="right" label=$venue->getName()}
-        </div>
-      {/if}
-      {foreach $event->getLinks() as $link}
-        <div>
-          {button_link theme='transparent' href=$link->getUrl() target='_blank' icon='pop-out' iconPosition="right" label=$link->getLabel()}
-        </div>
-      {/foreach}
-    </div>
-    {if $song = $event->getSong()}
-      <div class="more-song">
-        <h4><span class="music">♫</span> {$song->getLabel()}</h4>
-        {component name="Denkmal_Component_SongPlayerButton" song=$song}
+  <div class="moreList">
+    {if $venue->getUrl()}
+      <div class="moreItem">
+        <a href="{$venue->getUrl()|escape}" target="_blank">
+          <div class="moreItem-icon">
+            <div class="icon icon-network"></div>
+          </div>
+          <div class="moreItem-content">
+            <span>{translate 'Venue Website'}</span>
+          </div>
+        </a>
       </div>
     {/if}
-    {if $event->getStarred()}
-      <div class="more-promoted">
-        <span class="icon">♥</span>{translate 'Event recommended by {$siteName}' siteName=$render->getSiteName()}
+
+    {foreach $event->getLinks() as $link}
+      <div class="moreItem">
+        <a href="{$link->getUrl()|escape}" target="_blank">
+          <div class="moreItem-icon">
+            <div class="icon icon-network"></div>
+          </div>
+          <div class="moreItem-content">
+            <span>{$link->getLabel()|escape}</span>
+          </div>
+        </a>
+      </div>
+    {/foreach}
+
+    {if $song = $event->getSong()}
+      <div class="moreItem">
+        <a href="javascript:;" class="playSong">
+          <div class="moreItem-icon">
+            {component name="Denkmal_Component_SongPlayerButton" song=$song}
+          </div>
+          <div class="moreItem-content">
+            <span>{$song->getLabel()|escape}</span>
+          </div>
+        </a>
       </div>
     {/if}
   </div>

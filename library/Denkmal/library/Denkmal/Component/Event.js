@@ -54,8 +54,15 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
    */
   _updateVenueBookmark: function(state) {
     var $el = this.$('.venue-bookmark');
-    state ? $el.attr('data-bookmarked', '') : $el.removeAttr('data-bookmarked');
-    $el.toggleClass('bookmark-animation', state);
+    if (state) {
+      $el.attr('data-bookmarked', '');
+      $el.addClass('bookmark-animation');
+      $el.on('animationend', function() {
+        $el.removeClass('bookmark-animation');
+      })
+    } else {
+      $el.removeAttr('data-bookmarked')
+    }
   }
 
 });

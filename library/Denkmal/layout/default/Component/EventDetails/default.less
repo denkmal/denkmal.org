@@ -1,9 +1,13 @@
-.floatbox & {
+& {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
+
+}
+
+.floatbox & {
+  height: 100%;
 
   .wrapper {
     background-color: @colorBg;
@@ -12,38 +16,6 @@
     height: 100%;
     max-width: 100%;
     width: 500px;
-
-    .button-close {
-      display: block;
-    }
-  }
-
-  .event {
-    background-color: @colorBg;
-    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.05);
-    margin-top: -30px;
-    padding-top: 30px;
-    position: relative;
-
-    .event-context .date {
-      position: absolute;
-      right: 13px;
-      top: 18px;
-    }
-  }
-
-  .header {
-    display: block;
-  }
-
-  .more {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    .more-links {
-      flex-grow: 1;
-    }
   }
 }
 
@@ -55,6 +27,7 @@
 
 .header {
   position: relative;
+  display: block;
 
   .button-location {
     bottom: 40px;
@@ -63,12 +36,30 @@
   }
 }
 
+.event {
+  background-color: @colorBg;
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.05);
+  margin-top: -30px;
+  padding-top: 30px;
+  position: relative;
+
+  .event-context .date {
+    position: absolute;
+    right: 13px;
+    top: 18px;
+  }
+}
+
 .more {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 
   .more-links {
     padding-top: 10px;
     padding-bottom: 10px;
+    flex-grow: 1;
   }
 
   .more-song {

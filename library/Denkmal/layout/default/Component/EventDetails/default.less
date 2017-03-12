@@ -40,13 +40,14 @@
   background-color: @colorBg;
   box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.05);
   margin-top: -30px;
-  padding-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   position: relative;
 
   .event-context {
     position: absolute;
     right: 13px;
-    top: 23px;
+    top: 13px;
 
     .date,
     .time {
@@ -67,14 +68,18 @@
 
 .moreList {
   &:not(:empty) {
-    padding: 15px 25px 30px 25px;
+    padding: 5px 25px 30px 25px;
   }
 
   .moreItem {
     position: relative;
 
-    &:not(:last-child) {
-      padding-bottom: 10px;
+    > a {
+      display: inline-block;
+    }
+
+    &:not(:last-child) > a {
+      padding-bottom: 12px;
     }
 
     .moreItem-icon {

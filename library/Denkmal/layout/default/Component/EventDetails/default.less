@@ -59,7 +59,9 @@
 }
 
 .moreList {
-  padding: 15px 25px 30px 25px;
+  &:not(:empty) {
+    padding: 15px 25px 30px 25px;
+  }
 
   .moreItem {
     position: relative;

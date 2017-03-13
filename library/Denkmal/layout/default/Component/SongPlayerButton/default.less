@@ -1,13 +1,9 @@
-.navButton {
+.control {
   font-size: 20px;
   color: @colorFgSubtle;
 
-  &:hover {
-    color: @colorFg;
-  }
-
   &.disabled {
-    opacity: .3;
+    display: none;
   }
 
   &.pauseSong {
@@ -15,8 +11,4 @@
     font-size: 16px;
     .animation(blink, 1500ms, ease, 0s, infinite);
   }
-}
-
-.disabled {
-  display: none;
 }

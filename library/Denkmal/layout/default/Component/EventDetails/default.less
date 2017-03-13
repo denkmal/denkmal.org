@@ -40,52 +40,74 @@
   background-color: @colorBg;
   box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.05);
   margin-top: -30px;
-  padding-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   position: relative;
 
-  .event-context .date {
+  .event-context {
     position: absolute;
     right: 13px;
-    top: 18px;
+    top: 13px;
+
+    .date,
+    .time {
+      display: inline;
+    }
+
+    .date {
+      &::after {
+        content: " - ";
+      }
+    }
+  }
+
+  .promoted, .music {
+    display: none;
   }
 }
 
-.more {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
-  .more-links {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    flex-grow: 1;
+.moreList {
+  &:not(:empty) {
+    padding: 5px 25px 30px 25px;
   }
 
-  .more-song {
-    background-color: @colorBgEmphasize1;
-    border-top: 1px solid @colorFgBorder;
-    padding-top: 4px;
-    padding-bottom: 8px;
+  .moreItem {
+    position: relative;
 
-    h4 {
-      font-size: .9em;
-      padding-left: 10px;
-      padding-right: 10px;
+    > a {
+      display: inline-block;
     }
 
-    .Denkmal_Component_SongPlayerButton .navButton {
-      color: @colorBgTheme;
+    &:not(:last-child) > a {
+      padding-bottom: 12px;
+    }
+
+    .moreItem-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 20px;
+      color: @colorFgSubtle;
+    }
+
+    .moreItem-content {
+      padding-left: 33px;
+      color: @colorFg;
+
+      span {
+        border-bottom: 1px dotted @colorFg;
+      }
     }
   }
+}
 
-  .more-promoted {
-    color: mix(@colorBg, @colorFg, 40);
-    font-size: @fontSizeTiny;
-    padding: 4px;
+.starredInfo {
+  color: mix(@colorBg, @colorFg, 40);
+  font-size: @fontSizeTiny;
+  padding: 4px;
+  text-align: right;
 
-    .icon {
-      margin-right: 4px;
-    }
+  .icon {
+    margin-right: 4px;
   }
 }

@@ -54,6 +54,14 @@ var Denkmal_Component_SongPlayerButton = Denkmal_Component_Abstract.extend({
     this._getPlayer().stopSong();
   },
 
+  toggleSong: function() {
+    if (this._playing) {
+      this.pauseSong();
+    } else {
+      this.playSong();
+    }
+  },
+
   /**
    * @returns {Denkmal_Component_SongPlayer}
    * @private

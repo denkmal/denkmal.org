@@ -20,6 +20,9 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
     'mousedown .toggleVenueBookmark': function(event) {
       //prevent click feedback
       event.stopPropagation();
+    },
+    'animationend .venue-bookmark': function() {
+      this.$('.venue-bookmark').removeClass('bookmark-animation');
     }
   },
 
@@ -54,8 +57,11 @@ var Denkmal_Component_Event = Denkmal_Component_Abstract.extend({
    */
   _updateVenueBookmark: function(state) {
     var $el = this.$('.venue-bookmark');
-    state ? $el.attr('data-bookmarked', '') : $el.removeAttr('data-bookmarked');
-    $el.toggleClass('bookmark-animation', state);
+    $el.attr('data-bookmarked', state ? '' : null);
+
+    if (state) {
+      $el.addClass('bookmark-animation');
+    }
   }
 
 });

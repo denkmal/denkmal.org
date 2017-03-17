@@ -13,6 +13,17 @@ return function (CM_Config_Node $config) {
 
     $config->CM_Stream_Video->servers = array();
 
+    $config->services['maintenance'] = [
+        'class'     => Denkmal_Maintenance_ServiceFactory::class,
+        'arguments' => [],
+        'method'    => [
+            'name'      => 'createService',
+            'arguments' => [
+                'clockworkStorage' => new CM_Clockwork_Storage_MongoDB('maintenance'),
+            ]
+        ],
+    ];
+
     $config->services['push-notification-sender'] = [
         'class'     => 'Denkmal_Push_Notification_Sender',
         'arguments' => [
@@ -39,5 +50,4 @@ return function (CM_Config_Node $config) {
             ],
         ],
     ];
-
 };

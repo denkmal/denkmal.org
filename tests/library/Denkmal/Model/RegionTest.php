@@ -33,13 +33,13 @@ class Denkmal_Model_RegionTest extends CMTest_TestCase {
 
     public function testGetBySlug() {
         $city = DenkmalTest_TH::createLocationCity();
-        $region = Denkmal_Model_Region::create('foo', 'basel', 'BSL', 'bsl@example.com', $city);
-        $region2 = Denkmal_Model_Region::create('fooBar', 'frankfurt', 'FRA', 'fra@example.com', $city);
+        $region = Denkmal_Model_Region::create('My Region 1', 'my-region-1', 'my1', '1@example.com', $city);
+        $region2 = Denkmal_Model_Region::create('My Region 2', 'my-region-2', 'my2', '2@example.com', $city);
 
-        $this->assertEquals($region, Denkmal_Model_Region::getBySlug('basel'));
-        $this->assertEquals($region2, Denkmal_Model_Region::getBySlug('frankfurt'));
+        $this->assertEquals($region, Denkmal_Model_Region::getBySlug('my-region-1'));
+        $this->assertEquals($region2, Denkmal_Model_Region::getBySlug('my-region-2'));
         $exception = $this->catchException(function () {
-            Denkmal_Model_Region::getBySlug('berlin');
+            Denkmal_Model_Region::getBySlug('my-region-3');
         });
 
         $this->assertInstanceOf('CM_Exception_Nonexistent', $exception);
@@ -60,7 +60,7 @@ class Denkmal_Model_RegionTest extends CMTest_TestCase {
 
     public function testGetSetSuspension() {
         $city = DenkmalTest_TH::createLocationCity();
-        $region = Denkmal_Model_Region::create('Basel', 'basel', 'BSL', 'bsl@example.com', $city);
+        $region = Denkmal_Model_Region::create('My Region', 'my-region', 'myr', 'bsl@example.com', $city);
 
         $this->assertInstanceOf('Denkmal_Suspension', $region->getSuspension());
         $this->assertNull($region->getSuspension()->getUntil());

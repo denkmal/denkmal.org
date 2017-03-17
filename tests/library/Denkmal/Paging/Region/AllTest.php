@@ -2,6 +2,14 @@
 
 class Denkmal_Paging_Region_AllTest extends CMTest_TestCase {
 
+    protected function setUp() {
+        /** @var Denkmal_Model_Region[] $regionList */
+        $regionList = (new Denkmal_Paging_Region_All())->getItems();
+        foreach($regionList as $region) {
+            $region->delete();
+        }
+    }
+
     public function tearDown() {
         CMTest_TH::clearEnv();
     }

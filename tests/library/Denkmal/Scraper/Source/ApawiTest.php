@@ -2,11 +2,6 @@
 
 class Denkmal_Scraper_Source_ApawiTest extends CMTest_TestCase {
 
-    protected function setUp() {
-        $setupLocations = new Denkmal_App_SetupScript_Locations($this->getServiceManager());
-        $setupLocations->load(new CM_OutputStream_Null());
-    }
-
     public function tearDown() {
         CMTest_TH::clearEnv();
     }

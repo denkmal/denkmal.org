@@ -1,19 +1,16 @@
 <?php
 
-class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
+class Denkmal_Maintenance_ServiceFactory extends CM_Maintenance_ServiceFactory {
 
-    /**
-     * @synchronized
-     */
-    protected function _registerCallbacks() {
-        parent::_registerCallbacks();
+    protected function _registerCallbacks(CM_Maintenance_Service $maintenance) {
+        parent::_registerCallbacks($maintenance);
 
         $this->_registerClockworkCallbacks('12 hours', array(
             'Scraper' => function () {
-                $scraperManager = new Denkmal_Scraper_Manager($this->_getStreamOutput());
+                $scraperManager = new Denkmal_Scraper_Manager();
                 $scraperManager->process(true);
             }
-        ));
+        ), $maintenance);
 
         $this->_registerClockworkCallbacks('18:00', array(
             'Daily event tweets' => function () {
@@ -21,7 +18,7 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
                 $tweeterDaily = new Denkmal_EventTweeter_Daily();
                 $tweeterDaily->run($settings->getCurrentDate());
             }
-        ));
+        ), $maintenance);
 
         $this->_registerClockworkCallbacks('1 hour', array(
             'Delete expired invites' => function () {
@@ -30,7 +27,7 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
                     $userInvite->delete();
                 }
             }
-        ));
+        ), $maintenance);
 
         $this->_registerClockworkCallbacks('1 hour', array(
             'Delete expired push subscriptions'         => function () {
@@ -45,10 +42,6 @@ class Denkmal_Maintenance_Cli extends CM_Maintenance_Cli {
                     $pushNotificationMessage->delete();
                 }
             },
-        ));
-    }
-
-    public static function getPackageName() {
-        return 'maintenance';
+        ), $maintenance);
     }
 }

@@ -20,7 +20,8 @@ class Denkmal_Push_Subscription extends \CM_Model_Abstract {
      * @return CM_Site_Abstract
      */
     public function getSite() {
-        return CM_Site_Abstract::factory($this->_get('site'));
+        $siteFactory = new CM_Site_SiteFactory();
+        return $siteFactory->getSiteById($this->_get('site'));
     }
 
     /**

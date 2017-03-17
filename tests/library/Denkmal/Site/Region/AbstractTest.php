@@ -12,10 +12,7 @@ class Denkmal_Site_Region_AbstractTest extends CMTest_TestCase {
     private $_debugBackup;
 
     protected function setUp() {
-        $setupLocations = new Denkmal_App_SetupScript_Locations($this->getServiceManager());
-        $setupLocations->load(new CM_OutputStream_Null());
-
-        $location = CMTest_TH::createLocation();
+             $location = CMTest_TH::createLocation();
         $this->_region = Denkmal_Model_Region::create('My Region', 'my-reg', 'MRG', 'me@example.com', $location);
 
         $this->_site = $this->getMockSite('Denkmal_Site_Region_Abstract', null, null, ['_getRegionSlug']);

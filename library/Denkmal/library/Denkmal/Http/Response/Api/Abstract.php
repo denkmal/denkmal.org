@@ -8,7 +8,7 @@ abstract class Denkmal_Http_Response_Api_Abstract extends CM_Http_Response_Abstr
     public function __construct(CM_Http_Request_Abstract $request, CM_Site_Abstract $site, CM_Service_Manager $serviceManager) {
         parent::__construct($request, $site, $serviceManager);
         /** @var Denkmal_Params $params */
-        $this->_params = new Denkmal_Params($request->getQuery());
+        $this->_params = new Denkmal_Params($request->getQuery(), true);
     }
 
     protected function _setContent($content) {

@@ -3,17 +3,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .floatbox & {
-  height: 100%;
-
   .wrapper {
     background-color: @colorBg;
     display: flex;
     flex-direction: column;
-    height: 100%;
     max-width: 100%;
     width: 500px;
   }
@@ -39,6 +35,7 @@
 .event {
   background-color: @colorBg;
   box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
   margin-top: -30px;
   padding-top: 20px;
   padding-bottom: 20px;

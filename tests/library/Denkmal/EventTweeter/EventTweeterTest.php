@@ -7,39 +7,43 @@ class Denkmal_EventTweeter_EventTweeterTest extends CMTest_TestCase {
     }
 
     public function testGetEventText() {
-        $this->_assertGetEventText(
-            'Denkmal recommends: Example (22:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
-            'Lorem ipsum dolor sit amet',
-            new DateTime('2014-11-01 22:00'), null,
-            140
-        );
+        $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $venue = DenkmalTest_TH::createVenue('Example');
+        $event = Denkmal_Model_Event::create($venue, 'Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'));
+        $eventId = $event->getId();
+
+        $this->assertSame("Denkmal recommends: Example (22:00) Lorem ipsum dolor sit amet denkmal.org/events?event=${eventId}",
+            $eventTweeter->getEventText($event, 140));
     }
 
     public function testGetEventTextWithUntil() {
-        $this->_assertGetEventText(
-            'Denkmal recommends: Example (22:00-2:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
-            'Lorem ipsum dolor sit amet',
-            new DateTime('2014-11-01 22:00'), new DateTime('2014-11-02 2:00'),
-            140
-        );
+        $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $venue = DenkmalTest_TH::createVenue('Example');
+        $event = Denkmal_Model_Event::create($venue, 'Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'), new DateTime('2014-11-02 2:00'));
+        $eventId = $event->getId();
+
+        $this->assertSame("Denkmal recommends: Example (22:00-2:00) Lorem ipsum dolor sit amet denkmal.org/events?event=${eventId}",
+            $eventTweeter->getEventText($event, 140));
     }
 
     public function testGetEventTextCutOff() {
-        $this->_assertGetEventText(
-            'Denkmal recommends: Example (22:00) Lorem ipsum… denkmal.org/events?date=2014-11-1',
-            'Lorem ipsum dolor sit amet',
-            new DateTime('2014-11-01 22:00'), null,
-            70
-        );
+        $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $venue = DenkmalTest_TH::createVenue('Example');
+        $event = Denkmal_Model_Event::create($venue, 'Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'));
+        $eventId = $event->getId();
+
+        $this->assertSame("Denkmal recommends: Example (22:00) Lorem ipsum… denkmal.org/events?event=${eventId}",
+            $eventTweeter->getEventText($event, 70));
     }
 
     public function testGetEventTextWithUrl() {
-        $this->_assertGetEventText(
-            'Denkmal recommends: Example (22:00) example.com Lorem ipsum… denkmal.org/events?date=2014-11-1',
-            'example.com Lorem ipsum dolor sit amet',
-            new DateTime('2014-11-01 22:00'), null,
-            95
-        );
+        $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $venue = DenkmalTest_TH::createVenue('Example');
+        $event = Denkmal_Model_Event::create($venue, 'example.com Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'));
+        $eventId = $event->getId();
+
+        $this->assertSame("Denkmal recommends: Example (22:00) example.com Lorem ipsum… denkmal.org/events?event=${eventId}",
+            $eventTweeter->getEventText($event, 95));
     }
 
     /**
@@ -47,12 +51,11 @@ class Denkmal_EventTweeter_EventTweeterTest extends CMTest_TestCase {
      * @expectedExceptionMessage Suffix length exceeds max-length
      */
     public function testGetEventTextSuffixTooLong() {
-        $this->_assertGetEventText(
-            'Denkmal recommends: Example (22:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
-            'Lorem ipsum dolor sit amet',
-            new DateTime('2014-11-01 22:00'), null,
-            10
-        );
+        $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
+        $venue = DenkmalTest_TH::createVenue('Example');
+        $event = Denkmal_Model_Event::create($venue, 'example.com Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'));
+
+        $eventTweeter->getEventText($event, 10);
     }
 
     public function testGetEventTextWithTwitterUsername() {
@@ -60,23 +63,21 @@ class Denkmal_EventTweeter_EventTweeterTest extends CMTest_TestCase {
         $venue = DenkmalTest_TH::createVenue();
         $venue->setTwitterUsername('ExampleTwitter');
         $event = Denkmal_Model_Event::create($venue, 'Lorem ipsum dolor sit amet', true, false, new DateTime('2014-11-01 22:00'));
+        $eventId = $event->getId();
+
         $this->assertSame(
-            'Denkmal recommends: @ExampleTwitter (22:00) Lorem ipsum dolor sit amet denkmal.org/events?date=2014-11-1',
+            "Denkmal recommends: @ExampleTwitter (22:00) Lorem ipsum dolor sit amet denkmal.org/events?event=${eventId}",
             $eventTweeter->getEventText($event, 140)
         );
     }
 
     /**
-     * @param string        $expected
-     * @param string        $description
-     * @param DateTime      $from
-     * @param DateTime|null $until
-     * @param int           $maxLength
+     * @param string              $expected
+     * @param int                 $maxLength
+     * @param Denkmal_Model_Event $event
      */
-    private function _assertGetEventText($expected, $description, DateTime $from, DateTime $until = null, $maxLength) {
+    private function _assertGetEventText($expected, $maxLength, Denkmal_Model_Event $event) {
         $eventTweeter = new Denkmal_EventTweeter_EventTweeter($this->_getTwitterClientMock(), $this->_getRender());
-        $venue = DenkmalTest_TH::createVenue('Example');
-        $event = Denkmal_Model_Event::create($venue, $description, true, false, $from, $until);
         $this->assertSame($expected, $eventTweeter->getEventText($event, $maxLength));
     }
 

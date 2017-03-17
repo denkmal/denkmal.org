@@ -33,7 +33,9 @@ class Denkmal_EventTweeter_EventTweeter {
      */
     public function getEventText(Denkmal_Model_Event $event, $maxLength) {
         $maxLength = (int) $maxLength;
-        $url = $this->_render->getUrlPage('Denkmal_Page_Events', ['date' => $event->getFrom()->format('Y-n-j')]);
+        $url = $this->_render->getUrlPage('Denkmal_Page_Events', [
+            'event' => $event->getId(),
+        ]);
         $url = preg_replace('#^https?://(www\.)?#', '', $url);
         $suffix = ' ' . $url;
         $suffixLength = $this->_client->getTweetLength($suffix);

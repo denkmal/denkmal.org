@@ -215,11 +215,13 @@ class Denkmal_Scraper_Manager extends CM_Class_Abstract {
             $venue = Denkmal_Model_Venue::create($eventData->getVenueName(), true, false, $eventData->getRegion());
         }
 
+        $startsSoon = ((new DateTime())->add(new DateInterval('PT48H')) > $eventData->getFrom());
+
         $event = new Denkmal_Model_Event();
         $event->setVenue($venue);
         $event->setDescription($eventData->getDescription()->getTitleAndDescription());
         $event->setGenres($eventData->getDescription()->getGenres());
-        $event->setEnabled(true);
+        $event->setEnabled(!$startsSoon);
         $event->setQueued(true);
         $event->setFrom($eventData->getFrom());
         $event->setUntil($eventData->getUntil());

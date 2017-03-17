@@ -28,6 +28,6 @@ class Admin_FormAction_Event_Preview extends Admin_FormAction_Event_Save {
         return $response->loadComponent('Denkmal_Component_EventPreview', new Denkmal_Params(array(
             'event' => $event,
             'venue' => $venue,
-        )));
+        ), false));
     }
 }

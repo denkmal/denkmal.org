@@ -126,14 +126,14 @@ class Denkmal_Scraper_ManagerTest extends CMTest_TestCase {
         $this->assertCount(3, $venue->getEventList());
 
         /** @var Denkmal_Model_Event[] $eventList1 */
-        $eventList1 = (new Denkmal_Paging_Event_VenueDate(new DateTime('2017-02-19'), $venue))->getItems();
+        $eventList1 = (new Denkmal_Paging_Event_VenueDate(new DateTime('2017-02-19'), $venue, true))->getItems();
         $this->assertCount(2, $eventList1);
         foreach ($eventList1 as $event) {
             $this->assertSame(0, $event->getLinks()->getCount(), 'Links should not be set, because multiple events exist on this day');
         }
 
         /** @var Denkmal_Model_Event[] $eventList2 */
-        $eventList2 = (new Denkmal_Paging_Event_VenueDate(new DateTime('2017-02-20'), $venue))->getItems();
+        $eventList2 = (new Denkmal_Paging_Event_VenueDate(new DateTime('2017-02-20'), $venue, true))->getItems();
         $this->assertCount(1, $eventList2);
         foreach ($eventList2 as $event) {
             $this->assertSame(1, $event->getLinks()->getCount());

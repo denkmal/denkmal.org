@@ -37,8 +37,7 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
             Denkmal_Model_EventLink::create($event, 'Event Link', $linkUrl);
         }
 
-        $fromDistance = ($event->getFrom()->getTimestamp() - time());
-        if (($fromDistance / 3600) < 24) {
+        if ((new DateTime())->add(new DateInterval('PT48H')) > $event->getFrom()) {
             $notificationEmail = new Admin_Mail_EventNotification($event);
             $notificationEmail->send();
         }

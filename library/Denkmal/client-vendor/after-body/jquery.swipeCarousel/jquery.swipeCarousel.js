@@ -22,6 +22,7 @@
     if (-1 == this.current_pane) {
       this.current_pane = 0;
     }
+    this.current_pane_triggered = this.current_pane;
     this.pane_width = 0;
     this.pane_count = this.$panes.length;
     this.hammer = new Hammer(this.$element[0], {
@@ -64,8 +65,11 @@
       }
 
       this.$element.addClass('swipeCarousel');
+      this.$element.on('transitionend', function(){
+        this._checkForChange();
+      }.bind(this));
       this._setPaneDimensions();
-      this.showPane(this.current_pane, null, true);
+      this.showPane(this.current_pane, true);
       $(window).on('load resize orientationchange', this._setPaneDimensions);
       $(window).on('keydown', this._onKeydown);
       this.hammer.on('release dragleft dragright swipeleft swiperight', this._onHammer);
@@ -77,42 +81,34 @@
         return;
       }
 
+      this.$element.off('transitionend');
       $(window).off('load resize orientationchange', this._setPaneDimensions);
       $(window).off('keydown', this._onKeydown);
       this.hammer.off('release dragleft dragright swipeleft swiperight', this._onHammer);
       this.initialized = false;
     },
 
-    /**
-     * @param {Object} [eventData]
-     */
-    showNext: function(eventData) {
-      this.showPane(this.current_pane + 1, eventData);
+    showNext: function() {
+      this.showPane(this.current_pane + 1);
     },
 
-    /**
-     * @param {Object} [eventData]
-     */
-    showPrevious: function(eventData) {
-      this.showPane(this.current_pane - 1, eventData);
+    showPrevious: function() {
+      this.showPane(this.current_pane - 1);
     },
 
     /**
      * @param {Number} index
-     * @param {Object} [eventData]
      * @param {Boolean} [skipAnimation]
      */
-    showPane: function(index, eventData, skipAnimation) {
+    showPane: function(index, skipAnimation) {
       index = Math.max(0, Math.min(index, this.pane_count - 1));
-      eventData = eventData || {};
-      var change = this.current_pane != index;
       this.current_pane = index;
 
       var offset = -((100 / this.pane_count) * this.current_pane);
       this._setContainerOffset(offset, !skipAnimation);
 
-      if (change) {
-        this._onChange(eventData);
+      if (skipAnimation) {
+        this._checkForChange();
       }
     },
 
@@ -143,17 +139,21 @@
       }
     },
 
-    /**
-     * @param {Object} eventData
-     */
-    _onChange: function(eventData) {
+    _checkForChange: function() {
+      if (this.current_pane_triggered !== this.current_pane) {
+        this._triggerChangeEvent();
+        this.current_pane_triggered = this.current_pane;
+      }
+    },
+
+    _triggerChangeEvent: function() {
       var $pane_current = this.$panes.eq(this.current_pane);
       this.$panes.removeClass('active');
       $pane_current.addClass('active');
-      _.extend(eventData, {
+      var eventData = {
         index: this.current_pane,
         element: $pane_current.get(0)
-      });
+      };
       this.$element.trigger('swipeCarousel-change', eventData);
     },
 

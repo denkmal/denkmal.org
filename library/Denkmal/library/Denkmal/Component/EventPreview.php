@@ -16,7 +16,12 @@ class Denkmal_Component_EventPreview extends Denkmal_Component_Abstract {
         }
 
         if ($venue->hasIdRaw()) {
-            $viewResponse->set('eventDuplicates', new Denkmal_Paging_Event_EventDuplicates($event->getFrom(), $venue));
+            if ($event->hasIdRaw()) {
+                $eventDuplicates = new Denkmal_Paging_Event_EventDuplicates($event->getFrom(), $venue, [$event]);
+            } else {
+                $eventDuplicates = new Denkmal_Paging_Event_EventDuplicates($event->getFrom(), $venue);
+            }
+            $viewResponse->set('eventDuplicates', $eventDuplicates);
         }
 
         $viewResponse->set('event', $event);

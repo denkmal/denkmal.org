@@ -161,10 +161,11 @@
      * @param {Event} event
      */
     _onKeydown: function(event) {
-      if (event.which === cm.keyCode.LEFT && !$(event.target).is(':input')) {
+      var metaPressed = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+      if (event.which === cm.keyCode.LEFT && !metaPressed && !$(event.target).is(':input')) {
         this.showPrevious();
       }
-      if (event.which === cm.keyCode.RIGHT && !$(event.target).is(':input')) {
+      if (event.which === cm.keyCode.RIGHT && !metaPressed && !$(event.target).is(':input')) {
         this.showNext();
       }
     },

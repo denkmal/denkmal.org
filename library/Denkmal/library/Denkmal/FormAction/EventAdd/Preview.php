@@ -15,6 +15,6 @@ class Denkmal_FormAction_EventAdd_Preview extends CM_FormAction_Abstract {
         return $response->loadComponent('Denkmal_Component_EventPreview', new Denkmal_Params(array(
             'event' => $event,
             'venue' => $venue,
-        )));
+        ), false));
     }
 }

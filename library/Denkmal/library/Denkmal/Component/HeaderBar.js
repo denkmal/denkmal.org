@@ -9,8 +9,16 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
 
   events: {
     'click .menu.dates a': function() {
-      var state = !this.el.hasAttribute('data-weekday-menu');
-      this.setWeekdayMenuVisible(state);
+      if (!this.getWeekdayMenuVisible()) {
+        this.setWeekdayMenuVisible(true);
+        return false;
+      }
+    }
+  },
+
+  appEvents: {
+    'navigate:start': function() {
+      this.setWeekdayMenuVisible(false);
     }
   },
 
@@ -26,6 +34,13 @@ var Denkmal_Component_HeaderBar = Denkmal_Component_Abstract.extend({
     } else {
       this.$el.toggleModal('close', callback);
     }
+  },
+
+  /**
+   * @returns {boolean}
+   */
+  getWeekdayMenuVisible: function() {
+    return this.el.hasAttribute('data-weekday-menu');
   },
 
   /**

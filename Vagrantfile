@@ -18,7 +18,7 @@ Vagrant.configure('2') do |config|
 
   config.librarian_puppet.puppetfile_dir = 'puppet'
   config.librarian_puppet.placeholder_filename = '.gitkeep'
-  config.librarian_puppet.resolve_options = {:force => true}
+  config.librarian_puppet.resolve_options = { :force => true }
   config.vm.provision :puppet do |puppet|
     puppet.environment_path = 'puppet/environments'
     puppet.environment = 'development'
@@ -32,19 +32,19 @@ Vagrant.configure('2') do |config|
   ].join(' && ')
 
   if ENV['LINK']
-      config.vm.provision 'shell', run: 'always', inline: [
-        'cd /home/vagrant/denkmal',
-        'rm -rf vendor/cargomedia/cm',
-        'ln -s ../../../cm vendor/cargomedia/cm',
-      ].join(' && ')
+    config.vm.provision 'shell', run: 'always', inline: [
+      'cd /home/vagrant/denkmal',
+      'rm -rf vendor/cargomedia/cm',
+      'ln -s ../../../cm vendor/cargomedia/cm',
+    ].join(' && ')
   end
 
   config.vm.provision 'shell', run: 'always', inline: [
     'cd /home/vagrant/denkmal',
     'cp resources/config/_local.dev.php resources/config/local.php',
-    "bin/cm app set-config deploy '#{{:deployVersion => Time.now.to_i}.to_json}'",
+    "bin/cm app set-config deploy '#{{ :deployVersion => Time.now.to_i }.to_json}'",
     'bin/cm app setup',
-    'bin/cm db run-updates',
+    'bin/cm migration run',
     'sudo foreman-systemd reload -w cm-applications.target denkmal .',
   ].join(' && ')
 end

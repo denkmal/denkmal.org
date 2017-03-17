@@ -7,7 +7,7 @@ class Denkmal_EventTweeter_DailyTest extends CMTest_TestCase {
     }
 
     public function testRun() {
-        $region = DenkmalTest_TH::createRegion('basel', 'basel');
+        $region = DenkmalTest_TH::createRegion('My Region', 'my-regio');
         $venue = DenkmalTest_TH::createVenue(null, null, null, $region);
         $event1 = Denkmal_Model_Event::create($venue, 'Foo 1', true, false, new DateTime('2014-11-01 11:00'), null, null, null, true);
         $event2 = Denkmal_Model_Event::create($venue, 'Foo 2', true, false, new DateTime('2014-11-01 12:00'), null, null, null, false);

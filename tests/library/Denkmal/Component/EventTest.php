@@ -7,10 +7,11 @@ class Denkmal_Component_EventTest extends CMTest_TestCase {
     }
 
     public function testRender() {
+        $site = $this->getMockSite(Denkmal_Site_Default::class);
         $venue = DenkmalTest_TH::createVenue('My Venue');
         $event = Denkmal_Model_Event::create($venue, 'My Event', true, true, new DateTime('2017-01-01'));
         $component = new Denkmal_Component_Event(['event' => $event]);
-        $html = $this->_renderComponent($component);
+        $html = $this->_renderComponent($component, null, $site);
 
         $this->assertComponentAccessible($component);
         $this->assertContains('My Venue', $html->find('.event-description .venue')->getText());
@@ -18,17 +19,19 @@ class Denkmal_Component_EventTest extends CMTest_TestCase {
     }
 
     public function testSecretVenue() {
+        $site = $this->getMockSite(Denkmal_Site_Default::class);
         $venue = DenkmalTest_TH::createVenue();
         $event = Denkmal_Model_Event::create($venue, 'foo', true, false, new DateTime('2008-08-01 18:11:31'));
         $venue->setSecret(true);
         $component = new Denkmal_Component_Event(['event' => $event]);
-        $html = $this->_renderComponent($component);
+        $html = $this->_renderComponent($component, null, $site);
 
         $this->assertComponentAccessible($component);
         $this->assertFalse($html->has('a.location'));
     }
 
     public function testRenderWithoutPersistence() {
+        $site = $this->getMockSite(Denkmal_Site_Default::class);
         $venue = new Denkmal_Model_Venue();
         $venue->setName('My Venue');
         $venue->setCoordinates(new CM_Geo_Point(12, 13));
@@ -43,7 +46,7 @@ class Denkmal_Component_EventTest extends CMTest_TestCase {
         $event->setUntil(null);
 
         $component = new Denkmal_Component_Event(['event' => $event, 'venue' => $venue]);
-        $html = $this->_renderComponent($component);
+        $html = $this->_renderComponent($component, null, $site);
 
         $this->assertComponentAccessible($component);
         $this->assertContains('My Venue', $html->find('.event-description .venue')->getText());

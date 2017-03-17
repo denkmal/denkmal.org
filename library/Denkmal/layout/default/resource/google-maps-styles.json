@@ -1,20 +1,8 @@
 [
   {
-    "featureType": "administrative",
-    "elementType": "all",
-    "stylers": [
-      {
-        "visibility": "simplified"
-      }
-    ]
-  },
-  {
     "featureType": "landscape",
     "elementType": "geometry",
     "stylers": [
-      {
-        "visibility": "simplified"
-      },
       {
         "color": "#fcfcfc"
       }
@@ -22,25 +10,18 @@
   },
   {
     "featureType": "poi",
-    "elementType": "geometry",
     "stylers": [
       {
-        "visibility": "simplified"
-      },
-      {
-        "color": "#fcfcfc"
+        "visibility": "off"
       }
     ]
   },
   {
-    "featureType": "road.highway",
-    "elementType": "geometry",
+    "featureType": "road",
+    "elementType": "labels.icon",
     "stylers": [
       {
-        "visibility": "simplified"
-      },
-      {
-        "color": "#dddddd"
+        "visibility": "off"
       }
     ]
   },
@@ -49,10 +30,25 @@
     "elementType": "geometry",
     "stylers": [
       {
-        "visibility": "simplified"
-      },
+        "color": "#dddddd"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
       {
         "color": "#dddddd"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -61,22 +57,7 @@
     "elementType": "geometry",
     "stylers": [
       {
-        "visibility": "simplified"
-      },
-      {
         "color": "#eeeeee"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "visibility": "simplified"
-      },
-      {
-        "color": "#dddddd"
       }
     ]
   }

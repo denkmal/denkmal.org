@@ -38,7 +38,7 @@ class Denkmal_FormAction_EventAdd_Create extends CM_FormAction_Abstract {
         }
 
         $fromDistance = ($event->getFrom()->getTimestamp() - time());
-        if (($fromDistance / 3600) < 24) {
+        if (($fromDistance / 3600) < 48) {
             $notificationEmail = new Admin_Mail_EventNotification($event);
             $notificationEmail->send();
         }

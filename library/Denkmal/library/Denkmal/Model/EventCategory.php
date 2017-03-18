@@ -86,17 +86,17 @@ class Denkmal_Model_EventCategory extends CM_Model_Abstract {
 
     protected function _onChange() {
         parent::_onChange();
-        Denkmal_EventFormatter_GenresFilter::clearCache();
+        Denkmal_EventFormatter_GenresFormatter::clearCache();
     }
 
     protected function _onCreate() {
         parent::_onCreate();
-        Denkmal_EventFormatter_GenresFilter::clearCache();
+        Denkmal_EventFormatter_GenresFormatter::clearCache();
     }
 
     protected function _onDelete() {
         parent::_onDelete();
-        Denkmal_EventFormatter_GenresFilter::clearCache();
+        Denkmal_EventFormatter_GenresFormatter::clearCache();
     }
 
     /**

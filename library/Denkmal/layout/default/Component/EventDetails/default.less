@@ -25,6 +25,19 @@
   position: relative;
   display: block;
 
+  .map {
+    opacity: 0;
+    transition: opacity 200ms;
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
+
+  .spinner-expanded {
+    bottom: 30px;
+  }
+
   .button-location {
     bottom: 40px;
     right: 10px;

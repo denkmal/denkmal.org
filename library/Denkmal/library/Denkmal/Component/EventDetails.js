@@ -31,6 +31,7 @@ var Denkmal_Component_EventDetails = Denkmal_Component_Event.extend({
       var img = this;
       img.setAttribute('src', img.getAttribute('data-src'));
       img.onload = function() {
+        img.className += " loaded";
         img.removeAttribute('data-src');
       };
     });

@@ -1,3 +1,13 @@
+.floatbox {
+  transition: opacity 200ms, transform 200ms;
+  transform: scale(.5);
+  transform-origin: center;
+}
+
+.floatbox.fadeIn {
+  transform: scale(1);
+}
+
 .floatbox-overlay.fadeIn {
   opacity: 0.9;
 }

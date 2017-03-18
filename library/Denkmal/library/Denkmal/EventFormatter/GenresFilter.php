@@ -40,7 +40,8 @@ class Denkmal_EventFormatter_GenresFilter extends CM_Usertext_Filter_Abstract {
     private static function _getGenreToColor() {
         $cacheKey = self::_getCacheKeyReplacements();
         $cache = CM_Cache_Local::getInstance();
-        if (($genreToColor = $cache->get($cacheKey)) === false) {
+
+        return $cache->get($cacheKey, function () {
             $genreToColor = [];
             /** @var Denkmal_Model_EventCategory[] $categoryList */
             $categoryList = new Denkmal_Paging_EventCategory_All();
@@ -49,9 +50,8 @@ class Denkmal_EventFormatter_GenresFilter extends CM_Usertext_Filter_Abstract {
                     $genreToColor[$genre] = '#' . $category->getColor()->getHexString();
                 }
             }
-            $cache->set($cacheKey, $genreToColor);
-        }
-        return $genreToColor;
+            return $genreToColor;
+        });
     }
 
     /**

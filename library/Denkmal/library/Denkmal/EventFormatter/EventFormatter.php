@@ -17,13 +17,12 @@ class Denkmal_EventFormatter_EventFormatter {
      * @return string
      */
     public function getHtml(Denkmal_Model_Event $event) {
-        $genresFormatter = new Denkmal_EventFormatter_GenresFormatter();
+        $genresFormatter = new Denkmal_EventFormatter_GenresFormatter($this->_render);
 
         $genres = $event->getGenres();
-        $genres = $genresFormatter->transform($genres, $this->_render);
-
         $description = $event->getDescription();
         if ($genres) {
+            $genres = $genresFormatter->getHtml($genres);
             $description = $this->_addPunctuation($description);
         }
         $description = $this->_escape($description);

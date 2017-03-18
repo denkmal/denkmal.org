@@ -6,6 +6,11 @@
 }
 
 .floatbox & {
+  @media (min-width: @breakpointSmall) {
+    border: 1px solid @colorFgBorderEmphasize3;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+  }
+
   .wrapper {
     background-color: @colorBg;
     display: flex;

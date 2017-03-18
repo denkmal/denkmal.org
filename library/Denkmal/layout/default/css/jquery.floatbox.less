@@ -1,15 +1,21 @@
 .floatbox {
   transition: opacity 200ms, transform 200ms;
-  transform: scale(.5);
+  transform: scale(.8);
   transform-origin: center;
+  transition-delay: 100ms;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .floatbox.fadeIn {
   transform: scale(1);
 }
 
+.floatbox-overlay {
+  background-color: @colorBg;
+}
+
 .floatbox-overlay.fadeIn {
-  opacity: 0.9;
+  opacity: 0.96;
 }
 
 .floatbox.fullscreen {

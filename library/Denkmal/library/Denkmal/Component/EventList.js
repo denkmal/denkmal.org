@@ -10,7 +10,10 @@ var Denkmal_Component_EventList = Denkmal_Component_Abstract.extend({
   events: {
     'click .showEventDetails': function(event) {
       var href = $(event.currentTarget).data('href');
-      cm.router.route(href);
+      _.defer(function() {
+        // Defer is required for the click-feedback animation to trigger on Chrome/Androi
+        cm.router.route(href);
+      });
     }
   }
 });

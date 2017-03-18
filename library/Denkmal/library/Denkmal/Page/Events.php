@@ -22,6 +22,7 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
         $settings = new Denkmal_App_Settings();
         $date = $this->_params->getDate('date', $settings->getCurrentDate());
         $dateList = new Denkmal_Paging_DateTime_Days();
+        $event = $this->_params->has('event') ? $this->_params->getEvent('event') : null;
 
         if (in_array($date, $dateList->getItems())) {
             $menu = new Denkmal_Menu_Weekdays();
@@ -37,6 +38,7 @@ class Denkmal_Page_Events extends Denkmal_Page_Abstract {
         $viewResponse->set('menu', $menu);
         $viewResponse->set('date', $date);
         $viewResponse->set('venueBookmarks', $this->_getVenueBookmarks());
+        $viewResponse->set('event', $event);
     }
 
     protected function _requiresRegion() {

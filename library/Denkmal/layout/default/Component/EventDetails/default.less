@@ -21,9 +21,24 @@
   }
 }
 
+.floatbox:not(.fullscreen) & {
+  border: 1px solid @colorFgBorderEmphasize3;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+}
+
 .header {
-  position: relative;
+  background-color: #e3e3e3;
   display: block;
+  position: relative;
+
+  .map {
+    opacity: 0;
+    transition: opacity 200ms;
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
 
   .button-location {
     bottom: 40px;

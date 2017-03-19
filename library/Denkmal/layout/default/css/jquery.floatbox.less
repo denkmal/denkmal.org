@@ -1,17 +1,53 @@
+.floatbox {
+  transition: opacity 200ms, transform 200ms;
+  transform: scale(.8);
+  transform-origin: center;
+  transition-delay: 100ms;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floatbox.fadeIn {
+  transform: scale(1);
+}
+
+.floatbox-overlay {
+  background-color: @colorBg;
+}
+
 .floatbox-overlay.fadeIn {
-  opacity: 0.9;
+  opacity: 0.96;
 }
 
 .floatbox.fullscreen {
   background-color: @colorBg;
-}
 
-.floatbox-controls .icon-close {
-  border-radius: (@sizeButton / 2);
-  background-color: @colorFg;
-  border-color: @colorFg;
-  color: @colorBg;
-  position: absolute;
-  top: 5px;
-  right: 5px;
+  .floatbox-body {
+    > * {
+      padding-bottom: 40px;
+    }
+  }
+
+  .floatbox-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    width: 100%;
+
+    .icon-close {
+      background-color: mix(@colorFg, @colorFgSubtle);
+      color: @colorBg;
+      float: none;
+      width: 100%;
+
+      &::before {
+        font-size: .9em;
+        margin-right: 4px;
+      }
+
+      &::after {
+        content: attr(title);
+      }
+    }
+  }
 }

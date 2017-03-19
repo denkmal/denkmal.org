@@ -2,7 +2,6 @@
 
 {block name='event-before'}
   <div class="header">
-    <div class="spinner spinner-expanded"></div>
     {contentPlaceholder width=8 height=5 stretch=true}
     {if $mapLink && $venue->getCoordinates()}
       <img class='map' data-src="{googlemaps_img coordinates=$venue->getCoordinates() styleFile='google-maps-styles.json'}">

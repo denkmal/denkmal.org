@@ -146,13 +146,10 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     $('.floatbox').floatbox('close')
   },
 
-  /**
-   * @param {Boolean} state
-   */
   _changeState: function(state) {
     var date = state['date'];
     if (!date) {
-      date = this.$('.dateList > .dateList-item:first').data('date');
+      date = cm.getDocument().getCurrentDate().format('YYYY-M-D');
       this.setState({date: date});
     }
     if (!this._hasPane(date)) {

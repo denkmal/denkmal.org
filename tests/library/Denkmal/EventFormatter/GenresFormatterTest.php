@@ -30,7 +30,7 @@ class Denkmal_EventFormatter_GenresFormatterTest extends CMTest_TestCase {
         $filter = new Denkmal_EventFormatter_GenresFormatter($render);
 
         Denkmal_Model_EventCategory::create('my-cat', new CM_Color_RGB(255, 0, 0), [
-            "rock'n'roll", "r'n'r"
+            'rock', "rock'n'roll", "r'n'r"
         ]);
 
         $this->assertRegExp(

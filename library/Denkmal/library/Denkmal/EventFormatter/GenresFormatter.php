@@ -60,7 +60,7 @@ class Denkmal_EventFormatter_GenresFormatter {
         $cacheKey = self::_getCacheKeyReplacements();
         $cache = CM_Cache_Local::getInstance();
 
-        return $cache->get($cacheKey, function () {
+        $genreToColor = $cache->get($cacheKey, function () {
             $genreToColor = [];
             /** @var Denkmal_Model_EventCategory[] $categoryList */
             $categoryList = new Denkmal_Paging_EventCategory_All();
@@ -71,6 +71,17 @@ class Denkmal_EventFormatter_GenresFormatter {
             }
             return $genreToColor;
         });
+
+        uksort($genreToColor, function ($genre1, $genre2) {
+            $length1 = mb_strlen($genre1);
+            $length2 = mb_strlen($genre2);
+            if ($length1 == $length2) {
+                return 0;
+            }
+            return $length1 > $length2 ? -1 : 1;
+        });
+
+        return $genreToColor;
     }
 
     /**

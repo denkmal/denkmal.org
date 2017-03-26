@@ -14,7 +14,6 @@ class Denkmal_Component_EventList extends Denkmal_Component_Abstract {
         foreach ($events as $event) {
             $sortKey = join('-', [
                 ($venueBookmarks->containsVenue($event->getVenue()) ? '1' : '2'),
-                ($event->getStarred() ? '1' : '2'),
                 strtolower($event->getVenue()->getName()),
             ]);
             $eventsSorted[$sortKey] = $event;

@@ -89,6 +89,7 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Scraper_Source_Abstract->types[86] = Denkmal_Scraper_Source_Graz_Sub::class;
     $config->Denkmal_Scraper_Source_Abstract->types[88] = Denkmal_Scraper_Source_Facebook_PageList::class;
     $config->Denkmal_Scraper_Source_Abstract->types[89] = Denkmal_Scraper_Source_Basel_Renee::class;
+    $config->Denkmal_Scraper_Source_Abstract->types[94] = Denkmal_Scraper_Source_Basel_HulaClub::class;
     $config->CM_Mail_ExampleMailable->type = 2;
     $config->CM_Action_Email->type = 3;
     $config->CM_Model_Language->type = 5;
@@ -159,7 +160,8 @@ return function (CM_Config_Node $config) {
     $config->Denkmal_Model_EventLink->type = 91;
     $config->Denkmal_Model_EventCategory->type = 92;
     $config->Denkmal_App_SetupScript_EventCategories->type = 93;
-    $config->CM_Class_Abstract->typesMaxValue = 93;
+    $config->Denkmal_Scraper_Source_Basel_HulaClub->type = 94;
+    $config->CM_Class_Abstract->typesMaxValue = 94;
     
     $config->CM_Action_Abstract->verbs = [];
     $config->CM_Action_Abstract->verbs[CM_Action_Abstract::CREATE] = 1;

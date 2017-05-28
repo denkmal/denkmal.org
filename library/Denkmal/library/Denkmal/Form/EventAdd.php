@@ -20,7 +20,7 @@ class Denkmal_Form_EventAdd extends CM_Form_Abstract {
         $this->registerField(new CM_FormField_Text(['name' => 'title']));
         $this->registerField(new CM_FormField_Text(['name' => 'artists']));
         $this->registerField(new CM_FormField_Text(['name' => 'genres']));
-        $this->registerField(new CM_FormField_Url(['name' => 'link']));
+        $this->registerField(new Denkmal_FormField_UrlEventLink(['name' => 'link']));
 
         $this->registerAction(new Denkmal_FormAction_EventAdd_Create($this));
         $this->registerAction(new Denkmal_FormAction_EventAdd_Preview($this));

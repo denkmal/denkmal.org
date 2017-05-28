@@ -25,7 +25,7 @@
               <div class="icon icon-network"></div>
             </div>
             <div class="moreItem-content">
-              <span>{translate 'Venue Website'}</span>
+              <span>{urlToHost url=$venue->getUrl()|escape}</span>
             </div>
           </a>
         </div>

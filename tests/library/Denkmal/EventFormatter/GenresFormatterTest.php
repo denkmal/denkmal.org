@@ -11,17 +11,17 @@ class Denkmal_EventFormatter_GenresFormatterTest extends CMTest_TestCase {
         $filter = new Denkmal_EventFormatter_GenresFormatter($render);
 
         $this->assertSame(
-            'foo1, foo2, bar',
-            $filter->getHtml('foo1, foo2, bar'));
+            'Foo1, foo2, bar',
+            $filter->getHtml('foo1, FOO2, bar'));
 
         $eventCategory = Denkmal_Model_EventCategory::create('cat-foo', new CM_Color_RGB(255, 0, 0), ['foo1']);
         $this->assertRegExp(
-            '|^<span class="genre" style="([^"]*)#FF0000([^"]*)">foo1</span>, foo2, bar$|',
-            $filter->getHtml('foo1, foo2, bar'));
+            '|^<span class="genre" style="([^"]*)#FF0000([^"]*)">Foo1</span>, foo2, bar$|',
+            $filter->getHtml('foo1, FOO2, bar'));
 
         $eventCategory->addGenre('foo2');
         $this->assertRegExp(
-            '|<span class="genre" style="([^"]*)#FF0000([^"]*)">foo1</span>, <span class="genre" style="([^"]*)#FF0000([^"]*)">FOO2</span>, bar$|',
+            '|<span class="genre" style="([^"]*)#FF0000([^"]*)">Foo1</span>, <span class="genre" style="([^"]*)#FF0000([^"]*)">foo2</span>, bar$|',
             $filter->getHtml('foo1, FOO2, bar'));
     }
 
@@ -34,11 +34,11 @@ class Denkmal_EventFormatter_GenresFormatterTest extends CMTest_TestCase {
         ]);
 
         $this->assertRegExp(
-            '|<span class="genre" style="([^"]*)">rock&#039;n&#039;roll</span>|',
+            '|<span class="genre" style="([^"]*)">Rock&#039;n&#039;roll</span>|',
             $filter->getHtml("rock'n'roll"));
 
         $this->assertRegExp(
-            '|<span class="genre" style="([^"]*)">r&#039;n&#039;r</span>|',
+            '|<span class="genre" style="([^"]*)">R&#039;n&#039;r</span>|',
             $filter->getHtml("r'n'r"));
     }
 
@@ -71,11 +71,11 @@ class Denkmal_EventFormatter_GenresFormatterTest extends CMTest_TestCase {
         Denkmal_Model_EventCategory::create('cat-rock', new CM_Color_RGB(255, 0, 0), ['rock']);
 
         $this->assertRegExp(
-            '|<span class="genre" style="([^"]*)#00FF00([^"]*)">punk rock</span>$|',
+            '|<span class="genre" style="([^"]*)#00FF00([^"]*)">Punk rock</span>$|',
             $filter->getHtml('punk rock'));
 
         $this->assertRegExp(
-            '|<span class="genre" style="([^"]*)#00FF00([^"]*)">punk rock</span>, <span class="genre" style="([^"]*)#FF0000([^"]*)">rock</span>|',
+            '|<span class="genre" style="([^"]*)#00FF00([^"]*)">Punk rock</span>, <span class="genre" style="([^"]*)#FF0000([^"]*)">rock</span>|',
             $filter->getHtml('punk rock, rock'));
     }
 }

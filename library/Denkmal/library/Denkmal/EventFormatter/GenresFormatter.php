@@ -19,6 +19,7 @@ class Denkmal_EventFormatter_GenresFormatter {
     public function getHtml($text) {
         $text = (string) $text;
         $text = $this->_escape($text);
+        $text = mb_strtolower($text);
 
         $placeholders = [];
         $wordBoundary = $this->_getWordBoundaryPattern();
@@ -30,8 +31,10 @@ class Denkmal_EventFormatter_GenresFormatter {
                     $placeholder = '{{{PLACEHOLDER-' . count($placeholders) . '}}}';
                     $placeholders[] = [
                         'search'  => $placeholder,
-                        'replace' => '<span class="genre" style="background-image: linear-gradient(to top, ' . $color . ' 25%, transparent 25%);">' .
-                            $matches[2] . '</span>',
+                        'replace' =>
+                            '<span class="genre" style="background-image: linear-gradient(to top, ' . $color . ' 25%, transparent 25%);">'
+                            . $matches[2]
+                            . '</span>',
                     ];
                     return $matches[1] . $placeholder . $matches[3];
                 }, $text);
@@ -41,6 +44,11 @@ class Denkmal_EventFormatter_GenresFormatter {
         foreach ($placeholders as $placeholder) {
             $text = str_replace($placeholder['search'], $placeholder['replace'], $text);
         }
+
+        // Make first letter uppercase
+        $text = preg_replace_callback('#^(<span.*?>)?(.)#', function ($matches) {
+            return $matches[1] . strtoupper($matches[2]);
+        }, $text);
 
         return $text;
     }

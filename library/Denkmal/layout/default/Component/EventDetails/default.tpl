@@ -25,7 +25,7 @@
               <div class="icon icon-network"></div>
             </div>
             <div class="moreItem-content">
-              <span>{urlToHost url=$venue->getUrl()|escape}</span>
+              <span>{venueUrlShort url=$venue->getUrl()|escape}</span>
             </div>
           </a>
         </div>

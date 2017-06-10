@@ -3,7 +3,7 @@
 class Denkmal_Scraper_Source_Basel_HulaClub extends Denkmal_Scraper_Source_Abstract {
 
     public function run(DateTime $now, array $dateList) {
-        $html = self::loadUrl('http://www.hula-club.ch/pages/events.php');
+        $html = self::loadUrl('http://www.hula-club.ch/pages/events.php', 5);
         return $this->processPage($html, $now);
     }
 

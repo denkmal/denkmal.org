@@ -12,7 +12,7 @@ return function (CM_Config_Node $config) {
     $config->services['google-static-maps'] = [
         'class'     => 'Denkmal_GoogleMaps_StaticMaps',
         'arguments' => [
-            'apiKey' => 'AIzaSyB85laUBhcLyjf7vff7WE62__6jPxjK8qI',
+            'apiKey' => 'AIzaSyC5s-73wOdKqfCzNXV6YNJ-RNgJOl6HL80',
         ]
     ];
 

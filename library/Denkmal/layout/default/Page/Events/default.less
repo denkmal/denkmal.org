@@ -6,6 +6,49 @@
   overflow: hidden;
 }
 
+.banner {
+  display: none;
+  padding: 8px;
+
+  @media (min-width: @breakpointSmall) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .banner-inner {
+    position: relative;
+    background-color: #ffa7af;
+    padding: 15px 10px;
+
+    a {
+      display: flex;
+
+      .text {
+        flex-grow: 1;
+        margin: 0;
+        color: @colorFg !important;
+        .call-to-action {
+          background-image: linear-gradient(to top, #ffff00 25%, transparent 25%);
+        }
+      }
+
+      .bild {
+        img {
+          height: 60px;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: @colorFgTheme;
+    }
+  }
+}
+
 .swipeCarousel {
   position: relative;
   height: 100%;

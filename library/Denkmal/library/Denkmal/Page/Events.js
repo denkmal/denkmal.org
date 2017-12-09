@@ -18,6 +18,9 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   events: {
     'swipeCarousel-change .swipeCarousel': function(event, data) {
       this._onShowPane($(data.element), true);
+    },
+    'click .dismissBanner': function() {
+      this._dismissBanner();
     }
   },
 
@@ -32,6 +35,18 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
     });
 
     this._initFloatboxMediaQuery();
+    this._showBanner();
+  },
+
+  _showBanner: function() {
+    if (null === this.storageGet('banner-nachfolge')) {
+      this.$('.banner-nachfolge').show();
+    }
+  },
+
+  _dismissBanner: function() {
+    this.storageSet('banner-nachfolge', false);
+    this.$('.banner-nachfolge').fadeOut(300);
   },
 
   _initFloatboxMediaQuery: function() {

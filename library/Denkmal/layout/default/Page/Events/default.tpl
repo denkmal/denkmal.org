@@ -3,6 +3,20 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
+  <div class="banner banner-nachfolge">
+    <div class="banner-inner">
+      <a href="https://goo.gl/forms/9XnuJ3BVMRZZt3Sf1" target="_blank">
+        <div class="text">
+          Das Team hinter Denkmal.org sucht eine Nachfolge!<br>
+          <span class="call-to-action">Mehr erfahren.</span>
+        </div>
+        <div class="bild">
+          {img path='denkmal-nachfolge.png' class="kleine-eule"}
+        </div>
+      </a>
+      {button_link class='dismissBanner' theme='transparent' icon='close'}
+    </div>
+  </div>
   <div class="swipeCarousel">
     <ul class="dateList">
       {foreach $menu->getEntries($render->getEnvironment()) as $entry}

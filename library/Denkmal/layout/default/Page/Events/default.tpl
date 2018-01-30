@@ -3,7 +3,7 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
-  <div class="banner banner-nachfolge">
+  <div class="banner banner-denkmalmit">
     <div class="banner-inner">
       <a href="https://denkmalmit.org" target="_blank">
         <div class="text">

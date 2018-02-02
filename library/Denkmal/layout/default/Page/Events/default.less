@@ -17,18 +17,24 @@
 
   .banner-inner {
     position: relative;
-    background-color: #ffa7af;
+    background-color: #b383b6;
+    color: white;
     padding: 15px 10px;
 
     a {
       display: flex;
+      color: inherit;
 
       .text {
         flex-grow: 1;
         margin: 0;
-        color: @colorFg !important;
+
         .call-to-action {
-          background-image: linear-gradient(to top, #ffff00 25%, transparent 25%);
+          background-image: linear-gradient(
+            to top,
+            #f5e9be 25%,
+            transparent 25%
+          );
         }
       }
 
@@ -60,7 +66,7 @@
   width: 100%;
   height: 100%;
   transform: translate3d(0, 0, 0);
-  box-shadow: 0 0 30px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 
   .dateList-item {
     position: relative;

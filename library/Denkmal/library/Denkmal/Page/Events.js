@@ -39,14 +39,14 @@ var Denkmal_Page_Events = Denkmal_Page_Abstract.extend({
   },
 
   _showBanner: function() {
-    if (null === this.storageGet('banner-nachfolge')) {
-      this.$('.banner-nachfolge').show();
+    if (null === this.storageGet('banner-denkmalmit')) {
+      this.$('.banner-denkmalmit').show();
     }
   },
 
   _dismissBanner: function() {
-    this.storageSet('banner-nachfolge', false);
-    this.$('.banner-nachfolge').fadeOut(300);
+    this.storageSet('banner-denkmalmit', false);
+    this.$('.banner-denkmalmit').fadeOut(300);
   },
 
   _initFloatboxMediaQuery: function() {

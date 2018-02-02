@@ -3,12 +3,11 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
-  <div class="banner banner-nachfolge">
+  <div class="banner banner-denkmalmit">
     <div class="banner-inner">
-      <a href="https://goo.gl/forms/9XnuJ3BVMRZZt3Sf1" target="_blank">
+      <a href="https://denkmalmit.org" target="_blank">
         <div class="text">
-          Das Team hinter Denkmal.org sucht eine Nachfolge!<br>
-          <span class="call-to-action">Mehr erfahren.</span>
+          <strong>Es geht weiter!</strong><br> Mit deiner Unterstützung auf <span class="call-to-action">Denkmalmit</span> ❤️
         </div>
         <div class="bild">
           {img path='denkmal-nachfolge.png' class="kleine-eule"}

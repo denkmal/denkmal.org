@@ -21,5 +21,5 @@
   {if $facebookAccount}
     {button_link theme='transparent' icon='facebook' title='Facebook' href="https://www.facebook.com/{$facebookAccount}" target="_blank"}
   {/if}
-  {button_link theme='transparent' href="https://goo.gl/forms/9XnuJ3BVMRZZt3Sf1" target='_blank' label='Wir suchen eine Nachfolge!'}
+  {button_link theme='transparent' href="https://denkmalmit.org" target='_blank' label='Verein Denkmalmit'}
 </footer>

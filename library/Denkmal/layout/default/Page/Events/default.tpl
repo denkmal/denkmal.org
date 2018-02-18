@@ -3,19 +3,21 @@
 {block name='content-title'}{/block}
 
 {block name='content-main'}
-  <div class="banner banner-denkmalmit">
-    <div class="banner-inner">
-      <a href="https://denkmalmit.org" target="_blank">
-        <div class="text">
-          <strong>Es geht weiter!</strong><br> Mit deiner Unterstützung auf <span class="call-to-action">Denkmalmit</span> ❤️
-        </div>
-        <div class="bild">
-          {img path='denkmal-nachfolge.png' class="kleine-eule"}
-        </div>
-      </a>
-      {button_link class='dismissBanner' theme='transparent' icon='close'}
+  {if $region->getSlug() == 'basel'}
+    <div class="banner banner-denkmalmit">
+      <div class="banner-inner">
+        <a href="https://denkmalmit.org" target="_blank">
+          <div class="text">
+            <strong>Es geht weiter!</strong><br> Mit deiner Unterstützung auf <span class="call-to-action">Denkmalmit</span> ❤️
+          </div>
+          <div class="bild">
+            {img path='denkmal-nachfolge.png' class="kleine-eule"}
+          </div>
+        </a>
+        {button_link class='dismissBanner' theme='transparent' icon='close'}
+      </div>
     </div>
-  </div>
+  {/if}
   <div class="swipeCarousel">
     <ul class="dateList">
       {foreach $menu->getEntries($render->getEnvironment()) as $entry}
